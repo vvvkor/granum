@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Granum</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="granum.css">
+    <link rel="stylesheet" href="granum-icons.css">
+    <script src="granum.js" defer></script>
+    <script src="granum-edit.js" defer></script>
+  </head>
+  <body id="top">
+		<nav data-mobile="bg">
+		<a href="#menu" class="target" data-mobile="icon-menu pad hover toggle" data-desktop="target" title="Menu"></a>
+		<ul id="menu" class="row bg hover" data-mobile="row act target hover" data-desktop="row -bg -hover">
+			<li><a href="?" class="act"><b>Granum</b></a>
+			<li><a href="#typo">Typography</a>
+			<li><a href="#list">List</a>
+			<li><a href="#table">Table</a>
+			<li><a href="#grid">Grid</a>
+			<li><a href="#form">Form</a>
+			<li><a href="#icon">Icon</a>
+			<li class="r"><a href="#action">Action</a>
+			<li><a href="#mod">Mods</a>
+			<li class="mid">
+				<form action="?#search" method="get">
+					<input id="search" type="search" name="q" size="6" accesskey="4" data-get placeholder="Search">
+					<button class="icon-find bg-n"></button>
+				</form>
+		</ul>
+		</nav>
+<main class="center wrap pad serif">
+
+<h1 id="home">Granum</h1>
+
+<p><i>CSS micro framework.<br>
+Ultra compact set of styles and behaviours for basic web pages.</i></p>
+
+<h2 id="typo"><a href="#typo">Typography</a> <a href="#top" class="small icon-up"></a></h2>
+
+<p>
+Text
+<a href="#top">Link</a>
+<a>No-link</a>
+<code>Code</code>
+<kbd>Kbd</kbd>
+<q>Quote</q>
+<small>Small</small>
+<mark>Mark</mark>
+<abbr title="Abbreviation">Abbr</abbr>
+x<sub>sub</sub>
+x<sup>super</sup>
+</p>
+<hr>
+<blockquote>Block quote</blockquote>
+<pre>Preformatted text
+<code>And code</code></pre>
+<!--img class="fit" alt="Grey" src="https://picsum.photos/id/1021/400/200.jpg"-->
+
+<h2 id="list"><a href="#list">List</a> <a href="#top" class="small icon-up"></a></h2>
+
+<div class="row act hover">
+
+<ul>
+<li>One
+<li>Two
+	<ul>
+	<li>Uno
+	<li>Dos
+	</ul>
+<li>Three
+</ul>
+
+<ol>
+<li>One
+<li>Two
+	<ol>
+	<li>Uno
+	<li>Dos
+	</ol>
+<li>Three
+</ol>
+
+<dl>
+	<dt>Term 1
+	<dd>Definition 1
+	<dt>Term 2
+	<dd>Definition 2.1
+	<dd>Definition 2.2
+</dl>
+
+</div>
+
+<h2 id="table"><a href="#table">Table</a> <a href="#top" class="small icon-up"></a></h2>
+
+<div class="roll">
+<table class="r1 c4 hover -bord -center -mid pad -l">
+	<thead>
+		<tr><th>Tag<th>Name<th>Icon<th>Value
+	</thead>
+	<tbody>
+		<tr><td><b class="tag small bg">0</b><td>Text
+			<td><a href="#top" class="icon-edit">Link</a><td>0
+		<tr><td><b class="tag small bg-w">1</b><td class="bg-w">Warning
+			<td><a href="#top" class="icon-pin text-w">Warning</a><td>100
+		<tr><td><b class="tag small bg-n">2</b><td class="bg-n">Lite
+			<td><a href="#top" class="icon-file text-n">Lite</a><td>5
+		<tr><td><b class="tag small bg-i">3</b><td class="bg-i">Info
+			<td><a href="#top" class="icon-right text-i">Info</a><td>10
+		<tr><td><b class="tag small bg-e">4</b><td class="bg-e">Error
+			<td><a href="#top" class="icon-delete text-e">Error</a><td>8
+		<tr class="mid"><td class="mid"><b class="tag small bg-y">FIVE</b><td class="bg-y">Success<br>OK
+			<td><a href="#top" class="icon-ok text-y">Success</a><td>2
+	</tbody>
+	<tfoot class="bg">
+		<tr><td>&Sigma;<td>-<td>-<td>125
+	</tfoot>
+</table>
+</div>
+
+<h2 id="grid"><a href="#grid">Grid</a> <a href="#top" class="small icon-up"></a></h2>
+
+<ul class="row act bg hover">
+<li><a href="#1">First</a>
+<li><a href="#2">Second<br>
+	<small class="text-n">Subtitle</small></a>
+<li class="r"><a href="#3">Third</a>
+<!--li class="mid"><a href="#4">Fourth</a-->
+</ul>
+
+<div class="row act pad mar">
+	<div class="col-0 bg-e pad">Auto</div>
+	<div class="col-1 bg-w pad">One</div>
+	<div class="col-2 bg-y pad mid">Two</div>
+	<div class="col-3 bg-n pad">Three<br>text</div>
+</div>
+
+<div class="row mid -bord mar pad">
+	<div class="col-0 bg c icon-user" style="font-size:3em;border-radius:50%;min-width:1.5em;"></div>
+	<div class="col-1 -bg-n">
+		<b>User Name</b>
+		<div class="small text-n"><a class="icon-pin l">Europe</a> <a class="icon-time">25.01.2021</a></div>
+	</div>
+</div>
+
+<details>
+	<summary>Full height</summary>
+	<div class="fit bg-w row mid"><div class="c pad bg">Centered</div></div>
+</details>
+
+
+<h2 id="form"><a href="#form">Form</a> <a href="#top" class="small icon-up"></a></h2>
+	
+<form action="#pform" id="pform" data-get>
+<p>
+	<label for="name">Name</label><br>
+	<input id="name" name="name" type="text" required placeholder="Name">
+	<span class="act text-e">Name required</span>
+	<span class="act text-y">OK</span>
+</p>
+<p>
+	<label for="sel">Select</label><br>
+	<select id="sel" name="sel" required>
+		<option value="">None</option>
+		<option value="sun">Sun</option>
+		<option value="moon">Moon</option>
+	</select>
+</p>
+<p>
+	<label for="dt">Datetime</label><br>
+	<input id="dt" name="dt" type="datetime-local">
+</p>
+<p>
+	<label for="box">
+		<input id="box" name="box" type="checkbox" required value="1">
+		<span>Box</span>
+	</label>
+</p>
+<p>
+	Radio
+	<br>
+	<label for="rad1">
+		<input id="rad1" name="rad" type="radio" required value="red"> <span>Red</span>
+	</label>
+	<br>
+	<label for="rad2">
+		<input id="rad2" name="rad" type="radio" required value="blue"> <span>Blue</span>
+	</label>
+</p>
+<p>
+	<label for="message">Message</label><br>
+	<textarea name="message" id="message" rows="5">Text</textarea>
+</p>
+<details>
+<summary>Editor</summary>
+<div class="bg pad">
+	<label for="msg">Formatted message</label>
+	<ul class="row hover">
+		<li><a href="#msg" class="toggle" title="HTML source">/</a>
+		<li><a href="#edit" data-cmd="bold" title="Bold"><b>B</b></a>
+		<li><a href="#edit" data-cmd="italic" title="Bold"><i>I</i></a>
+		<li><a href="#edit" data-cmd="removeformat" title="Bold">_</a>
+		<li><a href="#edit" data-cmd="insertimage" data-ask="https://" title="Image">@</a>
+		<li><a href="#edit" data-cmd="createlink" data-ask="https://" title="Link">*</a>
+		<li><a href="#edit" data-cmd="unlink" title="Unlink">&times;</a>
+		<li><a href="#edit" data-cmd="insertUnorderedList" title="List">&bull;</a>
+		<li><a href="#edit" data-cmd="insertHTML" data-arg="<br>" title="Line break">&crarr;</a>
+		<li><a href="#edit" data-cmd="formatblock" data-arg="<p>" title="Paragraph">&sect;</a>
+		<li><a href="#more-tools" class="toggle">&hellip;</a>
+	</ul>
+	<ul class="row hover target" id="more-tools">
+		<li><a href="#edit" data-cmd="justifyLeft" title="Justify left">&lt;</a>
+		<li><a href="#edit" data-cmd="justifyCenter" title="Justify center">=</a>
+		<li><a href="#edit" data-cmd="justifyRight" title="Justify right">&gt;</a>
+		<li><a href="#edit" data-cmd="insertOrderedList" title="Ordered list">1.</a>
+		<li><a href="#edit" data-cmd="indent" title="Increase indent">&raquo;</a>
+		<li><a href="#edit" data-cmd="outdent" title="Decrease indent">&laquo;</a>
+		<li><a href="#edit" data-cmd="formatblock" data-arg="<h1>" title="Head 1">h1</a>
+		<li><a href="#edit" data-cmd="formatblock" data-arg="<h2>" title="Head 2">h2</a>
+		<li><a href="#edit" data-cmd="formatblock" data-arg="<h3>" title="Head 3">h3</a>
+		<li><a href="#edit" data-cmd="formatblock" data-arg="<div>" title="Div">D</a>
+		<li><a href="#edit" data-cmd="formatblock" data-arg="<pre>" title="Preformatted">[]</a>
+		<li><a href="#edit" data-cmd="formatblock" data-arg="<blockquote>" title="Block quote">&#8220;</a>
+		<li><a href="#edit" data-cmd="inserthorizontalrule" title="Horizontal ruler">&minus;</a>
+	</ul>
+	<div><textarea name="msg" id="msg" class="target bg" rows="8">Formatted text&lt;br&gt;
+		&lt;b&gt;bold&lt;/b&gt; &lt;i&gt;italic&lt;/i&gt;</textarea></div>
+	<div class="bord pad" contenteditable id="edit" data-for="msg"></div>
+</div>
+</details>
+<fieldset class="rad mar">
+	<legend>Fieldset</legend>
+	<label><input type="checkbox" data-group="box"> <b>All</b></label><br>
+	<label><input type="checkbox" class="box" name="box-1"> One</label><br>
+	<label><input type="checkbox" class="box" name="box-2"> Two</label><br>
+	<label><input type="checkbox" class="box" name="box-3"> Three</label>
+</fieldset>
+<p>
+	<button>Button</button>
+	<button disabled>Disabled</button>
+	<a href="#pform" class="pad hover rad">Link</a>
+	<br>
+	<button class="icon-ok bg-y">OK</button>
+	<button class="icon-pin bg-w">Warning</button>
+	<button class="icon-delete bg-e">Danger</button>
+	<button class="icon-right bg-i">Info</button>
+	<button class="icon-file bg-n">Note</button>
+</p>
+</form>
+
+<form class="pad fit bg mar" id="dform" action="#dform">
+<div class="row mar pad act">
+	<label for="nam" class="r">Name</label>
+	<div class="col-3"><input type="text" name="nam" id="nam"></div>
+</div>
+<div class="row mar pad act">
+	<label for="ag" class="r">Age</label>
+	<div class="col-3"><input type="number" name="ag" id="ag"></div>
+</div>
+<div class="row mar pad act">
+	<div></div>
+	<div class="col-3"><input type="submit" value="Submit"></div>
+</div>
+</form>
+
+<form class="pad bg mar" id="tform" action="#tform">
+<table class="act fit mid" data-mobile="fit act" data-desktop="mid">
+<tr>
+	<td class="r"><label for="nm">Name</label>
+	<td><input type="text" name="nm" id="nm" readonly placeholder="readonly">
+<tr>
+	<td class="r"><label for="age">Age</label>
+	<td><input type="number" name="age" id="age" disabled placeholder="disabled">
+<tr>
+	<td>
+	<td><label><input type="checkbox" name="agree" value="1"> Agree</label>
+<tr>
+	<td>
+	<td><input type="submit" value="Submit">
+</table>
+</form>
+
+<h2 id="icon"><a href="#icon">Icon</a> <a href="#top" class="small icon-up"></a></h2>
+
+<ul class="row hover">
+	<li><a class="icon-menu">menu</a>
+	<li><a class="icon-find">find</a>
+	<li><a class="icon-config">config</a>
+	<li><a class="icon-user">user</a>
+	<li><a class="icon-edit">edit</a>
+	<li><a class="icon-add">add</a>
+	<li><a class="icon-delete">delete</a>
+	<!--li><a class="icon-close">close</a-->
+	<li><a class="icon-ok">ok</a>
+	<li><a class="icon-refresh">refresh</a>
+	<li><a class="icon-up">up</a>
+	<li><a class="icon-down">down</a>
+	<li><a class="icon-left">left</a>
+	<li><a class="icon-right">right</a>
+	<li><a class="icon-folder">folder</a>
+	<li><a class="icon-file">file</a>
+	<li><a class="icon-image">image</a>
+	<li><a class="icon-chart">chart</a>
+	<li><a class="icon-pin">pin</a>
+	<li><a class="icon-time">time</a>
+	<li><a class="icon-mail">mail</a>
+</ul>
+
+<h2 id="action"><a href="#action">Action</a> <a href="#top" class="small icon-up"></a></h2>
+
+	<p>
+		<a href="#top" class="dialog l" title="Go to top?">Confirm</a>
+		<a href="#(q)" class="dialog l" title="Go to ID" data-prompt="(q)" data-default="top">Prompt</a>
+		<a href="#toggle" class="toggle l">Toggle</a>
+		<a href="#modal">Modal</a>
+	</p>
+	<p id="toggle" class="target bord pad">Target</p>
+	<p>
+	<a href="#test1" class="toggle l" data-set="bg-w">Test1 bg</a>
+	<a href="#bg" class="toggle l" data-nodes=".test" data-set="bg-w">Both bg</a>
+	<a href="#text" class="toggle" data-nodes=".test" data-set="text-e sans">Both bg and text</a>
+	</p>
+	<span id="test1" class="test pad bg rad bg-w">TEST1</span>
+	<span id="test2" class="test pad bg rad bg-w">TEST2</span>
+	</p>
+	
+	<div id="modal" class="target modal"><div class="pad rad c">
+		<p>Modal</p>
+		<details class="bg pad l">
+			<summary>More</summary>
+			<p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p>
+			<p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p>
+		</details>
+		<p><a href="#cancel"><button class="icon-ok bg-y">Close</button></a></p>
+	</div></div>
+	
+<h2 id="mod"><a href="#mod">Modifiers</a> <a href="#top" class="small icon-up"></a></h2>
+	
+	<div class="roll mar">
+	<table class="bord hover">
+		<tr><th>Class<th>DIV<th>A<th>.row<th>TABLE<th>FORM
+		<tr><th>.mar<td>*<td>*<td>*<td>*<td>*
+		<tr><th>.bord<td>*<td>*<td>*<td>*<td>*
+		<tr><th>.pad<td>*<td>*<td>gap<td>line<td>*
+		<tr><th>.fit<td>*<td>-<td>full height<td>dense<td>smaller inner margins
+		<tr><th>.mid<td>-<td>-<td>valign/<td>valign//<td>-
+		<tr><th>.l<td>align<td>right margin<td>item align<td>wide<td>*
+		<tr><th>.act<td>-<td>color<td>flip<td>flip<td>-
+		<tr><th>.hover<td>shade<td>shade<td>ul a shade<td>tr shade<td>-
+	</table>
+	</div>
+	
+</main>
+
+		<footer class="pad c">
+			<a href="https://github.com/vvvkor">vadimkor</a> 2021
+			<p>
+				<a href="#top" accesskey="1" class="icon-up"></a>
+				<a href="#cancel" accesskey="x" class="target"></a>
+			</p>
+		</footer>
+  </body>
+</html>
