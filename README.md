@@ -3,6 +3,9 @@
 CSS micro framework.  
 Ultra compact set of styles and behaviours for basic web pages.
 
+2.3 KB minified and gzipped.  
+6 KB with icons and JavaScript.
+
 ## Features
 
 - lightweight

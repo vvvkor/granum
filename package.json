@@ -1,0 +1,26 @@
+{
+  "name": "granum",
+  "version": "1.0.0",
+  "description": "CSS micro framework",
+  "main": "granum.css",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vvvkor/granum.git"
+  },
+  "keywords": [
+    "css",
+    "javascript",
+    "lightweight",
+    "micro",
+    "framework"
+  ],
+  "author": "Vadim Korolev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vvvkor/granum/issues"
+  },
+  "homepage": "https://github.com/vvvkor/granum#readme"
+}
