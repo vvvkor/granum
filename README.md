@@ -1,6 +1,6 @@
 # Granum
 
-CSS micro framework.
+CSS micro framework.  
 Ultra compact set of styles and behaviours for basic web pages.
 
 ## Features
@@ -39,6 +39,7 @@ Ultra compact set of styles and behaviours for basic web pages.
 - full height
 - responsive class (js)
 - contenteditable (js)
+- populate inputs from URL (js)
 
 
 ## CSS classes
@@ -67,4 +68,6 @@ Ultra compact set of styles and behaviours for basic web pages.
 - [contenteditable][data-for="ID_AREA"]
 - a[href="#ID_EDITOR"][data-cmd] ([data-arg] [data-ask] [title])
 
+## License
 
+[MIT](./LICENSE)
