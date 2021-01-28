@@ -38,7 +38,7 @@ pre code {font-size:100%;}
 	.row li>form {padding:.2em 1em;}
 	legend, .tag {padding:0 .5em;}
 pre, code  {white-space:pre-wrap;}
-pre{overflow:auto;max-height:80vh;/*padding:1em;*/}
+pre{overflow:auto;max-height:80vh;}
 	code, kbd {padding:.2em .5em;}
 	.tag {border-radius:.8em;min-width:.5em;}
 	.rad, code, kbd, pre {border-radius:.2em;}
@@ -136,7 +136,7 @@ button.bg-y, [type="submit"].bg-y, .tag.bg-y {background-color:#181;}
 button.bg-w, [type="submit"].bg-w, .tag.bg-w {background-color:#d70;}
 button.bg-e, [type="submit"].bg-e, .tag.bg-e {background-color:#c00;}
 
-/* hilite */
+/* highlight */
 a.hover:hover, div.hover:hover, ul.row.hover a:hover, table.hover tr:hover>* {box-shadow:inset 0 0 0 200vh rgba(0,0,0,.03);}
 
 /* modifiers */
@@ -148,13 +148,9 @@ a.hover:hover, div.hover:hover, ul.row.hover a:hover, table.hover tr:hover>* {bo
 .c, .tag {text-align:center;}
 .r {text-align:right;}
 
-/* fix */
-
-
 /* mobile */
 @media (max-width: 899px){
 	html {font-size:medium;}
-	/* responsive */
 	.row.act {display:block;}
 	.row.act[class]>* {margin-right:0;text-align:left;}
 	table.act>*, table.act>*>*, table.act>*>*>* {display:block;text-align:left;}
