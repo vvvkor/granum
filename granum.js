@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', e => {
   // init toggler state
   document.querySelectorAll('.toggle').forEach(a => {
     const n = document.querySelector(a.dataset.nodes || a.hash)
-    if (n) a.classList[(n.classList.contains((a.dataset.set || 'show').split(/\s+/)[0])) ? 'add' : 'remove']('act')
+    if (n) a.classList[(n.classList.contains((a.dataset.set || 'show').split(/\s+/)[0])) ? 'add' : 'remove'](a.dataset.act || 'act')
   })
 
   
@@ -56,10 +56,8 @@ document.addEventListener('click', e => {
     const m = document.querySelectorAll(a.dataset.nodes || a.hash)
     const c = (a.dataset.set || 'show').split(/\s+/)
     const on = !m[0].classList.contains(c[0])
-    m.forEach(n => {
-      c.forEach(k => n.classList[on ? 'add' : 'remove'](k))
-      a.classList[on ? 'add' : 'remove']('act')
-    })
+    a.classList[on ? 'add' : 'remove'](a.dataset.act || 'act')
+    m.forEach(n => c.forEach(k => n.classList[on ? 'add' : 'remove'](k)))
     if (location.hash && c[0] == 'show') location.hash = '#cancel'
   }
   
@@ -81,7 +79,7 @@ document.addEventListener('keydown', e => {
 
 // resize window
 window.addEventListener('resize', e => {
-  const m = (window.innerWidth <= 900)
+  const m = (window.innerWidth < 900)
   if (document.body._m == null || document.body._m != m) {
     document.body._m = m
     document.querySelectorAll('[data-mobile], [data-desktop]')

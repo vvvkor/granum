@@ -47,29 +47,29 @@ Ultra compact set of styles and behaviours for basic web pages.
 
 ## CSS classes
 
-- .row .col-X .act
-- .fit .mar .pad .bord .rad
-- .roll
-- .bg .bg-X .text-X .hover
-- .wrap .mid .l .r .c .center
-- .serif .sans .small .tag
-- .target .show .modal
-- .icon-X
+- `.row` `.col-X` `.act`
+- `.fit` `.mar` `.pad` `.bord` `.rad`
+- `.roll`
+- `.bg` `.bg-X` `.text-X` `.hover`
+- `.wrap` `.mid` `.l` `.r` `.c` `.center`
+- `.serif` `.sans` `.small` `.tag`
+- `.target` `.show` `.modal`
+- `.icon-X`
 
 
 ## js hooks
 
-- .toggle ([hash] [data-nodes] [data-set])
-- .dialog ([data-prompt] [data-default] [title])
-- .lX .cX .rX
-- [data-group]
-- [data-get]
-- [data-mobile] [data-desktop]
+- `.toggle ([href^="#"] [data-nodes] [data-set] [data-act])`
+- `.dialog ([data-prompt] [data-default] [title])`
+- `.lX` `.cX` `.rX`
+- `[data-group]`
+- `[data-get]`
+- `[data-mobile]` `[data-desktop]`
 
 ## js editor hooks
 
-- [contenteditable][data-for="ID_AREA"]
-- a[href="#ID_EDITOR"][data-cmd] ([data-arg] [data-ask] [title])
+- `[contenteditable][data-for="ID_AREA"]`
+- `a[href="#ID_EDITOR"][data-cmd] ([data-arg] [data-ask] [title])`
 
 ## License
 
