@@ -71,6 +71,11 @@ Ultra compact set of styles and behaviours for basic web pages.
 - `[contenteditable][data-for="ID_AREA"]`
 - `a[href="#ID_EDITOR"][data-cmd]([data-arg][data-ask][title])`
 
+## Browser suppport
+
+Modern browsers and IE 11+.  
+Limited support for IE9 and IE10.
+
 ## License
 
 [MIT](./LICENSE)
