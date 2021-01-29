@@ -59,8 +59,8 @@ Ultra compact set of styles and behaviours for basic web pages.
 
 ## js hooks
 
-- `.toggle ([href^="#"] [data-nodes] [data-set] [data-act])`
-- `.dialog ([data-prompt] [data-default] [title])`
+- `.toggle([href^="#"][data-nodes][data-set][data-act])`
+- `.dialog([data-prompt][data-default][title])`
 - `.lX` `.cX` `.rX`
 - `[data-group]`
 - `[data-get]`
@@ -69,7 +69,7 @@ Ultra compact set of styles and behaviours for basic web pages.
 ## js editor hooks
 
 - `[contenteditable][data-for="ID_AREA"]`
-- `a[href="#ID_EDITOR"][data-cmd] ([data-arg] [data-ask] [title])`
+- `a[href="#ID_EDITOR"][data-cmd]([data-arg][data-ask][title])`
 
 ## License
 

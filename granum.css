@@ -104,7 +104,7 @@ input[readonly] {background-color:#eee;}
 ul.row {flex-wrap:wrap;list-style:none;}
 ul.row li {display:flex;}
 ul.row>*, .col-0[class] {flex:0 1 auto;/*for ie*/ /*flex:initial;*/}
-.row>*, .col-1[class], ul.row a {flex:1;}
+.row>*, .col-1[class]/*, ul.row a*/ {flex:1;}
 .col-2[class] {flex:2;}
 .col-3[class] {flex:3;}
 .row>.r {margin-left:auto;}
