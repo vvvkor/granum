@@ -36,11 +36,11 @@ pre code {font-size:100%;}
 	form.fit p, form.fit .mar {margin:.5em 0;}
 .pad, .row li>*, fieldset, blockquote, pre {padding:.5em 1em;}
 	.row li>form {padding:.2em 1em;}
-	legend, .tag {padding:0 .5em;}
+	legend, .tag {padding:0 .4em;}
 pre, code  {white-space:pre-wrap;}
 pre{overflow:auto;max-height:80vh;}
 	code, kbd {padding:.2em .5em;}
-	.tag {border-radius:.8em;min-width:.5em;}
+	.tag {border-radius:.8em;min-width:.7em;}
 	.rad, code, kbd, pre {border-radius:.2em;}
 	pre code {padding:0;}
 abbr {border-bottom:thin dotted;text-decoration:none;}
@@ -104,7 +104,7 @@ input[readonly] {background-color:#eee;}
 ul.row {flex-wrap:wrap;list-style:none;}
 ul.row li {display:flex;}
 ul.row>*, .col-0[class] {flex:0 1 auto;/*for ie*/ /*flex:initial;*/}
-.row>*, .col-1[class]/*, ul.row a*/ {flex:1;}
+.row>*, .col-1[class] {flex:1;}
 .col-2[class] {flex:2;}
 .col-3[class] {flex:3;}
 .row>.r {margin-left:auto;}
@@ -153,6 +153,7 @@ a.hover:hover, div.hover:hover, ul.row.hover a:hover, table.hover tr:hover>* {bo
 	html {font-size:medium;}
 	.row.act {display:block;}
 	.row.act[class]>* {margin-right:0;text-align:left;}
+	ul.row.act a {flex:1;}
 	table.act>*, table.act>*>*, table.act>*>*>* {display:block;text-align:left;}
 	table.act tr{margin-bottom:.5em;}
 }
