@@ -30,10 +30,10 @@ pre, code, kbd, samp  {font-family:"PT Mono", monospace;font-size:90%;}
 pre code {font-size:100%;}
 
 /* typography */
-.fit {margin:0;padding:0;border:none;border-radius:0;}
+.fit {margin:0;padding:0;border:none;border-radius:0;font-size:1rem;font-weight:normal;}
 	main, img.fit {display:block;}
 .mar, ul, ol , dl, blockquote, pre, hr, p, figure {margin:1em 0;}
-	form.fit p, form.fit .mar {margin:.5em 0;}
+	.fit p, .fit .mar {margin:.5em 0;}
 .pad, .row li>*, fieldset, blockquote, pre {padding:.5em 1em;}
 	.row li>form {padding:.2em 1em;}
 	legend, .tag {padding:0 .4em;}
@@ -114,7 +114,7 @@ ul.row>*, .col-0[class] {flex:0 1 auto;/*for ie*/ /*flex:initial;*/}
 
 /* modal */
 .modal {position:fixed;z-index:100;left:0;right:0;top:-9em;bottom:-9em;background-color:rgba(99,99,99,.5);display:flex;justify-content:center;align-items:center;}
-.modal>div {min-width:30vw;max-height:85vh;overflow:auto;background-color:#fff;box-shadow:0 .2em .8em rgba(0,0,0,.3);}
+.modal>div {min-width:30vw;max-height:83vh;overflow:auto;background-color:#fff;box-shadow:0 .2em .8em rgba(0,0,0,.3);}
 
 /* color */
 .bg, blockquote, pre, code/*, thead tr, tfoot tr*/{background-color:rgba(0,0,0,.05);}

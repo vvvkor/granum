@@ -1,12 +1,15 @@
+(_ => {
+
+const tgl = (m, c, on) => {
+  c = c && c.constructor === Array ? c : (c || '').split(/\s+/)
+  m.forEach(n => c.forEach(k => k ? n.classList[on ? 'add' : 'remove'](k) : null))
+}
+
 document.addEventListener('DOMContentLoaded', e => {
   console.log('granum.js started')
 
   // init toggler state
-  document.querySelectorAll('.toggle').forEach(a => {
-    const n = document.querySelector(a.dataset.nodes || a.hash)
-    if (n) a.classList[(n.classList.contains((a.dataset.set || 'show').split(/\s+/)[0])) ? 'add' : 'remove'](a.dataset.act || 'act')
-  })
-
+  document.querySelectorAll('a.toggle').forEach(a => a.click())
   
   // align table cells
   document.querySelectorAll('table').forEach(n => {
@@ -51,13 +54,16 @@ document.addEventListener('click', e => {
   }
 
   // toggle
-  if (a && a.hash && a.classList.contains('toggle')) {
+  if (a && a.classList.contains('toggle')) {
     e.preventDefault()
     const m = document.querySelectorAll(a.dataset.nodes || a.hash)
     const c = (a.dataset.set || 'show').split(/\s+/)
-    const on = !m[0].classList.contains(c[0])
-    a.classList[on ? 'add' : 'remove'](a.dataset.act || 'act')
-    m.forEach(n => c.forEach(k => n.classList[on ? 'add' : 'remove'](k)))
+    let on = !m[0].classList.contains(c[0]) != !a._ready
+    a._ready = 1
+    tgl([a], a.dataset.act || 'act', on)
+    tgl([a], a.dataset.inact, !on)
+    tgl(m, c, on)
+    tgl(m, a.dataset.unset, !on)
     if (location.hash && c[0] == 'show') location.hash = '#cancel'
   }
   
@@ -89,3 +95,4 @@ window.addEventListener('resize', e => {
 
 window.dispatchEvent(new Event('resize'))
 
+})()

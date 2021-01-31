@@ -1,16 +1,16 @@
 /* icons */
 /* svg {fill:currentColor;} */
 [class*="icon-"]:before {
-    content: "";
-    margin-right: .5em;
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    overflow: hidden;
-    transform: translate(0, .15em) scale(1.2);
-    background-position: 50% 50%;
-    background-size: contain;
-    background-repeat: no-repeat;
+	content: "";
+	margin-right: .5em;
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	overflow: hidden;
+	transform: translate(0, .15em) scale(1.2);
+	background-position: 50% 50%;
+	background-size: contain;
+	background-repeat: no-repeat;
 }
 [class*="icon-"]:empty:before {margin: 0;}
 
