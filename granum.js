@@ -59,12 +59,12 @@ document.addEventListener('click', e => {
     const m = document.querySelectorAll(a.dataset.nodes || a.hash)
     const c = (a.dataset.set || 'show').split(/\s+/)
     let on = !m[0].classList.contains(c[0]) != !a._ready
-    a._ready = 1
     tgl([a], a.dataset.act || 'act', on)
     tgl([a], a.dataset.inact, !on)
     tgl(m, c, on)
     tgl(m, a.dataset.unset, !on)
-    if (location.hash && c[0] == 'show') location.hash = '#cancel'
+    if (a._ready && location.hash && c[0] == 'show') location.hash = '#cancel'
+    a._ready = 1
   }
   
   // close modal

@@ -51,8 +51,8 @@ Ultra compact set of styles and behaviours for basic web pages.
 - `.fit` `.mar` `.pad` `.bord` `.rad`
 - `.roll`
 - `.bg` `.bg-X` `.text-X` `.hover`
-- `.wrap` `.mid` `.l` `.r` `.c` `.center`
-- `.serif` `.sans` `.small` `.tag`
+- `.wrap` `.hi` `.mid` `.l` `.r` `.c` `.center`
+- `.serif` `.sans` `.small` `.inv`
 - `.target` `.show` `.modal`
 - `.icon-X`
 

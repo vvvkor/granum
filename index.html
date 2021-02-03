@@ -60,12 +60,29 @@ Text
 <abbr title="Abbreviation">Abbr</abbr>
 x<sub>sub</sub>
 x<sup>super</sup>
+<span class="inv">.inv</span>
+<a class="inv">a.inv</a>
+<span class="inv bg-y">.inv.bg</span>
 </p>
+
 <hr>
 <blockquote>Block quote</blockquote>
 <pre>Preformatted text
 <code>And code</code></pre>
 <!--img class="fit" alt="Grey" src="https://picsum.photos/id/1021/400/200.jpg"-->
+
+<p class="inv pad">
+Inverted Text
+<a href="#top">Link</a>
+<a>No-link</a>
+<mark>Mark</mark>
+<abbr title="Abbreviation">Abbr</abbr>
+<span class="inv">.inv</span>
+<a class="inv">a.inv</a>
+<span class="inv bg-y">.inv.bg</span>
+<span class="bg-y text-y">OK</span>
+</p>
+
 
 <h2 id="list"><a href="#list">List</a> <a href="#top" class="fit icon-up"></a></h2>
 
@@ -109,17 +126,17 @@ x<sup>super</sup>
 		<tr><th>Tag<th>Name<th>Icon<th>Value
 	</thead>
 	<tbody>
-		<tr><td><b class="tag small bg">0</b><td>Text
+		<tr><td><mark class="inv small bg">0</mark><td>Text
 			<td><a href="#top" class="icon-share">Link</a><td>0
-		<tr><td><b class="tag small bg-n">1</b><td class="bg-n">Lite
+		<tr><td><mark class="inv small bg-n">1</mark><td class="bg-n">Lite
 			<td><a href="#top" class="icon-file text-n">Lite</a><td>2
-		<tr><td><b class="tag small bg-i">2</b><td class="bg-i">Info
+		<tr><td><mark class="inv small bg-i">2</mark><td class="bg-i">Info
 			<td><a href="#top" class="icon-info text-i">Info</a><td>5
-		<tr><td class="mid"><b class="tag small bg-y">3</b><td class="bg-y">Success
+		<tr><td class="mid"><mark class="inv small bg-y">3</mark><td class="bg-y">Success
 			<td><a href="#top" class="icon-ok text-y">Success</a><td>10
-		<tr><td><b class="tag small bg-w">4</b><td class="bg-w">Warning
+		<tr><td><mark class="inv small bg-w">4</mark><td class="bg-w">Warning
 			<td><a href="#top" class="icon-warning text-w">Warning</a><td>50
-		<tr class="mid"><td><b class="tag small bg-e">FIVE</b><td class="bg-e">Error<br>line
+		<tr class="mid"><td><mark class="inv small bg-e">FIVE</mark><td class="bg-e">Error<br>line
 			<td><a href="#top" class="icon-delete text-e">Error</a><td>100
 	</tbody>
 	<tfoot class="bg">
@@ -155,7 +172,7 @@ x<sup>super</sup>
 
 <details>
 	<summary>Full height</summary>
-	<div class="fit bg-w row mid"><div class="c pad bg">Centered</div></div>
+	<div class="hi bg-w row mid"><div class="c pad bg">Centered</div></div>
 </details>
 
 
@@ -322,17 +339,21 @@ x<sup>super</sup>
 
 <h2 id="action"><a href="#action">Action</a> <a href="#top" class="fit icon-up"></a></h2>
 
-	<p>
+	<div class="mar">
 		<a href="#top" class="dialog l" title="Go to top?">Confirm</a>
 		<a href="#(q)" class="dialog l" title="Go to ID" data-prompt="(q)" data-default="top">Prompt</a>
 		<a href="#toggle" class="toggle l">Toggle</a>
-		<a href="#modal">Modal</a>
-	</p>
+		<a href="#modal" class="l">Modal</a>
+		<div class="drop"><a href="#pop" class="hover">Drop</a><div id="pop" class="pad">Pop</div></div>
+		<div class="drop"><a href="#pop" class="hover">Drop-left</a><div id="pop" class="pad l">Pop left</div></div>
+		<div class="drop"><a href="#pop" class="hover">Info</a><div id="pop" class="inv c rad">Hint top</div></div>
+		<div class="drop"><a href="#pop" class="hover">Info-right</a><div id="pop" class="inv r rad">Hint right</div></div>
+	</div>
 	<p id="toggle" class="target bord pad">Target</p>
 	<p>
-	<a href="#test1" class="toggle l" data-set="bg-w">Test1 bg</a>
+	<a href="#test1" class="toggle hover pad rad" data-set="bg-w">Test1 bg</a>
 	<!--a href="#bg" class="toggle l" data-nodes=".test" data-set="bg-w" data-act="bg-w">Both bg</a-->
-	<a href="#text" class="toggle tag bg-n" data-nodes=".test" data-set="text-y icon-ok" data-unset="text-n icon-right" data-act="icon-refresh bg-y" data-inact="icon-info bg-n">Both ICON and color</a>
+	<a href="#text" class="toggle bg-n inv pad rad" data-nodes=".test" data-set="text-y icon-ok" data-unset="text-n icon-right" data-act="icon-refresh bg-y" data-inact="icon-info bg-n">Both ICON and color</a>
 	</p>
 	<p>
 	<span id="test1" class="test pad bg rad">TEST1</span>
@@ -346,8 +367,8 @@ x<sup>super</sup>
 			<p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p>
 			<p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p>
 		</details>
-		<p><a href="#cancel"><button class="icon-ok bg-y">Close</button></a></p>
-		<!--p><a href="#cancel" class="icon-ok pad bg hover act tag">Close</a></p-->
+		<!--p><a href="#cancel"><button class="icon-ok bg-y">Close</button></a></p-->
+		<p><a href="#cancel" class="pad inv rad icon-ok bg-y">Close</a></p>
 	</div></div>
 	
 <h2 id="mod"><a href="#mod">Modifiers</a> <a href="#top" class="fit icon-up"></a></h2>
@@ -358,7 +379,7 @@ x<sup>super</sup>
 		<tr><th>.mar<td>*<td>*<td>*<td>*<td>*
 		<tr><th>.bord<td>*<td>*<td>*<td>*<td>*
 		<tr><th>.pad<td>*<td>*<td>gap<td>line<td>*
-		<tr><th>.fit<td>*<td>-<td>full height<td>dense<td>smaller inner margins
+		<tr><th>.fit<td>*, 1rem, smaller inner margins<td>*<td>*<td>dense<td>*
 		<tr><th>.mid<td>-<td>-<td>valign/<td>valign//<td>-
 		<tr><th>.l<td>align<td>right margin<td>item align<td>wide<td>*
 		<tr><th>.act<td>-<td>color<td>flip<td>flip<td>-

@@ -15,7 +15,7 @@
 [class*="icon-"]:empty:before {margin: 0;}
 
 [class*="icon-"]:before {filter: invert(.6);} /* #000 -> #999 */
-button[class*="icon-"]:before, button [class*="icon-"]:before, .tag:before {filter: brightness(0) invert(1);}
+button[class*="icon-"]:before, button [class*="icon-"]:before, .inv:before {filter: brightness(0) invert(1);}
 [class*="icon-"].text-e:before {filter: invert(.1) sepia(1) saturate(60) hue-rotate(20deg);}
 [class*="icon-"].text-w:before {filter: invert(.4) sepia(1) saturate(8) hue-rotate(0deg);}
 [class*="icon-"].text-y:before {filter: invert(.3) sepia(1) saturate(8) hue-rotate(90deg);}
