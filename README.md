@@ -53,7 +53,7 @@ Ultra compact set of styles and behaviours for basic web pages.
 - `.bg` `.bg-X` `.text-X` `.hover`
 - `.wrap` `.hi` `.mid` `.l` `.r` `.c` `.center`
 - `.serif` `.sans` `.small` `.inv`
-- `.target` `.show` `.modal`
+- `.target` `.show` `.modal` `.drop`
 - `.icon-X`
 
 
