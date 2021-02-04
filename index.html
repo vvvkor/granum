@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="granum.css">
     <link rel="stylesheet" href="granum-icons.css">
+    <link rel="stylesheet" href="granum-dropdown.css">
     <script src="granum.js" defer></script>
     <script src="granum-edit.js" defer></script>
   </head>
@@ -62,6 +63,7 @@ x<sub>sub</sub>
 x<sup>super</sup>
 <span class="inv">.inv</span>
 <a class="inv">a.inv</a>
+<a class="inv" href="#">a[href].inv</a>
 <span class="inv bg-y">.inv.bg</span>
 </p>
 
@@ -79,6 +81,7 @@ Inverted Text
 <abbr title="Abbreviation">Abbr</abbr>
 <span class="inv">.inv</span>
 <a class="inv">a.inv</a>
+<a class="inv" href="#">a[href].inv</a>
 <span class="inv bg-y">.inv.bg</span>
 <span class="bg-y text-y">OK</span>
 </p>
@@ -126,17 +129,17 @@ Inverted Text
 		<tr><th>Tag<th>Name<th>Icon<th>Value
 	</thead>
 	<tbody>
-		<tr><td><mark class="inv small bg">0</mark><td>Text
+		<tr><td><b class="tag inv rad small">0</b><td>Text
 			<td><a href="#top" class="icon-share">Link</a><td>0
-		<tr><td><mark class="inv small bg-n">1</mark><td class="bg-n">Lite
+		<tr><td><b class="tag inv rad small bg-n">1</b><td class="bg-n">Lite
 			<td><a href="#top" class="icon-file text-n">Lite</a><td>2
-		<tr><td><mark class="inv small bg-i">2</mark><td class="bg-i">Info
+		<tr><td><b class="tag inv rad small bg-i">2</b><td class="bg-i">Info
 			<td><a href="#top" class="icon-info text-i">Info</a><td>5
-		<tr><td class="mid"><mark class="inv small bg-y">3</mark><td class="bg-y">Success
+		<tr><td class="mid"><b class="tag rad bg-y">3</b><td class="bg-y">Success
 			<td><a href="#top" class="icon-ok text-y">Success</a><td>10
-		<tr><td><mark class="inv small bg-w">4</mark><td class="bg-w">Warning
+		<tr><td><b class="tag inv small bg-w">4</b><td class="bg-w">Warning
 			<td><a href="#top" class="icon-warning text-w">Warning</a><td>50
-		<tr class="mid"><td><mark class="inv small bg-e">FIVE</mark><td class="bg-e">Error<br>line
+		<tr class="mid"><td><b class="tag inv rad small bg-e">FIVE</b><td class="bg-e">Error<br>line
 			<td><a href="#top" class="icon-delete text-e">Error</a><td>100
 	</tbody>
 	<tfoot class="bg">
@@ -344,12 +347,52 @@ Inverted Text
 		<a href="#(q)" class="dialog l" title="Go to ID" data-prompt="(q)" data-default="top">Prompt</a>
 		<a href="#toggle" class="toggle l">Toggle</a>
 		<a href="#modal" class="l">Modal</a>
-		<div class="drop"><a href="#pop" class="hover">Drop</a><div id="pop" class="pad">Pop</div></div>
-		<div class="drop"><a href="#pop" class="hover">Drop-left</a><div id="pop" class="pad l">Pop left</div></div>
-		<div class="drop"><a href="#pop" class="hover">Info</a><div id="pop" class="inv c rad">Hint top</div></div>
-		<div class="drop"><a href="#pop" class="hover">Info-right</a><div id="pop" class="inv r rad">Hint right</div></div>
+		<p id="toggle" class="target bord pad">Target</p>
+		
+		<div id="modal" class="target modal"><div class="pad rad c">
+			<p>Modal</p>
+			<details class="bg pad l">
+				<summary>More</summary>
+				<p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p>
+				<p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p>
+			</details>
+			<!--p><a href="#cancel"><button class="icon-ok bg-y">Close</button></a></p-->
+			<p><a href="#cancel" class="pad inv rad icon-ok bg-y">Close</a></p>
+		</div></div>
 	</div>
-	<p id="toggle" class="target bord pad">Target</p>
+	<div class="mar">
+		<div class="drop"><a href="#pop" class="hover l">Drop</a><div class="pad">Pop</div></div>
+		<div class="drop"><a href="#pop" class="hover l">Drop-left</a><div class="pad l">Pop left</div></div>
+		<div class="drop"><a href="#pop" class="hover l">Info</a><b class="inv c rad">Hint top</b></div>
+		<div class="drop"><a href="#pop" class="hover">Info-right</a><b class="inv r rad bg-i">Hint right</b></div>
+	</div>
+	<nav class="mar">
+		<a href="#nav" class="target" data-mobile="icon-menu pad hover toggle" data-desktop="target" title="Menu"></a>
+		<ul id="nav" class="row act bg hover drop" data-mobile="target row act bg hover drop" data-desktop="row act bg hover drop">
+		<li><a href="#1" class="icon-menu">Menu</a>
+			<ul>
+			<li><a href="#1" class="icon-config">Config</a>
+				<ul>
+				<li><a href="#1">One</a>
+				<li><a href="#2">Two</a>
+				</ul>
+			<li><a href="#2" class="icon-find">Search</a>
+			<li><a href="#3" class="icon-edit">Edit</a>
+			</ul>
+		<li><a href="#2" class="icon-user">Profile <small class="tag inv -rad bg-w sans">NEW</small></a>
+		<li class="r"><a href="#3" class="icon-info">Info</a>
+			<ul>
+			<li><a href="#1" class="icon-chart">Stats</a>
+			<li><a href="#2" class="icon-mail">Contact</a>
+			<li><a href="#3" class="icon-share">Share <small class="tag inv rad bg-y sans">2</small><br><small class="text-n">Select one of items</small></a>
+				<ul>
+				<li><a href="#1">One</a>
+				<li><a href="#2">Two</a>
+				</ul>
+			</ul>
+		</ul>
+	</nav>
+	
 	<p>
 	<a href="#test1" class="toggle hover pad rad" data-set="bg-w">Test1 bg</a>
 	<!--a href="#bg" class="toggle l" data-nodes=".test" data-set="bg-w" data-act="bg-w">Both bg</a-->
@@ -360,30 +403,19 @@ Inverted Text
 	<span id="test2" class="test pad bg rad">TEST2</span>
 	</p>
 	
-	<div id="modal" class="target modal"><div class="pad rad c">
-		<p>Modal</p>
-		<details class="bg pad l">
-			<summary>More</summary>
-			<p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p>
-			<p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p>
-		</details>
-		<!--p><a href="#cancel"><button class="icon-ok bg-y">Close</button></a></p-->
-		<p><a href="#cancel" class="pad inv rad icon-ok bg-y">Close</a></p>
-	</div></div>
-	
 <h2 id="mod"><a href="#mod">Modifiers</a> <a href="#top" class="fit icon-up"></a></h2>
 	
 	<div class="roll mar">
 	<table class="bord hover">
 		<tr class="bg"><th>Class<th>div<th>a<th>.row<th>table<th>form
-		<tr><th>.mar<td>*<td>*<td>*<td>*<td>*
-		<tr><th>.bord<td>*<td>*<td>*<td>*<td>*
-		<tr><th>.pad<td>*<td>*<td>gap<td>line<td>*
-		<tr><th>.fit<td>*, 1rem, smaller inner margins<td>*<td>*<td>dense<td>*
-		<tr><th>.mid<td>-<td>-<td>valign/<td>valign//<td>-
-		<tr><th>.l<td>align<td>right margin<td>item align<td>wide<td>*
-		<tr><th>.act<td>-<td>color<td>flip<td>flip<td>-
-		<tr><th>.hover<td>shade<td>shade<td>ul a shade<td>tr shade<td>-
+		<tr><th><b class="drop">.fit <i class="inv r small bg-i">No (margin, padding, border, radius),<br> 1rem, smaller inner margins</i></b><td>*<td>*<td>*<td>dense<td>*
+		<tr><th><b class="drop">.mar   <i class="inv r small bg-i">Margin</i></b><td>*<td>*<td>*<td>*<td>*
+		<tr><th><b class="drop">.bord  <i class="inv r small bg-i">Border</i></b><td>*<td>*<td>*<td>*<td>*
+		<tr><th><b class="drop">.pad   <i class="inv r small bg-i">Padding</i></b><td>*<td>*<td>gap<td>line<td>*
+		<tr><th><b class="drop">.mid   <i class="inv r small bg-i">Centrify vertically</i></b><td>-<td>-<td>valign row, item<td>valign table, tr, td<td>-
+		<tr><th><b class="drop">.l     <i class="inv r small bg-i">Align</i></b><td>align<td>right margin<td>item align<td>wide<td>*
+		<tr><th><b class="drop">.act   <i class="inv r small bg-i">Active link, responsive component, input validation</i></b><td>-<td>color<td>flip<td>flip<td>validation
+		<tr><th><b class="drop">.hover <i class="inv r small bg-i">Hover effect</i></b><td>shade<td>shade<td>ul a shade<td>tr shade<td>-
 	</table>
 	</div>
 	
