@@ -6,6 +6,23 @@ Ultra compact set of styles and behaviours for basic web pages.
 2.5 KB minified and gzipped.  
 7 KB with icons, dropdowns and JavaScript.
 
+## Usage
+
+```
+<link rel="stylesheet" href="granum.css">
+<!-- optional -->
+<link rel="stylesheet" href="granum-icons.css">
+<link rel="stylesheet" href="granum-dropdown.css">
+<script src="granum.js"></script>
+```
+
+## CDN
+
+```
+<link rel="stylesheet" href="https://unpkg.com/granum">
+```
+
+
 ## Features
 
 - lightweight

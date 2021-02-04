@@ -14,7 +14,7 @@ table, img, embed, iframe, object, audio, video, button, input, select, textarea
 	
 /* font */
 html {font-size:120%;}
-body {line-height:1.5;}
+body {line-height:1.5;color:#000;background:#fff;}
 body, .sans {font-family:"PT Sans", Roboto, "Segoe UI", sans-serif;}
 .serif {font-family:"PT Serif", Georgia, serif;}
 input, button, select, textarea, table {font:inherit;} 
