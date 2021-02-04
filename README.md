@@ -8,17 +8,18 @@ Ultra compact set of styles and behaviours for basic web pages.
 
 ## Usage
 
-```
+```html
 <link rel="stylesheet" href="granum.css">
 <!-- optional -->
 <link rel="stylesheet" href="granum-icons.css">
 <link rel="stylesheet" href="granum-dropdown.css">
-<script src="granum.js"></script>
+<script src="granum.js" defer></script>
+<script src="granum-edit.js" defer></script>
 ```
 
 ## CDN
 
-```
+```html
 <link rel="stylesheet" href="https://unpkg.com/granum">
 ```
 
