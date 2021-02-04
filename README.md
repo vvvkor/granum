@@ -3,8 +3,8 @@
 CSS micro framework.  
 Ultra compact set of styles and behaviours for basic web pages.
 
-2.3 KB minified and gzipped.  
-6 KB with icons and JavaScript.
+2.5 KB minified and gzipped.  
+7 KB with icons, dropdowns and JavaScript.
 
 ## Features
 
@@ -25,21 +25,24 @@ Ultra compact set of styles and behaviours for basic web pages.
 
 - typography
 - links
-- grids
+- grid
 - lists
 - tables
 - forms
 - buttons
 - navbar
+- dropdown
+- popup
+- tooltip
 - modal
 - toggle
-- confirm (js)
-- prompt (js)
 - icons
 - tags
 - colors
 - media object
 - full height
+- confirm (js)
+- prompt (js)
 - responsive class (js)
 - contenteditable (js)
 - populate inputs from URL (js)
