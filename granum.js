@@ -1,3 +1,5 @@
+/*! granum.js v1.1.0 */
+
 (_ => {
 
 const tgl = (m, c, on) => {
@@ -14,11 +16,11 @@ document.addEventListener('DOMContentLoaded', e => {
   
   // align table cells
   document.querySelectorAll('table').forEach(n => {
-    n.className.match(/\b[lcr]\d\d?\b/g)
-      ?.forEach(c => {
-        n.querySelectorAll('tr>*:nth-child(' + c.substr(1) + ')')
-        .forEach(td => td.classList.add(c.substr(0, 1)))
-      })
+    (n.className.match(/\b[lcr]\d\d?\b/g) || [])
+    .forEach(c => {
+      n.querySelectorAll('tr>*:nth-child(' + c.substr(1) + ')')
+      .forEach(td => td.classList.add(c.substr(0, 1)))
+    })
   })
   
   // init form inputs

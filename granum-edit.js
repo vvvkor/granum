@@ -1,3 +1,5 @@
+/*! granum-edit.js v1.1.0 */
+
 document.addEventListener('DOMContentLoaded', e => {
   // fill contenteditable from textarea
   document.querySelectorAll('[contenteditable][data-for]').forEach(n => {

@@ -1,4 +1,5 @@
-/* dropdown */
+/*! granum-dropdown.css v1.1.0 */
+
 .pop {display:inline-block;}
 .pop, .drop li {position:relative;}
 .pop>:not(a), .drop ul {z-index:50;position:absolute;left:0;top:100%;box-shadow:0 .2em .8em rgba(0,0,0,.3);min-width:12em;scroll-margin-top:3rem;box-sizing:border-box;}

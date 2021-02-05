@@ -1,9 +1,17 @@
 {
   "name": "granum",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "CSS micro framework",
   "main": "granum.css",
   "scripts": {
+    "inst": "npm i -g cross-var replace-in-file csso-cli uglify-js",
+    "ver": "cross-var replace-in-file \"/v\\d+\\.\\d+\\.\\d+/g\" \"v$npm_package_version\" \"*.css,*.js,*.html\" --isRegex",
+    "css": "csso granum.css --no-restructure -o granum.min.css",
+    "css:icons": "csso granum-icons.css --no-restructure -o granum-icons.min.css",
+    "css:dropdown": "csso granum-dropdown.css --no-restructure -o granum-dropdown.min.css",
+    "js": "uglifyjs --verbose --comments /^!/ --output granum.min.js granum.js",
+    "js:edit": "uglifyjs --verbose --comments /^!/ --output granum-edit.min.js granum-edit.js",
+    "build": "npm run ver && npm run css && npm run css:icons && npm run css:dropdown && npm run js && npm run js:edit",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
