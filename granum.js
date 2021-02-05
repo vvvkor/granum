@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', e => {
 
   // init toggler state
   document.querySelectorAll('a.toggle').forEach(a => a.click())
+  document.body.dataset.ready = ''
   
   // align table cells
   document.querySelectorAll('table').forEach(n => {
@@ -58,13 +59,13 @@ document.addEventListener('click', e => {
     e.preventDefault()
     const m = document.querySelectorAll(a.dataset.nodes || a.hash)
     const c = (a.dataset.set || 'show').split(/\s+/)
-    let on = !m[0].classList.contains(c[0]) != !a._ready
+    const r = 'ready' in document.body.dataset
+    let on = !m[0].classList.contains(c[0]) != !r
     tgl([a], a.dataset.act || 'act', on)
     tgl([a], a.dataset.inact, !on)
     tgl(m, c, on)
     tgl(m, a.dataset.unset, !on)
-    if (a._ready && location.hash && c[0] == 'show') location.hash = '#cancel'
-    a._ready = 1
+    if (r && location.hash && c[0] == 'show') location.hash = '#cancel'
   }
   
   // close modal

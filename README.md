@@ -23,6 +23,11 @@ Ultra compact set of styles and behaviours for basic web pages.
 
 ```html
 <link rel="stylesheet" href="https://unpkg.com/granum">
+<!-- optional -->
+<link rel="stylesheet" href="https://unpkg.com/granum/granum-icons.css">
+<link rel="stylesheet" href="https://unpkg.com/granum/granum-dropdown.css">
+<script src="https://unpkg.com/granum/granum.js" defer></script>
+<script src="https://unpkg.com/granum/granum-edit.js" defer></script>
 ```
 
 
@@ -51,32 +56,36 @@ Ultra compact set of styles and behaviours for basic web pages.
 - forms
 - buttons
 - navbar
-- dropdown
-- popup
-- tooltip
 - modal
 - toggle
-- icons
 - tags
 - colors
 - media object
 - full height
-- confirm (js)
-- prompt (js)
-- responsive class (js)
-- contenteditable (js)
-- populate inputs from URL (js)
+- with `granum-icons.css`
+  - icons
+- with `granum-dropdown.css`
+  - dropdown
+  - popup
+  - tooltip
+- with `granum.js`
+  - confirm
+  - prompt
+  - responsive class
+  - populate inputs from URL
+- with `granum-editor.js`
+  - contenteditable
 
 
 ## CSS classes
 
 - `.row` `.col-X` `.act`
 - `.fit` `.mar` `.pad` `.bord` `.rad`
-- `.roll`
 - `.bg` `.bg-X` `.text-X` `.hover`
-- `.wrap` `.hi` `.mid` `.l` `.r` `.c` `.center`
+- `.l` `.r` `.c` `.center` `.wrap` `.roll`
+- `.hi` `.mid` 
 - `.serif` `.sans` `.small` `.inv` `.tag`
-- `.target` `.show` `.modal` `.drop`
+- `.target` `.hide` `.show` `.modal` `.pop` `.drop`
 - `.icon-X`
 
 
