@@ -13,7 +13,7 @@
   <body id="top">
 		<nav data-mobile="bg">
 		<a href="#menu" class="target" data-mobile="icon-menu pad hover toggle" data-desktop="target" title="Menu"></a>
-		<ul id="menu" class="row bg hover" data-mobile="row act target hover" data-desktop="row -bg -hover">
+		<ul id="menu" class="row bg hover" data-mobile="row act target hover" data-desktop="row -bg hover">
 			<li><a href="?" class="act"><b>Granum</b></a>
 			<li><a href="#typo">Typography</a>
 			<li><a href="#list">List</a>
@@ -38,7 +38,7 @@
 <p><b>CSS micro framework.</b></p>
 <p><i>Ultra compact set of styles and behaviours for basic web pages.</i></p>
 
-<p class="text-n">v1.1.0</p>
+<p class="text-n">v1.1.1</p>
 
 <p>
 <b>2.5 KB</b> minified and gzipped.<br>
@@ -142,7 +142,7 @@ x<sup>super</sup>
 <h2 id="table"><a href="#table">Table</a> <a href="#top" class="fit icon-up"></a></h2>
 
 <div class="roll">
-<table class="r2 c5 hover -bord -center -mid pad -l">
+<table class="c2 r5 hover -bord -center -mid pad -l nobr">
 	<thead>
 		<tr><th><input type="checkbox" data-group="box">
 			<th>Tag<th>Name<th>Icon<th>Value
@@ -158,13 +158,13 @@ x<sup>super</sup>
 			<td><b class="tag inv rad small bg-i">2</b><td class="bg-i">Info
 			<td><a href="#top" class="icon-info text-i">Info</a><td>5
 		<tr><td><input type="checkbox" class="box" name="box[]" value="4">
-			<td class="mid"><b class="tag rad bg-y">3</b><td class="bg-y">Success
+			<td class="mid"><b class="tag inv rad small bg-y">3</b><td class="bg-y">Success
 			<td><a href="#top" class="icon-ok text-y">Success</a><td>10
 		<tr><td><input type="checkbox" class="box" name="box[]" value="5">
-			<td><b class="tag inv small bg-w">4</b><td class="bg-w">Warning
+			<td><b class="tag inv rad small bg-w">4</b><td class="bg-w">Warning
 			<td><a href="#top" class="icon-warning text-w">Warning</a><td>50
 		<tr class="mid"><td><input type="checkbox" class="box" name="box[]" value="6">
-			<td><b class="tag inv rad small bg-e">FIVE</b><td class="bg-e">Error<br>line
+			<td><b class="tag inv rad small bg-e">555</b><td class="bg-e">Error<br>line
 			<td><a href="#top" class="icon-delete text-e">Error</a><td>100
 	</tbody>
 	<tfoot class="bg">
@@ -182,7 +182,7 @@ x<sup>super</sup>
 <!--li class="mid"><a href="#4">Fourth</a-->
 </ul>
 
-<div class="row act pad mar -mid">
+<div class="row act pad mar -mid l">
 	<div class="col-0 bg-e pad">Auto</div>
 	<div class="col-1 bg-w pad">One</div>
 	<div class="col-2 bg-y pad mid"><div>Two <i>middle</i></div></div>
@@ -392,10 +392,10 @@ x<sup>super</sup>
 		</div></div>
 	</div>
 	<div class="mar">
-		<div class="pop"><a href="#pop" class="hover l">Pop</a><div class="pad">Pop</div></div>
-		<div class="pop"><a href="#pop" class="hover l">Pop-left</a><div class="pad l">Pop left</div></div>
-		<div class="pop"><a href="#pop" class="hover l">Info</a><b class="inv c rad">Hint top</b></div>
-		<div class="pop"><a href="#pop" class="hover">Info-right&nbsp;</a><b class="inv r rad bg-i">Hint right</b></div>
+		<div class="pop"><a href="#pop" class="hover">Pop</a><div class="pad">Pop</div></div> &nbsp;&nbsp;&nbsp;
+		<div class="pop"><a href="#pop" class="hover">Info-top</a><b class="inv c rad">Hint top</b></div> &nbsp;&nbsp;&nbsp;
+		<div class="pop"><a href="#pop" class="hover">Pop-left</a><div class="pad l">Pop left</div></div> &nbsp;&nbsp;&nbsp;
+		<div class="pop"><a href="#pop" class="hover">Info-right&nbsp;</a><span class="r bg-w bord">Hint right</span></div>
 	</div>
 	<nav class="mar bg">
 		<a href="#nav" class="target" data-mobile="icon-menu pad hover toggle" data-desktop="target" title="Menu"></a>
@@ -431,7 +431,7 @@ x<sup>super</sup>
 	<a href="#text" class="toggle bg-n inv pad rad" data-nodes=".test" data-set="text-y icon-ok" data-unset="text-n icon-right" data-act="icon-refresh bg-y" data-inact="icon-info bg-n">Both ICON and color</a>
 	</p>
 	<p>
-	<span id="test1" class="test pad bg rad">TEST1</span>
+	<span id="test1" class="test pad bg rad bg-w">TEST1</span>
 	<span id="test2" class="test pad bg rad">TEST2</span>
 	</p>
 	
@@ -443,9 +443,9 @@ x<sup>super</sup>
 		<tr><th><b class="pop">.fit&nbsp;   <i class="inv r small bg-i">No (margin, padding, border, radius),<br> 1rem, smaller inner margins</i></b><td>*<td>*<td>*<td>dense<td>*
 		<tr><th><b class="pop">.mar&nbsp;   <i class="inv r small bg-i">Margin</i></b><td>*<td>*<td>*<td>*<td>*
 		<tr><th><b class="pop">.bord&nbsp;  <i class="inv r small bg-i">Border</i></b><td>*<td>*<td>*<td>*<td>*
-		<tr><th><b class="pop">.pad&nbsp;   <i class="inv r small bg-i">Padding</i></b><td>*<td>*<td>gap<td>line<td>*
+		<tr><th><b class="pop">.pad&nbsp;   <i class="inv r small bg-i">Padding</i></b><td>*<td>*<td>h-gap<td>line<td>*
 		<tr><th><b class="pop">.mid&nbsp;   <i class="inv r small bg-i">Centrify vertically</i></b><td>-<td>-<td>valign row, item<td>valign table, tr, td<td>-
-		<tr><th><b class="pop">.l&nbsp;     <i class="inv r small bg-i">Align</i></b><td>align<td>right margin<td>item align<td>wide<td>*
+		<tr><th><b class="pop">.l&nbsp;     <i class="inv r small bg-i">Align</i></b><td>align<td>right margin<td>v-gap, align item<td>wide<td>*
 		<tr><th><b class="pop">.act&nbsp;   <i class="inv r small bg-i">Active link, responsive component, input validation</i></b><td>-<td>color<td>flip<td>flip<td>validation
 		<tr><th><b class="pop">.hover&nbsp; <i class="inv r small bg-i">Shade on hover</i></b><td>*<td>*<td>ul a<td>tr<td>-
 	</table>

@@ -1,17 +1,20 @@
 {
   "name": "granum",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "CSS micro framework",
   "main": "granum.css",
   "scripts": {
-    "inst": "npm i -g cross-var replace-in-file csso-cli uglify-js",
-    "ver": "cross-var replace-in-file \"/v\\d+\\.\\d+\\.\\d+/g\" \"v$npm_package_version\" \"*.css,*.js,*.html\" --isRegex",
-    "css": "csso granum.css --no-restructure -o granum.min.css",
-    "css:icons": "csso granum-icons.css --no-restructure -o granum-icons.min.css",
-    "css:dropdown": "csso granum-dropdown.css --no-restructure -o granum-dropdown.min.css",
-    "js": "uglifyjs --verbose --comments /^!/ --output granum.min.js granum.js",
-    "js:edit": "uglifyjs --verbose --comments /^!/ --output granum-edit.min.js granum-edit.js",
-    "build": "npm run ver && npm run css && npm run css:icons && npm run css:dropdown && npm run js && npm run js:edit",
+    "inst-glob": "npm i -g cross-var replace-in-file csso-cli uglify-js",
+    "inst": "npm i -D cross-var replace-in-file csso-cli uglify-js",
+    "uninst": "npm uninstall -D cross-var replace-in-file csso-cli uglify-js",
+			"ver": "cross-var replace-in-file \"/v\\d+\\.\\d+\\.\\d+/g\" \"v$npm_package_version\" \"*.css,*.js,*.html\" --isRegex",
+			"css": "csso granum.css --no-restructure -o granum.min.css",
+			"css:icons": "csso granum-icons.css --no-restructure -o granum-icons.min.css",
+			"css:dropdown": "csso granum-dropdown.css --no-restructure -o granum-dropdown.min.css",
+			"js": "uglifyjs --verbose --mangle --comments /^!/ --output granum.min.js granum.js",
+			"js:edit": "uglifyjs --verbose --mangle --comments /^!/ --output granum-edit.min.js granum-edit.js",
+    "build-glob": "npm run ver && npm run css && npm run css:icons && npm run css:dropdown && npm run js && npm run js:edit",
+    "build": "node ./build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -30,5 +33,11 @@
   "bugs": {
     "url": "https://github.com/vvvkor/granum/issues"
   },
-  "homepage": "https://github.com/vvvkor/granum#readme"
+  "homepage": "https://github.com/vvvkor/granum#readme",
+  "devDependencies": {
+    "cross-var": "^1.1.0",
+    "csso-cli": "^3.0.0",
+    "replace-in-file": "^6.2.0",
+    "uglify-js": "^3.12.7"
+  }
 }

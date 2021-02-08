@@ -1,4 +1,4 @@
-/*! granum-icons.css v1.1.0 */
+/*! granum-icons.css v1.1.1 */
 
 /* svg {fill:currentColor;} */
 [class*="icon-"]:before {
@@ -23,10 +23,6 @@ button[class*="icon-"]:before, button [class*="icon-"]:before, .inv:before {filt
 [class*="icon-"].text-i:before {filter: invert(.32) sepia(1) saturate(10) hue-rotate(160deg);}
 [class*="icon-"].text-n:before {}
 
-
-[class*="icon-"]:before {
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M5 2a3 3 0 1 0 .01 0z'/%3E%3C/svg%3E");
-}
 .icon-menu:before {
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7'%3E%3Cpath d='M.5 1h6v1h-6zm0 2h6v1h-6zm0 2h6v1h-6z'/%3E%3C/svg%3E");
 }
