@@ -1,4 +1,4 @@
-/*! granum-dropdown.css v1.1.1 */
+/*! granum-dropdown.css v1.1.2 */
 
 .pop {display:inline-block;}
 .pop, .drop li {position:relative;}
@@ -12,7 +12,7 @@
 
 /* mobile */
 @media (max-width: 899px) {
-	.drop.row.act ul {left:4em;top:80%;}
+	.drop.row.act ul {left:4em;right:auto;top:80%;}
 }
 
 /* fine-tuning */
