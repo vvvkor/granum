@@ -1,4 +1,4 @@
-/*! granum.css v1.1.0 */
+/*! granum.css v1.1.1 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -36,8 +36,8 @@ pre code {font-size:100%;}
 	.fit p, .fit .mar {margin:.5em 0;}
 .pad, ul.row li>:not(ul), fieldset, blockquote, pre {padding:.5em 1em;}
 	ul.row li>form {padding:.2em 1em;}
-	legend, .tag {padding:0 .3em;}
-	.tag {min-width:.85em;}
+	legend, .tag {padding:0 .4em;}
+	.tag {min-width:.65em;}
 pre, code  {white-space:pre-wrap;}
 pre{overflow:auto;max-height:80vh;}
 	code, kbd {padding:.2em .5em;}
@@ -50,7 +50,7 @@ sub,sup {line-height:0em;}
 hr{border-width:thin 0 0 0;}
 
 /* links */
-a {text-decoration:none;color:#04b;}
+a {color:#04b;text-decoration:none;}
 /* a:visited {color:#90b;} */
 a:hover {color:#07f;}
 .inv a{color:#fd3;}
@@ -118,8 +118,9 @@ ul.row>*, .col-0[class] {flex:0 1 auto;/*for ie*/ /*flex:initial;*/}
 /**/
 
 /* modal */
+.modal>div {position:relative;top:12em;display:inline-block;left:3em;}/* non-flex */
 .modal {position:fixed;z-index:100;left:0;right:0;top:-9em;bottom:-9em;background-color:rgba(99,99,99,.5);display:flex;justify-content:center;align-items:center;}
-.modal>div {min-width:30vw;max-height:83vh;overflow:auto;background-color:#fff;box-shadow:0 .2em .8em rgba(0,0,0,.3);}
+.modal>div {min-width:30vw;max-height:83vh;overflow:auto;background-color:#fff;box-shadow:0 .2em .8em rgba(0,0,0,.3);  top:0vh}
 
 /* color */
 .bg, blockquote, pre, code/*, thead tr, tfoot tr*/{background-color:rgba(0,0,0,.05);}
@@ -149,17 +150,25 @@ a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tr:hover
 .target {scroll-margin-top:3rem;}
 .target:not(:target):not(.show) {display:none;}
 .wrap {max-width:40em;}
-.hi {height:100vh;}
+.hi {min-height:40em;min-height:100vh;}
+.nobr {white-space:nowrap;}
 .center {margin-left:auto;margin-right:auto;}
 .l {text-align:left;}
 .c, .tag {text-align:center;}
 .r {text-align:right;}
+
+/* if flex not supported */
+.row>*, ul.row a {display:inline-block;vertical-align:top;}
+@media (max-width: 899px) {
+	.row.act>*, ul.row.act a {display:block;}
+}
 
 /* mobile */
 @media (max-width: 899px) {
 	html {font-size:medium;}
 	.row.act {display:block;}
 	.row.act[class]>* {margin-right:0;text-align:left;}
+	.row.act.l>:not(:last-child) {margin-bottom:1em;}
 	ul.row.act a {flex:1;}
 	table.act>*, table.act>*>*, table.act>*>*>* {display:block;text-align:left;}
 	table.act tr{margin-bottom:.5em;}

@@ -50,7 +50,7 @@ Ultra compact set of styles and behaviours for basic web pages.
 
 - typography
 - links
-- grid
+- responsive grid
 - lists
 - tables
 - forms
@@ -84,14 +84,14 @@ Ultra compact set of styles and behaviours for basic web pages.
 - `.bg` `.bg-X` `.text-X` `.hover`
 - `.l` `.r` `.c` `.center` `.wrap` `.roll`
 - `.hi` `.mid` 
-- `.serif` `.sans` `.small` `.inv` `.tag`
+- `.serif` `.sans` `.small` `.nobr` `.inv` `.tag`
 - `.target` `.hide` `.show` `.modal` `.pop` `.drop`
 - `.icon-X`
 
 
 ## js hooks
 
-- `.toggle([href^="#"][data-nodes][data-set][data-act])`
+- `.toggle([href^="#"][data-nodes][data-set][data-unset][data-act][data-inact])`
 - `.dialog([data-prompt][data-default][title])`
 - `.lX` `.cX` `.rX`
 - `[data-group]`

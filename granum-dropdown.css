@@ -1,4 +1,4 @@
-/*! granum-dropdown.css v1.1.0 */
+/*! granum-dropdown.css v1.1.1 */
 
 .pop {display:inline-block;}
 .pop, .drop li {position:relative;}
@@ -27,6 +27,6 @@
 
 /* pop direction */
 .pop>:not(a).c, .pop>:not(a).r {min-width:auto;white-space:nowrap;padding:0 .4em;text-align:left;}
-.drop>:not(a).l {left:auto;right:0;}
+.pop>:not(a).l {left:auto;right:0;}
 .pop>:not(a).c {top:auto;bottom:100%;left:50%;transform:translateX(-50%);}
 .pop>:not(a).r {top:50%;left:100%;transform:translateY(-50%);}/*margin-left:.2em;*/
