@@ -30,7 +30,6 @@ Ultra compact set of styles and behaviours for basic web pages.
 <script src="https://unpkg.com/granum/granum-edit.js" defer></script>
 ```
 
-
 ## Features
 
 - lightweight
@@ -70,12 +69,14 @@ Ultra compact set of styles and behaviours for basic web pages.
   - tooltip
 - with `granum.js`
   - confirm
-  - prompt
+  - prompt 
+  - toggle class
   - responsive class
   - populate inputs from URL
+  - align table columns
+  - check group of checkboxes
 - with `granum-editor.js`
   - contenteditable
-
 
 ## CSS classes
 
@@ -88,8 +89,7 @@ Ultra compact set of styles and behaviours for basic web pages.
 - `.target` `.hide` `.show` `.modal` `.pop` `.drop`
 - `.icon-X`
 
-
-## js hooks
+## JavaScript hooks
 
 - `.toggle([href^="#"][data-nodes][data-set][data-unset][data-act][data-inact])`
 - `.dialog([data-prompt][data-default][title])`
@@ -98,7 +98,7 @@ Ultra compact set of styles and behaviours for basic web pages.
 - `[data-get]`
 - `[data-mobile]` `[data-desktop]`
 
-## js editor hooks
+## JavaScript editor hooks
 
 - `[contenteditable][data-for="ID_AREA"]`
 - `a[href="#ID_EDITOR"][data-cmd]([data-arg][data-ask][title])`
