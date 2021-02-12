@@ -1,4 +1,4 @@
-/*! granum.css v1.1.4 */
+/*! granum.css v1.1.5 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -147,7 +147,7 @@ a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tr:hover
 
 /* modifiers */
 .target {scroll-margin-top:3rem;}
-.target:not(:target):not(.show) {display:none;}
+.target:not(:target):not(.show), .hide {display:none;}
 .wrap {max-width:40em;}
 .hi {min-height:40em;min-height:100vh;}
 .nobr {white-space:nowrap;}
