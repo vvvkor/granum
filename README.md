@@ -96,7 +96,7 @@ Ultra compact set of styles and behaviours for basic web pages.
 - `.lX` `.cX` `.rX`
 - `[data-group]`
 - `[data-get]`
-- `[data-mobile]` `[data-desktop]`
+- `[data-resp]`
 
 ## JavaScript editor hooks
 

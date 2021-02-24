@@ -1,4 +1,4 @@
-/*! granum.js v1.1.5 */
+/*! granum.js v1.2.0 */
 
 (_ => {
 
@@ -87,12 +87,27 @@ document.addEventListener('keydown', e => {
 })
 
 // resize window
+/*
 window.addEventListener('resize', e => {
   const m = (window.innerWidth < 900)
   if (document.body._m == null || document.body._m != m) {
     document.body._m = m
     document.querySelectorAll('[data-mobile], [data-desktop]')
       .forEach(n => n.className = n.dataset[m ? 'mobile' : 'desktop'] || '')
+  }
+})
+*/
+
+window.addEventListener('resize', e => {
+  const b = document.body
+  const m = window.innerWidth < 900 ? (window.innerWidth < 500 ? 2 : 1) : 0
+  if (b._m == null || b._m != m) {
+    b._m = m
+    document.querySelectorAll('[data-resp]')
+      .forEach(n => {
+        const c = n.dataset.resp.split(',')
+        n.className = (c[m] ?? c.pop()) || ''
+      })
   }
 })
 
