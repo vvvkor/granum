@@ -89,12 +89,12 @@ Ultra compact set of styles and behaviours for basic web pages.
 ## CSS classes
 
 - `.row` `.col-X` `.stack`
-- `.fit` `.mar` `.pad` `.bord` `.rad`
+- `.fit` `.mar` `.pad` `.bord` `.rad` `.shade`
 - `.bg` `.bg-X` `.back` `.text-X` `.hover` `.act`
-- `.l` `.r` `.c` `.center` `.wrap` `.roll`
+- `.l` `.r` `.c` `.center` `.wrap` `.roll` `.stick`
 - `.hi` `.mid` 
 - `.serif` `.sans` `.small` `.nobr` `.inv` `.tag`
-- `.target` `.hide` `.show` `.modal` `.pop` `.drop`
+- `.target` `.hide` `.show` `.modal` `.drawer` `.pop` `.drop`
 - `.icon-X`
 - `.grid` `.grid-X` `.flow` `.fill` `.pX` `.gX`
 - `.span-X` `.push` `.shift`

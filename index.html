@@ -13,12 +13,11 @@
     <script> document.addEventListener('granum', e => console.log('granum ready', e), false) </script>
   </head>
   <body id="top" data-break-x="500,400,300,200">
-
-		<nav data-resp=",bg,bg-w">
+		<nav data-resp="stick back shade,bg,bg-w">
 		<a href="#menu" class="target" data-resp="target, icon-menu pad hover toggle" title="Menu"></a>
-		<ul id="menu" class="row bg hover" data-resp="row -bg hover, row stack target hover">
+		<ul id="menu" class="row bg hover" data-resp="row -drop -bg hover, row stack target hover">
 			<li><a href="?" class="act"><b>Granum</b></a>
-			<li><a href="#typo">Typography</a>
+			<li><a href="#typo">Typography</a><!--ul><li><a>Sub</a></ul-->
 			<li><a href="#list">List</a>
 			<li><a href="#table">Table</a>
 			<li><a href="#grid">Grid</a>
@@ -33,6 +32,13 @@
 				</form>
 		</ul>
 		</nav>
+
+		<!--a href="#drawer" class="icon-right pad" title="Drawer"></a-->
+		<div id="drawer" class="drawer -target back pad bord shade">
+			<div class="r"><a href="#cancel" class="icon-close pad" title="Close"></a></div>
+			<p>Drawer</p>
+		</div>
+
 <main class="center wrap pad serif">
 
 <div class="c">
@@ -41,7 +47,7 @@
 <p><b>CSS micro framework.</b></p>
 <p><i>Ultra compact set of styles and behaviours for basic web pages.</i></p>
 
-<p class="text-n">v1.2.1</p>
+<p class="text-n">v1.2.2</p>
 
 <p>
 <b>2.5 KB</b> minified and gzipped.<br>
@@ -110,7 +116,7 @@ x<sup>super</sup>
 
 <h2 id="list"><a href="#list">List</a> <a href="#top" class="fit icon-up"></a></h2>
 
-<div class="row stack">
+<div class="row stack" data-resp="row, row, row stack">
 
 <ul>
 <li>One
@@ -433,6 +439,7 @@ x<sup>super</sup>
 		<a href="#(q)" class="dialog l" title="Go to ID" data-prompt="(q)" data-default="top">Prompt</a>
 		<a href="#toggle" class="toggle l">Toggle</a>
 		<a href="#modal" class="l">Modal</a>
+		<a href="#drawer" class="l">Drawer</a>
 		<p id="toggle" class="target bord pad">Target</p>
 		
 		<div id="modal" class="target modal"><div class="pad rad c">

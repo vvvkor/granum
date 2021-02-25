@@ -1,4 +1,4 @@
-/*! granum-grid.css v1.2.1 */
+/*! granum-grid.css v1.2.2 */
 
 /*
 # Usage
@@ -12,7 +12,6 @@
 .grid {display:flex;--gap:0em;--wid:100%;  list-style:none;padding:0;}
 .grid.flow, [class*="grid-"] {flex-wrap:wrap;}
 /* .grid.roll {overflow-x:auto;} */
-.shade{box-shadow:0 .2em .8em rgba(0,0,0,.3);}
 .g1 {--gap:1em;}
 .g2 {--gap:2em;}
 .g3 {--gap:3em;}
