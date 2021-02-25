@@ -1,4 +1,4 @@
-/*! granum.js v1.2.0 */
+/*! granum.js v1.2.1 */
 
 (_ => {
 
@@ -10,19 +10,6 @@ const tgl = (m, c, on) => {
 document.addEventListener('DOMContentLoaded', e => {
   console.log('granum.js started')
 
-  // init toggler state
-  document.querySelectorAll('a.toggle').forEach(a => a.click())
-  document.body.dataset.ready = ''
-  
-  // align table cells
-  document.querySelectorAll('table').forEach(n => {
-    (n.className.match(/\b[lcr]\d\d?\b/g) || [])
-    .forEach(c => {
-      n.querySelectorAll('tr>*:nth-child(' + c.substr(1) + ')')
-      .forEach(td => td.classList.add(c.substr(0, 1)))
-    })
-  })
-  
   // init form inputs
   document.querySelectorAll('form[data-get]').forEach(n => {
     n.querySelectorAll('[name]').forEach(m => ('get' in m.dataset) ? null : m.dataset.get = m.name)
@@ -39,6 +26,24 @@ document.addEventListener('DOMContentLoaded', e => {
       else n.value = v
     }
   })
+  
+  // init toggler state
+  document.querySelectorAll('a.toggle').forEach(n => n.click())
+  document.querySelectorAll('input[data-nodes], select[data-nodes]').forEach(n => 
+    n.type != 'radio' || n.checked ? n.dispatchEvent(new Event('input', {bubbles: true})) : null
+  )
+  document.body.dataset.ready = ''
+  
+  // align table cells
+  document.querySelectorAll('table').forEach(n => {
+    (n.className.match(/\b[lcr]\d\d?\b/g) || [])
+    .forEach(c => {
+      n.querySelectorAll('tr>*:nth-child(' + c.substr(1) + ')')
+      .forEach(td => td.classList.add(c.substr(0, 1)))
+    })
+  })
+  
+  document.dispatchEvent(new Event('granum'))
 })
 
 document.addEventListener('click', e => {
@@ -59,14 +64,15 @@ document.addEventListener('click', e => {
   // toggle
   if (a && a.classList.contains('toggle')) {
     e.preventDefault()
-    const m = document.querySelectorAll(a.dataset.nodes || a.hash)
-    const c = (a.dataset.set || 'show').split(/\s+/)
+    const s = a.dataset
+    const m = document.querySelectorAll(s.nodes || a.hash)
+    const c = (s.set || 'show').split(/\s+/)
     const r = 'ready' in document.body.dataset
     let on = !m[0].classList.contains(c[0]) != !r
-    tgl([a], a.dataset.act || 'act', on)
-    tgl([a], a.dataset.inact, !on)
+    tgl([a], s.act || 'act', on)
+    tgl([a], s.inact, !on)
     tgl(m, c, on)
-    tgl(m, a.dataset.unset, !on)
+    tgl(m, s.unset, !on)
     if (r && location.hash && c[0] == 'show') location.hash = '#cancel'
   }
   
@@ -75,10 +81,18 @@ document.addEventListener('click', e => {
 })
 
 document.addEventListener('input', e => {
+  const n = e.target
+  
   // check all boxes
-  const g = e.target.dataset.group
+  const g = n.dataset.group
   if (g) document.querySelectorAll('.' + g + '[type="checkbox"]')
-    .forEach(n => n.checked = e.target.checked)
+    .forEach(m => m.checked = n.checked)
+  
+  // toggle
+  if ('nodes' in n.dataset)
+    document.querySelectorAll(n.dataset.nodes).forEach(m => 
+      m.className = n.type == 'checkbox' ? n.dataset[n.checked ? 'set' : 'unset'] : n.value
+    )
 })
 
 // close modals
@@ -87,27 +101,17 @@ document.addEventListener('keydown', e => {
 })
 
 // resize window
-/*
-window.addEventListener('resize', e => {
-  const m = (window.innerWidth < 900)
-  if (document.body._m == null || document.body._m != m) {
-    document.body._m = m
-    document.querySelectorAll('[data-mobile], [data-desktop]')
-      .forEach(n => n.className = n.dataset[m ? 'mobile' : 'desktop'] || '')
-  }
-})
-*/
-
 window.addEventListener('resize', e => {
   const b = document.body
-  const m = window.innerWidth < 900 ? (window.innerWidth < 500 ? 2 : 1) : 0
+  const w = (b.dataset.break || '900,500').split(',')
+  w.push(0)
+  const m = w.findIndex(x => window.innerWidth >= Number(x))
   if (b._m == null || b._m != m) {
     b._m = m
-    document.querySelectorAll('[data-resp]')
-      .forEach(n => {
-        const c = n.dataset.resp.split(',')
-        n.className = (c[m] ?? c.pop()) || ''
-      })
+    document.querySelectorAll('[data-resp]').forEach(n => {
+      const c = n.dataset.resp.split(',')
+      n.className = (c[m] != null ? c[m] : c.pop()) || ''
+    })
   }
 })
 

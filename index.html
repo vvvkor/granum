@@ -7,23 +7,16 @@
     <link rel="stylesheet" href="granum.css">
     <link rel="stylesheet" href="granum-icons.css">
     <link rel="stylesheet" href="granum-dropdown.css">
-    <!--link rel="stylesheet" href="granum-grid.css"-->
+    <link rel="stylesheet" href="granum-grid.css">
     <script src="granum.js" defer></script>
     <script src="granum-edit.js" defer></script>
+    <script> document.addEventListener('granum', e => console.log('granum ready', e), false) </script>
   </head>
-  <body id="top">
-<!--div class="grid pad gap l -roll grid-4 -flip">
-	<div class="bg bord shade pad col-1">1</div>
-	<div class="bg bord shade pad col-2">2</div>
-	<div class="bg bord shade pad">3<br>br</div>
-	<div class="bg bord shade pad">4</div>
-	<div class="bg bord shade pad">5</div>
-	<div class="bg bord shade pad l">6</div>
-</div-->
+  <body id="top" data-break="500,400,300,200">
 
 		<nav data-resp=",bg,bg-w">
 		<a href="#menu" class="target" data-resp="target, icon-menu pad hover toggle" title="Menu"></a>
-		<ul id="menu" class="row bg hover" data-resp="row -bg hover, row act target hover">
+		<ul id="menu" class="row bg hover" data-resp="row -bg hover, row stack target hover">
 			<li><a href="?" class="act"><b>Granum</b></a>
 			<li><a href="#typo">Typography</a>
 			<li><a href="#list">List</a>
@@ -48,11 +41,11 @@
 <p><b>CSS micro framework.</b></p>
 <p><i>Ultra compact set of styles and behaviours for basic web pages.</i></p>
 
-<p class="text-n">v1.2.0</p>
+<p class="text-n">v1.2.1</p>
 
 <p>
 <b>2.5 KB</b> minified and gzipped.<br>
-<b>7 KB</b> with icons, dropdowns and JavaScript.
+<b>8 KB</b> with icons, dropdowns, advanced grid and JavaScript.
 </p>
 
 <p>
@@ -117,7 +110,7 @@ x<sup>super</sup>
 
 <h2 id="list"><a href="#list">List</a> <a href="#top" class="fit icon-up"></a></h2>
 
-<div class="row act">
+<div class="row stack">
 
 <ul>
 <li>One
@@ -185,14 +178,14 @@ x<sup>super</sup>
 
 <h2 id="grid"><a href="#grid">Grid</a> <a href="#top" class="fit icon-up"></a></h2>
 
-<ul class="row act bg hover -mid">
+<ul class="row stack bg hover -mid">
 <li><a href="#1">First</a>
 <li><a href="#2"><span>Second<br><small class="text-n">Subtitle</small></span></a>
 <li class="r"><a href="#3" class="-mid">Third</a>
 <!--li class="mid"><a href="#4">Fourth</a-->
 </ul>
 
-<div class="row act pad mar -mid l">
+<div class="row stack pad mar -mid l">
 	<div class="col-0 bg-e pad">Auto</div>
 	<div class="col-1 bg-w pad">One</div>
 	<div class="col-2 bg-y pad mid"><div>Two <i>middle</i></div></div>
@@ -217,10 +210,54 @@ x<sup>super</sup>
 	</div></div>
 </div>
 
-<details>
+<details class="mar">
 	<summary>Full height</summary>
 	<div class="hi bg-w row mid"><div class="c pad bg">Centered</div></div>
 </details>
+
+<details>
+	<summary>Advanced grid</summary>
+<label>Grid type
+<select name="grid-type" data-get data-nodes="#grd">
+	<option value="grid p1 g1 stack fill" selected>Row</option>
+	<option value="grid p1 g1 stack flow">Nav flow</option>
+	<option value="grid p1 g1 stack roll">Nav roll</option>
+	<option value="grid g2 stack grid-2">Grid-2 big gaps</option>
+	<option value="grid p1 g1 stack grid-3">Grid-3</option>
+	<option value="grid p1 g1 stack grid-4">Grid-4</option>
+	<option value="grid p1 stack grid-6">Grid-6 dense</option>
+</select></label>
+<label> <input type="checkbox" name="grid-wrap" data-get data-nodes="#wrp" data-set="-bord -wrap -center pad" data-unset="-bord"> Padding</label>
+
+<div class="bg small">
+<div id="wrp">
+<div id="grd" class="grid p1 g1 stack flow -roll">
+	<div class="back bord shade pad">A</div>
+	<div id="cell" class="back bord shade pad">
+		<div class="nobr">
+		<label><input type="radio" name="cell-span" data-get data-nodes="#cell" value="back bord shade pad" checked> def</label><br>
+		<label><input type="radio" name="cell-span" data-get data-nodes="#cell" value="back bord shade pad span-0"> x0</label><br>
+		<label><input type="radio" name="cell-span" data-get data-nodes="#cell" value="back bord shade pad span-1"> x1</label><br>
+		<label><input type="radio" name="cell-span" data-get data-nodes="#cell" value="back bord shade pad span-2"> x2</label><br>
+		<label><input type="radio" name="cell-span" data-get data-nodes="#cell" value="back bord shade pad span-3"> x3</label><br>
+		<label><input type="radio" name="cell-span" data-get data-nodes="#cell" value="back bord shade pad span-4"> x4</label>
+		</div>
+	</div>
+	<div class="back bord shade pad">C</div>
+	<div class="back bord shade pad push">D</div>
+	<div class="back bord shade pad">E</div>
+	<div class="back bord shade pad">F</div>
+</div>
+</div>
+</div>
+<ul class="grid hover bg bord small">
+	<li class="-bord -shade"><a class="pad" href="#1">One</a>
+	<li class="-bord -shade"><a class="pad" href="#2">Two</a>
+	<li class="-bord -shade push"><a class="pad" href="#3">Three</a>
+	<li class="-bord -shade"><a class="pad" href="#9">More</a>
+</ul>
+</details>
+
 
 
 <h2 id="form"><a href="#form">Form</a> <a href="#top" class="fit icon-up"></a></h2>
@@ -320,22 +357,22 @@ x<sup>super</sup>
 </form>
 
 <form class="pad fit bg mar" id="dform" action="#dform">
-<div class="row mar pad act">
+<div class="row mar pad stack">
 	<label for="nam" class="r">Name</label>
 	<div class="col-3"><input type="text" name="nam" id="nam"></div>
 </div>
-<div class="row mar pad act">
+<div class="row mar pad stack">
 	<label for="ag" class="r">Age</label>
 	<div class="col-3"><input type="number" name="ag" id="ag"></div>
 </div>
-<div class="row mar pad act">
+<div class="row mar pad stack">
 	<div></div>
 	<div class="col-3"><input type="submit" value="Submit"></div>
 </div>
 </form>
 
 <form class="pad bg mar" id="tform" action="#tform">
-<table class="act fit mid" data-resp="mid, fit act">
+<table class="stack fit mid" data-resp="mid, fit stack">
 <tr>
 	<td class="r"><label for="nm">Name</label>
 	<td><input type="text" name="nm" id="nm" readonly placeholder="readonly">
@@ -414,7 +451,7 @@ x<sup>super</sup>
 	</div>
 	<nav class="mar bg">
 		<a href="#nav" class="target" data-resp="target, icon-menu pad hover toggle" title="Menu"></a>
-		<ul id="nav" class="row act hover drop" data-resp="row -act hover drop, target row act hover drop">
+		<ul id="nav" class="row stack hover drop" data-resp="row -stack hover drop, target row stack hover drop">
 		<li><a href="#1" class="icon-grid">Menu</a>
 			<ul>
 			<li><a href="#1" class="icon-config">Config</a>
@@ -461,7 +498,8 @@ x<sup>super</sup>
 		<tr><th><b class="pop">.pad&nbsp;   <i class="inv r small bg-i">Padding</i></b><td>*<td>*<td>h-gap<td>line<td>*
 		<tr><th><b class="pop">.mid&nbsp;   <i class="inv r small bg-i">Centrify vertically</i></b><td>-<td>-<td>valign row, item<td>valign table, tr, td<td>-
 		<tr><th><b class="pop">.l&nbsp;     <i class="inv r small bg-i">Align</i></b><td>align<td>right margin<td>v-gap, align item<td>wide<td>*
-		<tr><th><b class="pop">.act&nbsp;   <i class="inv r small bg-i">Active link, responsive component, input validation</i></b><td>-<td>color<td>flip<td>flip<td>validation
+		<tr><th><b class="pop">.stack&nbsp;   <i class="inv r small bg-i">Responsive component</i></b><td>-<td>-<td>stack<td>stack<td class="text-n">stack
+		<tr><th><b class="pop">.act&nbsp;   <i class="inv r small bg-i">Active link, input validation</i></b><td>-<td>color<td>-<td>-<td>validation
 		<tr><th><b class="pop">.hover&nbsp; <i class="inv r small bg-i">Shade on hover</i></b><td>*<td>*<td>ul a<td>tr<td>-
 	</table>
 	</div>

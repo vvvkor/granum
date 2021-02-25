@@ -67,6 +67,12 @@ Ultra compact set of styles and behaviours for basic web pages.
   - dropdown
   - popup
   - tooltip
+- with `granum-grid.css`
+  - cell widths: auto, fractional, regular
+	- gaps and padding
+	- responsive
+	- push cell
+	- control wrapping
 - with `granum.js`
   - confirm
   - prompt 
@@ -80,18 +86,21 @@ Ultra compact set of styles and behaviours for basic web pages.
 
 ## CSS classes
 
-- `.row` `.col-X` `.act`
+- `.row` `.col-X` `.stack`
 - `.fit` `.mar` `.pad` `.bord` `.rad`
-- `.bg` `.bg-X` `.text-X` `.hover`
+- `.bg` `.bg-X` `.back` `.text-X` `.hover` `.act`
 - `.l` `.r` `.c` `.center` `.wrap` `.roll`
 - `.hi` `.mid` 
 - `.serif` `.sans` `.small` `.nobr` `.inv` `.tag`
 - `.target` `.hide` `.show` `.modal` `.pop` `.drop`
 - `.icon-X`
+- `.grid` `.grid-X` `.flow` `.fill` `.pX` `.gX`
+- `.span-X` `.push` `.shift`
 
 ## JavaScript hooks
 
 - `.toggle([href^="#"][data-nodes][data-set][data-unset][data-act][data-inact])`
+- `input[data-nodes][value][data-set][data-unset]`
 - `.dialog([data-prompt][data-default][title])`
 - `.lX` `.cX` `.rX`
 - `[data-group]`

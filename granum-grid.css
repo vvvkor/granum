@@ -1,59 +1,54 @@
-/*! granum-grid.css v1.2.0 */
+/*! granum-grid.css v1.2.1 */
 
 /*
-
 # Usage
 
-- Menu `.grid.roll > * + .l + .r`
-- Row `.grid > .col-X`
-- Grid `.grid.l.grid-X > * + .col-X`
-- `.grid.pad.gap.flip`
-
-# Bugs
-
-- Without native gap adds right margin: `.gap.l > .r`
-- Without native gap may have no last gap: `.gap.l > .r`
-
+- Menu `.grid.flow.roll > * + .push + .shift`
+- Row `.grid.fill > .span-X`
+- Grid `.grid.grid-X > * + .span-X`
+- `.grid.pX.gX.stack.shade`
 */
 
-.grid {display:flex;}
-.grid.l {flex-wrap:wrap;}
-.grid.roll {overflow-x:auto;}
-.grid.gap {--gap:1em;}
-.grid.pad {padding:1em;}
-.grid > * {box-sizing:border-box;text-align:inherit;}
+.grid {display:flex;--gap:0em;--wid:100%;  list-style:none;padding:0;}
+.grid.flow, [class*="grid-"] {flex-wrap:wrap;}
+/* .grid.roll {overflow-x:auto;} */
+.shade{box-shadow:0 .2em .8em rgba(0,0,0,.3);}
+.g1 {--gap:1em;}
+.g2 {--gap:2em;}
+.g3 {--gap:3em;}
+.p1 {padding:1em;}
+.p2 {padding:2em;}
+.p3 {padding:3em;}
+.grid > * {box-sizing:border-box;text-align:inherit;--span:1;}
 .grid-1 {--cols:1;}
 .grid-2 {--cols:2;}
 .grid-3 {--cols:3;}
 .grid-4 {--cols:4;}
 .grid-6 {--cols:6;}
-.col-1 {flex:1;}
-.col-2 {flex:2;}
-.col-3 {flex:3;}
-[class*="grid-"][class] > * {width:calc(100% / var(--cols));flex:none;--span:1;}
-	[class*="grid-"] > .col-2 {--span:2;}
-	[class*="grid-"] > .col-3 {--span:3;}
-	[class*="grid-"] > .col-4 {--span:4;}
-	[class*="grid-"] > [class*="col-"] {width:calc(var(--span) * 100% / var(--cols));}
+.span-1, .fill > * {flex:1;--span:1;}
+.span-0 {flex:none;}
+.span-2 {flex:2;--span:2;}
+.span-3 {flex:3;--span:3;}
+.span-4 {flex:4;--span:4;}
+[class*="grid-"] > * {flex:none;width:calc((var(--wid) + var(--gap)) * var(--span) / var(--cols) - var(--gap));}
 
 /* emulate gap */
-.grid.gap.l {gap:0;margin:calc(-1 * var(--gap)) 0 0 calc(-1 * var(--gap));}
-.grid.gap.l > * {margin:var(--gap) 0 0 var(--gap);width:calc(100% / var(--cols) - var(--gap));}
-.grid.gap:not(.l) > * + * {margin-left:var(--gap);}
-	.gap.l[class*="grid-"] > [class*="col-"] {width:calc(var(--span) * 100% / var(--cols) - var(--gap));}
+.grid {--wid:calc(100% - var(--gap));margin:calc(-1 * var(--gap)) 0 0 calc(-1 * var(--gap));}
+.grid > * {margin:var(--gap) 0 0 var(--gap);}
 
 /* native gap */
 @supports (gap:1em) {
-	.grid.gap[class] {gap:var(--gap);margin:0;}
-	.grid.gap[class] > * {width:calc((100% + var(--gap)) / var(--cols) - var(--gap));margin:0;}
-		.gap[class][class*="grid-"] > [class*="col-"] {width:calc(var(--span) * (100% + var(--gap)) / var(--cols) - var(--gap));}
+	.grid {--wid:100%;margin:0;gap:var(--gap);}
+	.grid > * {margin:0;}
 }
 
-/**/
-.grid > .l[class] {margin-left:auto;}
-.grid > .r[class] {margin-right:auto;}
+/* prefer .push to keep minimal gap */
+.grid > .push {margin-right:auto;}
+.grid > .shift {margin-left:auto;}
+.push + .shift {margin-left:0;}
 
 @media (max-width: 899px) {
-	.grid.flip {display:block;}
-	.grid.flip[class][class] > * {width:auto;}
+	.grid.stack {display:block;margin-left:0;}
+	.grid.stack > * {width:auto;margin-left:0;}
+	.grid.stack > * + * {margin-top:var(--gap);}
 }

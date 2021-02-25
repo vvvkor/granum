@@ -37,7 +37,7 @@ catch (error) {
 
 // minify css
 
-['granum', 'granum-icons', 'granum-dropdown']
+['granum', 'granum-icons', 'granum-dropdown', 'granum-grid']
 .forEach(n => {
   console.log('Minify ' + n + '.css...');
   const css = fs.readFileSync('./' + n + '.css', 'utf8');

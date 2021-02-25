@@ -1,4 +1,4 @@
-/*! granum.css v1.2.0 */
+/*! granum.css v1.2.1 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -14,7 +14,8 @@ table, img, embed, iframe, object, audio, video, button, input, select, textarea
 	
 /* font */
 html {font-size:120%;}
-body {line-height:1.5;color:#000;background:#fff;}
+body {line-height:1.5;color:#000;}
+body, .back{background:#fff;}
 body, .sans {font-family:"PT Sans", Roboto, "Segoe UI", sans-serif;}
 .serif {font-family:"PT Serif", Georgia, serif;}
 input, button, select, textarea, table {font:inherit;} 
@@ -159,16 +160,16 @@ a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tr:hover
 /* non-flex fallback */
 .row>*, ul.row a {display:inline-block;vertical-align:top;}
 @media (max-width: 899px) {
-	.row.act>*, ul.row.act a {display:block;}
+	.row.stack>*, ul.row.stack a {display:block;}
 }
 
 /* mobile */
 @media (max-width: 899px) {
 	html {font-size:medium;}
-	.row.act {display:block;}
-	.row.act[class]>* {margin-right:0;text-align:left;}
-	.row.act.l>:not(:last-child) {margin-bottom:1em;}
-	ul.row.act a {flex:1;}
-	table.act>*, table.act>*>*, table.act>*>*>* {display:block;text-align:left;}
-	table.act tr{margin-bottom:.5em;}
+	.row.stack {display:block;}
+	.row.stack[class]>* {margin-right:0;text-align:left;}
+	.row.stack.l>:not(:last-child) {margin-bottom:1em;}
+	ul.row.stack a {flex:1;}
+	table.stack>*, table.stack>*>*, table.stack>*>*>* {display:block;text-align:left;}
+	table.stack tr{margin-bottom:.5em;}
 }
