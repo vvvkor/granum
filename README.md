@@ -15,6 +15,7 @@ Ultra compact set of styles and behaviours for basic web pages.
 <!-- optional -->
 <link rel="stylesheet" href="granum-icons.css">
 <link rel="stylesheet" href="granum-dropdown.css">
+<link rel="stylesheet" href="granum-grid.css">
 <script src="granum.js" defer></script>
 <script src="granum-edit.js" defer></script>
 ```
@@ -26,6 +27,7 @@ Ultra compact set of styles and behaviours for basic web pages.
 <!-- optional -->
 <link rel="stylesheet" href="https://unpkg.com/granum/granum-icons.css">
 <link rel="stylesheet" href="https://unpkg.com/granum/granum-dropdown.css">
+<link rel="stylesheet" href="https://unpkg.com/granum/granum-grid.css">
 <script src="https://unpkg.com/granum/granum.js" defer></script>
 <script src="https://unpkg.com/granum/granum-edit.js" defer></script>
 ```
@@ -69,10 +71,10 @@ Ultra compact set of styles and behaviours for basic web pages.
   - tooltip
 - with `granum-grid.css`
   - cell widths: auto, fractional, regular
-	- gaps and padding
-	- responsive
-	- push cell
-	- control wrapping
+  - gaps and padding
+  - responsive
+  - push cell
+  - control wrapping
 - with `granum.js`
   - confirm
   - prompt 
