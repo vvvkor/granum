@@ -4,7 +4,7 @@ CSS micro framework.
 Ultra compact set of styles and behaviours for basic web pages.
 
 2.5 KB minified and gzipped.  
-7 KB with icons, dropdowns and JavaScript.
+7 KB with icons, dropdowns, advanced grid and JavaScript.
 
 [Demo](https://vvvkor.github.io/granum/)
 
