@@ -90,11 +90,11 @@
 
 ### Icons `icon-X` *(requires [granum-icons.css](granum-icons.css))*
 
-`menu` `grid` `find` `config`
-`user` `mail` `pin` `share`
-`up` `down` `left` `right`
-`ok` `edit` `add` `close` (`delete`)
-`warning` `info` `time` `refresh`
+`menu` `grid` `find` `config`  
+`user` `mail` `pin` `share`  
+`up` `down` `left` `right`  
+`ok` `edit` `add` `close` (`delete`)  
+`warning` `info` `time` `refresh`  
 `folder` `file` `image` `chart`
 
 ### Status colors and backgrounds
