@@ -67,7 +67,7 @@
 - `a.pad.inv` - button-like link
 - `:valid ~ .act.text-e` - hint on valid input
 - `:invalid ~ .act.text-y` - hint on invalid input
-- `[type="checkbox"][data-group="CLASS"] .. [type="checkbox"].CLASS` - check group of boxes *(requires [granum.js](granum.js))*
+- `[type="checkbox"][data-check="SELECTOR"]` - check group of boxes *(requires [granum.js](granum.js))*
 - `form[data-q]`, `input[data-q]` - populate inputs from URL parameters  *(requires [granum.js](granum.js))*
 
 

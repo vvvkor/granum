@@ -1,4 +1,4 @@
-/*! granum.css v1.2.3 */
+/*! granum.css v1.2.4 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -129,7 +129,7 @@ ul.row>*, .col-0[class] {flex:0 1 auto;/*for ie*/ /*flex:initial;*/}
 .drawer.l:target {right:0;}
 
 /* bar */
-.bar {--v:0;border-radius:.2em;overflow:hidden;}
+.bar {--v:0;border-radius:.16em;overflow:hidden;}
 .bar:before {content:'';display:block;min-height:.4em;width:calc(1% * var(--v));background:currentColor;}
 
 /* color */
@@ -158,7 +158,7 @@ a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tr:hover
 .shade, .modal>div {box-shadow:0 .2em .8em rgba(0,0,0,.3);}
 
 /* modifiers */
-.target {scroll-margin-top:3rem;}
+.target, :target {scroll-margin-top:3rem;}
 .target:not(:target):not(.show), .hide {display:none;}
 .wrap {max-width:40em;}
 .stick {position:sticky;top:0;z-index:3;}

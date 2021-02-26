@@ -108,7 +108,7 @@ Ultra compact set of styles and behaviours for basic web pages.
 - `input[data-nodes][value][data-set][data-unset]`
 - `.dialog([data-prompt][data-default][title])`
 - `.lX` `.cX` `.rX`
-- `[data-group]`
+- `[data-check]`
 - `[data-get]`
 - `body[data-break] [data-resp]`
 

@@ -1,4 +1,4 @@
-/*! granum.js v1.2.3 */
+/*! granum.js v1.2.4 */
 
 (_ => {
 
@@ -84,8 +84,8 @@ document.addEventListener('input', e => {
   const n = e.target
   
   // check all boxes
-  const g = n.dataset.group
-  if (g) document.querySelectorAll('.' + g + '[type="checkbox"]')
+  const g = n.dataset.check
+  if (g) document.querySelectorAll(g)
     .forEach(m => m.checked = n.checked)
   
   // toggle
