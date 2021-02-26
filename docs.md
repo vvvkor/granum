@@ -1,5 +1,5 @@
-**Granum**
-*CSS micro framework*
+**Granum**  
+*CSS micro framework*  
 [GitHub](https://github.com/vvvkor/granum/) · [Demo](https://vvvkor.github.io/granum/)
 
 
