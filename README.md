@@ -6,8 +6,7 @@ Ultra compact set of styles and behaviours for basic web pages.
 2.5 KB minified and gzipped.  
 7 KB with icons, dropdowns, advanced grid and some JavaScript.
 
-[Demo](https://vvvkor.github.io/granum/)
-[Docs](https://vvvkor.github.io/granum/docs.md)
+[Demo](https://vvvkor.github.io/granum/) · [Docs](https://github.com/vvvkor/granum/blob/master/docs.md)
 
 ## Usage
 
