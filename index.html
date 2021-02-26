@@ -13,9 +13,10 @@
     <script> document.addEventListener('granum', e => console.log('granum ready', e), false) </script>
   </head>
   <body id="top" data-break-x="500,400,300,200">
+
 		<nav data-resp="stick back shade,bg,bg-w">
 		<a href="#menu" class="target" data-resp="target, icon-menu pad hover toggle" title="Menu"></a>
-		<ul id="menu" class="row bg hover" data-resp="row -drop -bg hover, row stack target hover">
+		<ul id="menu" class="row bg hover" data-resp="row -drop -bg hover, row resp target hover">
 			<li><a href="?" class="act"><b>Granum</b></a>
 			<li><a href="#typo">Typography</a><!--ul><li><a>Sub</a></ul-->
 			<li><a href="#list">List</a>
@@ -37,6 +38,16 @@
 		<div id="drawer" class="drawer -target back pad bord shade">
 			<div class="r"><a href="#cancel" class="icon-close pad" title="Close"></a></div>
 			<p>Drawer</p>
+			<details class="bg pad mar l">
+				<summary>More horizontal</summary>
+				<p class="nobr">Text text text text text text text text text text text text text text text text text
+				text text text text text text text text text text text text text text text text text text text.</p>
+			</details>
+			<details class="bg pad mar l">
+				<summary>More vertical</summary>
+				<p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p>
+				<p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p>
+			</details>
 		</div>
 
 <main class="center wrap pad serif">
@@ -51,14 +62,13 @@
 
 <p>
 <b>2.5 KB</b> minified and gzipped.<br>
-<b>7 KB</b> with icons, dropdowns, advanced grid and JavaScript.
+<b>7 KB</b> with icons, dropdowns, advanced grid and some JavaScript.
 </p>
 
 <p>
 <a href="https://github.com/vvvkor/granum" class="inv pad rad hover">GitHub</a>
 <a href="https://unpkg.com/granum" class="act pad rad bord hover">CDN</a>
 </p>
-
 
 </div>
 
@@ -116,7 +126,7 @@ x<sup>super</sup>
 
 <h2 id="list"><a href="#list">List</a> <a href="#top" class="fit icon-up"></a></h2>
 
-<div class="row stack" data-resp="row, row, row stack">
+<div class="row resp" data-resp="row, row, row resp">
 
 <ul>
 <li>One
@@ -159,22 +169,24 @@ x<sup>super</sup>
 	<tbody>
 		<tr><td><input type="checkbox" class="box" name="box[]" value="1">
 			<td><b class="tag inv rad small">0</b><td>Text
-			<td><a href="#top" class="icon-share">Link</a><td>0
+			<td><a href="#top" class="icon-share">Link</a><td>50<div class="bar" style="--v:50"></div>
 		<tr><td><input type="checkbox" class="box" name="box[]" value="2">
 			<td><b class="tag inv rad small bg-n">1</b><td class="bg-n">Lite
-			<td><a href="#top" class="icon-file text-n">Lite</a><td>2
+			<td><a href="#top" class="icon-file text-n">Lite</a><td>9<div class="bar text-n" style="--v:9"></div>
+
 		<tr><td><input type="checkbox" class="box" name="box[]" value="3">
 			<td><b class="tag inv rad small bg-i">2</b><td class="bg-i">Info
-			<td><a href="#top" class="icon-info text-i">Info</a><td>5
+			<td><a href="#top" class="icon-info text-i">Info</a><td>25<div class="bar text-i" style="--v:25"></div>
 		<tr><td><input type="checkbox" class="box" name="box[]" value="4">
 			<td class="mid"><b class="tag inv rad small bg-y">3</b><td class="bg-y">Success
-			<td><a href="#top" class="icon-ok text-y">Success</a><td>10
+			<td><a href="#top" class="icon-ok text-y">Success</a><td>50<div class="bar text-y" style="--v:50"></div>
 		<tr><td><input type="checkbox" class="box" name="box[]" value="5">
 			<td><b class="tag inv rad small bg-w">4</b><td class="bg-w">Warning
-			<td><a href="#top" class="icon-warning text-w">Warning</a><td>50
+			<td><a href="#top" class="icon-warning text-w">Warning</a><td>75<div class="bar text-w" style="--v:75"></div>
+
 		<tr class="mid"><td><input type="checkbox" class="box" name="box[]" value="6">
 			<td><b class="tag inv rad small bg-e">555</b><td class="bg-e">Error<br>line
-			<td><a href="#top" class="icon-delete text-e">Error</a><td>100
+			<td><a href="#top" class="icon-delete text-e">Error</a><td>100<div class="bar text-e" style="--v:100"></div>
 	</tbody>
 	<tfoot class="bg">
 		<tr><td>&Sigma;<td><td><td><td>167
@@ -184,14 +196,14 @@ x<sup>super</sup>
 
 <h2 id="grid"><a href="#grid">Grid</a> <a href="#top" class="fit icon-up"></a></h2>
 
-<ul class="row stack bg hover -mid">
+<ul class="row resp bg hover -mid">
 <li><a href="#1">First</a>
 <li><a href="#2"><span>Second<br><small class="text-n">Subtitle</small></span></a>
 <li class="r"><a href="#3" class="-mid">Third</a>
 <!--li class="mid"><a href="#4">Fourth</a-->
 </ul>
 
-<div class="row stack pad mar -mid l">
+<div class="row resp pad mar -mid l">
 	<div class="col-0 bg-e pad">Auto</div>
 	<div class="col-1 bg-w pad">One</div>
 	<div class="col-2 bg-y pad mid"><div>Two <i>middle</i></div></div>
@@ -225,19 +237,19 @@ x<sup>super</sup>
 	<summary>Advanced grid</summary>
 <label>Grid type
 <select name="grid-type" data-get data-nodes="#grd">
-	<option value="grid p1 g1 stack fill" selected>Row</option>
-	<option value="grid p1 g1 stack flow">Nav flow</option>
-	<option value="grid p1 g1 stack roll">Nav roll</option>
-	<option value="grid g2 stack grid-2">Grid-2 big gaps</option>
-	<option value="grid p1 g1 stack grid-3">Grid-3</option>
-	<option value="grid p1 g1 stack grid-4">Grid-4</option>
-	<option value="grid p1 stack grid-6">Grid-6 dense</option>
+	<option value="grid p1 g1 resp fill" selected>Row</option>
+	<option value="grid p1 g1 resp flow">Nav flow</option>
+	<option value="grid p1 g1 resp roll">Nav roll</option>
+	<option value="grid g2 resp grid-2">Grid-2 big gaps</option>
+	<option value="grid p1 g1 resp grid-3">Grid-3</option>
+	<option value="grid p1 g1 resp grid-4">Grid-4</option>
+	<option value="grid p1 resp grid-6">Grid-6 dense</option>
 </select></label>
 <label> <input type="checkbox" name="grid-wrap" data-get data-nodes="#wrp" data-set="-bord -wrap -center pad" data-unset="-bord"> Padding</label>
 
 <div class="bg small">
 <div id="wrp">
-<div id="grd" class="grid p1 g1 stack flow -roll">
+<div id="grd" class="grid p1 g1 resp flow -roll">
 	<div class="back bord shade pad">A</div>
 	<div id="cell" class="back bord shade pad">
 		<div class="nobr">
@@ -257,7 +269,7 @@ x<sup>super</sup>
 </div>
 </div>
 <div class="bord bg small">
-<div class="grid g1" data-resp="grid fill g1, grid grid-2 g1, grid g1 stack">
+<div class="grid g1" data-resp="grid fill g1, grid grid-2 g1, grid g1 resp">
 	<div class="bg-i">A</div>
 	<div class="bg-y">B</div>
 	<div class="bg-w">C</div>
@@ -276,7 +288,7 @@ x<sup>super</sup>
 
 <h2 id="form"><a href="#form">Form</a> <a href="#top" class="fit icon-up"></a></h2>
 	
-<form action="#pform" id="pform" class="fit" data-get>
+<form action="#pform" id="pform" class="fit bg pad" data-get>
 <p>
 	<label for="name">Name</label><br>
 	<input id="name" name="name" type="text" required placeholder="Name">
@@ -352,9 +364,9 @@ x<sup>super</sup>
 		<li><a href="#edit" data-cmd="formatblock" data-arg="<blockquote>" title="Block quote">&#8220;</a>
 		<li><a href="#edit" data-cmd="inserthorizontalrule" title="Horizontal ruler">&minus;</a>
 	</ul>
-	<div><textarea name="msg" id="msg" class="target bg" rows="8">Formatted text&lt;br&gt;
+	<div><textarea name="msg" id="msg" class="target bg mono" rows="8">Formatted text&lt;br&gt;
 		&lt;b&gt;bold&lt;/b&gt; &lt;i&gt;italic&lt;/i&gt;</textarea></div>
-	<div class="bord pad" contenteditable id="edit" data-for="msg"></div>
+	<div class="bord pad back" contenteditable id="edit" data-for="msg"></div>
 </div>
 </details>
 <p>
@@ -371,22 +383,22 @@ x<sup>super</sup>
 </form>
 
 <form class="pad fit bg mar" id="dform" action="#dform">
-<div class="row mar pad stack">
+<div class="row mar pad resp">
 	<label for="nam" class="r">Name</label>
 	<div class="col-3"><input type="text" name="nam" id="nam"></div>
 </div>
-<div class="row mar pad stack">
+<div class="row mar pad resp">
 	<label for="ag" class="r">Age</label>
 	<div class="col-3"><input type="number" name="ag" id="ag"></div>
 </div>
-<div class="row mar pad stack">
+<div class="row mar pad resp">
 	<div></div>
 	<div class="col-3"><input type="submit" value="Submit"></div>
 </div>
 </form>
 
 <form class="pad bg mar" id="tform" action="#tform">
-<table class="stack fit mid" data-resp="mid, fit stack">
+<table class="resp fit mid" data-resp="mid, fit resp">
 <tr>
 	<td class="r"><label for="nm">Name</label>
 	<td><input type="text" name="nm" id="nm" readonly placeholder="readonly">
@@ -435,11 +447,15 @@ x<sup>super</sup>
 <h2 id="action"><a href="#action">Action</a> <a href="#top" class="fit icon-up"></a></h2>
 
 	<div class="mar">
+		<p>
 		<a href="#top" class="dialog l" title="Go to top?">Confirm</a>
 		<a href="#(q)" class="dialog l" title="Go to ID" data-prompt="(q)" data-default="top">Prompt</a>
+		</p>
+		<p>
 		<a href="#toggle" class="toggle l">Toggle</a>
 		<a href="#modal" class="l">Modal</a>
 		<a href="#drawer" class="l">Drawer</a>
+		</p>
 		<p id="toggle" class="target bord pad">Target</p>
 		
 		<div id="modal" class="target modal"><div class="pad rad c">
@@ -451,8 +467,8 @@ x<sup>super</sup>
 			</details>
 			<details class="bg pad mar l">
 				<summary>More vertical</summary>
-				<p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p>
-				<p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p>
+				<p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p>
+				<p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p>
 			</details>
 			<!--p><a href="#cancel"><button class="icon-ok bg-y">Close</button></a></p-->
 			<p><a href="#cancel" class="pad inv rad icon-ok bg-y">Close</a></p>
@@ -466,7 +482,7 @@ x<sup>super</sup>
 	</div>
 	<nav class="mar bg">
 		<a href="#nav" class="target" data-resp="target, icon-menu pad hover toggle" title="Menu"></a>
-		<ul id="nav" class="row stack hover drop" data-resp="row -stack hover drop, target row stack hover drop">
+		<ul id="nav" class="row resp hover drop" data-resp="row -resp hover drop, target row resp hover drop">
 		<li><a href="#1" class="icon-grid">Menu</a>
 			<ul>
 			<li><a href="#1" class="icon-config">Config</a>
@@ -513,7 +529,7 @@ x<sup>super</sup>
 		<tr><th><b class="pop">.pad&nbsp;   <i class="inv r small bg-i">Padding</i></b><td>*<td>*<td>h-gap<td>line<td>*
 		<tr><th><b class="pop">.mid&nbsp;   <i class="inv r small bg-i">Centrify vertically</i></b><td>-<td>-<td>valign row, item<td>valign table, tr, td<td>-
 		<tr><th><b class="pop">.l&nbsp;     <i class="inv r small bg-i">Align</i></b><td>align<td>right margin<td>v-gap, align item<td>wide<td>*
-		<tr><th><b class="pop">.stack&nbsp;   <i class="inv r small bg-i">Responsive component</i></b><td>-<td>-<td>stack<td>stack<td class="text-n">stack
+		<tr><th><b class="pop">.resp&nbsp;   <i class="inv r small bg-i">Responsive component</i></b><td>-<td>-<td>stack<td>stack<td class="text-n">stack
 		<tr><th><b class="pop">.act&nbsp;   <i class="inv r small bg-i">Active link, input validation</i></b><td>-<td>color<td>-<td>-<td>validation
 		<tr><th><b class="pop">.hover&nbsp; <i class="inv r small bg-i">Shade on hover</i></b><td>*<td>*<td>ul a<td>tr<td>-
 	</table>

@@ -6,7 +6,7 @@
 - Menu `.grid.flow.roll > * + .push + .shift`
 - Row `.grid.fill > .span-X`
 - Grid `.grid.grid-X > * + .span-X`
-- `.grid.pX.gX.stack.shade`
+- `.grid.pX.gX.resp.shade`
 */
 
 .grid {display:flex;--gap:0em;--wid:100%;  list-style:none;padding:0;}
@@ -47,7 +47,7 @@
 .push + .shift {margin-left:0;}
 
 @media (max-width: 899px) {
-	.grid.stack {display:block;margin-left:0;}
-	.grid.stack > * {width:auto;margin-left:0;}
-	.grid.stack > * + * {margin-top:var(--gap);}
+	.grid.resp {display:block;margin-left:0;}
+	.grid.resp > * {width:auto;margin-left:0;}
+	.grid.resp > * + * {margin-top:var(--gap);}
 }

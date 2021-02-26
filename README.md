@@ -4,9 +4,10 @@ CSS micro framework.
 Ultra compact set of styles and behaviours for basic web pages.
 
 2.5 KB minified and gzipped.  
-7 KB with icons, dropdowns, advanced grid and JavaScript.
+7 KB with icons, dropdowns, advanced grid and some JavaScript.
 
 [Demo](https://vvvkor.github.io/granum/)
+[Docs](https://vvvkor.github.io/granum/docs.md)
 
 ## Usage
 
@@ -50,16 +51,17 @@ Ultra compact set of styles and behaviours for basic web pages.
 ## Components
 
 - typography
-- links
+- link
 - responsive grid
-- lists
-- tables
-- forms
-- buttons
+- list
+- table
+- form
+- button
 - navbar
 - modal
 - toggle
-- tags
+- tag
+- progress bar
 - colors
 - media object
 - full height
@@ -70,6 +72,7 @@ Ultra compact set of styles and behaviours for basic web pages.
   - popup
   - tooltip
 - with `granum-grid.css`
+  - advanced grid
   - cell widths: auto, fractional, regular
   - gaps and padding
   - responsive
@@ -78,8 +81,9 @@ Ultra compact set of styles and behaviours for basic web pages.
 - with `granum.js`
   - confirm
   - prompt 
-  - toggle class
+  - toggle class (with link or input)
   - responsive class
+  - custom responsive breakpoints
   - populate inputs from URL
   - align table columns
   - check group of checkboxes
@@ -88,12 +92,12 @@ Ultra compact set of styles and behaviours for basic web pages.
 
 ## CSS classes
 
-- `.row` `.col-X` `.stack`
+- `.row` `.col-X` `.resp`
 - `.fit` `.mar` `.pad` `.bord` `.rad` `.shade`
 - `.bg` `.bg-X` `.back` `.text-X` `.hover` `.act`
-- `.l` `.r` `.c` `.center` `.wrap` `.roll` `.stick`
-- `.hi` `.mid` 
-- `.serif` `.sans` `.small` `.nobr` `.inv` `.tag`
+- `.l` `.r` `.c` `.center` `.wrap` `.hi` `.mid` 
+- `.roll` `.stick` `.tag` `.bar`
+- `.serif` `.sans` `.mono` `.small` `.nobr` `.inv`
 - `.target` `.hide` `.show` `.modal` `.drawer` `.pop` `.drop`
 - `.icon-X`
 - `.grid` `.grid-X` `.flow` `.fill` `.pX` `.gX`
@@ -107,7 +111,7 @@ Ultra compact set of styles and behaviours for basic web pages.
 - `.lX` `.cX` `.rX`
 - `[data-group]`
 - `[data-get]`
-- `[data-resp]`
+- `body[data-break] [data-resp]`
 
 ## JavaScript editor hooks
 

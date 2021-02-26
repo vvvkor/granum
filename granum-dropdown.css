@@ -12,7 +12,7 @@
 
 /* mobile */
 @media (max-width: 899px) {
-	.drop.row.stack ul {left:4em;right:auto;top:80%;}
+	.drop.row.resp ul {left:4em;right:auto;top:80%;}
 }
 
 /* fine-tuning */
