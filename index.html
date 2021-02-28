@@ -8,9 +8,14 @@
     <link rel="stylesheet" href="granum-icons.css">
     <link rel="stylesheet" href="granum-dropdown.css">
     <link rel="stylesheet" href="granum-grid.css">
+    <link rel="stylesheet" href="granum-print.css">
     <script src="granum.js" defer></script>
     <script src="granum-edit.js" defer></script>
-    <script> document.addEventListener('granum', e => console.log('granum ready', e), false) </script>
+    <script>
+			document.addEventListener('granum', e => console.log('granum ready', e), false)
+			window.addEventListener('resize', e => wid.textContent = window.innerWidth + 'px', false) // with scrollbar
+			// window.addEventListener('resize', e => wid.textContent = document.documentElement.clientWidth + 'px', false) // without scrollbar
+		</script>
   </head>
   <body id="top" data-break-x="500,400,300,200">
 
@@ -66,11 +71,9 @@
 </p>
 
 <p>
-<a href="https://github.com/vvvkor/granum" class="inv pad rad hover">GitHub</a>
+<a href="https://github.com/vvvkor/granum/blob/master/docs.md" class="inv pad rad hover">Docs</a>
+<a href="https://github.com/vvvkor/granum" class="inv pad rad hover bg-n">GitHub</a>
 <a href="https://unpkg.com/granum" class="act pad rad bord hover">CDN</a>
-</p>
-<p>
-<a href="https://github.com/vvvkor/granum/blob/master/docs.md">Documentation</a>
 </p>
 
 </div>
@@ -81,7 +84,7 @@
 Text
 <a href="#top">Link</a>
 <a>No-link</a>
-<code>Code</code>
+<code>Code <span id="wid" class="text-y" title="window.innerWidth"></span></code>
 <kbd>Kbd</kbd>
 <q>Quote</q>
 <small>Small</small>
@@ -130,34 +133,34 @@ x<sup>super</sup>
 
 <!--h2 id="list"><a href="#list">List</a> <a href="#top" class="fit icon-up"></a></h2-->
 
-<div class="row resp" data-resp="row, row, row resp">
+<div class="row pad -resp">
 
 <ul>
-<li>One
-<li>Two
+<li>Unordered
+<li>List
 	<ul>
-	<li>Uno
-	<li>Dos
+	<li>Sub
+	<li>Item
 	</ul>
-<li>Three
+<li>Last
 </ul>
 
 <ol>
-<li>One
-<li>Two
+<li>Ordered
+<li>List
 	<ol>
-	<li>Uno
-	<li>Dos
+	<li>Sub
+	<li>Item
 	</ol>
-<li>Three
+<li>Final
 </ol>
 
 <dl>
-	<dt>Term 1
-	<dd>Definition 1
-	<dt>Term 2
-	<dd>Definition 2.1
-	<dd>Definition 2.2
+	<dt>Term
+		<dd>Definition
+	<dt>Word
+		<dd>Description
+		<dd>Explanation
 </dl>
 
 </div>
@@ -165,7 +168,7 @@ x<sup>super</sup>
 <h2 id="table"><a href="#table">Table</a> <a href="#top" class="fit icon-up"></a></h2>
 
 <div class="roll">
-<table class="c3 r5 hover -bord -center -mid pad l nobr">
+<table class="c3 r5 hover -bord -center -mid pad l nobr -roll">
 	<thead>
 		<tr><th width="5%"><input type="checkbox" data-check=".box">
 			<th>Name<th>Tag<th>Icon<th>Value
@@ -203,7 +206,7 @@ x<sup>super</sup>
 			<td>100<div class="bar text-e" style="--v:100"></div>
 	</tbody>
 	<tfoot class="bg">
-		<tr><td>&Sigma;<td><td><td><td>167
+		<tr><td>&Sigma;<td><td><td><td>309
 	</tfoot>
 </table>
 </div>
@@ -218,7 +221,7 @@ x<sup>super</sup>
 </ul>
 
 <div class="row resp pad mar -mid l">
-	<div class="col-0 bg-e pad">Auto</div>
+	<div class="col-0 bg-e pad -stick">Auto</div>
 	<div class="col-1 bg-w pad">One</div>
 	<div class="col-2 bg-y pad mid"><div>Two <i>middle</i></div></div>
 	<div class="col-3 bg-n pad">Three<br>text<br>text</div>
@@ -264,7 +267,12 @@ x<sup>super</sup>
 <div class="bg small">
 <div id="wrp">
 <div id="grd" class="grid p1 g1 resp flow -roll">
-	<div class="back bord shade pad">A</div>
+	<div id="item" class="back bord shade pad">
+		<div class="nobr">
+		<label><input type="radio" name="item-span" data-get data-nodes="#item" value="back bord shade pad" checked> def</label><br>
+		<label><input type="radio" name="item-span" data-get data-nodes="#item" value="back bord shade pad stick"> stick</label><br>
+		</div>
+	</div>
 	<div id="cell" class="back bord shade pad">
 		<div class="nobr">
 		<label><input type="radio" name="cell-span" data-get data-nodes="#cell" value="back bord shade pad" checked> def</label><br>
@@ -301,8 +309,14 @@ x<sup>super</sup>
 
 
 <h2 id="form"><a href="#form">Form</a> <a href="#top" class="fit icon-up"></a></h2>
-	
-<form action="#pform" id="pform" class="fit bg pad" data-get>
+
+<form action="?#searcher" method="get" class="bg pad mar">
+	<input id="searcher" type="search" name="q" size="6" accesskey="4" data-get placeholder="Search">
+	<button class="icon-find"></button>
+	<i class="text-n"> &nbsp; This is inline form</i>
+</form>
+
+<form action="#pform" id="pform" class="fit bg pad mar" data-get>
 <p>
 	<label for="name">Name</label><br>
 	<input id="name" name="name" type="text" required placeholder="Name">
@@ -310,24 +324,28 @@ x<sup>super</sup>
 	<span class="act text-y">OK</span>
 </p>
 <p>
-	<label for="sel">Select</label><br>
-	<select id="sel" name="sel" required>
-		<option value="">None</option>
-		<option value="sun">Sun</option>
-		<option value="moon">Moon</option>
-	</select>
+	<label for="box">
+		<input id="box" name="box" type="checkbox" required value="1">
+		<span>Box</span>
+	</label>
 </p>
+
+<details>
+<summary>Input types</summary>
+
 <fieldset class="rad mar">
 	<legend>Fieldset</legend>
 	<p>
-		<label for="dt">Datetime</label><br>
-		<input id="dt" name="dt" type="datetime-local">
+		<label for="sel">Select</label><br>
+		<select id="sel" name="sel" required>
+			<option value="">None</option>
+			<option value="sun">Sun</option>
+			<option value="moon">Moon</option>
+		</select>
 	</p>
 	<p>
-		<label for="box">
-			<input id="box" name="box" type="checkbox" required value="1">
-			<span>Box</span>
-		</label>
+		<label for="dt">Datetime</label><br>
+		<input id="dt" name="dt" type="datetime-local">
 	</p>
 	<p>
 		Radio
@@ -345,6 +363,7 @@ x<sup>super</sup>
 		<textarea name="message" id="message" rows="5">Text</textarea>
 	</p>
 </fieldset>
+</details>
 
 <details>
 <summary>Editor</summary>
@@ -394,6 +413,7 @@ x<sup>super</sup>
 	<button class="icon-info bg-i">Info</button>
 	<button class="icon-file bg-n">Note</button>
 </p>
+<i class="text-n">This form uses <code>p</code></i>
 </form>
 
 <form class="pad fit bg mar" id="dform" action="#dform">
@@ -407,7 +427,7 @@ x<sup>super</sup>
 </div>
 <div class="row mar pad resp">
 	<div></div>
-	<div class="col-3"><input type="submit" value="Submit"></div>
+	<div class="col-3"><input type="submit" value="Send"> <i class="pad text-n">This form uses <code>.grid</code></i></div>
 </div>
 </form>
 
@@ -424,7 +444,7 @@ x<sup>super</sup>
 	<td><label><input type="checkbox" name="agree" value="1"> Agree</label>
 <tr>
 	<td>
-	<td><input type="submit" value="Submit">
+	<td><input type="submit" value="Save"> <span class="pad text-n">This form uses <code>table</code></span>
 </table>
 </form>
 
@@ -521,6 +541,13 @@ x<sup>super</sup>
 			</ul>
 		</ul>
 	</nav>
+	
+	<p>
+		Width:
+		<a data-resp="text-n,text-n,tag inv rad bg-w">small</a>
+		<a data-resp="text-n,tag inv rad bg-y,text-n">medium</a>
+		<a data-resp="tag inv rad bg-i,text-n,text-n">large</a>
+	</p>
 	
 	<p>
 	<a href="#test1" class="toggle hover pad rad" data-set="bg-w">Test1 bg</a>

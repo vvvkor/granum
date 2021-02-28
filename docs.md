@@ -1,9 +1,12 @@
-**Granum**  
-*CSS micro framework*  
-[GitHub](https://github.com/vvvkor/granum/) · [Demo](https://vvvkor.github.io/granum/)
-
-
 # Documentation
+
+**Granum** is a CSS micro framework
+that supports grids, tables, forms, buttons,
+show/hide, modals, dropdowns, popups, drawers,
+icons, status colors, and even more.
+Typography and styling is minimal and unobtrusive.
+
+[GitHub](https://github.com/vvvkor/granum/) · [Demo](https://vvvkor.github.io/granum/)
 
 ## Grid
 
@@ -23,6 +26,7 @@
 - `.row > .mid` - center cell vertically
 - `.row > .col-0` - auto cell width
 - `.row > .col-1`, `> .col-2`, `> .col-3` - cell width grow factor
+- `.row > .stick` - sticky cell
 
 
 ### Advanced grid `.grid` *(requires [granum-grid.css](granum-grid.css))*
@@ -37,6 +41,13 @@
 - `.grid > .shift` - shift this item to the right
 - `.grid > .span-0` - auto cell width
 - `.grid > .span-1`, `> .span-2`, `> .span-3`, `> .span-4` - cell width grow factor
+- `.grid > .stick` - sticky cell
+
+#### Examples
+
+- `.grid.roll > * + .push + *` - horizontal menu with some items pushed to the right, scroll on overflow
+- `.grid.fill > .span-1 + .span-3` - row with 2 cells having widths 1/4 and 3/4
+- `.grid.grid-3 > *` - regular grid with 3 columns, auto-wrapping
 
 
 ## Table
@@ -73,8 +84,10 @@
 
 ## Components
 
-- `.target:target` - toggle visibility *(enhanced with [granum.js](granum.js) `.toggle`)*
-- `.modal.target:target` - modal dialog *(enhanced with [granum.js](granum.js))*
+- `.target:target` - toggle visibility
+  - `a.toggle` - multiple, nested, link state, no scroll *(requires [granum.js](granum.js))*
+- `.modal.target:target > div` - modal dialog
+  - close by `Escape` key *(requires [granum.js](granum.js))*
 - `.drawer:target` - drawer sliding from left (`.l` from right)
 - `.stick` - stick element to top
 - `.roll` - horizontal scroll

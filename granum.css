@@ -10,7 +10,7 @@ table {border-collapse:collapse;border-spacing:0}
 td, th {padding:0;text-align:left}
 * {box-sizing:content-box;}
 table, img, embed, iframe, object, audio, video, button, input, select, textarea,
-	.wrap, .row, .modal>div, .drawer {box-sizing:border-box;}
+	.wrap, .row, .modal>div, .drawer, .stick {box-sizing:border-box;}
 	
 /* font */
 html {font-size:120%;}
@@ -32,7 +32,7 @@ pre code {font-size:100%;}
 
 /* typography */
 .fit {margin:0;padding:0;border:none;border-radius:0;font-size:1rem;font-weight:normal;}
-	main, img.fit {display:block;}
+	main, img.fit /*, table.roll*/ {display:block;}
 .mar, ul, ol , dl, blockquote, pre, hr, p, figure {margin:1em 0;}
 	.fit p, .fit .mar {margin:.5em 0;}
 .pad, ul.row li>:not(ul), fieldset, blockquote, pre {padding:.5em 1em;}
@@ -76,7 +76,7 @@ table.l {width:100%;}
 table.mid tr>*, tr>.mid, tr.mid>* {vertical-align:middle;}
 /* full borders */
 table.bord>*>tr>* {border:thin solid rgba(0,0,0,.16);}
-.roll>table.bord {border:medium solid rgba(0,0,0,.16);}
+/* .roll>table.bord {border:medium solid rgba(0,0,0,.16);} */
 /* horizontal borders */
 table.pad {padding:0;}
 table.pad>*>tr>* {border-bottom:thin solid rgba(0,0,0,.16);}
@@ -160,14 +160,17 @@ a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tr:hover
 /* modifiers */
 .target, :target {scroll-margin-top:3rem;}
 .target:not(:target):not(.show), .hide {display:none;}
-.wrap {max-width:40em;}
-.stick {position:sticky;top:0;z-index:3;}
-.hi {min-height:40em;min-height:100vh;}
 .nobr {white-space:nowrap;}
 .center {margin-left:auto;margin-right:auto;}
 .l {text-align:left;}
 .c, .tag {text-align:center;}
 .r {text-align:right;}
+
+@media screen {
+	.wrap {max-width:40em;}
+	.stick {position:sticky;top:0;z-index:3;align-self:start;max-height:100vh;overflow:auto;}
+	.hi {min-height:40em;min-height:100vh;}
+}
 
 /* non-flex fallback */
 .row>*, ul.row a {display:inline-block;vertical-align:top;}

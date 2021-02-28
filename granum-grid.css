@@ -1,14 +1,5 @@
 /*! granum-grid.css v1.2.4 */
 
-/*
-# Usage
-
-- Menu `.grid.flow.roll > * + .push + .shift`
-- Row `.grid.fill > .span-X`
-- Grid `.grid.grid-X > * + .span-X`
-- `.grid.pX.gX.resp.shade`
-*/
-
 .grid {display:flex;--gap:0em;--wid:100%;  list-style:none;padding:0;}
 .grid.flow, [class*="grid-"] {flex-wrap:wrap;}
 /* .grid.roll {overflow-x:auto;} */
