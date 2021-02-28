@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="granum-icons.css">
     <link rel="stylesheet" href="granum-dropdown.css">
     <link rel="stylesheet" href="granum-grid.css">
-    <link rel="stylesheet" href="granum-print.css">
+    <!--link rel="stylesheet" href="granum-print.css"-->
     <script src="granum.js" defer></script>
     <script src="granum-edit.js" defer></script>
     <script>
@@ -136,7 +136,7 @@ x<sup>super</sup>
 <div class="row pad -resp">
 
 <ul>
-<li>Unordered
+<li>Basic
 <li>List
 	<ul>
 	<li>Sub
@@ -159,8 +159,8 @@ x<sup>super</sup>
 	<dt>Term
 		<dd>Definition
 	<dt>Word
-		<dd>Description
-		<dd>Explanation
+		<dd>Describe
+		<dd>Explain
 </dl>
 
 </div>
@@ -192,12 +192,12 @@ x<sup>super</sup>
 		<tr><td><input type="checkbox" class="box" name="box[]" value="4">
 			<td class="bg-y">Success
 			<td class="mid"><b class="tag inv rad small bg-y">3</b>
-			<td><a href="#top" class="icon-ok text-y">Success</a>
+			<td><a href="#top" class="icon-ok text-y">OK</a>
 			<td>50<div class="bar text-y" style="--v:50"></div>
 		<tr><td><input type="checkbox" class="box" name="box[]" value="5">
 			<td class="bg-w">Warning
 			<td><b class="tag inv rad small bg-w">4</b>
-			<td><a href="#top" class="icon-warning text-w">Warning</a>
+			<td><a href="#top" class="icon-warning text-w">Warn</a>
 			<td>75<div class="bar text-w" style="--v:75"></div>
 		<tr class="mid"><td><input type="checkbox" class="box" name="box[]" value="6">
 			<td class="bg-e">Error<br>line
@@ -544,9 +544,9 @@ x<sup>super</sup>
 	
 	<p>
 		Width:
-		<a data-resp="text-n,text-n,tag inv rad bg-w">small</a>
-		<a data-resp="text-n,tag inv rad bg-y,text-n">medium</a>
-		<a data-resp="tag inv rad bg-i,text-n,text-n">large</a>
+		<a data-resp="tag rad bg-n text-n, tag rad bg-n text-n, tag inv rad bg-w">small</a>
+		<a data-resp="tag rad bg-n text-n, tag inv rad bg-y, tag rad bg-n text-n">medium</a>
+		<a data-resp="tag inv rad bg-i, tag rad bg-n text-n, tag rad bg-n text-n">large</a>
 	</p>
 	
 	<p>
