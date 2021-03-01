@@ -13,31 +13,33 @@
     <script src="granum-edit.js" defer></script>
     <script>
 			document.addEventListener('granum', e => console.log('granum ready', e), false)
-			window.addEventListener('resize', e => wid.textContent = window.innerWidth + 'px', false) // with scrollbar
-			// window.addEventListener('resize', e => wid.textContent = document.documentElement.clientWidth + 'px', false) // without scrollbar
+			window.addEventListener('resize', e => info.textContent = window.innerWidth + ' px', false) // with scrollbar
+			// window.addEventListener('resize', e => info.textContent = document.documentElement.clientWidth + 'px', false) // without scrollbar
 		</script>
   </head>
   <body id="top" data-break-x="500,400,300,200">
 
-		<nav data-resp="stick back shade,bg,bg-w">
+	<div id="topbar" class="target show stick">
+		<nav data-resp="stick back shade,bg-n,bg-w">
 		<a href="#menu" class="target" data-resp="target, icon-menu pad hover toggle" title="Menu"></a>
 		<ul id="menu" class="row bg hover" data-resp="row -drop -bg hover, row resp target hover">
-			<li><a href="?" class="act"><b>Granum</b></a>
+			<li class="l"><a href="?" class="act"><b>Granum</b></a>
 			<li><a href="#typo">Basics</a><!--ul><li><a>Sub</a></ul-->
 			<!--li><a href="#list">List</a-->
 			<li><a href="#table">Table</a>
 			<li><a href="#grid">Grid</a>
 			<li><a href="#form">Form</a>
+			<li><a href="#action">Interactive</a>
 			<li><a href="#icon">Icon</a>
-			<li class="r"><a href="#action">Action</a>
-			<li><a href="#mod">Mods</a>
-			<li class="mid">
+			<!--li><a href="#mod">Mods</a-->
+			<!--li class="mid">
 				<form action="?#search" method="get">
 					<input id="search" type="search" name="q" size="6" accesskey="4" data-get placeholder="Search">
 					<button class="icon-find bg-n"></button>
-				</form>
+				</form-->
 		</ul>
 		</nav>
+	</div>
 
 		<!--a href="#drawer" class="icon-right pad" title="Drawer"></a-->
 		<div id="drawer" class="drawer -target back pad bord shade">
@@ -63,7 +65,15 @@
 <p><b>CSS micro framework.</b></p>
 <p><i>Ultra compact set of styles and behaviours for basic web pages.</i></p>
 
-<p class="text-n">v1.2.4</p>
+<!--
+**Granum** is a CSS micro framework
+that supports grids, tables, forms, buttons,
+toggle, modals, dropdowns, popups, drawers,
+icons, status colors, and even more.
+Typography and styling is minimal and unobtrusive.
+-->
+
+<p class="text-n">v1.2.5</p>
 
 <p>
 <b>2.5 KB</b> minified and gzipped.<br>
@@ -78,13 +88,61 @@
 
 </div>
 
+<div class="mar pad"></div>
+<div class="grid grid-3 resp g1" data-resp="grid grid-3 g2, grid grid-2 g2, grid grid-1 g1">
+	<div class="shade">
+		<div class="bg -pad h1 c icon-edit"></div>
+		<div class="pad">
+			<h3 class="mar"><a href="#typo">Typography</a></h3>
+			<p>Text, blocks, lists, colors, tags, bars, modifiers. Minimal styling.</p>
+		</div>
+	</div>
+	<div class="shade">
+		<div class="bg h1 c icon-menu"></div>
+		<div class="pad">
+			<h3 class="mar"><a href="#table">Tables</a></h3>
+			<p>Borders, width, alignment, scrollable, responsive.</p>
+		</div>
+	</div>
+	<div class="shade">
+		<div class="bg h1 c icon-grid"></div>
+		<div class="pad">
+			<h3 class="mar"><a href="#grid">Grids</a></h3>
+			<p>Responsive, regular or fractional grids. Cell widths, gaps, wrapping.</p>
+		</div>
+	</div>
+	<div class="shade">
+		<div class="bg h1 c icon-mail"></div>
+		<div class="pad">
+			<h3 class="mar"><a href="#form">Forms</a></h3>
+			<p>Inline, stacked, aligned, responsive forms. Inputs, buttons, validation.</p>
+		</div>
+	</div>
+	<div class="shade">
+		<div class="bg h1 c icon-ok -inv"></div>
+		<div class="pad">
+			<h3 class="mar"><a href="#action">Interactive</a></h3>
+			<p>Toggle, modal, dropdown, popup, tooltip, drawer, topbar, responsive class.</p>
+		</div>
+	</div>
+	<div class="shade">
+		<div class="bg h1 c icon-pin"></div>
+		<div class="pad">
+			<h3 class="mar"><a href="#icon">Icons</a></h3>
+			<p>24 general purpose simple SVG icons.</p>
+		</div>
+	</div>
+</div>
+
+<div class="mar pad h1"></div>
+
 <h2 id="typo"><a href="#typo">Typography</a> <a href="#top" class="fit icon-up"></a></h2>
 
 <p>
 Text
 <a href="#top">Link</a>
 <a>No-link</a>
-<code>Code <span id="wid" class="text-y" title="window.innerWidth"></span></code>
+<code>Code</code>
 <kbd>Kbd</kbd>
 <q>Quote</q>
 <small>Small</small>
@@ -92,16 +150,70 @@ Text
 <abbr title="Abbreviation">Abbr</abbr>
 x<sub>sub</sub>
 x<sup>super</sup>
+<b class="tag inv bg-e rad small sans">TAG</b>
 </p>
 
 <hr>
 <blockquote>Block quote</blockquote>
 <pre>Preformatted text
-<code>And code</code></pre>
+<code>Code: window.innerWidth = <var id="info" class="text-y" title="window.innerWidth"></var></code></pre>
+<div class="mar">
+	<div class="-r sans">Bar: 80%</div>
+	<div class="bar text-y" style="--v:80"></div>
+</div>
 <!--img class="fit" alt="Grey" src="https://picsum.photos/id/1021/400/200.jpg"-->
 
 <details>
-<summary>Inverted</summary>
+<summary>Heading</summary>
+<div class="pad bg">
+	<h1>Heading 1</h1>Some text.
+	<h2>Heading 2</h2>Some text.
+	<h3>Heading 3</h3>Some text.
+	<h4>Heading 4</h4>Some text.
+	<h5>Heading 5</h5>Some text.
+	<h6>Heading 6</h6>Some text.
+</div>
+</details>
+
+<details>
+<summary>Font</summary>
+<div class="pad bg">
+	<span>Regular</span>
+	<span class="sans">Sans-serif</span>
+	<span class="serif">Serif</span>
+	<span class="mono">Mono</span>
+	<span class="small">Small</span>
+	<span class="h3">Larger</span>
+	<span class="h2">Large</span>
+	<span class="h1">Largest</span>
+</div>
+</details>
+
+<details>
+<summary>Color</summary>
+<div class="pad bord">
+	<span class="text-e">Error</span>
+	<span class="text-w">Warning</span>
+	<span class="text-y">Success</span>
+	<span class="text-i">Info</span>
+	<span class="text-n">Note</span>
+	<br>
+	<span class="bg-e">Error</span>
+	<span class="bg-w">Warning</span>
+	<span class="bg-y">Success</span>
+	<span class="bg-i">Info</span>
+	<span class="bg-n">Note</span>
+	<br>
+	<span class="inv bg-e">Error</span>
+	<span class="inv bg-w">Warning</span>
+	<span class="inv bg-y">Success</span>
+	<span class="inv bg-i">Info</span>
+	<span class="inv bg-n">Note</span>
+</div>
+</details>
+
+<details>
+<summary>Invert</summary>
 <p class="pad bord">
 	Text
 	<a href="#top">Link</a>
@@ -129,9 +241,26 @@ x<sup>super</sup>
 </p>
 </details>
 
-<hr>
+<details>
+<summary>Modifiers</summary>
+	<div class="roll">
+	<table class="bord hover bg l">
+		<!--caption>Common modifiers</caption-->
+		<tr class="bg"><th>Class<th>div<th>a<th>.row<th>table<th>form
+		<tr><th><b class="pop">.fit&nbsp;   <i class="inv r small bg-i">No (margin, padding, border, radius),<br> 1rem, smaller inner margins</i></b><td>*<td>*<td>*<td>dense<td>*
+		<tr><th><b class="pop">.mar&nbsp;   <i class="inv r small bg-i">Margin</i></b><td>*<td>*<td>*<td>*<td>*
+		<tr><th><b class="pop">.bord&nbsp;  <i class="inv r small bg-i">Border</i></b><td>*<td>*<td>*<td>*<td>*
+		<tr><th><b class="pop">.pad&nbsp;   <i class="inv r small bg-i">Padding</i></b><td>*<td>*<td>h-gap<td>line<td>*
+		<tr><th><b class="pop">.mid&nbsp;   <i class="inv r small bg-i">Centrify vertically</i></b><td>-<td>-<td>valign row, item<td>valign table, tr, td<td>-
+		<tr><th><b class="pop">.l&nbsp;     <i class="inv r small bg-i">Align</i></b><td>align<td>right margin<td>v-gap, align item<td>wide<td>*
+		<tr><th><b class="pop">.resp&nbsp;   <i class="inv r small bg-i">Responsive component</i></b><td>-<td>-<td>stack<td>stack<td class="text-n">stack
+		<tr><th><b class="pop">.act&nbsp;   <i class="inv r small bg-i">Active link, input validation</i></b><td>-<td>color<td>-<td>-<td>validation
+		<tr><th><b class="pop">.hover&nbsp; <i class="inv r small bg-i">Shade on hover</i></b><td>*<td>*<td>ul a<td>tr<td>-
+	</table>
+	</div>
+</details>
 
-<!--h2 id="list"><a href="#list">List</a> <a href="#top" class="fit icon-up"></a></h2-->
+<h3 id="list"><a href="#list">Lists</a> <a href="#top" class="fit icon-up"></a></h2>
 
 <div class="row pad -resp">
 
@@ -164,6 +293,10 @@ x<sup>super</sup>
 </dl>
 
 </div>
+
+
+
+
 
 <h2 id="table"><a href="#table">Table</a> <a href="#top" class="fit icon-up"></a></h2>
 
@@ -448,37 +581,8 @@ x<sup>super</sup>
 </table>
 </form>
 
-<h2 id="icon"><a href="#icon">Icon</a> <a href="#top" class="fit icon-up"></a></h2>
 
-<ul class="row hover">
-	<li><a class="icon-menu">menu</a>
-	<li><a class="icon-grid">grid</a>
-	<li><a class="icon-find">find</a>
-	<li><a class="icon-config">config</a>
-	<li><a class="icon-user">user</a>
-	<li><a class="icon-edit">edit</a>
-	<li><a class="icon-add">add</a>
-	<li><a class="icon-delete">delete</a>
-	<!--li><a class="icon-close">close</a-->
-	<li><a class="icon-ok">ok</a>
-	<li><a class="icon-refresh">refresh</a>
-	<li><a class="icon-up">up</a>
-	<li><a class="icon-down">down</a>
-	<li><a class="icon-left">left</a>
-	<li><a class="icon-right">right</a>
-	<li><a class="icon-folder">folder</a>
-	<li><a class="icon-file">file</a>
-	<li><a class="icon-image">image</a>
-	<li><a class="icon-chart">chart</a>
-	<li><a class="icon-warning">warning</a>
-	<li><a class="icon-info">info</a>
-	<li><a class="icon-share">share</a>
-	<li><a class="icon-pin">pin</a>
-	<li><a class="icon-time">time</a>
-	<li><a class="icon-mail">mail</a>
-</ul>
-
-<h2 id="action"><a href="#action">Action</a> <a href="#top" class="fit icon-up"></a></h2>
+<h2 id="action"><a href="#action">Interactive</a> <a href="#top" class="fit icon-up"></a></h2>
 
 	<div class="mar">
 		<p>
@@ -489,6 +593,7 @@ x<sup>super</sup>
 		<a href="#toggle" class="toggle l">Toggle</a>
 		<a href="#modal" class="l">Modal</a>
 		<a href="#drawer" class="l">Drawer</a>
+		<a href="#topbar" class="toggle" x-data-act="act bg-w">Topbar</a>
 		</p>
 		<p id="toggle" class="target bord pad">Target</p>
 		
@@ -528,7 +633,7 @@ x<sup>super</sup>
 			<li><a href="#3" class="icon-edit">Edit</a>
 			</ul>
 		<li><a href="#2" class="icon-user">Profile <small class="tag inv -rad bg-w sans">NEW</small></a>
-		<li class="r"><form><input name="q" type="search" size="5" class="rad" placeholder="Find" data-get></form>
+		<li class="r"><form action="?#find"><input id="find" name="q" type="search" size="5" class="rad" placeholder="Find" data-get> <button class="icon-find bg-n"></button></form>
 		<li><a href="#3" class="icon-info">Info</a>
 			<ul>
 			<li><a href="#1" class="icon-chart">Stats</a>
@@ -558,26 +663,40 @@ x<sup>super</sup>
 	<span id="test1" class="test pad bg rad bg-w">TEST1</span>
 	<span id="test2" class="test pad bg rad">TEST2</span>
 	</p>
-	
-<h2 id="mod"><a href="#mod">Modifiers</a> <a href="#top" class="fit icon-up"></a></h2>
-	
-	<div class="roll mar">
-	<table class="bord hover">
-		<tr class="bg"><th>Class<th>div<th>a<th>.row<th>table<th>form
-		<tr><th><b class="pop">.fit&nbsp;   <i class="inv r small bg-i">No (margin, padding, border, radius),<br> 1rem, smaller inner margins</i></b><td>*<td>*<td>*<td>dense<td>*
-		<tr><th><b class="pop">.mar&nbsp;   <i class="inv r small bg-i">Margin</i></b><td>*<td>*<td>*<td>*<td>*
-		<tr><th><b class="pop">.bord&nbsp;  <i class="inv r small bg-i">Border</i></b><td>*<td>*<td>*<td>*<td>*
-		<tr><th><b class="pop">.pad&nbsp;   <i class="inv r small bg-i">Padding</i></b><td>*<td>*<td>h-gap<td>line<td>*
-		<tr><th><b class="pop">.mid&nbsp;   <i class="inv r small bg-i">Centrify vertically</i></b><td>-<td>-<td>valign row, item<td>valign table, tr, td<td>-
-		<tr><th><b class="pop">.l&nbsp;     <i class="inv r small bg-i">Align</i></b><td>align<td>right margin<td>v-gap, align item<td>wide<td>*
-		<tr><th><b class="pop">.resp&nbsp;   <i class="inv r small bg-i">Responsive component</i></b><td>-<td>-<td>stack<td>stack<td class="text-n">stack
-		<tr><th><b class="pop">.act&nbsp;   <i class="inv r small bg-i">Active link, input validation</i></b><td>-<td>color<td>-<td>-<td>validation
-		<tr><th><b class="pop">.hover&nbsp; <i class="inv r small bg-i">Shade on hover</i></b><td>*<td>*<td>ul a<td>tr<td>-
-	</table>
-	</div>
+
+
+<h2 id="icon"><a href="#icon">Icon</a> <a href="#top" class="fit icon-up"></a></h2>
+
+<ul class="row hover">
+	<li><a class="icon-menu">menu</a>
+	<li><a class="icon-grid">grid</a>
+	<li><a class="icon-find">find</a>
+	<li><a class="icon-config">config</a>
+	<li><a class="icon-user">user</a>
+	<li><a class="icon-edit">edit</a>
+	<li><a class="icon-add">add</a>
+	<li><a class="icon-delete">delete</a>
+	<!--li><a class="icon-close">close</a-->
+	<li><a class="icon-ok">ok</a>
+	<li><a class="icon-refresh">refresh</a>
+	<li><a class="icon-up">up</a>
+	<li><a class="icon-down">down</a>
+	<li><a class="icon-left">left</a>
+	<li><a class="icon-right">right</a>
+	<li><a class="icon-folder">folder</a>
+	<li><a class="icon-file">file</a>
+	<li><a class="icon-image">image</a>
+	<li><a class="icon-chart">chart</a>
+	<li><a class="icon-warning">warning</a>
+	<li><a class="icon-info">info</a>
+	<li><a class="icon-share">share</a>
+	<li><a class="icon-pin">pin</a>
+	<li><a class="icon-time">time</a>
+	<li><a class="icon-mail">mail</a>
+</ul>
 	
 </main>
-
+<hr>
 		<footer class="pad c">
 			<a href="https://github.com/vvvkor">vadimkor</a> 2021
 			<p>
