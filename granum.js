@@ -1,4 +1,4 @@
-/*! granum.js v1.2.5 */
+/*! granum.js v1.2.6 */
 
 (_ => {
 
@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', e => {
     n.type != 'radio' || n.checked ? n.dispatchEvent(new Event('input', {bubbles: true})) : null
   )
   document.body.dataset.ready = ''
+  document.querySelectorAll('.tabs :first-child a[href^="#"]').forEach(n => n.click())
   
   // align table cells
   document.querySelectorAll('table').forEach(n => {
@@ -64,6 +65,8 @@ document.addEventListener('click', e => {
   // toggle
   if (a && a.classList.contains('toggle')) {
     e.preventDefault()
+    const t = a.closest('.tabs')
+    if (t) t.querySelectorAll('a[href^="#"].act').forEach(n => n == a ? null : n.click())
     const s = a.dataset
     const m = document.querySelectorAll(s.nodes || a.hash)
     const c = (s.set || 'show').split(/\s+/)
@@ -95,12 +98,12 @@ document.addEventListener('input', e => {
     )
 })
 
-// close modals
 document.addEventListener('keydown', e => {
+  // close modals
   if (e.key == 'Escape') location.hash = '#cancel'
 })
 
-// resize window
+// responsive class
 window.addEventListener('resize', e => {
   const b = document.body
   const w = (b.dataset.break || '900,500').split(',')

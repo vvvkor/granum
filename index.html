@@ -19,11 +19,10 @@
   </head>
   <body id="top" data-break-x="500,400,300,200">
 
-	<div id="topbar" class="target show stick">
-		<nav data-resp="stick back shade,bg-n,bg-w">
+	<nav id="topbar" class="back" data-resp="target show stick back shade, target show bg-n, target show bg-w">
 		<a href="#menu" class="target" data-resp="target, icon-menu pad hover toggle" title="Menu"></a>
 		<ul id="menu" class="row bg hover" data-resp="row -drop -bg hover, row resp target hover">
-			<li class="l"><a href="?" class="act"><b>Granum</b></a>
+			<li data-resp="l"><a href="?" class="act"><b>Granum</b></a>
 			<li><a href="#typo">Basics</a><!--ul><li><a>Sub</a></ul-->
 			<!--li><a href="#list">List</a-->
 			<li><a href="#table">Table</a>
@@ -38,8 +37,7 @@
 					<button class="icon-find bg-n"></button>
 				</form-->
 		</ul>
-		</nav>
-	</div>
+	</nav>
 
 		<!--a href="#drawer" class="icon-right pad" title="Drawer"></a-->
 		<div id="drawer" class="drawer -target back pad bord shade">
@@ -73,7 +71,7 @@ icons, status colors, and even more.
 Typography and styling is minimal and unobtrusive.
 -->
 
-<p class="text-n">v1.2.5</p>
+<p class="text-n">v1.2.6</p>
 
 <p>
 <b>2.5 KB</b> minified and gzipped.<br>
@@ -89,7 +87,7 @@ Typography and styling is minimal and unobtrusive.
 </div>
 
 <div class="mar pad"></div>
-<div class="grid grid-3 resp g1" data-resp="grid grid-3 g2, grid grid-2 g2, grid grid-1 g1">
+<div class="grid grid-3 g2 resp" data-resp="grid grid-3 g2, grid grid-2 g2, grid grid-1 g1">
 	<div class="shade">
 		<div class="bg -pad h1 c icon-edit"></div>
 		<div class="pad">
@@ -663,6 +661,17 @@ x<sup>super</sup>
 	<span id="test1" class="test pad bg rad bg-w">TEST1</span>
 	<span id="test2" class="test pad bg rad">TEST2</span>
 	</p>
+
+	<ul class="row tabs hover">
+		<li><a href="#tab1" class="toggle" data-act="act bg" data-inact="text-n">Tab1</a>
+		<li><a href="#tab2" class="toggle" data-act="act bg" data-inact="text-n">Tab2</a>
+		<li><a href="#tab3" class="toggle" data-act="act bg" data-inact="text-n">Tab3</a>
+	</ul>
+	<div>
+	  <div id="tab2" class="target pad">Second tab</div>
+	  <div id="tab3" class="target pad">Third tab<br>line</div>
+	  <div id="tab1" class="target pad">First tab</div>
+	</div>
 
 
 <h2 id="icon"><a href="#icon">Icon</a> <a href="#top" class="fit icon-up"></a></h2>
