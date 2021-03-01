@@ -97,6 +97,7 @@ Typography and styling is minimal and unobtrusive.
 - `ul.row.drop` - dropdown nested menu *(requires [granum-dropdown.css](granum-dropdown.css))*
 - `.pop > div`, `.pop > div.l` - popup *(requires [granum-dropdown.css](granum-dropdown.css))*
 - `.pop > span.c`, `.pop > span.r` -  tooltip *(requires [granum-dropdown.css](granum-dropdown.css))*
+- `.ul.row.tabs + div > div:target + div` - tabs *(enhanced with [granum.js](granum.js))*
 
 
 ## Tools

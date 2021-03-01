@@ -59,6 +59,7 @@ Ultra compact set of styles and behaviours for basic web pages.
 - navbar
 - modal
 - toggle
+- tabs
 - tag
 - progress bar
 - colors
