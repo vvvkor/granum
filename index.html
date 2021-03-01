@@ -25,11 +25,11 @@
 			<li data-resp="l"><a href="?" class="act"><b>Granum</b></a>
 			<li><a href="#typo">Basics</a><!--ul><li><a>Sub</a></ul-->
 			<!--li><a href="#list">List</a-->
-			<li><a href="#table">Table</a>
-			<li><a href="#grid">Grid</a>
-			<li><a href="#form">Form</a>
+			<li><a href="#table">Tables</a>
+			<li><a href="#grid">Grids</a>
+			<li><a href="#form">Forms</a>
 			<li><a href="#action">Interactive</a>
-			<li><a href="#icon">Icon</a>
+			<li><a href="#icon">Icons</a>
 			<!--li><a href="#mod">Mods</a-->
 			<!--li class="mid">
 				<form action="?#search" method="get">
@@ -71,7 +71,7 @@ icons, status colors, and even more.
 Typography and styling is minimal and unobtrusive.
 -->
 
-<p class="text-n">v1.2.6</p>
+<p class="text-n">v1.2.7</p>
 
 <p>
 <b>2.5 KB</b> minified and gzipped.<br>
@@ -296,10 +296,19 @@ x<sup>super</sup>
 
 
 
-<h2 id="table"><a href="#table">Table</a> <a href="#top" class="fit icon-up"></a></h2>
+<h2 id="table"><a href="#table">Tables</a> <a href="#top" class="fit icon-up"></a></h2>
+
+<p>
+<select data-nodes="#tbl">
+	<option value="nobr c3 r5  pad hover l mid" selected>Lines, hover, wide, scroll overflow</option>
+	<option value="nobr c3 r5  bord center hover">Borders, center, hover, scroll overflow</option>
+	<option value="nobr c3 r5  fit mid">Dense, vertically center cells</option>
+	<option value="nobr c3 r5  bord resp center">Borders, center, responsive</option>
+</select>
+</p>
 
 <div class="roll">
-<table class="c3 r5 hover -bord -center -mid pad l nobr -roll">
+<table id="tbl" class="c3 r5 hover pad l nobr -roll">
 	<thead>
 		<tr><th width="5%"><input type="checkbox" data-check=".box">
 			<th>Name<th>Tag<th>Icon<th>Value
@@ -322,7 +331,7 @@ x<sup>super</sup>
 			<td>25<div class="bar text-i" style="--v:25"></div>
 		<tr><td><input type="checkbox" class="box" name="box[]" value="4">
 			<td class="bg-y">Success
-			<td class="mid"><b class="tag inv rad small bg-y">3</b>
+			<td class="-mid"><b class="tag inv rad small bg-y">3</b>
 			<td><a href="#top" class="icon-ok text-y">OK</a>
 			<td>50<div class="bar text-y" style="--v:50"></div>
 		<tr><td><input type="checkbox" class="box" name="box[]" value="5">
@@ -330,7 +339,7 @@ x<sup>super</sup>
 			<td><b class="tag inv rad small bg-w">4</b>
 			<td><a href="#top" class="icon-warning text-w">Warn</a>
 			<td>75<div class="bar text-w" style="--v:75"></div>
-		<tr class="mid"><td><input type="checkbox" class="box" name="box[]" value="6">
+		<tr class="-mid"><td><input type="checkbox" class="box" name="box[]" value="6">
 			<td class="bg-e">Error<br>line
 			<td><b class="tag inv rad small bg-e">555</b>
 			<td><a href="#top" class="icon-delete text-e">Error</a>
@@ -342,7 +351,7 @@ x<sup>super</sup>
 </table>
 </div>
 
-<h2 id="grid"><a href="#grid">Grid</a> <a href="#top" class="fit icon-up"></a></h2>
+<h2 id="grid"><a href="#grid">Grids</a> <a href="#top" class="fit icon-up"></a></h2>
 
 <ul class="row resp bg hover -mid">
 <li><a href="#1">First</a>
@@ -439,7 +448,7 @@ x<sup>super</sup>
 
 
 
-<h2 id="form"><a href="#form">Form</a> <a href="#top" class="fit icon-up"></a></h2>
+<h2 id="form"><a href="#form">Forms</a> <a href="#top" class="fit icon-up"></a></h2>
 
 <form action="?#searcher" method="get" class="bg pad mar">
 	<input id="searcher" type="search" name="q" size="6" accesskey="4" data-get placeholder="Search">
@@ -674,7 +683,7 @@ x<sup>super</sup>
 	</div>
 
 
-<h2 id="icon"><a href="#icon">Icon</a> <a href="#top" class="fit icon-up"></a></h2>
+<h2 id="icon"><a href="#icon">Icons</a> <a href="#top" class="fit icon-up"></a></h2>
 
 <ul class="row hover">
 	<li><a class="icon-menu">menu</a>

@@ -61,9 +61,9 @@ Typography and styling is minimal and unobtrusive.
 - `.bord` - borders around cells
 - `.fit` - no cell padding
 - `.mid` - center all cells vertically
-- `.lX`, `.cX`, `.rX` - align cells in column X to left, center, right *(requires [granum.js](granum.js))*
 - `tr.mid` - center row cells vertically
 - `tr > .mid` - center cell vertically
+- `.lX`, `.cX`, `.rX` - align cells in column X to left, center, right *(requires [granum.js](granum.js))*
 
 
 ## Form

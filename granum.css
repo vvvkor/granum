@@ -1,4 +1,4 @@
-/*! granum.css v1.2.6 */
+/*! granum.css v1.2.7 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -69,7 +69,7 @@ dt, dd {margin-bottom:.5em;}
 dd {padding-left:1em;}
 
 /* table */
-.roll {overflow-x:auto;}
+.roll {overflow:auto hidden;}
 th, td {padding:.2em .5em;vertical-align:top;background-clip:padding-box;}
 table.fit>*>tr>* {padding:0;}
 table.bord {border:none;}
