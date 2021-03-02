@@ -1,4 +1,4 @@
-/*! granum.js v1.2.9 */
+/*! granum.js v1.2.10 */
 
 (_ => {
 
@@ -67,7 +67,7 @@ document.addEventListener('click', e => {
   if (a && a.classList.contains('toggle')) {
     e.preventDefault()
     const t = a.closest('.tabs')
-    if (t) t.querySelectorAll('a[href^="#"].act').forEach(m => m == a ? null : m.click())
+    if (t) t.querySelectorAll('a[href^="#"].act').forEach(m => m.click())
     const s = a.dataset
     const m = document.querySelectorAll(s.nodes || a.hash)
     const c = (s.set || 'show').split(/\s+/)
