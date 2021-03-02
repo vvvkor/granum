@@ -1,4 +1,4 @@
-/*! granum-grid.css v1.2.10 */
+/*! granum-grid.css v1.2.11 */
 
 .grid {display:flex;--gap:0em;--wid:100%;  list-style:none;padding:0;}
 .grid.flow, [class*="grid-"] {flex-wrap:wrap;}
@@ -27,7 +27,7 @@
 .grid > * {margin:var(--gap) 0 0 var(--gap);}
 
 /* native gap */
-@supports (gap:1em) {
+@supports (gap: 1em) {
 	.grid {--wid:100%;margin:0;gap:var(--gap);}
 	.grid > * {margin:0;}
 }

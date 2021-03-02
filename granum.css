@@ -1,4 +1,4 @@
-/*! granum.css v1.2.10 */
+/*! granum.css v1.2.11 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -11,7 +11,10 @@ td, th {padding:0;text-align:left}
 * {box-sizing:content-box;}
 table, img, embed, iframe, object, audio, video, button, input, select, textarea,
 	.wrap, .row, .modal>div, .drawer, .stick {box-sizing:border-box;}
-	
+
+button, [type="submit"], [type="search"] {-webkit-appearance:none;} /* safari */
+button::-moz-focus-inner, [type="submit"]::-moz-focus-inner {border:none;} /* firefox */
+
 /* font */
 html {font-size:120%;}
 body {line-height:1.5;color:#000;}
