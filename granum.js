@@ -1,4 +1,4 @@
-/*! granum.js v1.2.8 */
+/*! granum.js v1.2.9 */
 
 (_ => {
 
@@ -82,7 +82,7 @@ document.addEventListener('click', e => {
   
   // sort table
   const h = n.closest('.sort th, th.sort')
-  if (!a && h) {
+  if (h && !n.closest('a, input, [name]')) {
     const i = h.cellIndex
     const b = h.closest('thead').nextElementSibling
     if (b.rows.length > 1) {
