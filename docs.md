@@ -92,7 +92,7 @@ Typography and styling is minimal and unobtrusive.
   - close by `Escape` key *(requires [granum.js](granum.js))*
 - `.drawer:target` - drawer sliding from left (`.l` from right)
 - `.stick` - stick element to top
-- `.roll` - horizontal scroll
+- `.roll` - horizontal scroll if needed
 - `.hi` - fullscreen height
 - `.tag`, `.tag.inv.rad.bg-e` - tag
 - `.bar[style="--v:PERCENT"]` - progress bar
