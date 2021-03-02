@@ -71,7 +71,7 @@ icons, status colors, and even more.
 Typography and styling is minimal and unobtrusive.
 -->
 
-<p class="text-n">v1.2.7</p>
+<p class="text-n">v1.2.8</p>
 
 <p>
 <b>2.5 KB</b> minified and gzipped.<br>
@@ -99,7 +99,7 @@ Typography and styling is minimal and unobtrusive.
 		<div class="bg h1 c icon-menu"></div>
 		<div class="pad">
 			<h3 class="mar"><a href="#table">Tables</a></h3>
-			<p>Borders, width, alignment, scrollable, responsive.</p>
+			<p>Borders, width, alignment, sortable, scrollable, responsive.</p>
 		</div>
 	</div>
 	<div class="shade">
@@ -148,17 +148,12 @@ Text
 <abbr title="Abbreviation">Abbr</abbr>
 x<sub>sub</sub>
 x<sup>super</sup>
-<b class="tag inv bg-e rad small sans">TAG</b>
 </p>
 
 <hr>
 <blockquote>Block quote</blockquote>
 <pre>Preformatted text
 <code>Code: window.innerWidth = <var id="info" class="text-y" title="window.innerWidth"></var></code></pre>
-<div class="mar">
-	<div class="-r sans">Bar: 80%</div>
-	<div class="bar text-y" style="--v:80"></div>
-</div>
 <!--img class="fit" alt="Grey" src="https://picsum.photos/id/1021/400/200.jpg"-->
 
 <details>
@@ -176,20 +171,21 @@ x<sup>super</sup>
 <details>
 <summary>Font</summary>
 <div class="pad bg">
-	<span class="sans">Sans-serif</span>
-	<span class="serif">Serif</span>
-	<span class="mono">Mono</span>
 	<span class="small">Small</span>
 	<span>Regular</span>
 	<span class="h3">Larger</span>
 	<span class="h2">Large</span>
 	<span class="h1">Largest</span>
+	<br>
+	<span class="sans">Sans-serif</span>
+	<span class="serif">Serif</span>
+	<span class="mono">Mono</span>
 </div>
 </details>
 
 <details>
 <summary>Color</summary>
-<div class="pad bord">
+<div class="pad bord fit">
 	<span class="text-e">Error</span>
 	<span class="text-w">Warning</span>
 	<span class="text-y">Success</span>
@@ -207,6 +203,27 @@ x<sup>super</sup>
 	<span class="inv bg-y">Success</span>
 	<span class="inv bg-i">Info</span>
 	<span class="inv bg-n">Note</span>
+	<br>
+	<b class="tag inv rad small sans">8</b>
+	<b class="tag inv bg-e rad small sans">ERR</b>
+	<b class="tag inv bg-w rad small sans">WARN</b>
+	<b class="tag inv bg-y rad small sans">OK</b>
+	<b class="tag inv bg-i rad small sans">INFO</b>
+	<b class="tag inv bg-n rad small sans">NOTE</b>
+	<br>
+	<span class="icon-right"></span>
+	<a href="#1" class="icon-delete text-e"></a>
+	<a href="#1" class="icon-warning text-w"></a>
+	<a href="#1" class="icon-ok text-y"></a>
+	<a href="#1" class="icon-info text-i"></a>
+	<a href="#1" class="icon-file text-n"></a>
+	<br>
+	<div class="bar mar" style="--v:10"></div>
+	<div class="bar mar text-e" style="--v:20"></div>
+	<div class="bar mar text-w" style="--v:35"></div>
+	<div class="bar mar text-y" style="--v:50"></div>
+	<div class="bar mar text-i" style="--v:70"></div>
+	<div class="bar mar text-n" style="--v:90"></div>
 </div>
 </details>
 
@@ -242,7 +259,7 @@ x<sup>super</sup>
 <details>
 <summary>Modifiers</summary>
 	<div class="roll">
-	<table class="bord hover bg l">
+	<table class="bord hover -bg l">
 		<!--caption>Common modifiers</caption-->
 		<tr class="bg"><th>Class<th>div<th>a<th>.row<th>table<th>form
 		<tr><th><b class="pop">.fit&nbsp;   <i class="inv r small bg-i">No (margin, padding, border, radius),<br> 1rem, smaller inner margins</i></b><td>*<td>*<td>*<td>dense<td>*
@@ -298,55 +315,55 @@ x<sup>super</sup>
 
 <h2 id="table"><a href="#table">Tables</a> <a href="#top" class="fit icon-up"></a></h2>
 
-<p>
+<p>Style
 <select data-nodes="#tbl">
-	<option value="nobr c3 r5  pad hover l mid" selected>Lines, hover, wide, scroll overflow</option>
-	<option value="nobr c3 r5  bord center hover">Borders, center, hover, scroll overflow</option>
-	<option value="nobr c3 r5  fit mid">Dense, vertically center cells</option>
-	<option value="nobr c3 r5  bord resp center">Borders, center, responsive</option>
+	<option value="sort nobr c3 r4  pad hover l mid" selected>Lines, hover, wide</option>
+	<option value="sort nobr c3 r4  bord center">Borders, center</option>
+	<option value="sort nobr c3 r4  fit">Dense</option>
+	<!--option value="sort nobr c2 r3  bord resp center">Borders, center, responsive</option-->
 </select>
+&nbsp; <i>Sortable</i>
 </p>
 
 <div class="roll">
-<table id="tbl" class="c3 r5 hover pad l nobr -roll">
+<table id="tbl" class="sort c3 r4 pad hover l -roll -nobr" data-sort="bg-w">
+	<!--caption>Sortable table</caption-->
 	<thead>
-		<tr><th width="5%"><input type="checkbox" data-check=".box">
-			<th>Name<th>Tag<th>Icon<th>Value
+		<tr><th><input type="checkbox" data-check=".box">&nbsp;
+			<th>Name<th>Area<th>People
 	</thead>
 	<tbody>
-		<tr><td><input type="checkbox" class="box" name="box[]" value="1">
-			<td>Text
-			<td><b class="tag inv rad small">0</b>
-			<td><a href="#top" class="icon-share">Link</a>
-			<td>50<div class="bar" style="--v:50"></div>
-		<tr><td><input type="checkbox" class="box" name="box[]" value="2">
-			<td class="bg-n">Lite
-			<td><b class="tag inv rad small bg-n">1</b>
-			<td><a href="#top" class="icon-file text-n">Lite</a>
-			<td>9<div class="bar text-n" style="--v:9"></div>
-		<tr><td><input type="checkbox" class="box" name="box[]" value="3">
-			<td class="bg-i">Info
-			<td><b class="tag inv rad small bg-i">2</b>
-			<td><a href="#top" class="icon-info text-i">Info</a>
-			<td>25<div class="bar text-i" style="--v:25"></div>
-		<tr><td><input type="checkbox" class="box" name="box[]" value="4">
-			<td class="bg-y">Success
-			<td class="-mid"><b class="tag inv rad small bg-y">3</b>
-			<td><a href="#top" class="icon-ok text-y">OK</a>
-			<td>50<div class="bar text-y" style="--v:50"></div>
-		<tr><td><input type="checkbox" class="box" name="box[]" value="5">
-			<td class="bg-w">Warning
-			<td><b class="tag inv rad small bg-w">4</b>
-			<td><a href="#top" class="icon-warning text-w">Warn</a>
-			<td>75<div class="bar text-w" style="--v:75"></div>
-		<tr class="-mid"><td><input type="checkbox" class="box" name="box[]" value="6">
-			<td class="bg-e">Error<br>line
-			<td><b class="tag inv rad small bg-e">555</b>
-			<td><a href="#top" class="icon-delete text-e">Error</a>
-			<td>100<div class="bar text-e" style="--v:100"></div>
+		<tr><td><input type="checkbox" class="box" name="box[]" value="eur">
+			<td>Europe
+			<td>10.2
+			<td>0.7</td>
+		<tr><td><input type="checkbox" class="box" name="box[]" value="asi">
+			<td>Asia
+			<td>44.6
+			<td>4.6</td>
+		<tr><td><input type="checkbox" class="box" name="box[]" value="afr">
+			<td>Africa
+			<td>30.4
+			<td>1.3</td>
+		<tr><td><input type="checkbox" class="box" name="box[]" value="nam">
+			<td>North America
+			<td>24.7
+			<td>0.6</td>
+		<tr><td><input type="checkbox" class="box" name="box[]" value="sam">
+			<td>South America
+			<td>17.8
+			<td>0.43</td>
+		<tr><td><input type="checkbox" class="box" name="box[]" value="aus">
+			<td>Australia
+			<td>8.6
+			<td>0.04</td>
+		<tr><td><input type="checkbox" class="box" name="box[]" value="ant">
+			<td>Antarctica
+			<td>14
+			<td>0</td>
 	</tbody>
 	<tfoot class="bg">
-		<tr><td>&Sigma;<td><td><td><td>309
+		<tr><td><td>&Sigma;<td>150.3<td>7.6
 	</tfoot>
 </table>
 </div>
@@ -506,6 +523,23 @@ x<sup>super</sup>
 </details>
 
 <details>
+<summary>Buttons</summary>
+	<p>
+	<button>Button</button>
+	<button disabled>Disabled</button>
+	<a href="#pform" class="pad hover rad">Link</a>
+	Text
+	<br>
+	<button class="icon-ok bg-y">OK</button>
+	<button class="icon-warning bg-w">Warning</button>
+	<button class="icon-delete bg-e">Danger</button>
+	<button class="icon-info bg-i">Info</button>
+	<button class="icon-file bg-n">Note</button>
+	</p>
+</details>
+
+
+<details>
 <summary>Editor</summary>
 <div class="bg pad">
 	<label for="msg">Formatted message</label>
@@ -543,17 +577,9 @@ x<sup>super</sup>
 </div>
 </details>
 <p>
-	<button>Button</button>
-	<button disabled>Disabled</button>
-	<a href="#pform" class="pad hover rad">Link</a>
-	<br>
-	<button class="icon-ok bg-y">OK</button>
-	<button class="icon-warning bg-w">Warning</button>
-	<button class="icon-delete bg-e">Danger</button>
-	<button class="icon-info bg-i">Info</button>
-	<button class="icon-file bg-n">Note</button>
+	<button class="icon-ok">Submit</button>
+	<i class="pad text-n">This form uses <code>p</code></i>
 </p>
-<i class="text-n">This form uses <code>p</code></i>
 </form>
 
 <form class="pad fit bg mar" id="dform" action="#dform">
@@ -567,7 +593,7 @@ x<sup>super</sup>
 </div>
 <div class="row mar pad resp">
 	<div></div>
-	<div class="col-3"><input type="submit" value="Send"> <i class="pad text-n">This form uses <code>.grid</code></i></div>
+	<div class="col-3"><input type="submit" value="Send" class="bg-y"> <i class="pad text-n">This form uses <code>.grid</code></i></div>
 </div>
 </form>
 
@@ -584,7 +610,7 @@ x<sup>super</sup>
 	<td><label><input type="checkbox" name="agree" value="1"> Agree</label>
 <tr>
 	<td>
-	<td><input type="submit" value="Save"> <span class="pad text-n">This form uses <code>table</code></span>
+	<td><input type="submit" value="Save" class="bg-n"> <span class="pad text-n">This form uses <code>table</code></span>
 </table>
 </form>
 
@@ -628,6 +654,7 @@ x<sup>super</sup>
 	</div>
 	<nav class="mar bg">
 		<a href="#nav" class="target" data-resp="target, icon-menu pad hover toggle" title="Menu"></a>
+		<a data-resp="target, text-n">Responsive menu</a>
 		<ul id="nav" class="row resp hover drop" data-resp="row -resp hover drop, target row resp hover drop">
 		<li><a href="#1" class="icon-grid">Menu</a>
 			<ul>
@@ -654,32 +681,52 @@ x<sup>super</sup>
 		</ul>
 	</nav>
 	
-	<p>
-		Width:
-		<a data-resp="tag rad bg-n text-n, tag rad bg-n text-n, tag inv rad bg-w">small</a>
-		<a data-resp="tag rad bg-n text-n, tag inv rad bg-y, tag rad bg-n text-n">medium</a>
-		<a data-resp="tag inv rad bg-i, tag rad bg-n text-n, tag rad bg-n text-n">large</a>
-	</p>
+	<h3 id="switch"><a href="#switch">Toggle class</a></h3>
 	
-	<p>
-	<a href="#test1" class="toggle hover pad rad" data-set="bg-w">Test1 bg</a>
-	<!--a href="#bg" class="toggle l" data-nodes=".test" data-set="bg-w" data-act="bg-w">Both bg</a-->
-	<a href="#text" class="toggle bg-n inv pad rad" data-nodes=".test" data-set="text-y icon-ok" data-unset="text-n icon-right" data-act="icon-refresh bg-y" data-inact="icon-info bg-n">Both ICON and color</a>
-	</p>
-	<p>
-	<span id="test1" class="test pad bg rad bg-w">TEST1</span>
-	<span id="test2" class="test pad bg rad">TEST2</span>
-	</p>
-
-	<ul class="row tabs hover">
-		<li><a href="#tab1" class="toggle" data-act="act bg" data-inact="text-n">Tab1</a>
-		<li><a href="#tab2" class="toggle" data-act="act bg" data-inact="text-n">Tab2</a>
-		<li><a href="#tab3" class="toggle" data-act="act bg" data-inact="text-n">Tab3</a>
+	<ul class="row drop tabs hover roll">
+		<li><a href="#tab1" class="toggle" data-act="act bg" data-inact="text-n">Responsive</a>
+		<li><a href="#tab2" class="toggle" data-act="act bg" data-inact="text-n">Link</a>
+		<li><a href="#tab3" class="toggle" data-act="act bg" data-inact="text-n">Check</a>
+		<li><a href="#tab4" class="toggle" data-act="act bg" data-inact="text-n">Radio</a>
+		<li><a href="#tab5" class="toggle" data-act="act bg" data-inact="text-n">Select</a>
 	</ul>
-	<div>
-	  <div id="tab2" class="target pad">Second tab</div>
-	  <div id="tab3" class="target pad">Third tab<br>line</div>
-	  <div id="tab1" class="target pad">First tab</div>
+	<div class="-mar">
+	  <div id="tab2" class="target pad">
+			<p>
+				<a href="#text" class="toggle l" data-nodes=".switch-link" data-set="text-y bg-w icon-ok" data-unset="text-n bg-n icon-delete" data-act="icon-info text-i" data-inact="icon-refresh text-n">Switch</a>
+				<a class="switch-link tag bg-n text-n">Item 1</a>
+				<a class="switch-link tag bg-n text-n">Item 2</a>
+			</p>
+			<p>
+				<a href="#text" class="toggle l" data-nodes=".switch-a" data-set="text-y bg-y icon-ok" data-unset="text-n bg-n icon-delete" data-act="icon-info text-i" data-inact="icon-refresh text-n">Switch</a>
+				<a class="switch-a tag bg-y text-y">Item 3</a>
+			</p>
+		</div>
+	  <div id="tab3" class="target pad mar">
+			<label><input type="checkbox" data-nodes="#tab3 a" data-set="text-y bg-y icon-ok" data-unset="text-n bg-n icon-delete" checked> Check</label>&nbsp;
+			<a class="tag bg-n text-n">Item 1</a>
+			<a class="tag bg-n text-n">Item 2</a>
+		</div>
+	  <div id="tab4" class="target pad mar">
+			<label><input type="radio" name="switch-radio" data-nodes="#tab4 a" value="text-n bg-n icon-delete" checked> Off</label>&nbsp;
+			<label><input type="radio" name="switch-radio" data-nodes="#tab4 a" value="text-y bg-y icon-ok"> On</label>&nbsp;
+			<a class="tag bg-n text-n">Item 1</a>
+			<a class="tag bg-n text-n">Item 2</a>
+		</div>
+	  <div id="tab5" class="target pad mar">
+			<select data-nodes="#tab5 a">
+				<option value="text-y bg-y icon-ok" selected> Ok</option>
+				<option value="text-w bg-w icon-warning"> Warning</option>
+				<option value="text-e bg-e icon-delete"> Error</option>
+			</select>
+			<a class="tag bg-n text-n">Item 1</a>
+			<a class="tag bg-n text-n">Item 2</a>
+		</div>
+	  <div id="tab1" class="target pad mar">
+			<a data-resp="tag rad bg-n text-n, tag rad bg-n text-n, tag inv rad bg-w">Small</a>
+			<a data-resp="tag rad bg-n text-n, tag inv rad bg-y, tag rad bg-n text-n">Medium</a>
+			<a data-resp="tag inv rad bg-i, tag rad bg-n text-n, tag rad bg-n text-n">Large</a>
+		</div>
 	</div>
 
 

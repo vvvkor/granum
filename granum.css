@@ -1,4 +1,4 @@
-/*! granum.css v1.2.7 */
+/*! granum.css v1.2.8 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -20,8 +20,8 @@ body, .sans {font-family:"PT Sans", Roboto, "Segoe UI", sans-serif;}
 .serif {font-family:"PT Serif", Georgia, serif;}
 input, button, select, textarea, table {font:inherit;} 
 h1, .h1 {font-size:200%;}
-h2, .h2 {font-size:157%;}
-h3, .h3 {font-size:125%;}
+h2, .h2 {font-size:155%;}
+h3, .h3 {font-size:120%;}
 h4 {font-size:100%;}
 h5 {font-size:83%;}
 h6 {font-size:67%;}
@@ -104,7 +104,8 @@ input[readonly] {background-color:#eee;}
 .row {display:flex;list-style:none;}
 .row.pad {padding:0;}
 .row.pad>*:not(:last-child) {margin-right:1rem;}
-ul.row {flex-wrap:wrap;list-style:none;}
+ul.row:not(.roll) {flex-wrap:wrap;}
+ul.row {list-style:none;}
 ul.row li {display:flex;}
 ul.row>*, .col-0[class] {flex:0 1 auto;/*for ie*/ /*flex:initial;*/}
 .row>*, .col-1[class], ul.row ul a {flex:1;}

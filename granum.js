@@ -1,4 +1,4 @@
-/*! granum.js v1.2.7 */
+/*! granum.js v1.2.8 */
 
 (_ => {
 
@@ -48,7 +48,8 @@ document.addEventListener('DOMContentLoaded', e => {
 })
 
 document.addEventListener('click', e => {
-  const a = e.target.closest('a')
+  const n = e.target
+  const a = n.closest('a')
   
   if (a && a.classList.contains('dialog')) {
     // prompt link
@@ -66,7 +67,7 @@ document.addEventListener('click', e => {
   if (a && a.classList.contains('toggle')) {
     e.preventDefault()
     const t = a.closest('.tabs')
-    if (t) t.querySelectorAll('a[href^="#"].act').forEach(n => n == a ? null : n.click())
+    if (t) t.querySelectorAll('a[href^="#"].act').forEach(m => m == a ? null : m.click())
     const s = a.dataset
     const m = document.querySelectorAll(s.nodes || a.hash)
     const c = (s.set || 'show').split(/\s+/)
@@ -79,8 +80,24 @@ document.addEventListener('click', e => {
     if (r && location.hash && c[0] == 'show') location.hash = '#cancel'
   }
   
+  // sort table
+  const h = n.closest('.sort th, th.sort')
+  if (!a && h) {
+    const i = h.cellIndex
+    const b = h.closest('thead').nextElementSibling
+    if (b.rows.length > 1) {
+      const c = h.closest('table').dataset.sort || 'bg'
+      const x = [...b.rows].map(m => [m, m.cells[i].textContent.replace(/\s+$/, '')]).map(m => [m[0], m[1], parseFloat(m[1])])
+      const k = isNaN(x[0][2]) ? 1 : 2
+      const r = h.classList.contains(c) ? (x[0][k] < x[x.length-1][k] ? -1 : 1) : 1
+      x.sort((a, b) => a[k] < b[k] ? -r : (a[k] > b[k] ? r : 0))
+      x.forEach(m => b.appendChild(m[0]))
+      ;[...h.parentNode.children].forEach(m => m.classList[m == h ? 'add' : 'remove'](c))
+    }
+  }
+  
   // close modal
-  if (e.target.classList.contains('modal')) location.hash = '#cancel'
+  if (n.classList.contains('modal')) location.hash = '#cancel'
 })
 
 document.addEventListener('input', e => {

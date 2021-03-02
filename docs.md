@@ -64,6 +64,7 @@ Typography and styling is minimal and unobtrusive.
 - `tr.mid` - center row cells vertically
 - `tr > .mid` - center cell vertically
 - `.lX`, `.cX`, `.rX` - align cells in column X to left, center, right *(requires [granum.js](granum.js))*
+- `table.sort > thead + tbody`, `(thead > th.sort) + tbody` - sort table *(requires [granum.js](granum.js))*
 
 
 ## Form
