@@ -1,4 +1,4 @@
-/*! granum.js v1.2.15 */
+/*! granum.js v1.2.16 */
 
 (_ => {
 
@@ -77,7 +77,7 @@ document.addEventListener('click', e => {
     tgl([a], s.inact, !on)
     tgl(m, c, on)
     tgl(m, s.unset, !on)
-    if (r && location.hash && c[0] == 'show') location.hash = '#cancel'
+    if (r && location.hash && c[0] == 'show' && !t) location.hash = '#cancel'
   }
   
   // sort table
