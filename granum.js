@@ -1,4 +1,4 @@
-/*! granum.js v1.2.16 */
+/*! granum.js v1.2.17 */
 
 (_ => {
 
@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', e => {
     })
   })
   
+  window.dispatchEvent(new Event('resize'))
   document.dispatchEvent(new Event('granum'))
 })
 
@@ -134,7 +135,5 @@ window.addEventListener('resize', e => {
     })
   }
 })
-
-window.dispatchEvent(new Event('resize'))
 
 })()
