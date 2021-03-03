@@ -106,14 +106,10 @@ Typography and styling is minimal and unobtrusive.
 
 ### Icons `icon-X` *(requires [granum-icons.css](granum-icons.css))*
 
-`menu` `list` `grid` `more`
-`find` `config` `user` `share`
-`edit` `add` `close` (`delete`) `refresh`
-`ok` `info` `warning` `ban`
-`up` `down` `left` `right`
-`folder` `file` `image` `download`
-`copy` `chart` `pin` `time`
-`mail` `send` `lock` `world`
+`menu` `list` `grid` `more` `find` `config` `user` `share`  
+`edit` `add` `close` (`delete`) `refresh` `ok` `info` `warning` `ban`  
+`up` `down` `left` `right` `folder` `file` `image` `download`  
+`copy` `chart` `pin` `time` `mail` `send` `lock` `world`
 
 ### Status colors and backgrounds
 

@@ -19,7 +19,7 @@
   </head>
   <body id="top" data-break-x="500,400,300,200">
 
-	<nav id="topbar" class="back" data-resp="target show stick back shade, target show bg-n, target show bg-w">
+	<nav id="topbar" class="back" data-resp="target show stick back shade, target show bg-n, target show">
 		<a href="#menu" class="target" data-resp="target, icon-menu pad hover toggle" title="Menu"></a>
 		<ul id="menu" class="row bg hover" data-resp="row -drop -bg hover, row resp target hover">
 			<li data-resp="l"><a href="?" class="act"><b>Granum</b></a>
@@ -71,7 +71,7 @@ icons, status colors, and even more.
 Typography and styling is minimal and unobtrusive.
 -->
 
-<p class="text-n">v1.2.14</p>
+<p class="text-n">v1.2.15</p>
 
 <p>
 <b>2.5 KB</b> minified and gzipped.<br>
@@ -87,7 +87,7 @@ Typography and styling is minimal and unobtrusive.
 </div>
 
 <div class="mar pad"></div>
-<div class="grid grid-3 g2 resp" data-resp="grid grid-3 g2, grid grid-2 g2, grid grid-1 g1">
+<div class="grid grid-3 g2 resp" data-resp="grid grid-3 g2, grid grid-2 g2 p1, grid grid-1 g1 p1">
 	<div class="shade">
 		<div class="bg -pad h1 c icon-edit"></div>
 		<div class="pad">
@@ -417,12 +417,12 @@ x<sup>super</sup>
 	<option value="grid g2 resp grid-2">Grid-2 big gaps</option>
 	<option value="grid p1 g1 resp grid-3">Grid-3</option>
 	<option value="grid p1 g1 resp grid-4">Grid-4</option>
-	<option value="grid p1 resp grid-6">Grid-6 dense</option>
+	<option value="grid resp grid-6">Grid-6 dense</option>
 </select></label>
-<label> <input type="checkbox" name="grid-wrap" data-get data-nodes="#wrp" data-set="-bord -wrap -center pad" data-unset="-bord"> Padding</label>
+<label> <input type="checkbox" name="grid-wrap" data-get data-nodes="#wrp" data-set="-wrap -center pad bord" data-unset="bord"> Padding</label>
 
 <div class="bg small">
-<div id="wrp">
+<div id="wrp" class="bord">
 <div id="grd" class="grid p1 g1 resp flow -roll">
 	<div id="item" class="back bord shade pad">
 		<div class="nobr">
@@ -577,7 +577,7 @@ x<sup>super</sup>
 </div>
 </details>
 <p>
-	<button class="icon-ok">Submit</button>
+	<button class="icon-send">Submit</button>
 	<i class="pad text-n">This form uses <code>p</code></i>
 </p>
 </form>
@@ -656,7 +656,7 @@ x<sup>super</sup>
 		<a href="#nav" class="target" data-resp="target, icon-menu pad hover toggle" title="Menu"></a>
 		<a data-resp="target, text-n">Responsive menu</a>
 		<ul id="nav" class="row resp hover drop" data-resp="row -resp hover drop, target row resp hover drop">
-		<li><a href="#1" class="icon-grid">Menu</a>
+		<li><a href="#1" class="icon-more">Features</a>
 			<ul>
 			<li><a href="#1" class="icon-config">Config</a>
 				<ul>
