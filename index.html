@@ -21,7 +21,7 @@
 
 	<nav id="topbar" class="back" data-resp="target show stick back shade, target show bg-n, target show">
 		<a href="#menu" class="target" data-resp="target, icon-menu pad hover toggle" title="Menu"></a>
-		<ul id="menu" class="row bg hover" data-resp="row -drop -bg hover, row resp target hover">
+		<ul id="menu" class="row bg hover" data-resp="row -drop -bg hover, mar row resp target hover">
 			<li data-resp="l"><a href="?" class="act"><b>Granum</b></a>
 			<li><a href="#typo">Basics</a><!--ul><li><a>Sub</a></ul-->
 			<!--li><a href="#list">List</a-->
@@ -86,7 +86,66 @@ Typography and styling is minimal and unobtrusive.
 
 </div>
 
-<div class="mar pad"></div>
+<div class="mar pad p1"></div>
+
+<div class="grid grid-3 g2 resp" data-resp="grid grid-3 g2, grid grid-2 g2 p1, grid grid-1 g1 p1">
+	<div>
+		<div class="grid g1 pad">
+			<div><div class="icon-edit span-0 h3"></div></div>
+			<div>
+				<h3 class="fit"><a href="#typo">Typography</a></h3>
+				<p>Text, blocks, lists, colors, tags, bars, modifiers. Minimal styling.</p>
+			</div>
+		</div>
+	</div>
+	<div>
+		<div class="grid g1 pad">
+			<div><div class="icon-menu span-0 h3"></div></div>
+			<div>
+				<h3 class="fit"><a href="#table">Tables</a></h3>
+				<p>Borders, width, alignment, sortable, scrollable, responsive.</p>
+			</div>
+		</div>
+	</div>
+	<div class="">
+		<div class="grid g1 pad">
+			<div><div class="icon-grid span-0 h3"></div></div>
+			<div>
+				<h3 class="fit"><a href="#grid">Grids</a></h3>
+				<p>Responsive, regular or fractional grids. Cell widths, gaps, wrapping.</p>
+			</div>
+		</div>
+	</div>
+	<div class="">
+		<div class="grid g1 pad">
+			<div><div class="icon-send span-0 h3"></div></div>
+			<div>
+				<h3 class="fit"><a href="#form">Forms</a></h3>
+				<p>Inline, stacked, aligned, responsive forms. Inputs, buttons, validation.</p>
+			</div>
+		</div>
+	</div>
+	<div class="">
+		<div class="grid g1 pad">
+			<div><div class="icon-ok span-0 h3"></div></div>
+			<div>
+				<h3 class="fit"><a href="#action">Interactive</a></h3>
+				<p>Toggle, modal, dropdown, popup, tooltip, drawer, topbar, tabs, responsive class.</p>
+			</div>
+		</div>
+	</div>
+	<div class="">
+		<div class="grid g1 pad">
+			<div><div class="icon-pin span-0 h3"></div></div>
+			<div>
+				<h3 class="fit"><a href="#icon">Icons</a></h3>
+				<p>32 general purpose simple SVG icons.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--
 <div class="grid grid-3 g2 resp" data-resp="grid grid-3 g2, grid grid-2 g2 p1, grid grid-1 g1 p1">
 	<div class="shade">
 		<div class="bg -pad h1 c icon-edit"></div>
@@ -131,6 +190,7 @@ Typography and styling is minimal and unobtrusive.
 		</div>
 	</div>
 </div>
+-->
 
 <div class="mar pad h1"></div>
 
@@ -476,8 +536,8 @@ x<sup>super</sup>
 <form action="#pform" id="pform" class="fit bg pad mar" data-get>
 <p>
 	<label for="name">Name</label><br>
-	<input id="name" name="name" type="text" required placeholder="Name">
-	<span class="act text-e">Name required</span>
+	<input id="name" name="name" type="text" required placeholder="Name" size="16">
+	<span class="act text-e">Required</span>
 	<span class="act text-y">OK</span>
 </p>
 <p>
