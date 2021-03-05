@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="granum-icons.css">
     <link rel="stylesheet" href="granum-dropdown.css">
     <link rel="stylesheet" href="granum-grid.css">
+    <link rel="icon" type="image/svg" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'%3E%3Cpath fill='%23f63' d='M35 67l75 -44 75 44 0 89-75 44-75-44zm75 8a35 35 0 1 0 .01 0z'/%3E%3C/svg%3E">
     <!--link rel="stylesheet" href="granum-print.css"-->
     <script src="granum.js" defer></script>
     <script src="granum-edit.js" defer></script>
@@ -21,8 +22,8 @@
 
 	<nav id="topbar" class="back" data-resp="target show stick back shade, target show bg-n, target show">
 		<a href="#menu" class="target" data-resp="target, icon-menu pad hover toggle" title="Menu"></a>
-		<ul id="menu" class="row bg hover" data-resp="row -drop -bg hover, mar row resp target hover">
-			<li data-resp="l"><a href="?" class="act"><b>Granum</b></a>
+		<ul id="menu" class="row bg hover" data-resp="row -drop, mar row resp target">
+			<li data-resp="l"><a href="?" class="-act"><b>Granum</b></a>
 			<li><a href="#typo">Basics</a><!--ul><li><a>Sub</a></ul-->
 			<!--li><a href="#list">List</a-->
 			<li><a href="#table">Tables</a>
@@ -71,7 +72,7 @@ icons, status colors, and even more.
 Typography and styling is minimal and unobtrusive.
 -->
 
-<p class="text-n">v1.2.18</p>
+<p class="text-n">v1.2.19</p>
 
 <p>
 <b>2.5 KB</b> minified and gzipped.<br>
@@ -81,7 +82,7 @@ Typography and styling is minimal and unobtrusive.
 <p>
 <a href="https://github.com/vvvkor/granum/blob/master/docs.md" class="inv pad rad hover">Docs</a>
 <a href="https://github.com/vvvkor/granum" class="inv pad rad hover bg-n">GitHub</a>
-<a href="https://unpkg.com/granum" class="act pad rad bord hover">CDN</a>
+<a href="https://unpkg.com/granum" class="pad rad bord hover">CDN</a>
 </p>
 
 </div>
@@ -747,12 +748,12 @@ x<sup>super</sup>
 	
 	<h3 id="switch"><a href="#switch">Toggle class</a> <a href="#top" class="fit icon-up"></a></h3>
 	
-	<ul class="row drop tabs hover roll">
-		<li><a href="#tab1" class="toggle" data-act="act bg" data-inact="text-n">Responsive</a>
-		<li><a href="#tab2" class="toggle" data-act="act bg" data-inact="text-n">Link</a>
-		<li><a href="#tab3" class="toggle" data-act="act bg" data-inact="text-n">Check</a>
-		<li><a href="#tab4" class="toggle" data-act="act bg" data-inact="text-n">Radio</a>
-		<li><a href="#tab5" class="toggle" data-act="act bg" data-inact="text-n">Select</a>
+	<ul class="row drop tabs -hover roll">
+		<li><a href="#tab1" class="toggle">Responsive</a>
+		<li><a href="#tab2" class="toggle">Link</a>
+		<li><a href="#tab3" class="toggle">Check</a>
+		<li><a href="#tab4" class="toggle">Radio</a>
+		<li><a href="#tab5" class="toggle">Select</a>
 	</ul>
 	<div class="-mar">
 	  <div id="tab2" class="target pad">

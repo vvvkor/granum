@@ -1,4 +1,4 @@
-/*! granum.css v1.2.18 */
+/*! granum.css v1.2.19 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -56,11 +56,11 @@ sub,sup {line-height:0em;}
 hr{border-width:thin 0 0 0;}
 
 /* links */
-a {color:#04b;text-decoration:none;}
-/* a:visited {color:#90b;} */
-a:hover {color:#07f;}
+a {color:#04a;text-decoration:none;}
+/* a:visited {color:#108;} */
 .inv a{color:#fd3;}
-a.act, a:not([href]) {color:inherit;}
+a:hover, a:not([href]) {color:inherit;}
+a.act {color:#07e;}
 a.pad, span.pad, .tag {display:inline-block;}
 a.l, span.l {margin-right:1em;}
 
@@ -137,6 +137,8 @@ ul.row>*, .col-0[class] {flex:0 1 auto;/*for ie*/ /*flex:initial;*/}
 /* tabs */
 .tabs + div > [id]:last-child {display:block;}
 .tabs + div > [id]:target ~ *, .tabs + div > [id].show ~ * {display:none;}
+.tabs a{border-bottom:medium solid transparent;}
+.tabs a.act{border-color:currentColor;}
 
 /* bar */
 .bar {--v:0;border-radius:.16em;overflow:hidden;}
@@ -146,7 +148,7 @@ ul.row>*, .col-0[class] {flex:0 1 auto;/*for ie*/ /*flex:initial;*/}
 .bg, blockquote, pre, code/*, thead tr, tfoot tr*/{background-color:rgba(0,0,0,.05);}
 pre code {background:none;}
 .inv {background-color:#333;color:#fff;}
-button, [type="submit"], a.inv {background-color:#04b;color:#fff;}
+button, [type="submit"], a.inv {background-color:#05b;color:#fff;}
 .text-n[class] {color:#999;}
 .text-i[class] {color:#08a;}
 .text-y[class] {color:#181;}
@@ -165,7 +167,7 @@ button.bg-e, [type="submit"].bg-e, .inv.bg-e {background-color:#c00;}
 
 /* highlight */
 a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tr:hover>* {box-shadow:inset 0 0 0 200vh rgba(0,0,0,.03);}
-.shade, .modal>div {box-shadow:0 .1em .8em 0em rgba(0,0,0,.3);}
+.shade, .modal>div {box-shadow:0 .1em .8em 0em rgba(0,0,0,.2);}
 
 /* modifiers */
 .target, :target {scroll-margin-top:3rem;}
