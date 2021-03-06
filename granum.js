@@ -1,4 +1,4 @@
-/*! granum.js v1.2.19 */
+/*! granum.js v1.2.20 */
 
 (_ => {
 
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', e => {
   // init input values
   document.querySelectorAll('[name][data-get]').forEach(n => {
     const nm = n.dataset.get || n.name
-    const m = location.href.match(new RegExp('(\\?|&)' + nm + '=(.*?)($|&|#)'))
+    const m = location.href.match(new RegExp('(\\?|&)_?' + nm + '=(.*?)($|&|#)'))
     if (m) {
       const v = decodeURIComponent(m[2].replace(/\+/g, ' '))
       if (n.type == 'checkbox') n.checked = (v && v !== '0')

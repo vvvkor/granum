@@ -1,4 +1,4 @@
-/*! granum.css v1.2.19 */
+/*! granum.css v1.2.20 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -137,7 +137,7 @@ ul.row>*, .col-0[class] {flex:0 1 auto;/*for ie*/ /*flex:initial;*/}
 /* tabs */
 .tabs + div > [id]:last-child {display:block;}
 .tabs + div > [id]:target ~ *, .tabs + div > [id].show ~ * {display:none;}
-.tabs a{border-bottom:medium solid transparent;}
+.tabs a{border-bottom:2px solid transparent;}
 .tabs a.act{border-color:currentColor;}
 
 /* bar */

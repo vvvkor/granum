@@ -5,7 +5,7 @@ const fs = require('fs')
 const UglifyJS = require("uglify-js");
 
 // cleanup
-['granum.min.css', 'granum-icons.min.css', 'granum-dropdown.min.css', 'granum.min.js', 'granum-edit.min.js']
+['granum.min.css', 'granum-icons.min.css', 'granum-dropdown.min.css', 'granum-full.css', 'granum-full.min.css', 'granum.min.js', 'granum-edit.min.js']
 .forEach(n => {
   try {
     fs.unlinkSync('./' + n)
@@ -46,6 +46,19 @@ catch (error) {
   }).css;
   //min = '/*! ' + n + '.css v' + version + ' */\n' + min;
   fs.writeFileSync('./' + n + '.min.css', min);
+});
+
+// bundle css
+
+console.log('Bundle granum-full.css...');
+['granum', 'granum-icons', 'granum-dropdown', 'granum-grid', 'granum-print']
+.forEach(n => {
+  const css = fs.readFileSync('./' + n + '.css', 'utf8');
+  fs.writeFileSync('./granum-full.css', css + '\n\n', {flag: 'as'});
+  let min = csso.minify(css, {
+    restructure: false,
+  }).css;
+  fs.writeFileSync('./granum-full.min.css', min, {flag: 'as'});
 });
 
 // minify js
