@@ -173,7 +173,7 @@ Typography and styling is minimal and unobtrusive.
   - `[data-unset]` - classes of target elements in inactive state (`checkbox` only)
 - `a[data-item]`, `a[data-item="SELECTOR"]` - copy item (default selector is `div, li, tr`)
   - `[data-delete]` - remove item
-    - `[keep-last]` - keep last item
+    - `[data-keep]` - keep last item
   - `[data-up]` - move item up
   - `[data-down]` - move item down
 
