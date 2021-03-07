@@ -172,10 +172,10 @@ Typography and styling is minimal and unobtrusive.
   - `[data-set]` or `value` - classes of target elements in selected state
   - `[data-unset]` - classes of target elements in inactive state (`checkbox` only)
 - `a[data-item]`, `a[data-item="SELECTOR"]` - copy item (default selector is `div, li, tr`)
-  - `[data-item][data-delete]` - remove item
+  - `[data-delete]` - remove item
     - `[keep-last]` - keep last item
-  - `[data-item][data-up]` - move item up
-  - `[data-item][data-down]` - move item down
+  - `[data-up]` - move item up
+  - `[data-down]` - move item down
 
 ## WISIWYG editor *(requires [granum-edit.js](granum-edit.js))*
 
