@@ -87,6 +87,7 @@ Ultra compact set of styles and behaviours for basic web pages.
   - populate inputs from URL
   - align table columns
   - check group of checkboxes
+  - copy, remove, order items
 - with `granum-editor.js`
   - contenteditable
 
@@ -113,6 +114,7 @@ Ultra compact set of styles and behaviours for basic web pages.
 - `[data-check]`
 - `[data-get]`
 - `body[data-break] [data-resp]`
+- `[data-item][data-delete][data-keep][data-up][data-down]`
 
 ## JavaScript editor hooks
 

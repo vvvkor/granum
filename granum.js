@@ -1,4 +1,4 @@
-/*! granum.js v1.2.20 */
+/*! granum.js v1.2.21 */
 
 (_ => {
 
@@ -52,33 +52,47 @@ document.addEventListener('click', e => {
   const n = e.target
   const a = n.closest('a')
   
-  if (a && a.classList.contains('dialog')) {
-    // prompt link
-    const p = a.dataset.prompt
-    if (p) {
-      e.preventDefault()
-      const v = prompt(a.title || a.textContent, a.dataset.default || '')
-      if (v != null) location.href = a.href.replace(p, v)
+  if (a) {
+    if (a.classList.contains('dialog')) {
+      // prompt link
+      const p = a.dataset.prompt
+      if (p) {
+        e.preventDefault()
+        const v = prompt(a.title || a.textContent, a.dataset.default || '')
+        if (v != null) location.href = a.href.replace(p, v)
+      }
+      // confirm link
+      else if (!confirm(a.title || a.textContent)) e.preventDefault()
     }
-    // confirm link
-    else if (!confirm(a.title || a.textContent)) e.preventDefault()
-  }
 
-  // toggle
-  if (a && a.classList.contains('toggle')) {
-    e.preventDefault()
-    const t = a.closest('.tabs')
-    if (t) t.querySelectorAll('a[href^="#"].act').forEach(m => m.click())
-    const s = a.dataset
-    const m = document.querySelectorAll(s.nodes || a.hash)
-    const c = (s.set || 'show').split(/\s+/)
-    const r = 'ready' in document.body.dataset
-    let on = !m[0].classList.contains(c[0]) != !r
-    tgl([a], s.act || 'act', on)
-    tgl([a], s.inact, !on)
-    tgl(m, c, on)
-    tgl(m, s.unset, !on)
-    if (r && location.hash && c[0] == 'show' && !t) location.hash = '#cancel'
+    // toggle
+    if (a.classList.contains('toggle')) {
+      e.preventDefault()
+      const t = a.closest('.tabs')
+      if (t) t.querySelectorAll('a[href^="#"].act').forEach(m => m.click())
+      const s = a.dataset
+      const m = document.querySelectorAll(s.nodes || a.hash)
+      const c = (s.set || 'show').split(/\s+/)
+      const r = 'ready' in document.body.dataset
+      let on = !m[0].classList.contains(c[0]) != !r
+      tgl([a], s.act || 'act', on)
+      tgl([a], s.inact, !on)
+      tgl(m, c, on)
+      tgl(m, s.unset, !on)
+      if (r && location.hash && c[0] == 'show' && !t) location.hash = '#cancel'
+    }
+    
+    // items
+    if ('item' in a.dataset) {
+      const m = a.closest(a.dataset.item || 'div, li, tr')
+      if (m) {
+        e.preventDefault()
+        if ('delete' in a.dataset) (m.parentNode.children.length > 1 || !('keep' in a.dataset)) ? m.parentNode.removeChild(m) : null
+        else if ('up' in a.dataset) m.parentNode.insertBefore(m, m.previousElementSibling)
+        else if ('down' in a.dataset) m.parentNode.insertBefore(m, m.nextElementSibling ? m.nextElementSibling.nextElementSibling : m.parentNode.firstElementChild)
+        else m.parentNode.insertBefore(m.cloneNode(true), m.nextElementSibling)
+      }
+    }
   }
   
   // sort table

@@ -72,7 +72,7 @@ icons, status colors, and even more.
 Typography and styling is minimal and unobtrusive.
 -->
 
-<p class="text-n">v1.2.20</p>
+<p class="text-n">v1.2.21</p>
 
 <p>
 <b>2.5 KB</b> minified and gzipped.<br>
@@ -131,7 +131,7 @@ Typography and styling is minimal and unobtrusive.
 			<div><div class="icon-ok span-0 h3"></div></div>
 			<div>
 				<h3 class="fit"><a href="#action">Interactive</a></h3>
-				<p>Toggler, modal, dropdown, popup, tooltip, drawer, topbar, tabs. Responsive classes.</p>
+				<p>Toggler, modal, dropdown, popup, tooltip, drawer, topbar, tabs. Responsive classes. Copy items.</p>
 			</div>
 		</div>
 	</div>
@@ -712,12 +712,14 @@ x<sup>super</sup>
 			<p><a href="#cancel" class="pad inv rad icon-ok bg-y">Close</a></p>
 		</div></div>
 	</div>
+	
 	<div class="mar">
 		<div class="pop"><a href="#pop" class="hover">Pop</a><div class="pad">Pop</div></div> &nbsp;&nbsp;&nbsp;
 		<div class="pop"><a href="#pop" class="hover">Info-top</a><b class="inv c rad">Hint top</b></div> &nbsp;&nbsp;&nbsp;
 		<div class="pop"><a href="#pop" class="hover">Pop-left</a><div class="pad l">Pop left</div></div> &nbsp;&nbsp;&nbsp;
 		<div class="pop"><a href="#pop" class="hover">Info-right&nbsp;</a><span class="r bg-w bord">Hint right</span></div>
 	</div>
+	
 	<nav class="mar bg">
 		<a href="#nav" class="target" data-resp="target, icon-menu pad hover toggle" title="Menu"></a>
 		<a data-resp="target, text-n">Responsive menu</a>
@@ -746,6 +748,21 @@ x<sup>super</sup>
 			</ul>
 		</ul>
 	</nav>
+	
+	<table class="-pad bord mar mid c3">
+		<!--caption>Copy items</caption-->
+		<thead><tr><th>Tools<th>Item<th>Status</thead>
+		<tbody>
+		<tr>
+			<td>
+				<a href="#copy" data-item class="icon-add text-y"></a>
+				<a href="#copy" data-item data-delete data-keep class="icon-delete text-e"></a>
+				<a href="#copy" data-item data-up class="icon-up"></a>
+				<a href="#copy" data-item data-down class="icon-down"></a>
+			<td><input name="item[]">
+			<td><input type="checkbox" name="use[]">
+		</tbody>
+	</table>
 	
 	<h3 id="switch"><a href="#switch">Toggle class</a> <a href="#top" class="fit icon-up"></a></h3>
 	
