@@ -11,7 +11,12 @@ const go = (a, dir) => {
     if (!a) return
   }
   document.querySelectorAll('a.pic').forEach(m => m.classList.remove('modal'))
-  if (a) a.classList.add('modal')
+  if (a) {
+    a.classList.add('modal')
+    a.style.background = '#000 url("' + a.href + '") no-repeat 50% 50% / contain';
+    const x = i + ((2 * dir) || 1);
+    a.firstElementChild.style.background = p[x] ? '#000 url("' + p[x].href + '") no-repeat 50% 50% / contain' : ''; // preload
+  }
 }
 
 document.addEventListener('click', e => {
