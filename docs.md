@@ -90,6 +90,7 @@ Typography and styling is minimal and unobtrusive.
   - `a.toggle` - multiple, nested, link state, no scroll *(requires [granum.js](granum.js))*
 - `.modal.target:target > div` - modal dialog
   - close by `Escape` key *(requires [granum.js](granum.js))*
+- `.gallery a.pic` - image gallery *(requires [granum-gallery.js](granum-gallery.js))*
 - `.drawer:target` - drawer sliding from left (`.l` from right)
 - `.stick` - stick element to top
 - `.roll` - horizontal scroll if needed
@@ -166,6 +167,7 @@ Typography and styling is minimal and unobtrusive.
   - `[data-unset]` - additional classes of target elements in inactive state
   - `[data-act]` - additional classes of link in active state
   - `[data-inact]` - additional classes of link in inactive state
+- `.gallery a.pic` - image gallery
 - `input[data-nodes][value][data-set][data-unset]` - toggle classes
   - input can be one of: `checkbox`, `radio`, `select`
   - `[data-nodes]` - target elements selector

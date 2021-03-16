@@ -1,4 +1,4 @@
-/*! granum.css v1.2.21 */
+/*! granum.css v1.2.22 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -129,9 +129,10 @@ ul.row>*, .col-0[class] {flex:0 1 auto;/*for ie*/ /*flex:initial;*/}
 .modal>div {min-width:30%;max-height:83%;overflow:auto;background-color:#fff;  /* non-flex fallback */display:inline-block;margin:1em;}
 
 /* gallery */
+a.pic {-webkit-tap-highlight-color:transparent;}
 a.pic.modal>img {margin-top:-200em;}
-a.pic.modal:before, a.pic.modal:after {content:attr(title);position:fixed;left:0;top:0;color:#fff;background:rgba(0,0,0,.3);padding:0 .4em;}
-a.pic.modal:after {content:"\2573";left:auto;right:0;} /*\2715*/
+a.pic.modal:before, a.pic.modal:after {content:attr(title);position:fixed;left:0;top:0;color:#fff;background:rgba(0,0,0,.2);padding:0 .4em;}
+a.pic.modal:after {content:"\2573";left:auto;right:0;padding:.6em 1em;} /*\2715*/
 
 /* drawer */
 .drawer {position:fixed;top:0;bottom:0;left:-21em;width:80%;max-width:20em;z-index:80;overflow:auto;transition:left .2s, right .2s;}

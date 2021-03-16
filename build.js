@@ -5,13 +5,15 @@ const fs = require('fs')
 const UglifyJS = require("uglify-js");
 
 // cleanup
-['granum.min.css', 'granum-icons.min.css', 'granum-dropdown.min.css', 'granum-full.css', 'granum-full.min.css', 'granum.min.js', 'granum-edit.min.js']
+['granum.min.css', 'granum-icons.min.css', 'granum-dropdown.min.css', 'granum-full.css', 'granum-full.min.css', 'granum.min.js', 'granum-gallery.min.js', 'granum-edit.min.js']
 .forEach(n => {
-  try {
-    fs.unlinkSync('./' + n)
-    console.error('Remove ' + n)
-  } catch (error) {
-    console.error(error)
+  if (fs.existsSync('./' + n)) {
+    try {
+      fs.unlinkSync('./' + n)
+      console.error('Remove ' + n)
+    } catch (error) {
+      console.error(error)
+    }
   }
 });
 
@@ -63,7 +65,7 @@ console.log('Bundle granum-full.css...');
 
 // minify js
 
-['granum', 'granum-edit']
+['granum', 'granum-gallery', 'granum-edit']
 .forEach(n => {
   console.log('Minify ' + n + '.js...');
   const js = fs.readFileSync('./' + n + '.js', 'utf8');

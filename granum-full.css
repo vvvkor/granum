@@ -1,4 +1,4 @@
-/*! granum.css v1.2.21 */
+/*! granum.css v1.2.22 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -125,8 +125,14 @@ ul.row>*, .col-0[class] {flex:0 1 auto;/*for ie*/ /*flex:initial;*/}
 /**/
 
 /* modal */
-.modal {position:fixed;z-index:100;left:0;right:0;top:0;bottom:0;background-color:rgba(99,99,99,.5);box-shadow:0 0 0 9em rgba(99,99,99,.5);display:flex;justify-content:center;align-items:center;}
+.modal[class] {position:fixed;z-index:100;left:0;right:0;top:0;bottom:0;background-color:rgba(99,99,99,.5);box-shadow:0 0 0 9em rgba(99,99,99,.5);display:flex;justify-content:center;align-items:center;margin:0}
 .modal>div {min-width:30%;max-height:83%;overflow:auto;background-color:#fff;  /* non-flex fallback */display:inline-block;margin:1em;}
+
+/* gallery */
+a.pic {-webkit-tap-highlight-color:transparent;}
+a.pic.modal>img {margin-top:-200em;}
+a.pic.modal:before, a.pic.modal:after {content:attr(title);position:fixed;left:0;top:0;color:#fff;background:rgba(0,0,0,.2);padding:0 .4em;}
+a.pic.modal:after {content:"\2573";left:auto;right:0;padding:.6em 1em;} /*\2715*/
 
 /* drawer */
 .drawer {position:fixed;top:0;bottom:0;left:-21em;width:80%;max-width:20em;z-index:80;overflow:auto;transition:left .2s, right .2s;}
@@ -203,7 +209,7 @@ a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tr:hover
 }
 
 
-/*! granum-icons.css v1.2.21 */
+/*! granum-icons.css v1.2.22 */
 
 /* svg {fill:currentColor;} */
 [class*="icon-"]:before {
@@ -327,7 +333,7 @@ button[class*="icon-"]:before, button [class*="icon-"]:before, .inv:before {filt
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M1 2l10 4-10 4 1.5-3.6 6-.4-6-.4z'/%3E%3C/svg%3E");
 }
 
-/*! granum-dropdown.css v1.2.21 */
+/*! granum-dropdown.css v1.2.22 */
 
 .pop {display:inline-block;}
 .pop, .drop li {position:relative;}
@@ -360,7 +366,7 @@ button[class*="icon-"]:before, button [class*="icon-"]:before, .inv:before {filt
 .pop>:not(a).c {top:auto;bottom:100%;left:50%;transform:translateX(-50%);}
 .pop>:not(a).r {top:50%;left:100%;transform:translateY(-50%);}/*margin-left:.2em;*/
 
-/*! granum-grid.css v1.2.21 */
+/*! granum-grid.css v1.2.22 */
 
 .grid {display:flex;--gap:0em;--wid:100%;  list-style:none;padding:0;}
 .grid.flow, [class*="grid-"] {flex-wrap:wrap;}
@@ -407,7 +413,7 @@ button[class*="icon-"]:before, button [class*="icon-"]:before, .inv:before {filt
 	.grid.resp > * + * {margin-top:var(--gap);}
 }
 
-/*! granum-print.css v1.2.21 */
+/*! granum-print.css v1.2.22 */
 
 @media print{
 	body {font:12pt/1.3 serif;background:none;}

@@ -17,7 +17,14 @@ Ultra compact set of styles and behaviours for basic web pages.
 <link rel="stylesheet" href="granum-dropdown.css">
 <link rel="stylesheet" href="granum-grid.css">
 <script src="granum.js" defer></script>
+<script src="granum-gallery.js" defer></script>
 <script src="granum-edit.js" defer></script>
+```
+
+All styles in one file:
+
+```html
+<link rel="stylesheet" href="granum-full.css">
 ```
 
 ## CDN
@@ -25,11 +32,18 @@ Ultra compact set of styles and behaviours for basic web pages.
 ```html
 <link rel="stylesheet" href="https://unpkg.com/granum">
 <!-- optional -->
-<link rel="stylesheet" href="https://unpkg.com/granum/granum-icons.css">
-<link rel="stylesheet" href="https://unpkg.com/granum/granum-dropdown.css">
-<link rel="stylesheet" href="https://unpkg.com/granum/granum-grid.css">
-<script src="https://unpkg.com/granum/granum.js" defer></script>
-<script src="https://unpkg.com/granum/granum-edit.js" defer></script>
+<link rel="stylesheet" href="https://unpkg.com/granum/granum-icons.min.css">
+<link rel="stylesheet" href="https://unpkg.com/granum/granum-dropdown.min.css">
+<link rel="stylesheet" href="https://unpkg.com/granum/granum-grid.min.css">
+<script src="https://unpkg.com/granum/granum.min.js" defer></script>
+<script src="https://unpkg.com/granum/granum-gallery.min.js" defer></script>
+<script src="https://unpkg.com/granum/granum-edit.min.js" defer></script>
+```
+
+All styles in one file:
+
+```html
+<link rel="stylesheet" href="https://unpkg.com/granum/granum-full.min.css">
 ```
 
 ## Features
@@ -88,6 +102,8 @@ Ultra compact set of styles and behaviours for basic web pages.
   - align table columns
   - check group of checkboxes
   - copy, remove, order items
+- with `granum-gallery.js`
+  - gallery
 - with `granum-editor.js`
   - contenteditable
 
@@ -115,6 +131,7 @@ Ultra compact set of styles and behaviours for basic web pages.
 - `[data-get]`
 - `body[data-break] [data-resp]`
 - `[data-item][data-delete][data-keep][data-up][data-down]`
+- `.gallery a.pic`
 
 ## JavaScript editor hooks
 
