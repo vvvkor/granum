@@ -106,9 +106,9 @@ Bundles with all styles and scripts:
   - align table columns
   - check group of checkboxes
   - copy, remove, order items
-- with `granum-gallery.js` and `granum-dropdown.css`
+- with `granum-gallery.js`
   - gallery
-- with `granum-lookup.js`
+- with `granum-lookup.js` and `granum-dropdown.css`
   - lookup input
 - with `granum-editor.js`
   - contenteditable
