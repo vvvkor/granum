@@ -1,8 +1,8 @@
-/*! granum.css v1.2.22 */
+/*! granum.css v1.2.23 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
-button, input, select, textarea {margin:0;}
+button, input, select, textarea, li ul, li ol {margin:0;}
 img, iframe, fieldset, hr {border:none;}
 img {object-fit:cover;}
 html, body, li, dl, dt, dd, legend, iframe, fieldset, .row {margin:0;padding:0;}
@@ -35,7 +35,7 @@ pre, code, kbd, samp, .mono {font-family:"PT Mono", monospace;font-size:90%;}
 pre code {font-size:100%;}
 
 /* typography */
-.fit {margin:0;padding:0;border:none;border-radius:0;}
+.fit, pre code {margin:0;padding:0;border:none;border-radius:0;}
 .fit:not(h1):not(h2):not(h3):not(h4) {font-size:1rem;font-weight:normal;}
 	main, img.fit /*, table.roll*/ {display:block;}
 .mar, ul, ol , dl, blockquote, pre, hr, p, figure {margin:1em 0;}
@@ -49,9 +49,8 @@ pre{overflow:auto;max-height:80vh;}
 	code, kbd {padding:.2em .5em;}
 	.rad, code, kbd, pre {border-radius:.2em;}
 	.tag.rad {border-radius:.75em;}
-	pre code {padding:0;}
 abbr {border-bottom:thin dotted;text-decoration:none;}
-sub,sup {line-height:0em;}
+sub, sup {line-height:0em;}
 .bord, kbd, fieldset, hr{border:thin solid rgba(0,0,0,.16);}
 hr{border-width:thin 0 0 0;}
 
@@ -66,16 +65,14 @@ a.l, span.l {margin-right:1em;}
 
 /* list */
 ul {list-style:disc outside;}
-ul, ol {padding:0 0 0 1.5em;}
-li ul, li ol {margin:.2em 0;}
+ul, ol, dd {padding:0 0 0 1.5em;}
+li, dt, dd {margin:.3em 0;}
 dt {font-weight:bold;}
-dt, dd {margin-bottom:.5em;}
-dd {padding-left:1em;}
 
 /* table */
 .roll {overflow:auto hidden;}
 th, td {padding:.2em .5em;vertical-align:top;background-clip:padding-box;}
-table.fit>*>tr>* {padding:0;}
+table.fit>*>tr>*, table.pad {padding:0;}
 table.bord {border:none;}
 table.l {width:100%;}
 table.mid tr>*, tr>.mid, tr.mid>* {vertical-align:middle;}
@@ -83,7 +80,6 @@ table.mid tr>*, tr>.mid, tr.mid>* {vertical-align:middle;}
 table.bord>*>tr>* {border:thin solid rgba(0,0,0,.16);}
 /* .roll>table.bord {border:medium solid rgba(0,0,0,.16);} */
 /* horizontal borders */
-table.pad {padding:0;}
 table.pad>*>tr>*, .tabs {border-bottom:thin solid rgba(0,0,0,.16);}
 table.pad>*:last-child>tr:last-child>* {border-bottom:none;}
 
@@ -109,8 +105,7 @@ input[readonly] {background-color:#eee;}
 .row.pad {padding:0;}
 .row.pad>*:not(:last-child) {margin-right:1rem;}
 ul.row:not(.roll) {flex-wrap:wrap;}
-ul.row {list-style:none;}
-ul.row li {display:flex;}
+ul.row li {display:flex;margin:0;}
 ul.row>*, .col-0[class] {flex:0 1 auto;/*for ie*/ /*flex:initial;*/}
 .row>*, .col-1[class], ul.row ul a {flex:1;}
 .col-2[class] {flex:2;}
