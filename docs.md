@@ -168,6 +168,13 @@ Typography and styling is minimal and unobtrusive.
   - `[data-act]` - additional classes of link in active state
   - `[data-inact]` - additional classes of link in inactive state
 - `.gallery a.pic` - image gallery
+- `input[data-lookup][data-caption]` - lookup input *(requires [granum-dropdown.css](granum-dropdown.css) and [granum-lookup.js](granum-lookup.js))*
+  - `[data-caption]` - initial caption (optional)
+  - `[data-lookup="URL#ID#NAME#INFO"]` - data source
+    - `URL` - data source URL, should return JSON array
+    - `ID` - item attribute with value (`id` by default)
+    - `NAME` - item attribute with caption (`name` by default)
+    - `INFO` - item attribute with additional info  (`info` by default)
 - `input[data-nodes][value][data-set][data-unset]` - toggle classes
   - input can be one of: `checkbox`, `radio`, `select`
   - `[data-nodes]` - target elements selector

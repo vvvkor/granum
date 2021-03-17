@@ -151,3 +151,175 @@ window.addEventListener('resize', e => {
 })
 
 })()
+
+/*! granum-gallery.js v1.2.24 */
+
+(_ => {
+
+const k = {Escape: 7, Tab: 9, ArrowLeft: -1, ArrowRight: 1}
+
+const esc = _ => document.querySelectorAll('a.pic').forEach(m => m.classList.remove('modal'))
+
+const go = (a, dir) => {
+  if (dir == 7) return esc()
+  if (dir == 9) return location.href = a.href
+  const p = [...(a.closest('.gallery') || document).querySelectorAll('a.pic')]
+  const i = p.findIndex(m => m == a)
+  if (dir) {
+    a = p[i + dir]
+    if (!a) return
+  }
+  esc()
+  a.classList.add('modal')
+  a.style.background = '#000 url("' + a.href + '") no-repeat 50% 50% / contain'
+  const x = i + ((2 * dir) || 1)
+  a.firstElementChild.style.background = p[x] ? '#000 url("' + p[x].href + '") no-repeat 50% 50% / contain' : '' // preload
+}
+
+document.addEventListener('click', e => {
+  const a = e.target.closest('a.pic')
+  if (a) {
+    e.preventDefault()
+    n = a.classList.contains('modal')
+      ? go(a, (e.clientY < 50 && a.clientWidth - e.clientX < 50)
+            ? 7
+            : (e.clientX < a.clientWidth / 2 ? -1 : 1))
+      : go(a)
+  }
+}, false)
+
+document.addEventListener('keydown', e => {
+  const a = document.querySelector('a.pic.modal')
+  if (a && e.key in k) go(a, k[e.key])
+})
+
+})()
+
+/*! granum-lookup.js v1.2.24 */
+
+(_ => {
+
+let t = null
+
+const x = _ => document.querySelectorAll('.lookup + div').forEach(m => m.style.display = '')
+
+document.addEventListener('DOMContentLoaded', e => {
+  document.querySelectorAll('[data-lookup]').forEach(n => {
+    n.hidden = true
+    const p = document.createElement('div')
+    p.className = 'pop'
+    p.innerHTML = '<input class="lookup" value="' + n.dataset.caption + '" data-cap="' + n.dataset.caption + '"><div class="hide"></div>'
+    n.parentNode.insertBefore(p, n.nextSibling)
+    p.lastChild.style.cursor = 'pointer'
+  })
+})
+
+document.addEventListener('input', e => {
+  const l = e.target.closest('.lookup')
+  if (l) {
+    clearTimeout(t)
+    t = setTimeout(_ => {
+      x()
+      const p = l.nextSibling
+      const n = p.parentNode.previousSibling
+      if (l.value === '') {
+        p.style.display = ''
+        n.value = l.dataset.cap = ''
+      }
+      else {
+        const u = n.dataset.lookup.split('#')
+        fetch(u[0].replace(/\{q\}/, encodeURIComponent(l.value)))
+          .then(r => r.ok ? r.json() : [])
+          .then(j => p.innerHTML = j.slice(0, 5).map((d, i) => '<div class="pad hover' + (i ? '' : ' bg') + '" data-lookid="' + d[u[1] || 'id'] + '"><div>' + (d[u[2] || 'name']) + '</div>' + (d[u[3] || 'info'] ? '<div class="small text-n">' + d[u[3] || 'info'] + '</div>' : '') + '</div>').join(''))
+          .then(_ => p.style.display = 'block')
+      }
+    }, 500)
+  }
+})
+
+document.addEventListener('click', e => {
+  const a = e.target.closest('[data-lookid]')
+  if (a) {
+    clearTimeout(t)
+    const l = a.parentNode.previousSibling
+    l.parentNode.previousSibling.value = a.dataset.lookid
+    l.value = l.dataset.cap = a.firstChild.textContent
+    a.parentNode.style.display = ''
+  }
+  if (!e.target.closest('.lookup, .lookup + div')) x()
+})
+
+document.addEventListener('keydown', e => {
+  const l = e.target.closest('.lookup:focus')
+  if (l) {
+    const p = l.nextSibling
+    if (e.key == 'Escape') {
+      clearTimeout(t)
+      p.style.display = ''
+      l.value = l.dataset.cap
+    }
+    else if (e.key == 'ArrowUp' || e.key == 'ArrowDown') {
+      if (!p.style.display) l.dispatchEvent(new Event('input', {bubbles: true}))
+      else{
+        let a = p.querySelector('div.bg')
+        a = a
+          ? (e.key == 'ArrowUp'
+            ? (a.previousSibling || p.lastChild)
+            : (a.nextSibling || p.firstChild))
+          : p.firstChild
+        p.querySelectorAll('div').forEach(m => m.classList[m == a ? 'add' : 'remove']('bg'))
+      }
+    }
+    else if (e.key == 'Enter') {
+      let a = p.querySelector('div.bg')
+      if (a) a.dispatchEvent(new Event('click', {bubbles: true}))
+    }
+  }
+})
+
+})()
+
+/*! granum-edit.js v1.2.24 */
+
+document.addEventListener('DOMContentLoaded', e => {
+  // fill contenteditable from textarea
+  document.querySelectorAll('[contenteditable][data-for]').forEach(n => {
+    const area = document.getElementById(n.dataset.for)
+    if (area) n.innerHTML = area.value
+  })
+})
+
+document.addEventListener('click', e => {
+  const a = e.target.closest('a')
+
+  // contenteditable command
+  if (a && a.hash && a.dataset.cmd) {
+    const n = document.getElementById(a.hash.substr(1))
+    if (n) {
+      e.preventDefault()
+      const arg = ('ask' in a.dataset)
+        ? prompt(a.title || a.dataset.cmd, a.dataset.ask)
+        : ('arg' in a.dataset ? a.dataset.arg : '')
+      if (arg != null) {
+        n.focus()
+        document.execCommand(a.dataset.cmd, false, arg)
+      }
+    }
+  }
+})
+
+document.addEventListener('input', e => {
+  // update textarea
+  if (e.target.dataset.for) {
+    const area = document.getElementById(e.target.dataset.for)
+    if (area) area.value = e.target.innerHTML
+  }
+  
+  // update contenteditable
+  if (e.target.id && e.target.tagName == 'TEXTAREA') {
+    const c = document.querySelector('[data-for="' + e.target.id + '"]')
+    if (c) c.innerHTML = e.target.value
+  }
+})
+
+

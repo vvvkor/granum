@@ -4,7 +4,7 @@ CSS micro framework.
 Ultra compact set of styles and behaviours for basic web pages.
 
 2.5 KB minified and gzipped.  
-7 KB with icons, dropdowns, advanced grid and some JavaScript.
+8 KB with icons, dropdowns, advanced grid and some JavaScript.
 
 [Demo](https://vvvkor.github.io/granum/) · [Docs](https://github.com/vvvkor/granum/blob/master/docs.md)
 
@@ -18,13 +18,15 @@ Ultra compact set of styles and behaviours for basic web pages.
 <link rel="stylesheet" href="granum-grid.css">
 <script src="granum.js" defer></script>
 <script src="granum-gallery.js" defer></script>
+<script src="granum-lookup.js" defer></script>
 <script src="granum-edit.js" defer></script>
 ```
 
-All styles in one file:
+Bundles with all styles and scripts:
 
 ```html
 <link rel="stylesheet" href="granum-full.css">
+<script src="granum-full.js" defer></script>
 ```
 
 ## CDN
@@ -37,13 +39,15 @@ All styles in one file:
 <link rel="stylesheet" href="https://unpkg.com/granum/granum-grid.min.css">
 <script src="https://unpkg.com/granum/granum.min.js" defer></script>
 <script src="https://unpkg.com/granum/granum-gallery.min.js" defer></script>
+<script src="https://unpkg.com/granum/granum-lookup.min.js" defer></script>
 <script src="https://unpkg.com/granum/granum-edit.min.js" defer></script>
 ```
 
-All styles in one file:
+Bundles with all styles and scripts:
 
 ```html
 <link rel="stylesheet" href="https://unpkg.com/granum/granum-full.min.css">
+<script src="https://unpkg.com/granum/granum-full.min.js" defer></script>
 ```
 
 ## Features
@@ -102,8 +106,10 @@ All styles in one file:
   - align table columns
   - check group of checkboxes
   - copy, remove, order items
-- with `granum-gallery.js`
+- with `granum-gallery.js` and `granum-dropdown.css`
   - gallery
+- with `granum-lookup.js`
+  - lookup input
 - with `granum-editor.js`
   - contenteditable
 
@@ -132,6 +138,7 @@ All styles in one file:
 - `body[data-break] [data-resp]`
 - `[data-item][data-delete][data-keep][data-up][data-down]`
 - `.gallery a.pic`
+- `input[data-lookup][data-caption]`
 
 ## JavaScript editor hooks
 

@@ -5,7 +5,7 @@ const fs = require('fs')
 const UglifyJS = require("uglify-js");
 
 // cleanup
-['granum.min.css', 'granum-icons.min.css', 'granum-dropdown.min.css', 'granum-full.css', 'granum-full.min.css', 'granum.min.js', 'granum-gallery.min.js', 'granum-edit.min.js']
+['granum.min.css', 'granum-icons.min.css', 'granum-dropdown.min.css', 'granum-grid.min.css', 'granum-print.min.css', 'granum-full.css', 'granum-full.min.css', 'granum.min.js', 'granum-gallery.min.js', 'granum-lookup.min.js', 'granum-edit.min.js', 'granum-full.js', 'granum-full.min.js']
 .forEach(n => {
   if (fs.existsSync('./' + n)) {
     try {
@@ -37,9 +37,18 @@ catch (error) {
   console.error('Error occurred:', error);
 }
 
+// bundle css
+
+console.log('Bundle granum-full.css...');
+['granum', 'granum-icons', 'granum-dropdown', 'granum-grid', 'granum-print']
+.forEach(n => {
+  const css = fs.readFileSync('./' + n + '.css', 'utf8');
+  fs.writeFileSync('./granum-full.css', css + '\n\n', {flag: 'as'});
+});
+
 // minify css
 
-['granum', 'granum-icons', 'granum-dropdown', 'granum-grid', 'granum-print']
+['granum', 'granum-icons', 'granum-dropdown', 'granum-grid', 'granum-print', 'granum-full']
 .forEach(n => {
   console.log('Minify ' + n + '.css...');
   const css = fs.readFileSync('./' + n + '.css', 'utf8');
@@ -50,22 +59,18 @@ catch (error) {
   fs.writeFileSync('./' + n + '.min.css', min);
 });
 
-// bundle css
+// bundle js
 
-console.log('Bundle granum-full.css...');
-['granum', 'granum-icons', 'granum-dropdown', 'granum-grid', 'granum-print']
+console.log('Bundle granum-full.js...');
+['granum', 'granum-gallery', 'granum-lookup', 'granum-edit']
 .forEach(n => {
-  const css = fs.readFileSync('./' + n + '.css', 'utf8');
-  fs.writeFileSync('./granum-full.css', css + '\n\n', {flag: 'as'});
-  let min = csso.minify(css, {
-    restructure: false,
-  }).css;
-  fs.writeFileSync('./granum-full.min.css', min, {flag: 'as'});
+  const js = fs.readFileSync('./' + n + '.js', 'utf8');
+  fs.writeFileSync('./granum-full.js', js + '\n\n', {flag: 'as'});
 });
 
 // minify js
 
-['granum', 'granum-gallery', 'granum-edit']
+['granum', 'granum-gallery', 'granum-lookup', 'granum-edit', 'granum-full']
 .forEach(n => {
   console.log('Minify ' + n + '.js...');
   const js = fs.readFileSync('./' + n + '.js', 'utf8');
