@@ -95,9 +95,9 @@ button:focus, input:focus, select:focus, textarea:focus, [contenteditable]:focus
 button[disabled], [type="submit"][disabled] {opacity:.5;}
 [disabled] {cursor:not-allowed;}
 input[readonly] {background-color:#eee;}
-[name]:invalid {border-color:#c00;}
+[name]:invalid, [name]:invalid+.pop>input {border-color:#c00;}
 	[type="checkbox"]:invalid+span, [type="radio"]:invalid+span {color:#c00;}
-	[name]:invalid:focus {box-shadow:0 0 0 .15em rgba(255,100,100,.3);}
+	[name]:invalid:focus, [name]:invalid+.pop>input:focus {box-shadow:0 0 0 .15em rgba(255,100,100,.3);}
 	:valid~.act.text-e, :invalid~.act.text-y {display:none;}
 
 /* grid */

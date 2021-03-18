@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="granum-icons.css">
     <link rel="stylesheet" href="granum-dropdown.css">
     <link rel="stylesheet" href="granum-grid.css">
+    <link rel="stylesheet" href="granum-print.css">
     <link rel="icon" type="image/svg" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'%3E%3Cpath fill='%23f63' d='M35 67l75 -44 75 44 0 89-75 44-75-44zm75 8a35 35 0 1 0 .01 0z'/%3E%3C/svg%3E">
     <!--link rel="stylesheet" href="granum-print.css"-->
     <script src="granum.js" defer></script>
@@ -561,7 +562,8 @@ x<sup>super</sup>
 </p>
 <p>
 	<label for="look">Country</label><br>
-	<input id="look" type="text" name="look" value="RU" data-caption="Russia" data-lookup="https://restcountries.eu/rest/v2/name/{q}#alpha2Code#name#subregion">
+	<input required id="look" type="text" name="look" value="FO" data-caption="Faroe" data-lookup="https://restcountries.eu/rest/v2/name/{q}#alpha2Code#name#subregion">
+	<!--span class="act text-e">Required</span-->
 </p>
 
 <details>

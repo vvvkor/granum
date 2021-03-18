@@ -4,7 +4,14 @@
 
 let t = null
 
+const ev = (n, e) => n.dispatchEvent(new Event(e, {bubbles: true}))
 const x = _ => document.querySelectorAll('.lookup + div').forEach(m => m.style.display = '')
+const s = (n, l, v, c) => {
+  n.value = v
+  l.value = l.dataset.cap = c
+  ev(n, 'input')
+  ev(n, 'change')
+}
 
 document.addEventListener('DOMContentLoaded', e => {
   document.querySelectorAll('[data-lookup]').forEach(n => {
@@ -21,22 +28,25 @@ document.addEventListener('input', e => {
   const l = e.target.closest('.lookup')
   if (l) {
     clearTimeout(t)
+    const p = l.nextSibling
+    const n = p.parentNode.previousSibling
+    p.style.display = ''
     t = setTimeout(_ => {
       x()
-      const p = l.nextSibling
-      const n = p.parentNode.previousSibling
-      if (l.value === '') {
-        p.style.display = ''
-        n.value = l.dataset.cap = ''
-      }
+      if (l.value === '') s(n, l, '', '')
       else {
         const u = n.dataset.lookup.split('#')
+        const v = l.value
         fetch(u[0].replace(/\{q\}/, encodeURIComponent(l.value)))
           .then(r => r.ok ? r.json() : [])
-          .then(j => p.innerHTML = j.slice(0, 5).map((d, i) => '<div class="pad hover' + (i ? '' : ' bg') + '" data-lookid="' + d[u[1] || 'id'] + '"><div>' + (d[u[2] || 'name']) + '</div>' + (d[u[3] || 'info'] ? '<div class="small text-n">' + d[u[3] || 'info'] + '</div>' : '') + '</div>').join(''))
-          .then(_ => p.style.display = 'block')
+          .then(j => {
+            if (l.value === v) {
+              p.innerHTML = j.slice(0, 5).map((d, i) => '<div class="pad hover' + (i ? '' : ' bg') + '" data-lookid="' + d[u[1] || 'id'] + '"><div>' + (d[u[2] || 'name']) + '</div>' + (d[u[3] || 'info'] ? '<div class="small text-n">' + d[u[3] || 'info'] + '</div>' : '') + '</div>').join('')
+              p.style.display = 'block'
+            }
+          })
       }
-    }, 500)
+    }, 300)
   }
 })
 
@@ -45,8 +55,7 @@ document.addEventListener('click', e => {
   if (a) {
     clearTimeout(t)
     const l = a.parentNode.previousSibling
-    l.parentNode.previousSibling.value = a.dataset.lookid
-    l.value = l.dataset.cap = a.firstChild.textContent
+    s(l.parentNode.previousSibling, l, a.dataset.lookid, a.firstChild.textContent)
     a.parentNode.style.display = ''
   }
   if (!e.target.closest('.lookup, .lookup + div')) x()
@@ -62,7 +71,7 @@ document.addEventListener('keydown', e => {
       l.value = l.dataset.cap
     }
     else if (e.key == 'ArrowUp' || e.key == 'ArrowDown') {
-      if (!p.style.display) l.dispatchEvent(new Event('input', {bubbles: true}))
+      if (!p.style.display) ev(l, 'input')
       else{
         let a = p.querySelector('div.bg')
         a = a
@@ -75,7 +84,10 @@ document.addEventListener('keydown', e => {
     }
     else if (e.key == 'Enter') {
       let a = p.querySelector('div.bg')
-      if (a) a.dispatchEvent(new Event('click', {bubbles: true}))
+      if (a) {
+        if (p.style.display) e.preventDefault()
+        ev(a, 'click')
+      }
     }
   }
 })
