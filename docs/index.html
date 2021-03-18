@@ -13,6 +13,7 @@
     <script src="granum.js" defer></script>
     <script src="granum-gallery.js" defer></script>
     <script src="granum-lookup.js" defer></script>
+    <script src="granum-calendar.js" defer></script>
     <script src="granum-edit.js" defer></script>
     <script>
 			document.addEventListener('granum', e => console.log('granum ready', e), false)
@@ -564,6 +565,9 @@ x<sup>super</sup>
 	<input required id="look" type="text" name="look" value="FO" data-caption="Faroe" data-lookup="https://restcountries.eu/rest/v2/name/{q}#alpha2Code#name#subregion">
 	<!--span class="act text-e">Required</span-->
 </p>
+<input class="calendar" type="date"><br>
+<input class="calendar" type="datetime-local"><br>
+<input class="calendar" type="datetime-local" step="1"><br>
 
 <details>
 <summary>Input types</summary>

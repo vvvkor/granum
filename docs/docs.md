@@ -180,6 +180,7 @@ Typography and styling is minimal and unobtrusive.
     - `ID` - item attribute with value (`id` by default)
     - `NAME` - item attribute with caption (`name` by default)
     - `INFO` - item attribute with additional info  (`info` by default)
+  `.lookup` - generated combo input
 - `input[data-nodes][value][data-set][data-unset]` - toggle classes
   - input can be one of: `checkbox`, `radio`, `select`
   - `[data-nodes]` - target elements selector
