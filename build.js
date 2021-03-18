@@ -5,45 +5,35 @@ const fs = require('fs')
 const UglifyJS = require("uglify-js");
 
 // cleanup
-['granum.min.css', 'granum-icons.min.css', 'granum-dropdown.min.css', 'granum-grid.min.css', 'granum-print.min.css', 'granum-full.css', 'granum-full.min.css', 'granum.min.js', 'granum-gallery.min.js', 'granum-lookup.min.js', 'granum-edit.min.js', 'granum-full.js', 'granum-full.min.js']
-.forEach(n => {
-  if (fs.existsSync('./' + n)) {
-    try {
-      fs.unlinkSync('./' + n)
-      console.error('Remove ' + n)
-    } catch (error) {
-      console.error(error)
+
+console.log('\n# PREPARE\n');
+['./dist/', './docs/']
+.forEach(d => {
+  console.log('Clear ' + d + '...')
+  fs.readdirSync(d).forEach(n => {
+    if (fs.existsSync(d + n)) {
+      try {
+        fs.unlinkSync(d + n)
+      } catch (error) {
+        console.error(error)
+      }
     }
-  }
+  });
 });
 
-// replace version
+// copy & bundle css
 
-const replace_options = {
-  files: [
-    './*.css',
-    './*.js',
-    './*.html'
-  ],
-  from: /v\d+\.\d+\.\d+/g,
-  to: 'v' + version,
-};
-
-try {
-  const results = replace.sync(replace_options);
-  console.log('Replacement (' + name +  ' v' + version + '):', results);
-}
-catch (error) {
-  console.error('Error occurred:', error);
-}
-
-// bundle css
-
+console.log('\n# CSS\n');
 console.log('Bundle granum-full.css...');
 ['granum', 'granum-icons', 'granum-dropdown', 'granum-grid', 'granum-print']
-.forEach(n => {
-  const css = fs.readFileSync('./' + n + '.css', 'utf8');
-  fs.writeFileSync('./granum-full.css', css + '\n\n', {flag: 'as'});
+.forEach((n, i) => {
+  console.log('Copy ' + n + '.css...');
+  //fs.copyFileSync('./src/' + n + '.css', './dist/' + n + '.css')
+  const css = fs.readFileSync('./src/' + n + '.css', 'utf8');
+  const v = '/*! ' + n + '.css v' + version + ' */\n\n';
+  fs.writeFileSync('./dist/' + n + '.css', v + css, {flag: 'w'});
+  if (!i) fs.writeFileSync('./dist/granum-full.css', '/*! granum-full.css v' + version + ' */\n\n', {flag: 'as'});
+  fs.writeFileSync('./dist/granum-full.css', css + '\n\n', {flag: 'as'});
 });
 
 // minify css
@@ -51,21 +41,27 @@ console.log('Bundle granum-full.css...');
 ['granum', 'granum-icons', 'granum-dropdown', 'granum-grid', 'granum-print', 'granum-full']
 .forEach(n => {
   console.log('Minify ' + n + '.css...');
-  const css = fs.readFileSync('./' + n + '.css', 'utf8');
+  const css = fs.readFileSync('./dist/' + n + '.css', 'utf8');
   let min = csso.minify(css, {
     restructure: false,
   }).css;
   //min = '/*! ' + n + '.css v' + version + ' */\n' + min;
-  fs.writeFileSync('./' + n + '.min.css', min);
+  fs.writeFileSync('./dist/' + n + '.min.css', min);
 });
 
 // bundle js
 
+console.log('\n# JS\n');
 console.log('Bundle granum-full.js...');
 ['granum', 'granum-gallery', 'granum-lookup', 'granum-edit']
-.forEach(n => {
-  const js = fs.readFileSync('./' + n + '.js', 'utf8');
-  fs.writeFileSync('./granum-full.js', js + '\n\n', {flag: 'as'});
+.forEach((n, i) => {
+  console.log('Copy ' + n + '.js...');
+  //fs.copyFileSync('./src/' + n + '.js', './dist/' + n + '.js')
+  const js = fs.readFileSync('./src/' + n + '.js', 'utf8');
+  const v = '/*! ' + n + '.js v' + version + ' */\n\n';
+  fs.writeFileSync('./dist/' + n + '.js', v + js, {flag: 'w'});
+  if (!i) fs.writeFileSync('./dist/granum-full.js', '/*! granum-full.js v' + version + ' */\n\n', {flag: 'as'});
+  fs.writeFileSync('./dist/granum-full.js', js + '\n\n', {flag: 'as'});
 });
 
 // minify js
@@ -73,7 +69,7 @@ console.log('Bundle granum-full.js...');
 ['granum', 'granum-gallery', 'granum-lookup', 'granum-edit', 'granum-full']
 .forEach(n => {
   console.log('Minify ' + n + '.js...');
-  const js = fs.readFileSync('./' + n + '.js', 'utf8');
+  const js = fs.readFileSync('./dist/' + n + '.js', 'utf8');
   var res = UglifyJS.minify(js, {
     compress: {
       // arrows: false,
@@ -87,6 +83,42 @@ console.log('Bundle granum-full.js...');
       comments: /^!/,
     }
   });
-  fs.writeFileSync('./' + n + '.min.js', res.code);
+  fs.writeFileSync('./dist/' + n + '.min.js', res.code);
   if (res.error) console.error('UglifyJS failed [' + n + '.js]: ' + res.error);
 });
+
+// copy docs
+
+console.log('\n# DOCS\n');
+
+console.log('Copy docs...');
+['index.html', 'docs.md']
+.forEach(n => fs.copyFileSync('./src/' + n, './docs/' + n));
+
+console.log('Copy assets...');
+[
+  'granum.css', 'granum-icons.css', 'granum-dropdown.css', 'granum-grid.css', 'granum-print.css',
+  'granum.js', 'granum-gallery.js', 'granum-lookup.js', 'granum-edit.js'
+]
+.forEach(n => fs.copyFileSync('./dist/' + n, './docs/' + n));
+
+// replace version
+
+const replace_options = {
+  files: [
+    // './docs/*.css',
+    // './docs/*.js',
+    './docs/*.md',
+    './docs/*.html'
+  ],
+  from: /v\d+\.\d+\.\d+/g,
+  to: 'v' + version,
+};
+
+try {
+  const results = replace.sync(replace_options);
+  console.log('Replace (' + name +  ' v' + version + '): \n', results);
+}
+catch (error) {
+  console.error('Replace error:', error);
+}

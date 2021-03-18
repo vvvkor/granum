@@ -1,8 +1,8 @@
 {
   "name": "granum",
-  "version": "1.2.24",
+  "version": "1.2.25",
   "description": "CSS micro framework",
-  "main": "granum.css",
+  "main": "dist/granum.css",
   "scripts": {
     "inst-glob": "npm i -g cross-var replace-in-file csso-cli uglify-js",
     "inst": "npm i -D cross-var replace-in-file csso-cli uglify-js",
