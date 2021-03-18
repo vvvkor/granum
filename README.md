@@ -34,20 +34,20 @@ Bundles with all styles and scripts:
 ```html
 <link rel="stylesheet" href="https://unpkg.com/granum">
 <!-- optional -->
-<link rel="stylesheet" href="https://unpkg.com/granum/granum-icons.min.css">
-<link rel="stylesheet" href="https://unpkg.com/granum/granum-dropdown.min.css">
-<link rel="stylesheet" href="https://unpkg.com/granum/granum-grid.min.css">
-<script src="https://unpkg.com/granum/granum.min.js" defer></script>
-<script src="https://unpkg.com/granum/granum-gallery.min.js" defer></script>
-<script src="https://unpkg.com/granum/granum-lookup.min.js" defer></script>
-<script src="https://unpkg.com/granum/granum-edit.min.js" defer></script>
+<link rel="stylesheet" href="https://unpkg.com/granum/dist/granum-icons.min.css">
+<link rel="stylesheet" href="https://unpkg.com/granum/dist/granum-dropdown.min.css">
+<link rel="stylesheet" href="https://unpkg.com/granum/dist/granum-grid.min.css">
+<script src="https://unpkg.com/granum/dist/granum.min.js" defer></script>
+<script src="https://unpkg.com/granum/dist/granum-gallery.min.js" defer></script>
+<script src="https://unpkg.com/granum/dist/granum-lookup.min.js" defer></script>
+<script src="https://unpkg.com/granum/dist/granum-edit.min.js" defer></script>
 ```
 
 Bundles with all styles and scripts:
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/granum/granum-full.min.css">
-<script src="https://unpkg.com/granum/granum-full.min.js" defer></script>
+<link rel="stylesheet" href="https://unpkg.com/granum/dist/granum-full.min.css">
+<script src="https://unpkg.com/granum/dist/granum-full.min.js" defer></script>
 ```
 
 ## Features

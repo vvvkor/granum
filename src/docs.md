@@ -1,11 +1,12 @@
-**Granum**
-*v0.0.0*
+**Granum**  
+v0.0.0
 
 # Documentation
 
 **Granum** is a CSS micro framework
 that supports grids, tables, forms, buttons,
 toggle, modals, dropdowns, popups, drawers,
+image gallery, lookup input,
 icons, status colors, and even more.
 Typography and styling is minimal and unobtrusive.
 
