@@ -3,20 +3,25 @@
 let t = null
 
 const ev = (n, e) => n.dispatchEvent(new Event(e, {bubbles: true}))
-const x = _ => document.querySelectorAll('.lookup + div').forEach(m => m.style.display = '')
 const s = (n, l, v, c) => {
   n.value = v
   l.value = l.dataset.cap = c
   ev(n, 'input')
   ev(n, 'change')
 }
+const x = l => {
+  clearTimeout(t)
+  l.nextSibling.style.display = ''
+  l.value = l.dataset.cap
+}
 
 document.addEventListener('DOMContentLoaded', e => {
   document.querySelectorAll('[data-lookup]').forEach(n => {
     n.hidden = true
+    const c = n.dataset.caption || ''
     const p = document.createElement('div')
     p.className = 'pop'
-    p.innerHTML = '<input class="lookup" value="' + n.dataset.caption + '" data-cap="' + n.dataset.caption + '"><div class="hide"></div>'
+    p.innerHTML = '<input class="lookup" value="' + c + '" data-cap="' + c + '"><div class="hide"></div>'
     n.parentNode.insertBefore(p, n.nextSibling)
     p.lastChild.style.cursor = 'pointer'
   })
@@ -30,7 +35,6 @@ document.addEventListener('input', e => {
     const n = p.parentNode.previousSibling
     p.style.display = ''
     t = setTimeout(_ => {
-      x()
       if (l.value === '') s(n, l, '', '')
       else {
         const u = n.dataset.lookup.split('#')
@@ -54,20 +58,17 @@ document.addEventListener('click', e => {
     clearTimeout(t)
     const l = a.parentNode.previousSibling
     s(l.parentNode.previousSibling, l, a.dataset.lookid, a.firstChild.textContent)
-    a.parentNode.style.display = ''
+    l.focus()
   }
-  if (!e.target.closest('.lookup, .lookup + div')) x()
+  const l = e.target.closest('.lookup')
+  document.querySelectorAll('.lookup').forEach(m => m == l ? null : x(m))
 })
 
 document.addEventListener('keydown', e => {
   const l = e.target.closest('.lookup:focus')
   if (l) {
     const p = l.nextSibling
-    if (e.key == 'Escape') {
-      clearTimeout(t)
-      p.style.display = ''
-      l.value = l.dataset.cap
-    }
+    if (e.key == 'Escape' || e.key == 'Tab') x(l)
     else if (e.key == 'ArrowUp' || e.key == 'ArrowDown') {
       if (!p.style.display) ev(l, 'input')
       else{
