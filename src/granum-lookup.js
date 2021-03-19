@@ -21,9 +21,10 @@ document.addEventListener('DOMContentLoaded', e => {
     const c = n.dataset.caption || ''
     const p = document.createElement('div')
     p.className = 'pop'
-    p.innerHTML = '<input class="lookup" value="' + c + '" data-cap="' + c + '"><div class="hide"></div>'
+    p.innerHTML = '<input class="lookup" name="lookup-' + n.name + '" value="' + c + '" data-cap="' + c + '"' + ('get' in n.dataset ? ' data-get' : '') + '><div class="hide"></div>'
     n.parentNode.insertBefore(p, n.nextSibling)
     p.lastChild.style.cursor = 'pointer'
+    ev(p.firstChild, 'getinput')
   })
 })
 

@@ -16,17 +16,8 @@ document.addEventListener('DOMContentLoaded', e => {
   })
   
   // init input values
-  document.querySelectorAll('[name][data-get]').forEach(n => {
-    const nm = n.dataset.get || n.name
-    const m = location.href.match(new RegExp('(\\?|&)_?' + nm + '=(.*?)($|&|#)'))
-    if (m) {
-      const v = decodeURIComponent(m[2].replace(/\+/g, ' '))
-      if (n.type == 'checkbox') n.checked = (v && v !== '0')
-      else if (n.type == 'radio') n.checked = (v && n.value === v)
-      else n.value = v
-    }
-  })
-  
+  document.querySelectorAll('[name][data-get]').forEach(n => n.dispatchEvent(new Event('getinput', {bubbles: true})))
+
   // init toggler state
   document.querySelectorAll('a.toggle').forEach(n => n.click())
   document.querySelectorAll('input[data-nodes], select[data-nodes]').forEach(n => 
@@ -48,9 +39,28 @@ document.addEventListener('DOMContentLoaded', e => {
   document.dispatchEvent(new Event('granum'))
 })
 
+document.addEventListener('getinput', e => {
+  const n = e.target
+  const nm = n.dataset.get || n.name
+  const m = location.href.match(new RegExp('(\\?|&)_?' + nm + '=(.*?)($|&|#)'))
+  if (m) {
+    const v = decodeURIComponent(m[2].replace(/\+/g, ' '))
+    if (n.type == 'checkbox') n.checked = (v && v !== '0')
+    else if (n.type == 'radio') n.checked = (v && n.value === v)
+    else n.value = n.dataset.cap = v
+  }
+})
+
+document.addEventListener('submit', e => {
+  if (e.target.classList.contains('dialog') && !confirm(e.target.title || 'Continue?')) e.preventDefault()
+})
+
 document.addEventListener('click', e => {
   const n = e.target
   const a = n.closest('a')
+  const b = n.closest('button.dialog, input.dialog')
+  
+  if (b?.form?.checkValidity() && !confirm(b.title || b.textContent)) e.preventDefault()
   
   if (a) {
     if (a.classList.contains('dialog')) {

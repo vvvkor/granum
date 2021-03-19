@@ -16,17 +16,8 @@ document.addEventListener('DOMContentLoaded', e => {
   })
   
   // init input values
-  document.querySelectorAll('[name][data-get]').forEach(n => {
-    const nm = n.dataset.get || n.name
-    const m = location.href.match(new RegExp('(\\?|&)_?' + nm + '=(.*?)($|&|#)'))
-    if (m) {
-      const v = decodeURIComponent(m[2].replace(/\+/g, ' '))
-      if (n.type == 'checkbox') n.checked = (v && v !== '0')
-      else if (n.type == 'radio') n.checked = (v && n.value === v)
-      else n.value = v
-    }
-  })
-  
+  document.querySelectorAll('[name][data-get]').forEach(n => n.dispatchEvent(new Event('getinput', {bubbles: true})))
+
   // init toggler state
   document.querySelectorAll('a.toggle').forEach(n => n.click())
   document.querySelectorAll('input[data-nodes], select[data-nodes]').forEach(n => 
@@ -48,9 +39,28 @@ document.addEventListener('DOMContentLoaded', e => {
   document.dispatchEvent(new Event('granum'))
 })
 
+document.addEventListener('getinput', e => {
+  const n = e.target
+  const nm = n.dataset.get || n.name
+  const m = location.href.match(new RegExp('(\\?|&)_?' + nm + '=(.*?)($|&|#)'))
+  if (m) {
+    const v = decodeURIComponent(m[2].replace(/\+/g, ' '))
+    if (n.type == 'checkbox') n.checked = (v && v !== '0')
+    else if (n.type == 'radio') n.checked = (v && n.value === v)
+    else n.value = n.dataset.cap = v
+  }
+})
+
+document.addEventListener('submit', e => {
+  if (e.target.classList.contains('dialog') && !confirm(e.target.title || 'Continue?')) e.preventDefault()
+})
+
 document.addEventListener('click', e => {
   const n = e.target
   const a = n.closest('a')
+  const b = n.closest('button.dialog, input.dialog')
+  
+  if (b?.form?.checkValidity() && !confirm(b.title || b.textContent)) e.preventDefault()
   
   if (a) {
     if (a.classList.contains('dialog')) {
@@ -198,22 +208,28 @@ document.addEventListener('keydown', e => {
 let t = null
 
 const ev = (n, e) => n.dispatchEvent(new Event(e, {bubbles: true}))
-const x = _ => document.querySelectorAll('.lookup + div').forEach(m => m.style.display = '')
 const s = (n, l, v, c) => {
   n.value = v
   l.value = l.dataset.cap = c
   ev(n, 'input')
   ev(n, 'change')
 }
+const x = l => {
+  clearTimeout(t)
+  l.nextSibling.style.display = ''
+  l.value = l.dataset.cap
+}
 
 document.addEventListener('DOMContentLoaded', e => {
   document.querySelectorAll('[data-lookup]').forEach(n => {
     n.hidden = true
+    const c = n.dataset.caption || ''
     const p = document.createElement('div')
     p.className = 'pop'
-    p.innerHTML = '<input class="lookup" value="' + n.dataset.caption + '" data-cap="' + n.dataset.caption + '"><div class="hide"></div>'
+    p.innerHTML = '<input class="lookup" name="lookup-' + n.name + '" value="' + c + '" data-cap="' + c + '"' + ('get' in n.dataset ? ' data-get' : '') + '><div class="hide"></div>'
     n.parentNode.insertBefore(p, n.nextSibling)
     p.lastChild.style.cursor = 'pointer'
+    ev(p.firstChild, 'getinput')
   })
 })
 
@@ -225,7 +241,6 @@ document.addEventListener('input', e => {
     const n = p.parentNode.previousSibling
     p.style.display = ''
     t = setTimeout(_ => {
-      x()
       if (l.value === '') s(n, l, '', '')
       else {
         const u = n.dataset.lookup.split('#')
@@ -249,20 +264,17 @@ document.addEventListener('click', e => {
     clearTimeout(t)
     const l = a.parentNode.previousSibling
     s(l.parentNode.previousSibling, l, a.dataset.lookid, a.firstChild.textContent)
-    a.parentNode.style.display = ''
+    l.focus()
   }
-  if (!e.target.closest('.lookup, .lookup + div')) x()
+  const l = e.target.closest('.lookup')
+  document.querySelectorAll('.lookup').forEach(m => m == l ? null : x(m))
 })
 
 document.addEventListener('keydown', e => {
   const l = e.target.closest('.lookup:focus')
   if (l) {
     const p = l.nextSibling
-    if (e.key == 'Escape') {
-      clearTimeout(t)
-      p.style.display = ''
-      l.value = l.dataset.cap
-    }
+    if (e.key == 'Escape' || e.key == 'Tab') x(l)
     else if (e.key == 'ArrowUp' || e.key == 'ArrowDown') {
       if (!p.style.display) ev(l, 'input')
       else{

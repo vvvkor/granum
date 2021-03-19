@@ -161,8 +161,10 @@ Typography and styling is minimal and unobtrusive.
 
 - `body[data-break="MIN-DESKTOP,MIN-TABLET,MIN-MOBILE"]` - custom responsive breakpoints widths
 - `[data-resp="DESKTOP-CLASSES,TABLE-CLASSES,MOBILE-CLASSES"]` - responsive element classes
-- `.dialog([title])` - confirm dialog
-- `.dialog([data-prompt][data-default][title])` - prompt dialog
+- `a.dialog([title])` - confirm before following the link
+- `button.dialog([title])` - confirm before submitting the form with this button
+- `form.dialog([title])` - confirm before submitting the form
+- `a.dialog([data-prompt][data-default][title])` - prompt dialog
   - `[title]` - dialog text
   - `[data-default]` - default value
   - `[data-prompt]` - replaced substring in URL
