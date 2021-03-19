@@ -2,12 +2,12 @@
 
 let t = null
 
-const ev = (n, e) => n.dispatchEvent(new Event(e, {bubbles: true}))
-const s = (n, l, v, c) => {
+const evt = (n, e) => n.dispatchEvent(new Event(e, {bubbles: true}))
+const set = (n, l, v, c) => {
   n.value = v
   l.value = l.dataset.cap = c
-  ev(n, 'input')
-  ev(n, 'change')
+  evt(n, 'input')
+  evt(n, 'change')
 }
 const x = l => {
   clearTimeout(t)
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', e => {
     p.innerHTML = '<input class="lookup" name="lookup-' + n.name + '" value="' + c + '" data-cap="' + c + '" autocomplete="off"' + ('get' in n.dataset ? ' data-get' : '') + (n.required ? ' required' : '') + '><div class="hide"></div>'
     n.parentNode.insertBefore(p, n.nextSibling)
     p.lastChild.style.cursor = 'pointer'
-    ev(p.firstChild, 'getinput')
+    evt(p.firstChild, 'getinput')
   })
 })
 
@@ -36,7 +36,7 @@ document.addEventListener('input', e => {
     const n = p.parentNode.previousSibling
     p.style.display = ''
     t = setTimeout(_ => {
-      if (l.value === '') s(n, l, '', '')
+      if (l.value === '') set(n, l, '', '')
       else {
         const u = n.dataset.lookup.split('#')
         const v = l.value
@@ -58,7 +58,7 @@ document.addEventListener('click', e => {
   if (a) {
     clearTimeout(t)
     const l = a.parentNode.previousSibling
-    s(l.parentNode.previousSibling, l, a.dataset.lookid, a.firstChild.textContent)
+    set(l.parentNode.previousSibling, l, a.dataset.lookid, a.firstChild.textContent)
     l.focus()
   }
   const l = e.target.closest('.lookup')
@@ -71,7 +71,7 @@ document.addEventListener('keydown', e => {
     const p = l.nextSibling
     if (e.key == 'Escape' || e.key == 'Tab') x(l)
     else if (e.key == 'ArrowUp' || e.key == 'ArrowDown') {
-      if (!p.style.display) ev(l, 'input')
+      if (!p.style.display) evt(l, 'input')
       else{
         let a = p.querySelector('div.bg')
         a = a
@@ -86,7 +86,7 @@ document.addEventListener('keydown', e => {
       let a = p.querySelector('div.bg')
       if (a) {
         if (p.style.display) e.preventDefault()
-        ev(a, 'click')
+        evt(a, 'click')
       }
     }
   }

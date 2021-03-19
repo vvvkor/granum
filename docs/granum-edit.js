@@ -1,4 +1,4 @@
-/*! granum-edit.js v1.2.25 */
+/*! granum-edit.js v1.2.26 */
 
 document.addEventListener('DOMContentLoaded', e => {
   // fill contenteditable from textarea
@@ -13,7 +13,7 @@ document.addEventListener('click', e => {
 
   // contenteditable command
   if (a && a.hash && a.dataset.cmd) {
-    const n = document.getElementById(a.hash.substr(1))
+    const n = document.getElementById(a.hash.slice(1))
     if (n) {
       e.preventDefault()
       const arg = ('ask' in a.dataset)

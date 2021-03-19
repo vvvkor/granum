@@ -11,7 +11,8 @@
 	background-size: contain;
 	background-repeat: no-repeat;
 }
-[class*="icon-"]:empty:before {margin: 0;}
+[class*="icon-"].empty>* {display:none;}
+[class*="icon-"]:empty:before, [class*="icon-"].empty:before {margin: 0;}
 
 [class*="icon-"]:before {filter: invert(.6);} /* #000 -> #999 */
 button[class*="icon-"]:before, button [class*="icon-"]:before, .inv:before {filter: brightness(0) invert(1);}

@@ -11,7 +11,7 @@ document.addEventListener('click', e => {
 
   // contenteditable command
   if (a && a.hash && a.dataset.cmd) {
-    const n = document.getElementById(a.hash.substr(1))
+    const n = document.getElementById(a.hash.slice(1))
     if (n) {
       e.preventDefault()
       const arg = ('ask' in a.dataset)

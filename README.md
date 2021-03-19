@@ -19,6 +19,7 @@ Ultra compact set of styles and behaviours for basic web pages.
 <script src="granum.js" defer></script>
 <script src="granum-gallery.js" defer></script>
 <script src="granum-lookup.js" defer></script>
+<script src="granum-calendar.js" defer></script>
 <script src="granum-edit.js" defer></script>
 ```
 
@@ -40,6 +41,7 @@ Bundles with all styles and scripts:
 <script src="https://unpkg.com/granum/dist/granum.min.js" defer></script>
 <script src="https://unpkg.com/granum/dist/granum-gallery.min.js" defer></script>
 <script src="https://unpkg.com/granum/dist/granum-lookup.min.js" defer></script>
+<script src="https://unpkg.com/granum/dist/granum-calendar.min.js" defer></script>
 <script src="https://unpkg.com/granum/dist/granum-edit.min.js" defer></script>
 ```
 
@@ -110,6 +112,8 @@ Bundles with all styles and scripts:
   - gallery
 - with `granum-lookup.js` and `granum-dropdown.css`
   - lookup input
+- with `granum-calendar.js` and `granum-dropdown.css`
+  - date input
 - with `granum-editor.js`
   - contenteditable
 
@@ -122,7 +126,7 @@ Bundles with all styles and scripts:
 - `.roll` `.stick` `.tag` `.bar`
 - `.serif` `.sans` `.mono` `.small` `.nobr` `.inv`
 - `.target` `.hide` `.show` `.modal` `.drawer` `.pop` `.drop`
-- `.icon-X`
+- `.icon-X` `.empty`
 - `.grid` `.grid-X` `.flow` `.fill` `.pX` `.gX`
 - `.span-X` `.push` `.shift`
 
@@ -139,6 +143,7 @@ Bundles with all styles and scripts:
 - `[data-item][data-delete][data-keep][data-up][data-down]`
 - `.gallery a.pic`
 - `input[data-lookup][data-caption]`
+- `input.calendar[step]`
 
 ## JavaScript editor hooks
 

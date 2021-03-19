@@ -1,4 +1,4 @@
-/*! granum-full.js v1.2.25 */
+/*! granum-full.js v1.2.26 */
 
 (_ => {
 
@@ -30,8 +30,8 @@ document.addEventListener('DOMContentLoaded', e => {
   document.querySelectorAll('table').forEach(n => {
     (n.className.match(/\b[lcr]\d\d?\b/g) || [])
     .forEach(c => {
-      n.querySelectorAll('tr>*:nth-child(' + c.substr(1) + ')')
-      .forEach(td => td.classList.add(c.substr(0, 1)))
+      n.querySelectorAll('tr>*:nth-child(' + c.slice(1) + ')')
+      .forEach(td => td.classList.add(c.slice(0, 1)))
     })
   })
   
@@ -60,7 +60,7 @@ document.addEventListener('click', e => {
   const a = n.closest('a')
   const b = n.closest('button.dialog, input.dialog')
   
-  if (b?.form?.checkValidity() && !confirm(b.title || b.textContent)) e.preventDefault()
+  if (b && b.form && b.form.checkValidity() && !confirm(b.title || b.textContent)) e.preventDefault()
   
   if (a) {
     if (a.classList.contains('dialog')) {
@@ -164,12 +164,12 @@ window.addEventListener('resize', e => {
 
 (_ => {
 
-const k = {Escape: 7, Tab: 9, ArrowLeft: -1, ArrowRight: 1}
+const keys = {Escape: 7, Tab: 9, ArrowLeft: -1, ArrowRight: 1}
 
-const esc = _ => document.querySelectorAll('a.pic').forEach(m => m.classList.remove('modal'))
+const x = _ => document.querySelectorAll('a.pic').forEach(m => m.classList.remove('modal'))
 
 const go = (a, dir) => {
-  if (dir == 7) return esc()
+  if (dir == 7) return x()
   if (dir == 9) return location.href = a.href
   const p = [...(a.closest('.gallery') || document).querySelectorAll('a.pic')]
   const i = p.findIndex(m => m == a)
@@ -177,11 +177,11 @@ const go = (a, dir) => {
     a = p[i + dir]
     if (!a) return
   }
-  esc()
+  x()
   a.classList.add('modal')
   a.style.background = '#000 url("' + a.href + '") no-repeat 50% 50% / contain'
-  const x = i + ((2 * dir) || 1)
-  a.firstElementChild.style.background = p[x] ? '#000 url("' + p[x].href + '") no-repeat 50% 50% / contain' : '' // preload
+  const f = i + ((2 * dir) || 1)
+  a.firstElementChild.style.background = p[f] ? '#000 url("' + p[f].href + '") no-repeat 50% 50% / contain' : '' // preload
 }
 
 document.addEventListener('click', e => {
@@ -198,7 +198,7 @@ document.addEventListener('click', e => {
 
 document.addEventListener('keydown', e => {
   const a = document.querySelector('a.pic.modal')
-  if (a && e.key in k) go(a, k[e.key])
+  if (a && e.key in keys) go(a, keys[e.key])
 })
 
 })()
@@ -207,12 +207,12 @@ document.addEventListener('keydown', e => {
 
 let t = null
 
-const ev = (n, e) => n.dispatchEvent(new Event(e, {bubbles: true}))
-const s = (n, l, v, c) => {
+const evt = (n, e) => n.dispatchEvent(new Event(e, {bubbles: true}))
+const set = (n, l, v, c) => {
   n.value = v
   l.value = l.dataset.cap = c
-  ev(n, 'input')
-  ev(n, 'change')
+  evt(n, 'input')
+  evt(n, 'change')
 }
 const x = l => {
   clearTimeout(t)
@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', e => {
     p.innerHTML = '<input class="lookup" name="lookup-' + n.name + '" value="' + c + '" data-cap="' + c + '" autocomplete="off"' + ('get' in n.dataset ? ' data-get' : '') + (n.required ? ' required' : '') + '><div class="hide"></div>'
     n.parentNode.insertBefore(p, n.nextSibling)
     p.lastChild.style.cursor = 'pointer'
-    ev(p.firstChild, 'getinput')
+    evt(p.firstChild, 'getinput')
   })
 })
 
@@ -241,7 +241,7 @@ document.addEventListener('input', e => {
     const n = p.parentNode.previousSibling
     p.style.display = ''
     t = setTimeout(_ => {
-      if (l.value === '') s(n, l, '', '')
+      if (l.value === '') set(n, l, '', '')
       else {
         const u = n.dataset.lookup.split('#')
         const v = l.value
@@ -263,7 +263,7 @@ document.addEventListener('click', e => {
   if (a) {
     clearTimeout(t)
     const l = a.parentNode.previousSibling
-    s(l.parentNode.previousSibling, l, a.dataset.lookid, a.firstChild.textContent)
+    set(l.parentNode.previousSibling, l, a.dataset.lookid, a.firstChild.textContent)
     l.focus()
   }
   const l = e.target.closest('.lookup')
@@ -276,7 +276,7 @@ document.addEventListener('keydown', e => {
     const p = l.nextSibling
     if (e.key == 'Escape' || e.key == 'Tab') x(l)
     else if (e.key == 'ArrowUp' || e.key == 'ArrowDown') {
-      if (!p.style.display) ev(l, 'input')
+      if (!p.style.display) evt(l, 'input')
       else{
         let a = p.querySelector('div.bg')
         a = a
@@ -291,7 +291,7 @@ document.addEventListener('keydown', e => {
       let a = p.querySelector('div.bg')
       if (a) {
         if (p.style.display) e.preventDefault()
-        ev(a, 'click')
+        evt(a, 'click')
       }
     }
   }
@@ -300,73 +300,107 @@ document.addEventListener('keydown', e => {
 })()
 
 /*
-+ set days
-- align weekdays
-- limit days
-- switch month, year
-? time
-? step
-docs: list in text, .calendar class
-build: add calendar.js
+TODO
+- ? avoid changing type, add text input
+  - hint on invalid
+  - value from GET
+- close btn
+- format: Y-m-d, d.m.Y
+- hilite today
 */
 (_ => {
 
 // pass event
-const ev = (n, e) => n.dispatchEvent(new Event(e, {bubbles: true}))
+const evt = (n, e) => n.dispatchEvent(new Event(e, {bubbles: true}))
 // close
 const x = _ => document.querySelectorAll('.month').forEach(m => m.style.display = '')
+// days in month
+const dim = t => new Date(t.getFullYear(), t.getMonth() + 1, 0).getDate()
 // add days
-const a = (d, x) => new Date(d.valueOf() + 864e5 * x)
-// format
-const f = v => (new Date(v - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, 19).replace('T', ' ')
-// set
-const s = e => {
-  e.preventDefault()
-  const t = e.target
-  const n = (t.closest('.pop') || t.parentNode.previousElementSibling)?.firstChild
-  let v = t.dataset.date
-  n.value = (v === 'NOW') ? f(Date.now()) : v
-  ev(n, 'input')
-  ev(n, 'change')
+const ad = (d, x) => new Date(d.valueOf() + 864e5 * x)
+// add months
+const am = (d, x) => {
+  const t = new Date(d.getTime())
+  t.setDate(1)
+  t.setMonth(d.getMonth() + x)
+  t.setDate(Math.min(d.getDate(), dim(t)))
+  return t
 }
+// format
+const fmt = (v, l) => (new Date(v - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, l || 10).replace('T', ' ')
+// set
+const set = e => {
+  const t = e.target
+  const n = (t.closest('.pop') || t.parentNode.previousElementSibling).firstChild
+  let v = t.dataset.date
+  if (t.classList.contains('browse')) return show(n.nextSibling, v, n.value)
+  const l = n.dataset.len
+  n.value = (v === 'NOW') ? fmt(Date.now(), l) : (v ? v + n.value.substring(10, l) : '')
+  n.nextSibling.style.display = ''
+  evt(n, 'input')
+  evt(n, 'change')
+  n.focus()
+}
+// btn
+const ctl = (s, z, t) => '<td class="c hover browse" data-date="' + fmt(am(s, z)) + '">' + t
 // month grid
-const c = (d, v) => {
-  let t = new Date(v)
-  if (!t.getYear()) t = new Date()
-  t = new Date(t.getFullYear(), t.getMonth(), 1)
-  d.innerHTML = '<table>' + Array(31).fill().map((v, i) => (!(i%7) ? '<tr>' : '') + '<td class="c hover" data-date="'+(t ? f(a(t, i)) : '')+'">'+(i+1)).join('') + '</table>'
+const show = (d, v, t) => {
+  let s = new Date(v)
+  if (!s.getYear()){
+    if (v) return
+    else s = new Date()
+  }
+  const m = new Date(s.getFullYear(), s.getMonth(), 1, 9)
+  const p = (m.getDay() + 6) % 7
+  const l = dim(m)
+  const ymd = t ? t.slice(0, 10) : fmt(s, 10)
+  d.innerHTML = '<table><tr class="text-n">'
+    + ctl(s, -12, '&laquo;')
+    + ctl(s, -1, '&lsaquo;')
+    + '<td colspan=3 class=c>' + fmt(s, 7)
+    + ctl(s, 1, '&rsaquo;')
+    + ctl(s, 12, '&raquo;')
+    + '<tr>' + Array(p).fill().map(_ => '<td>')
+    .concat(Array(l).fill().map((v, i) => 
+      (((i + p) % 7) ? '' : '<tr>')
+      + '<td class="c hover' + (ymd == fmt(ad(m, i), 10) ? ' bg-w' : '')
+      + '" data-date="' + fmt(ad(m, i)) + '">'
+      + (i + 1)))
+    .join('')
+    + '</table>'
+  d.style.display = 'block'
 }
 
 document.addEventListener('DOMContentLoaded', e => {
   document.querySelectorAll('.calendar').forEach(n => {
+    n.dataset.len = (n.type == 'text' && !n.step)
+      ? 10
+      : (n.type == 'date' ? 10 : ((n.step || 60) < 60 ? 19 : 16))
     n.type = 'text'
     const p = document.createElement('div')
     p.className = 'pop'
     n.parentNode.insertBefore(p, n)
+    n.autocomplete = 'off'
     p.appendChild(n)
-    p.innerHTML += '<div class="month pad hide">c</div>'
+    evt(n, 'getinput')
+    p.innerHTML += '<div class="month pad rad hide"></div>'
     const t = document.createElement('span')
-    t.innerHTML += ' <a href="#now" data-date="NOW">Now</a> <a href="#reset" data-date="">Clear</a>'
+    t.innerHTML += ' <a href="#now" data-date=NOW class="icon-ok empty"><b>&check;</b></a> <a href="#reset" data-date class="icon-delete empty"><b>&cross;</b></a>'
     p.parentNode.insertBefore(t, p.nextSibling)
   })
 })
 
+document.addEventListener('input', e => e.target.matches('.calendar:focus') ? evt(e.target, 'click') : null)
+
 document.addEventListener('click', e => {
   if (!e.target.closest('.month')) x()
   const n = e.target.closest('.calendar')
-  const d = e.target.closest('[data-date]')
-  if (n) {
-    const p = n.parentNode.lastChild
-    c(p, n.value)
-    p.style.display = 'block'
-  }
-  else if (d) {
-    s(e)
-  }
+  if (n) show(n.parentNode.lastChild, n.value)
+  else if (e.target.closest('[data-date]')) set(e)
 })
 
 document.addEventListener('keydown', e => {
-    if (e.key == 'Escape') x()
+    if (e.key == 'Escape' || e.key == 'Tab') x()
 })
 
 })()
@@ -384,7 +418,7 @@ document.addEventListener('click', e => {
 
   // contenteditable command
   if (a && a.hash && a.dataset.cmd) {
-    const n = document.getElementById(a.hash.substr(1))
+    const n = document.getElementById(a.hash.slice(1))
     if (n) {
       e.preventDefault()
       const arg = ('ask' in a.dataset)

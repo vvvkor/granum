@@ -1,4 +1,4 @@
-/*! granum.js v1.2.25 */
+/*! granum.js v1.2.26 */
 
 (_ => {
 
@@ -30,8 +30,8 @@ document.addEventListener('DOMContentLoaded', e => {
   document.querySelectorAll('table').forEach(n => {
     (n.className.match(/\b[lcr]\d\d?\b/g) || [])
     .forEach(c => {
-      n.querySelectorAll('tr>*:nth-child(' + c.substr(1) + ')')
-      .forEach(td => td.classList.add(c.substr(0, 1)))
+      n.querySelectorAll('tr>*:nth-child(' + c.slice(1) + ')')
+      .forEach(td => td.classList.add(c.slice(0, 1)))
     })
   })
   
@@ -60,7 +60,7 @@ document.addEventListener('click', e => {
   const a = n.closest('a')
   const b = n.closest('button.dialog, input.dialog')
   
-  if (b?.form?.checkValidity() && !confirm(b.title || b.textContent)) e.preventDefault()
+  if (b && b.form && b.form.checkValidity() && !confirm(b.title || b.textContent)) e.preventDefault()
   
   if (a) {
     if (a.classList.contains('dialog')) {

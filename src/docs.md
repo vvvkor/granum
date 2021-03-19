@@ -6,7 +6,7 @@ v0.0.0
 **Granum** is a CSS micro framework
 that supports grids, tables, forms, buttons,
 toggle, modals, dropdowns, popups, drawers,
-image gallery, lookup input,
+image gallery, lookup input, date input,
 icons, status colors, and even more.
 Typography and styling is minimal and unobtrusive.
 
@@ -87,6 +87,7 @@ Typography and styling is minimal and unobtrusive.
 - `[type="checkbox"][data-check="SELECTOR"]` - check group of boxes *(requires [granum.js](granum.js))*
 - `form[data-q]`, `input[data-q]` - populate inputs from URL parameters  *(requires [granum.js](granum.js))*
 - `input[data-lookup][data-caption]` - lookup input *(requires [granum-dropdown.css](granum-dropdown.css) and [granum-lookup.js](granum-lookup.js))*
+- `input.calendar` - date input *(requires [granum-dropdown.css](granum-dropdown.css) and [granum-calendar.js](granum-calendar.js))*
 
 
 ## Components
@@ -138,6 +139,7 @@ Typography and styling is minimal and unobtrusive.
 - `.small` - small font
 - `.nobr` - no text wrapping
 - `a.l` - margin after link
+- `.icon-X.empty` - hide text near icon
 
 ### Block modifiers
 
@@ -183,6 +185,9 @@ Typography and styling is minimal and unobtrusive.
     - `NAME` - item attribute with caption (`name` by default)
     - `INFO` - item attribute with additional info  (`info` by default)
   `.lookup` - generated combo input
+- `input.calendar[step]` - date input *(requires [granum-dropdown.css](granum-dropdown.css) and [granum-calendar.js](granum-calendar.js))*
+  - `.month` - generated calendar container
+  - `[data-date].browse` - generated calendar controls
 - `input[data-nodes][value][data-set][data-unset]` - toggle classes
   - input can be one of: `checkbox`, `radio`, `select`
   - `[data-nodes]` - target elements selector

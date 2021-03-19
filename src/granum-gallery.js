@@ -1,11 +1,11 @@
 (_ => {
 
-const k = {Escape: 7, Tab: 9, ArrowLeft: -1, ArrowRight: 1}
+const keys = {Escape: 7, Tab: 9, ArrowLeft: -1, ArrowRight: 1}
 
-const esc = _ => document.querySelectorAll('a.pic').forEach(m => m.classList.remove('modal'))
+const x = _ => document.querySelectorAll('a.pic').forEach(m => m.classList.remove('modal'))
 
 const go = (a, dir) => {
-  if (dir == 7) return esc()
+  if (dir == 7) return x()
   if (dir == 9) return location.href = a.href
   const p = [...(a.closest('.gallery') || document).querySelectorAll('a.pic')]
   const i = p.findIndex(m => m == a)
@@ -13,11 +13,11 @@ const go = (a, dir) => {
     a = p[i + dir]
     if (!a) return
   }
-  esc()
+  x()
   a.classList.add('modal')
   a.style.background = '#000 url("' + a.href + '") no-repeat 50% 50% / contain'
-  const x = i + ((2 * dir) || 1)
-  a.firstElementChild.style.background = p[x] ? '#000 url("' + p[x].href + '") no-repeat 50% 50% / contain' : '' // preload
+  const f = i + ((2 * dir) || 1)
+  a.firstElementChild.style.background = p[f] ? '#000 url("' + p[f].href + '") no-repeat 50% 50% / contain' : '' // preload
 }
 
 document.addEventListener('click', e => {
@@ -34,7 +34,7 @@ document.addEventListener('click', e => {
 
 document.addEventListener('keydown', e => {
   const a = document.querySelector('a.pic.modal')
-  if (a && e.key in k) go(a, k[e.key])
+  if (a && e.key in keys) go(a, keys[e.key])
 })
 
 })()

@@ -1,4 +1,4 @@
-/*! granum.css v1.2.25 */
+/*! granum.css v1.2.26 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -167,7 +167,7 @@ button.bg-w, [type="submit"].bg-w, .inv.bg-w {background-color:#d70;}
 button.bg-e, [type="submit"].bg-e, .inv.bg-e {background-color:#c00;}
 
 /* highlight */
-a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tr:hover>* {box-shadow:inset 0 0 0 200vh rgba(0,0,0,.03);}
+a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tr:hover>*, tr>*.hover:hover {box-shadow:inset 0 0 0 200vh rgba(0,0,0,.03);}
 .shade, .modal>div {box-shadow:0 .1em .8em 0em rgba(0,0,0,.2);}
 
 /* modifiers */

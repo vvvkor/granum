@@ -124,7 +124,7 @@ Typography and styling is minimal and unobtrusive.
 			<div><div class="icon-send span-0 h3"></div></div>
 			<div>
 				<h3 class="fit"><a href="#form">Forms</a></h3>
-				<p>Inline, stacked, aligned, responsive forms. Inputs, buttons, lookups, validation.</p>
+				<p>Inline, stacked, aligned, responsive forms. Inputs, buttons, lookups, calendar, validation.</p>
 			</div>
 		</div>
 	</div>
@@ -550,8 +550,8 @@ x<sup>super</sup>
 <p>
 	<label for="name">Name</label><br>
 	<input id="name" name="name" type="text" required placeholder="Name" size="16">
-	<span class="act text-e">Required</span>
-	<span class="act text-y">OK</span>
+	<small class="act text-e">Required</small>
+	<small class="act text-y">OK</small>
 </p>
 <p>
 	<label for="box">
@@ -563,11 +563,13 @@ x<sup>super</sup>
 <p>
 	<label for="look">Country lookup</label><br>
 	<input required id="look" type="text" name="look" value-x="FO" data-caption-x="Faroe" data-lookup="https://restcountries.eu/rest/v2/name/{q}#alpha2Code#name#subregion">
-	<span class="act text-e">Required</span>
+	<small class="act text-e">Required</small>
 </p>
-<input class="calendar" type="date"><br>
-<input class="calendar" type="datetime-local"><br>
-<input class="calendar" type="datetime-local" step="1"><br>
+<p>
+	<label for="cld">Calendar</label><br>
+	<input required id="cld" type="datetime-local" name="cld" class="calendar">
+	<!--small class="act text-e">Required</small-->
+</p>
 
 <details>
 <summary>Input types</summary>
@@ -601,6 +603,12 @@ x<sup>super</sup>
 		<label for="message">Message</label><br>
 		<textarea name="message" id="message" rows="5">Text</textarea>
 	</p>
+	<input name="dt1" class="calendar" type="date"><br>
+	<input name="dt2" class="calendar" type="datetime-local"><br>
+	<input name="dt3" class="calendar" type="datetime-local" step="1"><br>
+	<input name="dt4" class="calendar"><br>
+	<input name="dt5" class="calendar" step="60"><br>
+	<input name="dt6" class="calendar" step="1"><br>
 </fieldset>
 </details>
 
