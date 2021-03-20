@@ -12,3 +12,11 @@ window.addEventListener('resize', e => {
       })
   }
 })
+
+const addMonth = (d, x) => {
+  const t = new Date(d.getTime())
+  t.setDate(1)
+  t.setMonth(d.getMonth() + x)
+  t.setDate(Math.min(d.getDate(), dim(t)))
+  return t
+}

@@ -86,7 +86,7 @@ input, select {max-width:100%;}
 textarea {width:100%;}
 input, button, select, textarea {padding:.2em;margin:.1em 0;line-height:normal;border:thin solid #aaa;}
 button, [type="submit"] {padding:.5em 1em;border-radius:.2em;margin:.2em 0;border-color:transparent;}
-button:not([disabled]), [type="submit"]:not([disabled]), summary {cursor:pointer;}
+button:not([disabled]), [type="submit"]:not([disabled]), summary, [data-cmd] {cursor:pointer;}
 form>button, form>[type="submit"] {padding:.2em .5em;margin:0;}
 button:hover:not([disabled]), [type="submit"]:hover:not([disabled]), a.pad.inv[href]:hover,
 button:focus, input:focus, select:focus, textarea:focus, [contenteditable]:focus, summary:focus {box-shadow:0 0 0 .15em rgba(0,0,0,.1);outline:none;}

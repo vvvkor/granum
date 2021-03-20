@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', e => {
     p.className = 'pop'
     p.innerHTML = '<input class="lookup" name="lookup-' + n.name + '" value="' + c + '" data-cap="' + c + '" autocomplete="off"' + ('get' in n.dataset ? ' data-get' : '') + (n.required ? ' required' : '') + '><div class="hide"></div>'
     n.parentNode.insertBefore(p, n.nextSibling)
-    p.lastChild.style.cursor = 'pointer'
     evt(p.firstChild, 'getinput')
   })
 })
@@ -46,7 +45,7 @@ document.addEventListener('input', e => {
           .then(r => r.ok ? r.json() : [])
           .then(j => {
             if (l.value === v) {
-              p.innerHTML = j.slice(0, 5).map((d, i) => '<div class="pad hover' + (i ? '' : ' bg') + '" data-lookid="' + d[u[1] || 'id'] + '"><div>' + (d[u[2] || 'name']) + '</div>' + (d[u[3] || 'info'] ? '<div class="small text-n">' + d[u[3] || 'info'] + '</div>' : '') + '</div>').join('')
+              p.innerHTML = j.slice(0, 5).map((d, i) => '<div data-cmd class="pad hover' + (i ? '' : ' bg') + '" data-lookid="' + d[u[1] || 'id'] + '"><div>' + (d[u[2] || 'name']) + '</div>' + (d[u[3] || 'info'] ? '<div class="small text-n">' + d[u[3] || 'info'] + '</div>' : '') + '</div>').join('')
               p.style.display = 'block'
             }
           })

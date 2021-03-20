@@ -30,3 +30,5 @@
 .pop>:last-child.l {left:auto;right:0;}
 .pop>:last-child.c {top:auto;bottom:100%;left:50%;transform:translateX(-50%);}
 .pop>:last-child.r {top:50%;left:100%;transform:translateY(-50%);}/*margin-left:.2em;*/
+
+.pop.fit {vertical-align:bottom;}
