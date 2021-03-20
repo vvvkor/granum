@@ -1,8 +1,5 @@
 /*
-TODO
-- ? avoid changing type, add text input
-  - hint on invalid
-  - value from GET
+TODO (optional)
 - close btn
 - format: Y-m-d, d.m.Y
 - hilite today
@@ -21,6 +18,7 @@ const ad = (d, x) => new Date(d.valueOf() + 864e5 * x)
 const fmt = (v, l) => (new Date(v - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, l || 10).replace('T', ' ')
 // set
 const set = e => {
+  e.preventDefault()
   const t = e.target
   let n = t.closest('.pop')
   n = n ? n.nextSibling : t.parentNode.previousSibling

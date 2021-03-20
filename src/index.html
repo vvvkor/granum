@@ -563,7 +563,7 @@ x<sup>super</sup>
 <p>
 	<label for="look">Country lookup</label><br>
 	<input required id="look" type="text" name="look" value-x="FO" data-caption-x="Faroe" data-lookup="https://restcountries.eu/rest/v2/name/{q}#alpha2Code#name#subregion">
-	<small class="act text-e">Required</small>
+	<small class="act text-e">Fill</small>
 </p>
 <p>
 	<label for="cld">Calendar</label><br>
@@ -578,7 +578,7 @@ x<sup>super</sup>
 	<legend>Fieldset</legend>
 	<p>
 		<label for="sel">Select</label><br>
-		<select id="sel" name="sel" required>
+		<select id="sel" name="sel" x-required>
 			<option value="">None</option>
 			<option value="sun">Sun</option>
 			<option value="moon">Moon</option>
@@ -592,11 +592,11 @@ x<sup>super</sup>
 		Radio
 		<br>
 		<label for="rad1">
-			<input id="rad1" name="rad" type="radio" required value="red"> <span>Red</span>
+			<input id="rad1" name="rad" type="radio" x-required value="red"> <span>Red</span>
 		</label>
 		<br>
 		<label for="rad2">
-			<input id="rad2" name="rad" type="radio" required value="blue"> <span>Blue</span>
+			<input id="rad2" name="rad" type="radio" x-required value="blue"> <span>Blue</span>
 		</label>
 	</p>
 	<p>
