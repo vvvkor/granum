@@ -20,3 +20,10 @@ const addMonth = (d, x) => {
   t.setDate(Math.min(d.getDate(), dim(t)))
   return t
 }
+
+/*
+calendar todo (optional)
+- close btn
+- format: Y-m-d, d.m.Y
+- hilite today
+*/

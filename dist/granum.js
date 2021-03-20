@@ -1,4 +1,4 @@
-/*! granum.js v1.2.26 */
+/*! granum.js v1.2.27 */
 
 (_ => {
 
@@ -47,7 +47,7 @@ document.addEventListener('getinput', e => {
     const v = decodeURIComponent(m[2].replace(/\+/g, ' '))
     if (n.type == 'checkbox') n.checked = (v && v !== '0')
     else if (n.type == 'radio') n.checked = (v && n.value === v)
-    else n.value = n.dataset.cap = v
+    else n.value = v
   }
 })
 
@@ -100,7 +100,7 @@ document.addEventListener('click', e => {
         if ('delete' in a.dataset) (m.parentNode.children.length > 1 || !('keep' in a.dataset)) ? m.parentNode.removeChild(m) : null
         else if ('up' in a.dataset) m.parentNode.insertBefore(m, m.previousElementSibling)
         else if ('down' in a.dataset) m.parentNode.insertBefore(m, m.nextElementSibling ? m.nextElementSibling.nextElementSibling : m.parentNode.firstElementChild)
-        else m.parentNode.insertBefore(m.cloneNode(true), m.nextElementSibling)
+        else m.after(m.cloneNode(true))
       }
     }
   }

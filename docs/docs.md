@@ -1,5 +1,5 @@
 **Granum**  
-v1.2.26
+v1.2.27
 
 # Documentation
 
@@ -86,7 +86,7 @@ Typography and styling is minimal and unobtrusive.
 - `:invalid ~ .act.text-y` - hint on invalid input
 - `[type="checkbox"][data-check="SELECTOR"]` - check group of boxes *(requires [granum.js](granum.js))*
 - `form[data-q]`, `input[data-q]` - populate inputs from URL parameters  *(requires [granum.js](granum.js))*
-- `input[data-lookup][data-caption]` - lookup input *(requires [granum-dropdown.css](granum-dropdown.css) and [granum-lookup.js](granum-lookup.js))*
+- `input[data-lookup][data-caption][data-goto]` - lookup input *(requires [granum-dropdown.css](granum-dropdown.css) and [granum-lookup.js](granum-lookup.js))*
 - `input.calendar` - date input *(requires [granum-dropdown.css](granum-dropdown.css) and [granum-calendar.js](granum-calendar.js))*
 
 
@@ -177,14 +177,17 @@ Typography and styling is minimal and unobtrusive.
   - `[data-act]` - additional classes of link in active state
   - `[data-inact]` - additional classes of link in inactive state
 - `.gallery a.pic` - image gallery
-- `input[data-lookup][data-caption]` - lookup input *(requires [granum-dropdown.css](granum-dropdown.css) and [granum-lookup.js](granum-lookup.js))*
+- `input[data-lookup][data-caption][data-goto]` - lookup input *(requires [granum-dropdown.css](granum-dropdown.css) and [granum-lookup.js](granum-lookup.js))*
   - `[data-caption]` - initial caption (optional)
   - `[data-lookup="URL#ID#NAME#INFO"]` - data source
-    - `URL` - data source URL, should return JSON array
+    - `URL` - data source URL, `{q}` is replaced by lookup string, should return JSON array
     - `ID` - item attribute with value (`id` by default)
     - `NAME` - item attribute with caption (`name` by default)
     - `INFO` - item attribute with additional info  (`info` by default)
-  `.lookup` - generated combo input
+  - `[data-goto]` - URL of selected item, `{id}` is replaced by lookup value (optional)
+  - `.lookup` - generated combo input
+  - `.look` - generated list container
+  - `.look [data-id]` - generated lookup items
 - `input.calendar[step]` - date input *(requires [granum-dropdown.css](granum-dropdown.css) and [granum-calendar.js](granum-calendar.js))*
   - `.month` - generated calendar container
   - `[data-date].browse` - generated calendar controls

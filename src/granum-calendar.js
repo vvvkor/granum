@@ -1,9 +1,3 @@
-/*
-TODO (optional)
-- close btn
-- format: Y-m-d, d.m.Y
-- hilite today
-*/
 (_ => {
 
 // pass event
@@ -22,8 +16,8 @@ const set = e => {
   const t = e.target
   let n = t.closest('.pop')
   n = n ? n.nextSibling : t.parentNode.previousSibling
-  var p = n.previousSibling.lastChild
-  let v = t.dataset.date
+  const p = n.previousSibling.lastChild
+  const v = t.dataset.date
   if (t.classList.contains('browse')) return show(p, v, n.value)
   const l = n.dataset.len
   n.value = (v === 'NOW') ? fmt(Date.now(), l) : (v ? v + n.value.substring(10, l) : '')
@@ -75,13 +69,13 @@ document.addEventListener('DOMContentLoaded', e => {
     n.type = 'text'
     const p = document.createElement('div')
     p.className = 'pop fit'
-    n.parentNode.insertBefore(p, n)
+    n.before(p)
     n.autocomplete = 'off'
     evt(n, 'getinput')
     p.innerHTML += '<div class="month pad rad hide"></div>'
     const t = document.createElement('span')
-    t.innerHTML += ' <a href="#now" data-date=NOW class="icon-ok empty"><b>&check;</b></a> <a href="#reset" data-date class="icon-delete empty"><b>&cross;</b></a>'
-    n.parentNode.insertBefore(t, n.nextSibling)
+    t.innerHTML = ' <a href="#now" data-date=NOW class="icon-ok empty"><b>&check;</b></a> <a href="#reset" data-date class="icon-delete empty"><b>&cross;</b></a>'
+    n.after(t)
   })
 })
 

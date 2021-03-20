@@ -1,4 +1,4 @@
-/*! granum-full.js v1.2.26 */
+/*! granum-full.js v1.2.27 */
 
 (_ => {
 
@@ -47,7 +47,7 @@ document.addEventListener('getinput', e => {
     const v = decodeURIComponent(m[2].replace(/\+/g, ' '))
     if (n.type == 'checkbox') n.checked = (v && v !== '0')
     else if (n.type == 'radio') n.checked = (v && n.value === v)
-    else n.value = n.dataset.cap = v
+    else n.value = v
   }
 })
 
@@ -100,7 +100,7 @@ document.addEventListener('click', e => {
         if ('delete' in a.dataset) (m.parentNode.children.length > 1 || !('keep' in a.dataset)) ? m.parentNode.removeChild(m) : null
         else if ('up' in a.dataset) m.parentNode.insertBefore(m, m.previousElementSibling)
         else if ('down' in a.dataset) m.parentNode.insertBefore(m, m.nextElementSibling ? m.nextElementSibling.nextElementSibling : m.parentNode.firstElementChild)
-        else m.parentNode.insertBefore(m.cloneNode(true), m.nextElementSibling)
+        else m.after(m.cloneNode(true))
       }
     }
   }
@@ -216,19 +216,39 @@ const set = (n, l, v, c) => {
 }
 const x = l => {
   clearTimeout(t)
-  l.nextSibling.style.display = ''
+  lst(l).style.display = ''
   l.value = l.dataset.cap
 }
+const lst = l => l.previousSibling.lastChild
+const hi = l => l.previousSibling.previousSibling
 
 document.addEventListener('DOMContentLoaded', e => {
   document.querySelectorAll('[data-lookup]').forEach(n => {
     n.hidden = true
     const c = n.dataset.caption || ''
+    
+    const l = document.createElement('input')
+    l.className = 'lookup'
+    l.name = 'lookup-' + n.name
+    l.value = c
+    l.autocomplete = 'off'
+    if ('get' in n.dataset) l.dataset.get = ''
+    if (n.required) l.required = true
+    n.after(l)
+
     const p = document.createElement('div')
-    p.className = 'pop'
-    p.innerHTML = '<input class="lookup" name="lookup-' + n.name + '" value="' + c + '" data-cap="' + c + '" autocomplete="off"' + ('get' in n.dataset ? ' data-get' : '') + (n.required ? ' required' : '') + '><div class="hide"></div>'
-    n.parentNode.insertBefore(p, n.nextSibling)
-    evt(p.firstChild, 'getinput')
+    p.className = 'pop fit'
+    p.innerHTML = '<div class="look hide"></div>'
+    n.after(p)
+    
+    if (n.dataset.goto) {
+      const t = document.createElement('span')
+      t.innerHTML = ' <a href="#goto" class="icon-right empty" data-goto><b>&rarr;</b></a>'
+      l.after(t)
+    }
+    
+    evt(l, 'getinput')
+    l.dataset.cap = l.value
   })
 })
 
@@ -236,8 +256,8 @@ document.addEventListener('input', e => {
   const l = e.target.closest('.lookup')
   if (l) {
     clearTimeout(t)
-    const p = l.nextSibling
-    const n = p.parentNode.previousSibling
+    const p = lst(l)
+    const n = hi(l)
     p.style.display = ''
     t = setTimeout(_ => {
       if (l.value === '') set(n, l, '', '')
@@ -248,7 +268,7 @@ document.addEventListener('input', e => {
           .then(r => r.ok ? r.json() : [])
           .then(j => {
             if (l.value === v) {
-              p.innerHTML = j.slice(0, 5).map((d, i) => '<div data-cmd class="pad hover' + (i ? '' : ' bg') + '" data-lookid="' + d[u[1] || 'id'] + '"><div>' + (d[u[2] || 'name']) + '</div>' + (d[u[3] || 'info'] ? '<div class="small text-n">' + d[u[3] || 'info'] + '</div>' : '') + '</div>').join('')
+              p.innerHTML = j.slice(0, 5).map((d, i) => '<div data-cmd class="pad hover' + (i ? '' : ' bg') + '" data-id="' + d[u[1] || 'id'] + '"><div>' + (d[u[2] || 'name']) + '</div>' + (d[u[3] || 'info'] ? '<div class="small text-n">' + d[u[3] || 'info'] + '</div>' : '') + '</div>').join('')
               p.style.display = 'block'
             }
           })
@@ -258,21 +278,27 @@ document.addEventListener('input', e => {
 })
 
 document.addEventListener('click', e => {
-  const a = e.target.closest('[data-lookid]')
+  let a = e.target.closest('.look [data-id]')
   if (a) {
     clearTimeout(t)
-    const l = a.parentNode.previousSibling
-    set(l.parentNode.previousSibling, l, a.dataset.lookid, a.firstChild.textContent)
+    const l = a.closest('.pop').nextSibling
+    set(hi(l), l, a.dataset.id, a.firstChild.textContent)
     l.focus()
   }
   const l = e.target.closest('.lookup')
   document.querySelectorAll('.lookup').forEach(m => m == l ? null : x(m))
+  a = e.target.closest('a[data-goto]')
+  if (a) a = hi(a.parentNode.previousSibling)
+  if (a) {
+    e.preventDefault()
+    if (a.value) location.href = a.dataset.goto.replace(/\{id\}/, encodeURIComponent(a.value))
+  }
 })
 
 document.addEventListener('keydown', e => {
   const l = e.target.closest('.lookup:focus')
   if (l) {
-    const p = l.nextSibling
+    const p = lst(l)
     if (e.key == 'Escape' || e.key == 'Tab') x(l)
     else if (e.key == 'ArrowUp' || e.key == 'ArrowDown') {
       if (!p.style.display) evt(l, 'input')
@@ -298,15 +324,6 @@ document.addEventListener('keydown', e => {
 
 })()
 
-/*
-TODO
-- ? avoid changing type, add text input
-  - hint on invalid
-  - value from GET
-- close btn
-- format: Y-m-d, d.m.Y
-- hilite today
-*/
 (_ => {
 
 // pass event
@@ -321,11 +338,12 @@ const ad = (d, x) => new Date(d.valueOf() + 864e5 * x)
 const fmt = (v, l) => (new Date(v - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, l || 10).replace('T', ' ')
 // set
 const set = e => {
+  e.preventDefault()
   const t = e.target
   let n = t.closest('.pop')
   n = n ? n.nextSibling : t.parentNode.previousSibling
-  var p = n.previousSibling.lastChild
-  let v = t.dataset.date
+  const p = n.previousSibling.lastChild
+  const v = t.dataset.date
   if (t.classList.contains('browse')) return show(p, v, n.value)
   const l = n.dataset.len
   n.value = (v === 'NOW') ? fmt(Date.now(), l) : (v ? v + n.value.substring(10, l) : '')
@@ -377,13 +395,13 @@ document.addEventListener('DOMContentLoaded', e => {
     n.type = 'text'
     const p = document.createElement('div')
     p.className = 'pop fit'
-    n.parentNode.insertBefore(p, n)
+    n.before(p)
     n.autocomplete = 'off'
     evt(n, 'getinput')
     p.innerHTML += '<div class="month pad rad hide"></div>'
     const t = document.createElement('span')
-    t.innerHTML += ' <a href="#now" data-date=NOW class="icon-ok empty"><b>&check;</b></a> <a href="#reset" data-date class="icon-delete empty"><b>&cross;</b></a>'
-    n.parentNode.insertBefore(t, n.nextSibling)
+    t.innerHTML = ' <a href="#now" data-date=NOW class="icon-ok empty"><b>&check;</b></a> <a href="#reset" data-date class="icon-delete empty"><b>&cross;</b></a>'
+    n.after(t)
   })
 })
 
