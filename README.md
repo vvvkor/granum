@@ -142,7 +142,7 @@ Bundles with all styles and scripts:
 - `body[data-break] [data-resp]`
 - `[data-item][data-delete][data-keep][data-up][data-down]`
 - `.gallery a.pic`
-- `input[data-lookup][data-caption]`
+- `input[data-lookup][data-caption][data-goto]`
 - `input.calendar[step]`
 
 ## JavaScript editor hooks
