@@ -1,4 +1,4 @@
-/*! granum-calendar.js v1.2.28 */
+/*! granum-calendar.js v1.2.29 */
 
 (_ => {
 
@@ -39,15 +39,16 @@ const show = (d, v, t) => {
     else s = new Date()
   }
   const m = new Date(s.getFullYear(), s.getMonth(), 1, 9)
+  const k = ad(m, 9)
   const p = (m.getDay() + 6) % 7
   const l = dim(m)
   const c = t ? t.slice(0, 10) : fmt(new Date())
   d.innerHTML = '<table><tr class="text-n">'
-    + ctl(m, -12, '&laquo;')
-    + ctl(m, -1, '&lsaquo;')
+    + ctl(k, -12, '&laquo;')
+    + ctl(k, -1, '&lsaquo;')
     + '<td colspan=3 class=c>' + fmt(m, 7)
-    + ctl(m, 1, '&rsaquo;')
-    + ctl(m, 12, '&raquo;')
+    + ctl(k, 1, '&rsaquo;')
+    + ctl(k, 12, '&raquo;')
     + '<tr>' + Array(p).fill().map(_ => '<td>')
     .concat(Array(l).fill().map((v, i) => {
       const w = (i + p) % 7
