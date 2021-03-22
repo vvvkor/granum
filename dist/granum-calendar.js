@@ -1,4 +1,4 @@
-/*! granum-calendar.js v1.2.29 */
+/*! granum-calendar.js v1.2.30 */
 
 (_ => {
 
@@ -33,7 +33,7 @@ const set = e => {
 const ctl = (s, z, t) => '<td class="c hover browse" data-cmd data-date="' + fmt(new Date(s.getFullYear(), s.getMonth() + z)) + '">' + t
 // month grid
 const show = (d, v, t) => {
-  let s = new Date(v.replace(/(\d+)\.(\d+)\.(\d+)(.*)/, '$3-$2-$1$4'))
+  let s = new Date(v.replace(/(\d+)\.(\d+)\.(\d+)(.*)/, '$3-$2-$1$4').replace(' ', 'T'))
   if (!s.getYear()){
     if (v) return
     else s = new Date()
