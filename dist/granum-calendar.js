@@ -1,4 +1,4 @@
-/*! granum-calendar.js v1.2.27 */
+/*! granum-calendar.js v1.2.28 */
 
 (_ => {
 
@@ -12,6 +12,7 @@ const dim = t => new Date(t.getFullYear(), t.getMonth() + 1, 0).getDate()
 const ad = (d, x) => new Date(d.valueOf() + 864e5 * x)
 // format
 const fmt = (v, l) => (new Date(v - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, l || 10).replace('T', ' ')
+.replace(document.body.dataset.dt == '.' ? /(\d+)-(\d+)-(\d+)(.*)/ : '!', '$3.$2.$1$4')
 // set
 const set = e => {
   e.preventDefault()
@@ -32,7 +33,7 @@ const set = e => {
 const ctl = (s, z, t) => '<td class="c hover browse" data-cmd data-date="' + fmt(new Date(s.getFullYear(), s.getMonth() + z)) + '">' + t
 // month grid
 const show = (d, v, t) => {
-  let s = new Date(v)
+  let s = new Date(v.replace(/(\d+)\.(\d+)\.(\d+)(.*)/, '$3-$2-$1$4'))
   if (!s.getYear()){
     if (v) return
     else s = new Date()
@@ -65,9 +66,10 @@ const show = (d, v, t) => {
 
 document.addEventListener('DOMContentLoaded', e => {
   document.querySelectorAll('.calendar').forEach(n => {
-    n.dataset.len = (n.type == 'text' && !n.step)
+    const s = n.step || n.dataset.step
+    n.dataset.len = (n.type == 'text' && !s)
       ? 10
-      : (n.type == 'date' ? 10 : ((n.step || 60) < 60 ? 19 : 16))
+      : (n.type == 'date' ? 10 : ((s || 60) < 60 ? 19 : 16))
     n.type = 'text'
     const p = document.createElement('div')
     p.className = 'pop fit'

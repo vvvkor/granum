@@ -1,4 +1,4 @@
-/*! granum-lookup.js v1.2.27 */
+/*! granum-lookup.js v1.2.28 */
 
 (_ => {
 
@@ -65,7 +65,7 @@ document.addEventListener('input', e => {
           .then(r => r.ok ? r.json() : [])
           .then(j => {
             if (l.value === v) {
-              p.innerHTML = j.slice(0, 5).map((d, i) => '<div data-cmd class="pad hover' + (i ? '' : ' bg') + '" data-id="' + d[u[1] || 'id'] + '"><div>' + (d[u[2] || 'name']) + '</div>' + (d[u[3] || 'info'] ? '<div class="small text-n">' + d[u[3] || 'info'] + '</div>' : '') + '</div>').join('')
+              p.innerHTML = j.slice(0, n.dataset.limit || 5).map((d, i) => '<div data-cmd class="pad hover' + (i ? '' : ' bg') + '" data-id="' + d[u[1] || 'id'] + '"><div>' + (d[u[2] || 'name']) + '</div>' + (d[u[3] || 'info'] ? '<div class="small text-n">' + d[u[3] || 'info'] + '</div>' : '') + '</div>').join('')
               p.style.display = 'block'
             }
           })

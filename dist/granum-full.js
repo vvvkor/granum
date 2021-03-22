@@ -1,4 +1,4 @@
-/*! granum-full.js v1.2.27 */
+/*! granum-full.js v1.2.28 */
 
 (_ => {
 
@@ -97,9 +97,12 @@ document.addEventListener('click', e => {
       const m = a.closest(a.dataset.item || 'div, li, tr')
       if (m) {
         e.preventDefault()
-        if ('delete' in a.dataset) (m.parentNode.children.length > 1 || !('keep' in a.dataset)) ? m.parentNode.removeChild(m) : null
-        else if ('up' in a.dataset) m.parentNode.insertBefore(m, m.previousElementSibling)
-        else if ('down' in a.dataset) m.parentNode.insertBefore(m, m.nextElementSibling ? m.nextElementSibling.nextElementSibling : m.parentNode.firstElementChild)
+        const ps = m.previousElementSibling
+        const ns = m.nextElementSibling
+        const pn = m.parentNode
+        if ('delete' in a.dataset) (m.parentNode.children.length > 1 || !('keep' in a.dataset)) ? m.remove() : null
+        else if ('up' in a.dataset) ps ? ps.before(m) : pn.append(m)
+        else if ('down' in a.dataset) ns ? ns.after(m) : pn.prepend(m)
         else m.after(m.cloneNode(true))
       }
     }
@@ -116,7 +119,7 @@ document.addEventListener('click', e => {
       const k = isNaN(x[0][2]) ? 1 : 2
       const r = h.classList.contains(c) ? (x[0][k] < x[x.length-1][k] ? -1 : 1) : 1
       x.sort((a, b) => a[k] < b[k] ? -r : (a[k] > b[k] ? r : 0))
-      x.forEach(m => b.appendChild(m[0]))
+      x.forEach(m => b.append(m[0]))
       ;[...h.parentNode.children].forEach(m => m.classList[m == h ? 'add' : 'remove'](c))
     }
   }
@@ -268,7 +271,7 @@ document.addEventListener('input', e => {
           .then(r => r.ok ? r.json() : [])
           .then(j => {
             if (l.value === v) {
-              p.innerHTML = j.slice(0, 5).map((d, i) => '<div data-cmd class="pad hover' + (i ? '' : ' bg') + '" data-id="' + d[u[1] || 'id'] + '"><div>' + (d[u[2] || 'name']) + '</div>' + (d[u[3] || 'info'] ? '<div class="small text-n">' + d[u[3] || 'info'] + '</div>' : '') + '</div>').join('')
+              p.innerHTML = j.slice(0, n.dataset.limit || 5).map((d, i) => '<div data-cmd class="pad hover' + (i ? '' : ' bg') + '" data-id="' + d[u[1] || 'id'] + '"><div>' + (d[u[2] || 'name']) + '</div>' + (d[u[3] || 'info'] ? '<div class="small text-n">' + d[u[3] || 'info'] + '</div>' : '') + '</div>').join('')
               p.style.display = 'block'
             }
           })
@@ -336,6 +339,7 @@ const dim = t => new Date(t.getFullYear(), t.getMonth() + 1, 0).getDate()
 const ad = (d, x) => new Date(d.valueOf() + 864e5 * x)
 // format
 const fmt = (v, l) => (new Date(v - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, l || 10).replace('T', ' ')
+.replace(document.body.dataset.dt == '.' ? /(\d+)-(\d+)-(\d+)(.*)/ : '!', '$3.$2.$1$4')
 // set
 const set = e => {
   e.preventDefault()
@@ -356,7 +360,7 @@ const set = e => {
 const ctl = (s, z, t) => '<td class="c hover browse" data-cmd data-date="' + fmt(new Date(s.getFullYear(), s.getMonth() + z)) + '">' + t
 // month grid
 const show = (d, v, t) => {
-  let s = new Date(v)
+  let s = new Date(v.replace(/(\d+)\.(\d+)\.(\d+)(.*)/, '$3-$2-$1$4'))
   if (!s.getYear()){
     if (v) return
     else s = new Date()
@@ -389,9 +393,10 @@ const show = (d, v, t) => {
 
 document.addEventListener('DOMContentLoaded', e => {
   document.querySelectorAll('.calendar').forEach(n => {
-    n.dataset.len = (n.type == 'text' && !n.step)
+    const s = n.step || n.dataset.step
+    n.dataset.len = (n.type == 'text' && !s)
       ? 10
-      : (n.type == 'date' ? 10 : ((n.step || 60) < 60 ? 19 : 16))
+      : (n.type == 'date' ? 10 : ((s || 60) < 60 ? 19 : 16))
     n.type = 'text'
     const p = document.createElement('div')
     p.className = 'pop fit'

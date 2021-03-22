@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Granum</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/svg" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'%3E%3Cpath fill='%23f63' d='M35 67l75 -44 75 44 0 89-75 44-75-44zm75 8a35 35 0 1 0 .01 0z'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20220%20220'%3E%3Cpath%20fill='%23f50'%20d='M35%2067l75%20-44%2075%2044%200%2089-75%2044-75-44zm75%208a35%2035%200%201%200%20.01%200z'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="granum.css">
     <link rel="stylesheet" href="granum-icons.css">
     <link rel="stylesheet" href="granum-dropdown.css">
@@ -21,7 +21,7 @@
 			// window.addEventListener('resize', e => info.textContent = document.documentElement.clientWidth + 'px', false) // without scrollbar
 		</script>
   </head>
-  <body id="top" data-break-x="500,400,300,200">
+  <body id="top" data-break-x="500,400,300,200" data-dt=".">
 	<nav id="topbar" class="back" data-resp="target show stick back shade, target show bg-n, target show">
 		<a href="#menu" class="target" data-resp="target, icon-menu pad hover toggle" title="Menu"></a>
 		<ul id="menu" class="row bg hover" data-resp="row -drop, mar row resp target">
@@ -74,7 +74,7 @@ icons, status colors, and even more.
 Typography and styling is minimal and unobtrusive.
 -->
 
-<p class="text-n">v1.2.27</p>
+<p class="text-n">v1.2.28</p>
 
 <p>
 <b>3 KB</b> minified and gzipped.<br>
@@ -546,7 +546,7 @@ x<sup>super</sup>
 	<i class="text-n"> &nbsp; This is inline form</i>
 </form>
 
-<form action="#pform" id="pform" class="fit bg pad mar -dialog" x-title="Submit form?" data-get>
+<form action="#pform" id="pform" class="fit bg pad mar -dialog" data-get>
 <p>
 	<label for="name">Name</label><br>
 	<input id="name" name="name" type="text" required placeholder="Name" size="16">
@@ -562,7 +562,7 @@ x<sup>super</sup>
 </p>
 <p>
 	<label for="look">Country lookup</label><br>
-	<input required id="look" type="text" name="look" value-x="FO" data-caption-x="Faroe" data-lookup="https://restcountries.eu/rest/v2/name/{q}#alpha2Code#name#subregion" data-goto="#country-{id}">
+	<input required id="look" type="text" name="look" value="FO" data-caption="Faroe" data-lookup="https://restcountries.eu/rest/v2/name/{q}#alpha2Code#name#subregion" data-goto="#country-{id}" data-limit="4">
 	<!--small class="act text-e">Fill</small-->
 </p>
 <p>
@@ -578,11 +578,15 @@ x<sup>super</sup>
 	<legend>Fieldset</legend>
 	<p>
 		<label for="sel">Select</label><br>
-		<select id="sel" name="sel" x-required>
+		<select id="sel" name="sel">
 			<option value="">None</option>
 			<option value="sun">Sun</option>
 			<option value="moon">Moon</option>
 		</select>
+	</p>
+	<p>
+		<label for="dt">Date</label><br>
+		<input id="d" name="d" type="date">
 	</p>
 	<p>
 		<label for="dt">Datetime</label><br>
@@ -592,24 +596,32 @@ x<sup>super</sup>
 		Radio
 		<br>
 		<label for="rad1">
-			<input id="rad1" name="rad" type="radio" x-required value="red"> <span>Red</span>
+			<input id="rad1" name="rad" type="radio" value="red"> <span>Red</span>
 		</label>
 		<br>
 		<label for="rad2">
-			<input id="rad2" name="rad" type="radio" x-required value="blue"> <span>Blue</span>
+			<input id="rad2" name="rad" type="radio" value="blue"> <span>Blue</span>
 		</label>
 	</p>
 	<p>
 		<label for="message">Message</label><br>
 		<textarea name="message" id="message" rows="5">Text</textarea>
 	</p>
+</fieldset>
+</details>
+
+<details>
+<summary>Calendar</summary>
+<div class="mar">
+	With date/datetime inputs:<br>
 	<input name="dt1" class="calendar" type="date"><br>
 	<input name="dt2" class="calendar" type="datetime-local"><br>
 	<input name="dt3" class="calendar" type="datetime-local" step="1"><br>
-	<input name="dt4" class="calendar"><br>
-	<input name="dt5" class="calendar" step="60"><br>
-	<input name="dt6" class="calendar" step="1"><br>
-</fieldset>
+	With text inputs:<br>
+	<input name="dt4" class="calendar" type="text"><br>
+	<input name="dt5" class="calendar" type="text" data-step="60"><br>
+	<input name="dt6" class="calendar" type="text" data-step="1"><br>
+</div>
 </details>
 
 <details>

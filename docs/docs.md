@@ -1,5 +1,5 @@
 **Granum**  
-v1.2.27
+v1.2.28
 
 # Documentation
 
@@ -185,12 +185,14 @@ Typography and styling is minimal and unobtrusive.
     - `NAME` - item attribute with caption (`name` by default)
     - `INFO` - item attribute with additional info  (`info` by default)
   - `[data-goto]` - URL of selected item, `{id}` is replaced by lookup value (optional)
+  - `[data-limit]` - limit number of shown items
   - `.lookup` - generated combo input
   - `.look` - generated list container
   - `.look [data-id]` - generated lookup items
 - `input.calendar[step]` - date input *(requires [granum-dropdown.css](granum-dropdown.css) and [granum-calendar.js](granum-calendar.js))*
   - `.month` - generated calendar container
   - `[data-date].browse` - generated calendar controls
+  - `body[data-dt]="."` - use `d.m.Y` date format (instead of default `Y-m-d`)
 - `input[data-nodes][value][data-set][data-unset]` - toggle classes
   - input can be one of: `checkbox`, `radio`, `select`
   - `[data-nodes]` - target elements selector

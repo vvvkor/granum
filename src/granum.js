@@ -95,9 +95,12 @@ document.addEventListener('click', e => {
       const m = a.closest(a.dataset.item || 'div, li, tr')
       if (m) {
         e.preventDefault()
-        if ('delete' in a.dataset) (m.parentNode.children.length > 1 || !('keep' in a.dataset)) ? m.parentNode.removeChild(m) : null
-        else if ('up' in a.dataset) m.parentNode.insertBefore(m, m.previousElementSibling)
-        else if ('down' in a.dataset) m.parentNode.insertBefore(m, m.nextElementSibling ? m.nextElementSibling.nextElementSibling : m.parentNode.firstElementChild)
+        const ps = m.previousElementSibling
+        const ns = m.nextElementSibling
+        const pn = m.parentNode
+        if ('delete' in a.dataset) (m.parentNode.children.length > 1 || !('keep' in a.dataset)) ? m.remove() : null
+        else if ('up' in a.dataset) ps ? ps.before(m) : pn.append(m)
+        else if ('down' in a.dataset) ns ? ns.after(m) : pn.prepend(m)
         else m.after(m.cloneNode(true))
       }
     }
@@ -114,7 +117,7 @@ document.addEventListener('click', e => {
       const k = isNaN(x[0][2]) ? 1 : 2
       const r = h.classList.contains(c) ? (x[0][k] < x[x.length-1][k] ? -1 : 1) : 1
       x.sort((a, b) => a[k] < b[k] ? -r : (a[k] > b[k] ? r : 0))
-      x.forEach(m => b.appendChild(m[0]))
+      x.forEach(m => b.append(m[0]))
       ;[...h.parentNode.children].forEach(m => m.classList[m == h ? 'add' : 'remove'](c))
     }
   }
