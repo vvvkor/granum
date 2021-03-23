@@ -45,7 +45,7 @@
 		<!--a href="#drawer" class="icon-right pad" title="Drawer"></a-->
 		<div id="drawer" class="drawer -target back pad bord shade">
 			<div class="r"><a href="#cancel" class="icon-close pad" title="Close"></a></div>
-			<p>Drawer</p>
+			<h3 class="fit">Drawer</h3>
 			<details class="bg pad mar l">
 				<summary>More horizontal</summary>
 				<p class="nobr">Text text text text text text text text text text text text text text text text text
@@ -732,8 +732,21 @@ x<sup>super</sup>
 		</p>
 		<p id="toggle" class="target bord pad">Target</p>
 		
-		<div id="modal" class="target modal"><div class="pad rad c">
-			<p>Modal</p>
+		<div id="modal" class="target modal sans"><div>
+			<div class="pad bg h3">
+				<div class="row">
+					<div>Modal</div>
+					<div class="col-0"><a class="icon-close empty" href="#cancel"><b>&times;</b></a></div>
+				</div>
+			</div>
+			<div class="pad c">
+				<p>Some important information</p>
+				<p><a class="inv pad" href="#cancel">Close</a></p>
+			</div>
+		</div></div>
+		
+		<div id="modal-test" class="target modal"><div class="pad rad c">
+			<p><b>Modal</b></p>
 			<details class="bg pad mar l">
 				<summary>More horizontal</summary>
 				<p class="nobr">Text text text text text text text text text text text text text text text text text
@@ -770,7 +783,7 @@ x<sup>super</sup>
 			<li><a href="#2" class="icon-find">Search</a>
 			<li><a href="#3" class="icon-edit">Edit</a>
 			</ul>
-		<li><a href="#2" class="icon-user">Profile <small class="tag inv -rad bg-w sans">NEW</small></a>
+		<li><a href="#modal-test" class="icon-user">Profile <small class="tag inv -rad bg-w sans">NEW</small></a>
 		<li class="r"><form action="?#find"><input id="find" name="q" type="search" size="5" class="rad" placeholder="Find" data-get> <button class="icon-find bg-n"></button></form>
 		<li><a href="#3" class="icon-info">Info</a>
 			<ul>
