@@ -155,9 +155,6 @@ Bundled styles and scripts are also available:
 - `.gallery a.pic`
 - `input[data-lookup][data-caption][data-goto][data-limit]`
 - `input.calendar[step]`, `body[data-dt]="."`
-
-## JavaScript editor hooks
-
 - `[contenteditable][data-for="ID_AREA"]`
 - `a[href="#ID_EDITOR"][data-cmd]([data-arg][data-ask][title])`
 
