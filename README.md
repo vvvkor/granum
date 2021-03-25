@@ -10,6 +10,17 @@ Ultra compact set of styles and behaviours for basic web pages.
 
 ## Usage
 
+### npm
+
+```shell
+npm install granum
+```
+
+### Manual
+
+[Download](https://github.com/vvvkor/granum/archive/refs/heads/master.zip)
+and include scripts from `dist` directory.
+
 ```html
 <link rel="stylesheet" href="granum.css">
 <!-- optional -->
@@ -23,7 +34,7 @@ Ultra compact set of styles and behaviours for basic web pages.
 <script src="granum-edit.js" defer></script>
 ```
 
-Bundles with all styles and scripts:
+Bundled styles and scripts are also available:
 
 ```html
 <link rel="stylesheet" href="granum-full.css">
@@ -45,7 +56,7 @@ Bundles with all styles and scripts:
 <script src="https://unpkg.com/granum/dist/granum-edit.min.js" defer></script>
 ```
 
-Bundles with all styles and scripts:
+Bundled styles and scripts are also available:
 
 ```html
 <link rel="stylesheet" href="https://unpkg.com/granum/dist/granum-full.min.css">

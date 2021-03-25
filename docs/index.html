@@ -16,10 +16,10 @@
     <script src="granum-calendar.js" defer></script>
     <script src="granum-edit.js" defer></script>
     <script>
-			document.addEventListener('granum', e => console.log('granum ready', e), false)
-			window.addEventListener('resize', e => info.textContent = window.innerWidth + ' px', false) // with scrollbar
-			// window.addEventListener('resize', e => info.textContent = document.documentElement.clientWidth + 'px', false) // without scrollbar
-		</script>
+		document.addEventListener('granum', e => console.log('granum ready', e), false)
+		window.addEventListener('resize', e => info.textContent = window.innerWidth + ' px', false) // with scrollbar
+		// window.addEventListener('resize', e => info.textContent = document.documentElement.clientWidth + 'px', false) // without scrollbar
+	</script>
   </head>
   <body id="top" data-break-x="500,400,300,200" data-dt-x=".">
 	<nav id="topbar" class="back" data-resp="target show stick back shade, target show bg-n, target show">
@@ -42,22 +42,6 @@
 		</ul>
 	</nav>
 
-		<!--a href="#drawer" class="icon-right pad" title="Drawer"></a-->
-		<div id="drawer" class="drawer -target back pad bord shade">
-			<div class="r"><a href="#cancel" class="icon-close pad" title="Close"></a></div>
-			<h3 class="fit">Drawer</h3>
-			<details class="bg pad mar l">
-				<summary>More horizontal</summary>
-				<p class="nobr">Text text text text text text text text text text text text text text text text text
-				text text text text text text text text text text text text text text text text text text text.</p>
-			</details>
-			<details class="bg pad mar l">
-				<summary>More vertical</summary>
-				<p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p>
-				<p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p>
-			</details>
-		</div>
-
 <main class="center wrap pad serif">
 
 <div class="c">
@@ -74,7 +58,7 @@ icons, status colors, and even more.
 Typography and styling is minimal and unobtrusive.
 -->
 
-<p class="text-n">v1.2.30</p>
+<p class="text-n">v1.2.31</p>
 
 <p>
 <b>3 KB</b> minified and gzipped.<br>
@@ -87,7 +71,28 @@ Typography and styling is minimal and unobtrusive.
 <a href="https://unpkg.com/granum" class="pad rad bord hover">CDN</a>
 </p>
 
+<p>
+	<code class="pad -inv">npm install granum</code>
+</p>
+
 </div>
+
+
+	<!--a href="#drawer" class="icon-right pad" title="Drawer"></a-->
+	<div id="drawer" class="drawer -target back pad -bord shade">
+		<div class="r"><a href="#cancel" class="icon-close pad" title="Close"></a></div>
+		<h3 class="fit">Drawer</h3>
+		<details class="bg pad mar l">
+			<summary>More horizontal</summary>
+			<p class="nobr">Text text text text text text text text text text text text text text text text text
+			text text text text text text text text text text text text text text text text text text text.</p>
+		</details>
+		<details class="bg pad mar l">
+			<summary>More vertical</summary>
+			<p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p>
+			<p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p>
+		</details>
+	</div>
 
 <div class="mar pad p2"></div>
 
@@ -110,7 +115,7 @@ Typography and styling is minimal and unobtrusive.
 			</div>
 		</div>
 	</div>
-	<div class="">
+	<div>
 		<div class="grid g1">
 			<div><div class="icon-grid span-0 h3"></div></div>
 			<div>
@@ -119,7 +124,7 @@ Typography and styling is minimal and unobtrusive.
 			</div>
 		</div>
 	</div>
-	<div class="">
+	<div>
 		<div class="grid g1">
 			<div><div class="icon-send span-0 h3"></div></div>
 			<div>
@@ -128,7 +133,7 @@ Typography and styling is minimal and unobtrusive.
 			</div>
 		</div>
 	</div>
-	<div class="">
+	<div>
 		<div class="grid g1">
 			<div><div class="icon-ok span-0 h3"></div></div>
 			<div>
@@ -137,7 +142,7 @@ Typography and styling is minimal and unobtrusive.
 			</div>
 		</div>
 	</div>
-	<div class="">
+	<div>
 		<div class="grid g1">
 			<div><div class="icon-pin span-0 h3"></div></div>
 			<div>
@@ -735,11 +740,11 @@ x<sup>super</sup>
 		<div id="modal" class="target modal sans"><div>
 			<div class="pad bg h3">
 				<div class="row">
-					<div>Modal</div>
+					<div>Modal dialog</div>
 					<div class="col-0"><a class="icon-close empty" href="#cancel"><b>&times;</b></a></div>
 				</div>
 			</div>
-			<div class="pad c">
+			<div class="pad c -fit">
 				<p>Some important information</p>
 				<p><a class="inv pad" href="#cancel">Close</a></p>
 			</div>
