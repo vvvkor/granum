@@ -1,4 +1,4 @@
-/*! granum-basic.css v1.2.32 */
+/*! granum-basic.css v1.2.33 */
 
 /* excluded in granum-basic.css: .bar .tag .tabs .drawer .stick .hi .pic .modal table.resp .rad (.inv) */
 
@@ -116,7 +116,7 @@ ul.row>*, .col-0[class] {flex:0 1 auto;/*for ie*/ /*flex:initial;*/}
 /* color */
 .bg, blockquote, pre, code {background-color:rgba(0,0,0,.05);}
 pre code {background:none;}
-button, [type="submit"], .inv {background-color:#05b;color:#fff;}
+button, [type="submit"], a.inv, .inv {background-color:#05b;color:#fff;}
 .text-n[class] {color:#999;}
 .text-i[class] {color:#08a;}
 .text-y[class] {color:#181;}
