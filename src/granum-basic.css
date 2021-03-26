@@ -1,4 +1,4 @@
-/* excluded in granum-basic.css: .bar .tag .tabs .drawer .stick .hi .pic .inv .modal table.resp .rad */
+/* excluded in granum-basic.css: .bar .tag .tabs .drawer .stick .hi .pic .modal table.resp .rad (.inv) */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -114,7 +114,7 @@ ul.row>*, .col-0[class] {flex:0 1 auto;/*for ie*/ /*flex:initial;*/}
 /* color */
 .bg, blockquote, pre, code {background-color:rgba(0,0,0,.05);}
 pre code {background:none;}
-button, [type="submit"] {background-color:#05b;color:#fff;}
+button, [type="submit"], .inv {background-color:#05b;color:#fff;}
 .text-n[class] {color:#999;}
 .text-i[class] {color:#08a;}
 .text-y[class] {color:#181;}
@@ -125,11 +125,11 @@ button, [type="submit"] {background-color:#05b;color:#fff;}
 .bg-y {background-color:#cec;}
 .bg-w, mark {background-color:#ffe699;}
 .bg-e {background-color:#fcc;}
-button.bg-n, [type="submit"].bg-n {background-color:#999;}
-button.bg-i, [type="submit"].bg-i {background-color:#08a;}
-button.bg-y, [type="submit"].bg-y {background-color:#181;}
-button.bg-w, [type="submit"].bg-w {background-color:#d70;}
-button.bg-e, [type="submit"].bg-e {background-color:#c00;}
+button.bg-n, [type="submit"].bg-n, .inv.bg-n {background-color:#999;}
+button.bg-i, [type="submit"].bg-i, .inv.bg-i {background-color:#08a;}
+button.bg-y, [type="submit"].bg-y, .inv.bg-y {background-color:#181;}
+button.bg-w, [type="submit"].bg-w, .inv.bg-w {background-color:#d70;}
+button.bg-e, [type="submit"].bg-e, .inv.bg-e {background-color:#c00;}
 
 /* highlight */
 a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tr:hover>*, tr>*.hover:hover {box-shadow:inset 0 0 0 200vh rgba(0,0,0,.03);}

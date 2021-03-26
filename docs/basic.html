@@ -9,15 +9,15 @@
     <!--script src="granum.js" defer></script-->
   </head>
   <body id="top" data-break-x="500,400,300,200" data-dt-x=".">
-	<nav id="topbar" class="back">
+	<nav>
 		<a href="#menu" class="target" title="Menu"></a>
-		<ul id="menu" class="row -resp bg hover">
-			<li class="l"><a href="?"><b>Granum Basic</b></a>
-			<li><a href="#typo">Basics</a><!--ul><li><a>Sub</a></ul-->
+		<ul id="menu" class="row -resp shade -hover">
+			<li class="l"><a href="?"><b>Granum</b></a>
+			<li><a href="#typo">Text</a><!--ul><li><a>Sub</a></ul-->
 			<!--li><a href="#list">List</a-->
-			<li><a href="#table">Tables</a>
-			<li><a href="#grid">Grids</a>
-			<li><a href="#form">Forms</a>
+			<li><a href="#table">Table</a>
+			<li><a href="#grid">Grid</a>
+			<li><a href="#form">Form</a>
 			<!--li><a href="#action">Interactive</a-->
 		</ul>
 	</nav>
@@ -30,16 +30,16 @@
 <p><b>CSS micro framework. <br>Minimal version of <a href="index.html">Granum</a></b></p>
 <p><i>Ultra compact set of styles for basic web pages.</i></p>
 
-<p class="text-n">v1.2.31</p>
+<p class="text-n">v1.2.32</p>
 
 <p>
 <b>2 KB</b> minified and gzipped.<br>
 </p>
 
 <p>
-<a href="https://github.com/vvvkor/granum/blob/master/docs/docs.md" class="inv pad rad hover">Docs</a>
-<a href="https://github.com/vvvkor/granum" class="inv pad rad hover bg-n">GitHub</a>
-<a href="https://unpkg.com/granum" class="pad rad bord hover">CDN</a>
+<a href="https://github.com/vvvkor/granum/blob/master/docs/docs.md" class="pad bg hover inv">Docs</a>
+<a href="https://github.com/vvvkor/granum" class="pad bg-n hover inv">GitHub</a>
+<a href="https://unpkg.com/granum" class="pad bord hover">CDN</a>
 </p>
 
 <p>
@@ -77,7 +77,7 @@
 
 <div class="mar pad p1"></div>
 
-<h2 id="typo"><a href="#typo">Typography</a> <a href="#top" class="fit icon-up"></a></h2>
+<h2 id="typo"><a href="#typo">Typography</a> <a href="#top" class="text-n">&uarr;</a></h2>
 
 <p>
 Text
@@ -140,6 +140,12 @@ x<sup>super</sup>
 	<span class="bg-y">Success</span>
 	<span class="bg-i">Info</span>
 	<span class="bg-n">Note</span>
+	<br>
+	<span class="bg-e inv">Error</span>
+	<span class="bg-w inv">Warning</span>
+	<span class="bg-y inv">Success</span>
+	<span class="bg-i inv">Info</span>
+	<span class="bg-n inv">Note</span>
 </div>
 </details>
 
@@ -162,7 +168,7 @@ x<sup>super</sup>
 	</div>
 </details>
 
-<h3 id="list"><a href="#list">Lists</a> <a href="#top" class="fit icon-up"></a></h3>
+<h3 id="list"><a href="#list">Lists</a> <a href="#top" class="text-n">&uarr;</a></h3>
 
 <div class="row pad -resp">
 <div>
@@ -205,7 +211,7 @@ x<sup>super</sup>
 
 
 
-<h2 id="table"><a href="#table">Tables</a> <a href="#top" class="fit icon-up"></a></h2>
+<h2 id="table"><a href="#table">Tables</a> <a href="#top" class="text-n">&uarr;</a></h2>
 
 <div class="roll">
 <table id="tbl" class="sort pad hover l -bord -fit" data-sort="bg-w">
@@ -242,7 +248,7 @@ x<sup>super</sup>
 </table>
 </div>
 
-<h2 id="grid"><a href="#grid">Grids</a> <a href="#top" class="fit icon-up"></a></h2>
+<h2 id="grid"><a href="#grid">Grids</a> <a href="#top" class="text-n">&uarr;</a></h2>
 
 <ul class="row resp bg hover -mid">
 <li><a href="#1">First</a>
@@ -268,7 +274,7 @@ x<sup>super</sup>
 	</div></div>
 </div>
 
-<h2 id="form"><a href="#form">Forms</a> <a href="#top" class="fit icon-up"></a></h2>
+<h2 id="form"><a href="#form">Forms</a> <a href="#top" class="text-n">&uarr;</a></h2>
 
 <form action="?#searcher" method="get" class="bg pad mar">
 	<input id="searcher" type="search" name="q" size="6" accesskey="4" placeholder="Search">
@@ -349,7 +355,7 @@ x<sup>super</sup>
 
 <p>
 	<button class="icon-send">Submit</button>
-	<i class="pad text-n">This form uses <code>p</code></i>
+	<i class="pad text-n">Inside <code>p</code></i>
 </p>
 </form>
 
@@ -364,7 +370,7 @@ x<sup>super</sup>
 </div>
 <div class="row mar pad resp">
 	<div></div>
-	<div class="col-3"><input type="submit" value="Send" class="bg-y"> <i class="pad text-n">This form uses <code>.grid</code></i></div>
+	<div class="col-3"><input type="submit" value="Send" class="bg-y"> <i class="pad text-n">Inside <code>.grid</code></i></div>
 </div>
 </form>
 
@@ -381,18 +387,18 @@ x<sup>super</sup>
 	<td><label><input type="checkbox" name="agree" value="1"> Agree</label>
 <tr>
 	<td>
-	<td><input type="submit" value="Save" class="bg-n"> <i class="pad text-n">This form uses <code>table</code></i>
+	<td><input type="submit" value="Save" class="bg-n"> <i class="pad text-n">Inside <code>table</code></i>
 </table>
 </form>
 
 
-<h2 id="action"><a href="#action">Interactive</a> <a href="#top" class="fit icon-up"></a></h2>
+<h2 id="action"><a href="#action">Interactive</a> <a href="#top" class="text-n">&uarr;</a></h2>
 
 	<div class="mar">
 		<p>
 		<a href="#toggle" class="toggle l">Toggle</a>
 		</p>
-		<div id="toggle" class="target mar bord pad">Excluded in <i>granum-basic.css</i>:<br><pre>.bar .tag .tabs .drawer .stick .hi .pic .inv .modal table.resp .rad</pre></div>
+		<div id="toggle" class="target mar bord pad">Excluded in <i>granum-basic.css</i>:<br><pre>.bar .tag .tabs .drawer .stick .hi .pic .modal table.resp .rad </pre></div><!-- .inv -->
 	</div>
 	
 </main>
@@ -400,7 +406,7 @@ x<sup>super</sup>
 		<footer class="pad c">
 			<a href="https://github.com/vvvkor">vadimkor</a> 2021
 			<p>
-				<a href="#top" accesskey="1" class="icon-up"></a>
+				<a href="#top" accesskey="1" class="text-n">&uarr;</a>
 				<a href="#cancel" accesskey="x" class="target"></a>
 			</p>
 		</footer>

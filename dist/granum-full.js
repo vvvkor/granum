@@ -1,4 +1,4 @@
-/*! granum-full.js v1.2.31 */
+/*! granum-full.js v1.2.32 */
 
 (_ => {
 
@@ -63,7 +63,12 @@ document.addEventListener('click', e => {
   if (b && b.form && b.form.checkValidity() && !confirm(b.title || b.textContent)) e.preventDefault()
   
   if (a) {
-    if (a.classList.contains('dialog')) {
+    if (a.hash == '#back') {
+      e.preventDefault()
+      history.go(-1)
+    }
+    
+    else if (a.classList.contains('dialog')) {
       // prompt link
       const p = a.dataset.prompt
       if (p) {
@@ -76,7 +81,7 @@ document.addEventListener('click', e => {
     }
 
     // toggle
-    if (a.classList.contains('toggle')) {
+    else if (a.classList.contains('toggle')) {
       e.preventDefault()
       const t = a.closest('.tabs')
       if (t) t.querySelectorAll('a[href^="#"].act').forEach(m => m.click())
@@ -93,7 +98,7 @@ document.addEventListener('click', e => {
     }
     
     // items
-    if ('item' in a.dataset) {
+    else if ('item' in a.dataset) {
       const m = a.closest(a.dataset.item || 'div, li, tr')
       if (m) {
         e.preventDefault()
