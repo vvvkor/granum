@@ -1,5 +1,5 @@
 **Granum**  
-v1.2.33
+v1.2.34
 
 # Documentation
 
@@ -53,6 +53,12 @@ Typography and styling is minimal and unobtrusive.
 - `.grid.fill > .span-1 + .span-3` - row with 2 cells having widths 1/4 and 3/4
 - `.grid.grid-3 > *` - regular grid with 3 columns, auto-wrapping
 
+## List
+
+- `.fit` - no bullets
+- `.l` - horizontal list
+- `.l.resp` - stack on narrow screen
+- `.mid` - center all items vertically
 
 ## Table
 
