@@ -18,7 +18,7 @@ button::-moz-focus-inner, [type="submit"]::-moz-focus-inner {border:none;} /* fi
 /* font */
 html {font-size:120%;}
 body {line-height:1.5;color:#000;}
-body, .back{background:#fff;}
+body, .back, .drawer, .stick{background:#fff;}
 body, .sans {font-family:"PT Sans", Roboto, "Segoe UI", sans-serif;}
 .serif {font-family:"PT Serif", Georgia, serif;}
 input, button, select, textarea, table {font:inherit;} 
