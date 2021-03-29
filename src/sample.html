@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Title</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="image/svg" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20220%20220'%3E%3Cpath%20fill='%23999'%20d='M35%2067l75%20-44%2075%2044%200%2089-75%2044-75-44zm75%208a35%2035%200%201%200%20.01%200z'/%3E%3C/svg%3E">
+		<link rel="stylesheet" href="granum.css">
+		<link rel="stylesheet" href="granum-icons.css">
+		<script src="granum.js" defer></script>
+	</head>
+	<body id="top">
+		
+		<!-- top nav -->
+		<nav class="shade stick">
+			<a href="#menu" class="hide" data-resp="hide,toggle pad icon-menu empty"><span>Menu</span></a>
+			<ul id="menu" class="row" data-resp="row,target row resp">
+				<li><a href="?#"><b>Logo</b></a>
+				<li><a href="https://github.com/vvvkor/granum">GitHub</a>
+				<li><a href="https://github.com/vvvkor/granum/blob/master/docs/docs.md">Docs</a>
+				<li class="l"><a href="index.html">Demo</a>
+				<li><a href="#profile">Profile</a>
+			</ul>
+		</nav>
+
+		<!-- drawer -->
+		<nav id="drawer" class="drawer pad shade">
+			<div class="r"><a href="#cancel" class="pad icon-close empty"><b>&times;</b></a></div>
+			<div class="h2">Logo</div>
+			<ul>
+				<li><a href="/">Home</a>
+				<li><a href="/contacts">Contacts</a>
+			</ul>
+		</nav>
+
+		<!-- modal -->
+		<div id="profile" class="target modal"><div>
+			<div class="pad bg h3">
+				<div class="row">
+					<div>Profile</div>
+					<div class="col-0"><a class="icon-close empty" href="#cancel"><b>&times;</b></a></div>
+				</div>
+			</div>
+			<div class="pad c">
+				<p>User information</p>
+				<p><a class="inv pad" href="#cancel">Close</a></p>
+			</div>
+		</div></div>
+
+		<!--header>Header</header-->
+		<!--div class="wrap center row resp"-->
+			<!--aside>Aside</aside-->
+			<main class="pad wrap center">
+
+				<a href="#drawer">Navigation</a>
+				
+				<!-- content -->
+				<h1>Heading</h1>
+				<p>Paragraph
+
+				
+				<!-- grid with items -->
+				<div class="row resp pad mar l">
+
+					<div class="shade c">
+						<div class="h1 inv bg-n pad icon-pin"></div><div class="pad">Some<br>exciting<br>text</div>
+					</div>
+					
+					<div class="shade">
+						<div class="roll pad">
+						<table class="pad l r3 hover">
+							<tr><th>No<th>Name<th>Value
+							<tr><td>1<td>Alpha<td>5
+							<tr><td>2<td>Beta<td>1
+							<tr><td>3<td>Gamma<td>300
+						</table>
+						</div>
+					</div>
+					
+					<div class="shade">
+						<form class="fit pad" data-get>
+							<p>Name<br><input name="name" required size="15" value="Joe"> <!--b class="act text-e">*</b-->
+							<!--p>e-mail<br><input name="name" type="email"-->
+							<p><button class="bg-n icon-send">Send</button>
+						</form>
+					</div>
+					
+				</div>
+				
+			</main>
+		<!--/div-->
+		
+		<!-- footer -->
+		<footer class="pad bg -small c"><p>Footer<br><a href="#top" class="icon-up empty"><span>&uarr;</span></a></p></footer>
+	</body>
+</html>

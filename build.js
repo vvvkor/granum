@@ -94,7 +94,7 @@ console.log('Bundle granum-full.js...');
 console.log('\n# DOCS\n');
 
 console.log('Copy docs...');
-['index.html', 'basic.html', 'docs.md']
+['index.html', 'basic.html', 'sample.html', 'docs.md']
 .forEach(n => fs.copyFileSync('./src/' + n, './docs/' + n));
 
 console.log('Copy assets...');
