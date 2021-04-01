@@ -180,7 +180,7 @@ x<sup>super</sup>
 <details class="hx">
 <summary>Heading</summary>
 <div class="pad bg">
-	<p>
+	<p class="hide" data-resp>
 		<a href="#h" class="toggle" data-nodes=".hx b"  data-inact="text-n">Longer headings</a> &middot;
 		<a href="#h" class="toggle" data-nodes=".hx span" data-inact="text-n">Longer texts</a>
 	</p>
@@ -345,7 +345,7 @@ x<sup>super</sup>
 
 <h2 id="table"><a href="#table">Tables</a> <a href="#top" class="fit icon-up"></a></h2>
 
-<p>Style
+<p class="hide" data-resp>Style
 <select data-nodes="#tbl">
 	<option value="sort nobr c3 r4  ">Borderless</option>
 	<option value="sort nobr c3 r4  pad hover l mid" selected>Lines, hover, wide</option>
@@ -678,7 +678,7 @@ x<sup>super</sup>
 </form>
 
 <form class="pad bg mar" id="tform" action="#tform">
-<table class="resp fit mid" data-resp="mid, fit resp">
+<table class="resp -fit mid" data-resp="mid, fit resp">
 <tr>
 	<td class="r"><label for="nm">Name</label>
 	<td><input type="text" name="nm" id="nm" readonly placeholder="readonly">
@@ -752,7 +752,7 @@ x<sup>super</sup>
 	
 	<nav class="mar bg">
 		<a href="#nav" class="target" data-resp="target, icon-menu pad hover toggle" title="Menu"></a>
-		<a data-resp="target, text-n">Responsive menu</a>
+		<a class="target" data-resp="target, text-n">Responsive menu</a>
 		<ul id="nav" class="row resp hover drop" data-resp="row -resp hover drop, target row resp hover drop">
 		<li><a href="#1" class="icon-more">Features</a>
 			<ul>
