@@ -1,4 +1,4 @@
-/*! granum-full.css v1.2.34 */
+/*! granum-full.css v1.2.35 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -49,6 +49,7 @@ pre{overflow:auto;max-height:80vh;}
 	code, kbd {padding:.2em .5em;}
 	.rad, code, kbd, pre {border-radius:.2em;}
 	.tag.rad {border-radius:.75em;}
+	div.rad {overflow:hidden;}
 abbr {border-bottom:thin dotted;text-decoration:none;}
 sub, sup {line-height:0em;}
 .bord, kbd, fieldset, hr{border:thin solid rgba(0,0,0,.16);}
