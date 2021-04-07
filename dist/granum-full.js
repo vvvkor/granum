@@ -1,4 +1,4 @@
-/*! granum-full.js v1.2.36 */
+/*! granum-full.js v1.2.37 */
 
 (_ => {
 
@@ -43,7 +43,7 @@ document.addEventListener('getinput', e => {
   const n = e.target
   const nm = n.dataset.get || n.name
   if (location.href.match(/\?/)) {
-    const p = (new URL(location.href)).searchParams
+    const p = (new URL(location)).searchParams
     const v = p.get(p.has(nm) ? nm : '_' + nm)
     if (n.type == 'checkbox') n.checked = (v && v !== '0')
     else if (n.type == 'radio') n.checked = (v && n.value === v)

@@ -1,4 +1,4 @@
-/*! granum-edit.js v1.2.36 */
+/*! granum-edit.js v1.2.37 */
 
 document.addEventListener('DOMContentLoaded', e => {
   // fill contenteditable from textarea
