@@ -40,9 +40,9 @@ document.addEventListener('DOMContentLoaded', e => {
 document.addEventListener('getinput', e => {
   const n = e.target
   const nm = n.dataset.get || n.name
-  const m = location.href.match(new RegExp('(\\?|&)_?' + nm + '=(.*?)($|&|#)'))
-  if (m) {
-    const v = decodeURIComponent(m[2].replace(/\+/g, ' '))
+  if (location.href.match(/\?/)) {
+    const p = (new URL(location.href)).searchParams
+    const v = p.get(p.has(nm) ? nm : '_' + nm)
     if (n.type == 'checkbox') n.checked = (v && v !== '0')
     else if (n.type == 'radio') n.checked = (v && n.value === v)
     else n.value = v

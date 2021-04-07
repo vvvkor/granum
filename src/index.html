@@ -461,7 +461,7 @@ x<sup>super</sup>
 <details>
 	<summary>Advanced grid</summary>
 <label>Grid type
-<select name="grid-type" data-get data-nodes="#grd">
+<select name="grid-type" data-nodes="#grd">
 	<option value="grid p1 g1 resp fill" selected>Row</option>
 	<option value="grid p1 g1 resp flow">Nav flow</option>
 	<option value="grid p1 g1 resp roll">Nav roll</option>
@@ -470,25 +470,25 @@ x<sup>super</sup>
 	<option value="grid p1 g1 resp grid-4">Grid-4</option>
 	<option value="grid resp grid-6">Grid-6 dense</option>
 </select></label>
-<label> <input type="checkbox" name="grid-wrap" data-get data-nodes="#wrp" data-set="-wrap -center pad bord" data-unset="bord"> Padding</label>
+<label> <input type="checkbox" name="grid-wrap" data-nodes="#wrp" data-set="-wrap -center pad bord" data-unset="bord"> Padding</label>
 
 <div class="bg small">
 <div id="wrp" class="bord">
 <div id="grd" class="grid p1 g1 resp flow -roll">
 	<div id="item" class="back bord shade pad">
 		<div class="nobr">
-		<label><input type="radio" name="item-span" data-get data-nodes="#item" value="back bord shade pad" checked> def</label><br>
-		<label><input type="radio" name="item-span" data-get data-nodes="#item" value="back bord shade pad stick"> stick</label><br>
+		<label><input type="radio" name="item-span" data-nodes="#item" value="back bord shade pad" checked> def</label><br>
+		<label><input type="radio" name="item-span" data-nodes="#item" value="back bord shade pad stick"> stick</label><br>
 		</div>
 	</div>
 	<div id="cell" class="back bord shade pad">
 		<div class="nobr">
-		<label><input type="radio" name="cell-span" data-get data-nodes="#cell" value="back bord shade pad" checked> def</label><br>
-		<label><input type="radio" name="cell-span" data-get data-nodes="#cell" value="back bord shade pad span-0"> x0</label><br>
-		<label><input type="radio" name="cell-span" data-get data-nodes="#cell" value="back bord shade pad span-1"> x1</label><br>
-		<label><input type="radio" name="cell-span" data-get data-nodes="#cell" value="back bord shade pad span-2"> x2</label><br>
-		<label><input type="radio" name="cell-span" data-get data-nodes="#cell" value="back bord shade pad span-3"> x3</label><br>
-		<label><input type="radio" name="cell-span" data-get data-nodes="#cell" value="back bord shade pad span-4"> x4</label>
+		<label><input type="radio" name="cell-span" data-nodes="#cell" value="back bord shade pad" checked> def</label><br>
+		<label><input type="radio" name="cell-span" data-nodes="#cell" value="back bord shade pad span-0"> x0</label><br>
+		<label><input type="radio" name="cell-span" data-nodes="#cell" value="back bord shade pad span-1"> x1</label><br>
+		<label><input type="radio" name="cell-span" data-nodes="#cell" value="back bord shade pad span-2"> x2</label><br>
+		<label><input type="radio" name="cell-span" data-nodes="#cell" value="back bord shade pad span-3"> x3</label><br>
+		<label><input type="radio" name="cell-span" data-nodes="#cell" value="back bord shade pad span-4"> x4</label>
 		</div>
 	</div>
 	<div class="back bord shade pad">C</div>
@@ -532,6 +532,10 @@ x<sup>super</sup>
 	<small class="act text-y">OK</small>
 </p>
 <p>
+	<!--
+	<input type="hidden" name="_bx" value="">
+	<input id="box" name="bx" type="checkbox" value="1" checked>
+	-->
 	<label for="box">
 		<input id="box" name="box" type="checkbox" required value="1">
 		<!--input name="_box" hidden="checkbox"--><!-- send unchecked box -->
