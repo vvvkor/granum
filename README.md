@@ -148,6 +148,7 @@ Bundled styles and scripts are also available:
 - `.dialog([data-prompt][data-default][title])`
 - `.lX` `.cX` `.rX`
 - `table.sort` `th.sort` `table[data-sort]`
+- `input[data-filter]` `table tbody tr`
 - `[data-check]`
 - `[data-get]`
 - `body[data-break] [data-resp]`
