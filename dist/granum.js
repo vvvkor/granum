@@ -1,4 +1,4 @@
-/*! granum.js v1.2.37 */
+/*! granum.js v1.2.38 */
 
 (_ => {
 
@@ -139,13 +139,17 @@ document.addEventListener('input', e => {
   // check all boxes
   const g = n.dataset.check
   if (g) document.querySelectorAll(g)
-    .forEach(m => m.checked = n.checked)
+    .forEach(m => m.checked = n.checked && !m.closest('[hidden]'))
   
   // toggle
   if ('nodes' in n.dataset)
     document.querySelectorAll(n.dataset.nodes).forEach(m => 
       m.className = n.type == 'checkbox' ? n.dataset[n.checked ? 'set' : 'unset'] : n.value
     )
+  
+  // filter table
+  if (n.dataset.filter) document.querySelector(n.dataset.filter)?.querySelectorAll('tbody tr')
+    .forEach(m => m.hidden = !(' ' + m.textContent.replace(/\s+/g, ' ') + ' ').match(new RegExp(n.value, 'i')));
 })
 
 document.addEventListener('keydown', e => {

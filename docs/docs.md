@@ -1,5 +1,5 @@
 **Granum**  
-v1.2.37
+v1.2.38
 
 # Documentation
 
@@ -74,6 +74,7 @@ Typography and styling is minimal and unobtrusive.
 - `tr.mid` - center row cells vertically
 - `tr > .mid` - center cell vertically
 - `.lX`, `.cX`, `.rX` - align cells in column X to left, center, right *(requires [granum.js](granum.js))*
+- `input[data-filter="SELECTOR"]`, `table tbody tr` - filter table rows *(requires [granum.js](granum.js))*
 - `table.sort > thead + tbody`, `(thead > th.sort) + tbody` - sort table *(requires [granum.js](granum.js))*
   - `table[data-sort]` - active header class
 
