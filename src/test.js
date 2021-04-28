@@ -1,3 +1,19 @@
+  // restore form inputs
+  /*
+  - run after all plugins if data-get not done
+  - oninput in separate common 'input' handler
+  - unique form id?
+  - input types?
+  - editor: evt(input)
+  - lookup: restore id and caption
+  */
+  document.querySelectorAll('form[data-restore] [name]:not([data-unstore]):is([type="text"], [type*="date"], select, textarea)').forEach(n => {
+    n.value = localStorage.getItem('store-' + n.name) ?? n.value
+    n.addEventListener('input', e => localStorage.setItem('store-' + e.target.name, e.target.value), false)
+  })
+  
+
+
 window.addEventListener('resize', e => {
   const w = window.innerWidth
   if (document.body._w == null || document.body._w != w) {

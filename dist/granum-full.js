@@ -1,4 +1,4 @@
-/*! granum-full.js v1.2.38 */
+/*! granum-full.js v1.2.39 */
 
 (_ => {
 
@@ -148,7 +148,7 @@ document.addEventListener('input', e => {
     )
   
   // filter table
-  if (n.dataset.filter) document.querySelector(n.dataset.filter)?.querySelectorAll('tbody tr')
+  if (n.dataset.filter) document.querySelector(n.dataset.filter).querySelectorAll('tbody tr')
     .forEach(m => m.hidden = !(' ' + m.textContent.replace(/\s+/g, ' ') + ' ').match(new RegExp(n.value, 'i')));
 })
 
@@ -240,6 +240,7 @@ document.addEventListener('DOMContentLoaded', e => {
     const c = n.dataset.caption || ''
     
     const l = document.createElement('input')
+    l.type = 'text'
     l.className = 'lookup'
     l.name = 'lookup-' + n.name
     l.value = c

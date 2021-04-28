@@ -1,4 +1,4 @@
-/*! granum-lookup.js v1.2.38 */
+/*! granum-lookup.js v1.2.39 */
 
 (_ => {
 
@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', e => {
     const c = n.dataset.caption || ''
     
     const l = document.createElement('input')
+    l.type = 'text'
     l.className = 'lookup'
     l.name = 'lookup-' + n.name
     l.value = c

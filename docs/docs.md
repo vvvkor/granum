@@ -1,5 +1,5 @@
 **Granum**  
-v1.2.38
+v1.2.39
 
 # Documentation
 
