@@ -30,7 +30,7 @@ document.addEventListener('click', e => {
             : (e.clientX < a.clientWidth / 2 ? -1 : 1))
       : go(a)
   }
-}, false)
+})
 
 document.addEventListener('keydown', e => {
   const a = document.querySelector('a.pic.modal')

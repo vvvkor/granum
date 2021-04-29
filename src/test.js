@@ -9,7 +9,7 @@
   */
   document.querySelectorAll('form[data-restore] [name]:not([data-unstore]):is([type="text"], [type*="date"], select, textarea)').forEach(n => {
     n.value = localStorage.getItem('store-' + n.name) ?? n.value
-    n.addEventListener('input', e => localStorage.setItem('store-' + e.target.name, e.target.value), false)
+    n.addEventListener('input', e => localStorage.setItem('store-' + e.target.name, e.target.value))
   })
   
 

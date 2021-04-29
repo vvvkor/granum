@@ -1,4 +1,4 @@
-/*! granum-gallery.js v1.2.39 */
+/*! granum-gallery.js v1.2.40 */
 
 (_ => {
 
@@ -32,7 +32,7 @@ document.addEventListener('click', e => {
             : (e.clientX < a.clientWidth / 2 ? -1 : 1))
       : go(a)
   }
-}, false)
+})
 
 document.addEventListener('keydown', e => {
   const a = document.querySelector('a.pic.modal')

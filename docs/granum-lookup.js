@@ -1,4 +1,4 @@
-/*! granum-lookup.js v1.2.39 */
+/*! granum-lookup.js v1.2.40 */
 
 (_ => {
 
@@ -21,7 +21,7 @@ const hi = l => l.previousSibling.previousSibling
 
 document.addEventListener('DOMContentLoaded', e => {
   document.querySelectorAll('[data-lookup]').forEach(n => {
-    n.hidden = true
+//    n.hidden = true
     const c = n.dataset.caption || ''
     
     const l = document.createElement('input')

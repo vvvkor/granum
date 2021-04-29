@@ -1,4 +1,4 @@
-/*! granum-full.js v1.2.39 */
+/*! granum-full.js v1.2.40 */
 
 (_ => {
 
@@ -206,7 +206,7 @@ document.addEventListener('click', e => {
             : (e.clientX < a.clientWidth / 2 ? -1 : 1))
       : go(a)
   }
-}, false)
+})
 
 document.addEventListener('keydown', e => {
   const a = document.querySelector('a.pic.modal')
@@ -236,7 +236,7 @@ const hi = l => l.previousSibling.previousSibling
 
 document.addEventListener('DOMContentLoaded', e => {
   document.querySelectorAll('[data-lookup]').forEach(n => {
-    n.hidden = true
+//    n.hidden = true
     const c = n.dataset.caption || ''
     
     const l = document.createElement('input')

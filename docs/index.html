@@ -15,10 +15,11 @@
     <script src="granum-lookup.js" defer></script>
     <script src="granum-calendar.js" defer></script>
     <script src="granum-edit.js" defer></script>
+    <script src="granum-restore.js" defer></script>
     <script>
-		document.addEventListener('granum', e => console.log('granum ready', e), false)
-		window.addEventListener('resize', e => info.textContent = window.innerWidth + ' px', false) // with scrollbar
-		// window.addEventListener('resize', e => info.textContent = document.documentElement.clientWidth + 'px', false) // without scrollbar
+		document.addEventListener('granum', e => console.log('granum ready', e))
+		window.addEventListener('resize', e => info.textContent = window.innerWidth + ' px') // with scrollbar
+		// window.addEventListener('resize', e => info.textContent = document.documentElement.clientWidth + 'px') // without scrollbar
 	</script>
   </head>
   <body id="top" data-break-x="500,400,300,200" data-dt-x=".">
@@ -58,7 +59,7 @@ icons, status colors, and even more.
 Typography and styling is minimal and unobtrusive.
 -->
 
-<p class="text-n">v1.2.39</p>
+<p class="text-n">v1.2.40</p>
 
 <p>
 <b>3 KB</b> minified and gzipped.<br>
@@ -525,7 +526,8 @@ x<sup>super</sup>
 	<i class="text-n"> &nbsp; This is inline form</i>
 </form>
 
-<form action="#pform" id="pform" class="fit bg pad mar -dialog" data-get>
+<form action="#pform" id="pform" class="fit bg pad mar -dialog" data-get data-restore="p-form">
+<input name="uns" data-unstore>
 <p>
 	<label for="name">Name</label><br>
 	<input id="name" name="name" type="text" required placeholder="Name" size="16">
@@ -539,6 +541,7 @@ x<sup>super</sup>
 	-->
 	<label for="box">
 		<input id="box" name="box" type="checkbox" required value="1">
+		<!--input id="box2" name="box" type="checkbox" required value="2"-->
 		<!--input name="_box" hidden="checkbox"--><!-- send unchecked box -->
 		<span>Box</span>
 	</label>
