@@ -102,7 +102,7 @@ console.log('Copy docs...');
 console.log('Copy assets...');
 [
   'granum.css', 'granum-icons.css', 'granum-dropdown.css', 'granum-grid.css', 'granum-print.css', 'granum-basic.css',
-  'granum.js', 'granum-gallery.js', 'granum-lookup.js', 'granum-calendar.js', 'granum-edit.js'
+  'granum.js', 'granum-gallery.js', 'granum-lookup.js', 'granum-calendar.js', 'granum-edit.js', 'granum-restore.js'
 ]
 .forEach(n => fs.copyFileSync('./dist/' + n, './docs/' + n));
 
