@@ -5,7 +5,7 @@
   + unique form id?
   + input types?
   + multiple checkboxes
-  - editor: evt(input)
+  + editor: evt(input) [edit.js should go before restore.js]
   + lookup: restore id and caption
   - multiple inputs
   */
