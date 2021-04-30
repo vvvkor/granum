@@ -55,22 +55,22 @@ console.log('Bundle granum-full.css...');
 
 console.log('\n# JS\n');
 console.log('Bundle granum-full.js...');
-['granum', 'granum-gallery', 'granum-lookup', 'granum-calendar', 'granum-edit', 'granum-restore']
+['granum', 'granum-gallery', 'granum-lookup', 'granum-calendar', 'granum-restore', 'granum-edit']
 .forEach((n, i) => {
   console.log('Copy ' + n + '.js...');
   //fs.copyFileSync('./src/' + n + '.js', './dist/' + n + '.js')
   const js = fs.readFileSync('./src/' + n + '.js', 'utf8');
   const v = '/*! ' + n + '.js v' + version + ' */\n\n';
   fs.writeFileSync('./dist/' + n + '.js', v + js, {flag: 'w'});
-  if (n != 'granum-restore') {
+  // if (n != 'granum-restore') {
     if (!i) fs.writeFileSync('./dist/granum-full.js', '/*! granum-full.js v' + version + ' */\n\n', {flag: 'as'});
     fs.writeFileSync('./dist/granum-full.js', js + '\n\n', {flag: 'as'});
-  }
+  // }
 });
 
 // minify js
 
-['granum', 'granum-gallery', 'granum-lookup', 'granum-calendar', 'granum-edit', 'granum-full', 'granum-restore']
+['granum', 'granum-gallery', 'granum-lookup', 'granum-calendar', 'granum-restore', 'granum-edit', 'granum-full']
 .forEach(n => {
   console.log('Minify ' + n + '.js...');
   const js = fs.readFileSync('./dist/' + n + '.js', 'utf8');
@@ -102,7 +102,7 @@ console.log('Copy docs...');
 console.log('Copy assets...');
 [
   'granum.css', 'granum-icons.css', 'granum-dropdown.css', 'granum-grid.css', 'granum-print.css', 'granum-basic.css',
-  'granum.js', 'granum-gallery.js', 'granum-lookup.js', 'granum-calendar.js', 'granum-edit.js', 'granum-restore.js'
+  'granum.js', 'granum-gallery.js', 'granum-lookup.js', 'granum-calendar.js', 'granum-restore.js', 'granum-edit.js'
 ]
 .forEach(n => fs.copyFileSync('./dist/' + n, './docs/' + n));
 

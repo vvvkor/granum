@@ -7,7 +7,9 @@ const set = (n, l, v, c) => {
   n.value = v
   l.value = l.dataset.cap = c
   evt(n, 'input')
-  evt(n, 'change')
+  // evt(n, 'change')
+  evt(l, 'input')
+  // evt(l, 'change')
 }
 const x = l => {
   clearTimeout(t)
@@ -19,7 +21,7 @@ const hi = l => l.previousSibling.previousSibling
 
 document.addEventListener('DOMContentLoaded', e => {
   document.querySelectorAll('[data-lookup]').forEach(n => {
-//    n.hidden = true
+    n.hidden = true
     const c = n.dataset.caption || ''
     
     const l = document.createElement('input')

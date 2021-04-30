@@ -30,10 +30,11 @@ document.addEventListener('input', e => {
   if (e.target.dataset.for) {
     const area = document.getElementById(e.target.dataset.for)
     if (area) area.value = e.target.innerHTML
+    area.dispatchEvent(new CustomEvent('input', {bubbles: true, detail: 1}))
   }
   
   // update contenteditable
-  if (e.target.id && e.target.tagName == 'TEXTAREA') {
+  if (e.target.id && e.target.tagName == 'TEXTAREA' && !e.detail) {
     const c = document.querySelector('[data-for="' + e.target.id + '"]')
     if (c) c.innerHTML = e.target.value
   }

@@ -1,4 +1,4 @@
-/*! granum-full.js v1.2.42 */
+/*! granum-full.js v1.2.43 */
 
 (_ => {
 
@@ -224,7 +224,9 @@ const set = (n, l, v, c) => {
   n.value = v
   l.value = l.dataset.cap = c
   evt(n, 'input')
-  evt(n, 'change')
+  // evt(n, 'change')
+  evt(l, 'input')
+  // evt(l, 'change')
 }
 const x = l => {
   clearTimeout(t)
@@ -236,7 +238,7 @@ const hi = l => l.previousSibling.previousSibling
 
 document.addEventListener('DOMContentLoaded', e => {
   document.querySelectorAll('[data-lookup]').forEach(n => {
-//    n.hidden = true
+    n.hidden = true
     const c = n.dataset.caption || ''
     
     const l = document.createElement('input')
@@ -363,7 +365,7 @@ const set = e => {
   n.value = (v === 'NOW') ? fmt(Date.now(), l) : (v ? v + n.value.substring(10, l) : '')
   p.style.display = ''
   evt(n, 'input')
-  evt(n, 'change')
+  // evt(n, 'change')
   n.focus()
 }
 // btn
@@ -436,6 +438,34 @@ document.addEventListener('keydown', e => {
 
 })()
 
+(_ => {
+
+const q = 'form[data-restore] [name]:not([data-unstore])'
+const key = n => 'store:' + (n.form.dataset.restore || '') + ':' + n.name + (n.type == 'checkbox' ? ':' + n.value : '')
+
+document.addEventListener('DOMContentLoaded', e => {
+  // document.querySelectorAll(q).forEach(n => n.value = localStorage.getItem(key(n)) ?? n.value)
+  document.querySelectorAll(q).forEach(n => {
+    const v = localStorage.getItem(key(n))
+    if (v != null) {
+      if (n.type == 'checkbox') n.checked = v
+      else if (n.type == 'radio') n.checked = (v === n.value)
+      else n.value = n.dataset.cap = v
+    }
+  })
+})
+
+document.addEventListener('input', e => {
+  const f = e.target.form
+  if(f) f.querySelectorAll(q).forEach(n => {
+    if (!n.type.match(/password|file|submit|image/) && (n.type != 'radio' || n.checked)){
+      localStorage.setItem(key(n), n.type == 'checkbox' ? (n.checked ? 1 : '') : n.value)
+    }
+  })
+})
+
+})()
+
 document.addEventListener('DOMContentLoaded', e => {
   // fill contenteditable from textarea
   document.querySelectorAll('[contenteditable][data-for]').forEach(n => {
@@ -468,10 +498,11 @@ document.addEventListener('input', e => {
   if (e.target.dataset.for) {
     const area = document.getElementById(e.target.dataset.for)
     if (area) area.value = e.target.innerHTML
+    area.dispatchEvent(new CustomEvent('input', {bubbles: true, detail: 1}))
   }
   
   // update contenteditable
-  if (e.target.id && e.target.tagName == 'TEXTAREA') {
+  if (e.target.id && e.target.tagName == 'TEXTAREA' && !e.detail) {
     const c = document.querySelector('[data-for="' + e.target.id + '"]')
     if (c) c.innerHTML = e.target.value
   }

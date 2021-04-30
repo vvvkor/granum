@@ -1,4 +1,4 @@
-/*! granum-edit.js v1.2.42 */
+/*! granum-edit.js v1.2.43 */
 
 document.addEventListener('DOMContentLoaded', e => {
   // fill contenteditable from textarea
@@ -32,10 +32,11 @@ document.addEventListener('input', e => {
   if (e.target.dataset.for) {
     const area = document.getElementById(e.target.dataset.for)
     if (area) area.value = e.target.innerHTML
+    area.dispatchEvent(new CustomEvent('input', {bubbles: true, detail: 1}))
   }
   
   // update contenteditable
-  if (e.target.id && e.target.tagName == 'TEXTAREA') {
+  if (e.target.id && e.target.tagName == 'TEXTAREA' && !e.detail) {
     const c = document.querySelector('[data-for="' + e.target.id + '"]')
     if (c) c.innerHTML = e.target.value
   }

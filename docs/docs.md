@@ -1,5 +1,5 @@
 **Granum**  
-v1.2.42
+v1.2.43
 
 # Documentation
 
@@ -95,7 +95,7 @@ Typography and styling is minimal and unobtrusive.
 - `form[data-q]`, `input[data-q]` - populate inputs from URL parameters  *(requires [granum.js](granum.js))*
 - `input[data-lookup][data-caption][data-goto]` - lookup input *(requires [granum-dropdown.css](granum-dropdown.css) and [granum-lookup.js](granum-lookup.js))*
 - `input.calendar` - date input *(requires [granum-dropdown.css](granum-dropdown.css) and [granum-calendar.js](granum-calendar.js))*
-
+- `form[data-restore]`, `input[data-unstore]` - automatically store and restore form data *(requires [granum-restore.js](granum-restore.js))*
 
 ## Components
 
@@ -200,6 +200,9 @@ Typography and styling is minimal and unobtrusive.
   - `.month` - generated calendar container
   - `[data-date].browse` - generated calendar controls
   - `body[data-dt]="."` - use `d.m.Y` date format (instead of default `Y-m-d`)
+- `form[data-restore]` - automatically store and restore form data *(requires [granum-restore.js](granum-restore.js))*
+  - `[data-restore="IDENT"]` - optional form identifier
+  - `input[data-unstore]` - exclude input from storage
 - `input[data-nodes][value][data-set][data-unset]` - toggle classes
   - input can be one of: `checkbox`, `radio`, `select`
   - `[data-nodes]` - target elements selector

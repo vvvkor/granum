@@ -31,6 +31,7 @@ and include scripts from `dist` directory.
 <script src="granum-gallery.js" defer></script>
 <script src="granum-lookup.js" defer></script>
 <script src="granum-calendar.js" defer></script>
+<script src="granum-restore.js" defer></script>
 <script src="granum-edit.js" defer></script>
 ```
 
@@ -53,6 +54,7 @@ Bundled styles and scripts are also available:
 <script src="https://unpkg.com/granum/dist/granum-gallery.min.js" defer></script>
 <script src="https://unpkg.com/granum/dist/granum-lookup.min.js" defer></script>
 <script src="https://unpkg.com/granum/dist/granum-calendar.min.js" defer></script>
+<script src="https://unpkg.com/granum/dist/granum-restore.min.js" defer></script>
 <script src="https://unpkg.com/granum/dist/granum-edit.min.js" defer></script>
 ```
 
@@ -125,6 +127,8 @@ Bundled styles and scripts are also available:
   - lookup input
 - with `granum-calendar.js` and `granum-dropdown.css`
   - date input
+- with `granum-restore.js`
+  - automatically restore from data
 - with `granum-editor.js`
   - contenteditable
 
@@ -157,6 +161,7 @@ Bundled styles and scripts are also available:
 - `input[data-lookup][data-caption][data-goto][data-limit]`
 - `input.calendar[step]`, `body[data-dt]="."`
 - `[contenteditable][data-for="ID_AREA"]`
+- `form[data-restore="IDENT"]`, `input[data-unstore]`
 - `a[href="#ID_EDITOR"][data-cmd]([data-arg][data-ask][title])`
 
 ## Browser suppport

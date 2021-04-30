@@ -4,9 +4,10 @@
   + oninput in separate common 'input' handler
   + unique form id?
   + input types?
-  - multiple inputs
+  + multiple checkboxes
   - editor: evt(input)
-  - lookup: restore id and caption
+  + lookup: restore id and caption
+  - multiple inputs
   */
 (_ => {
 

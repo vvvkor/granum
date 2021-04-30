@@ -14,8 +14,8 @@
     <script src="granum-gallery.js" defer></script>
     <script src="granum-lookup.js" defer></script>
     <script src="granum-calendar.js" defer></script>
-    <script src="granum-edit.js" defer></script>
     <script src="granum-restore.js" defer></script>
+    <script src="granum-edit.js" defer></script>
     <script>
 		document.addEventListener('granum', e => console.log('granum ready', e))
 		window.addEventListener('resize', e => info.textContent = window.innerWidth + ' px') // with scrollbar
@@ -540,8 +540,8 @@ x<sup>super</sup>
 	<input id="box" name="bx" type="checkbox" value="1" checked>
 	-->
 	<label for="box">
-		<input id="box" name="box" type="checkbox" required value="1">
-		<!--input id="box2" name="box" type="checkbox" required value="2"-->
+		<input id="box" name="box" type="checkbox" required value="alpha">
+		<!--input id="box2" name="box" type="checkbox" required value="beta"-->
 		<!--input name="_box" hidden="checkbox"--><!-- send unchecked box -->
 		<span>Box</span>
 	</label>

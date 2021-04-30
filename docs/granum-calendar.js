@@ -1,4 +1,4 @@
-/*! granum-calendar.js v1.2.42 */
+/*! granum-calendar.js v1.2.43 */
 
 (_ => {
 
@@ -26,7 +26,7 @@ const set = e => {
   n.value = (v === 'NOW') ? fmt(Date.now(), l) : (v ? v + n.value.substring(10, l) : '')
   p.style.display = ''
   evt(n, 'input')
-  evt(n, 'change')
+  // evt(n, 'change')
   n.focus()
 }
 // btn
