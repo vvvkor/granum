@@ -1,4 +1,4 @@
-/*! granum.js v1.2.43 */
+/*! granum.js v1.2.44 */
 
 (_ => {
 
@@ -8,15 +8,7 @@ const tgl = (m, c, on) => {
 }
 
 document.addEventListener('DOMContentLoaded', e => {
-  console.log('granum.js started')
-
-  // init form inputs
-  document.querySelectorAll('form[data-get]').forEach(n => {
-    n.querySelectorAll('[name]').forEach(m => ('get' in m.dataset) ? null : m.dataset.get = m.name)
-  })
-  
-  // init input values
-  document.querySelectorAll('[name][data-get]').forEach(n => n.dispatchEvent(new Event('getinput', {bubbles: true})))
+  document.dispatchEvent(new Event('granum-start'))
 
   // init toggler state
   document.querySelectorAll('a.toggle').forEach(n => n.click())
@@ -36,19 +28,7 @@ document.addEventListener('DOMContentLoaded', e => {
   })
   
   window.dispatchEvent(new Event('resize'))
-  document.dispatchEvent(new Event('granum'))
-})
-
-document.addEventListener('getinput', e => {
-  const n = e.target
-  const nm = n.dataset.get || n.name
-  if (location.href.match(/\?/)) {
-    const p = (new URL(location)).searchParams
-    const v = p.get(p.has(nm) ? nm : '_' + nm)
-    if (n.type == 'checkbox') n.checked = (v && v !== '0')
-    else if (n.type == 'radio') n.checked = (v && n.value === v)
-    else n.value = v
-  }
+  document.dispatchEvent(new Event('granum-ready'))
 })
 
 document.addEventListener('submit', e => {

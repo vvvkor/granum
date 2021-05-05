@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', e => {
     p.className = 'pop fit'
     n.before(p)
     n.autocomplete = 'off'
-    evt(n, 'getinput')
+    evt(n, 'granum-get')
     p.innerHTML += '<div class="month pad rad hide"></div>'
     const t = document.createElement('span')
     t.innerHTML = ' <a href="#now" data-date=NOW class="icon-ok empty"><b>&check;</b></a> <a href="#reset" data-date class="icon-delete empty"><b>&cross;</b></a>'

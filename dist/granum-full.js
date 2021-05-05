@@ -1,4 +1,4 @@
-/*! granum-full.js v1.2.43 */
+/*! granum-full.js v1.2.44 */
 
 (_ => {
 
@@ -8,15 +8,7 @@ const tgl = (m, c, on) => {
 }
 
 document.addEventListener('DOMContentLoaded', e => {
-  console.log('granum.js started')
-
-  // init form inputs
-  document.querySelectorAll('form[data-get]').forEach(n => {
-    n.querySelectorAll('[name]').forEach(m => ('get' in m.dataset) ? null : m.dataset.get = m.name)
-  })
-  
-  // init input values
-  document.querySelectorAll('[name][data-get]').forEach(n => n.dispatchEvent(new Event('getinput', {bubbles: true})))
+  document.dispatchEvent(new Event('granum-start'))
 
   // init toggler state
   document.querySelectorAll('a.toggle').forEach(n => n.click())
@@ -36,19 +28,7 @@ document.addEventListener('DOMContentLoaded', e => {
   })
   
   window.dispatchEvent(new Event('resize'))
-  document.dispatchEvent(new Event('granum'))
-})
-
-document.addEventListener('getinput', e => {
-  const n = e.target
-  const nm = n.dataset.get || n.name
-  if (location.href.match(/\?/)) {
-    const p = (new URL(location)).searchParams
-    const v = p.get(p.has(nm) ? nm : '_' + nm)
-    if (n.type == 'checkbox') n.checked = (v && v !== '0')
-    else if (n.type == 'radio') n.checked = (v && n.value === v)
-    else n.value = v
-  }
+  document.dispatchEvent(new Event('granum-ready'))
 })
 
 document.addEventListener('submit', e => {
@@ -176,6 +156,50 @@ window.addEventListener('resize', e => {
 
 (_ => {
 
+const q = 'form[data-restore] [name]:not([data-unstore])'
+const key = n => 'store:' + (n.form.dataset.restore || '') + ':' + n.name + (n.type == 'checkbox' ? ':' + n.value : '')
+
+document.addEventListener('DOMContentLoaded', e => {
+
+  // init form inputs
+  document.querySelectorAll('form[data-get]').forEach(n => {
+    n.querySelectorAll('[name]').forEach(m => ('get' in m.dataset) ? null : m.dataset.get = m.name)
+  })
+  
+  // init input values
+  document.querySelectorAll('[name][data-get]').forEach(n => n.dispatchEvent(new Event('granum-get', {bubbles: true})))
+})
+
+document.addEventListener('input', e => {
+  const n = e.target
+  if (n.matches(q) && !n.type.match(/password|file|submit|image/) && (n.type != 'radio' || n.checked)){
+    localStorage.setItem(key(n), n.type == 'checkbox' ? (n.checked ? 1 : '') : n.value)
+  }
+})
+
+document.addEventListener('granum-get', e => {
+  const n = e.target
+  const nm = n.dataset.get || n.name
+  const p = (new URL(location)).searchParams
+  if (p.has(nm)) {
+    if (n.type == 'checkbox') n.checked = p.getAll(nm).includes(n.value)
+    else if (n.type == 'radio') n.checked = (p.get(nm) === n.value)
+    else n.value = p.get(nm)
+  }
+  else if (n.matches(q)) {
+    const v = localStorage.getItem(key(n))
+    if (v != null) {
+      if (n.type == 'checkbox') n.checked = v
+      else if (n.type == 'radio') n.checked = (v === n.value)
+      else n.value = v
+    }
+  }
+})
+
+})()
+
+(_ => {
+
 const keys = {Escape: 7, Tab: 9, ArrowLeft: -1, ArrowRight: 1}
 
 const x = _ => document.querySelectorAll('a.pic').forEach(m => m.classList.remove('modal'))
@@ -262,7 +286,7 @@ document.addEventListener('DOMContentLoaded', e => {
       l.after(t)
     }
     
-    evt(l, 'getinput')
+    evt(l, 'granum-get')
     l.dataset.cap = l.value
   })
 })
@@ -415,7 +439,7 @@ document.addEventListener('DOMContentLoaded', e => {
     p.className = 'pop fit'
     n.before(p)
     n.autocomplete = 'off'
-    evt(n, 'getinput')
+    evt(n, 'granum-get')
     p.innerHTML += '<div class="month pad rad hide"></div>'
     const t = document.createElement('span')
     t.innerHTML = ' <a href="#now" data-date=NOW class="icon-ok empty"><b>&check;</b></a> <a href="#reset" data-date class="icon-delete empty"><b>&cross;</b></a>'
@@ -434,34 +458,6 @@ document.addEventListener('click', e => {
 
 document.addEventListener('keydown', e => {
     if (e.key == 'Escape' || e.key == 'Tab') x()
-})
-
-})()
-
-(_ => {
-
-const q = 'form[data-restore] [name]:not([data-unstore])'
-const key = n => 'store:' + (n.form.dataset.restore || '') + ':' + n.name + (n.type == 'checkbox' ? ':' + n.value : '')
-
-document.addEventListener('DOMContentLoaded', e => {
-  // document.querySelectorAll(q).forEach(n => n.value = localStorage.getItem(key(n)) ?? n.value)
-  document.querySelectorAll(q).forEach(n => {
-    const v = localStorage.getItem(key(n))
-    if (v != null) {
-      if (n.type == 'checkbox') n.checked = v
-      else if (n.type == 'radio') n.checked = (v === n.value)
-      else n.value = n.dataset.cap = v
-    }
-  })
-})
-
-document.addEventListener('input', e => {
-  const f = e.target.form
-  if(f) f.querySelectorAll(q).forEach(n => {
-    if (!n.type.match(/password|file|submit|image/) && (n.type != 'radio' || n.checked)){
-      localStorage.setItem(key(n), n.type == 'checkbox' ? (n.checked ? 1 : '') : n.value)
-    }
-  })
 })
 
 })()

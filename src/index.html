@@ -11,13 +11,14 @@
     <link rel="stylesheet" href="granum-grid.css">
     <link rel="stylesheet" href="granum-print.css">
     <script src="granum.js" defer></script>
+    <script src="granum-restore.js" defer></script>
     <script src="granum-gallery.js" defer></script>
     <script src="granum-lookup.js" defer></script>
     <script src="granum-calendar.js" defer></script>
-    <script src="granum-restore.js" defer></script>
     <script src="granum-edit.js" defer></script>
     <script>
-		document.addEventListener('granum', e => console.log('granum ready', e))
+		document.addEventListener('granum-start', e => console.log('granum start', e))
+		document.addEventListener('granum-ready', e => console.log('granum ready', e))
 		window.addEventListener('resize', e => info.textContent = window.innerWidth + ' px') // with scrollbar
 		// window.addEventListener('resize', e => info.textContent = document.documentElement.clientWidth + 'px') // without scrollbar
 	</script>
@@ -408,15 +409,15 @@ x<sup>super</sup>
 	<tr class="bg"><th>File and features<th>Source size
 	<tr><td><b>granum-basic.css</b><br>typography, colors, lists, table, simple responsive grid and navbar, responsive forms, buttons, toggle<td>6.0k
 	<tr><td><b>granum.css</b><br>everything mentioned above plus: bars, tags, modals, tabs, drawer, sticky, full height<td>8.2k
-	<tr><td><b>granum.js</b><br>populate inputs, check all boxes, align table columns, sort table, confirm link and form, prompt link, togglers, toggle classes, responsive classes, add/remove/order items<td>5.5k
+	<tr><td><b>granum.js</b><br>check all boxes, align table columns, sort table, confirm link and form, prompt link, togglers, toggle classes, responsive classes, add/remove/order items<td>5.1k
 	<tr><td><b>granum-icons.css</b><br>32 SVG icons as CSS background<td>7.7k
 	<tr><td><b>granum-grid.css</b><br>advanced responsive grid<td>1.3k
 	<tr><td><b>granum-dropdown.css</b><br>dropdown menu, popups, tooltips<td>1.4k
+	<tr><td><b>granum-restore.js</b><br>restore input values from URL or from local storage<td>1.4k
 	<tr><td><b>granum-gallery.js</b><br>image gallery<td>1.2k
-	<tr><td><b>granum-lookup.js <span class="small text-n">(requires granum-dropdown.css)</span></b><br>lookup input<td>3.4k
+	<tr><td><b>granum-lookup.js <span class="small text-n">(requires granum-dropdown.css)</span></b><br>lookup input<td>3.5k
 	<tr><td><b>granum-calendar.js <span class="small text-n">(requires granum-dropdown.css)</span></b><br>date input<td>3.3k
-	<tr><td><b>granum-editor.js</b><br>visual text editor<td>1.2k
-	<tr><td><b>granum-restore.js</b><br>automatically store and restore form data<td>1.0k
+	<tr><td><b>granum-editor.js</b><br>visual text editor<td>1.3k
 	<tr><td><b>granum-full.css + granum-full.js</b><br>everything mentioned above<td>34.7k<div class="small text-n nobr">18.9k + 15.8k</div>
 </table>
 </div>
@@ -531,7 +532,7 @@ x<sup>super</sup>
 <!--input name="uns" data-unstore-->
 <p>
 	<label for="name">Name</label><br>
-	<input id="name" name="name" type="text" required placeholder="Name" size="16">
+	<input id="name" name="name" type="text" required placeholder="Name" size="16" >
 	<small class="act text-e">Required</small>
 	<small class="act text-y">OK</small>
 </p>
@@ -541,8 +542,10 @@ x<sup>super</sup>
 	<input id="box" name="bx" type="checkbox" value="1" checked>
 	-->
 	<label for="box">
-		<input id="box" name="box" type="checkbox" required value="alpha">
-		<!--input id="box2" name="box" type="checkbox" required value="beta"-->
+		<input id="box"  name="box[]" type="checkbox" required value="alpha" checked>
+		<!--input id="box2" name="box[]" type="checkbox" value="beta">
+		<input id="box3" name="box[]" type="checkbox" value="gamma">
+		<input id="box3" name="" type="checkbox" data-check='[name="box[]"]'-->
 		<!--input name="_box" hidden="checkbox"--><!-- send unchecked box -->
 		<span>Box</span>
 	</label>

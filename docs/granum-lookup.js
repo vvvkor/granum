@@ -1,4 +1,4 @@
-/*! granum-lookup.js v1.2.43 */
+/*! granum-lookup.js v1.2.44 */
 
 (_ => {
 
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', e => {
       l.after(t)
     }
     
-    evt(l, 'getinput')
+    evt(l, 'granum-get')
     l.dataset.cap = l.value
   })
 })
