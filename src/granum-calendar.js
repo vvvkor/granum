@@ -75,6 +75,8 @@ document.addEventListener('DOMContentLoaded', e => {
     n.before(p)
     n.autocomplete = 'off'
     evt(n, 'granum-get')
+    if (n.value.match('-')) n.value = fmt((new Date(n.value)), n.dataset.len)
+    if (n.defaultValue.match('-'))  n.defaultValue = fmt((new Date(n.defaultValue)), n.dataset.len)
     p.innerHTML += '<div class="month pad rad hide"></div>'
     const t = document.createElement('span')
     t.innerHTML = ' <a href="#now" data-date=NOW class="icon-ok empty"><b>&check;</b></a> <a href="#reset" data-date class="icon-delete empty"><b>&cross;</b></a>'

@@ -1,4 +1,4 @@
-/*! granum-full.js v1.2.44 */
+/*! granum-full.js v1.2.45 */
 
 (_ => {
 
@@ -170,6 +170,12 @@ document.addEventListener('DOMContentLoaded', e => {
   document.querySelectorAll('[name][data-get]').forEach(n => n.dispatchEvent(new Event('granum-get', {bubbles: true})))
 })
 
+document.addEventListener('reset', e => {
+  const b = e.target.querySelector('[type="reset"]')
+  if(!b || !b.classList.contains('dialog') || confirm(b.title || 'Reset?')) e.target.querySelectorAll(q).forEach(n => localStorage.removeItem(key(n)))
+  else e.preventDefault()
+})
+
 document.addEventListener('input', e => {
   const n = e.target
   if (n.matches(q) && !n.type.match(/password|file|submit|image/) && (n.type != 'radio' || n.checked)){
@@ -269,7 +275,7 @@ document.addEventListener('DOMContentLoaded', e => {
     l.type = 'text'
     l.className = 'lookup'
     l.name = 'lookup-' + n.name
-    l.value = c
+    l.value = l.defaultValue = c
     l.autocomplete = 'off'
     if ('get' in n.dataset) l.dataset.get = ''
     if (n.required) l.required = true
@@ -440,6 +446,8 @@ document.addEventListener('DOMContentLoaded', e => {
     n.before(p)
     n.autocomplete = 'off'
     evt(n, 'granum-get')
+    if (n.value.match('-')) n.value = fmt((new Date(n.value)), n.dataset.len)
+    if (n.defaultValue.match('-'))  n.defaultValue = fmt((new Date(n.defaultValue)), n.dataset.len)
     p.innerHTML += '<div class="month pad rad hide"></div>'
     const t = document.createElement('span')
     t.innerHTML = ' <a href="#now" data-date=NOW class="icon-ok empty"><b>&check;</b></a> <a href="#reset" data-date class="icon-delete empty"><b>&cross;</b></a>'
@@ -462,13 +470,18 @@ document.addEventListener('keydown', e => {
 
 })()
 
-document.addEventListener('DOMContentLoaded', e => {
-  // fill contenteditable from textarea
-  document.querySelectorAll('[contenteditable][data-for]').forEach(n => {
-    const area = document.getElementById(n.dataset.for)
-    if (area) n.innerHTML = area.value
-  })
+(_ => {
+
+show = (d, def) => d.querySelectorAll('[contenteditable][data-for]').forEach(n => {
+  const area = document.getElementById(n.dataset.for)
+  if (area) n.innerHTML = area[def ? 'defaultValue' : 'value']
 })
+
+// fill contenteditable from textarea
+document.addEventListener('DOMContentLoaded', e => show(document, false))
+
+// reset contenteditable from textarea
+document.addEventListener('reset', e => e.defaultPrevented ? null : show(e.target, true))
 
 document.addEventListener('click', e => {
   const a = e.target.closest('a')
@@ -504,4 +517,5 @@ document.addEventListener('input', e => {
   }
 })
 
+})()
 

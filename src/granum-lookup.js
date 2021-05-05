@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', e => {
     l.type = 'text'
     l.className = 'lookup'
     l.name = 'lookup-' + n.name
-    l.value = c
+    l.value = l.defaultValue = c
     l.autocomplete = 'off'
     if ('get' in n.dataset) l.dataset.get = ''
     if (n.required) l.required = true

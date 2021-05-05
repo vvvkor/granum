@@ -14,6 +14,12 @@ document.addEventListener('DOMContentLoaded', e => {
   document.querySelectorAll('[name][data-get]').forEach(n => n.dispatchEvent(new Event('granum-get', {bubbles: true})))
 })
 
+document.addEventListener('reset', e => {
+  const b = e.target.querySelector('[type="reset"]')
+  if(!b || !b.classList.contains('dialog') || confirm(b.title || 'Reset?')) e.target.querySelectorAll(q).forEach(n => localStorage.removeItem(key(n)))
+  else e.preventDefault()
+})
+
 document.addEventListener('input', e => {
   const n = e.target
   if (n.matches(q) && !n.type.match(/password|file|submit|image/) && (n.type != 'radio' || n.checked)){

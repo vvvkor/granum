@@ -413,12 +413,12 @@ x<sup>super</sup>
 	<tr><td><b>granum-icons.css</b><br>32 SVG icons as CSS background<td>7.7k
 	<tr><td><b>granum-grid.css</b><br>advanced responsive grid<td>1.3k
 	<tr><td><b>granum-dropdown.css</b><br>dropdown menu, popups, tooltips<td>1.4k
-	<tr><td><b>granum-restore.js</b><br>restore input values from URL or from local storage<td>1.4k
+	<tr><td><b>granum-restore.js</b><br>restore input values from URL or from local storage<td>1.7k
 	<tr><td><b>granum-gallery.js</b><br>image gallery<td>1.2k
 	<tr><td><b>granum-lookup.js <span class="small text-n">(requires granum-dropdown.css)</span></b><br>lookup input<td>3.5k
-	<tr><td><b>granum-calendar.js <span class="small text-n">(requires granum-dropdown.css)</span></b><br>date input<td>3.3k
-	<tr><td><b>granum-editor.js</b><br>visual text editor<td>1.3k
-	<tr><td><b>granum-full.css + granum-full.js</b><br>everything mentioned above<td>34.7k<div class="small text-n nobr">18.9k + 15.8k</div>
+	<tr><td><b>granum-calendar.js <span class="small text-n">(requires granum-dropdown.css)</span></b><br>date input<td>3.5k
+	<tr><td><b>granum-edit.js</b><br>visual text editor<td>1.5k
+	<tr><td><b>granum-full.css + granum-full.js</b><br>everything mentioned above<td>35.2k<div class="small text-n nobr">18.9k + 16.3k</div>
 </table>
 </div>
 </details>
@@ -557,7 +557,7 @@ x<sup>super</sup>
 </p>
 <p>
 	<label for="cld">Calendar</label><br>
-	<input required id="cld" type="datetime-local" name="cld" class="calendar" step="60">
+	<input required id="cld" type="datetime-local" data-xvalue="2001-02-03T04:05:06" name="cld" class="calendar" step="60">
 	<!--small class="act text-e">Required</small-->
 </p>
 
@@ -610,7 +610,7 @@ x<sup>super</sup>
 	With text inputs:<br>
 	<input name="dt4" class="calendar" type="text"><br>
 	<input name="dt5" class="calendar" type="text" data-step="60"><br>
-	<input name="dt6" class="calendar" type="text" data-step="1"><br>
+	<input name="dt6" class="calendar" type="text" data-step="1" value="03.02.2011 04:05:06"><br>
 </div>
 </details>
 
@@ -670,6 +670,7 @@ x<sup>super</sup>
 </details>
 <p>
 	<button class="icon-send dialog" title="Really submit?">Submit</button>
+	<button type="reset" class="icon-refresh bg-n dialog" title="Reset inputs?">Reset</button>
 	<i class="pad text-n">This form uses <code>p</code></i>
 </p>
 </form>
