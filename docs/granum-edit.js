@@ -1,17 +1,17 @@
-/*! granum-edit.js v1.2.45 */
+/*! granum-edit.js v1.2.46 */
 
 (_ => {
 
-show = (d, def) => d.querySelectorAll('[contenteditable][data-for]').forEach(n => {
+const set = (d, def) => d.querySelectorAll('[contenteditable][data-for]').forEach(n => {
   const area = document.getElementById(n.dataset.for)
   if (area) n.innerHTML = area[def ? 'defaultValue' : 'value']
 })
 
 // fill contenteditable from textarea
-document.addEventListener('DOMContentLoaded', e => show(document, false))
+document.addEventListener('DOMContentLoaded', e => set(document, false))
 
 // reset contenteditable from textarea
-document.addEventListener('reset', e => e.defaultPrevented ? null : show(e.target, true))
+document.addEventListener('reset', e => e.defaultPrevented ? null : set(e.target, true))
 
 document.addEventListener('click', e => {
   const a = e.target.closest('a')

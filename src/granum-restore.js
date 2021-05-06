@@ -23,7 +23,7 @@ document.addEventListener('reset', e => {
 document.addEventListener('input', e => {
   const n = e.target
   if (n.matches(q) && !n.type.match(/password|file|submit|image/) && (n.type != 'radio' || n.checked)){
-    localStorage.setItem(key(n), n.type == 'checkbox' ? (n.checked ? 1 : '') : n.value)
+    localStorage.setItem(key(n), n.type == 'checkbox' ? (n.checked ? 1 : '') : (n.dataset.cap != null ? n.dataset.cap : n.value))
   }
 })
 
