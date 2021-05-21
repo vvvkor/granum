@@ -1,6 +1,6 @@
-/*! granum-full.js v1.2.46 */
+/*! granum-full.js v1.2.47 */
 
-(_ => {
+;(_ => {
 
 const tgl = (m, c, on) => {
   c = c && c.constructor === Array ? c : (c || '').split(/\s+/)
@@ -154,7 +154,7 @@ window.addEventListener('resize', e => {
 
 })()
 
-(_ => {
+;(_ => {
 
 const q = 'form[data-restore] [name]:not([data-unstore])'
 const key = n => 'store:' + (n.form.dataset.restore || '') + ':' + n.name + (n.type == 'checkbox' ? ':' + n.value : '')
@@ -204,7 +204,7 @@ document.addEventListener('granum-get', e => {
 
 })()
 
-(_ => {
+;(_ => {
 
 const keys = {Escape: 7, Tab: 9, ArrowLeft: -1, ArrowRight: 1}
 
@@ -245,7 +245,7 @@ document.addEventListener('keydown', e => {
 
 })()
 
-(_ => {
+;(_ => {
 
 let t = null
 
@@ -369,7 +369,7 @@ document.addEventListener('keydown', e => {
 
 })()
 
-(_ => {
+;(_ => {
 
 // pass event
 const evt = (n, e) => n.dispatchEvent(new Event(e, {bubbles: true}))
@@ -470,7 +470,7 @@ document.addEventListener('keydown', e => {
 
 })()
 
-(_ => {
+;(_ => {
 
 const set = (d, def) => d.querySelectorAll('[contenteditable][data-for]').forEach(n => {
   const area = document.getElementById(n.dataset.for)
