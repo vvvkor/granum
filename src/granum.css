@@ -118,6 +118,8 @@ ul.row>*, .col-0[class] {flex:0 1 auto;/*for ie*/ /*flex:initial;*/}
 /* fits row height, but requires wrapper inside items * /
 .row.mid>:not(li), .row.mid>li>:not(ul), .row>.mid, .row>li>.mid:not(ul) {display:flex;align-items:center;}
 /**/
+.row.pad>.col-2 {flex-basis:1em;}
+.row.pad>.col-3 {flex-basis:2em;}
 
 /* modal */
 .modal[class] {position:fixed;z-index:100;left:0;right:0;top:0;bottom:0;background-color:rgba(99,99,99,.5);box-shadow:0 0 0 9em rgba(99,99,99,.5);display:flex;justify-content:center;align-items:center;margin:0}
