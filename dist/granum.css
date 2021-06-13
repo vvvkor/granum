@@ -1,4 +1,4 @@
-/*! granum.css v1.2.48 */
+/*! granum.css v1.2.49 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -10,7 +10,7 @@ table {border-collapse:collapse;border-spacing:0}
 td, th {padding:0;text-align:left}
 * {box-sizing:content-box;}
 table, img, embed, iframe, object, audio, video, button, input, select, textarea,
-	.wrap, .row, .row>*, .modal>div, .drawer, .stick {box-sizing:border-box;}
+	.wrap, .row, .modal>div, .drawer, .stick {box-sizing:border-box;}
 
 button, [type="submit"], [type="search"] {-webkit-appearance:none;} /* safari */
 button::-moz-focus-inner, [type="submit"]::-moz-focus-inner {border:none;} /* firefox */
@@ -133,6 +133,7 @@ a.pic.modal{box-shadow:0 0 0 9em #000;}
 a.pic.modal>img {margin-top:-200em;}
 a.pic.modal:before, a.pic.modal:after {content:attr(title);position:fixed;left:0;top:0;color:#fff;background:rgba(0,0,0,.2);padding:0 .4em;}
 a.pic.modal:after {content:"\2573";left:auto;right:0;padding:.6em 1em;} /*\2715*/
+a.pic:not(.modal), a.pic:not(.modal) img {background:none !important;}
 
 /* drawer */
 .drawer {position:fixed;top:0;bottom:0;left:-21em;width:80%;max-width:20em;z-index:80;overflow:auto;transition:left .2s, right .2s;}
