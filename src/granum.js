@@ -150,4 +150,14 @@ window.addEventListener('resize', e => {
   }
 })
 
+// focus in modal
+window.addEventListener('hashchange', e => {
+  if (location.hash) {
+    let n = document.querySelector('.modal' + location.hash)
+    if (n) n = n.querySelector('a[href]:not(.empty), button, input, select, textarea')
+    if (n) n.focus()
+    if (n.type == 'text') n.select();
+  }
+})
+
 })()

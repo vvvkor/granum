@@ -1,4 +1,4 @@
-/*! granum-full.css v1.2.49 */
+/*! granum-full.css v1.2.50 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -93,7 +93,7 @@ button, [type="submit"] {padding:.5em 1em;border-radius:.2em;margin:.2em 0;borde
 button:not([disabled]), [type="submit"]:not([disabled]), summary, [data-cmd] {cursor:pointer;}
 form>button, form>[type="submit"] {padding:.2em .5em;margin:0;}
 button:hover:not([disabled]), [type="submit"]:hover:not([disabled]), a.pad.inv[href]:hover,
-button:focus, input:focus, select:focus, textarea:focus, [contenteditable]:focus, summary:focus {box-shadow:0 0 0 .15em rgba(0,0,0,.1);outline:none;}
+button:focus, input:focus, select:focus, textarea:focus, [contenteditable]:focus, summary:focus, a.pad.inv[href]:focus {box-shadow:0 0 0 .15em rgba(0,0,0,.1);outline:none;}
 button[disabled], [type="submit"][disabled] {opacity:.5;}
 [disabled] {cursor:not-allowed;}
 input[readonly] {background-color:#eee;}

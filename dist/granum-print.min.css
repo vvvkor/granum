@@ -1,2 +1,2 @@
-/*! granum-print.css v1.2.49 */
+/*! granum-print.css v1.2.50 */
 @media print{body{font:12pt/1.3 serif;background:0 0}h1,h2,h3,h4,h5,h6{page-break-after:avoid}pre,blockquote{border-left:thin solid #ccc}button,[type=submit],a.inv{border:thin solid #ccc;color:#000!important;background:#fff!important}input,select,textarea{border-width:0 0 thin 0}}

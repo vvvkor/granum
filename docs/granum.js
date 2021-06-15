@@ -1,4 +1,4 @@
-/*! granum.js v1.2.49 */
+/*! granum.js v1.2.50 */
 
 (_ => {
 
@@ -149,6 +149,16 @@ window.addEventListener('resize', e => {
       const c = n.dataset.resp.split(',')
       n.className = (c[m] != null ? c[m] : c.pop()) || ''
     })
+  }
+})
+
+// focus in modal
+window.addEventListener('hashchange', e => {
+  if (location.hash) {
+    let n = document.querySelector('.modal' + location.hash)
+    if (n) n = n.querySelector('a[href]:not(.empty), button, input, select, textarea')
+    if (n) n.focus()
+    if (n.type == 'text') n.select();
   }
 })
 
