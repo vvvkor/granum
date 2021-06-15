@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', e => {
   })
   
   window.dispatchEvent(new Event('resize'))
+  window.dispatchEvent(new Event('hashchange'))
   document.dispatchEvent(new Event('granum-ready'))
 })
 
@@ -127,7 +128,7 @@ document.addEventListener('input', e => {
   
   // filter table
   if (n.dataset.filter) document.querySelector(n.dataset.filter).querySelectorAll('tbody tr')
-    .forEach(m => m.hidden = !(' ' + m.textContent.replace(/\s+/g, ' ') + ' ').match(new RegExp(n.value, 'i')));
+    .forEach(m => m.hidden = !(' ' + m.textContent.replace(/\s+/g, ' ') + ' ').match(new RegExp(n.value, 'i')))
 })
 
 document.addEventListener('keydown', e => {
@@ -155,8 +156,10 @@ window.addEventListener('hashchange', e => {
   if (location.hash) {
     let n = document.querySelector('.modal' + location.hash)
     if (n) n = n.querySelector('a[href]:not(.empty), button, input, select, textarea')
-    if (n) n.focus()
-    if (n.type == 'text') n.select();
+    if (n) setTimeout(_ => {
+      n.focus()
+      if (n.type == 'text') n.select()
+    }, 10)
   }
 })
 
