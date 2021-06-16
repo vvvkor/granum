@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', e => {
   })
   
   // init input values
-  document.querySelectorAll('[name][data-get]').forEach(n => n.dispatchEvent(new Event('granum-get', {bubbles: true})))
+  document.querySelectorAll('[name][data-get], ' + q).forEach(n => n.dispatchEvent(new Event('granum-get', {bubbles: true})))
 })
 
 document.addEventListener('reset', e => {
