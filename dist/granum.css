@@ -1,4 +1,4 @@
-/*! granum.css v1.2.54 */
+/*! granum.css v1.2.55 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -109,7 +109,7 @@ input[readonly] {background-color:#eee;}
 ul.row:not(.roll) {flex-wrap:wrap;}
 ul.row li {display:flex;margin:0;}
 ul.row>*, .col-0[class] {flex:0 1 auto;/*for ie*/ /*flex:initial;*/}
-.row>* {min-width:0;}
+.row>:not(li) {min-width:0;}
 .row>*, .col-1[class], ul.row ul a {flex:1;}
 .col-2[class] {flex:2;}
 .col-3[class] {flex:3;}
