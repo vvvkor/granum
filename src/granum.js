@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', e => {
   })
   
   window.dispatchEvent(new Event('resize'))
-  window.dispatchEvent(new Event('hashchange'))
+  setTimeout(_ => window.dispatchEvent(new Event('hashchange')), 10)
   document.dispatchEvent(new Event('granum-ready'))
 })
 
@@ -47,16 +47,17 @@ document.addEventListener('click', e => {
       history.go(-1)
     }
     
+    // confirm or prompt link
     else if (a.classList.contains('dialog')) {
-      // prompt link
+      e.preventDefault()
+      const u = new URL(a.href)
       const p = a.dataset.prompt
-      if (p) {
-        e.preventDefault()
-        const v = prompt(a.title || a.textContent, a.dataset.default || '')
-        if (v != null) location.href = a.href.replace(p, v)
+      const t = a.title || a.textContent
+      const v = p ? prompt(t, a.dataset.default || '') : (confirm(t) ? 1 : null)
+      if (v != null) {
+        u.searchParams.set(p || a.dataset.confirm || 'confirm', v)
+        location.href = u
       }
-      // confirm link
-      else if (!confirm(a.title || a.textContent)) e.preventDefault()
     }
 
     // toggle
@@ -156,10 +157,10 @@ window.addEventListener('hashchange', e => {
   if (location.hash) {
     let n = document.querySelector('.modal' + location.hash)
     if (n) n = n.querySelector('a[href]:not(.empty), button, input, select, textarea')
-    if (n) setTimeout(_ => {
+    if (n) {
       n.focus()
       if (n.type == 'text') n.select()
-    }, 10)
+    }
   }
 })
 

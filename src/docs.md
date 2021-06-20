@@ -131,7 +131,7 @@ Typography and styling is minimal and unobtrusive.
 - `.bg` - light background (transparent grey)
 - `.text-e`, `.bg-e` - danger or error (red)
 - `.text-w`, `.bg-w` - warning (brown or yellow)
-- `.text-y`, `.bg-y` - success of confirm (green)
+- `.text-y`, `.bg-y` - success or confirm (green)
 - `.text-i`, `.bg-i` - info (blue)
 - `.text-n`, `.bg-n` - note or cancel (grey)
 - `a.act` - active link
@@ -170,13 +170,15 @@ Typography and styling is minimal and unobtrusive.
 
 - `body[data-break="MIN-DESKTOP,MIN-TABLET,MIN-MOBILE"]` - custom responsive breakpoints widths
 - `[data-resp="DESKTOP-CLASSES,TABLE-CLASSES,MOBILE-CLASSES"]` - responsive element classes
-- `a.dialog([title])` - confirm before following the link
+- `a.dialog([title][data-confirm])` - confirm before following the link
+  - `[title]` - dialog text
+  - `[data-confirm]` - parameter added to URL (`confirm` by default)
 - `button.dialog([title])` - confirm before submitting the form with this button
 - `form.dialog([title])` - confirm before submitting the form
 - `a.dialog([data-prompt][data-default][title])` - prompt dialog
   - `[title]` - dialog text
   - `[data-default]` - default value
-  - `[data-prompt]` - replaced substring in URL
+  - `[data-prompt]` - replaced parameter in URL
 - `a.toggle([href^="#"][data-nodes][data-set][data-unset][data-act][data-inact])` - toggle classes
   - `[data-nodes]` or link hash - target elements selector
   - `[data-set]` - additional classes of target elements in active state
