@@ -1,4 +1,4 @@
-/*! granum.js v1.2.55 */
+/*! granum.js v1.2.56 */
 
 (_ => {
 
@@ -55,7 +55,7 @@ document.addEventListener('click', e => {
       const u = new URL(a.href)
       const p = a.dataset.prompt
       const t = a.title || a.textContent
-      const v = p ? prompt(t, a.dataset.default || '') : (confirm(t) ? 1 : null)
+      const v = p ? prompt(t, a.dataset.default || u.searchParams.get(p) || '') : (confirm(t) ? 1 : null)
       if (v != null) {
         u.searchParams.set(p || a.dataset.confirm || 'confirm', v)
         location.href = u
