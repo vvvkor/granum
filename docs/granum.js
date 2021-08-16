@@ -1,4 +1,4 @@
-/*! granum.js v1.2.57 */
+/*! granum.js v1.2.58 */
 
 (_ => {
 
@@ -112,7 +112,7 @@ document.addEventListener('click', e => {
   }
   
   // close modal
-  if (n.classList.contains('modal')) location.hash = '#cancel'
+  if (n.matches('.modal:target')) location.hash = '#cancel'
 })
 
 document.addEventListener('input', e => {

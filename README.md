@@ -4,7 +4,7 @@ CSS micro framework.
 Ultra compact set of styles and behaviours for basic web pages.
 
 3 KB minified and gzipped.  
-9 KB with icons, components and some JavaScript.
+10 KB with icons, components and some JavaScript.
 
 [Demo](https://vvvkor.github.io/granum/) · [Docs](https://github.com/vvvkor/granum/blob/master/docs/docs.md)
 
@@ -29,6 +29,7 @@ and include scripts from `dist` directory.
 <link rel="stylesheet" href="granum-grid.css">
 <script src="granum.js" defer></script>
 <script src="granum-gallery.js" defer></script>
+<script src="granum-dialog.js" defer></script>
 <script src="granum-lookup.js" defer></script>
 <script src="granum-calendar.js" defer></script>
 <script src="granum-restore.js" defer></script>
@@ -52,6 +53,7 @@ Bundled styles and scripts are also available:
 <link rel="stylesheet" href="https://unpkg.com/granum/dist/granum-grid.min.css">
 <script src="https://unpkg.com/granum/dist/granum.min.js" defer></script>
 <script src="https://unpkg.com/granum/dist/granum-gallery.min.js" defer></script>
+<script src="https://unpkg.com/granum/dist/granum-dialog.min.js" defer></script>
 <script src="https://unpkg.com/granum/dist/granum-lookup.min.js" defer></script>
 <script src="https://unpkg.com/granum/dist/granum-calendar.min.js" defer></script>
 <script src="https://unpkg.com/granum/dist/granum-restore.min.js" defer></script>
@@ -123,6 +125,8 @@ Bundled styles and scripts are also available:
   - copy, remove, order items
 - with `granum-gallery.js`
   - gallery
+- with `granum-dialog.js`
+  - custom alert, confirm, prompt dialogs
 - with `granum-lookup.js` and `granum-dropdown.css`
   - lookup input
 - with `granum-calendar.js` and `granum-dropdown.css`
@@ -150,6 +154,7 @@ Bundled styles and scripts are also available:
 - `.toggle([href^="#"][data-nodes][data-set][data-unset][data-act][data-inact])`
 - `input[data-nodes][value][data-set][data-unset]`
 - `.dialog([data-prompt][data-default][title])`
+- `a.alert, a.confirm([data-param][data-def][title][data-caption][data-ok][data-cancel])`
 - `.lX` `.cX` `.rX`
 - `table.sort` `th.sort` `table[data-sort]`
 - `input[data-filter]` `table tbody tr`

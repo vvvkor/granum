@@ -1,4 +1,4 @@
-/*! granum.css v1.2.57 */
+/*! granum.css v1.2.58 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -126,7 +126,7 @@ ul.row>*, .col-0[class] {flex:0 1 auto;/*for ie*/ /*flex:initial;*/}
 
 /* modal */
 .modal[class] {position:fixed;z-index:100;left:0;right:0;top:0;bottom:0;background-color:rgba(99,99,99,.5);box-shadow:0 0 0 9em rgba(99,99,99,.5);display:flex;justify-content:center;align-items:center;margin:0}
-.modal>div {min-width:30%;max-height:83%;overflow:auto;background-color:#fff;  /* non-flex fallback */display:inline-block;margin:1em;}
+.modal>* {min-width:30%;max-height:83%;overflow:auto;background-color:#fff;  /* non-flex fallback */display:inline-block;margin:1em;}
 
 /* gallery */
 a.pic {-webkit-tap-highlight-color:transparent;}

@@ -110,7 +110,7 @@ document.addEventListener('click', e => {
   }
   
   // close modal
-  if (n.classList.contains('modal')) location.hash = '#cancel'
+  if (n.matches('.modal:target')) location.hash = '#cancel'
 })
 
 document.addEventListener('input', e => {
