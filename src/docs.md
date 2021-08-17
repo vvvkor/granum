@@ -170,21 +170,21 @@ Typography and styling is minimal and unobtrusive.
 
 - `body[data-break="MIN-DESKTOP,MIN-TABLET,MIN-MOBILE"]` - custom responsive breakpoints widths
 - `[data-resp="DESKTOP-CLASSES,TABLE-CLASSES,MOBILE-CLASSES"]` - responsive element classes
-- `a.dialog([title][data-confirm])` - confirm before following the link
+- `a.dialog([title][data-param])` - confirm before following the link
   - `[title]` - dialog text
-  - `[data-confirm]` - parameter added to URL (`confirm` by default)
+  - `[data-param]` - parameter added to URL (`confirm` by default)
 - `button.dialog([title])` - confirm before submitting the form with this button
 - `form.dialog([title])` - confirm before submitting the form
-- `a.dialog([data-prompt][data-default][title])` - prompt dialog
+- `a.dialog([data-prompt][data-def][title])` - prompt dialog
   - `[title]` - dialog text
-  - `[data-default]` - default value
+  - `[data-def]` - default value
   - `[data-prompt]` - replaced parameter in URL
 - `a.alert, a.confirm` - custom dialogs *(requires [granum-dialog.js](granum-dialog.js))*
   - `a.alert([title][data-caption][data-ok])` - custom alert dialog
   - `a.confirm([data-param][title][data-caption][data-ok][data-cancel])` - custom confirm dialog
   - `a.confirm([data-param][data-def][title][data-caption][data-ok][data-cancel])` - custom prompt dialog
     - `[title][data-caption]` - dialog text
-    - `[data-param]` - replaced parameter in URL
+    - `[data-param]` - replaced parameter in URL (`confirm` by default)
     - `[data-def]` - default value
     - `[data-ok]` - confirm button label
     - `[data-cancel]` - cancel button label

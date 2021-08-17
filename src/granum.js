@@ -53,9 +53,9 @@ document.addEventListener('click', e => {
       const u = new URL(a.href)
       const p = a.dataset.prompt
       const t = a.title || a.textContent
-      const v = p ? prompt(t, a.dataset.default || u.searchParams.get(p) || '') : (confirm(t) ? 1 : null)
+      const v = p ? prompt(t, a.dataset.def || u.searchParams.get(p) || '') : (confirm(t) ? 1 : null)
       if (v != null) {
-        u.searchParams.set(p || a.dataset.confirm || 'confirm', v)
+        u.searchParams.set(p || a.dataset.param || 'confirm', v)
         location.href = u
       }
     }

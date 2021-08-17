@@ -1,4 +1,4 @@
-/*! granum-gallery.js v1.2.58 */
+/*! granum-gallery.js v1.2.59 */
 
 (_ => {
 

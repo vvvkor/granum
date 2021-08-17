@@ -1,3 +1,21 @@
+// external usage of granum-dialog using events
+
+// initialize dialog
+document.dispatchEvent(new CustomEvent('granum-ask', {detail: {
+  title: 'Question',
+  param: 'v',
+  def: 1,
+  action: x => alert(x.value)
+}}))
+
+// catch confirmation, optionally prevent default
+document.addEventListener('granum-confirm', e => {
+  if (e.detail.value === '') e.preventDefault()
+  console.log(e)
+})
+
+
+
   // restore form inputs
   /*
   - run after all plugins if data-get not done

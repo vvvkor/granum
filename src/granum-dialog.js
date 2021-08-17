@@ -32,12 +32,16 @@ const dialog = x => {
     m.remove()
     if (!x.action) return
     const value = inp ? inp.value : 1
-    if (typeof x.action === 'string') {
-      const u = new URL(x.action, location.href)
-      u.searchParams.set(x.param || 'confirm', value)
-      location.href = u
+    const detail = {value, ...x}
+    if (document.dispatchEvent(new CustomEvent('granum-confirm', {cancelable: true, detail}))) {
+      // default not prevented
+      if (typeof x.action === 'string') {
+        const u = new URL(x.action, location.href)
+        u.searchParams.set(x.param || 'confirm', value)
+        location.href = u
+      }
+      else x.action(detail)
     }
-    else x.action({value, ...x})
   })
   
   document.body.append(m)
@@ -50,10 +54,11 @@ document.addEventListener('click', e => {
   if (a) {
     e.preventDefault()
     dialog({ // title, action, def
+      ...a.dataset, // param, def, ok, cancel
+      node: a,
       action: a.classList.contains('confirm') ? a.href : '', // url | function
       title: a.dataset.caption || a.title || a.textContent,
-      mode: (a.className.match(/-[ew]\b/)) ? 'e' : '',
-      ...a.dataset // param, def, ok, cancel
+      mode: (a.className.match(/-[ew]\b/)) ? 'e' : ''
     })
   }
   
@@ -61,10 +66,13 @@ document.addEventListener('click', e => {
 })
 
 document.addEventListener('keydown', e => {
-  if (e.key == 'Escape') {
-    const d = document.querySelector('.js-modal')
-    if (d) d.remove()
+  if (e.key == 'Escape') document.querySelectorAll('.js-modal').forEach(n => n.remove())
+  else if (e.key == 'Enter'){
+    const n = document.querySelector('.js-modal input:focus + p [href="#ok"]')
+    if (n) n.click()
   }
 })
+
+document.addEventListener('granum-ask', e => dialog(e.detail))
 
 })()
