@@ -1,4 +1,4 @@
-/*! granum-full.js v1.2.59 */
+/*! granum-full.js v1.2.60 */
 
 ;(_ => {
 
@@ -181,15 +181,16 @@ const i = (t, s, a={}) => {
 
 const dialog = x => {
   const inp = (x.def != null) ? i('input', '', {type: 'text', value: x.def}) : ''
-  const no = x.action ? i('a', x.cancel || 'Cancel', {class: 'pad inv rad bg-n l', href: '#cancel'}) : ''
-  const ok = i('a', x.ok || 'OK', {class: 'pad inv rad', href: '#ok'})
+  const no = x.action ? i('a', x.cancel || 'Cancel', {class: 'pad inv rad bg-n', href: '#cancel'}) : ''
+  const ok = i('a', x.ok || 'OK', {class: 'pad inv rad' + (no ? ' l' : ''), href: '#ok'})
   if (x.mode) ok.classList.add('bg-' + x.mode)
   const m = i('div',
     i('div', [
+      (x.head ? i('h3', x.head, 'mar') : ''),
       i('p', x.title || ''),
       inp,
-      i('p', [no, ok], inp ? 'r' : '')
-    ], 'pad rad' + (inp ? '' : ' c')),
+      i('p', [ok, no], 'r')
+    ], 'pad rad'),
     'modal js-modal')
 
   if (x.action) no.addEventListener('click', e => {

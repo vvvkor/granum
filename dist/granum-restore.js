@@ -1,4 +1,4 @@
-/*! granum-restore.js v1.2.59 */
+/*! granum-restore.js v1.2.60 */
 
 (_ => {
 

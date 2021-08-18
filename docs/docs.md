@@ -1,5 +1,5 @@
 **Granum**  
-v1.2.59
+v1.2.60
 
 # Documentation
 
@@ -180,14 +180,15 @@ Typography and styling is minimal and unobtrusive.
   - `[data-def]` - default value
   - `[data-prompt]` - replaced parameter in URL
 - `a.alert, a.confirm` - custom dialogs *(requires [granum-dialog.js](granum-dialog.js))*
-  - `a.alert([title][data-caption][data-ok])` - custom alert dialog
-  - `a.confirm([data-param][title][data-caption][data-ok][data-cancel])` - custom confirm dialog
-  - `a.confirm([data-param][data-def][title][data-caption][data-ok][data-cancel])` - custom prompt dialog
+  - `a.alert([data-head][title][data-caption][data-ok])` - custom alert dialog
+  - `a.confirm([data-param][data-head][title][data-caption][data-ok][data-cancel])` - custom confirm dialog
+  - `a.confirm([data-param][data-def][data-head][title][data-caption][data-ok][data-cancel])` - custom prompt dialog
+    - `[data-head]` - dialog heading
     - `[title][data-caption]` - dialog text
     - `[data-param]` - replaced parameter in URL (`confirm` by default)
     - `[data-def]` - default value
-    - `[data-ok]` - confirm button label
-    - `[data-cancel]` - cancel button label
+    - `[data-ok]` - confirm button label (`OK` by default)
+    - `[data-cancel]` - cancel button label (`Cancel` by default)
 - `a.toggle([href^="#"][data-nodes][data-set][data-unset][data-act][data-inact])` - toggle classes
   - `[data-nodes]` or link hash - target elements selector
   - `[data-set]` - additional classes of target elements in active state
