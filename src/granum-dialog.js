@@ -11,25 +11,21 @@ const i = (t, s, a={}) => {
 
 const dialog = x => {
   const inp = (x.def != null) ? i('input', '', {type: 'text', value: x.def}) : ''
-  const no = x.action ? i('a', x.cancel || 'Cancel', {class: 'pad inv rad bg-n', href: '#cancel'}) : ''
-  const ok = i('a', x.ok || 'OK', {class: 'pad inv rad' + (no ? ' l' : ''), href: '#ok'})
+  const no = x.action ? i('button', x.cancel || 'Cancel', 'bg-n') : ''
+  const ok = i('button', x.ok || 'OK', 'js-ok')
   if (x.mode) ok.classList.add('bg-' + x.mode)
   const m = i('div',
     i('div', [
       (x.head ? i('h3', x.head, 'mar') : ''),
       i('p', x.title || ''),
       inp,
-      i('p', [ok, no], 'r')
-    ], 'pad rad'),
+      i('p', [ok, ' ', no], 'r')
+    ], 'pad rad stack'),
     'modal js-modal')
 
-  if (x.action) no.addEventListener('click', e => {
-    e.preventDefault(e)
-    m.remove()
-  })
+  if (x.action) no.addEventListener('click', e => m.remove())
   
   ok.addEventListener('click', e => {
-    e.preventDefault(e)
     m.remove()
     if (!x.action) return
     const value = inp ? inp.value : 1
@@ -69,7 +65,7 @@ document.addEventListener('click', e => {
 document.addEventListener('keydown', e => {
   if (e.key == 'Escape') document.querySelectorAll('.js-modal').forEach(n => n.remove())
   else if (e.key == 'Enter'){
-    const n = document.querySelector('.js-modal input:focus + p [href="#ok"]')
+    const n = document.querySelector('.js-modal input:focus + p .js-ok')
     if (n) n.click()
   }
 })

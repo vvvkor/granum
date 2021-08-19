@@ -1,4 +1,4 @@
-/*! granum-full.css v1.2.60 */
+/*! granum-full.css v1.2.61 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -40,7 +40,10 @@ pre code {font-size:100%;}
 	main, img.fit /*, table.roll*/ {display:block;}
 .mar, ul, ol , dl, blockquote, pre, hr, p, figure {margin:1em 0;}
 	.fit p, .fit .mar {margin:.5em 0;}
+	.stack>:first-child {margin-top:0;}
+	.stack>:last-child {margin-bottom:0;}
 .pad, ul.row li>:not(ul), fieldset, blockquote, pre {padding:.5em 1em;}
+	.modal>.pad {padding:1.5em;}
 	ul.row li>form {padding:.2em 1em;}
 	legend, .tag {padding:0 .4em;}
 	.tag {min-width:.65em;}
