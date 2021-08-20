@@ -8,6 +8,21 @@
 		<link rel="stylesheet" href="granum.css">
 		<link rel="stylesheet" href="granum-icons.css">
 		<script defer src="granum.js"></script>
+		<script defer src="granum-dialog.js"></script>
+		<script defer src="granum-util.js"></script>
+		<script defer>
+			window.addEventListener('load', ev => {
+				console.log('test granum-util.js...')
+				l('now:', d(0, 19, '.'))
+				l('first link: ', q('a'))
+				l('divs with shadow:', qq('main div.shade'))
+				document.body.append(i('div', 'Inserted', 'hide'))
+				//h('keydown', 0, e => l('keydown', e.keyCode, e.key))
+				h('keydown', 0, x => e(0, 'granum-test', {info: x.key}))
+				h('granum-test', 0, e => l('custom event: ', e.detail))
+				h('click', 'div', e => l('click receiver and target: ', e.recv, e.target))
+			})
+		</script>
 	</head>
 	<body id="top">
 		
@@ -19,7 +34,8 @@
 				<li><a href="https://github.com/vvvkor/granum">GitHub</a>
 				<li><a href="https://github.com/vvvkor/granum/blob/master/docs/docs.md">Docs</a>
 				<li class="l"><a href="index.html">Demo</a>
-				<li><a href="#profile">Profile</a>
+				<li><a href="#modal">Modal</a>
+				<li><a href="#dialog" data-head="Dialog" title="The question" class="confirm">Dialog</a>
 			</ul>
 		</nav>
 
@@ -32,7 +48,10 @@
 					<li><a href="https://github.com/vvvkor/granum">GitHub</a>
 					<li><a href="https://github.com/vvvkor/granum/blob/master/docs/docs.md">Docs</a> <b class="tag inv rad bg-n small sans">3</b>
 					<li><a href="index.html">Demo</a>
-					<li><a href="#profile">Profile</a>
+					<li><a href="#modal">Modal</a>
+					<li><a href="#alert" data-head="Alert" title="The message" class="alert">Dialog</a>
+					<li><a href="#confirm" data-head="Confirm" title="The question" class="confirm">Dialog</a>
+					<li><a href="#prompt" data-head="Prompt" title="The label" data-param="name" data-def="Value" class="confirm">Prompt</a>
 				</ul>
 				
 				<div class="r">80%</div>
@@ -41,15 +60,15 @@
 		</nav>
 
 		<!-- modal -->
-		<div id="profile" class="target modal"><div>
+		<div id="modal" class="target modal"><div>
 			<div class="pad bg h3">
 				<div class="row">
-					<div>Profile</div>
+					<div>Modal</div>
 					<div class="col-0"><a class="icon-close empty" href="#cancel"><b>&times;</b></a></div>
 				</div>
 			</div>
 			<div class="pad c">
-				<p>User information</p>
+				<p>Some information</p>
 				<p><a class="inv pad bg-n" href="#cancel">Close</a></p>
 			</div>
 		</div></div>
@@ -59,7 +78,7 @@
 			<!--aside>Aside</aside-->
 			<main class="pad wrap center">
 
-				<p class="small"><a href="?#">Home</a> &rsaquo; <a href="#drawer">Navigation</a></p>
+				<p class="small"><a href="?#">Home</a> &rsaquo; <a href="#drawer">Drawer</a></p>
 				
 				<!-- content -->
 				<h1>Heading</h1>

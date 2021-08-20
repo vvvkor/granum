@@ -1,4 +1,4 @@
-/*! granum-basic.css v1.2.61 */
+/*! granum-basic.css v1.2.62 */
 
 /* excluded in granum-basic.css: .bar .tag .tabs .drawer .stick .hi .pic .modal table.resp .rad (.inv) */
 
@@ -40,8 +40,8 @@ pre code {font-size:100%;}
 .fit, pre code {margin:0;padding:0;border:none;}
 .fit:not(h1):not(h2):not(h3):not(h4) {font-size:1rem;font-weight:normal;}
 	main, img.fit /*, table.roll*/ {display:block;}
-.mar, ul, ol , dl, blockquote, pre, hr, p, figure {margin:1em 0;}
-	.fit p, .fit .mar {margin:.5em 0;}
+.mar, ul, ol , dl, blockquote, pre, hr, p, figure {margin:1rem 0;}
+	.fit p, .fit .mar {margin:.5rem 0;}
 .pad, ul.row li>:not(ul), fieldset, blockquote, pre {padding:.5em 1em;}
 	ul.row li>form {padding:.2em 1em;}
 	legend {padding:0 .4em;}
@@ -155,6 +155,6 @@ a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tr:hover
 	html {font-size:medium;}
 	.row.resp {display:block;}
 	.row.resp[class]>* {margin-right:0;text-align:left;}
-	.row.resp.l>:not(:last-child) {margin-bottom:1em;}
+	.row.resp.l>:not(:last-child) {margin-bottom:1rem;}
 	ul.row.resp a {flex:1;}
 }

@@ -154,7 +154,7 @@ Typography and styling is minimal and unobtrusive.
 - `.fit` - unset: margin, border, padding, shadow, font size and weight
 - `.fit p`, `.fit .mar` - smaller margins
 - `.mar` - vertical margins
-- `.stack` - no margins for first and last sub-elements
+- `.stack` - no edge margins for first and last sub-elements
 - `.shade` - box shadow
 - `.bord` - border
 - `.rad` - rounded border
