@@ -89,8 +89,9 @@ table.pad>*:last-child>tr:last-child>* {border-bottom:none;}
 /* form */
 input, select {max-width:100%;}
 textarea {width:100%;}
-input, button, select, textarea {padding:.2em;margin:.1em 0;line-height:normal;border:thin solid #aaa;}
-button, [type="submit"] {padding:.5em 1em;border-radius:.2em;margin:.2em 0;border-color:transparent;}
+input, button, select, textarea {padding:.2em;margin:.1em 0;/*line-height:1.2;*/border:thin solid #aaa;}
+button, [type="submit"] {padding:.5em 1em;border-radius:.2em;margin:.2em 0;}
+	button, [type="submit"], a.pad:not(.bord) {border:thin solid transparent;}
 button:not([disabled]), [type="submit"]:not([disabled]), summary, [data-cmd] {cursor:pointer;}
 form>button, form>[type="submit"] {padding:.2em .5em;margin:0;}
 button:hover:not([disabled]), [type="submit"]:hover:not([disabled]), a.pad.inv[href]:hover,
@@ -103,6 +104,9 @@ input[readonly] {background-color:#eee;}
 	[name]:invalid:focus, [name]:invalid+.pop>input:focus {box-shadow:0 0 0 .15em rgba(255,100,100,.3);}
 	:valid~.act.text-e, :invalid~.act.text-y {display:none;}
 
+.field {margin:.5em 0;}
+.field>:first-child {display:block;/*line-height:1.2;*/}
+
 /* grid */
 .row {display:flex;}
 .row.pad {padding:0;}
@@ -110,7 +114,7 @@ input[readonly] {background-color:#eee;}
 ul.row:not(.roll) {flex-wrap:wrap;}
 ul.row li {display:flex;margin:0;}
 ul.row>*, .col-0[class] {flex:0 1 auto;/*for ie*/ /*flex:initial;*/}
-.row>:not(li) {min-width:0;}
+.row>:not(li) {min-width:0;/*fix overflow*/}
 .row>*, .col-1[class], ul.row ul a {flex:1;}
 .col-2[class] {flex:2;}
 .col-3[class] {flex:3;}
@@ -192,6 +196,13 @@ a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tr:hover
 	.stick {position:sticky;top:0;z-index:3;}
 	.row .stick, .grid .stick{align-self:start;max-height:100vh;overflow:auto;}
 	.hi {min-height:40em;min-height:100vh;}
+}
+
+/* desktop */
+@media (min-width: 900px) {
+	.field.resp {display:flex;}
+	.field.resp>* {flex:3;min-width:0;}
+	.field.resp>:first-child {flex:1;text-align:right;margin-right:1em;margin-top:.3em;border-top:thin solid transparent;}
 }
 
 /* non-flex fallback */

@@ -61,7 +61,7 @@ icons, status colors, and even more.
 Typography and styling is minimal and unobtrusive.
 -->
 
-<p class="text-n">v1.2.63</p>
+<p class="text-n">v1.2.64</p>
 
 <p>
 <b>3 KB</b> minified and gzipped.<br>
@@ -410,7 +410,7 @@ x<sup>super</sup>
 <table class="pad hover mid r2">
 	<tr class="bg"><th>File and features<th>Source size
 	<tr><td><b>granum-basic.css</b><br>typography, colors, lists, table, simple responsive grid and navbar, responsive forms, buttons, toggle<td>6.0k
-	<tr><td><b>granum.css</b><br>everything mentioned above plus: bars, tags, modals, tabs, drawer, sticky, full height<td>8.6k
+	<tr><td><b>granum.css</b><br>everything mentioned above plus: bars, tags, modals, tabs, drawer, sticky, full height<td>9.0k
 	<tr><td><b>granum.js</b><br>check all boxes, align table columns, sort table, confirm link and form, prompt link, togglers, toggle classes, responsive classes, add/remove/order items<td>5.5k
 	<tr><td><b>granum-icons.css</b><br>32 SVG icons as CSS background<td>7.7k
 	<tr><td><b>granum-grid.css</b><br>advanced responsive grid<td>1.3k
@@ -421,7 +421,7 @@ x<sup>super</sup>
 	<tr><td><b>granum-lookup.js <span class="small text-n">(requires granum-dropdown.css)</span></b><br>lookup input<td>3.5k
 	<tr><td><b>granum-calendar.js <span class="small text-n">(requires granum-dropdown.css)</span></b><br>date input<td>3.5k
 	<tr><td><b>granum-edit.js</b><br>visual text editor<td>1.5k
-	<tr><td><b>granum-full.css + granum-full.js</b><br>everything mentioned above<td>36k<div class="small text-n nobr">19.2k + 19.0k</div>
+	<tr><td><b>granum-full.css + granum-full.js</b><br>everything mentioned above<td>36k<div class="small text-n nobr">19.6k + 19.0k</div>
 </table>
 </div>
 </details>
@@ -524,6 +524,24 @@ x<sup>super</sup>
 
 
 <h2 id="form"><a href="#form">Forms</a> <a href="#top" class="fit icon-up"></a></h2>
+
+<div class="mar pad bord">
+	<button class="bg-e icon-delete">Danger</button>
+	<button class="bg-w icon-warning">Warning</button>
+	<button class="bg-y icon-ok">OK</button>
+	<button class="bg-i icon-info">Info</button>
+	<button class="bg-n icon-file">Note</button>
+	<br>
+	<input type="submit" value="Submit">
+	<button>Button</button>
+	<a class="pad rad inv" href="#test">Link</a>
+	<a class="pad rad bord hover" href="#test">Link</a>
+	<a class="pad rad hover" href="#test">Link</a>
+	<a class="pad rad" href="#test">Link</a>
+	<br>
+	<button class="icon-send">Default</button>
+	<button class="icon-ban" disabled>Disabled</button>
+</div>
 
 <form action="?#searcher" method="get" class="bg pad mar">
 	<input id="searcher" type="search" name="q" size="6" accesskey="4" data-get placeholder="Search">
@@ -678,18 +696,40 @@ x<sup>super</sup>
 </p>
 </form>
 
+<form class="pad bg mar" id="dform" action="#dform">
+<div class="field resp">
+	<label for="nam">Name<!--br><small class="text-n">New<br>Line</small--></label>
+	<div>
+		<input type="text" name="nam" id="nam" required>
+		<small class="act text-e">Required</small>
+		<small class="act text-y">OK</small>
+	</div>
+</div>
+<div class="field resp">
+	<label for="ag">Age</label>
+	<div><input type="number" name="ag" id="ag"></div>
+</div>
+<div class="field resp">
+	<div></div>
+	<div>
+		<input type="submit" value="Send" class="bg-y">
+		<i class="pad text-n">This form uses <code>.field</code></i>
+	</div>
+</div>
+</form>
+
 <form class="pad fit bg mar" id="dform" action="#dform">
-<div class="row mar pad resp">
-	<label for="nam" class="r">Name</label>
+<div class="row mar pad resp mid">
+	<label for="nam" class="r">Name<!--br><small class="text-n">New<br>Line</small--></label>
 	<div class="col-3"><input type="text" name="nam" id="nam"></div>
 </div>
-<div class="row mar pad resp">
+<div class="row mar pad resp mid">
 	<label for="ag" class="r">Age</label>
 	<div class="col-3"><input type="number" name="ag" id="ag"></div>
 </div>
-<div class="row mar pad resp">
+<div class="row mar pad resp mid">
 	<div></div>
-	<div class="col-3"><input type="submit" value="Send" class="bg-y"> <i class="pad text-n">This form uses <code>.grid</code></i></div>
+	<div class="col-3"><input type="submit" value="Send" class="bg-y"> <i class="pad text-n">This form uses <code>.row</code></i></div>
 </div>
 </form>
 
@@ -706,7 +746,8 @@ x<sup>super</sup>
 	<td><label><input type="checkbox" name="agree" value="1"> Agree</label>
 <tr>
 	<td>
-	<td><input type="submit" value="Save" class="bg-n"> <i class="pad text-n">This form uses <code>table</code></i>
+	<td><input type="submit" value="Save" class="bg-n">
+		<i class="pad text-n">This form uses <code>table</code></i>
 </table>
 </form>
 
