@@ -1,5 +1,5 @@
 **Granum**  
-v1.2.64
+v1.2.65
 
 # Documentation
 
@@ -83,8 +83,8 @@ Typography and styling is minimal and unobtrusive.
 
 - `form input` - inline form
 - `form p > label + br + input` - stacked form
-- `form .field.resp > label + (div > input)` - form using `.field`
-- `form .row > (label.r) + (div.col-3 > input)` - form using `.row`
+- `form .field.resp > (div > label) + (div > input)` - form using `.field`
+- `form .row > (div.r > label) + (div.col-3 > input)` - form using `.row`
 - `form table (td.r > label) + (td > input)` - form using table
 - `form .row.resp`, `form table.resp` - stack on narrow screen
 - `form.fit` - smaller margins
