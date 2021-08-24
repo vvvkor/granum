@@ -202,7 +202,8 @@ a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tr:hover
 @media (min-width: 900px) {
 	.field.resp {display:flex;}
 	.field.resp>* {flex:73;min-width:0;}
-	.field.resp>:first-child:not(:only-child) {flex:25;text-align:right;margin-right:2%;margin-top:.3em;border-top:thin solid transparent;}
+	.field.resp>:first-child:not(:only-child) {flex:25;text-align:right;margin-right:2%;}
+	.field.resp>:first-child:not(:only-child), .field>:last-child>div {margin-top:.3em;border-top:thin solid transparent;}
 	.field.resp>:only-child {margin-left:27%;}
 }
 
