@@ -686,7 +686,7 @@ x<sup>super</sup>
 </p>
 </form>
 
-<form class="pad bg mar" id="dform" action="#dform">
+<form class="pad bg mar" id="fform" action="#fform">
 <div class="field resp">
 	<div><label for="fnm">Name<!--br><small class="text-n">New<br>Line</small--></label></div>
 	<div>
@@ -702,6 +702,14 @@ x<sup>super</sup>
 <div class="field resp">
 	<div><label for="fmsg">Message</label></div>
 	<div><textarea name="fmsg" id="fmsg"></textarea></div>
+</div>
+<div class="field resp">
+	<div><label for="flook">Country lookup</label></div>
+	<div><input required id="flook" type="text" name="flook" value="FO" data-caption="Faroe" data-lookup="https://restcountries.eu/rest/v2/name/{q}#alpha2Code#name#subregion" data-goto="#country-{id}" data-limit="4"></div>
+</div>
+<div class="field resp">
+	<div><label for="fcld">Calendar</label></div>
+	<div><input required id="fcld" type="datetime-local" data-xvalue="2001-02-03T04:05:06" name="cld" class="calendar" step="60"></div>
 </div>
 <div class="field resp">
 	<div>
