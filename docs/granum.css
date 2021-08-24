@@ -1,4 +1,4 @@
-/*! granum.css v1.2.65 */
+/*! granum.css v1.2.66 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -90,8 +90,8 @@ table.pad>*:last-child>tr:last-child>* {border-bottom:none;}
 
 /* form */
 input, select {max-width:100%;}
-textarea {width:100%;}
-input, button, select, textarea {padding:.2em;margin:.1em 0;/*line-height:1.2;*/border:thin solid #aaa;}
+textarea {width:100%;display:block;}
+input, button, select, textarea {padding:.2em;margin:.1em 0;border:thin solid #aaa;}
 button, [type="submit"] {padding:.5em 1em;border-radius:.2em;margin:.2em 0;}
 	button, [type="submit"], a.pad:not(.bord) {border:thin solid transparent;}
 button:not([disabled]), [type="submit"]:not([disabled]), summary, [data-cmd] {cursor:pointer;}
@@ -107,7 +107,7 @@ input[readonly] {background-color:#eee;}
 	:valid~.act.text-e, :invalid~.act.text-y {display:none;}
 
 .field {margin:.5em 0;}
-.field>:first-child {display:block;/*line-height:1.2;*/}
+.field>:first-child {display:block;}
 
 /* grid */
 .row {display:flex;}
@@ -203,8 +203,9 @@ a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tr:hover
 /* desktop */
 @media (min-width: 900px) {
 	.field.resp {display:flex;}
-	.field.resp>* {flex:3;min-width:0;}
-	.field.resp>:first-child {flex:1;text-align:right;margin-right:1em;margin-top:.3em;border-top:thin solid transparent;}
+	.field.resp>* {flex:73;min-width:0;}
+	.field.resp>:first-child:not(:only-child) {flex:25;text-align:right;margin-right:2%;margin-top:.3em;border-top:thin solid transparent;}
+	.field.resp>:only-child {margin-left:27%;}
 }
 
 /* non-flex fallback */

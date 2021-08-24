@@ -61,7 +61,7 @@ icons, status colors, and even more.
 Typography and styling is minimal and unobtrusive.
 -->
 
-<p class="text-n">v1.2.65</p>
+<p class="text-n">v1.2.66</p>
 
 <p>
 <b>3 KB</b> minified and gzipped.<br>
@@ -525,23 +525,6 @@ x<sup>super</sup>
 
 <h2 id="form"><a href="#form">Forms</a> <a href="#top" class="fit icon-up"></a></h2>
 
-<div class="mar pad bord">
-	<button class="bg-e icon-delete">Danger</button>
-	<button class="bg-w icon-warning">Warning</button>
-	<button class="bg-y icon-ok">OK</button>
-	<button class="bg-i icon-info">Info</button>
-	<button class="bg-n icon-file">Note</button>
-	<br>
-	<input type="submit" value="Submit">
-	<button>Button</button>
-	<a class="pad rad inv" href="#test">Link</a>
-	<a class="pad rad bord hover" href="#test">Link</a>
-	<a class="pad rad hover" href="#test">Link</a>
-	<a class="pad rad" href="#test">Link</a>
-	<br>
-	<button class="icon-send">Default</button>
-	<button class="icon-ban" disabled>Disabled</button>
-</div>
 
 <form action="?#searcher" method="get" class="bg pad mar">
 	<input id="searcher" type="search" name="q" size="6" accesskey="4" data-get placeholder="Search">
@@ -637,18 +620,25 @@ x<sup>super</sup>
 
 <details>
 <summary>Buttons</summary>
-	<p>
-	<button>Button</button>
-	<button disabled>Disabled</button>
-	<a href="#pform" class="pad hover rad">Link</a>
-	Text
-	<br>
-	<button class="icon-ok bg-y">OK</button>
-	<button class="icon-warning bg-w">Warning</button>
-	<button class="icon-delete bg-e">Danger</button>
-	<button class="icon-info bg-i">Info</button>
-	<button class="icon-file bg-n">Note</button>
-	</p>
+	<div class="mar">
+		<button class="bg-e icon-delete">Danger</button>
+		<button class="bg-w icon-warning">Warning</button>
+		<button class="bg-y icon-ok">OK</button>
+		<button class="bg-i icon-info">Info</button>
+		<button class="bg-n icon-file">Note</button>
+		<br>
+		<input type="submit" value="Submit">
+		<button>Button</button>
+		<a class="pad rad inv" href="#test">Link</a>
+		<a class="pad rad bord hover" href="#test">Link</a>
+		<a class="pad rad hover" href="#test">Link</a>
+		<a class="pad rad" href="#test">Link</a>
+		Text
+		<br>
+		<button class="icon-send">Default</button>
+		<button class="icon-ban" disabled>Disabled</button>
+	</div>
+	
 </details>
 
 
@@ -701,8 +691,8 @@ x<sup>super</sup>
 	<div><label for="fnm">Name<!--br><small class="text-n">New<br>Line</small--></label></div>
 	<div>
 		<input type="text" name="fnm" id="fnm" required>
-		<small class="act text-e">Required</small>
-		<small class="act text-y">OK</small>
+		<small class="act pad text-e">Required</small>
+		<small class="act pad text-y">OK</small>
 	</div>
 </div>
 <div class="field resp">
@@ -710,14 +700,28 @@ x<sup>super</sup>
 	<div><input type="number" name="fage" id="fage"></div>
 </div>
 <div class="field resp">
-	<div></div>
+	<div><label for="fmsg">Message</label></div>
+	<div><textarea name="fmsg" id="fmsg"></textarea></div>
+</div>
+<div class="field resp">
 	<div>
-		<input type="submit" value="Send" class="bg-y">
+		<input id="fbox"  name="fbox" type="checkbox" required value="alpha" checked>
+		<label for="fbox">Box</label>
+		<small class="act pad text-e">Required</small>
+	</div>
+</div>
+<div class="field resp">
+	<div>
+		<input type="submit" value="Send">
 		<i class="pad text-n">This form uses <code>.field</code></i>
 	</div>
 </div>
 </form>
 
+<details>
+<summary>Alternative form layouts</summary>
+
+<div class="pad bord">
 <form class="pad fit bg mar" id="dform" action="#dform">
 <div class="row mar pad resp mid">
 	<div class="r"><label for="nam" class="r">Name<!--br><small class="text-n">New<br>Line</small--></label></div>
@@ -729,7 +733,10 @@ x<sup>super</sup>
 </div>
 <div class="row mar pad resp mid">
 	<div></div>
-	<div class="col-3"><input type="submit" value="Send" class="bg-y"> <i class="pad text-n">This form uses <code>.row</code></i></div>
+	<div class="col-3">
+		<input type="submit" value="Send">
+		<i class="pad text-n">This form uses <code>.row</code></i>
+	</div>
 </div>
 </form>
 
@@ -746,11 +753,13 @@ x<sup>super</sup>
 	<td><label><input type="checkbox" name="agree" value="1"> Agree</label>
 <tr>
 	<td>
-	<td><input type="submit" value="Save" class="bg-n">
+	<td><input type="submit" value="Save">
 		<i class="pad text-n">This form uses <code>table</code></i>
 </table>
 </form>
 
+</div>
+</details>
 
 <h2 id="action"><a href="#action">Interactive</a> <a href="#top" class="fit icon-up"></a></h2>
 
