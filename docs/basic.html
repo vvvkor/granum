@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Granum Basic</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/svg" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20220%20220'%3E%3Cpath%20fill='%23f50'%20d='M35%2067l75%20-44%2075%2044%200%2089-75%2044-75-44zm75%208a35%2035%200%201%200%20.01%200z'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="granum-basic.css">
+    <!--script src="granum.js" defer></script-->
+  </head>
+  <body id="top" data-break-x="500,400,300,200" data-dt-x=".">
+	<nav>
+		<a href="#menu" class="target" title="Menu"></a>
+		<ul id="menu" class="row -resp shade -hover">
+			<li class="l"><a href="?"><b>Granum</b></a>
+			<li><a href="#typo">Text</a><!--ul><li><a>Sub</a></ul-->
+			<!--li><a href="#list">List</a-->
+			<li><a href="#table">Table</a>
+			<li><a href="#grid">Grid</a>
+			<li><a href="#form">Form</a>
+			<!--li><a href="#action">Interactive</a-->
+		</ul>
+	</nav>
+
+<main class="center wrap pad serif">
+
+<div class="c">
+<h1 id="home">Granum Basic</h1>
+
+<p><b>CSS micro framework. <br>Minimal version of <a href="index.html">Granum</a></b></p>
+<p><i>Ultra compact set of styles for basic web pages.</i></p>
+
+<p class="text-n">v1.2.67</p>
+
+<p>
+<b>2 KB</b> minified and gzipped.<br>
+</p>
+
+<p>
+<a href="https://github.com/vvvkor/granum/blob/master/docs/docs.md" class="pad bg hover inv">Docs</a>
+<a href="https://github.com/vvvkor/granum" class="pad bg-n hover inv">GitHub</a>
+<a href="https://unpkg.com/granum" class="pad bord hover">CDN</a>
+</p>
+
+<p>
+	<code class="pad -inv">npm install granum</code>
+</p>
+
+</div>
+
+<div class="mar pad p2"></div>
+
+<div class="row resp mar pad">
+	<div class="pad -c -shade">
+		<h3 class="fit"><a href="#typo">Typography</a></h3>
+		<p>Text, links, code, quotes, lists, colors, modifiers. Minimal styling.</p>
+	</div>
+	<div class="pad -c bord">
+		<h3 class="fit"><a href="#table">Tables</a></h3>
+		<p>Borders, width, alignment. <br>Hoverable, scrollable.</p>
+	</div>
+</div>
+<div class="row resp mar pad l">
+	<div class="pad c shade">
+		<h3 class="fit"><a href="#grid">Grids</a></h3>
+		<p>Responsive grids. <br>Navigation bars.</p>
+	</div>
+	<div class="pad c bg">
+		<h3 class="fit"><a href="#form">Forms</a></h3>
+		<p>Inline, stacked, aligned, responsive forms. <br>Inputs, buttons, validation.</p>
+	</div>
+	<!--div class="pad">
+		<h3 class="fit"><a href="#action">Interactive</a></h3>
+		<p>Toggler.</p>
+	</div-->
+</div>
+
+<div class="mar pad p1"></div>
+
+<h2 id="typo"><a href="#typo">Typography</a> <a href="#top" class="text-n">&uarr;</a></h2>
+
+<p>
+Text
+<a href="#top">Link</a>
+<a>No-link</a>
+<code>Code</code>
+<kbd>Kbd</kbd>
+<q>Quote</q>
+<small>Small</small>
+<mark>Mark</mark>
+<abbr title="Abbreviation">Abbr</abbr>
+x<sub>sub</sub>
+x<sup>super</sup>
+</p>
+
+<hr>
+<blockquote>Block quote</blockquote>
+<pre>Preformatted text
+<code>Some code with <var>var</var></code></pre>
+<!--img class="fit" alt="Grey" src="https://picsum.photos/id/1021/400/200.jpg"-->
+
+<details class="hx">
+<summary>Heading</summary>
+<div class="pad bg">
+	<h1>Heading 1</h1>Some text.
+	<h2>Heading 2</h2>Some text.
+	<h3>Heading 3</h3>Some text.
+	<h4>Heading 4</h4>Some text.
+	<h5>Heading 5</h5>Some text.
+	<h6>Heading 6</h6>Some text.
+</div>
+</details>
+
+<details>
+<summary>Font</summary>
+<div class="pad bg">
+	<span class="small">Small</span>
+	<span>Regular</span>
+	<span class="h3">Larger</span>
+	<span class="h2">Large</span>
+	<span class="h1">Largest</span>
+	<br>
+	<span class="sans">Sans-serif</span>
+	<span class="serif">Serif</span>
+	<span class="mono">Mono</span>
+</div>
+</details>
+
+<details>
+<summary>Color</summary>
+<div class="pad bord fit">
+	<span class="text-e">Error</span>
+	<span class="text-w">Warning</span>
+	<span class="text-y">Success</span>
+	<span class="text-i">Info</span>
+	<span class="text-n">Note</span>
+	<br>
+	<span class="bg-e">Error</span>
+	<span class="bg-w">Warning</span>
+	<span class="bg-y">Success</span>
+	<span class="bg-i">Info</span>
+	<span class="bg-n">Note</span>
+	<br>
+	<span class="bg-e inv">Error</span>
+	<span class="bg-w inv">Warning</span>
+	<span class="bg-y inv">Success</span>
+	<span class="bg-i inv">Info</span>
+	<span class="bg-n inv">Note</span>
+</div>
+</details>
+
+<details>
+<summary>Modifiers</summary>
+	<div class="roll">
+	<table class="bord hover -bg l">
+		<!--caption>Common modifiers</caption-->
+		<tr class="bg"><th>Class<th>div<th>a<th>.row<th>table<th>form
+		<tr><th>.fit   <div class="small text-n">No (margin, padding, border, radius),<br> 1rem, smaller inner margins</div></b><td>*<td>*<td>*<td>dense<td>*
+		<tr><th>.mar   <div class="small text-n">Margin</i></div><td>*<td>*<td>*<td>*<td>*
+		<tr><th>.bord  <div class="small text-n">Border</i></div><td>*<td>*<td>*<td>*<td>*
+		<tr><th>.pad   <div class="small text-n">Padding</i></div><td>*<td>*<td>h-gap<td>line<td>*
+		<tr><th>.mid   <div class="small text-n">Centrify vertically</i></div><td>-<td>-<td>valign row, item<td>valign table, tr, td<td>-
+		<tr><th>.l     <div class="small text-n">Align</i></div><td>align<td>right margin<td>v-gap, align item<td>wide<td>*
+		<tr><th>.resp  <div class="small text-n">Responsive component</i></div><td>-<td>-<td>stack<td>stack<td class="text-n">stack
+		<tr><th>.act   <div class="small text-n">Active link, input validation</i></div><td>-<td>color<td>-<td>-<td>validation
+		<tr><th>.hover <div class="small text-n">Shade on hover</i></div><td>*<td>*<td>ul a<td>tr<td>-
+	</table>
+	</div>
+</details>
+
+<h3 id="list"><a href="#list">Lists</a> <a href="#top" class="text-n">&uarr;</a></h3>
+
+<div class="row pad -resp">
+<div>
+	<ul>
+	<li>Basic
+	<li>List
+		<ul>
+		<li>Sub
+		<li>Item
+		</ul>
+	<li>Last
+	</ul>
+</div>
+
+<div>
+	<ol>
+	<li>Ordered
+	<li>List
+		<ol>
+		<li>Sub
+		<li>Item
+		</ol>
+	<li>Final
+	</ol>
+</div>
+
+<div>
+	<dl>
+		<dt>Term
+			<dd>Definition
+		<dt>Word
+			<dd>Describe
+			<dd>Explain
+	</dl>
+</div>
+
+</div>
+
+
+
+
+
+<h2 id="table"><a href="#table">Tables</a> <a href="#top" class="text-n">&uarr;</a></h2>
+
+<div class="roll">
+<table id="tbl" class="sort pad hover l -bord -fit" data-sort="bg-w">
+	<!--caption>Sortable table</caption-->
+	<thead>
+		<tr><th>Name<th>Area<th>People
+	</thead>
+	<tbody>
+		<tr><td>Europe
+			<td>10.2
+			<td>0.7</td>
+		<tr><td>Asia
+			<td>44.6
+			<td>4.6</td>
+		<tr><td>Africa
+			<td>30.4
+			<td>1.3</td>
+		<tr><td>North America
+			<td>24.7
+			<td>0.6</td>
+		<tr><td>South America
+			<td>17.8
+			<td>0.43</td>
+		<tr><td>Australia
+			<td>8.6
+			<td>0.04</td>
+		<tr><td>Antarctica
+			<td>14
+			<td>0</td>
+	</tbody>
+	<tfoot class="bg">
+		<tr><td>&Sigma;<td>150.3<td>7.6
+	</tfoot>
+</table>
+</div>
+
+<h2 id="grid"><a href="#grid">Grids</a> <a href="#top" class="text-n">&uarr;</a></h2>
+
+<ul class="row resp bg hover -mid">
+<li><a href="#1">First</a>
+<li><a href="#2"><span>Second<br><small class="text-n">Subtitle</small></span></a>
+<li class="r"><a href="#3" class="-mid">Third</a>
+<!--li class="mid"><a href="#4">Fourth</a-->
+</ul>
+
+<div class="row resp pad mar -mid l">
+	<div class="col-0 bg-e pad -stick">Auto</div>
+	<div class="col-1 bg-w pad">One</div>
+	<div class="col-2 bg-y pad mid"><div>Two <i>middle</i></div></div>
+	<div class="col-3 bg-n pad">Three<br>text<br>text</div>
+</div>
+
+<div class="row mid -bord mar pad">
+	<div class="col-0">
+		<svg width="64" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><path fill="#999" d='M5 9C13 -1.5 -3 -1.5 5 9zM1 8.5q4 1 8 0-4 -3 -8 0z'/></svg>
+	</div>
+	<div class="col-1 -bg-n"><div>
+		<b>User Name</b>
+		<div class="small text-n"><a class="icon-pin l">&#x21c4; Europe</a> <a class="icon-time">&#8635; 25.01.2021</a></div>
+	</div></div>
+</div>
+
+<h2 id="form"><a href="#form">Forms</a> <a href="#top" class="text-n">&uarr;</a></h2>
+
+<form action="?#searcher" method="get" class="bg pad mar">
+	<input id="searcher" type="search" name="q" size="6" accesskey="4" placeholder="Search">
+	<button class="icon-find empty"><span>Search</span></button>
+	<i class="text-n"> &nbsp; This is inline form</i>
+</form>
+
+<form action="#pform" id="pform" class="fit bg pad mar">
+<p>
+	<label for="name">Name</label><br>
+	<input id="name" name="name" type="text" required placeholder="Name" size="16">
+	<small class="act text-e">Required</small>
+	<small class="act text-y">OK</small>
+</p>
+<p>
+	<label for="box">
+		<input id="box" name="box" type="checkbox" required value="1">
+		<!--input name="_box" hidden="checkbox"--><!-- send unchecked box -->
+		<span>Box</span>
+	</label>
+</p>
+
+<details>
+<summary>Input types</summary>
+
+<fieldset class="rad mar">
+	<legend>Fieldset</legend>
+	<p>
+		<label for="sel">Select</label><br>
+		<select id="sel" name="sel">
+			<option value="">None</option>
+			<option value="sun">Sun</option>
+			<option value="moon">Moon</option>
+		</select>
+	</p>
+	<p>
+		<label for="dt">Date</label><br>
+		<input id="d" name="d" type="date">
+	</p>
+	<p>
+		<label for="dt">Datetime</label><br>
+		<input id="dt" name="dt" type="datetime-local">
+	</p>
+	<p>
+		Radio
+		<br>
+		<label for="rad1">
+			<input id="rad1" name="rad" type="radio" value="red"> <span>Red</span>
+		</label>
+		<br>
+		<label for="rad2">
+			<input id="rad2" name="rad" type="radio" value="blue"> <span>Blue</span>
+		</label>
+	</p>
+	<p>
+		<label for="message">Message</label><br>
+		<textarea name="message" id="message" rows="5">Text</textarea>
+	</p>
+</fieldset>
+</details>
+
+<details>
+<summary>Buttons</summary>
+	<p>
+	<button>Button</button>
+	<button disabled>Disabled</button>
+	<a href="#pform" class="pad hover rad">Link</a>
+	Text
+	<br>
+	<button class="icon-ok bg-y">OK</button>
+	<button class="icon-warning bg-w">Warning</button>
+	<button class="icon-delete bg-e">Danger</button>
+	<button class="icon-info bg-i">Info</button>
+	<button class="icon-file bg-n">Note</button>
+	</p>
+</details>
+
+
+<p>
+	<button class="icon-send">Submit</button>
+	<i class="pad text-n">Inside <code>p</code></i>
+</p>
+</form>
+
+<form class="pad fit bg mar" id="dform" action="#dform">
+<div class="row mar pad resp">
+	<label for="nam" class="r">Name</label>
+	<div class="col-3"><input type="text" name="nam" id="nam"></div>
+</div>
+<div class="row mar pad resp">
+	<label for="ag" class="r">Age</label>
+	<div class="col-3"><input type="number" name="ag" id="ag"></div>
+</div>
+<div class="row mar pad resp">
+	<div></div>
+	<div class="col-3"><input type="submit" value="Send" class="bg-y"> <i class="pad text-n">Inside <code>.grid</code></i></div>
+</div>
+</form>
+
+<form class="pad bg mar" id="tform" action="#tform">
+<table class="-resp -fit mid">
+<tr>
+	<td class="r"><label for="nm">Name</label>
+	<td><input type="text" name="nm" id="nm" readonly placeholder="readonly">
+<tr>
+	<td class="r"><label for="age">Age</label>
+	<td><input type="number" name="age" id="age" disabled placeholder="disabled">
+<tr>
+	<td>
+	<td><label><input type="checkbox" name="agree" value="1"> Agree</label>
+<tr>
+	<td>
+	<td><input type="submit" value="Save" class="bg-n"> <i class="pad text-n">Inside <code>table</code></i>
+</table>
+</form>
+
+
+<h2 id="action"><a href="#action">Interactive</a> <a href="#top" class="text-n">&uarr;</a></h2>
+
+	<div class="mar">
+		<p>
+		<a href="#toggle" class="toggle l">Toggle</a>
+		</p>
+		<div id="toggle" class="target mar bord pad">Excluded in <i>granum-basic.css</i>:<br><pre>.bar .tag .tabs .drawer .stick .hi .pic .modal table.resp .rad </pre></div><!-- .inv -->
+	</div>
+	
+</main>
+<hr>
+		<footer class="pad c">
+			<a href="https://github.com/vvvkor">vadimkor</a> 2021
+			<p>
+				<a href="#top" accesskey="1" class="text-n">&uarr;</a>
+				<a href="#cancel" accesskey="x" class="target"></a>
+			</p>
+		</footer>
+  </body>
+</html>
