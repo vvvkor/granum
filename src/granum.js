@@ -128,8 +128,11 @@ document.addEventListener('input', e => {
     )
   
   // filter table
-  if (n.dataset.filter) document.querySelector(n.dataset.filter).querySelectorAll('tbody tr')
-    .forEach(m => m.hidden = !(' ' + m.textContent.replace(/\s+/g, ' ') + ' ').match(new RegExp(n.value, 'i')))
+  if (n.dataset.filter) {
+    const q = n.dataset.filter.split('^')
+    ;(n.closest(q[1] ? q[0] : document).querySelector(q.pop())).querySelectorAll('tbody tr')
+      .forEach(m => m.hidden = !(' ' + m.textContent.replace(/\s+/g, ' ') + ' ').match(new RegExp(n.value, 'i')))
+  }
 })
 
 document.addEventListener('keydown', e => {
