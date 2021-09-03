@@ -1,4 +1,4 @@
-/*! granum.js v1.2.70 */
+/*! granum.js v1.2.71 */
 
 (_ => {
 
@@ -72,10 +72,16 @@ document.addEventListener('click', e => {
       const c = (s.set || 'show').split(/\s+/)
       const r = 'ready' in document.body.dataset
       let on = !m[0].classList.contains(c[0]) != !r
+      const store = a.hash && m[0].classList.contains('mem')
+      if (store && !r){
+        const mem = localStorage.getItem('toggle' + a.hash)
+        if (mem != null) on = !!Number(mem)
+      }
       tgl([a], s.act || 'act', on)
       tgl([a], s.inact, !on)
       tgl(m, c, on)
       tgl(m, s.unset, !on)
+      if (store && r) localStorage.setItem('toggle' + a.hash, on ? 1 : 0)
       if (r && location.hash && c[0] == 'show' && !t) location.hash = '#cancel'
     }
     

@@ -101,7 +101,7 @@ Typography and styling is minimal and unobtrusive.
 ## Components
 
 - `.target:target` - toggle visibility
-  - `a.toggle` - multiple, nested, link state, no scroll *(requires [granum.js](granum.js))*
+  - `a.toggle(.show.mem)` - multiple, nested, link state, no scroll *(requires [granum.js](granum.js))*
 - `.modal.target:target > div` - modal dialog
   - close by `Escape` key *(requires [granum.js](granum.js))*
 - `.gallery a.pic` - image gallery *(requires [granum-gallery.js](granum-gallery.js))*
@@ -192,6 +192,8 @@ Typography and styling is minimal and unobtrusive.
     - `[data-ok]` - confirm button label (`OK` by default)
     - `[data-cancel]` - cancel button label (`Cancel` by default)
 - `a.toggle([href^="#"][data-nodes][data-set][data-unset][data-act][data-inact])` - toggle classes
+  - `.show` - initialize in active state
+  - `.mem` - remember state (only with `[href^="#"]` target selector)
   - `[data-nodes]` or link hash - target elements selector
   - `[data-set]` - additional classes of target elements in active state
   - `[data-unset]` - additional classes of target elements in inactive state
