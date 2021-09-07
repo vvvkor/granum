@@ -203,11 +203,11 @@ Typography and styling is minimal and unobtrusive.
 - `input[data-lookup][data-caption][data-goto]` - lookup input *(requires [granum-dropdown.css](granum-dropdown.css) and [granum-lookup.js](granum-lookup.js))*
   - `[data-caption]` - initial caption (optional)
   - `[data-lookup="URL#ID#NAME#INFO"]` - data source
-    - `URL` - data source URL, `{q}` is replaced by lookup string, should return JSON array
+    - `URL` - data source URL, `_Q_` is replaced by lookup string, should return JSON array
     - `ID` - item attribute with value (`id` by default)
     - `NAME` - item attribute with caption (`name` by default)
     - `INFO` - item attribute with additional info  (`info` by default)
-  - `[data-goto]` - URL of selected item, `{id}` is replaced by lookup value (optional)
+  - `[data-goto]` - URL of selected item, `_ID_` is replaced by lookup value (optional)
   - `[data-limit]` - limit number of shown items
   - `.lookup` - generated combo input
   - `.look` - generated list container

@@ -62,11 +62,11 @@ document.addEventListener('input', e => {
       else {
         const u = n.dataset.lookup.split('#')
         const v = l.value
-        fetch(u[0].replace(/\{q\}/, encodeURIComponent(l.value)))
+        fetch(u[0].replace(/_Q_/g, encodeURIComponent(l.value)))
           .then(r => r.ok ? r.json() : [])
           .then(j => {
             if (l.value === v) {
-              p.innerHTML = j.slice(0, n.dataset.limit || 5).map((d, i) => '<div data-cmd class="pad hover' + (i ? '' : ' bg') + '" data-id="' + d[u[1] || 'id'] + '"><div>' + (d[u[2] || 'name']) + '</div>' + (d[u[3] || 'info'] ? '<div class="small text-n">' + d[u[3] || 'info'] + '</div>' : '') + '</div>').join('')
+              p.innerHTML = (j.data || j).slice(0, n.dataset.limit || 5).map((d, i) => '<div data-cmd class="pad hover' + (i ? '' : ' bg') + '" data-id="' + d[u[1] || 'id'] + '"><div>' + (d[u[2] || 'name']) + '</div>' + (d[u[3] || 'info'] ? '<div class="small text-n">' + d[u[3] || 'info'] + '</div>' : '') + '</div>').join('')
               p.style.display = 'block'
             }
           })
@@ -89,7 +89,7 @@ document.addEventListener('click', e => {
   if (a) a = hi(a.parentNode.previousSibling)
   if (a) {
     e.preventDefault()
-    if (a.value) location.href = a.dataset.goto.replace(/\{id\}/, encodeURIComponent(a.value))
+    if (a.value) location.href = a.dataset.goto.replace(/_ID_/g, encodeURIComponent(a.value))
   }
 })
 
@@ -113,8 +113,10 @@ document.addEventListener('keydown', e => {
     else if (e.key == 'Enter') {
       let a = p.querySelector('div.bg')
       if (a) {
-        if (p.style.display) e.preventDefault()
-        evt(a, 'click')
+        if (p.style.display) {
+          e.preventDefault()
+          evt(a, 'click')
+        }
       }
     }
   }
