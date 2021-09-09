@@ -65,7 +65,7 @@ Typography and styling is minimal and unobtrusive.
 
 <p>
 <b>3 KB</b> minified and gzipped.<br>
-<b>10 KB</b> with icons and components.
+<b>11 KB</b> with icons and components.
 </p>
 
 <p>
@@ -422,8 +422,8 @@ x<sup>super</sup>
 	<tr><td><b>granum-gallery.js</b><br>image gallery<td>1.2k
 	<tr><td><b>granum-lookup.js <span class="small text-n">(requires granum-dropdown.css)</span></b><br>lookup input<td>3.5k
 	<tr><td><b>granum-calendar.js <span class="small text-n">(requires granum-dropdown.css)</span></b><br>date input<td>3.5k
-	<tr><td><b>granum-edit.js</b><br>visual text editor<td>1.5k
-	<tr><td><b>granum-full.css + granum-full.js</b><br>everything mentioned above<td>36k<div class="small text-n nobr">19.6k + 19.3k</div>
+	<tr><td><b>granum-edit.js</b><br>visual text editor<td>3.6k
+	<tr><td><b>granum-full.css + granum-full.js</b><br>everything mentioned above<td>36k<div class="small text-n nobr">19.6k + 21.4k</div>
 </table>
 </div>
 </details>
@@ -648,37 +648,8 @@ x<sup>super</sup>
 <summary>Editor</summary>
 <div class="bg pad">
 	<label for="msg">Formatted message</label>
-	<ul class="row hover">
-		<li><a href="#msg" class="toggle" title="HTML source">/</a>
-		<li><a href="#edit" data-cmd="bold" title="Bold"><b>B</b></a>
-		<li><a href="#edit" data-cmd="italic" title="Bold"><i>I</i></a>
-		<li><a href="#edit" data-cmd="removeformat" title="Bold">_</a>
-		<li><a href="#edit" data-cmd="insertimage" data-ask="https://" title="Image">@</a>
-		<li><a href="#edit" data-cmd="createlink" data-ask="https://" title="Link">*</a>
-		<li><a href="#edit" data-cmd="unlink" title="Unlink">&times;</a>
-		<li><a href="#edit" data-cmd="insertUnorderedList" title="List">&bull;</a>
-		<li><a href="#edit" data-cmd="insertHTML" data-arg="<br>" title="Line break">&crarr;</a>
-		<li><a href="#edit" data-cmd="formatblock" data-arg="<p>" title="Paragraph">&sect;</a>
-		<li><a href="#more-tools" class="toggle">&hellip;</a>
-	</ul>
-	<ul class="row hover target" id="more-tools">
-		<li><a href="#edit" data-cmd="justifyLeft" title="Justify left">&lt;</a>
-		<li><a href="#edit" data-cmd="justifyCenter" title="Justify center">=</a>
-		<li><a href="#edit" data-cmd="justifyRight" title="Justify right">&gt;</a>
-		<li><a href="#edit" data-cmd="insertOrderedList" title="Ordered list">1.</a>
-		<li><a href="#edit" data-cmd="indent" title="Increase indent">&raquo;</a>
-		<li><a href="#edit" data-cmd="outdent" title="Decrease indent">&laquo;</a>
-		<li><a href="#edit" data-cmd="formatblock" data-arg="<h1>" title="Head 1">h1</a>
-		<li><a href="#edit" data-cmd="formatblock" data-arg="<h2>" title="Head 2">h2</a>
-		<li><a href="#edit" data-cmd="formatblock" data-arg="<h3>" title="Head 3">h3</a>
-		<li><a href="#edit" data-cmd="formatblock" data-arg="<div>" title="Div">D</a>
-		<li><a href="#edit" data-cmd="formatblock" data-arg="<pre>" title="Preformatted">[]</a>
-		<li><a href="#edit" data-cmd="formatblock" data-arg="<blockquote>" title="Block quote">&#8220;</a>
-		<li><a href="#edit" data-cmd="inserthorizontalrule" title="Horizontal ruler">&minus;</a>
-	</ul>
-	<div><textarea name="msg" id="msg" class="target bg mono" rows="8">Formatted text&lt;br&gt;
+	<div><textarea name="msg" id="msg" class="editor -l" rows="8">Formatted text&lt;br&gt;
 		&lt;b&gt;bold&lt;/b&gt; &lt;i&gt;italic&lt;/i&gt;</textarea></div>
-	<div class="bord pad back" contenteditable id="edit" data-for="msg"></div>
 </div>
 </details>
 <p>

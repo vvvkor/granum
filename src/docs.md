@@ -232,8 +232,5 @@ Typography and styling is minimal and unobtrusive.
 
 ## WISIWYG editor *(requires [granum-edit.js](granum-edit.js))*
 
-- `[contenteditable][data-for="ID_AREA"]` - editor element
-- `a[href="#ID_EDITOR"][data-cmd]([data-arg][data-ask][title])` - command button
-  - `[data-cmd]` - command (`bold`, 'createlink', etc.)
-  - `[data-arg]` - command argument value
-  - `[data-ask]` - default value for command argument prompt
+- `textarea[id].editor(.l)` - editor with text formatting
+  - `.l` - longer toolbar
