@@ -216,6 +216,8 @@ Typography and styling is minimal and unobtrusive.
   - `.month` - generated calendar container
   - `[data-date].browse` - generated calendar controls
   - `body[data-dt]="."` - use `d.m.Y` date format (instead of default `Y-m-d`)
+- `textarea[id].editor(.l)` - WISIWYG editor with text formatting *(requires [granum-edit.js](granum-edit.js))*
+  - `.l` - extended toolbar
 - `form[data-restore]` - automatically store and restore form data *(requires [granum-restore.js](granum-restore.js))*
   - `[data-restore="IDENT"]` - optional form identifier
   - `input[data-unstore]` - exclude input from storage
@@ -230,7 +232,3 @@ Typography and styling is minimal and unobtrusive.
   - `[data-up]` - move item up
   - `[data-down]` - move item down
 
-## WISIWYG editor *(requires [granum-edit.js](granum-edit.js))*
-
-- `textarea[id].editor(.l)` - editor with text formatting
-  - `.l` - longer toolbar
