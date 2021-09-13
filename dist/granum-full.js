@@ -1,4 +1,4 @@
-/*! granum-full.js v1.2.74 */
+/*! granum-full.js v1.2.75 */
 
 ;(_ => {
 
@@ -628,7 +628,7 @@ document.addEventListener('DOMContentLoaded', e => {
     const d = i('ul', b.slice(0, n.classList.contains('l') ? 100 : 13).map((c, k) => i('li', i('a', c[0], {href: '#' + id, 'data-cmd': c[1], title: c[1] + ' ' + (c[2] || '').replace(/>.*$/, '>'), 'data-arg': (c[2] || ''), 'data-ask': c[3] || ''}), k ? 'hide' : '')), 'bg row hover')
     n.parentNode.insertBefore(d, n)
     n.parentNode.insertBefore(i('div', '', {class: 'hide bord pad back', contenteditable: '', id, 'data-for': n.id}), n.nextSibling)
-    n.classList.add('bg', 'mono')
+    // n.classList.add('bg', 'mono')
     if (n.classList.contains('act')) x(n, true)
   })
   // fill contenteditable from textarea
