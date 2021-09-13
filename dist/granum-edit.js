@@ -1,34 +1,6 @@
-/*! granum-edit.js v1.2.73 */
+/*! granum-edit.js v1.2.74 */
 
 (_ => {
-
-const b = [ // label, cmd, title, arg, ask
-  ['<b>B</b>', 'bold', 'Bold'],
-  ['<i>I</i>', 'italic', 'Italic'],
-  ['<s>S</s>', 'strikeThrough', 'Strike through'],
-  ['_', 'removeformat', 'Remove Format'],
-  ['&hearts;', 'insertimage', 'Image', '', 'https://'], // &starf;
-  ['&nearr;', 'createlink', 'Link', '', 'https://'], // &nearr; | &curarr;
-  ['&times;', 'unlink', 'Unlink'],
-  ['h1', 'formatblock', 'Head 1', '<h1>'],
-  ['h2', 'formatblock', 'Head 2', '<h2>'],
-  ['h3', 'formatblock', 'Head 3', '<h3>'],
-  ['&sect;', 'formatblock', 'Paragraph', '<p>'],
-  ['&bull;', 'insertUnorderedList', 'List'],
-  //
-  ['{}', 'insertHTML', 'Code', '<code>*</code>'],
-  ['&lt;', 'justifyLeft', 'Justify left'],
-  ['=', 'justifyCenter', 'Justify center'],
-  ['&gt;', 'justifyRight', 'Justify right'],
-  ['1.', 'insertOrderedList', 'Ordered list'],
-  ['&raquo;', 'indent', 'Increase indent'],
-  ['&laquo;', 'outdent', 'Decrease indent'],
-  ['D', 'formatblock', 'Div', '<div>'],
-  ['[]', 'formatblock', 'Preformatted', '<pre>'],
-  ['&#8220;', 'formatblock', 'Block quote', '<blockquote>'],
-  // ['&crarr;', 'insertHTML', 'Line break', '<br>'],
-  ['&minus;', 'inserthorizontalrule', 'Horizontal ruler']
-]
 
 const set = (d, def) => d.querySelectorAll('[contenteditable][data-for]').forEach(n => {
   const area = document.getElementById(n.dataset.for)
@@ -42,18 +14,50 @@ const i = (t, s, a={}) => {
     : Object.entries(a).forEach(a => d.setAttribute(...a))
   return d
 }
+const x = (n, w) => {
+  n.classList[w ? 'add' : 'remove']('hide')
+  n.nextSibling.classList[w ? 'remove' : 'add']('hide')
+  n.previousSibling.querySelectorAll('li+li').forEach(a => a.classList[w ? 'remove' : 'add']('hide'))
+}
+
+const b = [ // label, cmd, arg, ask
+  ['/', 'source'],
+  ['<b>B</b>', 'bold'],
+  ['<i>I</i>', 'italic'],
+  ['<s>S</s>', 'strikeThrough'],
+  ['_', 'removeFormat'],
+  ['&hearts;', 'insertImage', '', 'https://'], // &starf;
+  ['&nearr;', 'createLink', '', 'https://'], // &nearr; | &curarr;
+  ['&times;', 'unlink'],
+  ['h1', 'formatBlock', '<h1>'],
+  ['h2', 'formatBlock', '<h2>'],
+  ['h3', 'formatBlock', '<h3>'],
+  ['&sect;', 'formatBlock', '<p>'],
+  ['&bull;', 'insertUnorderedList'],
+  //
+  ['{}', 'insertHTML', '<code>*</code>'],
+  ['&lt;', 'justifyLeft'],
+  ['=', 'justifyCenter'],
+  ['&gt;', 'justifyRight'],
+  ['1.', 'insertOrderedList'],
+  ['&raquo;', 'indent'],
+  ['&laquo;', 'outdent'],
+  ['D', 'formatBlock', '<div>'],
+  ['[]', 'formatBlock', '<pre>'],
+  ['&#8220;', 'formatBlock', '<blockquote>'],
+  // ['&crarr;', 'insertHTML', 'Line break', '<br>'],
+  ['&minus;', 'insertHorizontalRule']
+]
 
 document.addEventListener('DOMContentLoaded', e => {
   // build interface
   document.querySelectorAll('textarea.editor').forEach(n => {
     const id = n.id + '-editor'
-    const d = i('ul', [
-      i('li', i('a', '/', {href: '#' + n.id, class: 'toggle', title: 'HTML source'})),
-      ...b.slice(0, n.classList.contains('l') ? 100 : 12).map(c => i('li', i('a', c[0], {href: '#' + id, 'data-cmd': c[1], title: c[2] || c[1], 'data-arg': c[3] || '', 'data-ask': c[4] || ''})))
-    ], 'bg row hover')
+    const d = i('ul', b.slice(0, n.classList.contains('l') ? 100 : 13).map((c, k) => i('li', i('a', c[0], {href: '#' + id, 'data-cmd': c[1], title: c[1] + ' ' + (c[2] || '').replace(/>.*$/, '>'), 'data-arg': (c[2] || ''), 'data-ask': c[3] || ''}), k ? 'hide' : '')), 'bg row hover')
     n.parentNode.insertBefore(d, n)
-    n.parentNode.insertBefore(i('div', '', {class: 'bord pad back', contenteditable: '', id, 'data-for': n.id}), n.nextSibling)
-    n.classList.add('target', 'bg', 'mono')
+    n.parentNode.insertBefore(i('div', '', {class: 'hide bord pad back', contenteditable: '', id, 'data-for': n.id}), n.nextSibling)
+    n.classList.add('bg', 'mono')
+    if (n.classList.contains('act')) x(n, true)
   })
   // fill contenteditable from textarea
   set(document, false)
@@ -63,16 +67,17 @@ document.addEventListener('DOMContentLoaded', e => {
 document.addEventListener('reset', e => e.defaultPrevented ? null : set(e.target, true))
 
 document.addEventListener('click', e => {
-  const a = e.target.closest('a')
+  const a = e.target.closest('a[data-cmd]')
 
   // contenteditable command
-  if (a && a.hash && a.dataset.cmd) {
-    const n = document.getElementById(a.hash.slice(1))
-    if (n) {
-      e.preventDefault()
-      const arg = a.dataset.ask // ('ask' in a.dataset)
+  const n = a ? document.getElementById(a.hash.slice(1)) : null
+  if (n) {
+    e.preventDefault()
+    if (a.dataset.cmd == 'source') x(n.previousSibling, n.classList.contains('hide'))
+    else {
+      const arg = a.dataset.ask
         ? prompt(a.title || a.dataset.cmd, a.dataset.ask)
-        : (a.dataset.arg // 'arg' in a.dataset
+        : (a.dataset.arg
           ? a.dataset.arg.replace('*', getSelection().toString())
           : '')
       if (arg != null) {
