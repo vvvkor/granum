@@ -1,4 +1,4 @@
-/*! granum-util.js v1.2.75 */
+/*! granum-util.js v1.2.76 */
 
 // find node
 const q = (q, n) => (n || document).querySelector(q)

@@ -1,4 +1,4 @@
-/*! granum-basic.css v1.2.75 */
+/*! granum-basic.css v1.2.76 */
 
 /* excluded in granum-basic.css: .bar .tag .tabs .drawer .stick .hi .pic .modal table.resp .rad (.inv) */
 
@@ -139,7 +139,7 @@ a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tr:hover
 
 /* modifiers */
 .target, :target {scroll-margin-top:3rem;}
-.target:not(:target):not(.show), .hide {display:none;}
+.target:not(:target):not(.show), .hide[class][class] {display:none;}
 .nobr {white-space:nowrap;}
 .center {margin-left:auto;margin-right:auto;}
 .l {text-align:left;}

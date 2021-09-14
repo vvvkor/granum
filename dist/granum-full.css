@@ -1,4 +1,4 @@
-/*! granum-full.css v1.2.75 */
+/*! granum-full.css v1.2.76 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -186,7 +186,7 @@ a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tr:hover
 
 /* modifiers */
 .target, :target {scroll-margin-top:3rem;}
-.target:not(:target):not(.show), .hide[class] {display:none;}
+.target:not(:target):not(.show), .hide[class][class] {display:none;}
 .nobr {white-space:nowrap;}
 .center {margin-left:auto;margin-right:auto;}
 .l {text-align:left;}
