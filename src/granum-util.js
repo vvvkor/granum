@@ -1,3 +1,5 @@
+const typeOf = v => Object.prototype.toString.call(v).slice(8, -1).toLowerCase()
+
 // find node
 const q = (q, n) => (n || document).querySelector(q)
 
@@ -29,8 +31,41 @@ const h = (t, q, f, c=false) => {
   }, c)
 }
 
-const d = (v, l=10, f='-') => (new Date((v || new Date()) - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, l).replace('T', ' ')
+// local date format
+const d = (v, l=10, f='-') => (new Date((v || new Date()) - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, ({d:10,h:13,m:16,s:19,ms:23})[l] || l).replace('T', ' ')
 .replace(f == '.' ? /(\d+)-(\d+)-(\d+)(.*)/ : '!', '$3.$2.$1$4') 
+
+// *force interval* between subsequent calls; skip if busy; call last
+const throttle = (f, ms=1000) => {
+  let p = false, a
+  return function ff() {
+    if (p) a = [this, arguments] // 2
+    else {
+      f.apply(this, arguments) // 1
+      a = null
+      p = true
+      setTimeout(() => { // 3
+        p = false
+        if (a) ff.apply(...a)
+      }, ms)
+    }
+  }
+}
+
+// *delay* before each call
+const delay = (f, ms=1000, skip) => {
+  let p = null
+  return function () {
+    if (skip && p) clearTimeout(p)
+    p = setTimeout(() => {
+      f.apply(this, arguments)
+      p = null
+    }, ms)
+  }
+}
+
+// call *only last* after pause in subsequent events
+const debounce = (f, ms=1000) => delay(f, ms, true)
 
 // log
 const l = (...a) => console.log(...a)
