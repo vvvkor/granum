@@ -13,27 +13,28 @@
 		<script defer>
 			window.addEventListener('load', ev => {
 				console.log('test granum-util.js...')
-				l('[l] log');
-				l('[typeOf]', [undefined, null, true, 1, 's', [0, 1], {a: 1}, f => f, /regexp/, new Date(), new Set([0, 1]), new Map([['a', 1], ['b', 2]])]
-					.map(x => [x, typeOf(x)]))
-					//.forEach(x => l('[typeOf] '+x+': ' + typeOf(x)))
-				l('[d] now:', d(0, 'm', '.'))
-				l('[q] first link: ', q('a'))
-				l('[qq] divs with shadow:', qq('main div.shade'))
-				document.body.append(i('div', 'Inserted', 'hide inserted-div'))
-				l('[i] inserted node: ', q('.inserted-div'))
-				//h('keydown', 0, e => l('keydown', e.keyCode, e.key))
-				l('[e][h] press key to test custom events');
-				l('[h] click inside DIV to test custom handler with event delegation');
-				h('keydown', 0, x => e(0, 'granum-test', {info: x.key}))
-				h('granum-test', 0, e => l('custom event: ', e.detail))
-				h('click', 'div', e => l('event receiver (DIV) and target: ', e.recv, e.target))
-				lt = throttle(l)
-				ld = delay(l)
-				lb = debounce(l)
-				h('keydown', 0, x => lt('[throttle] key: ' + x.key))
-				h('keydown', 0, x => ld('[delay] key: ' + x.key))
-				h('keydown', 0, x => lb('[debounce] key: ' + x.key))
+				log('[log] log');
+				log('[typeOf]', [undefined, null, true, 1, 's', [0, 1], {a: 1}, f => f, /regexp/, new Date(), new Set([0, 1]), new Map([['a', 1], ['b', 2]])]
+					.map(v => [v, typeOf(v)]))
+				log('[fmtDt] now:', fmtDt(0, 'm', '.'))
+				log('[q] first link: ', q('a'))
+				log('[qq] divs with shadow:', qq('main div.shade'))
+				document.body.append(cre('div', ['<b>Inserted<b>'], 'hide inserted-div'))
+				document.body.append(cre('div', '<b>Inserted</b>', 'hide inserted-div-html'))
+				log('[cre] inserted node: ', q('.inserted-div'))
+				log('[cre] inserted node html: ', q('.inserted-div-html'))
+				//handle('keydown', 0, e => log('keydown', e.keyCode, e.key))
+				log('[emit][handle] press key to test custom events');
+				log('[handle] click inside DIV to test custom handler with event delegation');
+				handle('keydown', 0, e => emit(0, 'granum-test', {info: e.key}))
+				handle('granum-test', 0, e => log('catched custom event: ', e.detail))
+				handle('click', 'div', e => log('event receiver (DIV) and target: ', e.recv, e.target))
+				lt = throttle(log)
+				ld = delay(log)
+				lb = debounce(log)
+				handle('keydown', 0, e => lt('[throttle] key: ' + e.key))
+				handle('keydown', 0, e => ld('[delay] key: ' + e.key))
+				handle('keydown', 0, e => lb('[debounce] key: ' + e.key))
 			})
 		</script>
 	</head>

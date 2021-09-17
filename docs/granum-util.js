@@ -1,32 +1,36 @@
-/*! granum-util.js v1.2.77 */
+/*! granum-util.js v1.2.78 */
+
+/*
+;(_ => {
+*/
 
 const typeOf = v => Object.prototype.toString.call(v).slice(8, -1).toLowerCase()
 
-// find node
+// find element
 const q = (q, n) => (n || document).querySelector(q)
 
-// find nodes
+// find elements
 const qq = (q, n) => (n || document).querySelectorAll(q)
 
-// create node
-const i = (t, s, a={}) => {
+// create element
+const cre = (t, s, a={}) => {
   const d = document.createElement(t)
-  Array.isArray(s) ? d.append(...s) : d.append(s)
+  Array.isArray(s) ? d.append(...s) : (s.nodeType ? d.append(s) : d.innerHTML = s) 
   ;(typeof(a) === 'string')
     ? d.className = a
     : Object.entries(a).forEach(a => d.setAttribute(...a))
   return d
 }
 
-// emit event
-const e = (n, t, detail) => {
+// emit custom event
+const emit = (n, t, detail) => {
   return (n || document).dispatchEvent(
     new CustomEvent(t, {bubbles: true, cancelable: true, detail})
   )
 }
 
-// event listener delegation
-const h = (t, q, f, c=false) => {
+// event delegation listener
+const handle = (t, q, f, c=false) => {
   return (q ? document : window).addEventListener(t, e => {
     e.recv = q ? e.target.closest(q) : document
     f(e)
@@ -34,7 +38,7 @@ const h = (t, q, f, c=false) => {
 }
 
 // local date format
-const d = (v, l=10, f='-') => (new Date((v || new Date()) - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, ({d:10,h:13,m:16,s:19,ms:23})[l] || l).replace('T', ' ')
+const fmtDt = (v, l=10, f='-') => (new Date((v || new Date()) - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, ({d:10,h:13,m:16,s:19,ms:23})[l] || l).replace('T', ' ')
 .replace(f == '.' ? /(\d+)-(\d+)-(\d+)(.*)/ : '!', '$3.$2.$1$4') 
 
 // *force interval* between subsequent calls; skip if busy; call last
@@ -70,4 +74,22 @@ const delay = (f, ms=1000, skip) => {
 const debounce = (f, ms=1000) => delay(f, ms, true)
 
 // log
-const l = (...a) => console.log(...a)
+const log = (...a) => console.log(...a)
+
+/*
+window.Util = {
+  typeOf,
+  q,
+  qq,
+  cre,
+  emit,
+  handle,
+  fmtDt,
+  throttle,
+  delay,
+  debounce,
+  log
+}
+
+})();
+*/
