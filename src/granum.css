@@ -162,12 +162,12 @@ a.pic:not(.modal), a.pic:not(.modal) img {background:none !important;}
 pre code {background:none;}
 .inv {background-color:#333;color:#fff;}
 button, [type="submit"], a.inv {background-color:#05b;color:#fff;}
-.text:not(.oi) {color:#000;}
-.text-n:not(.oi) {color:#999;}
-.text-i:not(.oi) {color:#08a;}
-.text-y:not(.oi) {color:#181;}
-.text-w:not(.oi) {color:#d70;}
-.text-e:not(.oi) {color:#c00;}
+.text:not(.spot) {color:#000;}
+.text-n:not(.spot) {color:#999;}
+.text-i:not(.spot) {color:#08a;}
+.text-y:not(.spot) {color:#181;}
+.text-w:not(.spot) {color:#d70;}
+.text-e:not(.spot) {color:#c00;}
 .bg-n, .bar {background-color:#eee;}
 .bg-i {background-color:#bef;}
 .bg-y {background-color:#cec;}

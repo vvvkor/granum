@@ -1,5 +1,5 @@
 **Granum**  
-v1.2.79
+v1.2.80
 
 # Documentation
 
@@ -130,6 +130,7 @@ Typography and styling is minimal and unobtrusive.
 
 - `.back` - base background (white)
 - `.bg` - light background (transparent grey)
+- `.text` - base text color (black)
 - `.text-e`, `.bg-e` - danger or error (red)
 - `.text-w`, `.bg-w` - warning (brown or yellow)
 - `.text-y`, `.bg-y` - success or confirm (green)
@@ -147,7 +148,8 @@ Typography and styling is minimal and unobtrusive.
 - `.small` - small font
 - `.nobr` - no text wrapping
 - `a.l` - margin after link
-- `.icon-X.empty` - hide text near icon
+- `.icon-X.empty` - hide text near icon (hide all child nodes)
+- `.icon-X.text-Y.spot` - apply color only to icon, not to text
 
 ### Block modifiers
 
