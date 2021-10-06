@@ -1,8 +1,8 @@
-/*! granum-dropdown.css v1.2.80 */
+/*! granum-dropdown.css v1.2.81 */
 
 .pop {display:inline-block;}
 .pop, .drop li {position:relative;}
-.pop>:last-child, .drop ul {z-index:50;position:absolute;left:0;top:100%;box-shadow:0 .1em .8em rgba(0,0,0,.2);min-width:12em;scroll-margin-top:3rem;box-sizing:border-box;}
+.pop>:last-child, .drop ul {z-index:50;position:absolute;left:0;top:100%;box-shadow:0 .1em .8em #0003;min-width:12em;scroll-margin-top:3rem;box-sizing:border-box;}
 .drop, .drop ul {list-style:none;margin:0;padding:0;}
 .pop>:last-child:not(.inv):not([class*="bg-"]), .drop ul {background:#fff;}
 .pop:not(:hover)>:last-child:not(:target), .drop li:not(:hover)>ul:not(:target) {display:none;}

@@ -48,7 +48,7 @@ pre{overflow:auto;max-height:80vh;}
 	code, kbd {padding:.2em .5em;}
 abbr {border-bottom:thin dotted;text-decoration:none;}
 sub, sup {line-height:0em;}
-.bord, kbd, fieldset, hr{border:thin solid rgba(0,0,0,.16);}
+.bord, kbd, fieldset, hr{border:thin solid #0002;}
 hr{border-width:thin 0 0 0;}
 
 /* links */
@@ -73,9 +73,9 @@ table.bord {border:none;}
 table.l {width:100%;}
 table.mid tr>*, tr>.mid, tr.mid>* {vertical-align:middle;}
 /* full borders */
-table.bord>*>tr>* {border:thin solid rgba(0,0,0,.16);}
+table.bord>*>tr>* {border:thin solid #0002;}
 /* horizontal borders */
-table.pad>*>tr>* {border-bottom:thin solid rgba(0,0,0,.16);}
+table.pad>*>tr>* {border-bottom:thin solid #0002;}
 table.pad>*:last-child>tr:last-child>* {border-bottom:none;}
 
 /* form */
@@ -86,13 +86,13 @@ button, [type="submit"] {padding:.5em 1em;margin:.2em 0;border-color:transparent
 button:not([disabled]), [type="submit"]:not([disabled]), summary, [data-cmd] {cursor:pointer;}
 form>button, form>[type="submit"] {padding:.2em .5em;margin:0;}
 button:hover:not([disabled]), [type="submit"]:hover:not([disabled]),
-button:focus, input:focus, select:focus, textarea:focus, [contenteditable]:focus, summary:focus {box-shadow:0 0 0 .15em rgba(0,0,0,.1);outline:none;}
+button:focus, input:focus, select:focus, textarea:focus, [contenteditable]:focus, summary:focus {box-shadow:0 0 0 .15em #aaa4;outline:none;}
 button[disabled], [type="submit"][disabled] {opacity:.5;}
 [disabled] {cursor:not-allowed;}
 input[readonly] {background-color:#eee;}
 [name]:invalid, [name]:invalid+.pop>input {border-color:#c00;}
 	[type="checkbox"]:invalid+span, [type="radio"]:invalid+span {color:#c00;}
-	[name]:invalid:focus, [name]:invalid+.pop>input:focus {box-shadow:0 0 0 .15em rgba(255,100,100,.3);}
+	[name]:invalid:focus, [name]:invalid+.pop>input:focus {box-shadow:0 0 0 .15em #f665;}
 	:valid~.act.text-e, :invalid~.act.text-y {display:none;}
 
 /* grid */
@@ -112,7 +112,7 @@ ul.row>*, .col-0[class] {flex:0 1 auto;/*for ie*/ /*flex:initial;*/}
 .row>.mid, .row>li>.mid:not(ul) {align-self:center;}
 
 /* color */
-.bg, blockquote, pre, code {background-color:rgba(0,0,0,.05);}
+.bg, blockquote, pre, code {background-color:#9992;}
 pre code {background:none;}
 button, [type="submit"], a.inv, .inv {background-color:#05b;color:#fff;}
 .text-n[class] {color:#999;}
@@ -122,18 +122,18 @@ button, [type="submit"], a.inv, .inv {background-color:#05b;color:#fff;}
 .text-e[class] {color:#c00;}
 .bg-n {background-color:#eee;}
 .bg-i {background-color:#bef;}
-.bg-y {background-color:#cec;}
-.bg-w, mark {background-color:#ffe699;}
-.bg-e {background-color:#fcc;}
+.bg-y {background-color:#beb;}
+.bg-w, mark {background-color:#fd9;}
+.bg-e {background-color:#fbb;}
 button.bg-n, [type="submit"].bg-n, .inv.bg-n {background-color:#999;}
 button.bg-i, [type="submit"].bg-i, .inv.bg-i {background-color:#08a;}
 button.bg-y, [type="submit"].bg-y, .inv.bg-y {background-color:#181;}
-button.bg-w, [type="submit"].bg-w, .inv.bg-w {background-color:#d70;}
+button.bg-w, [type="submit"].bg-w, .inv.bg-w {background-color:#d80;}
 button.bg-e, [type="submit"].bg-e, .inv.bg-e {background-color:#c00;}
 
 /* highlight */
-a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tr:hover>*, tr>*.hover:hover {box-shadow:inset 0 0 0 200vh rgba(0,0,0,.03);}
-.shade {box-shadow:0 .1em .8em 0em rgba(0,0,0,.2);}
+a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tr:hover>*, tr>*.hover:hover {box-shadow:inset 0 0 0 200vh #9991;}
+.shade {box-shadow:0 .1em .8em 0em #0003;}
 
 /* modifiers */
 .target, :target {scroll-margin-top:3rem;}

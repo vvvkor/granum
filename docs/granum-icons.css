@@ -1,4 +1,4 @@
-/*! granum-icons.css v1.2.80 */
+/*! granum-icons.css v1.2.81 */
 
 /*
 .test [class*="icon-"] {position:relative;}
@@ -46,11 +46,11 @@
 [class*="icon-"]:before {filter: invert(.6);} /* #000 -> #999 */
 button[class*="icon-"]:before, button [class*="icon-"]:before, .inv:before {filter: brightness(0) invert(1);}
 [class*="icon-"].text:before {filter: invert(.2);}
-[class*="icon-"].text-n:before {}
-[class*="icon-"].text-i:before {filter: invert(.32) sepia(1) saturate(10) hue-rotate(160deg);}
+[class*="icon-"].text-n:before {filter: invert(.6);}
+[class*="icon-"].text-i:before {filter: invert(.32) sepia(1) saturate(9) hue-rotate(160deg);}
 [class*="icon-"].text-y:before {filter: invert(.3) sepia(1) saturate(8) hue-rotate(90deg);}
-[class*="icon-"].text-w:before {filter: invert(.4) sepia(1) saturate(8) hue-rotate(0deg);}
-[class*="icon-"].text-e:before {filter: invert(.1) sepia(1) saturate(60) hue-rotate(20deg);}
+[class*="icon-"].text-w:before {filter: invert(.43) sepia(1) saturate(8) hue-rotate(11deg);}
+[class*="icon-"].text-e:before {filter: invert(.1) sepia(1) saturate(55) hue-rotate(15deg);}
 
 .icon-menu:before {
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7'%3E%3Cpath d='M.5 1h6v1h-6zm0 2h6v1h-6zm0 2h6v1h-6z'/%3E%3C/svg%3E");
