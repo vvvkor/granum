@@ -1,5 +1,5 @@
 **Granum**  
-v1.2.81
+v1.2.82
 
 # Documentation
 
@@ -101,7 +101,10 @@ Typography and styling is minimal and unobtrusive.
 ## Components
 
 - `.target:target` - toggle visibility
-  - `a.toggle(.show.mem)` - multiple, nested, link state, no scroll *(requires [granum.js](granum.js))*
+  - `a.toggle(.show.mem.resp)` - multiple, nested, link state, no scroll *(requires [granum.js](granum.js))*
+    - `.show` - show target element by default
+    - `.mem` - remember state
+    - `.resp` - scroll target element into viewport
 - `.modal.target:target > div` - modal dialog
   - close by `Escape` key *(requires [granum.js](granum.js))*
 - `.gallery a.pic` - image gallery *(requires [granum-gallery.js](granum-gallery.js))*

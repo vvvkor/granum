@@ -67,6 +67,7 @@ document.addEventListener('click', e => {
       if (t) t.querySelectorAll('a[href^="#"].act').forEach(m => m.click())
       const s = a.dataset
       const m = document.querySelectorAll(s.nodes || a.hash)
+      if (!m[0]) return;
       const c = (s.set || 'show').split(/\s+/)
       const r = 'ready' in document.body.dataset
       let on = !m[0].classList.contains(c[0]) != !r
@@ -81,6 +82,7 @@ document.addEventListener('click', e => {
       tgl(m, s.unset, !on)
       if (store && r) localStorage.setItem('toggle' + a.hash, on ? 1 : 0)
       if (r && location.hash && c[0] == 'show' && !t) location.hash = '#cancel'
+      if (r && on && a.classList.contains('resp')) m[0].scrollIntoView(true)
     }
     
     // items
