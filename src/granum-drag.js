@@ -10,7 +10,7 @@
       p = e.target.closest('.drag-container') || document
       //dx = e.pageX
       //dy = e.pageY
-      d.classList.add('bg-w')
+      d.classList.add(...(p.dataset.act || 'act').split(' '))
       //d.style.pointerEvents = 'none'
       //console.log({start: {id: d.id, dx, dy}})
       // save list of items in container
@@ -50,7 +50,7 @@
     if (d) {
       e.preventDefault()
       //console.log({end: d.id})
-      d.classList.remove('bg-w')
+      d.classList.remove(...(p.dataset.act || 'act').split(' '))
       //d.style.transform = ''
       //d.style.position = ''
       d.style.pointerEvents = ''
