@@ -17,6 +17,7 @@
     <script defer src="granum-lookup.js"></script>
     <script defer src="granum-calendar.js"></script>
     <script defer src="granum-edit.js"></script>
+    <script defer src="granum-drag.js"></script>
     <script>
 		document.addEventListener('granum-start', e => console.log('granum start', e))
 		document.addEventListener('granum-ready', e => console.log('granum ready', e))
@@ -914,6 +915,19 @@ x<sup>super</sup>
 			<a data-resp="tag inv rad bg-i, tag rad bg-n text-n, tag rad bg-n text-n">Large</a>
 		</div>
 	</div>
+	
+	<h3 id="drag"><a href="#drag">Drag</a> <a href="#top" class="fit icon-up"></a></h3>
+	
+	<ul class="drag-container">
+		<li class="drag-item" id="drag1"><span class="icon-more drag-handle"></span>One
+		<li class="drag-item" id="drag2"><span class="icon-more drag-handle"></span>Two
+		<ul class="-drag-container">
+			<li class="drag-item" id="drag21"><span class="icon-more drag-handle"></span>Uno
+			<li class="drag-item" id="drag22"><span class="icon-more drag-handle"></span>Dos
+			<li class="drag-item" id="drag23"><span class="icon-more drag-handle"></span>Tres
+		</ul>
+		<li class="drag-item" id="drag3"><span class="icon-more drag-handle"></span>Three<!--br>333<br>3333<br-->
+	</ul>
 
 
 <h2 id="icon"><a href="#icon">Icons</a> <a href="#top" class="fit icon-up"></a></h2>
