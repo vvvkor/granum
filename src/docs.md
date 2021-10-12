@@ -237,4 +237,10 @@ Typography and styling is minimal and unobtrusive.
     - `[data-keep]` - keep last item
   - `[data-up]` - move item up
   - `[data-down]` - move item down
-
+- `.drag-container[data-act][data-control] .drag-item (.drag-handle) ~ (.drag-control)` - drag sort *(requires [granum-drag.js](granum-drag.js))*
+  - `.drag-container` - container for sortable items
+    - `[data-act]` - classes for corrently dragged item (`act` by default)
+    - `[data-control]` - classes for container after dragging is performed (`act` by default)
+  - `.drag-item` - sortable items
+  - `.drag-handle` - drag handle for item (whole item by default)
+  - `.drag-control` - appears after dragging is performed (optional)

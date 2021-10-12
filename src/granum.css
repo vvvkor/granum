@@ -182,7 +182,12 @@ button.bg-e, [type="submit"].bg-e, .inv.bg-e {background-color:#c00;}
 /* highlight */
 a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tbody tr:hover>*, tr>.hover:hover, .pop:hover>a.hover {box-shadow:inset 0 0 0 200vh #9991;}
 .shade, .modal>div {box-shadow:0 .1em .8em 0em #0003;}
+
+/* drag */
+.drag-container {touch-action:none;}
 .drag-handle {cursor:move;}
+.drag-container:not(.act) .drag-control {display:none;}
+
 
 /* modifiers */
 .target, :target {scroll-margin-top:3rem;}
