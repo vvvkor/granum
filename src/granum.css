@@ -186,7 +186,6 @@ a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tbody tr
 /* drag */
 .drag-container {touch-action:none;}
 .drag-handle {cursor:move;}
-.drag-container:not(.act) .drag-control {display:none;}
 
 
 /* modifiers */

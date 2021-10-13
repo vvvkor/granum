@@ -63,7 +63,7 @@ icons, status colors, and even more.
 Typography and styling is minimal and unobtrusive.
 -->
 
-<p class="text-n">v1.2.83</p>
+<p class="text-n">v1.2.85</p>
 
 <p>
 <b>3 KB</b> minified and gzipped.<br>
@@ -921,25 +921,22 @@ x<sup>super</sup>
 	<h3 id="drag"><a href="#drag">Drag</a> <a href="#top" class="fit icon-up"></a></h3>
 
 	<div class="row resp pad l">
-		<div class="drag-container pad bord rad" data-act="bg-w text-e" data-control="act shade">
-			<form method="get" action="#dragform" id="dragform">
+		<form method="get" action="#dragform" id="dragform" class="pad bord rad" data-drag="bg-w text-e" data-dragged="act shade">
 			<ul class="fit">
-				<li class="drag-item" id="drag1"><span class="icon-more drag-handle"></span>One<input type="hidden" name="sort[]" value="ONE">
-				<li class="drag-item" id="drag2"><span class="icon-more drag-handle"></span>Two<input type="hidden" name="sort[]" value="TWO">
-				<li class="drag-item" id="drag3"><span class="icon-more -drag-handle"></span>::Three::<input type="hidden" name="sort[]" value="THREE">
+				<li class="drag-item" id="drag1"><span class="-pad icon-more drag-handle"></span>One<input type="hidden" name="sort[]" value="ONE">
+				<li class="drag-item" id="drag2"><span class="-pad icon-more drag-handle"></span>Two<input type="hidden" name="sort[]" value="TWO">
+				<li class="drag-item" id="drag3"><span class="-pad icon-more -drag-handle"></span>::Three::<input type="hidden" name="sort[]" value="THREE">
 			</ul>
-			<div class="drag-control r"><input type="submit" value="Apply"></div>
-			</form>
-		</div>
-		<div class="drag-container pad bord rad" data-act="bg-i text-n" data-control="act shade">
-			<form method="get" action="#dragformt" id="dragformt">
-			<table class="bord">
-				<tr class="drag-item" id="drag1"><td class="icon-more drag-handle"><td>Alpha<input type="hidden" name="sort[]" value="ALPHA">
-				<tr class="drag-item" id="drag2"><td class="icon-more drag-handle"><td>Beta<input type="hidden" name="sort[]" value="BETA">
-				<tr class="drag-item" id="drag3"><td class="icon-more -drag-handle"><td>::Gamma::<input type="hidden" name="sort[]" value="GAMMA">
+			<div class="hide drag-control r"><input type="submit" value="Apply"></div>
+		</form>
+		<form method="get" action="#dragformt" id="dragformt" class="pad bord rad" data-drag="bg-i text-n" data-dragged="act shade">
+			<table class="bord mid">
+				<tr class="drag-item" id="drag1"><td class="-pad icon-grid drag-handle"><td>Alpha<input type="hidden" name="sort[]" value="ALPHA">
+				<tr class="drag-item" id="drag2"><td class="-pad icon-grid drag-handle"><td>Beta<input type="hidden" name="sort[]" value="BETA">
+				<tr class="drag-item" id="drag3"><td class="-pad icon-grid -drag-handle"><td>::Gamma::<input type="hidden" name="sort[]" value="GAMMA">
 			</table>
-			<div class="drag-control r"><input type="submit" value="Apply"></div>
-			</form>
+			<div class="hide drag-control r"><input type="submit" value="Apply"></div>
+		</form>
 		</div>
 	</div>
 
