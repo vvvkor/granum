@@ -1,4 +1,4 @@
-/*! granum.js v1.2.85 */
+/*! granum.js v1.2.86 */
 
 (_ => {
 
@@ -140,7 +140,7 @@ document.addEventListener('input', e => {
   // filter table
   if (n.dataset.filter) {
     const q = n.dataset.filter.split('^')
-    ;(n.closest(q[1] ? q[0] : document).querySelector(q.pop())).querySelectorAll('tbody tr')
+    ;((q[1] ? n.closest(q[0]) : document).querySelector(q.pop())).querySelectorAll('tbody tr')
       .forEach(m => m.hidden = !(' ' + m.textContent.replace(/\s+/g, ' ') + ' ').match(new RegExp(n.value, 'i')))
   }
 })

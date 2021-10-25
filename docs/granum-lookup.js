@@ -1,4 +1,4 @@
-/*! granum-lookup.js v1.2.85 */
+/*! granum-lookup.js v1.2.86 */
 
 (_ => {
 
