@@ -107,7 +107,7 @@ document.addEventListener('keydown', e => {
             ? (a.previousSibling || p.lastChild)
             : (a.nextSibling || p.firstChild))
           : p.firstChild
-        p.querySelectorAll('div').forEach(m => m.classList[m == a ? 'add' : 'remove']('bg'))
+        p.querySelectorAll('div').forEach(m => m.classList.toggle('bg', m == a))
       }
     }
     else if (e.key == 'Enter') {

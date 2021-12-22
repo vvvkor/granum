@@ -1,10 +1,10 @@
-/*! granum.js v1.2.86 */
+/*! granum.js v1.2.87 */
 
 (_ => {
 
 const tgl = (m, c, on) => {
   c = c && c.constructor === Array ? c : (c || '').split(/\s+/)
-  m.forEach(n => c.forEach(k => k ? n.classList[on ? 'add' : 'remove'](k) : null))
+  m.forEach(n => c.forEach(k => k ? n.classList.toggle(k, on) : null))
 }
 
 document.addEventListener('DOMContentLoaded', e => {
@@ -115,7 +115,7 @@ document.addEventListener('click', e => {
       const r = h.classList.contains(c) ? (x[0][k] < x[x.length-1][k] ? -1 : 1) : 1
       x.sort((a, b) => a[k] < b[k] ? -r : (a[k] > b[k] ? r : 0))
       x.forEach(m => b.append(m[0]))
-      ;[...h.parentNode.children].forEach(m => m.classList[m == h ? 'add' : 'remove'](c))
+      ;[...h.parentNode.children].forEach(m => m.classList.toggle(c, m == h))
     }
   }
   

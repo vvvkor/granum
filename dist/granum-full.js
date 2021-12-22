@@ -1,10 +1,10 @@
-/*! granum-full.js v1.2.86 */
+/*! granum-full.js v1.2.87 */
 
 ;(_ => {
 
 const tgl = (m, c, on) => {
   c = c && c.constructor === Array ? c : (c || '').split(/\s+/)
-  m.forEach(n => c.forEach(k => k ? n.classList[on ? 'add' : 'remove'](k) : null))
+  m.forEach(n => c.forEach(k => k ? n.classList.toggle(k, on) : null))
 }
 
 document.addEventListener('DOMContentLoaded', e => {
@@ -115,7 +115,7 @@ document.addEventListener('click', e => {
       const r = h.classList.contains(c) ? (x[0][k] < x[x.length-1][k] ? -1 : 1) : 1
       x.sort((a, b) => a[k] < b[k] ? -r : (a[k] > b[k] ? r : 0))
       x.forEach(m => b.append(m[0]))
-      ;[...h.parentNode.children].forEach(m => m.classList[m == h ? 'add' : 'remove'](c))
+      ;[...h.parentNode.children].forEach(m => m.classList.toggle(c, m == h))
     }
   }
   
@@ -456,7 +456,7 @@ document.addEventListener('keydown', e => {
             ? (a.previousSibling || p.lastChild)
             : (a.nextSibling || p.firstChild))
           : p.firstChild
-        p.querySelectorAll('div').forEach(m => m.classList[m == a ? 'add' : 'remove']('bg'))
+        p.querySelectorAll('div').forEach(m => m.classList.toggle('bg', m == a))
       }
     }
     else if (e.key == 'Enter') {
@@ -589,9 +589,9 @@ const i = (t, s, a={}) => {
   return d
 }
 const x = (n, w) => {
-  n.classList[w ? 'add' : 'remove']('hide')
-  n.nextSibling.classList[w ? 'remove' : 'add']('hide')
-  n.previousSibling.querySelectorAll('li+li').forEach(a => a.classList[w ? 'remove' : 'add']('hide'))
+  n.classList.toggle('hide', w)
+  n.nextSibling.classList.toggle('hide', !w)
+  n.previousSibling.querySelectorAll('li+li').forEach(a => a.classList.toggle('hide', !w))
 }
 
 const b = [ // label, cmd, arg, ask

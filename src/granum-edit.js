@@ -13,9 +13,9 @@ const i = (t, s, a={}) => {
   return d
 }
 const x = (n, w) => {
-  n.classList[w ? 'add' : 'remove']('hide')
-  n.nextSibling.classList[w ? 'remove' : 'add']('hide')
-  n.previousSibling.querySelectorAll('li+li').forEach(a => a.classList[w ? 'remove' : 'add']('hide'))
+  n.classList.toggle('hide', w)
+  n.nextSibling.classList.toggle('hide', !w)
+  n.previousSibling.querySelectorAll('li+li').forEach(a => a.classList.toggle('hide', !w))
 }
 
 const b = [ // label, cmd, arg, ask
