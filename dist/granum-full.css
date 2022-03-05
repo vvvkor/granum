@@ -1,4 +1,4 @@
-/*! granum-full.css v1.2.88 */
+/*! granum-full.css v1.2.89 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -289,8 +289,9 @@ button[class*="icon-"]:before, button [class*="icon-"]:before, .inv:before {filt
 
 /* badges */
 .badge {position:relative;}
-.badge>.tag {position:absolute;top:35%;left:100%;font-size:75%;transform:translate(-55%,-80%);z-index:1;min-height:1.2em;line-height:1.2;padding:0 .25em;}
-.badge[class*="icon-"]>.tag {left:1.5em;}
+.badge>.tag {position:absolute;top:0;right:0;font-size:75%;transform:translate(50%,-50%);z-index:1;min-height:1.5em;line-height:1.5;padding:0 .4em;}
+.badge:not(button):not([type="submit"]):not(.pad)>.tag {right:-.2em;top:.1em;}
+.badge[class*="icon-"]:not(button):not([type="submit"]):not(.pad)>.tag:first-child {right:.5em;}
 .badge>.tag:empty {font-size:.5em;}
 /* /badges */
 
