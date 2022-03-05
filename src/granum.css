@@ -17,7 +17,7 @@ button::-moz-focus-inner, [type="submit"]::-moz-focus-inner {border:none;} /* fi
 html {font-size:120%;}
 body {line-height:1.5;color:#000;}
 body, .back, .drawer, .stick{background:#fff;}
-body, .sans {font-family:"PT Sans", Roboto, "Segoe UI", sans-serif;}
+body, .sans, .tag {font-family:"PT Sans", Roboto, "Segoe UI", sans-serif;}
 .serif {font-family:"PT Serif", Georgia, serif;}
 input, button, select, textarea, table {font:inherit;} 
 h1, .h1 {font-size:200%;}
@@ -44,12 +44,11 @@ pre code {font-size:100%;}
 	.modal>.pad {padding:1.5em;}
 	ul.row li>form {padding:.2em 1em;}
 	legend, .tag {padding:0 .4em;}
-	.tag {min-width:.65em;}
+	.tag {min-width:.7em;border-radius:.75em;}
 pre, code  {white-space:pre-wrap;}
 pre{overflow:auto;max-height:80vh;}
 	code, kbd {padding:.2em .5em;}
 	.rad, code, kbd, pre {border-radius:.2em;}
-	.tag.rad {border-radius:.75em;}
 	div.rad {overflow:hidden;}
 abbr {border-bottom:thin dotted;text-decoration:none;}
 sub, sup {line-height:0em;}
@@ -160,8 +159,8 @@ a.pic:not(.modal), a.pic:not(.modal) img {background:none !important;}
 /* color */
 .bg, blockquote, pre, code {background-color:#9992;}
 pre code {background:none;}
-.inv {background-color:#333;color:#fff;}
-button, [type="submit"], a.inv {background-color:#05b;color:#fff;}
+.inv, .tag {background-color:#333;color:#fff;}
+button, [type="submit"], a.inv, a.tag {background-color:#05b;color:#fff;}
 .text:not(.spot) {color:#000;}
 .text-n:not(.spot) {color:#999;}/*hue*/
 .text-i:not(.spot) {color:#08a;}/*192*/
@@ -173,11 +172,11 @@ button, [type="submit"], a.inv {background-color:#05b;color:#fff;}
 .bg-y {background-color:#beb;}/*120*/
 .bg-w, mark {background-color:#fd9;}/*40*/
 .bg-e {background-color:#fbb;}/*0*/
-button.bg-n, [type="submit"].bg-n, .inv.bg-n {background-color:#999;}
-button.bg-i, [type="submit"].bg-i, .inv.bg-i {background-color:#08a;}
-button.bg-y, [type="submit"].bg-y, .inv.bg-y {background-color:#181;}
-button.bg-w, [type="submit"].bg-w, .inv.bg-w {background-color:#d80;}
-button.bg-e, [type="submit"].bg-e, .inv.bg-e {background-color:#c00;}
+button.bg-n, [type="submit"].bg-n, .inv.bg-n, .tag.bg-n {background-color:#999;}
+button.bg-i, [type="submit"].bg-i, .inv.bg-i, .tag.bg-i {background-color:#08a;}
+button.bg-y, [type="submit"].bg-y, .inv.bg-y, .tag.bg-y {background-color:#181;}
+button.bg-w, [type="submit"].bg-w, .inv.bg-w, .tag.bg-w {background-color:#d80;}
+button.bg-e, [type="submit"].bg-e, .inv.bg-e, .tag.bg-e {background-color:#c00;}
 
 /* highlight */
 a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tbody tr:hover>*, tr>.hover:hover, .pop:hover>a.hover {box-shadow:inset 0 0 0 200vh #9991;}

@@ -107,7 +107,7 @@ Typography and styling is minimal and unobtrusive.
 			<div><div class="icon-edit span-0 h3"></div></div>
 			<div>
 				<h3 class="fit"><a href="#typo">Typography</a></h3>
-				<p>Text, links, code, quotes, lists, colors, tags, bars, modifiers. Minimal styling.</p>
+				<p>Text, links, code, quotes, lists, colors, tags, badges, bars, modifiers. Minimal styling.</p>
 			</div>
 		</div>
 	</div>
@@ -213,7 +213,7 @@ x<sup>super</sup>
 </div>
 </details>
 
-<details>
+<details open>
 <summary>Color</summary>
 <div class="pad bord fit">
 	<span class="text-e">Error</span>
@@ -258,19 +258,19 @@ x<sup>super</sup>
 	<div class="bar mar text-i" style="--v:70"></div>
 	<div class="bar mar text-n" style="--v:90"></div>
   <br>
-	<div class="sans">
-	<a href="#1" class="l badge icon-mail"><span class="tag rad bg-e inv">1</span></a>
-	<a href="#1" class="l badge icon-user text-w spot"><span>Users</span><span class="tag rad bg-y inv">3</span></a>
-	<a href="#1" class="l badge">Texts<span class="tag rad inv">5</span></a>
-	<a href="#1" class="l badge">Errors<span class="tag rad bg-e inv">8</span></a>
-	<a href="#1" class="l badge">Warnings<span class="tag rad bg-w inv"></span></a>
-	<a href="#1" class="l badge">Messages<span class="tag rad bg-i inv">99+</span></a>
-	<a href="#1" class="l badge">Notes<span class="tag rad bg-n inv">1000</span></a>
+	<div>
+	<a href="#1" class="l badge icon-grid"><sup class="tag bg-e">9</sup></a>
+	<a href="#1" class="l badge icon-user text-w spot">Users<span class="tag bg-y">3</span></a>
+	<a href="#1" class="l badge">Texts<span class="tag">5</span></a>
+	<a href="#1" class="l badge">Errors<span class="tag bg-e">8</span></a>
+	<a href="#1" class="l badge">Warnings<span class="tag bg-w"></span></a>
+	<a href="#1" class="l badge">Messages<span class="tag bg-i">99+</span></a>
+	<a href="#1" class="l badge">Notes<span class="tag bg-n">1000</span></a>
   </div>
   <p>
-	<a href="#1" class="l badge pad rad hover bord">Link<span class="tag rad bg-w inv"></span></a>
-	<a href="#1" class="l badge pad rad hover bg icon-ok ">With icon<span class="tag rad bg-y inv">42</span></a>
-	<button      class="l badge icon-ok">Button<span class="tag rad bg-e inv">42</span></button>
+	<a href="#1" class="l badge pad rad hover bord">Link<span class="tag bg-w"></span></a>
+	<a href="#1" class="l badge pad rad hover bg icon-ok ">With icon<span class="tag bg-y">42</span></a>
+	<button      class="l badge icon-ok">Button<span class="tag bg-e">42</span></button>
   </p>
 </div>
 </details>
@@ -847,13 +847,13 @@ x<sup>super</sup>
 			<li><a href="#2" class="icon-find">Search</a>
 			<li><a href="#3" class="icon-edit">Edit</a>
 			</ul>
-		<li><a href="#2" class="icon-user">Profile <small class="tag inv -rad bg-w sans">NEW</small></a>
+		<li><a href="#2" class="icon-user">Profile <small class="tag bg-w">NEW</small></a>
 		<li class="r"><form action="?#find"><input id="find" name="q" type="search" size="5" class="rad" placeholder="Find" data-get> <button class="icon-find bg-n"></button></form>
 		<li><a href="#3" class="icon-info">Info</a>
 			<ul>
 			<li><a href="#1" class="icon-chart">Stats</a>
 			<li><a href="#2" class="icon-mail">Contact</a>
-			<li><a href="#3" class="icon-share">Share <small class="tag inv rad bg-y sans">2</small><br><small class="text-n">Select one of items</small></a>
+			<li><a href="#3" class="icon-share">Share <small class="tag bg-y">2</small><br><small class="text-n">Select one of items</small></a>
 				<ul>
 				<li><a href="#1">One</a>
 				<li><a href="#2">Two</a>
@@ -898,39 +898,39 @@ x<sup>super</sup>
 	<div class="-mar">
 	  <div id="tab2" class="target pad">
 			<p>
-				<a href="#text" class="toggle l" data-nodes=".switch-link" data-set="text-y bg-w icon-ok" data-unset="text-n bg-n icon-delete" data-act="icon-info text-i" data-inact="icon-refresh text-n">Switch</a>
-				<a class="switch-link tag bg-n text-n">Item 1</a>
-				<a class="switch-link tag bg-n text-n">Item 2</a>
+				<a href="#text" class="toggle l" data-nodes=".switch-link" data-set="bg-w icon-ok" data-unset="bg-n icon-delete" data-act="icon-info text-i" data-inact="icon-refresh text-n">Switch</a>
+				<a class="switch-link tag bg-n">Item 1</a>
+				<a class="switch-link tag bg-n">Item 2</a>
 			</p>
 			<p>
-				<a href="#text" class="toggle l" data-nodes=".switch-a" data-set="text-y bg-y icon-ok" data-unset="text-n bg-n icon-delete" data-act="icon-info text-i" data-inact="icon-refresh text-n">Switch</a>
-				<a class="switch-a tag bg-y text-y">Item 3</a>
+				<a href="#text" class="toggle l" data-nodes=".switch-a" data-set="bg-y icon-ok" data-unset="bg-n icon-delete" data-act="icon-info text-i" data-inact="icon-refresh text-n">Switch</a>
+				<a class="switch-a tag bg-y">Item 3</a>
 			</p>
 		</div>
 	  <div id="tab3" class="target pad mar">
-			<label><input type="checkbox" data-nodes="#tab3 a" data-set="text-y bg-y icon-ok" data-unset="text-n bg-n icon-delete" checked> Check</label>&nbsp;
-			<a class="tag bg-n text-n">Item 1</a>
-			<a class="tag bg-n text-n">Item 2</a>
+			<label><input type="checkbox" data-nodes="#tab3 a" data-set="tag bg-y icon-ok" data-unset="tag bg-n icon-delete" checked> Check</label>&nbsp;
+			<a class="tag bg-n">Item 1</a>
+			<a class="tag bg-n">Item 2</a>
 		</div>
 	  <div id="tab4" class="target pad mar">
-			<label><input type="radio" name="switch-radio" data-nodes="#tab4 a" value="text-n bg-n icon-delete" checked> Off</label>&nbsp;
-			<label><input type="radio" name="switch-radio" data-nodes="#tab4 a" value="text-y bg-y icon-ok"> On</label>&nbsp;
-			<a class="tag bg-n text-n">Item 1</a>
-			<a class="tag bg-n text-n">Item 2</a>
+			<label><input type="radio" name="switch-radio" data-nodes="#tab4 a" value="tag bg-n icon-delete" checked> Off</label>&nbsp;
+			<label><input type="radio" name="switch-radio" data-nodes="#tab4 a" value="tag bg-y icon-ok"> On</label>&nbsp;
+			<a class="tag bg-n">Item 1</a>
+			<a class="tag bg-n">Item 2</a>
 		</div>
 	  <div id="tab5" class="target pad mar">
 			<select data-nodes="#tab5 a">
-				<option value="text-y bg-y icon-ok" selected> Ok</option>
-				<option value="text-w bg-w icon-warning"> Warning</option>
-				<option value="text-e bg-e icon-delete"> Error</option>
+				<option value="tag bg-y icon-ok" selected> Ok</option>
+				<option value="tag bg-w icon-warning"> Warning</option>
+				<option value="tag bg-e icon-delete"> Error</option>
 			</select>
-			<a class="tag bg-n text-n">Item 1</a>
-			<a class="tag bg-n text-n">Item 2</a>
+			<a class="tag bg-n">Item 1</a>
+			<a class="tag bg-n">Item 2</a>
 		</div>
 	  <div id="tab1" class="target pad mar">
-			<a data-resp="tag rad bg-n text-n, tag rad bg-n text-n, tag inv rad bg-w">Small</a>
-			<a data-resp="tag rad bg-n text-n, tag inv rad bg-y, tag rad bg-n text-n">Medium</a>
-			<a data-resp="tag inv rad bg-i, tag rad bg-n text-n, tag rad bg-n text-n">Large</a>
+			<a data-resp="tag bg-n, tag bg-n, tag bg-w">Small</a>
+			<a data-resp="tag bg-n, tag bg-y, tag bg-n">Medium</a>
+			<a data-resp="tag bg-i, tag bg-n, tag bg-n">Large</a>
 		</div>
 	</div>
 	

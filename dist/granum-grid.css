@@ -1,4 +1,4 @@
-/*! granum-grid.css v1.2.89 */
+/*! granum-grid.css v1.2.90 */
 
 .grid {display:flex;--gap:0em;--wid:100%;  list-style:none;padding:0;}
 .grid.flow, [class*="grid-"] {flex-wrap:wrap;}
