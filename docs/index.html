@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" id="root" class="mem">
   <head>
     <meta charset="utf-8">
     <title>Granum</title>
@@ -26,7 +26,7 @@
 		document.addEventListener('granum-drag', e => console.log('granum drag', e))
 	</script>
   </head>
-  <body id="top" data-break-x="500,400,300,200" data-dt-x=".">
+  <body id="top" data-break-x="500,400,300,200" data-dt-x="." class="mem">
 	<nav id="topbar" class="back" data-resp="target show stick back shade, target show bg-n, target show">
 		<a href="#menu" class="target" data-resp="target, icon-menu pad hover toggle" title="Menu"></a>
 		<ul id="menu" class="row bg hover" data-resp="row -drop, mar row resp target">
@@ -38,6 +38,7 @@
 			<li><a href="#form">Forms</a>
 			<li><a href="#action">Interactive</a>
 			<li><a href="#icon">Icons</a>
+			<li><a class="toggle mem" href="#root" data-x-nodes="html" data-set="dark"><span style="filter:grayscale(1) contrast(.2);">&#x1F319;</span> <span class="hide">Mode</span></a>
 			<!--li><a href="#mod">Mods</a-->
 			<!--li class="mid">
 				<form action="?#search" method="get">
@@ -63,7 +64,7 @@ icons, status colors, and even more.
 Typography and styling is minimal and unobtrusive.
 -->
 
-<p class="text-n">v1.2.90</p>
+<p class="text-n">v1.2.91</p>
 
 <p>
 <b>3 KB</b> minified and gzipped.<br>

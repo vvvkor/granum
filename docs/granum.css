@@ -1,4 +1,4 @@
-/*! granum.css v1.2.90 */
+/*! granum.css v1.2.91 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -231,4 +231,14 @@ a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tbody tr
 	ul.row.resp a {flex:1;}
 	table.resp>*, table.resp>*>*, table.resp>*>*>* {display:block;text-align:left;}
 	table.resp tr{margin-bottom:.5em;}
+}
+
+/* smart dark mode; !shadows */
+html {--mode:none;background:#fff;/*fix*/}
+body, a.pic.modal, img, video, iframe {filter:var(--mode);}
+.dark {--mode:invert(.9) hue-rotate(180deg);}
+  .dark:not(html) {background:#fff;filter:var(--mode);}
+@media (prefers-color-scheme: dark) {
+  html:not(.dark) {--mode:invert(.9) hue-rotate(180deg);}
+  .dark {--mode:none;}
 }
