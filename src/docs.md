@@ -112,7 +112,8 @@ Typography and styling is minimal and unobtrusive.
 - `.stick` - stick element to top
 - `.roll` - horizontal scroll if needed
 - `.hi` - fullscreen height
-- `.tag`, `.tag.inv.rad.bg-e` - tag
+- `.tag`, `.tag.bg-e` - tag
+- `.badge > .tag` - badge (counter)
 - `.bar[style="--v:PERCENT"]` - progress bar
 - `ul.row.drop` - dropdown nested menu *(requires [granum-dropdown.css](granum-dropdown.css))*
 - `.pop > div`, `.pop > div.l` - popup *(requires [granum-dropdown.css](granum-dropdown.css))*
@@ -142,6 +143,7 @@ Typography and styling is minimal and unobtrusive.
 - `a.act` - active link
 - `a.hover` - highlight hovered link
 - `.inv` - invert block or link
+- `html.invert` - invert whole page
 
 ### Text modifiers
 
