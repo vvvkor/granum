@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <title>Granum</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" media="" content="white">
+    <meta name="theme-color" media="(prefers-color-scheme:dark)" content="#04a">
     <link rel="icon" type="image/svg" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20220%20220'%3E%3Cpath%20fill='%23f50'%20d='M35%2067l75%20-44%2075%2044%200%2089-75%2044-75-44zm75%208a35%2035%200%201%200%20.01%200z'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="granum.css">
     <link rel="stylesheet" href="granum-icons.css">
@@ -241,12 +243,12 @@ x<sup>super</sup>
 	<span class="inv bg-i">Info</span>
 	<span class="inv bg-n">Note</span>
 	<br>
-	<b class="tag inv rad small sans">8</b>
-	<b class="tag inv bg-e rad small sans">ERR</b>
-	<b class="tag inv bg-w rad small sans">WARN</b>
-	<b class="tag inv bg-y rad small sans">OK</b>
-	<b class="tag inv bg-i rad small sans">INFO</b>
-	<b class="tag inv bg-n rad small sans">NOTE</b>
+	<b class="tag rad small">8</b>
+	<b class="tag rad small bg-e">ERR</b>
+	<b class="tag rad small bg-w">WARN</b>
+	<b class="tag rad small bg-y">OK</b>
+	<b class="tag rad small bg-i">INFO</b>
+	<b class="tag rad small bg-n">NOTE</b>
 	<br>
 	<a href="#1" class="icon-right text"></a>
 	<a href="#1" class="icon-delete text-e   -bg-e -inv"></a>
@@ -377,7 +379,8 @@ x<sup>super</sup>
 <h2 id="table"><a href="#table">Tables</a> <a href="#top" class="fit icon-up"></a></h2>
 
 <section>
-<p class="hide" data-resp>Style
+<h3 class="hide">Style</h3>
+<p class="hide" data-resp>
 <select data-nodes="#tbl">
 	<option value="sort nobr c3 r4  ">Borderless</option>
 	<option value="sort nobr c3 r4  pad hover l mid" selected>Lines, hover, wide</option>
@@ -431,7 +434,7 @@ x<sup>super</sup>
 	</tfoot>
 </table>
 </div>
-<section>
+</section>
 
 <details class="mar">
 <summary>Features by file</summary>
@@ -946,21 +949,20 @@ x<sup>super</sup>
 	<div class="row resp pad l">
 		<form method="get" action="#dragform" id="dragform" class="pad bord rad" data-drag="bg-w text-e" data-dragged="act shade">
 			<ul class="fit">
-				<li class="drag-item" id="drag1"><span class="-pad icon-more drag-handle"></span>One<input type="hidden" name="sort[]" value="ONE">
-				<li class="drag-item" id="drag2"><span class="-pad icon-more drag-handle"></span>Two<input type="hidden" name="sort[]" value="TWO">
-				<li class="drag-item" id="drag3"><span class="-pad icon-more -drag-handle"></span>::Three::<input type="hidden" name="sort[]" value="THREE">
+				<li class="drag-item" id="drag1a"><span class="-pad icon-more drag-handle"></span>One<input type="hidden" name="sort[]" value="ONE">
+				<li class="drag-item" id="drag1b"><span class="-pad icon-more drag-handle"></span>Two<input type="hidden" name="sort[]" value="TWO">
+				<li class="drag-item" id="drag1c"><span class="-pad icon-more -drag-handle"></span>::Three::<input type="hidden" name="sort[]" value="THREE">
 			</ul>
 			<div class="hide drag-control r"><input type="submit" value="Apply"></div>
 		</form>
 		<form method="get" action="#dragformt" id="dragformt" class="pad bord rad" data-drag="bg-i text-n" data-dragged="act shade">
 			<table class="bord mid">
-				<tr class="drag-item" id="drag1"><td class="-pad icon-grid drag-handle"><td>Alpha<input type="hidden" name="sort[]" value="ALPHA">
-				<tr class="drag-item" id="drag2"><td class="-pad icon-grid drag-handle"><td>Beta<input type="hidden" name="sort[]" value="BETA">
-				<tr class="drag-item" id="drag3"><td class="-pad icon-grid -drag-handle"><td>::Gamma::<input type="hidden" name="sort[]" value="GAMMA">
+				<tr class="drag-item" id="drag2a"><td class="-pad icon-grid drag-handle"><td>Alpha<input type="hidden" name="sort[]" value="ALPHA">
+				<tr class="drag-item" id="drag2b"><td class="-pad icon-grid drag-handle"><td>Beta<input type="hidden" name="sort[]" value="BETA">
+				<tr class="drag-item" id="drag2c"><td class="-pad icon-grid -drag-handle"><td>::Gamma::<input type="hidden" name="sort[]" value="GAMMA">
 			</table>
 			<div class="hide drag-control r"><input type="submit" value="Apply"></div>
 		</form>
-		</div>
 	</div>
 
 <h2 id="icon"><a href="#icon">Icons</a> <a href="#top" class="fit icon-up"></a></h2>
