@@ -28,7 +28,10 @@
   </head>
   <body id="top" data-break-x="500,400,300,200" data-dt-x="." class="mem">
 	<nav id="topbar" class="back" data-resp="target show stick back shade, target show bg-n, target show">
-		<a href="#menu" class="target" data-resp="target, icon-menu pad hover toggle" title="Menu"></a>
+    <div class="row">
+      <a href="#menu" class="target" data-resp="target, icon-menu pad hover toggle" title="Menu"></a>
+      <a href="#root" class="target" data-resp="target, pad hover toggle col-0" data-set="invert" title="Mode" style="filter:grayscale(1) contrast(.2);">&#x1F319;</a>
+    </div>
 		<ul id="menu" class="row bg hover" data-resp="row -drop, mar row resp target">
 			<li data-resp="l"><a href="?" class="-act"><b>Granum</b></a>
 			<li><a href="#typo">Basics</a><!--ul><li><a>Sub</a></ul-->
@@ -38,7 +41,7 @@
 			<li><a href="#form">Forms</a>
 			<li><a href="#action">Interactive</a>
 			<li><a href="#icon">Icons</a>
-			<li><a class="toggle mem" href="#root" data-x-nodes="html" data-set="dark"><span style="filter:grayscale(1) contrast(.2);">&#x1F319;</span> <span class="hide">Mode</span></a>
+			<li data-resp=",hide"><a class="toggle" href="#root" data-set="invert" title="Mode"><span style="filter:grayscale(1) contrast(.2);">&#x1F319;</span> <span class="hide">Mode</span></a>
 			<!--li><a href="#mod">Mods</a-->
 			<!--li class="mid">
 				<form action="?#search" method="get">
