@@ -27,9 +27,11 @@
 	</script>
   </head>
   <body id="top" data-break-x="500,400,300,200" data-dt-x="." class="mem">
-	<nav id="topbar" class="back" data-resp="target show stick back shade, target show bg-n, target show">
+  <div id="topbar-container" class="stick mem">
+	<nav id="topbar" class="back" data-resp="target show -stick -back -shade, target show bg-n, target show">
     <div class="row">
-      <a href="#menu" class="target" data-resp="target, icon-menu pad hover toggle" title="Menu"></a>
+      <a href="#menu" class="target" data-resp="target, icon-menu pad hover toggle col-0" title="Menu"></a>
+      <span data-resp="hide,"></span>
       <a href="#root" class="target" data-resp="target, pad hover toggle col-0" data-set="invert" title="Mode" style="filter:grayscale(1) contrast(.2);">&#x1F319;</a>
     </div>
 		<ul id="menu" class="row bg hover" data-resp="row -drop, mar row resp target">
@@ -50,6 +52,7 @@
 				</form-->
 		</ul>
 	</nav>
+  </div>
 
 <main class="center wrap pad serif">
 
@@ -790,9 +793,9 @@ x<sup>super</sup>
 		<a href="#toggle" class="toggle l resp">Toggle+scroll</a>
 		<a href="#modal" class="l">Modal</a>
 		<a href="#drawer" class="l">Drawer</a>
-		<a href="#topbar" class="toggle" data-act-x="act bg-w">Topbar</a>
+		<a href="#topbar-container" class="toggle" data-set="stick back shade" data-act-x="act bg-w">Topbar</a>
 		</p>
-		<p id="toggle" class="target bord pad mem">Target</p>
+		<p id="toggle" class="target -show bord pad mem">Target</p>
 		
 		<div id="modal" class="target modal sans"><div>
 			<div class="pad bg h3">
