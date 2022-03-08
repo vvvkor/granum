@@ -232,8 +232,8 @@ a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tbody tr
 }
 
 /* smart dark mode; !shadows */
+html, a.pic.modal, img, video, iframe {filter:var(--mode);}
 html {--mode:none;background:#fff;/*fix*/}
-body, a.pic.modal, img, video, iframe {filter:var(--mode);}
 .invert {--mode:invert(.9) hue-rotate(180deg);}
 /*.invert:not(html) {background:#fff;filter:var(--mode);}*/
 @media (prefers-color-scheme: dark) {
