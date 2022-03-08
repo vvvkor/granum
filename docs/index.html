@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Granum</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" media="" content="white">
+    <meta name="theme-color" content="#eee">
     <meta name="theme-color" media="(prefers-color-scheme:dark)" content="#04a">
     <link rel="icon" type="image/svg" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20220%20220'%3E%3Cpath%20fill='%23f50'%20d='M35%2067l75%20-44%2075%2044%200%2089-75%2044-75-44zm75%208a35%2035%200%201%200%20.01%200z'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="granum.css">
@@ -34,7 +34,7 @@
     <div class="row">
       <a href="#menu" class="target" data-resp="target, icon-menu pad hover toggle col-0" title="Menu"></a>
       <span data-resp="hide,"></span>
-      <a href="#root" class="target" data-resp="target, pad hover toggle col-0" data-set="invert" title="Mode" style="filter:grayscale(1) contrast(.2);">&#x1F319;</a>
+      <a href="#root" class="target" data-resp="target, text-n pad hover toggle col-0" data-set="invert" title="Mode">&#x25D0;</a>
     </div>
 		<ul id="menu" class="row bg hover" data-resp="row -drop, mar row resp target">
 			<li data-resp="l"><a href="?" class="-act"><b>Granum</b></a>
@@ -45,7 +45,7 @@
 			<li><a href="#form">Forms</a>
 			<li><a href="#action">Interactive</a>
 			<li><a href="#icon">Icons</a>
-			<li data-resp=",hide"><a class="toggle" href="#root" data-set="invert" title="Mode"><span style="filter:grayscale(1) contrast(.2);">&#x1F319;</span> <span class="hide">Mode</span></a>
+			<li data-resp=",hide"><a class="toggle text-n" href="#root" data-set="invert" title="Mode" data-on="&#x25D0;" data-off="&#x25D1;">&#x25D0;</a>
 			<!--li><a href="#mod">Mods</a-->
 			<!--li class="mid">
 				<form action="?#search" method="get">
@@ -72,7 +72,7 @@ icons, status colors, and even more.
 Typography and styling is minimal and unobtrusive.
 -->
 
-<p class="text-n">v1.2.92</p>
+<p class="text-n">v1.2.93</p>
 
 <p>
 <b>3 KB</b> minified and gzipped.<br>

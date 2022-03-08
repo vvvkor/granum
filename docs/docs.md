@@ -1,5 +1,5 @@
 **Granum**  
-v1.2.92
+v1.2.93
 
 # Documentation
 
@@ -198,7 +198,7 @@ Typography and styling is minimal and unobtrusive.
     - `[data-def]` - default value
     - `[data-ok]` - confirm button label (`OK` by default)
     - `[data-cancel]` - cancel button label (`Cancel` by default)
-- `a.toggle([href^="#"][data-nodes][data-set][data-unset][data-act][data-inact])` - toggle classes
+- `a.toggle([href^="#"][data-nodes][data-set][data-unset][data-act][data-inact][data-on][data-off])` - toggle classes
   - `.show` - initialize in active state
   - `.mem` - remember state (only with `[href^="#"]` target selector)
   - `[data-nodes]` or link hash - target elements selector
@@ -206,6 +206,8 @@ Typography and styling is minimal and unobtrusive.
   - `[data-unset]` - additional classes of target elements in inactive state
   - `[data-act]` - additional classes of link in active state
   - `[data-inact]` - additional classes of link in inactive state
+  - `[data-on]` - text of link in active state
+  - `[data-off]` - text of link in inactive state
 - `.gallery a.pic` - image gallery
 - `input[data-lookup][data-caption][data-goto]` - lookup input *(requires [granum-dropdown.css](granum-dropdown.css) and [granum-lookup.js](granum-lookup.js))*
   - `[data-caption]` - initial caption (optional)

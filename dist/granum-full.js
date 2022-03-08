@@ -1,4 +1,4 @@
-/*! granum-full.js v1.2.92 */
+/*! granum-full.js v1.2.93 */
 
 ;(_ => {
 
@@ -82,6 +82,7 @@ document.addEventListener('click', e => {
       tgl([a], s.inact, !on)
       tgl(m, c, on)
       tgl(m, s.unset, !on)
+      if ('on' in a.dataset) a.textContent = a.dataset[on ? 'on' : 'off'] || ''
       if (store && r) localStorage.setItem('toggle' + a.hash, on ? 1 : 0)
       if (r && location.hash && c[0] == 'show' && !t) location.hash = '#cancel'
       if (r && on && a.classList.contains('resp')) m[0].scrollIntoView(true)
