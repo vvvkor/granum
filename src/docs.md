@@ -115,7 +115,7 @@ Typography and styling is minimal and unobtrusive.
 - `.tag`, `.tag.bg-e` - tag
 - `.badge > .tag` - badge (counter)
 - `.bar[style="--v:PERCENT"]` - progress bar
-- `ul.row.drop` - dropdown nested menu *(requires [granum-dropdown.css](granum-dropdown.css))*
+- `ul.row.drop(.act)` - dropdown nested menu (on hover/on focus) *(requires [granum-dropdown.css](granum-dropdown.css))*
 - `.pop > div`, `.pop > div.l` - popup *(requires [granum-dropdown.css](granum-dropdown.css))*
 - `.pop > span.c`, `.pop > span.r` -  tooltip *(requires [granum-dropdown.css](granum-dropdown.css))*
 - `.ul.row.tabs + div > div:target + div` - tabs *(enhanced with [granum.js](granum.js))*

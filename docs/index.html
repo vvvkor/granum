@@ -72,7 +72,7 @@ icons, status colors, and even more.
 Typography and styling is minimal and unobtrusive.
 -->
 
-<p class="text-n">v1.2.94</p>
+<p class="text-n">v1.2.95</p>
 
 <p>
 <b>3 KB</b> minified and gzipped.<br>
@@ -116,7 +116,7 @@ Typography and styling is minimal and unobtrusive.
 			<div><div class="icon-edit span-0 h3"></div></div>
 			<div>
 				<h3 class="fit"><a href="#typo">Typography</a></h3>
-				<p>Text, links, code, quotes, lists, colors, tags, badges, bars, modifiers. Minimal styling.</p>
+				<p>Text, links, code, quotes, lists, colors, tags, badges, bars, modifiers. Dark mode. Minimal styling.</p>
 			</div>
 		</div>
 	</div>
@@ -326,7 +326,7 @@ x<sup>super</sup>
 		<tr><th><b class="pop">.mid&nbsp;   <i class="inv r small bg-i">Centrify vertically</i></b><td>-<td>-<td>-<td>valign row, item<td>valign table, tr, td<td>-
 		<tr><th><b class="pop">.l&nbsp;     <i class="inv r small bg-i">Align</i></b><td>*<td>horizontal<td>right margin<td>v-gap, align item<td>wide<td>*
 		<tr><th><b class="pop">.resp&nbsp;   <i class="inv r small bg-i">Responsive component</i></b><td>-<td>*<td>scroll into view<td>stack<td>stack<td class="text-n">stack
-		<tr><th><b class="pop">.act&nbsp;   <i class="inv r small bg-i">Active link, input validation</i></b><td>-<td>-<td>color<td>-<td>-<td>validation
+		<tr><th><b class="pop">.act&nbsp;   <i class="inv r small bg-i">Active link, input validation</i></b><td>-<td>-<td>color<td>.drop on focus<td>-<td>validation
 		<tr><th><b class="pop">.hover&nbsp; <i class="inv r small bg-i">Shade on hover</i></b><td>*<td>*<td>*<td>ul a<td>tr<td>-
 		<tr><th><b class="pop">.stack&nbsp; <i class="inv r small bg-i">No edge margins</i></b><td>*<td>*<td>-<td>-<td>*<td>-
 	</table>
@@ -846,7 +846,7 @@ x<sup>super</sup>
 		<a href="#nav" class="target" data-resp="target, icon-menu pad hover toggle" title="Menu"></a>
 		<a class="target" data-resp="target, text-n">Responsive menu</a>
 		<ul id="nav" class="row resp hover drop" data-resp="row -resp hover drop, target row resp hover drop">
-		<li><a href="#1" class="icon-more">Features</a>
+		<li><a href="#1" class="icon-more">Features <small class="tag bg-w">NEW</small></a>
 			<ul>
 			<li><a href="#1" class="icon-config">Config</a>
 				<ul>
@@ -857,7 +857,8 @@ x<sup>super</sup>
 			<li><a href="#2" class="icon-find">Search</a>
 			<li><a href="#3" class="icon-edit">Edit</a>
 			</ul>
-		<li><a href="#2" class="icon-user">Profile <small class="tag bg-w">NEW</small></a>
+		<li><a href="#nav" class="icon-refresh toggle" data-set="act" data-on="On focus" data-off="On hover" data-act="text-y spot">On focus</a>
+		<!--li><a href="#2" class="icon-user">Profile</a-->
 		<li class="r"><form action="?#find"><input id="find" name="q" type="search" size="5" class="rad" placeholder="Find" data-get> <button class="icon-find bg-n"></button></form>
 		<li><a href="#3" class="icon-info">Info</a>
 			<ul>
