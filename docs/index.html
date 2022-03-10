@@ -72,7 +72,7 @@ icons, status colors, and even more.
 Typography and styling is minimal and unobtrusive.
 -->
 
-<p class="text-n">v1.2.95</p>
+<p class="text-n">v1.2.96</p>
 
 <p>
 <b>3 KB</b> minified and gzipped.<br>
@@ -311,6 +311,19 @@ x<sup>super</sup>
 	<span class="inv bg-y">.inv.bg</span>
 	<span class="bg-y text-y">OK</span>
 </p>
+
+<p class="invert pad bord">
+	Text
+	<a href="#top">Link</a>
+	<a>No-link</a>
+	<mark>Mark</mark>
+	<abbr title="Abbreviation">Abbr</abbr>
+	<span class="inv">.inv</span>
+	<!--a class="inv">a.inv</a-->
+	<a class="inv" href="#">a.inv</a>
+	<span class="inv bg-y">.inv.bg</span>
+	<span class="bg-y text-y">OK</span>
+</p>
 </details>
 
 <details>
@@ -462,8 +475,8 @@ x<sup>super</sup>
 <h2 id="grid"><a href="#grid">Grids</a> <a href="#top" class="fit icon-up"></a></h2>
 
 <ul class="row resp bg hover -mid">
-<li><a href="#1">First</a>
-<li><a href="#2"><span>Second<br><small class="text-n">Subtitle</small></span></a>
+<li class="l"><a href="#1">First</a>
+<li class="l"><a href="#2"><span>Second<br><small class="text-n">Subtitle</small></span></a>
 <li class="r"><a href="#3" class="-mid">Third</a>
 <!--li class="mid"><a href="#4">Fourth</a-->
 </ul>
@@ -846,8 +859,8 @@ x<sup>super</sup>
 		<a href="#nav" class="target" data-resp="target, icon-menu pad hover toggle" title="Menu"></a>
 		<a class="target" data-resp="target, text-n">Responsive menu</a>
 		<ul id="nav" class="row resp hover drop" data-resp="row -resp hover drop, target row resp hover drop">
-		<li><a href="#1" class="icon-more">Features <small class="tag bg-w">NEW</small></a>
-			<ul>
+		<li><a href="#x-sub-1" class="icon-more -toggle">Features <small class="tag bg-w">NEW</small></a>
+			<ul id="sub-1">
 			<li><a href="#1" class="icon-config">Config</a>
 				<ul>
 				<li><a href="basic.html">Basic</a>

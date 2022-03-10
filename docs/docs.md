@@ -1,5 +1,5 @@
 **Granum**  
-v1.2.95
+v1.2.96
 
 # Documentation
 
@@ -31,6 +31,8 @@ Typography and styling is minimal and unobtrusive.
 - `.row > .col-0` - auto cell width
 - `.row > .col-1`, `> .col-2`, `> .col-3` - cell width grow factor
 - `.row > .stick` - sticky cell
+- `.row > .l` - push next items to the right
+- `.row > .r` - shift this item to the right
 
 
 ### Advanced grid `.grid` *(requires [granum-grid.css](granum-grid.css))*

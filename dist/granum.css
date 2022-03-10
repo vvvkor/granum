@@ -1,4 +1,4 @@
-/*! granum.css v1.2.95 */
+/*! granum.css v1.2.96 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -119,8 +119,9 @@ ul.row>*, .col-0[class] {flex:0 1 auto;/*for ie*/ /*flex:initial;*/}
 .row>*, .col-1[class], ul.row ul a {flex:1;}
 .col-2[class] {flex:2;}
 .col-3[class] {flex:3;}
-.row>.r {margin-left:auto;}
 .row>.l {margin-right:auto;}
+.row>.r {margin-left:auto;}
+.row>.l+.r {margin-left:0;}
 /* does not fit row height */
 .row.mid {align-items:center;}
 .row>.mid, .row>li>.mid:not(ul) {align-self:center;}
@@ -234,9 +235,10 @@ a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tbody tr
 }
 
 /* smart dark mode; !shadows */
-html, a.pic.modal, img, video, iframe {filter:var(--mode);}
-html {--mode:none;background:#fff;/*fix*/}
-html.invert {--mode:invert(.9) hue-rotate(180deg);}
+html, .invert {background:#fff;/*fix*/}
+html, a.pic.modal, img, video, iframe, .invert {filter:var(--mode);}
+html {--mode:none;}
+.invert {--mode:invert(.9) hue-rotate(180deg);}
 /*.invert:not(html) {background:#fff;filter:var(--mode);}*/
 @media (prefers-color-scheme: dark) {
   html:not(.invert) {--mode:invert(.9) hue-rotate(180deg);}
