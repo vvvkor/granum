@@ -1,4 +1,4 @@
-/*! granum-full.js v1.2.96 */
+/*! granum-full.js v1.2.97 */
 
 ;(_ => {
 
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', e => {
   document.dispatchEvent(new Event('granum-start'))
 
   // init toggler state
-  document.querySelectorAll('a.toggle').forEach(n => n.click())
+  document.querySelectorAll('a.toggle, a[href="#open"]').forEach(n => n.click())
   document.querySelectorAll('input[data-nodes], select[data-nodes]').forEach(n => 
     n.type != 'radio' || n.checked ? n.dispatchEvent(new Event('input', {bubbles: true})) : null
   )
@@ -39,6 +39,7 @@ document.addEventListener('submit', e => {
 document.addEventListener('click', e => {
   const n = e.target
   const a = n.closest('a')
+  const z = a && a.hash == '#open'
   const b = n.closest('button.dialog, input.dialog')
   
   if (b && b.form && b.form.checkValidity() && !confirm(b.title || b.textContent)) e.preventDefault()
@@ -63,27 +64,31 @@ document.addEventListener('click', e => {
     }
 
     // toggle
-    else if (a.classList.contains('toggle')) {
+    else if (a.classList.contains('toggle') || z) {
       e.preventDefault()
       const t = a.closest('.tabs')
       if (t) t.querySelectorAll('a[href^="#"].act').forEach(m => m.click())
       const s = a.dataset
-      const m = document.querySelectorAll(s.nodes || a.hash)
+      const m = z
+        ? a.closest('li').querySelectorAll(':scope > ul')
+        : document.querySelectorAll(s.nodes || a.hash)
       if (!m[0]) return;
       const c = (s.set || 'show').split(/\s+/)
       const r = 'ready' in document.body.dataset
       let on = !m[0].classList.contains(c[0]) != !r
       const store = a.hash && m[0].classList.contains('mem')
+      const q = 'toggle' + (z ? '#' + m[0].id : a.hash)
       if (store && !r){
-        const mem = localStorage.getItem('toggle' + a.hash)
+        const mem = localStorage.getItem(q)
         if (mem != null) on = !!Number(mem)
       }
+      if (!r && !s.set /*z*/) tgl(m, 'target', true)
       tgl([a], s.act || 'act', on)
       tgl([a], s.inact, !on)
       tgl(m, c, on)
       tgl(m, s.unset, !on)
       if ('on' in a.dataset) a.textContent = a.dataset[on ? 'on' : 'off'] || ''
-      if (store && r) localStorage.setItem('toggle' + a.hash, on ? 1 : 0)
+      if (store && r) localStorage.setItem(q, on ? 1 : 0)
       if (r && location.hash && c[0] == 'show' && !t) location.hash = '#cancel'
       if (r && on && a.classList.contains('resp')) m[0].scrollIntoView(true)
     }

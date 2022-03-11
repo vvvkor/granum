@@ -1,5 +1,5 @@
 **Granum**  
-v1.2.96
+v1.2.97
 
 # Documentation
 
@@ -103,10 +103,11 @@ Typography and styling is minimal and unobtrusive.
 ## Components
 
 - `.target:target` - toggle visibility
-  - `a.toggle(.show.mem.resp)` - multiple, nested, link state, no scroll *(requires [granum.js](granum.js))*
-    - `.show` - show target element by default
-    - `.mem` - remember state
+  - `a.toggle(.resp) :target(.target.show.mem[id])` - multiple, nested, link state, no scroll *(requires [granum.js](granum.js))*
     - `.resp` - scroll target element into viewport
+    - `.show` - show target element by default
+    - `.mem` - remember state by `[id]`
+  - `ul a[href="#open"](.resp) ul(.show.mem[id])` - expandable tree *(requires [granum.js](granum.js))*
 - `.modal.target:target > div` - modal dialog
   - close by `Escape` key *(requires [granum.js](granum.js))*
 - `.gallery a.pic` - image gallery *(requires [granum-gallery.js](granum-gallery.js))*
@@ -201,8 +202,8 @@ Typography and styling is minimal and unobtrusive.
     - `[data-ok]` - confirm button label (`OK` by default)
     - `[data-cancel]` - cancel button label (`Cancel` by default)
 - `a.toggle([href^="#"][data-nodes][data-set][data-unset][data-act][data-inact][data-on][data-off])` - toggle classes
-  - `.show` - initialize in active state
-  - `.mem` - remember state (only with `[href^="#"]` target selector)
+  - `:target.show` - initialize in active state (when first target has first class from `]data-set]` or `show`)
+  - `:target.mem` - remember state (only with `[href^="#"]` target selector)
   - `[data-nodes]` or link hash - target elements selector
   - `[data-set]` - additional classes of target elements in active state
   - `[data-unset]` - additional classes of target elements in inactive state
@@ -233,7 +234,7 @@ Typography and styling is minimal and unobtrusive.
 - `form[data-restore]` - automatically store and restore form data *(requires [granum-restore.js](granum-restore.js))*
   - `[data-restore="IDENT"]` - optional form identifier
   - `input[data-unstore]` - exclude input from storage
-- `input[data-nodes][value][data-set][data-unset]` - toggle classes
+- `input[data-nodes][value][data-set][data-unset]` - set classes
   - input can be one of: `checkbox`, `radio`, `select`
   - `[data-nodes]` - target elements selector
   - `[data-set]` or `value` - classes of target elements in selected state

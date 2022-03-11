@@ -152,7 +152,7 @@ Typography and styling is minimal and unobtrusive.
 			<div><div class="icon-ok span-0 h3"></div></div>
 			<div>
 				<h3 class="fit"><a href="#action">Interactive</a></h3>
-				<p>Toggle, modal, dropdown, popup, tooltip, drawer, topbar, tabs, gallery. Responsive classes. Copy items. Drag sort.</p>
+				<p>Toggle, modal, dropdown, popup, tooltip, drawer, topbar, tabs, gallery, tree. Responsive classes. Copy items. Drag sort.</p>
 			</div>
 		</div>
 	</div>
@@ -811,7 +811,7 @@ x<sup>super</sup>
 		<a href="#drawer" class="l">Drawer</a>
 		<a href="#topbar-container" class="toggle" data-set="stick back shade" data-act-x="act bg-w">Topbar</a>
 		</p>
-		<p id="toggle" class="target -show bord pad mem">Target</p>
+		<p id="toggle" class="-target show bord pad mem">Target</p>
 		
 		<div id="modal" class="target modal sans"><div>
 			<div class="pad bg h3">
@@ -885,6 +885,25 @@ x<sup>super</sup>
 			</ul>
 		</ul>
 	</nav>
+  
+  <ul id="tree">
+    <li><a href="#open" class="-resp">Expandable tree (auto, <code>[id].mem</code>)</a>
+      <ul class="-show mem" id="subtree">
+        <li><a href="#open">Subtree (auto)</a>
+          <ul>
+            <li><a href="#tree">Local link</a>
+            <li><a href="https://github.com/vvvkor/granum">External link</a>
+            <li>Text
+          </ul>
+        <li>Item
+      </ul>
+    <li><a href="#expand" class="toggle">Expandable tree (toggle mem)</a>
+      <ul id="expand" class="-target mem">
+        <li>Alpha
+        <li>Beta
+        <li>Gamma
+      </ul>
+  </ul>
 	
 	<div class="roll">
 	<table class="-pad bord mar mid c3">
