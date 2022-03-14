@@ -1,4 +1,4 @@
-/*! granum-util.js v1.2.97 */
+/*! granum-util.js v1.2.98 */
 
 /*
 ;(_ => {

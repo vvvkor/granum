@@ -829,6 +829,7 @@ x<sup>super</sup>
 		</div></div>
 		
 		<div id="modal-test" class="target modal"><div class="pad rad c">
+      <!--div class="bg-w">Test radius</div-->
 			<p><b>Modal</b></p>
 			<details class="bg pad mar l">
 				<summary>More horizontal</summary>
@@ -886,8 +887,8 @@ x<sup>super</sup>
 		</ul>
 	</nav>
   
-  <ul id="tree">
-    <li><a href="#open" class="-resp">Expandable tree (auto, <code>[id].mem</code>)</a>
+  <ul id="tree" class="fit pad rad shade">
+    <li><a href="#open" class="-resp" data-on="[&minus;]" data-off="[+]" data-act="bg-w">*</a> Expandable tree (auto, <code>[id].mem</code>)
       <ul class="-show mem" id="subtree">
         <li><a href="#open">Subtree (auto)</a>
           <ul>
@@ -897,7 +898,7 @@ x<sup>super</sup>
           </ul>
         <li>Item
       </ul>
-    <li><a href="#expand" class="toggle">Expandable tree (toggle mem)</a>
+    <li><a href="#expand" class="toggle icon-right" data-inact="icon-right" data-act="icon-down text-w"></a> Expandable tree (toggle mem)
       <ul id="expand" class="-target mem">
         <li>Alpha
         <li>Beta
