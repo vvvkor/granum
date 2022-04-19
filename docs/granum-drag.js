@@ -1,4 +1,4 @@
-/*! granum-drag.js v1.2.98 */
+/*! granum-drag.js v1.2.99 */
 
 (_ => {
   
