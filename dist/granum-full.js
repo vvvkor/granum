@@ -1,13 +1,13 @@
-/*! granum-full.js v1.2.99 */
+/*! granum-full.js v1.2.100 */
 
-;(_ => {
+(() => {
 
 const tgl = (m, c, on) => {
   c = c && c.constructor === Array ? c : (c || '').split(/\s+/)
   m.forEach(n => c.forEach(k => k ? n.classList.toggle(k, on) : null))
 }
 
-document.addEventListener('DOMContentLoaded', e => {
+document.addEventListener('DOMContentLoaded', () => {
   document.dispatchEvent(new Event('granum-start'))
 
   // init toggler state
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', e => {
   })
   
   window.dispatchEvent(new Event('resize'))
-  setTimeout(_ => window.dispatchEvent(new Event('hashchange')), 10)
+  setTimeout(() => window.dispatchEvent(new Event('hashchange')), 10)
   document.dispatchEvent(new Event('granum-ready'))
 })
 
@@ -157,7 +157,7 @@ document.addEventListener('keydown', e => {
 })
 
 // responsive class
-window.addEventListener('resize', e => {
+window.addEventListener('resize', () => {
   const b = document.body
   const w = (b.dataset.break || '900,500').split(',')
   w.push(0)
@@ -172,7 +172,7 @@ window.addEventListener('resize', e => {
 })
 
 // focus in modal
-window.addEventListener('hashchange', e => {
+window.addEventListener('hashchange', () => {
   if (location.hash) {
     let n = document.querySelector('.modal' + location.hash)
     if (n) n = n.querySelector('a[href]:not(.empty), button, input, select, textarea')
@@ -185,7 +185,7 @@ window.addEventListener('hashchange', e => {
 
 })()
 
-;(_ => {
+;(() => {
 
 const i = (t, s, a={}) => {
   const d = document.createElement(t)
@@ -210,9 +210,9 @@ const dialog = x => {
     ], 'pad rad stack'),
     'modal js-modal')
 
-  if (x.action) no.addEventListener('click', e => m.remove())
+  if (x.action) no.addEventListener('click', () => m.remove())
   
-  ok.addEventListener('click', e => {
+  ok.addEventListener('click', () => {
     m.remove()
     if (!x.action) return
     const value = inp ? inp.value : 1
@@ -262,12 +262,12 @@ document.addEventListener('granum-ask', e => dialog(e.detail))
 })()
 
 
-;(_ => {
+;(() => {
 
 const q = 'form[data-restore] [name]:not([data-unstore])'
 const key = n => 'store:' + (n.form.dataset.restore || '') + ':' + n.name + (n.type == 'checkbox' ? ':' + n.value : '')
 
-document.addEventListener('DOMContentLoaded', e => {
+document.addEventListener('DOMContentLoaded', () => {
 
   // init form inputs
   document.querySelectorAll('form[data-get]').forEach(n => {
@@ -312,11 +312,11 @@ document.addEventListener('granum-get', e => {
 
 })()
 
-;(_ => {
+;(() => {
 
 const keys = {Escape: 7, Tab: 9, ArrowLeft: -1, ArrowRight: 1}
 
-const x = _ => document.querySelectorAll('a.pic').forEach(m => m.classList.remove('modal'))
+const x = () => document.querySelectorAll('a.pic').forEach(m => m.classList.remove('modal'))
 
 const go = (a, dir) => {
   if (dir == 7) return x()
@@ -338,7 +338,7 @@ document.addEventListener('click', e => {
   const a = e.target.closest('a.pic')
   if (a) {
     e.preventDefault()
-    n = a.classList.contains('modal')
+    a.classList.contains('modal')
       ? go(a, (e.clientY < 50 && a.clientWidth - e.clientX < 50)
             ? 7
             : (e.clientX < a.clientWidth / 2 ? -1 : 1))
@@ -353,7 +353,7 @@ document.addEventListener('keydown', e => {
 
 })()
 
-;(_ => {
+;(() => {
 
 let t = null
 
@@ -374,7 +374,7 @@ const x = l => {
 const lst = l => l.previousSibling.lastChild
 const hi = l => l.previousSibling.previousSibling
 
-document.addEventListener('DOMContentLoaded', e => {
+document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-lookup]').forEach(n => {
     n.hidden = true
     const c = n.dataset.caption || ''
@@ -412,7 +412,7 @@ document.addEventListener('input', e => {
     const p = lst(l)
     const n = hi(l)
     p.style.display = ''
-    t = setTimeout(_ => {
+    t = setTimeout(() => {
       if (l.value === '') set(n, l, '', '')
       else {
         const u = n.dataset.lookup.split('#')
@@ -479,12 +479,12 @@ document.addEventListener('keydown', e => {
 
 })()
 
-;(_ => {
+;(() => {
 
 // pass event
 const evt = (n, e) => n.dispatchEvent(new Event(e, {bubbles: true}))
 // close
-const x = _ => document.querySelectorAll('.month').forEach(m => m.style.display = '')
+const x = () => document.querySelectorAll('.month').forEach(m => m.style.display = '')
 // days in month
 const dim = t => new Date(t.getFullYear(), t.getMonth() + 1, 0).getDate()
 // add days
@@ -528,7 +528,7 @@ const show = (d, v, t) => {
     + '<td colspan=3 class=c>' + fmt(m, 7)
     + ctl(k, 1, '&rsaquo;')
     + ctl(k, 12, '&raquo;')
-    + '<tr>' + Array(p).fill().map(_ => '<td>')
+    + '<tr>' + Array(p).fill().map(() => '<td>')
     .concat(Array(l).fill().map((v, i) => {
       const w = (i + p) % 7
       const f = fmt(ad(m, i))
@@ -544,7 +544,7 @@ const show = (d, v, t) => {
   d.style.display = 'block'
 }
 
-document.addEventListener('DOMContentLoaded', e => {
+document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.calendar').forEach(n => {
     const s = n.step || n.dataset.step
     n.dataset.len = (n.type == 'text' && !s)
@@ -580,7 +580,7 @@ document.addEventListener('keydown', e => {
 
 })()
 
-;(_ => {
+;(() => {
 
 const set = (d, def) => d.querySelectorAll('[contenteditable][data-for]').forEach(n => {
   const area = document.getElementById(n.dataset.for)
@@ -629,7 +629,7 @@ const b = [ // label, cmd, arg, ask
   ['&minus;', 'insertHorizontalRule']
 ]
 
-document.addEventListener('DOMContentLoaded', e => {
+document.addEventListener('DOMContentLoaded', () => {
   // build interface
   document.querySelectorAll('textarea.editor').forEach(n => {
     const id = n.id + '-editor'
@@ -685,9 +685,9 @@ document.addEventListener('input', e => {
 
 })()
 
-;(_ => {
+;(() => {
   
-  let d = p = null
+  let d = null, p = null
   
   document.querySelectorAll('.drag-item').forEach(n => {
     // avoid implicit pointer capture
@@ -719,7 +719,7 @@ document.addEventListener('input', e => {
   document.addEventListener('pointerover', e => {
     const n = e.target.closest('.drag-item')
     if (d && n && n != d && p.contains(n) && !d.contains(n)) {
-      items = [...p.querySelectorAll('.drag-item')]
+      const items = [...p.querySelectorAll('.drag-item')]
       n.parentNode.insertBefore(d, (items.indexOf(n) < items.indexOf(d)) ? n : n.nextSibling)
     }
   })

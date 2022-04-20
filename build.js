@@ -64,7 +64,7 @@ console.log('Bundle granum-full.js...');
   fs.writeFileSync('./dist/' + n + '.js', v + js, {flag: 'w'});
   if (n != 'granum-util') {
     if (!i) fs.writeFileSync('./dist/granum-full.js', '/*! granum-full.js v' + version + ' */\n\n', {flag: 'as'});
-    fs.writeFileSync('./dist/granum-full.js', ';' + js + '\n\n', {flag: 'as'});
+    fs.writeFileSync('./dist/granum-full.js', (i ? ';' : '') + js + '\n\n', {flag: 'as'});
   }
 });
 

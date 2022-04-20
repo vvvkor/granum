@@ -1,7 +1,7 @@
-/*! granum-util.js v1.2.99 */
+/*! granum-util.js v1.2.100 */
 
 /*
-;(_ => {
+(() => {
 */
 
 const typeOf = v => Object.prototype.toString.call(v).slice(8, -1).toLowerCase()

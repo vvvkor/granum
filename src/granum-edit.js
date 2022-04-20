@@ -1,4 +1,4 @@
-(_ => {
+(() => {
 
 const set = (d, def) => d.querySelectorAll('[contenteditable][data-for]').forEach(n => {
   const area = document.getElementById(n.dataset.for)
@@ -47,7 +47,7 @@ const b = [ // label, cmd, arg, ask
   ['&minus;', 'insertHorizontalRule']
 ]
 
-document.addEventListener('DOMContentLoaded', e => {
+document.addEventListener('DOMContentLoaded', () => {
   // build interface
   document.querySelectorAll('textarea.editor').forEach(n => {
     const id = n.id + '-editor'

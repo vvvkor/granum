@@ -32,7 +32,7 @@ document.addEventListener('granum-confirm', e => {
   
 
 
-window.addEventListener('resize', e => {
+window.addEventListener('resize', () => {
   const w = window.innerWidth
   if (document.body._w == null || document.body._w != w) {
     document.body._w = w

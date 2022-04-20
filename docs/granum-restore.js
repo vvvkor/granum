@@ -1,11 +1,11 @@
-/*! granum-restore.js v1.2.99 */
+/*! granum-restore.js v1.2.100 */
 
-(_ => {
+(() => {
 
 const q = 'form[data-restore] [name]:not([data-unstore])'
 const key = n => 'store:' + (n.form.dataset.restore || '') + ':' + n.name + (n.type == 'checkbox' ? ':' + n.value : '')
 
-document.addEventListener('DOMContentLoaded', e => {
+document.addEventListener('DOMContentLoaded', () => {
 
   // init form inputs
   document.querySelectorAll('form[data-get]').forEach(n => {

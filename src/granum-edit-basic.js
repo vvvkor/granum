@@ -1,4 +1,4 @@
-(_ => {
+(() => {
 
 const set = (d, def) => d.querySelectorAll('[contenteditable][data-for]').forEach(n => {
   const area = document.getElementById(n.dataset.for)

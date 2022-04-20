@@ -1,6 +1,6 @@
-/*! granum-dialog.js v1.2.99 */
+/*! granum-dialog.js v1.2.100 */
 
-(_ => {
+(() => {
 
 const i = (t, s, a={}) => {
   const d = document.createElement(t)
@@ -25,9 +25,9 @@ const dialog = x => {
     ], 'pad rad stack'),
     'modal js-modal')
 
-  if (x.action) no.addEventListener('click', e => m.remove())
+  if (x.action) no.addEventListener('click', () => m.remove())
   
-  ok.addEventListener('click', e => {
+  ok.addEventListener('click', () => {
     m.remove()
     if (!x.action) return
     const value = inp ? inp.value : 1

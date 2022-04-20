@@ -1,9 +1,9 @@
-(_ => {
+(() => {
 
 // pass event
 const evt = (n, e) => n.dispatchEvent(new Event(e, {bubbles: true}))
 // close
-const x = _ => document.querySelectorAll('.month').forEach(m => m.style.display = '')
+const x = () => document.querySelectorAll('.month').forEach(m => m.style.display = '')
 // days in month
 const dim = t => new Date(t.getFullYear(), t.getMonth() + 1, 0).getDate()
 // add days
@@ -47,7 +47,7 @@ const show = (d, v, t) => {
     + '<td colspan=3 class=c>' + fmt(m, 7)
     + ctl(k, 1, '&rsaquo;')
     + ctl(k, 12, '&raquo;')
-    + '<tr>' + Array(p).fill().map(_ => '<td>')
+    + '<tr>' + Array(p).fill().map(() => '<td>')
     .concat(Array(l).fill().map((v, i) => {
       const w = (i + p) % 7
       const f = fmt(ad(m, i))
@@ -63,7 +63,7 @@ const show = (d, v, t) => {
   d.style.display = 'block'
 }
 
-document.addEventListener('DOMContentLoaded', e => {
+document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.calendar').forEach(n => {
     const s = n.step || n.dataset.step
     n.dataset.len = (n.type == 'text' && !s)

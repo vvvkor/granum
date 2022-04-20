@@ -1,6 +1,6 @@
-/*! granum-lookup.js v1.2.99 */
+/*! granum-lookup.js v1.2.100 */
 
-(_ => {
+(() => {
 
 let t = null
 
@@ -21,7 +21,7 @@ const x = l => {
 const lst = l => l.previousSibling.lastChild
 const hi = l => l.previousSibling.previousSibling
 
-document.addEventListener('DOMContentLoaded', e => {
+document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-lookup]').forEach(n => {
     n.hidden = true
     const c = n.dataset.caption || ''
@@ -59,7 +59,7 @@ document.addEventListener('input', e => {
     const p = lst(l)
     const n = hi(l)
     p.style.display = ''
-    t = setTimeout(_ => {
+    t = setTimeout(() => {
       if (l.value === '') set(n, l, '', '')
       else {
         const u = n.dataset.lookup.split('#')

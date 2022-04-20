@@ -23,8 +23,8 @@
     <script>
 		document.addEventListener('granum-start', e => console.log('granum start', e))
 		document.addEventListener('granum-ready', e => console.log('granum ready', e))
-		window.addEventListener('resize', e => info.textContent = window.innerWidth + ' px') // with scrollbar
-		// window.addEventListener('resize', e => info.textContent = document.documentElement.clientWidth + 'px') // without scrollbar
+		window.addEventListener('resize', () => info.textContent = window.innerWidth + ' px') // with scrollbar
+		// window.addEventListener('resize', () => info.textContent = document.documentElement.clientWidth + 'px') // without scrollbar
 		document.addEventListener('granum-drag', e => console.log('granum drag', e))
 	</script>
   </head>
@@ -72,7 +72,7 @@ icons, status colors, and even more.
 Typography and styling is minimal and unobtrusive.
 -->
 
-<p class="text-n">v1.2.99</p>
+<p class="text-n">v1.2.100</p>
 
 <p>
 <b>3 KB</b> minified and gzipped.<br>

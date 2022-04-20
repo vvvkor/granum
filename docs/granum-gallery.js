@@ -1,10 +1,10 @@
-/*! granum-gallery.js v1.2.99 */
+/*! granum-gallery.js v1.2.100 */
 
-(_ => {
+(() => {
 
 const keys = {Escape: 7, Tab: 9, ArrowLeft: -1, ArrowRight: 1}
 
-const x = _ => document.querySelectorAll('a.pic').forEach(m => m.classList.remove('modal'))
+const x = () => document.querySelectorAll('a.pic').forEach(m => m.classList.remove('modal'))
 
 const go = (a, dir) => {
   if (dir == 7) return x()
@@ -26,7 +26,7 @@ document.addEventListener('click', e => {
   const a = e.target.closest('a.pic')
   if (a) {
     e.preventDefault()
-    n = a.classList.contains('modal')
+    a.classList.contains('modal')
       ? go(a, (e.clientY < 50 && a.clientWidth - e.clientX < 50)
             ? 7
             : (e.clientX < a.clientWidth / 2 ? -1 : 1))

@@ -1,8 +1,8 @@
-/*! granum-drag.js v1.2.99 */
+/*! granum-drag.js v1.2.100 */
 
-(_ => {
+(() => {
   
-  let d = p = null
+  let d = null, p = null
   
   document.querySelectorAll('.drag-item').forEach(n => {
     // avoid implicit pointer capture
@@ -34,7 +34,7 @@
   document.addEventListener('pointerover', e => {
     const n = e.target.closest('.drag-item')
     if (d && n && n != d && p.contains(n) && !d.contains(n)) {
-      items = [...p.querySelectorAll('.drag-item')]
+      const items = [...p.querySelectorAll('.drag-item')]
       n.parentNode.insertBefore(d, (items.indexOf(n) < items.indexOf(d)) ? n : n.nextSibling)
     }
   })

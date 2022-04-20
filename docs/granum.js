@@ -1,13 +1,13 @@
-/*! granum.js v1.2.99 */
+/*! granum.js v1.2.100 */
 
-(_ => {
+(() => {
 
 const tgl = (m, c, on) => {
   c = c && c.constructor === Array ? c : (c || '').split(/\s+/)
   m.forEach(n => c.forEach(k => k ? n.classList.toggle(k, on) : null))
 }
 
-document.addEventListener('DOMContentLoaded', e => {
+document.addEventListener('DOMContentLoaded', () => {
   document.dispatchEvent(new Event('granum-start'))
 
   // init toggler state
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', e => {
   })
   
   window.dispatchEvent(new Event('resize'))
-  setTimeout(_ => window.dispatchEvent(new Event('hashchange')), 10)
+  setTimeout(() => window.dispatchEvent(new Event('hashchange')), 10)
   document.dispatchEvent(new Event('granum-ready'))
 })
 
@@ -157,7 +157,7 @@ document.addEventListener('keydown', e => {
 })
 
 // responsive class
-window.addEventListener('resize', e => {
+window.addEventListener('resize', () => {
   const b = document.body
   const w = (b.dataset.break || '900,500').split(',')
   w.push(0)
@@ -172,7 +172,7 @@ window.addEventListener('resize', e => {
 })
 
 // focus in modal
-window.addEventListener('hashchange', e => {
+window.addEventListener('hashchange', () => {
   if (location.hash) {
     let n = document.querySelector('.modal' + location.hash)
     if (n) n = n.querySelector('a[href]:not(.empty), button, input, select, textarea')
