@@ -1,4 +1,4 @@
-/*! granum-calendar.js v1.2.100 */
+/*! granum-calendar.js v1.2.101 */
 
 (() => {
 
