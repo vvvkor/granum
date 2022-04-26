@@ -1,4 +1,4 @@
-/*! granum-full.css v1.2.101 */
+/*! granum-full.css v1.2.102 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -186,7 +186,7 @@ a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tbody tr
 .shade, .modal>div {box-shadow:0 .1em .8em 0em #0003;}
 
 /* drag */
-.drag-container {touch-action:none;}
+.drag-container, .drag-item {touch-action:none;}
 .drag-item {cursor:default;}
 .drag-handle {cursor:move;}
 

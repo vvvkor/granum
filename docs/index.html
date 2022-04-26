@@ -72,7 +72,7 @@ icons, status colors, and even more.
 Typography and styling is minimal and unobtrusive.
 -->
 
-<p class="text-n">v1.2.101</p>
+<p class="text-n">v1.2.102</p>
 
 <p>
 <b>3 KB</b> minified and gzipped.<br>
@@ -983,13 +983,13 @@ x<sup>super</sup>
 	<div class="row resp pad l">
 		<form method="get" action="#dragform" id="dragform" class="pad bord rad" data-drag="bg-w text-e" data-dragged="act shade">
 			<ul class="fit">
-				<li class="drag-item" id="drag1a"><span class="-pad icon-more drag-handle"></span>One<input type="hidden" name="sort[]" value="ONE">
+				<li class="drag-item" id="drag1a"><span class="-pad icon-more drag-handle"></span><a href="#drag">One</a><input type="hidden" name="sort[]" value="ONE">
 				<li class="drag-item" id="drag1b"><span class="-pad icon-more drag-handle"></span>Two<input type="hidden" name="sort[]" value="TWO">
 				<li class="drag-item" id="drag1c"><span class="-pad icon-more -drag-handle"></span>::Three::<input type="hidden" name="sort[]" value="THREE">
 			</ul>
 			<div class="hide drag-control r"><input type="submit" value="Apply"></div>
 		</form>
-		<form method="get" action="#dragformt" id="dragformt" class="pad bord rad" data-drag="bg-i text-n" data-dragged="act shade">
+		<form method="get" action="#dragformt" id="dragformt" class="pad bord rad drag-container" data-drag="bg-i text-n" data-dragged="act shade">
 			<table class="bord mid">
 				<tr class="drag-item" id="drag2a"><td class="-pad icon-grid drag-handle"><td>Alpha<input type="hidden" name="sort[]" value="ALPHA">
 				<tr class="drag-item" id="drag2b"><td class="-pad icon-grid drag-handle"><td>Beta<input type="hidden" name="sort[]" value="BETA">
