@@ -1,4 +1,4 @@
-/*! granum-lookup.js v1.2.102 */
+/*! granum-lookup.js v1.2.103 */
 
 (() => {
 
@@ -20,38 +20,38 @@ const x = l => {
 }
 const lst = l => l.previousSibling.lastChild
 const hi = l => l.previousSibling.previousSibling
+const init = n => {
+  n.hidden = true
+  const c = n.dataset.caption || ''
+  
+  const l = document.createElement('input')
+  l.type = 'text'
+  l.className = 'lookup'
+  l.name = 'lookup-' + n.name
+  l.value = l.defaultValue = c
+  l.autocomplete = 'off'
+  if ('get' in n.dataset) l.dataset.get = ''
+  if (n.required) l.required = true
+  n.after(l)
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-lookup]').forEach(n => {
-    n.hidden = true
-    const c = n.dataset.caption || ''
-    
-    const l = document.createElement('input')
-    l.type = 'text'
-    l.className = 'lookup'
-    l.name = 'lookup-' + n.name
-    l.value = l.defaultValue = c
-    l.autocomplete = 'off'
-    if ('get' in n.dataset) l.dataset.get = ''
-    if (n.required) l.required = true
-    n.after(l)
+  const p = document.createElement('div')
+  p.className = 'pop fit'
+  p.innerHTML = '<div class="look hide"></div>'
+  n.after(p)
+  
+  if (n.dataset.goto) {
+    const t = document.createElement('span')
+    t.innerHTML = ' <a href="#goto" class="icon-right empty" data-goto><b>&rarr;</b></a>'
+    l.after(t)
+  }
+  
+  evt(l, 'granum-get')
+  l.dataset.cap = l.value
+}
 
-    const p = document.createElement('div')
-    p.className = 'pop fit'
-    p.innerHTML = '<div class="look hide"></div>'
-    n.after(p)
-    
-    if (n.dataset.goto) {
-      const t = document.createElement('span')
-      t.innerHTML = ' <a href="#goto" class="icon-right empty" data-goto><b>&rarr;</b></a>'
-      l.after(t)
-    }
-    
-    evt(l, 'granum-get')
-    l.dataset.cap = l.value
-  })
-})
-
+document.addEventListener('DOMContentLoaded', () => document.querySelectorAll('[data-lookup]').forEach(n => init(n)))
+document.addEventListener('granum-lookup', e => init(e.target))
+  
 document.addEventListener('input', e => {
   const l = e.target.closest('.lookup')
   if (l) {

@@ -1,4 +1,4 @@
-/*! granum-calendar.js v1.2.102 */
+/*! granum-calendar.js v1.2.103 */
 
 (() => {
 
@@ -65,26 +65,27 @@ const show = (d, v, t) => {
   d.style.display = 'block'
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.calendar').forEach(n => {
-    const s = n.step || n.dataset.step
-    n.dataset.len = (n.type == 'text' && !s)
-      ? 10
-      : (n.type == 'date' ? 10 : ((s || 60) < 60 ? 19 : 16))
-    n.type = 'text'
-    const p = document.createElement('div')
-    p.className = 'pop fit'
-    n.before(p)
-    n.autocomplete = 'off'
-    evt(n, 'granum-get')
-    if (n.value.match('-')) n.value = fmt((new Date(n.value)), n.dataset.len)
-    if (n.defaultValue.match('-'))  n.defaultValue = fmt((new Date(n.defaultValue)), n.dataset.len)
-    p.innerHTML += '<div class="month pad rad hide"></div>'
-    const t = document.createElement('span')
-    t.innerHTML = ' <a href="#now" data-date=NOW class="icon-ok empty"><b>&check;</b></a> <a href="#reset" data-date class="icon-delete empty"><b>&cross;</b></a>'
-    n.after(t)
-  })
-})
+const init = n => {
+  const s = n.step || n.dataset.step
+  n.dataset.len = (n.type == 'text' && !s)
+    ? 10
+    : (n.type == 'date' ? 10 : ((s || 60) < 60 ? 19 : 16))
+  n.type = 'text'
+  const p = document.createElement('div')
+  p.className = 'pop fit'
+  n.before(p)
+  n.autocomplete = 'off'
+  evt(n, 'granum-get')
+  if (n.value.match('-')) n.value = fmt((new Date(n.value)), n.dataset.len)
+  if (n.defaultValue.match('-'))  n.defaultValue = fmt((new Date(n.defaultValue)), n.dataset.len)
+  p.innerHTML += '<div class="month pad rad hide"></div>'
+  const t = document.createElement('span')
+  t.innerHTML = ' <a href="#now" data-date=NOW class="icon-ok empty"><b>&check;</b></a> <a href="#reset" data-date class="icon-delete empty"><b>&cross;</b></a>'
+  n.after(t)
+}
+
+document.addEventListener('DOMContentLoaded', () => document.querySelectorAll('.calendar').forEach(n => init(n)))
+document.addEventListener('granum-calendar', e => init(e.target))
 
 document.addEventListener('input', e => e.target.matches('.calendar:focus') ? evt(e.target, 'click') : null)
 
