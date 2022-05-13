@@ -1,4 +1,4 @@
-/*! granum-full.js v1.2.103 */
+/*! granum-full.js v1.2.104 */
 
 (() => {
 
@@ -728,7 +728,7 @@ document.addEventListener('input', e => {
       if (d.dataset.ordered) {
         p.classList.add(...(p.dataset.dragged || 'act').split(' '))
         p.querySelectorAll('.drag-control').forEach(n => n.classList.remove('hide'))
-        document.dispatchEvent(new CustomEvent('granum-drag', {cancelable: true, detail: {container: p, item:d, items: p.querySelectorAll('.drag-item')}}))
+        d.dispatchEvent(new CustomEvent('granum-drag', {bubbles: true, cancelable: true, detail: {container: p, item:d, items: p.querySelectorAll('.drag-item')}}))
       }
       d = p = null
     }
