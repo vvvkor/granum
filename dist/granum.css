@@ -1,4 +1,4 @@
-/*! granum.css v1.2.104 */
+/*! granum.css v1.2.105 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -88,6 +88,7 @@ table.pad>*>tr>*, .tabs {border-bottom:thin solid #0002;}
 table.pad>*:last-child>tr:last-child>* {border-bottom:none;}
 
 /* form */
+fieldset {min-width:0;} /* fix overflow */
 input, select {max-width:100%;}
 textarea {width:100%;display:block;}
 input, button, select, textarea {padding:.2em;margin:.1em 0;border:thin solid #aaa;}
