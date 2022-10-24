@@ -25,7 +25,6 @@ Typography and styling is minimal and unobtrusive.
 
 - `.resp` - stack on narrow screen
 - `.pad` - inner gaps
-- `.l` - inner gaps when stacked
 - `.mid` - center all cells vertically
 - `.row > .mid` - center cell vertically
 - `.row > .col-0` - auto cell width

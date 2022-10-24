@@ -1,4 +1,4 @@
-.grid {display:flex;--gap:0em;--wid:100%;  list-style:none;padding:0;}
+.grid {display:flex;--gap:0em;--wid:100%;  list-style:none;padding:0;gap:var(--gap);}
 .grid.flow, [class*="grid-"] {flex-wrap:wrap;}
 /* .grid.roll {overflow-x:auto;} */
 .g1 {--gap:1em;}
@@ -7,7 +7,7 @@
 .p1 {padding:1em;}
 .p2 {padding:2em;}
 .p3 {padding:3em;}
-.grid > * {box-sizing:border-box;text-align:inherit;--span:1;}
+.grid > * {box-sizing:border-box;text-align:inherit;--span:1;margin:0;}
 .grid-1 {--cols:1;}
 .grid-2 {--cols:2;}
 .grid-3 {--cols:3;}
@@ -21,14 +21,16 @@
 [class*="grid-"] > * {flex:none;width:calc((var(--wid) + var(--gap)) * var(--span) / var(--cols) - var(--gap));}
 
 /* emulate gap */
+/*
 .grid {--wid:calc(100% - var(--gap));margin:calc(-1 * var(--gap)) 0 0 calc(-1 * var(--gap));}
 .grid > * {margin:var(--gap) 0 0 var(--gap);}
+*/
 
 /* native gap (requires better browser support) */
 /*
 @supports (gap: 1em) {
-	.grid {--wid:100%;margin:0;gap:var(--gap);}
-	.grid > * {margin:0;}
+  .grid {--wid:100%;margin:0;gap:var(--gap);}
+  .grid > * {margin:0;}
 }
 */
 
@@ -38,7 +40,11 @@
 .push + .shift {margin-left:0;}
 
 @media (max-width: 899px) {
-	.grid.resp {display:block;margin-left:0;}
-	.grid.resp > * {width:auto;margin-left:0;}
-	.grid.resp > * + * {margin-top:var(--gap);}
+  /*
+  .grid.resp {display:block;margin-left:0;}
+  .grid.resp > * {width:auto;margin-left:0;}
+  .grid.resp > * + * {margin-top:var(--gap);}
+  */
+  .grid.resp {flex-direction:column;}
+  .grid.resp > * {width:100%;}
 }

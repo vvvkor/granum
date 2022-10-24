@@ -1,4 +1,4 @@
-/*! granum.css v1.2.105 */
+/*! granum.css v1.2.106 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -111,11 +111,10 @@ input[readonly] {background-color:#eee;}
 
 /* grid */
 .row {display:flex;}
-.row.pad {padding:0;}
-.row.pad>*:not(:last-child) {margin-right:1rem;}
+.row.pad {padding:0;gap:1em;}
 ul.row:not(.roll) {flex-wrap:wrap;}
 ul.row li {display:flex;margin:0;}
-ul.row>*, .col-0[class] {flex:0 1 auto;/*for ie*/ /*flex:initial;*/}
+ul.row>*, .col-0[class] {flex:0 1 auto;} /* for ie, which has default 0 0 auto*/ /*flex:initial; */
 .row>:not(li) {min-width:0;/*fix overflow*/}
 .row>*, .col-1[class], ul.row ul a {flex:1;}
 .col-2[class] {flex:2;}
@@ -134,7 +133,7 @@ ul.row>*, .col-0[class] {flex:0 1 auto;/*for ie*/ /*flex:initial;*/}
 
 /* modal */
 .modal[class] {position:fixed;z-index:100;left:0;right:0;top:0;bottom:0em;background-color:#8888;box-shadow:0 0 0 9em #8888;display:flex;justify-content:center;align-items:center;margin:0;}
-.modal>* {/*width:30%;*/min-width:18rem;max-height:83%;overflow:auto;background-color:#fff;  /* non-flex fallback */display:inline-block;margin:1em;}
+.modal>* {/*width:30%;*/min-width:18rem;max-height:83%;overflow:auto;background-color:#fff;}
 
 /* gallery */
 a.pic {-webkit-tap-highlight-color:transparent;}
@@ -215,23 +214,15 @@ a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tbody tr
 	.field.resp>:first-child:not(:only-child) {flex:25;text-align:right;margin-right:2%;}
 	.field.resp>:first-child:not(:only-child), .field>:last-child>div:only-child {margin-top:.3em;border-top:thin solid transparent;}
 	.field.resp>:only-child {margin-left:27%;}
-	/* non-flex fallback */
-	.field.resp>* {display:inline-block;/*vertical-align:top;*/}
-}
-
-/* non-flex fallback */
-.row>*, ul.row a {display:inline-block;vertical-align:top;}
-@media (max-width: 899px) {
-	.row.resp>*, ul.row.resp a {display:block;}
 }
 
 /* mobile */
 @media (max-width: 899px) {
 	html {font-size:medium;}
-	.row.resp, ul.resp li {display:block;}
-	.row.resp[class]>* {margin-right:0;text-align:left;}
-	.row.resp.l>:not(:last-child) {margin-bottom:1rem;}
-	ul.row.resp a {flex:1;}
+	.row.resp, .row.resp>*, ul.row.resp a, ul.resp li {display:block;}
+	.row.resp[class]>* {text-align:left;}/* form label*/
+	.row.resp.pad>:not(:last-child) {margin-bottom:1rem;}
+	/*ul.row.resp a {flex:1;}*/
 	table.resp>*, table.resp>*>*, table.resp>*>*>* {display:block;text-align:left;}
 	table.resp tr{margin-bottom:.5em;}
 }
