@@ -1,5 +1,5 @@
 **Granum**  
-v1.2.106
+v1.2.107
 
 # Documentation
 
@@ -91,8 +91,8 @@ Typography and styling is minimal and unobtrusive.
 - `form.fit` - smaller margins
 - `button`, `input[type="submit"]` - button
 - `a.pad.inv` - button-like link
-- `:valid ~ .act.text-e` - hint on valid input
-- `:invalid ~ .act.text-y` - hint on invalid input
+- `:valid ~ .act.text-e`, ':valid ~ [data-valid]' - hint on valid input
+- `:invalid ~ .act.text-y`, `:invalid ~ [data-invalid]` - hint on invalid input
 - `[type="checkbox"][data-check="SELECTOR"]` - check group of boxes *(requires [granum.js](granum.js))*
 - `form[data-q]`, `input[data-q]` - populate inputs from URL parameters  *(requires [granum.js](granum.js))*
 - `input[data-lookup][data-caption][data-goto]` - lookup input *(requires [granum-dropdown.css](granum-dropdown.css) and [granum-lookup.js](granum-lookup.js))*
