@@ -25,22 +25,26 @@ console.log('\n# PREPARE\n');
 
 console.log('\n# CSS\n');
 console.log('Bundle granum-full.css...');
-['granum', 'granum-icons', 'granum-dropdown', 'granum-grid', 'granum-print', 'granum-basic']
+['granum', 'granum-icons', 'granum-icons-ext', 'granum-dropdown', 'granum-grid', 'granum-print', 'granum-basic']
 .forEach((n, i) => {
   console.log('Copy ' + n + '.css...');
   //fs.copyFileSync('./src/' + n + '.css', './dist/' + n + '.css')
   const css = fs.readFileSync('./src/' + n + '.css', 'utf8');
   const v = '/*! ' + n + '.css v' + version + ' */\n\n';
   fs.writeFileSync('./dist/' + n + '.css', v + css, {flag: 'w'});
-  if (n != 'granum-basic') {
+  if (!['granum-basic', 'granum-icons-ext'].includes(n)) {
     if (!i) fs.writeFileSync('./dist/granum-full.css', '/*! granum-full.css v' + version + ' */\n\n', {flag: 'as'});
     fs.writeFileSync('./dist/granum-full.css', css + '\n\n', {flag: 'as'});
+  }
+  if (!['granum-basic'].includes(n)) {
+    if (!i) fs.writeFileSync('./dist/granum-ext.css', '/*! granum-ext.css v' + version + ' */\n\n', {flag: 'as'});
+    fs.writeFileSync('./dist/granum-ext.css', css + '\n\n', {flag: 'as'});
   }
 });
 
 // minify css
 
-['granum', 'granum-icons', 'granum-dropdown', 'granum-grid', 'granum-print', 'granum-full', 'granum-basic']
+['granum', 'granum-icons', 'granum-icons-ext', 'granum-dropdown', 'granum-grid', 'granum-print', 'granum-full', 'granum-ext', 'granum-basic']
 .forEach(n => {
   console.log('Minify ' + n + '.css...');
   const css = fs.readFileSync('./dist/' + n + '.css', 'utf8');

@@ -6,7 +6,8 @@
   
   document.addEventListener('pointerdown', e => { 
     const n = e.target.closest('.drag-item')
-    if (n) {
+    const x = e.target.closest('input, select, a')
+    if (n && (!x || !n.contains(x))) {
       const q = 'drag-handle'
       const h = e.target.closest('.' + q)
       const hh = n.querySelector('.' + q)
@@ -18,6 +19,7 @@
         p = c(n)
         delete d.dataset.ordered
         d.classList.add(...(p.dataset.drag || 'act bg-w').split(' '))
+        p.classList.add(p.dataset.dragging || 'dragging')
       }
     }
   })
@@ -37,6 +39,7 @@
     if (d) {
       e.preventDefault()
       d.classList.remove(...(p.dataset.drag || 'act bg-w').split(' '))
+      p.classList.remove(p.dataset.dragging || 'dragging')
       if (d.dataset.ordered) {
         p.classList.add(...(p.dataset.dragged || 'act').split(' '))
         p.querySelectorAll('.drag-control').forEach(n => n.classList.remove('hide'))

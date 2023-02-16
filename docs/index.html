@@ -9,6 +9,7 @@
     <link rel="icon" type="image/svg" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20220%20220'%3E%3Cpath%20fill='%23f50'%20d='M35%2067l75%20-44%2075%2044%200%2089-75%2044-75-44zm75%208a35%2035%200%201%200%20.01%200z'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="granum.css">
     <link rel="stylesheet" href="granum-icons.css">
+    <link rel="stylesheet" href="granum-icons-ext.css">
     <link rel="stylesheet" href="granum-dropdown.css">
     <link rel="stylesheet" href="granum-grid.css">
     <link rel="stylesheet" href="granum-print.css">
@@ -72,7 +73,7 @@ icons, status colors, and even more.
 Typography and styling is minimal and unobtrusive.
 -->
 
-<p class="text-n">v1.2.107</p>
+<p class="text-n">v1.2.108</p>
 
 <p>
 <b>3 KB</b> minified and gzipped.<br>
@@ -93,19 +94,26 @@ Typography and styling is minimal and unobtrusive.
 
 
 	<!--a href="#drawer" class="icon-right pad" title="Drawer"></a-->
-	<div id="drawer" class="drawer -target back pad -bord shade">
-		<div class="r"><a href="#cancel" class="icon-close pad" title="Close"></a></div>
-		<h3 class="fit">Drawer</h3>
-		<details class="bg pad mar l">
-			<summary>More horizontal</summary>
-			<p class="nobr">Text text text text text text text text text text text text text text text text text
-			text text text text text text text text text text text text text text text text text text text.</p>
-		</details>
-		<details class="bg pad mar l">
-			<summary>More vertical</summary>
-			<p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p>
-			<p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p>
-		</details>
+	<div id="drawer" class="drawer -target back -bord shade">
+    <header class="pad stick shade row mid">
+      <h3 class="fit pad">Drawer</h3>
+      <div class="r"><a href="#cancel" class="icon-close pad" title="Close"></a></div>
+    </header>
+    <div class="pad">
+      <details class="bg pad mar l">
+        <summary>More horizontal</summary>
+        <p class="nobr">Text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text.</p>
+      </details>
+      <details class="bg pad mar l">
+        <summary>More vertical</summary>
+        <p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p>
+        <p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p>
+      </details>
+    </div>
+    <footer class="stick pad c text-n">
+      Sticky footer
+    </footer>
 	</div>
 
 <div class="mar pad p2"></div>
@@ -161,7 +169,9 @@ Typography and styling is minimal and unobtrusive.
 			<div><div class="icon-pin span-0 h3"></div></div>
 			<div>
 				<h3 class="fit"><a href="#icon">Icons</a></h3>
-				<p>32 general purpose simple SVG icons.</p>
+				<p>32 general purpose simple SVG icons.
+        <br>
+				Extended iconset with 80 icons.</p>
 			</div>
 		</div>
 	</div>
@@ -827,24 +837,31 @@ x<sup>super</sup>
 			</div>
 		</div></div>
 		
-		<div id="modal-test" class="target modal"><div class="pad rad c">
+		<div id="modal-test" class="target modal sans"><div class="rad c">
       <!--div class="bg-w">Test radius</div-->
-			<p><b>Modal</b></p>
-			<details class="bg pad mar l">
-				<summary>More horizontal</summary>
-				<p class="nobr">Text text text text text text text text text text text text text text text text text
-				text text text text text text text text text text text text text text text text text text text.</p>
-			</details>
-			<details class="bg pad mar l">
-				<summary>More vertical</summary>
-				<p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p>
-				<p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p>
-			</details>
-			<!--p><a href="#cancel"><button class="icon-ok bg-y">Close</button></a></p-->
-			<p>
-				<a href="#cancel" class="pad inv rad icon-ok bg-y">Close</a>
-				<a href="#back" class="pad -hover">&larr; Back</a>
-			</p>
+      <header class="stick">
+        <div class="pad bg-w"><b>Modal</b></div>
+      </header>
+      <div class="pad">
+        <details class="bg pad mar l">
+          <summary>More horizontal</summary>
+          <p class="nobr">Text text text text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text text text text text text.</p>
+        </details>
+        <details class="bg pad mar l">
+          <summary>More vertical</summary>
+          <p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p>
+          <p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p>
+        </details>
+        <!--p><a href="#cancel"><button class="icon-ok bg-y">Close</button></a></p-->
+        <p>
+          <a href="#cancel" class="pad inv rad icon-ok bg-y">Close</a>
+          <a href="#back" class="pad -hover">&larr; Back</a>
+        </p>
+      </div>
+      <footer class="stick pad bg-w c small">
+        info
+      </footer>
 		</div></div>
 	</div>
 	
@@ -1070,6 +1087,26 @@ x<sup>super</sup>
 	<li><a class="hover icon-lock"></a>
 	<li><a class="hover icon-world"></a>
 </ul-->
+
+
+<h3 id="icon-ext"><a href="#icon">Extended iconset</a> <a href="#top" class="fit icon-up l"></a></h2>
+<a href="#ext" class="toggle icon-down" data-act="icon-down" data-inact="icon-right">Show</a>
+<div id="ext" class="target mem">
+  <ul id="icons-gen" class="grid grid-4 resp sans -text-n -row hover" data-resp="grid grid-4 sans, grid grid-2 sans"><!-- generate demo icons... --></ul>
+</div>
+
+<script>
+  const icons = ['menu', 'sort', 'more', 'grid', 'home', 'find', 'config', 'close', 'user', 'exit', 'key', 'lock', 'edit', 'add', 'delete', 'ok', 'up', 'down', 'left', 'right', 'asc', 'desc', 'back', 'forward', 'upload', 'download', 'first', 'last', 'folder', 'open', 'file', 'attach', 'audio', 'video', 'image', 'text', 'tree', 'list', 'link', 'chart', 'no', 'ban', 'warning', 'info', 'share', 'world', 'flag', 'pin', 'date', 'time', 'refresh', 'view', 'card', 'sum', 'copy', 'help', 'phone', 'mail', 'chat', 'send', 'bookmark', 'star', 'heart', 'tag', 'expand', 'collapse', 'box', 'columns', 'storage', 'settings', 'power', 'energy', 'sound', 'mic', 'photo', 'print', 'play', 'pause', 'stop', 'rec', 'layers', 'none'];
+  const d = document.querySelector('#icons-gen');
+  icons.forEach(icon => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.textContent = icon;
+    a.classList.add('icon-' + icon, 'pad', 'hover');
+    li.append(a);
+    d.append(li);
+  })
+</script>
 
 </main>
 <hr>
