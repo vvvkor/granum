@@ -105,7 +105,7 @@ console.log('Copy docs...');
 
 console.log('Copy assets...');
 [
-  'granum.css', 'granum-icons.css', 'granum-dropdown.css', 'granum-grid.css', 'granum-print.css', 'granum-basic.css',
+  'granum.css', 'granum-icons.css', 'granum-icons-ext.css', 'granum-dropdown.css', 'granum-grid.css', 'granum-print.css', 'granum-basic.css',
   'granum.js', 'granum-dialog.js', 'granum-restore.js', 'granum-gallery.js',
   'granum-lookup.js', 'granum-calendar.js', 'granum-edit.js', 'granum-drag.js',
   'granum-util.js'
