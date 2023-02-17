@@ -10,9 +10,10 @@ let start = 0 // coord
 const isPressing = () => [...document.querySelectorAll('.split>:not(.splitter)')].some(n => n.offsetWidth < wmin)
 
 const releaseNext = (n, x) => {
+  //const big = [...n.parentNode.querySelectorAll('.split>:not(.splitter):not(:last-child)')].filter(m => m != n.previousElementSibling).map(m => [m, m.offsetWidth]).sort((a, b) => b[1] - a[1])[0][0]
   const m = n.nextElementSibling
   if (x > 0 && m && m.nextElementSibling) {
-    const w = m.offsetWidth - x
+    const w = m.offsetWidth - x // Math.abs(x)
     if (w > wmin) {
       setWidth(m, w, true)
       return true
