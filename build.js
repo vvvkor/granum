@@ -59,22 +59,26 @@ console.log('Bundle granum-full.css...');
 
 console.log('\n# JS\n');
 console.log('Bundle granum-full.js...');
-['granum', 'granum-dialog', 'granum-restore', 'granum-gallery', 'granum-lookup', 'granum-calendar', 'granum-edit', 'granum-drag', 'granum-util']
+['granum', 'granum-dialog', 'granum-restore', 'granum-gallery', 'granum-lookup', 'granum-calendar', 'granum-edit', 'granum-drag', 'granum-split', 'granum-util']
 .forEach((n, i) => {
   console.log('Copy ' + n + '.js...');
   //fs.copyFileSync('./src/' + n + '.js', './dist/' + n + '.js')
   const js = fs.readFileSync('./src/' + n + '.js', 'utf8');
   const v = '/*! ' + n + '.js v' + version + ' */\n\n';
   fs.writeFileSync('./dist/' + n + '.js', v + js, {flag: 'w'});
-  if (n != 'granum-util') {
+  if (!['granum-util', 'granum-split'].includes(n)) {
     if (!i) fs.writeFileSync('./dist/granum-full.js', '/*! granum-full.js v' + version + ' */\n\n', {flag: 'as'});
     fs.writeFileSync('./dist/granum-full.js', (i ? ';' : '') + js + '\n\n', {flag: 'as'});
+  }
+  if (!['granum-util'].includes(n)) {
+    if (!i) fs.writeFileSync('./dist/granum-ext.js', '/*! granum-ext.js v' + version + ' */\n\n', {flag: 'as'});
+    fs.writeFileSync('./dist/granum-ext.js', (i ? ';' : '') + js + '\n\n', {flag: 'as'});
   }
 });
 
 // minify js
 
-['granum', 'granum-dialog', 'granum-restore', 'granum-gallery', 'granum-lookup', 'granum-calendar', 'granum-edit', 'granum-drag', 'granum-full', 'granum-util']
+['granum', 'granum-dialog', 'granum-restore', 'granum-gallery', 'granum-lookup', 'granum-calendar', 'granum-edit', 'granum-drag', 'granum-split', 'granum-full', 'granum-ext', 'granum-util']
 .forEach(n => {
   console.log('Minify ' + n + '.js...');
   const js = fs.readFileSync('./dist/' + n + '.js', 'utf8');
@@ -107,7 +111,7 @@ console.log('Copy assets...');
 [
   'granum.css', 'granum-icons.css', 'granum-icons-ext.css', 'granum-dropdown.css', 'granum-grid.css', 'granum-print.css', 'granum-basic.css',
   'granum.js', 'granum-dialog.js', 'granum-restore.js', 'granum-gallery.js',
-  'granum-lookup.js', 'granum-calendar.js', 'granum-edit.js', 'granum-drag.js',
+  'granum-lookup.js', 'granum-calendar.js', 'granum-edit.js', 'granum-drag.js', 'granum-split.js',
   'granum-util.js'
 ]
 .forEach(n => fs.copyFileSync('./dist/' + n, './docs/' + n));

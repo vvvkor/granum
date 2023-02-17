@@ -21,6 +21,7 @@
     <script defer src="granum-calendar.js"></script>
     <script defer src="granum-edit.js"></script>
     <script defer src="granum-drag.js"></script>
+    <script defer src="granum-split.js"></script>
     <script>
 		document.addEventListener('granum-start', e => console.log('granum start', e))
 		document.addEventListener('granum-ready', e => console.log('granum ready', e))
@@ -73,7 +74,7 @@ icons, status colors, and even more.
 Typography and styling is minimal and unobtrusive.
 -->
 
-<p class="text-n">v1.2.108</p>
+<p class="text-n">v1.2.109</p>
 
 <p>
 <b>3 KB</b> minified and gzipped.<br>
@@ -94,8 +95,8 @@ Typography and styling is minimal and unobtrusive.
 
 
 	<!--a href="#drawer" class="icon-right pad" title="Drawer"></a-->
-	<div id="drawer" class="drawer -target back -bord shade">
-    <header class="pad stick shade row mid">
+	<div id="drawer" class="drawer -target back -bord shade vert">
+    <header class="pad -stick shade row mid">
       <h3 class="fit pad">Drawer</h3>
       <div class="r"><a href="#cancel" class="icon-close pad" title="Close"></a></div>
     </header>
@@ -111,8 +112,8 @@ Typography and styling is minimal and unobtrusive.
         <p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p>
       </details>
     </div>
-    <footer class="stick pad c text-n">
-      Sticky footer
+    <footer class="-stick shade pad c text-n">
+      Footer
     </footer>
 	</div>
 
@@ -358,8 +359,8 @@ x<sup>super</sup>
 
 <h3 id="list"><a href="#list">Lists</a> <a href="#top" class="fit icon-up"></a></h3>
 
-<div class="row pad -resp">
-<div>
+<div class="row pad -resp split -resp">
+<div class="-bg" id="list-1">
 	<ul>
 	<li>Basic
 	<li>List
@@ -371,19 +372,19 @@ x<sup>super</sup>
 	</ul>
 </div>
 
-<div>
+<div class="-bg" id="list-2">
 	<ol>
 	<li>Ordered
 	<li>List
 		<ol>
-		<li>Sub
+		<li>Subitem
 		<li>Item
 		</ol>
 	<li>Final
 	</ol>
 </div>
 
-<div>
+<div class="-bg">
 	<dl>
 		<dt>Term
 			<dd>Definition
@@ -837,10 +838,10 @@ x<sup>super</sup>
 			</div>
 		</div></div>
 		
-		<div id="modal-test" class="target modal sans"><div class="rad c">
+		<div id="modal-test" class="target modal sans"><div class="rad c vert">
       <!--div class="bg-w">Test radius</div-->
-      <header class="stick">
-        <div class="pad bg-w"><b>Modal</b></div>
+      <header class="-stick shade">
+        <div class="pad shade"><b>Modal</b></div>
       </header>
       <div class="pad">
         <details class="bg pad mar l">
@@ -854,13 +855,10 @@ x<sup>super</sup>
           <p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p><p>text</p>
         </details>
         <!--p><a href="#cancel"><button class="icon-ok bg-y">Close</button></a></p-->
-        <p>
-          <a href="#cancel" class="pad inv rad icon-ok bg-y">Close</a>
-          <a href="#back" class="pad -hover">&larr; Back</a>
-        </p>
       </div>
-      <footer class="stick pad bg-w c small">
-        info
+      <footer class="-stick shade pad c">
+        <a href="#cancel" class="pad inv rad icon-ok bg-y">Close</a>
+        <a href="#back" class="pad -hover">&larr; Back</a>
       </footer>
 		</div></div>
 	</div>
@@ -1090,7 +1088,7 @@ x<sup>super</sup>
 
 
 <h3 id="icon-ext"><a href="#icon">Extended iconset</a> <a href="#top" class="fit icon-up l"></a></h2>
-<a href="#ext" class="toggle icon-down" data-act="icon-down" data-inact="icon-right">Show</a>
+<a href="#ext" class="toggle icon-desc" data-act="icon-desc" data-inact="icon-forward">Show</a>
 <div id="ext" class="target mem">
   <ul id="icons-gen" class="grid grid-4 resp sans -text-n -row hover" data-resp="grid grid-4 sans, grid grid-2 sans"><!-- generate demo icons... --></ul>
 </div>

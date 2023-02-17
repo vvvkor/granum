@@ -1,4 +1,4 @@
-/*! granum-grid.css v1.2.108 */
+/*! granum-grid.css v1.2.109 */
 
 .grid {display:flex;--gap:0em;--wid:100%;  list-style:none;padding:0;gap:var(--gap);}
 .grid.flow, [class*="grid-"] {flex-wrap:wrap;}
@@ -22,31 +22,21 @@
 .span-4 {flex:4;--span:4;}
 [class*="grid-"] > * {flex:none;width:calc((var(--wid) + var(--gap)) * var(--span) / var(--cols) - var(--gap));}
 
-/* emulate gap */
-/*
-.grid {--wid:calc(100% - var(--gap));margin:calc(-1 * var(--gap)) 0 0 calc(-1 * var(--gap));}
-.grid > * {margin:var(--gap) 0 0 var(--gap);}
-*/
-
-/* native gap (requires better browser support) */
-/*
-@supports (gap: 1em) {
-  .grid {--wid:100%;margin:0;gap:var(--gap);}
-  .grid > * {margin:0;}
-}
-*/
-
 /* prefer .push to keep minimal gap */
 .grid > .push {margin-right:auto;}
 .grid > .shift {margin-left:auto;}
 .push + .shift {margin-left:0;}
 
 @media (max-width: 899px) {
-  /*
-  .grid.resp {display:block;margin-left:0;}
-  .grid.resp > * {width:auto;margin-left:0;}
-  .grid.resp > * + * {margin-top:var(--gap);}
-  */
   .grid.resp {flex-direction:column;}
   .grid.resp > * {width:100%;}
+  .row.resp>.splitter {display:none;}
+}
+
+/* splitter */
+@media screen {
+  .row.split {gap:.5em;}
+  .split>:not(.splitter) {overflow:auto visible;}
+  .splitter {cursor:ew-resize;flex:none;width:.3em;background:#f9f9f9;}
+  .splitter.act {background:#eee;}
 }

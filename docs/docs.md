@@ -1,5 +1,5 @@
 **Granum**  
-v1.2.108
+v1.2.109
 
 # Documentation
 
@@ -112,8 +112,12 @@ Typography and styling is minimal and unobtrusive.
 - `.gallery a.pic` - image gallery *(requires [granum-gallery.js](granum-gallery.js))*
 - `.drawer:target` - drawer sliding from left (`.l` from right)
 - `.stick` - stick element to top
+  - `footer.stick` - stick element to bottom
 - `.roll` - horizontal scroll if needed
 - `.hi` - fullscreen height
+- `.vert` - vertical flexbox (use inside limited height, like `.modal` or `.drawer`)
+  - `.vert > header, .vert > footer` - non-scrollable
+  - `.vert > div` - scrollable
 - `.tag`, `.tag.bg-e` - tag
 - `.badge > .tag` - badge (counter)
 - `.bar[style="--v:PERCENT"]` - progress bar
@@ -131,6 +135,8 @@ Typography and styling is minimal and unobtrusive.
 `edit` `add` `close` (`delete`) `refresh` `ok` `info` `warning` `ban`  
 `up` `down` `left` `right` `folder` `file` `image` `download`  
 `copy` `chart` `pin` `time` `mail` `send` `lock` `world`
+
+More icons are available with [granum-icons-ext.css](granum-icons-ext.css)
 
 ### Status colors and backgrounds
 
@@ -250,3 +256,4 @@ Typography and styling is minimal and unobtrusive.
   - `.drag-item` - sortable items
   - `.drag-handle` - drag handle for item (whole item by default)
   - `.drag-control` - appears after dragging is performed (optional)
+- `.row.split` - add splitters *(requires [granum-grid.css](granum-grid.css) and [granum-split.js](granum-split.js))*
