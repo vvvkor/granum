@@ -1,4 +1,4 @@
-/*! granum-grid.css v1.2.109 */
+/*! granum-grid.css v1.2.110 */
 
 .grid {display:flex;--gap:0em;--wid:100%;  list-style:none;padding:0;gap:var(--gap);}
 .grid.flow, [class*="grid-"] {flex-wrap:wrap;}
@@ -36,7 +36,7 @@
 /* splitter */
 @media screen {
   .row.split {gap:.5em;}
-  .split>:not(.splitter) {overflow:auto visible;}
+  .split>:not(.splitter) {overflow:auto visible;box-sizing:border-box;}
   .splitter {cursor:ew-resize;flex:none;width:.3em;background:#f9f9f9;}
   .splitter.act {background:#eee;}
 }
