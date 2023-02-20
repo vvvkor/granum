@@ -677,6 +677,7 @@ button[class*="icon-"]:before, button [class*="icon-"]:before, .inv:before, .tag
   .splitter.act {background:#eee;}
 }
 
+
 @media print{
 	body {font:12pt/1.3 serif;background:none;}
 	h1, h2, h3, h4, h5, h6 {page-break-after:avoid;}

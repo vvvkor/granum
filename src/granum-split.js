@@ -1,28 +1,20 @@
 (() => {
 
-const edge = 50
-const wmin = 100
-  
-let curNode = null // splitter
-let curWidth = 0 // splitter's parent
-let start = 0 // coord
+let wmin = 50
+let cur = null // splitter
 
-const isPressing = () => [...document.querySelectorAll('.split>:not(.splitter)')].some(n => n.offsetWidth < wmin)
+const jam = () => items(cur, true).some(n => n.offsetWidth < wmin)
 
-const releaseNext = (n, x) => {
-  //const big = [...n.parentNode.querySelectorAll('.split>:not(.splitter):not(:last-child)')].filter(m => m != n.previousElementSibling).map(m => [m, m.offsetWidth]).sort((a, b) => b[1] - a[1])[0][0]
-  const m = n.nextElementSibling
-  if (x > 0 && m && m.nextElementSibling) {
-    const w = m.offsetWidth - x // Math.abs(x)
-    if (w > wmin) {
-      setWidth(m, w, true)
-      return true
-    }
-  }
+const items = (p, all) => [...p.parentNode.children].filter(n => !n.matches('.splitter' + (all ? '' : ',:last-child')))
+
+const next = (n, x, back=false) => {
+  while (n && (n.matches('.splitter') || (x < 0 && n.offsetWidth + x < wmin))) n = n[back ? 'previousElementSibling' : 'nextElementSibling']
+  return n && n.matches('.splitter, :last-child') ? null : n
 }
 
-const resetSplitters = (store) => {
-  document.querySelectorAll('.split>:not(.splitter)').forEach(n => setWidth(n, null, store))
+const resetSplitters = (store, p) => {
+  items(p, true).forEach(n => setWidth(n, null, store))
+  p.dispatchEvent(new Event('granum-split', {bubbles: true}))
 }
 
 const storeSplitter = (d) => {
@@ -30,14 +22,15 @@ const storeSplitter = (d) => {
 }
 
 const restoreSplitters = () => {
-  [...document.querySelectorAll('.split>[id]')].reverse().forEach(n => {
+  [...document.querySelectorAll('.split>[id]')].forEach(n => {
     const w = localStorage.getItem('split-' + n.id)
     if (w) setWidth(n, w)
   })
 }
 
 const initSplitters = () => {
-  [...document.querySelectorAll('.split>:not(.splitter):not(:last-child)')].reverse().forEach(n => {
+  [...document.querySelectorAll('.split>:not(.splitter):not(:last-child)')].forEach((n, i) => {
+    if (!n.id && n.parentNode.id) n.id = n.parentNode.id + '-' + i
     const s = document.createElement('div')
     s.classList.add('splitter')
     n.after(s)
@@ -47,7 +40,8 @@ const initSplitters = () => {
 
 const setWidth = (n, w, store) => {
   if (w) {
-    n.style.width = n.style.minWidth = ('' + w).replace(/[a-z%]/gi, '') + 'px'
+    if (typeof w == 'number') w = Math.floor(w / n.parentNode.clientWidth * 100 * 100) / 100 + '%'
+    n.style.width = n.style.minWidth = w
     n.style.flex = '0'
   }
   else n.style = {}
@@ -56,53 +50,45 @@ const setWidth = (n, w, store) => {
 
 // events
 
-document.addEventListener('dblclick', e => {
-  if (e.target.closest('.splitter')) {
-    resetSplitters(true)
-    e.target.dispatchEvent(new Event('granum-split', {bubbles: true}))
-  }
-})
+document.addEventListener('dblclick', e => (e.target.closest('.splitter')) ? resetSplitters(true, e.target) : null)
 
 document.addEventListener('pointerdown', e => {
   const n = e.target.closest('.splitter')
   if (n) {
     e.preventDefault()
     e.target.releasePointerCapture(e.pointerId) // avoid implicit pointer capture
-    curNode = n
-    start = e.clientX
-    curWidth = curNode.previousElementSibling.offsetWidth
-    curNode.classList.add('act')
+    wmin = Number(n.parentNode.dataset.wmin) || 50
+    cur = n
+    cur.classList.add('act');
+    items(cur).forEach(m => setWidth(m, m.offsetWidth)) // prepare all
   }
 })
 
 document.addEventListener('pointermove', e => {
-  if (!curNode) return;
-  const x = e.clientX - start // e.movementX
-  //if ((e.screenX < edge && x < 0) || (e.screenX > window.innerWidth - edge && x > 0)) return; // screen edges
-  const ww = curWidth + x
-  //if (ww < wmin) return
-  const p = curNode.previousElementSibling
-  const pp = p.parentNode
-  const min = edge
-  const max = Math.min(pp.offsetWidth, window.innerWidth) - edge
-  if ((ww < min && x < 0) || (ww > max && x > 0)) return; // container edges
-  const prev = p.style.width;
-  [...pp.children].forEach(n => n.classList.contains('splitter') ? null : setWidth(n, n.nextElementSibling ? n.offsetWidth : null)) // prepare all in container
-  const w = isPressing()
-  setWidth(p, ww)
-  if (!w && isPressing()) {
-    const shift = releaseNext(curNode, e.movementX)
-    if (!shift || isPressing()) setWidth(p, prev) // revert
+  if (!cur) return;
+  const p = cur.parentNode
+  const dx = e.movementX
+  const n = next(cur, dx, true)
+  if (!n) return
+  const m = dx > 0 ? next(cur, -dx) : null 
+  const prev = [n.style.width, m ? m.style.width : 0];
+  const j = jam()
+  if (m) setWidth(m, m.offsetWidth - dx)
+  setWidth(n, n.offsetWidth + dx)
+  if (!j && jam()) { 
+    // revert
+    setWidth(n, prev[0])
+    if (m) setWidth(m, prev[1])
   }
 })
 
 document.addEventListener('pointerup', e => {
-  if (curNode) {
-    storeSplitter(curNode.previousElementSibling)
+  if (cur) {
     e.preventDefault()
-    curNode.classList.remove('act')
-    curNode.dispatchEvent(new Event('granum-split', {bubbles: true}))
-    curNode = null
+    items(cur).forEach(m => setWidth(m, m.offsetWidth, true)) // store all
+    cur.classList.remove('act')
+    cur.dispatchEvent(new Event('granum-split', {bubbles: true}))
+    cur = null
   }
 })
 
