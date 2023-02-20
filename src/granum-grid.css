@@ -34,7 +34,7 @@
 /* splitter */
 @media screen {
   .row.split {gap:.5em;}
-  .split>:not(.splitter) {overflow:auto visible;}
+  .split>:not(.splitter) {overflow:auto visible;box-sizing:border-box;}
   .splitter {cursor:ew-resize;flex:none;width:.3em;background:#f9f9f9;}
   .splitter.act {background:#eee;}
 }
