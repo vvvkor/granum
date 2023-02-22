@@ -76,7 +76,6 @@ document.addEventListener('pointerdown', e => {
 
 document.addEventListener('pointermove', e => {
   if (!cur) return;
-  const p = cur.parentNode
   const d = e[f[4]]
   const n = next(cur, d, true)
   if (!n) return

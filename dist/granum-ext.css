@@ -1,4 +1,4 @@
-/*! granum-ext.css v1.2.111 */
+/*! granum-ext.css v1.2.112 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -666,12 +666,13 @@ button[class*="icon-"]:before, button [class*="icon-"]:before, .inv:before, .tag
 @media (max-width: 899px) {
   .grid.resp {flex-direction:column;}
   .grid.resp > * {width:100%;}
-  .row.resp>.splitter {display:none;}
+  .row.resp > .splitter {display:none;}
+  .row.split.resp > * {width:auto !important;min-width:auto !important;height:auto !important;min-height:auto !important;}
 }
 
 /* splitter */
 @media screen {
-  .row.split {gap:.5em;}
+  .row.split.pad {gap:.5em;}
   .row.split.vert {height:100vh;}
   .split>:not(.splitter) {overflow:auto visible;box-sizing:border-box;}
   .splitter {cursor:ew-resize;flex:none;width:.3em;background:#f9f9f9;}

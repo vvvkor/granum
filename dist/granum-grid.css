@@ -1,4 +1,4 @@
-/*! granum-grid.css v1.2.111 */
+/*! granum-grid.css v1.2.112 */
 
 .grid {display:flex;--gap:0em;--wid:100%;  list-style:none;padding:0;gap:var(--gap);}
 .grid.flow, [class*="grid-"] {flex-wrap:wrap;}
@@ -30,12 +30,13 @@
 @media (max-width: 899px) {
   .grid.resp {flex-direction:column;}
   .grid.resp > * {width:100%;}
-  .row.resp>.splitter {display:none;}
+  .row.resp > .splitter {display:none;}
+  .row.split.resp > * {width:auto !important;min-width:auto !important;height:auto !important;min-height:auto !important;}
 }
 
 /* splitter */
 @media screen {
-  .row.split {gap:.5em;}
+  .row.split.pad {gap:.5em;}
   .row.split.vert {height:100vh;}
   .split>:not(.splitter) {overflow:auto visible;box-sizing:border-box;}
   .splitter {cursor:ew-resize;flex:none;width:.3em;background:#f9f9f9;}
