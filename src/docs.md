@@ -257,4 +257,5 @@ More icons are available with [granum-icons-ext.css](granum-icons-ext.css)
   - `.drag-handle` - drag handle for item (whole item by default)
   - `.drag-control` - appears after dragging is performed (optional)
 - `.row.split([id])` - add splitters *(requires [granum-grid.css](granum-grid.css) and [granum-split.js](granum-split.js))*
-  - `[data-wmin]` - minimal column width (default `50`)
+  - `.row.split.vert` - vertical splitters (must have fixed height)
+  - `[data-min]` - minimal column size (default `50`)

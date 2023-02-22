@@ -74,7 +74,7 @@ icons, status colors, and even more.
 Typography and styling is minimal and unobtrusive.
 -->
 
-<p class="text-n">v1.2.110</p>
+<p class="text-n">v1.2.111</p>
 
 <p>
 <b>3 KB</b> minified and gzipped.<br>
@@ -359,13 +359,19 @@ x<sup>super</sup>
 
 <details>
 <summary>Splitter</summary>
+  <label>Mode
+  <select name="splitter-mode" data-nodes="#splitter" oninput="document.querySelectorAll(this.dataset.nodes + ' > *').forEach(n => n.style = {})">
+    <option value="row split" selected>Horizontal</option>
+    <option value="row split vert">Vertical</option>
+  </select></label>
+  
   <div class="pad bord">
-    <div class="row split" id="splitter">
-      <div class="pad bg-n">First column</div>
-      <div class="pad bg-i">Second column</div>
-      <div class="pad bg-y">Third column</div>
-      <div class="pad bg-w">Fourth column</div>
-      <div class="pad bg-e">Fifth column</div>
+    <div class="row split -vert" id="splitter" style="height:70vh;" data-min="50">
+      <div class="pad bg-n col-2">First item</div>
+      <div class="pad bg-i">Second item</div>
+      <div class="pad bg-y">Third item</div>
+      <div class="pad bg-w">Fourth item</div>
+      <div class="pad bg-e">Fifth item</div>
     </div>
   </div>
 </details>
