@@ -1,4 +1,4 @@
-/*! granum-grid.css v1.2.112 */
+/*! granum-grid.css v1.2.113 */
 
 .grid {display:flex;--gap:0em;--wid:100%;  list-style:none;padding:0;gap:var(--gap);}
 .grid.flow, [class*="grid-"] {flex-wrap:wrap;}
@@ -39,7 +39,7 @@
   .row.split.pad {gap:.5em;}
   .row.split.vert {height:100vh;}
   .split>:not(.splitter) {overflow:auto visible;box-sizing:border-box;}
-  .splitter {cursor:ew-resize;flex:none;width:.3em;background:#f9f9f9;}
+  .splitter {cursor:ew-resize;flex:none;width:.3em;background:#f9f9f9;touch-action:none;}
     .vert > .splitter {cursor:ns-resize;flex:none;height:.3em;width:auto;}
   .splitter.act {background:#eee;}
 }

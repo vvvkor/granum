@@ -1,4 +1,4 @@
-/*! granum-split.js v1.2.112 */
+/*! granum-split.js v1.2.113 */
 
 (() => {
 
