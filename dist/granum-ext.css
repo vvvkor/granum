@@ -1,4 +1,4 @@
-/*! granum-ext.css v1.2.113 */
+/*! granum-ext.css v1.2.114 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -204,7 +204,7 @@ a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tbody tr
 
 @media screen {
 	.wrap {max-width:45em;}
-	.stick {position:sticky;top:0;z-index:3;}
+	.stick {position:sticky;top:0;z-index:5;}
 	footer.stick {top:auto;bottom:0;}
 	.row .stick, .grid .stick{align-self:start;max-height:100vh;overflow:auto;}
 	.hi {min-height:40em;min-height:100vh;}
@@ -679,6 +679,15 @@ button[class*="icon-"]:before, button [class*="icon-"]:before, .inv:before, .tag
     .vert > .splitter {cursor:ns-resize;flex:none;height:.3em;width:auto;}
   .splitter.act {background:#eee;}
 }
+
+/* table fixed */
+.roll.fix {overflow:auto;max-height:90vh;}
+.fix-head thead, .fix-head tfoot {position:sticky;}
+.fix-head thead {top:0;z-index:4;}
+.fix-head tfoot {bottom:0;z-index:3;}
+.fix-head thead tr>*, .fix-head tfoot tr>* {background:#eee;}
+.fix-col tr>*:first-child {position:sticky;left:0;z-index:2;box-shadow:inset -1.05em 0 0 -1em #0002;}
+.fix-col tbody tr>*:first-child {background:#fffe;}
 
 
 @media print{

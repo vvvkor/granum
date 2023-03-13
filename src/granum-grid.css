@@ -41,3 +41,12 @@
     .vert > .splitter {cursor:ns-resize;flex:none;height:.3em;width:auto;}
   .splitter.act {background:#eee;}
 }
+
+/* table fixed */
+.roll.fix {overflow:auto;max-height:90vh;}
+.fix-head thead, .fix-head tfoot {position:sticky;}
+.fix-head thead {top:0;z-index:4;}
+.fix-head tfoot {bottom:0;z-index:3;}
+.fix-head thead tr>*, .fix-head tfoot tr>* {background:#eee;}
+.fix-col tr>*:first-child {position:sticky;left:0;z-index:2;box-shadow:inset -1.05em 0 0 -1em #0002;}
+.fix-col tbody tr>*:first-child {background:#fffe;}

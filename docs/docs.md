@@ -1,5 +1,5 @@
 **Granum**  
-v1.2.113
+v1.2.114
 
 # Documentation
 
@@ -78,6 +78,8 @@ Typography and styling is minimal and unobtrusive.
 - `input[data-filter="SELECTOR"]`, `table tbody tr` - filter table rows *(requires [granum.js](granum.js))*
 - `table.sort > thead + tbody`, `(thead > th.sort) + tbody` - sort table *(requires [granum.js](granum.js))*
   - `table[data-sort]` - active header class
+- `(.roll.fix) table.fix-head` - table with fixed headers and footers *(requires [granum-grid.css](granum-grid.css))*
+- `(.roll.fix) table.fix-col` - table with fixed first column *(requires [granum-grid.css](granum-grid.css))*
 
 
 ## Form
