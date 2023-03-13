@@ -25,6 +25,7 @@ and include scripts from `dist` directory.
 <link rel="stylesheet" href="granum.css">
 <!-- optional -->
 <link rel="stylesheet" href="granum-icons.css">
+<link rel="stylesheet" href="granum-icons-ext.css">
 <link rel="stylesheet" href="granum-dropdown.css">
 <link rel="stylesheet" href="granum-grid.css">
 <script src="granum.js" defer></script>
@@ -34,6 +35,8 @@ and include scripts from `dist` directory.
 <script src="granum-calendar.js" defer></script>
 <script src="granum-restore.js" defer></script>
 <script src="granum-edit.js" defer></script>
+<script src="granum-drag.js" defer></script>
+<script src="granum-split.js" defer></script>
 ```
 
 Bundled styles and scripts are also available:
@@ -43,12 +46,20 @@ Bundled styles and scripts are also available:
 <script src="granum-full.js" defer></script>
 ```
 
+Styles with extended iconset and splitter script:
+
+```html
+<link rel="stylesheet" href="granum-ext.css">
+<script src="granum-ext.js" defer></script>
+```
+
 ## CDN
 
 ```html
 <link rel="stylesheet" href="https://unpkg.com/granum">
 <!-- optional -->
 <link rel="stylesheet" href="https://unpkg.com/granum/dist/granum-icons.min.css">
+<link rel="stylesheet" href="https://unpkg.com/granum/dist/granum-icons-ext.min.css">
 <link rel="stylesheet" href="https://unpkg.com/granum/dist/granum-dropdown.min.css">
 <link rel="stylesheet" href="https://unpkg.com/granum/dist/granum-grid.min.css">
 <script src="https://unpkg.com/granum/dist/granum.min.js" defer></script>
@@ -58,6 +69,8 @@ Bundled styles and scripts are also available:
 <script src="https://unpkg.com/granum/dist/granum-calendar.min.js" defer></script>
 <script src="https://unpkg.com/granum/dist/granum-restore.min.js" defer></script>
 <script src="https://unpkg.com/granum/dist/granum-edit.min.js" defer></script>
+<script src="https://unpkg.com/granum/dist/granum-drag.min.js" defer></script>
+<script src="https://unpkg.com/granum/dist/granum-split.min.js" defer></script>
 ```
 
 Bundled styles and scripts are also available:
@@ -66,6 +79,14 @@ Bundled styles and scripts are also available:
 <link rel="stylesheet" href="https://unpkg.com/granum/dist/granum-full.min.css">
 <script src="https://unpkg.com/granum/dist/granum-full.min.js" defer></script>
 ```
+
+Styles with extended iconset and splitter script:
+
+```html
+<link rel="stylesheet" href="https://unpkg.com/granum/dist/granum-ext.min.css">
+<script src="https://unpkg.com/granum/dist/granum-ext.min.js" defer></script>
+```
+
 
 ## Features
 
@@ -135,6 +156,10 @@ Bundled styles and scripts are also available:
   - automatically restore from data
 - with `granum-editor.js`
   - contenteditable
+- with `granum-drag.js`
+  - draggable (table rows, list items)
+- with `granum-split.js` and `granum-grid.css`
+  - vertical and horizontal splitter
 
 ## CSS classes
 
@@ -143,6 +168,7 @@ Bundled styles and scripts are also available:
 - `.bg` `.bg-X` `.back` `.text-X` `.hover` `.act`
 - `.l` `.r` `.c` `.center` `.wrap` `.hi` `.mid` 
 - `.roll` `.stick` `.tag` `.bar`
+- `.fix` `.fix-head` `.fix-col`
 - `.serif` `.sans` `.mono` `.small` `.nobr` `.inv`
 - `.target` `.hide` `.show` `.modal` `.drawer` `.pop` `.drop`
 - `.icon-X` `.empty`
@@ -168,6 +194,8 @@ Bundled styles and scripts are also available:
 - `[contenteditable][data-for="ID_AREA"]`
 - `form[data-restore="IDENT"]`, `input[data-unstore]`
 - `a[href="#ID_EDITOR"][data-cmd]([data-arg][data-ask][title])`
+- `.drag-container .drag-item (.drag-handle)`
+- `.row.split(.vert)`
 
 ## Browser suppport
 
