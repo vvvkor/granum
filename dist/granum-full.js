@@ -1,4 +1,4 @@
-/*! granum-full.js v1.2.114 */
+/*! granum-full.js v1.2.115 */
 
 (() => {
 
@@ -116,7 +116,7 @@ document.addEventListener('click', e => {
     const b = h.closest('thead').nextElementSibling
     if (b.rows.length > 1) {
       const c = h.closest('table').dataset.sort || 'bg'
-      const x = [...b.rows].map(m => [m, m.cells[i].textContent.replace(/\s+$/, '')]).map(m => [m[0], m[1], parseFloat(m[1]) || 0])
+      const x = [...b.rows].map(m => [m, m.cells[i].textContent.replace(/\s+$/, '')]).map(m => [m[0], m[1], parseFloat(m[1])])
       const k = isNaN(x[0][2]) ? 1 : 2
       const r = h.classList.contains(c) ? (x[0][k] < x[x.length-1][k] ? -1 : 1) : 1
       x.sort((a, b) => a[k] < b[k] ? -r : (a[k] > b[k] ? r : 0))

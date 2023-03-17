@@ -1,4 +1,4 @@
-/*! granum-grid.css v1.2.114 */
+/*! granum-grid.css v1.2.115 */
 
 .grid {display:flex;--gap:0em;--wid:100%;  list-style:none;padding:0;gap:var(--gap);}
 .grid.flow, [class*="grid-"] {flex-wrap:wrap;}
@@ -45,10 +45,10 @@
 }
 
 /* table fixed */
-.roll.fix {overflow:auto;max-height:90vh;}
+.roll.l {overflow:auto;max-height:90vh;}
 .fix-head thead, .fix-head tfoot {position:sticky;}
 .fix-head thead {top:0;z-index:4;}
 .fix-head tfoot {bottom:0;z-index:3;}
-.fix-head thead tr>*, .fix-head tfoot tr>* {background:#eee;}
+.fix-head thead tr>:not([class*="bg-"]), .fix-head tfoot tr>:not([class*="bg-"]) {background:#eee;}
 .fix-col tr>*:first-child {position:sticky;left:0;z-index:2;box-shadow:inset -1.05em 0 0 -1em #0002;}
-.fix-col tbody tr>*:first-child {background:#fffe;}
+.fix-col tbody tr>:not([class*="bg-"]):first-child {background:#fffe;}

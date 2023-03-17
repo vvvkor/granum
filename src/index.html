@@ -78,7 +78,7 @@ Typography and styling is minimal and unobtrusive.
 
 <p>
 <b>3 KB</b> minified and gzipped.<br>
-<b>11 KB</b> with icons and components.
+<b>12 KB</b> with icons and components.
 </p>
 
 <p>
@@ -348,7 +348,7 @@ x<sup>super</sup>
 		<tr><th><b class="pop">.bord&nbsp;  <i class="inv r small bg-i">Border</i></b><td>*<td>*<td>*<td>*<td>*<td>*
 		<tr><th><b class="pop">.pad&nbsp;   <i class="inv r small bg-i">Padding</i></b><td>*<td>*<td>*<td>h-gap<td>line<td>*
 		<tr><th><b class="pop">.mid&nbsp;   <i class="inv r small bg-i">Centrify vertically</i></b><td>-<td>-<td>-<td>valign row, item<td>valign table, tr, td<td>-
-		<tr><th><b class="pop">.l&nbsp;     <i class="inv r small bg-i">Align</i></b><td>*<td>horizontal<td>right margin<td>v-gap, align item<td>wide<td>*
+		<tr><th><b class="pop">.l&nbsp;     <i class="inv r small bg-i">Align</i></b><td>*<td>horizontal<td>right margin<td>v-gap, align item<td>wide; .roll.l=fixHeight<td>*
 		<tr><th><b class="pop">.resp&nbsp;   <i class="inv r small bg-i">Responsive component</i></b><td>-<td>*<td>scroll into view<td>stack<td>stack<td class="text-n">stack
 		<tr><th><b class="pop">.act&nbsp;   <i class="inv r small bg-i">Active link, input validation</i></b><td>-<td>-<td>color<td>.drop on focus<td>-<td>validation
 		<tr><th><b class="pop">.hover&nbsp; <i class="inv r small bg-i">Shade on hover</i></b><td>*<td>*<td>*<td>ul a<td>tr<td>-
@@ -426,6 +426,11 @@ x<sup>super</sup>
 <section>
 <h3 class="hide">Style</h3>
 <p class="hide" data-resp>
+<select data-nodes="#troll">
+	<option value="">No scroll</option>
+	<option value="roll">Scroll horizontal</option>
+	<option value="roll l" selected>Scroll</option>
+</select>
 <select data-nodes="#tbl">
 	<option value="sort nobr c3 r4  ">Borderless</option>
 	<option value="sort nobr c3 r4  pad hover l mid" selected>Lines, hover, wide</option>
@@ -438,45 +443,52 @@ x<sup>super</sup>
 &nbsp; <i>Sortable</i>
 </p>
 
-<div class="roll fix">
+<div id="troll" class="roll l">
 <table id="tbl" class="sort c3 r4 fix-head fix-col  pad hover l -roll -nobr" data-sort="bg-w">
 	<!--caption>Sortable table</caption-->
 	<thead>
 		<tr><th><input name="boxes" type="checkbox" data-check=".box">&nbsp;
-			<th>Name<th>Area<th>People
+			<th>Name<th>Area<th>People<th>Cities
 	</thead>
 	<tbody>
 		<tr><td><input type="checkbox" class="box" name="box[]" value="eur">
 			<td>Europe
 			<td>10.2
-			<td>0.7</td>
+			<td>0.7
+      <td>Moscow, Istanbul, London, Paris</td>
 		<tr><td><input type="checkbox" class="box" name="box[]" value="asi">
 			<td>Asia
 			<td>44.6
-			<td>4.6</td>
+			<td>4.6
+      <td>Beijing, Tokyo, Mumbai</td>
 		<tr><td><input type="checkbox" class="box" name="box[]" value="afr">
 			<td>Africa
 			<td>30.4
-			<td>1.3</td>
+			<td>1.3
+      <td>Cairo</td>
 		<tr><td><input type="checkbox" class="box" name="box[]" value="nam">
 			<td>North America
 			<td>24.7
-			<td>0.6</td>
+			<td>0.6
+      <td>Mexico, New York</td>
 		<tr><td><input type="checkbox" class="box" name="box[]" value="sam">
 			<td>South America
 			<td>17.8
-			<td>0.43</td>
+			<td>0.43
+      <td>Sao Paulo, Buenos Aires</td>
 		<tr><td><input type="checkbox" class="box" name="box[]" value="aus">
 			<td>Australia
 			<td>8.6
-			<td>0.04</td>
+			<td>0.04
+      <td>Sydney</td>
 		<tr><td><input type="checkbox" class="box" name="box[]" value="ant">
 			<td>Antarctica
 			<td>14
-			<td>0</td>
+			<td>0
+      <td></td>
 	</tbody>
 	<tfoot class="bg">
-		<tr><td><td>&Sigma;<td>150.3<td>7.6
+		<tr><td><td>&Sigma;<td>150.3<td>7.6<td></td>
 	</tfoot>
 </table>
 </div>
