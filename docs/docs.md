@@ -1,5 +1,5 @@
 **Granum**  
-v1.2.115
+v1.2.116
 
 # Documentation
 
@@ -118,8 +118,8 @@ Typography and styling is minimal and unobtrusive.
 - `.roll` - horizontal scroll if needed
 - `.hi` - fullscreen height
 - `.vert` - vertical flexbox (use inside limited height, like `.modal` or `.drawer`)
-  - `.vert > header, .vert > footer` - non-scrollable
-  - `.vert > div` - scrollable
+  - `.vert > (section, form)` - scrollable, flex grow
+  - `.vert > (article, .roll)` - scrollable
 - `.tag`, `.tag.bg-e` - tag
 - `.badge > .tag` - badge (counter)
 - `.bar[style="--v:PERCENT"]` - progress bar

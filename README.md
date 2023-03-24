@@ -163,7 +163,7 @@ Styles with extended iconset and splitter script:
 
 ## CSS classes
 
-- `.row` `.col-X` `.resp`
+- `.row` `.col-X` `.resp` `.vert`
 - `.fit` `.mar` `.pad` `.bord` `.rad` `.shade`
 - `.bg` `.bg-X` `.back` `.text-X` `.hover` `.act`
 - `.l` `.r` `.c` `.center` `.wrap` `.hi` `.mid` 

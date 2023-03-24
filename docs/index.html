@@ -74,7 +74,7 @@ icons, status colors, and even more.
 Typography and styling is minimal and unobtrusive.
 -->
 
-<p class="text-n">v1.2.115</p>
+<p class="text-n">v1.2.116</p>
 
 <p>
 <b>3 KB</b> minified and gzipped.<br>
@@ -552,7 +552,7 @@ x<sup>super</sup>
 	</div></div>
 </div>
 
-<details class="mar">
+<details>
 	<summary>Full height</summary>
 	<div class="hi bg-w row mid"><div class="c pad bg">Centered</div></div>
 </details>
@@ -611,6 +611,59 @@ x<sup>super</sup>
 	<li class="-bord -shade push"><a class="pad" href="#3">Three</a>
 	<li class="-bord -shade"><a class="pad" href="#9">More</a>
 </ul>
+</details>
+
+<details>
+	<summary>Fixed scrollable layout</summary>
+  
+  <div class="row vert" style="height:25em;">
+    <header class="pad bg-w">Header</header>
+    <nav class="bg-y">
+      <ul class="row drop hover">
+        <li><a href="#x">One</a>
+        <li><a href="#x">Two</a>
+          <ul class="">
+            <li><a href="#x">Uno</a>
+            <li><a href="#x">Dos</a>
+            <li><a href="#x">Tres</a>
+          </ul>
+        <li><a href="#x">Three</a>
+      </ul>
+    </nav>
+    <section class="row split pad">
+      <aside class="row vert col-1">
+        <nav class="pad bg-i">Nav</nav>
+        <form class="row vert">
+          <section>
+            <p><input><p><input><p><input><p><input><p><input>
+          </section>
+          <footer><button>OK</button></footer>
+        </form>
+      </aside>
+      <div class="row vert pad col-2">
+        <nav class="pad bg-i">Nav</nav>
+        <div class="roll">
+          <table class="pad fix-col fix-head">
+            <thead>
+              <tr><th>Name<th>Number<th>Note
+            </thead>
+            <tbody>
+              <tr><td>Alpha<td>1<td>WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+              <tr><td>Beta<td>2<td>-
+              <tr><td>Gamma<td>3<td>-
+              <tr><td>Delta<td>4<td>-
+              <tr><td>Epsilon<td>5<td>WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+            </tbody>
+            <tfoot>
+              <tr><td>Total<td>15<td>-
+            </tfoot>
+          </table>
+        </div>
+        <nav class="pad bg-i">Nav</nav>
+      </div>
+    </section>
+    <footer class="pad bg-w">Footer</footer>
+  </div>
 </details>
 
 

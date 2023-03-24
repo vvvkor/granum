@@ -207,8 +207,9 @@ a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tbody tr
 	.row .stick, .grid .stick{align-self:start;max-height:100vh;overflow:auto;}
 	.hi {min-height:40em;min-height:100vh;}
   .vert {display:flex;flex-direction:column;}
-  .vert>* {flex:none;overflow:hidden;}
-  .vert>div {flex:1;overflow:auto;}
+  .vert>* {flex:none;/*overflow:hidden;*/}
+  .vert>section, .vert>form {flex:1;overflow:auto;}
+  .vert>article, .vert>.roll {flex:initial;overflow:auto;}
 }
 
 /* desktop */
