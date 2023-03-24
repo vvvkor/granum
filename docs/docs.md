@@ -1,5 +1,5 @@
 **Granum**  
-v1.2.116
+v1.2.117
 
 # Documentation
 
@@ -260,4 +260,5 @@ More icons are available with [granum-icons-ext.css](granum-icons-ext.css)
   - `.drag-control` - appears after dragging is performed (optional)
 - `.row.split([id])` - add splitters *(requires [granum-grid.css](granum-grid.css) and [granum-split.js](granum-split.js))*
   - `.row.split.vert` - vertical splitters (must have fixed height)
+  - `.row.split > section` - scroll overflow
   - `[data-min]` - minimal column size (default `50`)

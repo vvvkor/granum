@@ -1,4 +1,4 @@
-/*! granum-full.css v1.2.116 */
+/*! granum-full.css v1.2.117 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -475,7 +475,8 @@ button[class*="icon-"]:before, button [class*="icon-"]:before, .inv:before, .tag
 @media screen {
   .row.split.pad {gap:.5em;}
   .row.split.vert {height:100vh;}
-  .split>:not(.splitter) {overflow:auto visible;box-sizing:border-box;}
+  .split>:not(.splitter) {box-sizing:border-box;}
+  .split>section {overflow:auto;}
   .splitter {cursor:ew-resize;flex:none;width:.3em;background:#f9f9f9;touch-action:none;}
     .vert > .splitter {cursor:ns-resize;flex:none;height:.3em;width:auto;}
   .splitter.act {background:#eee;}

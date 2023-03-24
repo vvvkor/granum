@@ -74,7 +74,7 @@ icons, status colors, and even more.
 Typography and styling is minimal and unobtrusive.
 -->
 
-<p class="text-n">v1.2.116</p>
+<p class="text-n">v1.2.117</p>
 
 <p>
 <b>3 KB</b> minified and gzipped.<br>
@@ -369,8 +369,8 @@ x<sup>super</sup>
   
   <div class="pad bord">
     <div class="row split -vert" id="splitter" style="height:70vh;" data-min="50">
-      <div class="pad bg-n col-2">First item</div>
-      <div class="pad bg-i">Second item</div>
+      <section class="pad bg-n col-2">First item: scrollable (section)<p>p<p>p<p>p<p>p</section>
+      <div class="pad bg-i">Second item: bleed (div)<p>p<p>p<p>p<p>p</div>
       <div class="pad bg-y">Third item</div>
       <div class="pad bg-w">Fourth item</div>
       <div class="pad bg-e">Fifth item</div>
@@ -381,7 +381,7 @@ x<sup>super</sup>
 <h3 id="list"><a href="#list">Lists</a> <a href="#top" class="fit icon-up"></a></h3>
 
 <div class="row pad -resp split -resp" id="lists" data-wmin="100">
-<div class="-bg" id="list-ul">
+<section class="-bg" id="list-ul">
 	<ul>
 	<li>Basic
 	<li>List
@@ -391,9 +391,9 @@ x<sup>super</sup>
 		</ul>
 	<li>Last
 	</ul>
-</div>
+</section>
 
-<div class="-bg" id="list-ol">
+<section class="-bg" id="list-ol">
 	<ol>
 	<li>Ordered
 	<li>List
@@ -403,9 +403,9 @@ x<sup>super</sup>
 		</ol>
 	<li>Final
 	</ol>
-</div>
+</section>
 
-<div class="-bg">
+<section class="-bg">
 	<dl>
 		<dt>Term
 			<dd>Definition
@@ -413,7 +413,7 @@ x<sup>super</sup>
 			<dd>Describe
 			<dd>Explain
 	</dl>
-</div>
+</section>
 
 </div>
 
@@ -632,7 +632,18 @@ x<sup>super</sup>
     </nav>
     <section class="row split pad">
       <aside class="row vert col-1">
-        <nav class="pad bg-i">Nav</nav>
+        <nav class="bg-i">
+          <ul class="row drop hover">
+            <li><a href="#x">Aaa</a>
+            <li><a href="#x">Bbb</a>
+            <li><a href="#x">Ccc</a>
+              <ul class="">
+                <li><a href="#x">111</a>
+                <li><a href="#x">222</a>
+                <li><a href="#x">333</a>
+              </ul>
+          </ul>
+        </nav>
         <form class="row vert">
           <section>
             <p><input><p><input><p><input><p><input><p><input>
