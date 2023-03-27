@@ -15,7 +15,7 @@
     "js:edit": "uglifyjs --verbose --mangle --comments /^!/ --output granum-edit.min.js granum-edit.js",
     "build-glob": "npm run ver && npm run css && npm run css:icons && npm run css:dropdown && npm run js && npm run js:edit",
     "build": "node ./build.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -37,6 +37,7 @@
   "devDependencies": {
     "cross-var": "^1.1.0",
     "csso-cli": "^3.0.0",
+    "jest": "^29.5.0",
     "replace-in-file": "^6.2.0",
     "uglify-js": "^3.12.7"
   }
