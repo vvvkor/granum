@@ -36,6 +36,7 @@ pre code {font-size:100%;}
 .fit, pre code, ul.l, ul.l li {margin:0;padding:0;border:none;border-radius:0;}
 .fit:not(h1):not(h2):not(h3):not(h4) {font-size:1rem;font-weight:normal;}
 	main, img.fit /*, table.roll*/ {display:block;}
+  .ava {border-radius:50%;}
 .mar, ul, ol , dl, blockquote, pre, hr, p, figure {margin:1rem 0;}
 	.fit p, .fit .mar {margin:.5rem 0;}
 	.stack>:first-child {margin-top:0;}
@@ -77,7 +78,7 @@ th, td {padding:.2em .5em;vertical-align:top;background-clip:padding-box;}
 table.fit>*>tr>*, table.pad {padding:0;}
 table.bord {border:none;}
 table.l {width:100%;}
-table.mid tr>*, tr>.mid, tr.mid>*, ul.mid li {vertical-align:middle;}
+table.mid tr>*, tr>.mid, tr.mid>*, ul.mid li, img.mid {vertical-align:middle;}
 /* full borders */
 table.bord>*>tr>* {border:thin solid #0002;}
 /* .roll>table.bord {border:medium solid #0002;} */
@@ -160,7 +161,7 @@ a.pic:not(.modal), a.pic:not(.modal) img {background:none !important;}
 .bar:before {content:'';display:block;min-height:.4em;width:calc(1% * var(--v));background:currentColor;}
 
 /* color */
-.bg, blockquote, pre, code {background-color:#9992;}
+.bg, .ava, blockquote, pre, code {background-color:#9992;}
 pre code {background:none;}
 .inv, .tag {background-color:#333;color:#fff;}
 button, [type="submit"], a.inv, a.tag {background-color:#05b;color:#fff;}
@@ -207,7 +208,7 @@ a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tbody tr
 	.row .stick, .grid .stick{align-self:start;max-height:100vh;overflow:auto;}
 	.hi {min-height:40em;min-height:100vh;}
   .vert {display:flex;flex-direction:column;}
-  .vert>* {flex:none;/*overflow:hidden;*/}
+  .vert.l>* {flex:none;/*overflow:hidden;*/}
   .vert>section, .vert>form {flex:1;overflow:auto;}
   .vert>article, .vert>.roll {flex:initial;overflow:auto;}
 }

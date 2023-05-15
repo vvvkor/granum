@@ -1,4 +1,4 @@
-/*! granum-split.js v1.2.118 */
+/*! granum-split.js v1.2.119 */
 
 (() => {
 
@@ -81,7 +81,7 @@ document.addEventListener('pointermove', e => {
   const d = e[f[4]]
   const n = next(cur, d, true)
   if (!n) return
-  const m = d > 0 ? next(cur, -d) : null 
+  const m = d != 0 ? next(cur, -d) : null 
   const prev = [n.style[f[0]], m ? m.style[f[0]] : 0];
   const j = jam()
   if (m) setSize(m, m[f[2]] - d)

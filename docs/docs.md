@@ -1,5 +1,5 @@
 **Granum**  
-v1.2.118
+v1.2.119
 
 # Documentation
 
@@ -121,8 +121,10 @@ Typography and styling is minimal and unobtrusive.
   - `.vert > (section, form)` - scrollable, flex grow
   - `.vert > (article, .roll)` - scrollable
 - `.tag`, `.tag.bg-e` - tag
+- `img.ava(.fit)(.mid)` - round avatar
 - `.badge > .tag` - badge (counter)
 - `.bar[style="--v:PERCENT"]` - progress bar
+- `.spin` - spinner *(requires [granum-icons.css](granum-icons.css))*
 - `ul.row.drop(.act)` - dropdown nested menu (on hover/on focus) *(requires [granum-dropdown.css](granum-dropdown.css))*
 - `.pop > div`, `.pop > div.l` - popup *(requires [granum-dropdown.css](granum-dropdown.css))*
 - `.pop > span.c`, `.pop > span.r` -  tooltip *(requires [granum-dropdown.css](granum-dropdown.css))*
@@ -260,5 +262,6 @@ More icons are available with [granum-icons-ext.css](granum-icons-ext.css)
   - `.drag-control` - appears after dragging is performed (optional)
 - `.row.split([id])` - add splitters *(requires [granum-grid.css](granum-grid.css) and [granum-split.js](granum-split.js))*
   - `.row.split.vert` - vertical splitters (must have fixed height)
+  - `.row.split.vert.l` - vertical splitters, no flex (can overflow)
   - `.row.split > section` - scroll overflow
   - `[data-min]` - minimal column size (default `50`)
