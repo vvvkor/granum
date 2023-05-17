@@ -123,6 +123,7 @@ Styles with extended iconset and splitter script:
 - full height
 - with `granum-icons.css`
   - icons
+  - spinner
 - with `granum-dropdown.css`
   - dropdown
   - popup
@@ -163,15 +164,15 @@ Styles with extended iconset and splitter script:
 
 ## CSS classes
 
-- `.row` `.col-X` `.resp` `.vert`
-- `.fit` `.mar` `.pad` `.bord` `.rad` `.shade`
+- `.row` `.col-X` `.resp` `.vert` `.tabs`
+- `.fit` `.mar` `.pad` `.bord` `.rad` `.shade` `.stack` `.field`
 - `.bg` `.bg-X` `.back` `.text-X` `.hover` `.act`
 - `.l` `.r` `.c` `.center` `.wrap` `.hi` `.mid` 
 - `.roll` `.stick` `.tag` `.bar`
 - `.fix-head` `.fix-col`
-- `.serif` `.sans` `.mono` `.small` `.nobr` `.inv`
+- `.serif` `.sans` `.mono` `.small` `.nobr` `.inv` `.invert`
 - `.target` `.hide` `.show` `.modal` `.drawer` `.pop` `.drop`
-- `.icon-X` `.empty`
+- `.icon-X` `.empty` `.spot` `.spin`
 - `.grid` `.grid-X` `.flow` `.fill` `.pX` `.gX`
 - `.span-X` `.push` `.shift`
 

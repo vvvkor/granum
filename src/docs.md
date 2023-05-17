@@ -121,7 +121,7 @@ Typography and styling is minimal and unobtrusive.
   - `.vert > (section, form)` - scrollable, flex grow
   - `.vert > (article, .roll)` - scrollable
 - `.tag`, `.tag.bg-e` - tag
-- `img.ava(.fit)(.mid)` - round avatar
+- `img.c` - round avatar
 - `.badge > .tag` - badge (counter)
 - `.bar[style="--v:PERCENT"]` - progress bar
 - `.spin` - spinner *(requires [granum-icons.css](granum-icons.css))*
@@ -185,7 +185,6 @@ More icons are available with [granum-icons-ext.css](granum-icons-ext.css)
 - `.l`, `.r`, `.c` - align text left, right, center
 - `.wrap` - limit block width
 - `.center` - centrify block
-
 
 ## JavaScript *(requires [granum.js](granum.js))*
 
