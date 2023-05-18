@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.dispatchEvent(new Event('granum-start'))
 
   // init toggler state
-  document.querySelectorAll('a.toggle, a[href="#open"]').forEach(n => n.click())
+  document.querySelectorAll('a.toggle, button.toggle, a[href="#open"]').forEach(n => n.click())
   document.querySelectorAll('input[data-nodes], select[data-nodes]').forEach(n => 
     n.type != 'radio' || n.checked ? n.dispatchEvent(new Event('input', {bubbles: true})) : null
   )
@@ -36,7 +36,7 @@ document.addEventListener('submit', e => {
 
 document.addEventListener('click', e => {
   const n = e.target
-  const a = n.closest('a')
+  const a = n.closest('a, button')
   const z = a && a.hash == '#open'
   const b = n.closest('button.dialog, input.dialog')
   
@@ -51,7 +51,7 @@ document.addEventListener('click', e => {
     // confirm or prompt link
     else if (a.classList.contains('dialog')) {
       e.preventDefault()
-      const u = new URL(a.href)
+      const u = new URL(a.href || a.dataset.href || '#cancel', location.href)
       const p = a.dataset.prompt
       const t = a.title || a.textContent
       const v = p ? prompt(t, a.dataset.def || u.searchParams.get(p) || '') : (confirm(t) ? 1 : null)

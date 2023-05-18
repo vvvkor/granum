@@ -1,4 +1,4 @@
-/*! granum-ext.css v1.2.120 */
+/*! granum-ext.css v1.2.121 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -43,6 +43,7 @@ pre code {font-size:100%;}
 	.fit p, .fit .mar {margin:.5rem 0;}
 	.stack>:first-child {margin-top:0;}
 	.stack>:last-child {margin-bottom:0;}
+  .stack.l>:not(:last-child) {border-bottom:thin solid #0002;}
 .pad, ul.row li>:not(ul), fieldset, blockquote, pre {padding:.5em 1em;}
 	.modal>.pad {padding:1.5em;}
 	ul.row li>form {padding:.2em 1em;}
@@ -136,7 +137,9 @@ ul.row>*, .col-0[class] {flex:0 1 auto;} /* for ie, which has default 0 0 auto*/
 
 /* modal */
 .modal[class] {position:fixed;z-index:100;left:0;right:0;top:0;bottom:0em;background-color:#8888;box-shadow:0 0 0 9em #8888;display:flex;justify-content:center;align-items:center;margin:0;}
-.modal>* {/*width:30%;*/min-width:18rem;max-height:83%;overflow:auto;background-color:#fff;margin:1em;}
+.modal>* {overflow:auto;background-color:#fff;}
+.modal>:not(.full) {/*width:30%;*/min-width:18rem;max-height:83%;margin:1em;}
+.modal>.full {width:100vw;height:100%;min-height:auto;}
 
 /* gallery */
 a.pic {-webkit-tap-highlight-color:transparent;}
@@ -208,9 +211,10 @@ a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tbody tr
 	.stick {position:sticky;top:0;z-index:9;}
 	footer.stick {top:auto;bottom:0;z-index:8;}
 	.row .stick, .grid .stick{align-self:start;max-height:100vh;overflow:auto;}
-	.hi {min-height:40em;min-height:100vh;}
+	.full {/*min-height:40em;*/min-height:100vh;}
   .vert {display:flex;flex-direction:column;}
-  .vert.l>* {flex:none;/*overflow:hidden;*/}
+  .vert>* {flex:none;/*overflow:hidden;*/} /* overflow must be visible for popups */
+    .vert.split:not(.fit)>:not(.splitter):not([class*="col-"]) {flex:1;overflow:auto;} /* too complex */
   .vert>section, .vert>form {flex:1;overflow:auto;}
   .vert>article, .vert>.roll {flex:initial;overflow:auto;}
 }
@@ -635,7 +639,7 @@ button[class*="icon-"]:before, button [class*="icon-"]:before, .inv:before, .tag
 /* pop direction */
 .pop>:last-child.c, .pop>:last-child.r {min-width:auto;white-space:nowrap;padding:0 .4em;text-align:left;}
 .pop>:last-child.l {left:auto;right:0;}
-.pop>:last-child.c {top:auto;bottom:100%;left:50%;transform:translateX(-50%);}
+.pop>:last-child.c {top:auto;bottom:100%;/*left:50%;transform:translateX(-50%);*/}
 .pop>:last-child.r {top:50%;left:100%;transform:translateY(-50%);}/*margin-left:.2em;*/
 
 .pop.fit {vertical-align:bottom;}

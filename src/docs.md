@@ -116,7 +116,7 @@ Typography and styling is minimal and unobtrusive.
 - `.stick` - stick element to top
   - `footer.stick` - stick element to bottom
 - `.roll` - horizontal scroll if needed
-- `.hi` - fullscreen height
+- `.full` - fullscreen height
 - `.vert` - vertical flexbox (use inside limited height, like `.modal` or `.drawer`)
   - `.vert > (section, form)` - scrollable, flex grow
   - `.vert > (article, .roll)` - scrollable
@@ -175,6 +175,7 @@ More icons are available with [granum-icons-ext.css](granum-icons-ext.css)
 - `.fit p`, `.fit .mar` - smaller margins
 - `.mar` - vertical margins
 - `.stack` - no edge margins for first and last sub-elements
+- `.stack.l` - border between sub-elements
 - `.shade` - box shadow
 - `.bord` - border
 - `.rad` - rounded border
@@ -209,7 +210,7 @@ More icons are available with [granum-icons-ext.css](granum-icons-ext.css)
     - `[data-def]` - default value
     - `[data-ok]` - confirm button label (`OK` by default)
     - `[data-cancel]` - cancel button label (`Cancel` by default)
-- `a.toggle([href^="#"][data-nodes][data-set][data-unset][data-act][data-inact][data-on][data-off])` - toggle classes
+- `(a,button).toggle([href^="#"][data-nodes][data-set][data-unset][data-act][data-inact][data-on][data-off][data-href])` - toggle classes
   - `:target.show` - initialize in active state (when first target has first class from `]data-set]` or `show`)
   - `:target.mem` - remember state (only with `[href^="#"]` target selector)
   - `[data-nodes]` or link hash - target elements selector
@@ -219,6 +220,7 @@ More icons are available with [granum-icons-ext.css](granum-icons-ext.css)
   - `[data-inact]` - additional classes of link in inactive state
   - `[data-on]` - text of link in active state
   - `[data-off]` - text of link in inactive state
+  - `[data-href]` - href for button
 - `.gallery a.pic` - image gallery
 - `input[data-lookup][data-caption][data-goto]` - lookup input *(requires [granum-dropdown.css](granum-dropdown.css) and [granum-lookup.js](granum-lookup.js))*
   - `[data-caption]` - initial caption (optional)
@@ -261,6 +263,6 @@ More icons are available with [granum-icons-ext.css](granum-icons-ext.css)
   - `.drag-control` - appears after dragging is performed (optional)
 - `.row.split([id])` - add splitters *(requires [granum-grid.css](granum-grid.css) and [granum-split.js](granum-split.js))*
   - `.row.split.vert` - vertical splitters (must have fixed height)
-  - `.row.split.vert.l` - vertical splitters, no flex (can overflow)
+  - `.row.split.vert.fit` - vertical splitters, no flex (can overflow)
   - `.row.split > section` - scroll overflow
   - `[data-min]` - minimal column size (default `50`)

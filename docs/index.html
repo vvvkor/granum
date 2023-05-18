@@ -74,7 +74,7 @@ icons, status colors, and even more.
 Typography and styling is minimal and unobtrusive.
 -->
 
-<p class="text-n">v1.2.120</p>
+<p class="text-n">v1.2.121</p>
 
 <p>
 <b>3 KB</b> minified and gzipped.<br>
@@ -101,6 +101,7 @@ Typography and styling is minimal and unobtrusive.
       <div class="r"><a href="#cancel" class="icon-close pad" title="Close"></a></div>
     </header>
     <section class="pad">
+      <h3 class="hide">Scroll test</h3>
       <details class="bg pad mar l">
         <summary>More horizontal</summary>
         <p class="nobr">Text text text text text text text text text text text text text text text text text
@@ -200,7 +201,7 @@ x<sup>super</sup>
 <blockquote>Block quote</blockquote>
 <pre>Preformatted text
 <code>Code: window.innerWidth = <var id="info" class="text-y" title="window.innerWidth"></var></code></pre>
-<!--img class="fit" alt="Grey" src="https://picsum.photos/id/1021/400/200.jpg"-->
+<!--img class="fit" alt="Grey" src="https://placehold.co/300x200/039/fff?text=Blue"-->
 
 <details class="hx">
 <summary>Heading</summary>
@@ -372,17 +373,17 @@ x<sup>super</sup>
     <option value="row pad split" selected>Horizontal</option>
     <option value="row pad split resp">Horizontal responsive</option>
     <option value="row pad split vert">Vertical</option>
-    <option value="row pad split vert l">Vertical no flex (can overflow)</option>
+    <option value="row pad split vert fit">Vertical no flex (can overflow)</option>
     <option value="row pad split vert resp">Vertical responsive</option>
   </select></label>
   
   <div class="pad bord">
     <div class="row split -vert" id="splitter" style="height:70vh;" data-min="50">
-      <section class="pad bg-n col-2">First item: scrollable (section)<p>p<p>p<p>p<p>p</section>
-      <div class="pad bg-i">Second item: bleed (div)<p>p<p>p<p>p<p>p</div>
-      <div class="pad bg-y">Third item</div>
-      <div class="pad bg-w">Fourth item</div>
-      <div class="pad bg-e">Fifth item</div>
+      <section class="pad bg-n col-2"><h3 class="hide">Splitter test</h3>First item: scrollable (section)<p>p<p>p<p>p<p>p</section>
+      <div class="pad bg-i">Second item (div)<p>p<p>p<p>p<p>p</div>
+      <div class="pad bg-y">Third item<br>3</div>
+      <div class="pad bg-w">Fourth item<br>4</div>
+      <div class="pad bg-e">Fifth item<br>5</div>
     </div>
   </div>
 </details>
@@ -391,6 +392,7 @@ x<sup>super</sup>
 
 <div class="row pad -resp split -resp" id="lists" data-wmin="100">
 <section class="-bg" id="list-ul">
+  <h3 class="hide">Unordered list test</h3>
 	<ul>
 	<li>Basic
 	<li>List
@@ -403,6 +405,7 @@ x<sup>super</sup>
 </section>
 
 <section class="-bg" id="list-ol">
+  <h3 class="hide">Ordered list test</h3>
 	<ol>
 	<li>Ordered
 	<li>List
@@ -415,6 +418,7 @@ x<sup>super</sup>
 </section>
 
 <section class="-bg">
+  <h3 class="hide">Definition list test</h3>
 	<dl>
 		<dt>Term
 			<dd>Definition
@@ -555,7 +559,7 @@ x<sup>super</sup>
 
 <div class="row mid -bord mar pad">
 	<!--div class="col-0"><div class="icon-user bg c" style="font-size:2.4em;border-radius:50%;min-width:1.5em;"></div></div-->
-	<div class="col-0"><img alt="Photo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath fill='grey' d='M5 9C13 -1.5 -3 -1.5 5 9zM1 8.5q4 1 8 0-4 -3 -8 0z'/%3E%3C/svg%3E" class="c bg -mid -fit -rad" width="70" height="70"></div>
+	<div class="col-0"><img alt="Photo" src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2010%2010%27%3E%3Cpath%20fill%3D%27grey%27%20d%3D%27M5%209C13%20-1.5%20-3%20-1.5%205%209zM1%208.5q4%201%208%200-4%20-3%20-8%200z%27%2F%3E%3C%2Fsvg%3E" class="c bg -mid -fit -rad" width="70" height="70"></div>
 	<div class="col-1 -bg-n"><div>
 		<b>User Name</b>
 		<div class="small text-n"><a class="icon-pin l">Europe</a> <a class="icon-time">25.01.2021</a></div>
@@ -564,7 +568,7 @@ x<sup>super</sup>
 
 <details>
 	<summary>Full height</summary>
-	<div class="hi bg-w row mid"><div class="c pad bg">Centered</div></div>
+	<div class="full bg-w row mid"><div class="c pad bg">Centered</div></div>
 </details>
 
 <details>
@@ -632,11 +636,10 @@ x<sup>super</sup>
   </div>
 </details>
 
-
 <details>
 	<summary>Fixed scrollable layout</summary>
   
-  <div class="row vert" style="height:25em;">
+  <div class="row vert" style="height:35em;">
     <header class="pad bg-w">Header</header>
     <nav class="bg-y">
       <ul class="row drop hover">
@@ -651,6 +654,7 @@ x<sup>super</sup>
       </ul>
     </nav>
     <section class="row split pad">
+      <h3 class="hide">Layout test</h3>
       <aside class="row vert col-1">
         <nav class="bg-i">
           <ul class="row drop hover">
@@ -666,6 +670,7 @@ x<sup>super</sup>
         </nav>
         <form class="row vert">
           <section>
+            <h3 class="hide">Inputs</h3>
             <p><input><p><input><p><input><p><input><p><input>
           </section>
           <footer><button>OK</button></footer>
@@ -697,6 +702,19 @@ x<sup>super</sup>
   </div>
 </details>
 
+<details>
+	<summary>Stack</summary>
+    <div class="bg stack pad mar rad">
+      <p>Stacked paragraph one.</p>
+      <p>Stacked paragraph two.</p>
+      <p>Stacked paragraph three.</p>
+    </div>
+    <div class="bg stack l mar rad">
+      <div class="pad">Stacked div one.</div>
+      <div class="pad">Stacked div two.</div>
+      <div class="pad">Stacked div three.</div>
+    </div>
+</details>
 
 
 <h2 id="form"><a href="#form">Forms</a> <a href="#top" class="fit icon-up"></a></h2>
@@ -942,8 +960,8 @@ x<sup>super</sup>
 		</p>
 		<p id="toggle" class="target -show bord pad mem">Target</p>
 		
-		<div id="modal" class="target modal sans"><div>
-			<div class="pad bg h3">
+		<div id="modal" class="target modal sans"><div class="stack l">
+			<div class="pad -bg h3">
 				<div class="row">
 					<div>Modal dialog</div>
 					<div class="col-0"><a class="icon-close empty" href="#cancel"><b>&times;</b></a></div>
@@ -951,18 +969,22 @@ x<sup>super</sup>
 			</div>
 			<div class="pad c -fit">
 				<p><input type="text" name="mt" value="text"></p>
-				<p>Some important information. <br><a href="#modal-test">Continue reading &rarr;</a></p>
+        <p>
+          <button class="toggle" data-nodes="#modal>*" data-set="full " data-act="bg-y" data-inact="bg-n">Fullscreen</button>
+        </p>
+        <p><a href="#modal-test">Continue reading &rarr;</a></p>
 				<!--div><a href="#ask" class="confirm">Ask</a></div-->
 				<p><a class="inv pad rad" href="#cancel">Close</a></p>
 			</div>
 		</div></div>
 		
-		<div id="modal-test" class="target modal sans"><div class="rad c vert">
+		<div id="modal-test" class="target modal sans"><div class="rad c vert stack l">
       <!--div class="bg-w">Test radius</div-->
-      <header class="-stick shade">
-        <div class="pad shade"><b>Modal</b></div>
+      <header class="-stick -shade">
+        <div class="pad -shade"><b>Modal</b></div>
       </header>
       <section class="pad">
+        <h3 class="hide">Scroll test</h3>
         <details class="bg pad mar l">
           <summary>More horizontal</summary>
           <p class="nobr">Text text text text text text text text text text text text text text text text text
@@ -975,7 +997,7 @@ x<sup>super</sup>
         </details>
         <!--p><a href="#cancel"><button class="icon-ok bg-y">Close</button></a></p-->
       </section>
-      <footer class="-stick shade pad c">
+      <footer class="-stick -shade pad c">
         <a href="#cancel" class="pad inv rad icon-ok bg-y">Close</a>
         <a href="#back" class="pad -hover">&larr; Back</a>
       </footer>
@@ -1057,10 +1079,10 @@ x<sup>super</sup>
 	</div>
 	
 	<div class="gallery grid g1">
-		<a class="pic" title="Red title" href="https://picsum.photos/id/715/800/500.jpg"><img alt="Red alt" class="fit" src="https://picsum.photos/id/715/160/100.jpg"></a>
-		<a class="pic" title="Green title" href="https://picsum.photos/id/1018/800/500.jpg"><img alt="Green alt" class="fit" src="https://picsum.photos/id/1018/160/100.jpg"></a>
-		<a class="pic" title="Blue title" href="https://picsum.photos/id/575/800/500.jpg"><img alt="Blue alt" class="fit" src="https://picsum.photos/id/575/160/100.jpg"></a>
-		<a class="pic" title="Grey title" href="https://picsum.photos/id/1021/800/500.jpg"><img alt="Grey alt" class="fit" src="https://picsum.photos/id/1021/160/100.jpg"></a>
+		<a class="pic" title="Red title" href="https://placehold.co/640x480/933/fff.png?text=RED"><img alt="Red alt" class="fit" src="https://placehold.co/300x200/933/fff.png?text=Red"></a>
+		<a class="pic" title="Green title" href="https://placehold.co/640x480/393/fff.png?text=GREEN"><img alt="Green alt" class="fit" src="https://placehold.co/300x200/393/fff.png?text=Green"></a>
+		<a class="pic" title="Blue title" href="https://placehold.co/640x480/039/fff.png?text=BLUE"><img alt="Blue alt" class="fit" src="https://placehold.co/300x200/039/fff.png?text=Blue"></a>
+		<a class="pic" title="Grey title" href="https://placehold.co/640x480/666/fff.png?text=GREY"><img alt="Grey alt" class="fit" src="https://placehold.co/300x200/777/fff.png?text=Grey"></a>
 	</div>
 	
 	<h3 id="switch"><a href="#switch">Toggle class</a> <a href="#top" class="fit icon-up"></a></h3>
@@ -1206,7 +1228,7 @@ x<sup>super</sup>
 </ul-->
 
 
-<h3 id="icon-ext"><a href="#icon">Extended iconset</a> <a href="#top" class="fit icon-up l"></a></h2>
+<h3 id="icon-ext"><a href="#icon">Extended iconset</a> <a href="#top" class="fit icon-up l"></a></h3>
 <a href="#ext" class="toggle icon-desc" data-act="icon-desc" data-inact="icon-forward">Show</a>
 <div id="ext" class="target mem">
   <ul id="icons-gen" class="grid grid-4 resp sans -text-n -row hover" data-resp="grid grid-4 sans, grid grid-2 sans"><!-- generate demo icons... --></ul>

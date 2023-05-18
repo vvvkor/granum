@@ -1,4 +1,4 @@
-/*! granum-dropdown.css v1.2.120 */
+/*! granum-dropdown.css v1.2.121 */
 
 .pop {display:inline-block;}
 .pop, .drop li {position:relative;}
@@ -30,7 +30,7 @@
 /* pop direction */
 .pop>:last-child.c, .pop>:last-child.r {min-width:auto;white-space:nowrap;padding:0 .4em;text-align:left;}
 .pop>:last-child.l {left:auto;right:0;}
-.pop>:last-child.c {top:auto;bottom:100%;left:50%;transform:translateX(-50%);}
+.pop>:last-child.c {top:auto;bottom:100%;/*left:50%;transform:translateX(-50%);*/}
 .pop>:last-child.r {top:50%;left:100%;transform:translateY(-50%);}/*margin-left:.2em;*/
 
 .pop.fit {vertical-align:bottom;}

@@ -167,7 +167,7 @@ Styles with extended iconset and splitter script:
 - `.row` `.col-X` `.resp` `.vert` `.tabs`
 - `.fit` `.mar` `.pad` `.bord` `.rad` `.shade` `.stack` `.field`
 - `.bg` `.bg-X` `.back` `.text-X` `.hover` `.act`
-- `.l` `.r` `.c` `.center` `.wrap` `.hi` `.mid` 
+- `.l` `.r` `.c` `.center` `.wrap` `.full` `.mid` 
 - `.roll` `.stick` `.tag` `.bar`
 - `.fix-head` `.fix-col`
 - `.serif` `.sans` `.mono` `.small` `.nobr` `.inv` `.invert`
