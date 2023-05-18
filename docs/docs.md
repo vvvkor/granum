@@ -1,5 +1,5 @@
 **Granum**  
-v1.2.121
+v1.2.122
 
 # Documentation
 
@@ -110,6 +110,7 @@ Typography and styling is minimal and unobtrusive.
     - `.mem` - remember state by `[id]`
   - `ul a[href="#open"](.resp) ul(.show.mem[id])` - expandable tree *(requires [granum.js](granum.js))*
 - `.modal.target:target > div` - modal dialog
+  - `.modal>.full` - fullscreen modal
   - close by `Escape` key *(requires [granum.js](granum.js))*
 - `.gallery a.pic` - image gallery *(requires [granum-gallery.js](granum-gallery.js))*
 - `.drawer:target` - drawer sliding from left (`.l` from right)
