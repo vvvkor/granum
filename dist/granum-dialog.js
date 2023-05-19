@@ -1,4 +1,4 @@
-/*! granum-dialog.js v1.2.123 */
+/*! granum-dialog.js v1.2.124 */
 
 (() => {
 
