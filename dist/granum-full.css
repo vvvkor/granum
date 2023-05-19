@@ -1,4 +1,4 @@
-/*! granum-full.css v1.2.125 */
+/*! granum-full.css v1.2.126 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -139,7 +139,7 @@ ul.row>*, .col-0[class] {flex:0 1 auto;} /* for ie, which has default 0 0 auto*/
 .modal[class] {position:fixed;z-index:100;left:0;right:0;top:0;bottom:0em;background-color:#8888;box-shadow:0 0 0 9em #8888;display:flex;justify-content:center;align-items:center;margin:0;}
 .modal>* {overflow:auto;background-color:#fff;}
 .modal>:not(.full) {/*width:30%;*/min-width:18rem;max-height:83%;margin:1em;}
-.modal>.full[class] {width:100vw;height:100%;min-height:auto;}
+.modal>.full[class] {width:100vw;height:100vh;height:100dvh;min-height:auto;}
 body:has(.modal:target>.full, .pic.modal) {overflow:hidden;}
 
 /* gallery */
@@ -211,10 +211,10 @@ a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tbody tr
 	.wrap {max-width:45em;}
 	.stick {position:sticky;top:0;z-index:9;}
 	footer.stick {top:auto;bottom:0;z-index:8;}
-	.row .stick, .grid .stick{align-self:start;max-height:100vh;overflow:auto;}
-	.full {min-height:100vh;}
+	.row .stick, .grid .stick{align-self:start;max-height:100vh;max-height:100dvh;overflow:auto;}
+	.full {min-height:100vh;min-height:100dvh;}
   .vert {display:flex;flex-direction:column;}
-  .vert.full {height:100vh;min-height:auto;}
+  .vert.full {height:100vh;height:100dvh;min-height:auto;}
   .vert>* {overflow:auto;}
   .vert>article, .vert>.roll {flex:initial;}
   .vert>header, .vert>footer, .vert>nav, .vert>.col-0 {flex:none;overflow:visible;}
