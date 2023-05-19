@@ -96,7 +96,7 @@ Typography and styling is minimal and unobtrusive.
 
 	<!--a href="#drawer" class="icon-right pad" title="Drawer"></a-->
 	<div id="drawer" class="drawer -target back -bord shade vert">
-    <header class="pad -stick shade row mid">
+    <header class="-stick shade row pad mid">
       <h3 class="fit pad">Drawer</h3>
       <div class="r"><a href="#cancel" class="icon-close pad" title="Close"></a></div>
     </header>
@@ -981,7 +981,7 @@ x<sup>super</sup>
 			</div>
 		</div></div>
 		
-		<div id="modal-test" class="target modal sans"><div class="rad c vert stack l">
+		<div id="modal-test" class="target modal sans"><div class="rad c -row vert stack l">
       <!--div class="bg-w">Test radius</div-->
       <header class="-stick -shade">
         <div class="pad -shade"><b>Modal</b></div>
@@ -1001,6 +1001,7 @@ x<sup>super</sup>
         <!--p><a href="#cancel"><button class="icon-ok bg-y">Close</button></a></p-->
       </section>
       <footer class="-stick -shade pad c">
+        <button class="toggle" data-nodes="#modal-test>*" data-set="full " data-act="bg-y" data-inact="bg-n">Fullscreen</button>
         <a href="#cancel" class="pad inv rad icon-ok bg-y">Close</a>
         <a href="#back" class="pad -hover">&larr; Back</a>
       </footer>

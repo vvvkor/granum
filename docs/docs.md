@@ -1,5 +1,5 @@
 **Granum**  
-v1.2.124
+v1.2.125
 
 # Documentation
 
@@ -32,6 +32,9 @@ Typography and styling is minimal and unobtrusive.
 - `.row > .stick` - sticky cell
 - `.row > .l` - push next items to the right
 - `.row > .r` - shift this item to the right
+- `.row.vert` - vertical flexbox (use inside limited height, like `.modal` or `.drawer`)
+  - `(.row).vert > (article, .roll)` - do not grow
+  - `(.row).vert > (header, footer, nav, .col-0)` - fixed height
 
 
 ### Advanced grid `.grid` *(requires [granum-grid.css](granum-grid.css))*
@@ -118,9 +121,6 @@ Typography and styling is minimal and unobtrusive.
   - `footer.stick` - stick element to bottom
 - `.roll` - horizontal scroll if needed
 - `.full` - fullscreen height
-- `.vert` - vertical flexbox (use inside limited height, like `.modal` or `.drawer`)
-  - `.vert > (article, .roll)` - do not grow
-  - `.vert > (header, footer, nav, .col-0)` - fixed height
 - `.tag`, `.tag.bg-e` - tag
 - `img.c` - round avatar
 - `.badge > .tag` - badge (counter)
