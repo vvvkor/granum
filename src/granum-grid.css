@@ -35,9 +35,10 @@
 /* splitter */
 @media screen {
   .row.split.pad {gap:.5em;}
-  .row.split.vert {height:100vh;}
   .split>:not(.splitter) {box-sizing:border-box;}
   .split>section {overflow:auto;}
+  .vert.split>:not(.splitter):not(:last-child) {min-height:50px;/*match js*/}
+  .split.fit>:last-child {flex:0 1 auto;}
   .splitter {cursor:ew-resize;flex:none;width:.3em;background:#f9f9f9;touch-action:none;}
     .vert > .splitter {cursor:ns-resize;flex:none;height:.3em;width:auto;}
   .splitter.act {background:#eee;}

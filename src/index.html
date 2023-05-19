@@ -366,28 +366,6 @@ x<sup>super</sup>
 	</div>
 </details>
 
-<details>
-<summary>Splitter</summary>
-  <label>Mode
-  <select name="splitter-mode" data-nodes="#splitter" oninput="document.querySelectorAll(this.dataset.nodes + ' > *').forEach(n => n.style = {})">
-    <option value="row pad split" selected>Horizontal</option>
-    <option value="row pad split resp">Horizontal responsive</option>
-    <option value="row pad split vert">Vertical</option>
-    <option value="row pad split vert fit">Vertical no flex (can overflow)</option>
-    <option value="row pad split vert resp">Vertical responsive</option>
-  </select></label>
-  
-  <div class="pad bord">
-    <div class="row split -vert" id="splitter" style="height:70vh;" data-min="50">
-      <section class="pad bg-n col-2"><h3 class="hide">Splitter test</h3>First item: scrollable (section)<p>p<p>p<p>p<p>p</section>
-      <div class="pad bg-i">Second item (div)<p>p<p>p<p>p<p>p</div>
-      <div class="pad bg-y">Third item<br>3</div>
-      <div class="pad bg-w">Fourth item<br>4</div>
-      <div class="pad bg-e">Fifth item<br>5</div>
-    </div>
-  </div>
-</details>
-
 <h3 id="list"><a href="#list">Lists</a> <a href="#top" class="fit icon-up"></a></h3>
 
 <div class="row pad -resp split -resp" id="lists" data-wmin="100">
@@ -637,10 +615,50 @@ x<sup>super</sup>
 </details>
 
 <details>
-	<summary>Fixed scrollable layout</summary>
+	<summary>Stack</summary>
+    <div class="bg stack pad mar rad">
+      <p>Stacked paragraph one.</p>
+      <p>Stacked paragraph two.</p>
+      <p>Stacked paragraph three.</p>
+    </div>
+    <div class="bg stack l mar rad">
+      <div class="pad">Stacked div one.</div>
+      <div class="pad">Stacked div two.</div>
+      <div class="pad">Stacked div three.</div>
+    </div>
+</details>
+
+<details>
+  <summary>Splitter</summary>
+  <label>Mode
+  <select name="splitter-mode" data-nodes="#splitter" oninput="document.querySelectorAll(this.dataset.nodes + ' > *').forEach(n => n.style = {})">
+    <option value="full row pad split" selected>Horizontal</option>
+    <option value="full row pad split resp">Horizontal responsive</option>
+    <option value="full row pad split vert">Vertical</option>
+    <option value="full row pad split vert fit">Vertical with overflow</option>
+    <option value="full row pad split vert resp">Vertical responsive</option>
+  </select></label>
   
-  <div class="row vert" style="height:35em;">
-    <header class="pad bg-w">Header</header>
+  <div class="pad bord">
+    <div class="full row pad split -vert" id="splitter" style="height:70vh;min-height:70vh;" data-min="50">
+      <div class="pad bg-n col-2"><h3 class="hide">Splitter test</h3>First item (article.col-2)<!--p>p<p>p<p>p<p>p</p--></div>
+      <div class="pad bg-i">Second item (div)<!--p>p<p>p<p>p<p>p</p--></div>
+      <div class="pad bg-y">Third item<br>3</div>
+      <div class="pad bg-w">Fourth item<br>4</div>
+      <div class="pad bg-e">Fifth item<br>5</div>
+    </div>
+  </div>
+</details>
+
+<a href="#layout">Fixed scrollable layout</a>
+<div id="layout" class="modal target">
+  <div class="row vert full">
+    <header class="bg-w">
+      <div class="row">
+        <div class="pad">Header</div>
+        <a class="col-0 icon-close pad empty" href="#cancel"></a>
+      </div>
+    </header>
     <nav class="bg-y">
       <ul class="row drop hover">
         <li><a href="#x">One</a>
@@ -653,8 +671,7 @@ x<sup>super</sup>
         <li><a href="#x">Three</a>
       </ul>
     </nav>
-    <section class="row split pad">
-      <h3 class="hide">Layout test</h3>
+    <div class="row split pad">
       <aside class="row vert col-1">
         <nav class="bg-i">
           <ul class="row drop hover">
@@ -697,24 +714,10 @@ x<sup>super</sup>
         </div>
         <nav class="pad bg-i">Nav</nav>
       </div>
-    </section>
+    </div>
     <footer class="pad bg-w">Footer</footer>
   </div>
-</details>
-
-<details>
-	<summary>Stack</summary>
-    <div class="bg stack pad mar rad">
-      <p>Stacked paragraph one.</p>
-      <p>Stacked paragraph two.</p>
-      <p>Stacked paragraph three.</p>
-    </div>
-    <div class="bg stack l mar rad">
-      <div class="pad">Stacked div one.</div>
-      <div class="pad">Stacked div two.</div>
-      <div class="pad">Stacked div three.</div>
-    </div>
-</details>
+</div>
 
 
 <h2 id="form"><a href="#form">Forms</a> <a href="#top" class="fit icon-up"></a></h2>

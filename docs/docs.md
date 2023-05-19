@@ -1,5 +1,5 @@
 **Granum**  
-v1.2.122
+v1.2.123
 
 # Documentation
 
@@ -119,8 +119,8 @@ Typography and styling is minimal and unobtrusive.
 - `.roll` - horizontal scroll if needed
 - `.full` - fullscreen height
 - `.vert` - vertical flexbox (use inside limited height, like `.modal` or `.drawer`)
-  - `.vert > (section, form)` - scrollable, flex grow
-  - `.vert > (article, .roll)` - scrollable
+  - `.vert > (article, .roll)` - do not grow
+  - `.vert > (header, footer, nav, .col-0)` - fixed height
 - `.tag`, `.tag.bg-e` - tag
 - `img.c` - round avatar
 - `.badge > .tag` - badge (counter)
@@ -264,6 +264,6 @@ More icons are available with [granum-icons-ext.css](granum-icons-ext.css)
   - `.drag-control` - appears after dragging is performed (optional)
 - `.row.split([id])` - add splitters *(requires [granum-grid.css](granum-grid.css) and [granum-split.js](granum-split.js))*
   - `.row.split.vert` - vertical splitters (must have fixed height)
-  - `.row.split.vert.fit` - vertical splitters, no flex (can overflow)
+  - `.row.split.vert.fit` - vertical splitters with overflow
   - `.row.split > section` - scroll overflow
   - `[data-min]` - minimal column size (default `50`)

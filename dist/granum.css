@@ -1,4 +1,4 @@
-/*! granum.css v1.2.122 */
+/*! granum.css v1.2.123 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -211,13 +211,12 @@ a.hover:hover, div.hover:hover, ul.hover li:hover>:not(ul), table.hover tbody tr
 	.stick {position:sticky;top:0;z-index:9;}
 	footer.stick {top:auto;bottom:0;z-index:8;}
 	.row .stick, .grid .stick{align-self:start;max-height:100vh;overflow:auto;}
-	.full {/*min-height:40em;*/min-height:100vh;}
+	.full {min-height:100vh;}
   .vert {display:flex;flex-direction:column;}
-  .vert>* {flex:none;/*overflow:hidden;*/} /* overflow must be visible for popups */
-    .vert.split:not(.fit)>:not(.splitter):not([class*="col-"]) {flex:1;} /* too complex */
-    .vert.split>:not(.splitter) {overflow:auto;}
-  .vert>section, .vert>form {flex:1;overflow:auto;}
-  .vert>article, .vert>.roll {flex:initial;overflow:auto;}
+  .vert.full {height:100vh;min-height:auto;}
+  .vert>* {overflow:auto;}
+  .vert>article, .vert>.roll {flex:initial;}
+  .vert>header, .vert>footer, .vert>nav, .vert>.col-0 {flex:none;overflow:visible;}
 }
 
 /* desktop */
