@@ -23,7 +23,7 @@
     </script>
   </head>
   <body class="-invert">
-  <div class="pad">
+  <div class="wrap pad">
 
     <h1><a href="#" accesskey="1"><svg class="icon-config text-n"><path/></svg> Granum v2</a></h1>
 
@@ -33,6 +33,7 @@
     <a href="#x">Link</a>
     <a>Unlink</a>
     <mark>Mark</mark>
+    <span class="bg-l">Lite</span>
     <br>
     <span class="text">Text</span>
     <span class="text-n">Note</span>
@@ -141,6 +142,16 @@
     </div>
 
     
+    <h3>Grid</h3>
+    
+    <div class="row -resp wrap stretch gap -mid">
+      <div class="bg-n col-0">One</div>
+      <div class="bg-i col-1">Two</div>
+      <div class="bg-y col-2">Three</div>
+      <div class="bg-w scroll nobr">Four with overflowing content and scroll</div>
+      <div class="bg-e">Five<br>with<br>many<br>lines</div>
+    </div>
+    
     <h3>Modal gallery</h3>
     <a href="#modal"><svg class="icon-expand text"><path/></svg> Modal</a> &nbsp;
     <!-- <a href="#gallery"><svg class="icon-folder text-w"><path/></svg> Gallery</a> &nbsp; -->
@@ -158,12 +169,68 @@
     </div>
     <a href="#close" class="overlay"></a>
 
+    <h3>Popup</h3>
+    <div class="pop"><a>Default</a><div class="pad">Info<br>More info</div></div>
+    &mdash;
+    <div class="pop"><a>Center</a><div class="pad pos-c">Info<br>More info</div></div>
+    &mdash;
+    <div class="pop"><a>RT</a><div class="pad pos-rt">Info<br>More info</div></div>
+    <div class="pop"><a>Right</a><div class="pad pos-r">Info<br>More info</div></div>
+    <div class="pop"><a>RB</a><div class="pad pos-rb">Info<br>More info</div></div>
+    &mdash;
+    <div class="pop"><a>TL</a><div class="pad pos-tl">Info<br>More info</div></div>
+    <div class="pop"><a>Top</a><div class="pad pos-t">Info<br>More info</div></div>
+    <div class="pop"><a>TR</a><div class="pad pos-tr">Info<br>More info</div></div>
+    &mdash;
+    <div class="pop"><a>BL</a><div class="pad pos-bl">Info<br>More info</div></div>
+    <div class="pop"><a>Bottom</a><div class="pad pos-b">Info<br>More info</div></div>
+    <div class="pop"><a>BR</a><div class="pad pos-br">Info<br>More info</div></div>
+    &mdash;
+    <div class="pop"><a>LT</a><div class="pad pos-lt">Info<br>More info</div></div>
+    <div class="pop"><a>Left</a><div class="pad pos-l">Info<br>More info</div></div>
+    <div class="pop"><a class="">LB</a><div class="pad pos-lb">Info<br>More info</div></div>
+    
+    <h3>Dropdown</h3>
+    <ul class="row -vert resp bg-l mid">
+      <li><a>Colors<br>x</a>
+        <ul>
+          <li><a>Red</a>
+            <ul>
+              <li><a href="#x">Orange</a></li>
+              <li><a href="#x">Pink</a></li>
+              <li><a href="#x">Carmine</a></li>
+            </ul>
+          </li>
+          <li><a>Green</a>
+            <ul>
+              <li><a href="#x">Lime</a></li>
+              <li><a href="#x">Tile</a></li>
+            </ul>
+          </li>
+          <li><a>Blue</a>
+            <ul class="p-os-rt">
+              <li><a href="#x">Navy</a></li>
+              <li><a href="#x">Cyan</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a>Languages</a>
+        <ul class="p-os-bl">
+          <li><a href="#x">English</a></li>
+          <li><a href="#x">Spanish</a></li>
+          <li><a href="#x">Russian</a></li>
+        </ul>
+      </li>
+      <li class="-push"><a href="#x">Three</a></li>
+      <li class="shift -mid"><form><input type="search" size="8"></form></li>
+    </ul>
     
     <h3>Accordion</h3>
     <ul>
       <li><a href="#list1">Colors</a>
         <ul id="list1" class="target">
-          <li><a href="#list11">Red</a></li>
+          <li><a href="#list11">Red</a>
             <ul id="list11" class="target">
               <li><a>Orange</a></li>
               <li><a>Pink</a></li>
@@ -183,6 +250,7 @@
             </ul>
           </li>
         </ul>
+      </li>
       <li><a href="#list2">Languages</a>
         <ul id="list2" class="target">
           <li><a>English</a></li>
@@ -217,6 +285,7 @@
             </ul>
           </li>
         </ul>
+      </li>
       <li><label class="check"><input type="checkbox" checked>Languages</label>
         <ul>
           <li><a>English</a></li>

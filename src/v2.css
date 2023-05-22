@@ -1,4 +1,5 @@
 /* vars */
+/* vars */
 /*
   r = root
   f = font
@@ -10,6 +11,7 @@
   /* basic */
   --rfsz: 1.2;
   --bg: #fcfcfc;
+  --bgl: #9991;
   --over:#fff9;
   --text:#222;
   --link:#03a;
@@ -17,6 +19,7 @@
   --hover:#c00;
   --shade:0 .1em .8em 0em #0003;
   --gap:1em;
+  --minw:10em;
   /* dependent */
   --risz: 16 * var(--rfsz) * 1.2;  /* *1 */
   --ishift:-15%; /* 10% */
@@ -26,8 +29,23 @@
   font:calc(100% * var(--rfsz))/1.5 "PT Serif", serif;
 }
 
+/* reset */
+img, embed, iframe, object, audio, video {max-width:100%;}
+button, input, select, textarea, li ul, li ol {margin:0;}
+img, iframe, fieldset, hr {border:none;}
+img {object-fit:cover;}
+html, body, li, dl, dt, dd, legend, iframe, fieldset {margin:0;padding:0;}
+table {border-collapse:collapse;border-spacing:0}
+td, th {padding:0;text-align:left}
+* {box-sizing:content-box;}
+table, img, embed, iframe, object, audio, video, button, input, select, textarea,
+	.wrap, .row, .modal, .drawer, .stick {box-sizing:border-box;}
+
+button, [type="submit"], [type="search"] {-webkit-appearance:none;} /* safari */
+button::-moz-focus-inner, [type="submit"]::-moz-focus-inner {border:none;} /* firefox */
+
 /* typo */
-body {color:var(--text);background-color:var(--bg);padding:0;margin:0;}
+body {color:var(--text);background-color:var(--bg);}
 h1, .h1 {--fsz:2;}
 h2, .h2 {--fsz:1.55;}
 h3, .h3 {--fsz:1.2}
@@ -35,14 +53,14 @@ h4, .h4 {--fsz:1;}
 h5, .h5, small, .small {--fsz:.83;}
 h6, .h6 {--fsz:.67;}
 h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6,small,.small {font-size:calc(100% * var(--fsz));--isz:calc(var(--risz) * var(--fsz))}
-img {object-fit:cover;}
 /* heading font bar tag */
 /* status border color? */
 
 /* links */
-a[href], .check {color:var(--link);text-decoration:none;}
+a[href], .check, .pop>a, ul.row a {color:var(--link);text-decoration:none;cursor:pointer;}
 a.act, .check:has(:checked) {color:var(--act);}
-a[href]:hover, .check:hover {color:var(--hover);}
+a[href]:hover, .check:hover, .pop:hover>a, ul.row a:hover {color:var(--hover);}
+ul.row li:is(:hover, :has(:hover)) {background-color:var(--bgl);}
 
 /* colors */
 [class].text {color:var(--text);}/*hue*/
@@ -52,6 +70,7 @@ a[href]:hover, .check:hover {color:var(--hover);}
 [class].text-w {color:#d70;}/*37*/
 [class].text-e /*, :invalid~[data-invalid]*/ {color:#c00;}/*0*/
 [class].bg {background-color:var(--bg);}
+[class].bg-l {background-color:var(--bgl);}
 [class].bg-n {background-color:#eee;}
 [class].bg-i {background-color:#bef;}/*195*/
 [class].bg-y {background-color:#beb;}/*120*/
@@ -69,6 +88,19 @@ html {--mode:none;}
   html.invert {--mode:none;}
 }
 
+/* grid */
+/* +ul, +row, +vert, +mid, +scroll, +gap, +wrap, +resp, +col-1, +push, +shift */
+.row {display:flex;}
+.row.vert {flex-direction:column;}
+.row.gap {gap:var(--gap);}
+.row.wrap, ul.row {flex-wrap:wrap;}
+  .row:not(ul).mid {align-items:center;}
+  .row>.mid, ul.row>li>.mid:not(ul) {align-self:center;}
+.col-1, .stretch>* {flex:1;}
+.col-0 {flex:initial;}
+.col-2 {flex:2;}
+.col-3 {flex:3;}
+
 /* toggle */
 /* + .check: hilite, unscroll, multiple, initial show, can close */
 .target:not(:target):not(:has(:target)), .check:not(:has(:checked)) + *, .check input {display:none;}
@@ -80,7 +112,36 @@ body:has(:target:is(.modal, .modal :target)) {overflow:hidden;}
 a:has(img:target) {-webkit-tap-highlight-color:transparent;}
 img:target {position:absolute;display:block;inset:0;width:100%;height:100%;object-fit:contain;}
 .target {scroll-margin-top:5rem;}
-/* pop, drop, hover */
+/* pop, drop, hover, arrow; box pop/drop, onhover */
+.pop, ul.row li {position:relative;}
+.pop {display:inline-block;}
+  /* for variable items height */
+  ul.row.mid:not(.vert) li {display:flex;flex-direction:column;}
+  ul.row.mid:not(.vert) li>:not(ul) {flex:1;display:flex;align-items:center;}
+  /* arrows */
+  /**/
+ul.row.vert {width:var(--minw);}
+ul.row a {display:block;padding:var(--pads);}
+.pop:not(:hover)>:last-child, ul.row li:not(:hover)>ul {display:none;}
+.pop>:last-child, ul.row ul {position:absolute;background-color:var(--bg);box-shadow:var(--shade);min-width:var(--minw);z-index:50;}
+:is(.pop>:last-child, ul.row:not(.vert)>li>ul):not([class*="pos-"]) {left:0;top:100%;}
+ul.row ul:not([class*="pos-"]) {left:100%;top:0;}
+ul.row, ul.row ul {list-style:none;margin:0;padding:0;}
+.pos-tl {inset:auto 0 100% auto;}
+.pos-t  {inset:auto auto 100% 50%;}
+.pos-tr {inset:auto auto 100% 0;}
+.pos-bl {inset:100% 0 auto auto;}
+.pos-b  {inset:100% auto auto 50%;}
+.pos-br {inset:100% auto auto 0;}
+.pos-rt {inset:auto auto 0 100%;}
+.pos-r  {inset:50% auto auto 100%;}
+.pos-rb {inset:0 auto auto 100%;}
+.pos-lt {inset:auto 100% 0 auto;}
+.pos-l  {inset:50% 100% auto auto;}
+.pos-lb {inset:0 100% auto auto;}
+.pos-t, .pos-b {transform:translateX(-50%);}
+.pos-l, .pos-r {transform:translateY(-50%);}
+.pos-c {left:50%;top:50%;transform:translate(-50%,-50%);}
 /* +toggle, tabs, +tree: optionally use +label */
 /* +modal, +gallery, drawer, +accordion */
 /* gallery: close, back */
@@ -88,8 +149,6 @@ img:target {position:absolute;display:block;inset:0;width:100%;height:100%;objec
 /* stick, stack */
 /* js: store, unscroll? */
 
-/* grid */
-/* ul, row, vert, mid, scroll, gap, wrap, resp, col-1 */
 
 /* list */
 
@@ -187,10 +246,16 @@ img:target {position:absolute;display:block;inset:0;width:100%;height:100%;objec
 .icon-none>path {--w:1;d:path("M1 1z");}
 
 /* modifiers */
+.wrap {margin-left:auto;margin-right:auto;max-width:45em;}
+.nobr {white-space:nowrap;}
 .pad {padding:var(--pads);}
 a.pad, [class*="icon-"].pad {padding:calc(.5 * var(--gap));}
 a.pad {display:inline-block;}
+.scroll {overflow:auto;min-width:5em;min-height:5em;}
 .corner {position:absolute;top:0;right:0;z-index:1;}
+  .row:not(.vert) .push {margin-right:auto;}
+  .row:not(.vert) .shift {margin-left:auto;}
+  .row:not(.vert) .push + .shift {margin-left:0;}
 /* +pad bord mar mid rad shade */
 
 /* mobile */
@@ -198,12 +263,16 @@ a.pad {display:inline-block;}
 	:root {
     --rfsz: 1;
   }
+  .row.resp {flex-direction:column;}
+  .row.resp>:is(.push, .shift) {margin:0;}
+  ul.row.resp {width:var(--minw);}
+  ul.row.resp[class] ul:not([class*="pos-"]) {left:100%;top:0;}
 }
 
 /*
 z-index
 1   .corner
-40  .pop
+50  .pop
 50  .drop
 100 #overlay
 101 .overlay
