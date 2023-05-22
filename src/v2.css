@@ -89,7 +89,7 @@ html {--mode:none;}
 }
 
 /* grid */
-/* +ul, +row, +vert, +mid, +scroll, +gap, +wrap, +resp, +col-1, +push, +shift */
+/* +ul, +row, +vert, +mid, +scroll, +gap, +wrap, +resp, +col-1, +push, +shift, vert-scroll */
 .row {display:flex;}
 .row.vert {flex-direction:column;}
 .row.gap {gap:var(--gap);}
@@ -144,8 +144,8 @@ ul.row, ul.row ul {list-style:none;margin:0;padding:0;}
 .pos-c {left:50%;top:50%;transform:translate(-50%,-50%);}
 /* +toggle, tabs, +tree: optionally use +label */
 /* +modal, +gallery, drawer, +accordion */
-/* gallery: close, back */
-/* modal: small/full, close icon, vert scroll */
+/* gallery: +close, back, bg */
+/* modal: small/full, +close icon, vert scroll */
 /* stick, stack */
 /* js: store, unscroll? */
 
@@ -256,7 +256,7 @@ a.pad {display:inline-block;}
   .row:not(.vert) .push {margin-right:auto;}
   .row:not(.vert) .shift {margin-left:auto;}
   .row:not(.vert) .push + .shift {margin-left:0;}
-/* +pad bord mar mid rad shade */
+/* +pad bord mar ~mid rad shade */
 
 /* mobile */
 @media (max-width: 899px) {
