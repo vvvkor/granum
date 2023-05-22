@@ -23,12 +23,12 @@
     <script defer src="granum-drag.js"></script>
     <script defer src="granum-split.js"></script>
     <script>
-		document.addEventListener('granum-start', e => console.log('granum start', e))
-		document.addEventListener('granum-ready', e => console.log('granum ready', e))
-		window.addEventListener('resize', () => info.textContent = window.innerWidth + ' px') // with scrollbar
-		// window.addEventListener('resize', () => info.textContent = document.documentElement.clientWidth + 'px') // without scrollbar
-		document.addEventListener('granum-drag', e => console.log('granum drag', e))
-	</script>
+      document.addEventListener('granum-start', e => console.log('granum start', e))
+      document.addEventListener('granum-ready', e => console.log('granum ready', e))
+      window.addEventListener('resize', () => info.textContent = window.innerWidth + ' px') // with scrollbar
+      // window.addEventListener('resize', () => info.textContent = document.documentElement.clientWidth + 'px') // without scrollbar
+      document.addEventListener('granum-drag', e => console.log('granum drag', e))
+    </script>
   </head>
   <body id="top" data-break-x="500,400,300,200" data-dt-x="." class="mem">
   <div id="topbar-container" class="xstick mem">

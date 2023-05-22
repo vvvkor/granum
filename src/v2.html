@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en" id="root" class="mem">
+  <head>
+    <meta charset="utf-8">
+    <title>Granum v2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#fff">
+    <meta name="theme-color" media="(prefers-color-scheme:dark)" content="#04a">
+    <link rel="icon" type="image/svg" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20220%20220'%3E%3Cpath%20fill='%23f50'%20d='M35%2067l75%20-44%2075%2044%200%2089-75%2044-75-44zm75%208a35%2035%200%201%200%20.01%200z'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="v2.css">
+    <!--script defer src="granum.js"></script-->
+    <script>
+      document.addEventListener('DOMContentLoaded', e => {
+        console.log('loaded');
+        [...document.querySelectorAll('.icons [class*="icon-"]')].forEach(n => {
+          //n.classList.add('text-n')
+          const i = n.getAttribute('class').slice(5)
+          const j = i.slice(0, 1).toUpperCase() + i.slice(1)
+          n.parentNode.title = i
+          //n.parentNode.append(' ' + j)
+        });
+      })
+    </script>
+  </head>
+  <body class="-invert">
+  <div class="pad">
+
+    <h1><a href="#" accesskey="1"><svg class="icon-config text-n"><path/></svg> Granum v2</a></h1>
+
+    <h3>Colors</h3>
+    
+    <span>Default</span>
+    <a href="#x">Link</a>
+    <a>Unlink</a>
+    <mark>Mark</mark>
+    <br>
+    <span class="text">Text</span>
+    <span class="text-n">Note</span>
+    <span class="text-i">Info</span>
+    <span class="text-y">Success</span>
+    <span class="text-w">Warning</span>
+    <span class="text-e">Error</span>
+    <br>
+    <span class="bg">Text</span>
+    <span class="bg-n">Note</span>
+    <span class="bg-i">Info</span>
+    <span class="bg-y">Success</span>
+    <span class="bg-w">Warning</span>
+    <span class="bg-e">Error</span>
+    
+    <h3>Icons (82)</h3>
+    
+    <!--
+    add asc attach audio back ban bookmark box card chart chat close collapse columns config copy date delete desc down download edit energy exit expand file find first flag folder forward grid heart help home image info key last layers left link list lock mail menu mic more no none ok open pause phone photo pin play power print rec refresh right send settings share sort sound star stop storage sum tag text time tree up upload user video view warning world
+    -->
+    
+    <div class="icons -h3">
+    <a class="pad"><svg class="icon-menu" title="Menu"><path/></svg></a>
+    <a class="pad"><svg class="icon-sort"><path/></svg></a>
+    <a class="pad"><svg class="icon-more"><path/></svg></a>
+    <a class="pad"><svg class="icon-grid"><path/></svg></a>
+    <a class="pad"><svg class="icon-home"><path/></svg></a>
+    <a class="pad"><svg class="icon-find"><path/></svg></a>
+    <a class="pad"><svg class="icon-config"><path/></svg></a>
+    <a class="pad"><svg class="icon-close"><path/></svg></a>
+    <a class="pad"><svg class="icon-user"><path/></svg></a>
+    <a class="pad"><svg class="icon-exit"><path/></svg></a>
+    <a class="pad"><svg class="icon-key"><path/></svg></a>
+    <a class="pad"><svg class="icon-lock"><path/></svg></a>
+    <a class="pad"><svg class="icon-edit"><path/></svg></a>
+    <a class="pad"><svg class="icon-add"><path/></svg></a>
+    <a class="pad"><svg class="icon-delete"><path/></svg></a>
+    <a class="pad"><svg class="icon-ok"><path/></svg></a>
+    <a class="pad"><svg class="icon-up"><path/></svg></a>
+    <a class="pad"><svg class="icon-down"><path/></svg></a>
+    <a class="pad"><svg class="icon-left"><path/></svg></a>
+    <a class="pad"><svg class="icon-right"><path/></svg></a>
+    <a class="pad"><svg class="icon-asc"><path/></svg></a>
+    <a class="pad"><svg class="icon-desc"><path/></svg></a>
+    <a class="pad"><svg class="icon-back"><path/></svg></a>
+    <a class="pad"><svg class="icon-forward"><path/></svg></a>
+    <a class="pad"><svg class="icon-upload"><path/></svg></a>
+    <a class="pad"><svg class="icon-download"><path/></svg></a>
+    <a class="pad"><svg class="icon-first"><path/></svg></a>
+    <a class="pad"><svg class="icon-last"><path/></svg></a>
+    <a class="pad"><svg class="icon-folder"><path/></svg></a>
+    <a class="pad"><svg class="icon-open"><path/></svg></a>
+    <a class="pad"><svg class="icon-file"><path/></svg></a>
+    <a class="pad"><svg class="icon-attach"><path/></svg></a>
+    <a class="pad"><svg class="icon-audio"><path/></svg></a>
+    <a class="pad"><svg class="icon-video"><path/></svg></a>
+    <a class="pad"><svg class="icon-image"><path/></svg></a>
+    <a class="pad"><svg class="icon-text"><path/></svg></a>
+    <a class="pad"><svg class="icon-tree"><path/></svg></a>
+    <a class="pad"><svg class="icon-list"><path/></svg></a>
+    <a class="pad"><svg class="icon-link"><path/></svg></a>
+    <a class="pad"><svg class="icon-chart"><path/></svg></a>
+    <a class="pad"><svg class="icon-no"><path/></svg></a>
+    <a class="pad"><svg class="icon-ban"><path/></svg></a>
+    <a class="pad"><svg class="icon-warning"><path/></svg></a>
+    <a class="pad"><svg class="icon-info"><path/></svg></a>
+    <a class="pad"><svg class="icon-share"><path/></svg></a>
+    <a class="pad"><svg class="icon-world"><path/></svg></a>
+    <a class="pad"><svg class="icon-flag"><path/></svg></a>
+    <a class="pad"><svg class="icon-pin"><path/></svg></a>
+    <a class="pad"><svg class="icon-date"><path/></svg></a>
+    <a class="pad"><svg class="icon-time"><path/></svg></a>
+    <a class="pad"><svg class="icon-refresh"><path/></svg></a>
+    <a class="pad"><svg class="icon-view"><path/></svg></a>
+    <a class="pad"><svg class="icon-card"><path/></svg></a>
+    <a class="pad"><svg class="icon-sum"><path/></svg></a>
+    <a class="pad"><svg class="icon-copy"><path/></svg></a>
+    <a class="pad"><svg class="icon-help"><path/></svg></a>
+    <a class="pad"><svg class="icon-phone"><path/></svg></a>
+    <a class="pad"><svg class="icon-mail"><path/></svg></a>
+    <a class="pad"><svg class="icon-chat"><path/></svg></a>
+    <a class="pad"><svg class="icon-send"><path/></svg></a>
+    <a class="pad"><svg class="icon-bookmark"><path/></svg></a>
+    <a class="pad"><svg class="icon-star"><path/></svg></a>
+    <a class="pad"><svg class="icon-heart"><path/></svg></a>
+    <a class="pad"><svg class="icon-tag"><path/></svg></a>
+    <a class="pad"><svg class="icon-expand"><path/></svg></a>
+    <a class="pad"><svg class="icon-collapse"><path/></svg></a>
+    <a class="pad"><svg class="icon-box"><path/></svg></a>
+    <a class="pad"><svg class="icon-columns"><path/></svg></a>
+    <a class="pad"><svg class="icon-storage"><path/></svg></a>
+    <a class="pad"><svg class="icon-settings"><path/></svg></a>
+    <a class="pad"><svg class="icon-power"><path/></svg></a>
+    <a class="pad"><svg class="icon-energy"><path/></svg></a>
+    <a class="pad"><svg class="icon-sound"><path/></svg></a>
+    <a class="pad"><svg class="icon-mic"><path/></svg></a>
+    <a class="pad"><svg class="icon-photo"><path/></svg></a>
+    <a class="pad"><svg class="icon-print"><path/></svg></a>
+    <a class="pad"><svg class="icon-play"><path/></svg></a>
+    <a class="pad"><svg class="icon-pause"><path/></svg></a>
+    <a class="pad"><svg class="icon-stop"><path/></svg></a>
+    <a class="pad"><svg class="icon-rec"><path/></svg></a>
+    <a class="pad"><svg class="icon-layers"><path/></svg></a>
+    <a class="pad"><svg class="icon-none"><path/></svg></a>
+    <a class="pad"><svg class="icon-unknown"><path/></svg></a>
+    </div>
+
+    
+    <h3>Modal gallery</h3>
+    <a href="#modal"><svg class="icon-expand text"><path/></svg> Modal</a> &nbsp;
+    <!-- <a href="#gallery"><svg class="icon-folder text-w"><path/></svg> Gallery</a> &nbsp; -->
+    <a href="#img1"><svg class="icon-image text-y"><path/></svg> Image</a>
+    <div id="modal" class="modal target bg-n">
+      <div class="corner">
+        <a href="#cancel" class="pad"><svg class="icon-close text-n"><path/></svg></a>
+      </div>
+      <div id="gallery" class="target">
+        <a href="#img2"><img id="img1" alt="pic" src="https://placehold.co/300x200/933/fff.png?text=Red" class="target" loading="lazy"></a>
+        <a href="#img3"><img id="img2" alt="pic" src="https://placehold.co/300x200/393/fff.png?text=Green" class="target" loading="lazy"></a>
+        <a href="#img4"><img id="img3" alt="pic" src="https://placehold.co/300x200/039/fff.png?text=Blue" class="target" loading="lazy"></a>
+        <a href="#img1"><img id="img4" alt="pic" src="https://placehold.co/300x200/777/fff.png?text=Grey" class="target" loading="lazy"></a>
+      </div>
+    </div>
+    <a href="#close" class="overlay"></a>
+
+    
+    <h3>Accordion</h3>
+    <ul>
+      <li><a href="#list1">Colors</a>
+        <ul id="list1" class="target">
+          <li><a href="#list11">Red</a></li>
+            <ul id="list11" class="target">
+              <li><a>Orange</a></li>
+              <li><a>Pink</a></li>
+              <li><a>Carmine</a></li>
+            </ul>
+          </li>
+          <li><a href="#list12">Green</a>
+            <ul id="list12" class="target">
+              <li><a>Lime</a></li>
+              <li><a>Tile</a></li>
+            </ul>
+          </li>
+          <li><a href="#list13">Blue</a>
+            <ul id="list13" class="target">
+              <li><a>Navy</a></li>
+              <li><a>Cyan</a></li>
+            </ul>
+          </li>
+        </ul>
+      <li><a href="#list2">Languages</a>
+        <ul id="list2" class="target">
+          <li><a>English</a></li>
+          <li><a>Spanish</a></li>
+          <li><a>Russian</a></li>
+        </ul>
+      </li>
+      <li><a>Three</a></li>
+    </ul>
+
+    <h3>Tree</h3>
+    <ul>
+      <li><label class="check"><input type="checkbox">Colors</label>
+        <ul>
+          <li><label class="check"><input type="checkbox">Red</label>
+            <ul>
+              <li><a>Orange</a></li>
+              <li><a>Pink</a></li>
+              <li><a>Carmine</a></li>
+            </ul>
+          </li>
+          <li><label class="check"><input type="checkbox">Green</label>
+            <ul>
+              <li><a>Lime</a></li>
+              <li><a>Tile</a></li>
+            </ul>
+          </li>
+          <li><label class="check"><input type="checkbox">Blue</label>
+            <ul>
+              <li><a>Navy</a></li>
+              <li><a>Cyan</a></li>
+            </ul>
+          </li>
+        </ul>
+      <li><label class="check"><input type="checkbox" checked>Languages</label>
+        <ul>
+          <li><a>English</a></li>
+          <li><a>Spanish</a></li>
+          <li><a>Russian</a></li>
+        </ul>
+      </li>
+      <li><a>Three</a></li>
+    </ul>
+
+    <h3>Text</h3>
+    <p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p
+    
+  </div>
+  <!-- common -->
+  <a id="overlay" href="#cancel" accesskey="x"></a>
+  </body>
+</html>
