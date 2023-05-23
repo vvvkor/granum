@@ -169,8 +169,20 @@
     </div>
     <a href="#close" class="overlay"></a>
 
+    <h3>Target</h3>
+    
+    <div>
+      <a href="#trg">Open by hash</a>
+      <div id="trg" class="target bg-n pad">Target <a href="#x">Close</a></div>
+    </div>
+    
+    <div>
+      <label class="check"><input type="checkbox">Open by label</label>
+      <div class="bg-n pad">Target</div>
+    </div>
+
     <h3>Popup</h3>
-    <div class="pop"><a>Default</a><div class="pad">Info<br>More info</div></div>
+    <div class="pop"><a class="hover">Default</a><div class="pad">Info<br>More info</div></div>
     &mdash;
     <div class="pop"><a>Center</a><div class="pad pos-c">Info<br>More info</div></div>
     &mdash;
@@ -189,12 +201,67 @@
     <div class="pop"><a>LT</a><div class="pad pos-lt">Info<br>More info</div></div>
     <div class="pop"><a>Left</a><div class="pad pos-l">Info<br>More info</div></div>
     <div class="pop"><a class="">LB</a><div class="pad pos-lb">Info<br>More info</div></div>
+    <div>
+      <div class="pop">
+        <label class="check hover"><input type="checkbox">Open by label</label>
+        <div class="bg-n pad">Target</div>
+      </div>
+    </div>
+    
+    <h3>Tabs</h3>
+    
+    <ul class="row tabs subpad hover">
+      <li><b>Tabs by list hash</b></li>
+      <li><a href="#tab1">One</a></li>
+      <li><a href="#tab2">Two</a></li>
+      <li><a href="#tab3">Three</a></li>
+      <li class="shift"><a href="#tab3-inner">Inner</a></li>
+    </ul>
+    <div class="pad bg-n">
+      <div id="tab1">
+        <div class="text-e">Jumps to hash</div>
+        <div class="text-e">No active tab hilite</div>
+      </div>
+      <div id="tab2">Tab 2</div>
+      <div id="tab3">Tab 3. <b id="tab3-inner">Inner target</b></div>
+    </div>
+    
+    <div class="row tabs subpad hover mar">
+      <b>Tabs by div hash</b>
+      <a href="#tab1a">One</a>
+      <div id="tab1a" class="pad bg-n">
+        <div class="text-e">Jumps to hash</div>
+        <div class="text-i">No active tab hilite for inner targets</div>
+        <div class="text-w">No common container for content</div>
+      </div>
+      <a href="#tab2a">Two</a>
+      <div id="tab2a" class="pad bg-n">Tab 2</div>
+      <a href="#tab3a">Three</a>
+      <div id="tab3a" class="pad bg-n">Tab 3. <b id="tab3a-inner">Inner target</b></div>
+      <a href="#tab3a-inner" class="shift">Inner</a>
+    </div>
+
+    <div class="row tabs subpad hover mar">
+      <b>Tabs by label</b>
+      <label class="check"><input type="radio" name="tabs">One</label>
+      <div class="pad bg-n">Tab 1</div>
+      <label class="check"><input type="radio" name="tabs" checked>Two</label>
+      <div class="pad bg-n">
+        <div class="text-w">No common container for content</div>
+        <div class="text-w">Extra non-semantic markup</div>
+        <div class="text-y">Can start with any tab</div>
+        <div class="text-y">Keeps on hash change</div>
+      </div>
+      <label class="check"><input type="radio" name="tabs">Three</label>
+      <div class="pad bg-n">Tab 3</div>
+    </div>
     
     <h3>Dropdown</h3>
-    <ul class="row -vert resp bg-l mid">
-      <li><a>Colors<br>x</a>
+    <ul class="row -vert resp bg-l mid subpad hover">
+    <!--ul class="row gap"-->
+      <li><a>Colors<br><small class="text-n">Info</small></a>
         <ul>
-          <li><a>Red</a>
+          <li><a>Red<br><small class="text-n">Info</small></a>
             <ul>
               <li><a href="#x">Orange</a></li>
               <li><a href="#x">Pink</a></li>
@@ -215,14 +282,14 @@
           </li>
         </ul>
       </li>
-      <li><a>Languages</a>
+      <li><a><svg class="icon-flag text-n"><path/></svg> Languages</a>
         <ul class="p-os-bl">
           <li><a href="#x">English</a></li>
           <li><a href="#x">Spanish</a></li>
           <li><a href="#x">Russian</a></li>
         </ul>
       </li>
-      <li class="-push"><a href="#x">Three</a></li>
+      <li class="-push"><a href="#x"><svg class="icon-link"><path/></svg> Link</a></li>
       <li class="shift -mid"><form><input type="search" size="8"></form></li>
     </ul>
     
@@ -279,7 +346,7 @@
             </ul>
           </li>
           <li><label class="check"><input type="checkbox">Blue</label>
-            <ul>
+            <ul id="blue">
               <li><a>Navy</a></li>
               <li><a>Cyan</a></li>
             </ul>
@@ -296,8 +363,46 @@
       <li><a>Three</a></li>
     </ul>
 
-    <h3>Text</h3>
-    <p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p
+    <h3>Info</h3>
+    
+    <table class="bord hover">
+      <caption>Toggle methods comparation</caption>
+      <thead>
+        <tr><th>Feature<th>Hash<th>Label + checkbox</tr>
+      </thead>
+      <tbody>
+        <tr><td>Markup<td class="bg-y">clean; free placement<td class="bg-e">extra label + checkbox; target must be next</tr>
+        <tr><td>Link<td class="bg-y">by link hash<td class="bg-y">by link hash (optional)</tr>
+        <tr><td>Initial show<td class="bg-w">by link hash (single)<td class="bg-y">by checkbox; by link hash (single)</tr>
+        <tr><td>Close on click<td class="bg-e">no<td class="bg-w">if not linked</tr>
+        <tr><td>Hilite<td class="bg-w">if target is next<td class="bg-y">yes (target is always next)</tr>
+        <tr><td>Nested<td class="bg-y">yes<td class="bg-y">yes</tr>
+        <tr><td>Multiple selected<td class="bg-e">no<td class="bg-y">yes</tr>
+        <tr><td>Scroll<td class="bg-w">jumps to target<td class="bg-y">no jump</tr>
+      </tbody>
+    </table>
+    
+    <table class="bord hover">
+      <caption>Toggler components</caption>
+      <thead>
+        <tr><th>Component<th>Markup<th>Method<th>Features</tr>
+      </thead>
+      <tbody>
+        <tr><td>Popup/hint<td>.pop<td>hover / label<td></tr>
+        <tr><td>Dropdown<td>ul.row<td>hover<td></tr>
+        <tr><td>Toggle<td>#, .target / label<td>hash / label<td>jump / -</tr>
+        <tr><td>Accordion tree<td>ul # .target<td>hash<td>jump</tr>
+        <tr><td>Tree<td>ul<td>label<td></tr>
+        <tr><td>Tabs<td>.tabs # / .tabs label<td>hash / label<td>jump / -</tr>
+        <tr><td>Modal<td>.modal.target<td>hash<td>overlay</tr>
+        <tr><td>Gallery<td>.modal.target img.target<td>hash<td>overlay</tr>
+        <tr><td>Drawer<td>.drawer(.target)<td>hash<td>overlay</tr>
+        <tr><td>Stick<td>.stick<td>-<td></tr>
+      </tbody>
+    </table>
+
+    
+    <!--p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</p-->
     
   </div>
   <!-- common -->

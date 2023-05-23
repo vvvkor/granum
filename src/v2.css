@@ -1,30 +1,30 @@
-/* vars */
-/* vars */
 /*
+  vars:
   r = root
   f = font
   i = icon
   sz = size
-  _ = with unit
 */
 :root{
   /* basic */
   --rfsz: 1.2;
   --bg: #fcfcfc;
-  --bgl: #9991;
-  --over:#fff9;
-  --text:#222;
-  --link:#03a;
-  --act:#06f;
-  --hover:#c00;
-  --shade:0 .1em .8em 0em #0003;
-  --gap:1em;
-  --minw:10em;
+  --bgl: #8881;
+  --over: #fff9;
+  --text: #222;
+  --link: #03a;
+  --act: #06f;
+  --bg-act: #def;
+  --hover: #c00;
+  --shade: 0 .1em .8em 0em #0003;
+  --gap: 1em;
+  --minw: 10em;
   /* dependent */
   --risz: 16 * var(--rfsz) * 1.2;  /* *1 */
-  --ishift:-15%; /* 10% */
-  --isz:var(--risz);
-  --pads:calc(.5 * var(--gap)) var(--gap);
+  --ishift: -15%; /* 10% */
+  --isz: var(--risz);
+  --pads: calc(.5 * var(--gap)) var(--gap);
+  --shade-hover: inset 0 0 0 200vh var(--bgl);
   /* props */
   font:calc(100% * var(--rfsz))/1.5 "PT Serif", serif;
 }
@@ -58,9 +58,10 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6,small,.small {font-size:calc(100% * va
 
 /* links */
 a[href], .check, .pop>a, ul.row a {color:var(--link);text-decoration:none;cursor:pointer;}
-a.act, .check:has(:checked) {color:var(--act);}
-a[href]:hover, .check:hover, .pop:hover>a, ul.row a:hover {color:var(--hover);}
-ul.row li:is(:hover, :has(:hover)) {background-color:var(--bgl);}
+  ul.row li:has(>a) {cursor:pointer;}
+a.act, a[href^="#"]:has(+:target), .check:has(:checked), .tabs:not(:has(:target))>a:first-of-type {color:var(--act);background-color:var(--bg-act);}
+a[href]:hover, .check:hover, .pop:hover>a, ul.row li:hover>a {color:var(--hover);}
+a.hover:hover, .check.hover:hover, ul.hover li:is(:hover, :has(:hover)):has(>a), .pop:hover>a.hover, table.hover tbody tr:hover>*, .tabs.hover>:is(a,label):hover {/*background-color:var(--bgl);*/box-shadow:var(--shade-hover);}
 
 /* colors */
 [class].text {color:var(--text);}/*hue*/
@@ -102,27 +103,30 @@ html {--mode:none;}
 .col-3 {flex:3;}
 
 /* toggle */
-/* + .check: hilite, unscroll, multiple, initial show, can close */
-.target:not(:target):not(:has(:target)), .check:not(:has(:checked)) + *, .check input {display:none;}
-:is(.target:target, .target:has(:target)) + .overlay, body:has(:target:is(.modal, .modal :target)) #overlay, body:has(:target:is(.modal, .modal :target)):not(:has(#overlay)):before {content:'';position:fixed;inset:0;background:var(--over);z-index:100;}
+/* + hash: can link (for initial show), clean markup, limited hilite, nested */
+/* + .check: hilite, unscroll, nested, multiple, initial show, can close */
+.target:not(:target):not(:has(:target)), .check:not(:has(:checked)) + :not(:target):not(:has(:target)), .check input {display:none;}
+.target, .tabs+div :target, .tabs :target {scroll-margin-top:5rem;}
+/*overlay*/
+.overlay, #overlay {cursor:default;display:none;}
+:is(.target:target, .target:has(:target)) + .overlay, body:has(:target:is(.modal, .modal :target)) #overlay, body:has(:target:is(.modal, .modal :target)):not(:has(#overlay)):before {content:'';display:block;position:fixed;inset:0;background:var(--over);z-index:100;}
 .overlay[class][class] {z-index:101;}
-.overlay, #overlay {cursor:default;}
 body:has(:target:is(.modal, .modal :target)) {overflow:hidden;}
+/**/
 .modal {position:fixed;inset:5%;background-color:var(--bg);box-shadow:var(--shade);z-index:130;}
 a:has(img:target) {-webkit-tap-highlight-color:transparent;}
 img:target {position:absolute;display:block;inset:0;width:100%;height:100%;object-fit:contain;}
-.target {scroll-margin-top:5rem;}
 /* pop, drop, hover, arrow; box pop/drop, onhover */
 .pop, ul.row li {position:relative;}
 .pop {display:inline-block;}
   /* for variable items height */
-  ul.row.mid:not(.vert) li {display:flex;flex-direction:column;}
-  ul.row.mid:not(.vert) li>:not(ul) {flex:1;display:flex;align-items:center;}
-  /* arrows */
+  ul.row.mid:not(.vert) li {display:flex;align-items:center;}
+  /* subnav arrow */
+  ul.row li:has(ul)>a:after {display:inline-block;content:'\a0\a0\203a';color:var(--text);opacity:.5;}
+  ul.row ul li:has(ul)>a:after, ul.row.vert li:has(ul)>a:after {position:absolute;right:.5em;top:50%;transform:translateY(-60%);}
   /**/
 ul.row.vert {width:var(--minw);}
-ul.row a {display:block;padding:var(--pads);}
-.pop:not(:hover)>:last-child, ul.row li:not(:hover)>ul {display:none;}
+.pop:not(:hover):not(:has(.check))>:last-child, ul.row li:not(:hover)>ul {display:none;}
 .pop>:last-child, ul.row ul {position:absolute;background-color:var(--bg);box-shadow:var(--shade);min-width:var(--minw);z-index:50;}
 :is(.pop>:last-child, ul.row:not(.vert)>li>ul):not([class*="pos-"]) {left:0;top:100%;}
 ul.row ul:not([class*="pos-"]) {left:100%;top:0;}
@@ -142,7 +146,19 @@ ul.row, ul.row ul {list-style:none;margin:0;padding:0;}
 .pos-t, .pos-b {transform:translateX(-50%);}
 .pos-l, .pos-r {transform:translateY(-50%);}
 .pos-c {left:50%;top:50%;transform:translate(-50%,-50%);}
-/* +toggle, tabs, +tree: optionally use +label */
+/* tabs */
+.tabs a, .tabs>label {border-bottom:2px solid transparent;}
+.tabs a:is(.act, :hover), .tabs>label:is(:has(:checked), :hover), .tabs>a:has(+:target), .tabs:not(:has(:target))>a:first-of-type {border-color:initial;}
+  .tabs {flex-wrap:wrap;}
+  .tabs>div {order:10;width:100%;}
+ul.tabs+div>*, ul.tabs[class]+div:has(:target)>* {display:none;}
+ul.tabs+div>:first-child, ul.tabs[class]+div>:is(:target, :has(:target)) {display:block;}
+  /* v2 */
+  .tabs>a+div, .tabs[class]:has(:target)>a+div {display:none;}
+  .tabs>a:first-of-type+div, .tabs[class]>a+div:is(:target, :has(:target)) {display:block;}
+
+
+/* +toggle, +tabs, +tree: optionally use +label */
 /* +modal, +gallery, drawer, +accordion */
 /* gallery: +close, back, bg */
 /* modal: small/full, +close icon, vert scroll */
@@ -248,7 +264,9 @@ ul.row, ul.row ul {list-style:none;margin:0;padding:0;}
 /* modifiers */
 .wrap {margin-left:auto;margin-right:auto;max-width:45em;}
 .nobr {white-space:nowrap;}
+.mar {margin:var(--gap) 0;}
 .pad {padding:var(--pads);}
+ul.subpad li>:not(ul, form), .tabs:not(ul).subpad>:not(div) {display:block;padding:var(--pads);}
 a.pad, [class*="icon-"].pad {padding:calc(.5 * var(--gap));}
 a.pad {display:inline-block;}
 .scroll {overflow:auto;min-width:5em;min-height:5em;}
@@ -267,6 +285,7 @@ a.pad {display:inline-block;}
   .row.resp>:is(.push, .shift) {margin:0;}
   ul.row.resp {width:var(--minw);}
   ul.row.resp[class] ul:not([class*="pos-"]) {left:100%;top:0;}
+  ul.row.resp li:has(ul)>a:after {position:absolute;right:.5em;top:50%;transform:translateY(-60%);}
 }
 
 /*
