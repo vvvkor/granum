@@ -143,20 +143,25 @@
 
     
     <h3>Grid</h3>
-    
-    <div class="row -resp wrap stretch gap -mid">
-      <div class="bg-n col-0">One</div>
-      <div class="bg-i col-1">Two</div>
-      <div class="bg-y col-2">Three</div>
-      <div class="bg-w scroll nobr">Four with overflowing content and scroll</div>
-      <div class="bg-e">Five<br>with<br>many<br>lines</div>
+    <p>Don't use <code>.row.wrap</code> with <code>.row > .scroll</code>.</p>
+    <div class="row resp -wrap stretch gap -mid -vert full" style="height:80vh;">
+      <div class="pad bg-n col-0">Col</div>
+      <div class="pad bg-i col-1"><div class="pop"><a>Popup</a><div class="pad">Popups and dropdowns can overflow non-scrollable parent grid item</div></div></div>
+      <div class="pad bg-y col-2 scroll scrollbar     row vert">
+        <div class="bg-i">Nested grid</div>
+        <div class="bg-w col-1 nobr scroll scrollbar">Custom scrollbar is used for this block<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</div>
+        <div class="bg-e">5</div>
+      </div>
+      <div class="pad bg-w scroll nobr">Horizontal overflow and scroll. WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW</div>
+      <div class="pad bg-e scroll">Vertical overflow and scroll.<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</div>
     </div>
     
     <h3>Modal gallery</h3>
+    
     <a href="#modal"><svg class="icon-expand text"><path/></svg> Modal</a> &nbsp;
     <!-- <a href="#gallery"><svg class="icon-folder text-w"><path/></svg> Gallery</a> &nbsp; -->
     <a href="#img1"><svg class="icon-image text-y"><path/></svg> Image</a>
-    <div id="modal" class="modal target bg-n">
+    <div id="modal" class="modal full target -bg-n">
       <div class="corner">
         <a href="#cancel" class="pad"><svg class="icon-close text-n"><path/></svg></a>
       </div>
@@ -365,6 +370,7 @@
 
     <h3>Info</h3>
     
+    <div class="scroll">
     <table class="bord hover">
       <caption>Toggle methods comparation</caption>
       <thead>
@@ -382,7 +388,9 @@
         <tr><td>Keep on hash change<td class="bg-w">no<td class="bg-y">yes</tr>
       </tbody>
     </table>
+    </div>
     
+    <div class="scroll">
     <table class="bord hover">
       <caption>Toggler components</caption>
       <thead>
@@ -401,6 +409,7 @@
         <tr><td>Stick<td>.stick<td>-<td></tr>
       </tbody>
     </table>
+    </div>
 
     
     <!--p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</p-->
