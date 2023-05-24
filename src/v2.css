@@ -86,7 +86,7 @@ a.hover:hover, .check.hover:hover, ul.hover li:is(:hover, :has(:hover)):has(>a),
 /* colors */
 [class].text {color:var(--text);}/*hue*/
 [class].bg {background-color:var(--bg);}
-[class].bg-l {background-color:var(--bgl);}
+[class].bgl {background-color:var(--bgl);}
 /* as vars */
 [class*="-n"] {--hue:var(--hue-n);--satur:0%;--lit:60%;}
 [class*="-i"] {--hue:var(--hue-i);}
