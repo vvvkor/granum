@@ -20,11 +20,22 @@
   --rgap: 1em;
   --gap: 1em;
   --minw: 10em;
+  /* status */
+  --hue-n: 200;
+  --hue-i: 195;/*195*/
+  --hue-y: 120;/*120*/
+  --hue-w: 37;/*40*/
+  --hue-e: 0;
+  --satur: 90%;
+  --lit: 45%;
+  --alpha: 20%;
+  
   /* dependent */
   --risz: 16 * var(--rfsz) * 1.2;  /* *1 */
   --ishift: -15%; /* 10% */
   --isz: var(--risz);
-  --pads: calc(.5 * var(--gap)) var(--gap);
+  --pad: calc(.5 * var(--gap)) var(--gap);
+  --mar: var(--gap) 0;
   --shade-hover: inset 0 0 0 200vh var(--bgl);
 }
 
@@ -46,7 +57,8 @@ button::-moz-focus-inner, [type="submit"]::-moz-focus-inner {border:none;} /* fi
 /* typo */
 html {font-size:calc(100% * var(--rfsz));}
 body {line-height:1.5;color:var(--text);background-color:var(--bg);}
-input, button, select, textarea, table {font:inherit;} 
+input, button, select, textarea, table {font:inherit;}
+main, img.fit /*, table.roll*/ {display:block;}
 h1, .h1 {--fsz:2;}
 h2, .h2 {--fsz:1.55;}
 h3, .h3 {--fsz:1.2}
@@ -64,37 +76,28 @@ pre code {font-size:100%;}
 /* status border color? */
 
 /* links */
-a[href], .check, .pop>a, ul.row a {color:var(--link);text-decoration:none;cursor:pointer;}
+a[href], .check, .pop>a, ul.row a {color:var(--link);/*text-decoration:none;*/cursor:pointer;text-underline-offset:.15em;}
   ul.row li:has(>a) {cursor:pointer;}
+  a:not([href]), a[href^="#"], a.pad, ul.pads a, .tabs>a {text-decoration:none;}
 a.act, a[href^="#"]:has(+:target), .check:has(:checked), .tabs:not(:has(:target))>a:first-of-type {color:var(--act);background-color:var(--bg-act);}
 a[href]:hover, .check:hover, .pop:hover>a, ul.row li:hover>a {color:var(--hover);}
 a.hover:hover, .check.hover:hover, ul.hover li:is(:hover, :has(:hover)):has(>a), .pop:hover>a.hover, table.hover tbody tr:hover>*, .tabs.hover>:is(a,label):hover {/*background-color:var(--bgl);*/box-shadow:var(--shade-hover);}
 
 /* colors */
 [class].text {color:var(--text);}/*hue*/
-[class].text-n {color:#777;}/*hue*/
-[class].text-i {color:#08a;}/*192*/
-[class].text-y /*, :valid~[data-valid]*/ {color:#181;}/*120*/
-[class].text-w {color:#d70;}/*37*/
-[class].text-e /*, code*/ /*, :invalid~[data-invalid]*/ {color:#c00;}/*0*/
 [class].bg {background-color:var(--bg);}
 [class].bg-l {background-color:var(--bgl);}
-[class].bg-n {background-color:#eee;}
-[class].bg-i {background-color:#bef;}/*195*/
-[class].bg-y {background-color:#beb;}/*120*/
-[class].bg-w, mark {background-color:#fd9;}/*40*/
-[class].bg-e {background-color:#fbb;}/*0*/
 /* as vars */
+[class*="-n"] {--hue:var(--hue-n);--satur:0%;--lit:60%;}
+[class*="-i"] {--hue:var(--hue-i);}
+[class*="-y"], :valid~[data-valid] {--hue:var(--hue-y);--lit:35%;}
+[class*="-w"], mark {--hue:var(--hue-w);}
+[class*="-e"], :invalid~[data-invalid] {--hue:var(--hue-e);}
+[class][class*="text-"], :valid~[data-valid], :invalid~[data-invalid] {color:hsl(var(--hue) var(--satur) calc(var(--lit) - 5%));}
+[class][class*="bg-"], mark {background-color:hsl(var(--hue) var(--satur) var(--lit) / var(--alpha));}
+[class][class*="inv-"] {background-color:hsl(var(--hue) calc(var(--satur) - 15%) calc(var(--lit) - 3%));color:var(--bg);}
+[class][class*="inv-"] a {color:var(--bg);}
 
-/* invert */
-html, .invert {background:#fff;/*fix*/}
-html, img, video, iframe, .invert {filter:var(--mode);}
-html {--mode:none;}
-.invert {--mode:invert(.9) hue-rotate(180deg);}
-@media (prefers-color-scheme: dark) {
-  html:not(.invert) {--mode:invert(.9) hue-rotate(180deg);}
-  html.invert {--mode:none;}
-}
 
 /* grid */
 /* +ul, +row, +vert, +mid, +scroll, +gap, +wrap, +resp, +col-1, +push, +shift, vert-scroll */
@@ -108,6 +111,7 @@ html {--mode:none;}
 .col-0 {flex:initial;}
 .col-2 {flex:2;}
 .col-3 {flex:3;}
+.row>*>img:only-child {width:100%;height:100%;aspect-ratio:3/2;}
 
 /* toggle */
 /* + hash: can link (for initial show), clean markup, limited hilite, nested */
@@ -118,12 +122,12 @@ html {--mode:none;}
 .overlay, #overlay {cursor:default;display:none;}
 :is(.target:target, .target:has(:target)) + .overlay, body:has(:target:is(.modal, .modal :target)) #overlay, body:has(:target:is(.modal, .modal :target)):not(:has(#overlay)):before {content:'';display:block;position:fixed;inset:0;background:var(--over);z-index:100;}
 .overlay[class][class] {z-index:101;}
-body:has(:target:is(.modal, .modal :target)) {overflow:hidden;}
+body:has(.modal.full:target, .modal.full :target) {overflow:hidden;}
 /* modal */
 .modal {position:fixed;background-color:var(--bg);box-shadow:var(--shade);z-index:130;}
   .modal:not(.full) {min-height:10rem;max-height:83vh;min-width:18rem;inset:50% auto auto 50%;transform:translate(-50%,-50%);}
-  .modal.full {inset:calc(5 * var(--gap));}
-a:has(img:target) {-webkit-tap-highlight-color:transparent;}
+  .modal.full {inset:0;/*calc(5 * var(--gap));*/}
+a:has(img:target), ul.row li {-webkit-tap-highlight-color:transparent;}
 img:target {position:absolute;display:block;inset:0;width:100%;height:100%;object-fit:contain;}
 /* pop, drop, hover, arrow; box pop/drop, onhover */
 .pop, ul.row li {position:relative;}
@@ -178,6 +182,8 @@ ul.tabs+div>:first-child, ul.tabs[class]+div>:is(:target, :has(:target)) {displa
 /* list */
 
 /* form */
+button {cursor:pointer;}
+form:has(:invalid) button {opacity:.5;pointer-events:none;}
 /* use grid, no .field, validate, button   */
 
 /* table */
@@ -274,11 +280,12 @@ ul.tabs+div>:first-child, ul.tabs[class]+div>:is(:target, :has(:target)) {displa
 .wrap {margin-left:auto;margin-right:auto;max-width:45em;}
 .full:not(.modal) {height:100vh;height:100dvh;}
 .nobr {white-space:nowrap;}
-.mar {margin:var(--gap) 0;}
-.pad {padding:var(--pads);}
-ul.subpad li>:not(ul, form), .tabs:not(ul).subpad>:not(div) {display:block;padding:var(--pads);}
-a.pad, [class*="icon-"].pad {padding:calc(.5 * var(--gap));}
+.mar {margin:var(--mar);}
+.pad {padding:var(--pad);}
+/*a.pad,*/ [class*="icon-"].pad {padding:calc(.5 * var(--gap));}
 a.pad {display:inline-block;}
+ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div), table.pads>*>tr>* {padding:var(--pad);}
+ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div) {display:block;}  
 .scroll {overflow:auto;min-width:5em;min-height:5em;}
 .corner {position:absolute;top:0;right:0;z-index:1;}
   .row:not(.vert) .push {margin-right:auto;}
@@ -298,10 +305,38 @@ a.pad {display:inline-block;}
   ul.row.resp li:has(ul)>a:after {position:absolute;right:.5em;top:50%;transform:translateY(-60%);}
 }
 
+/* invert */
+html, .invert {background:var(--bg);}
+html, img, video, iframe, .invert {filter:var(--mode);}
+html {--mode:none;}
+html.invert, html:has(#invert:checked) {--mode:invert(.9) hue-rotate(180deg);}
+@media (prefers-color-scheme: dark) {
+  html:not(.invert) {--mode:invert(.9) hue-rotate(180deg);}
+  html.invert, html:has(#invert:checked) {--mode:none;}
+}
+
 /* custom scrollbar */
 .scrollbar::-webkit-scrollbar{width:.5em;height:.5em;background:#eee;}
 .scrollbar::-webkit-scrollbar-thumb{background:#ccc;}
 .scrollbar{scrollbar-width:thin;scrollbar-color:#ccc #eee;}
+
+/* label with link */
+
+
+/* switches */
+html:has(#x1:not(:checked)) .x1,
+html:has(#x1:not(:checked)) .x2,
+html:has(#x1:not(:checked)) .x3,
+html:has(#x1:not(:checked)) .x4,
+html:has(#x1:not(:checked)) .x5,
+html:has(#x1:not(:checked)) .x6,
+html:has(#x1:not(:checked)) .x7,
+html:has(#x1:not(:checked)) .x8,
+html:has(#x1:not(:checked)) .x9
+{display:none;}
+
+/* test */
+html:has(#debug:checked) .row>*>img:only-child {object-fit:contain;background:var(--bgl);}
 
 /*
 z-index

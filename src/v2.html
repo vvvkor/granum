@@ -13,11 +13,13 @@
       document.addEventListener('DOMContentLoaded', e => {
         console.log('loaded');
         [...document.querySelectorAll('.icons [class*="icon-"]')].forEach(n => {
-          //n.classList.add('text-n')
           const i = n.getAttribute('class').slice(5)
           const j = i.slice(0, 1).toUpperCase() + i.slice(1)
           n.parentNode.title = i
           //n.parentNode.append(' ' + j)
+          n.classList.add('text-n'/*, 'pad'/*, 'bg-n', 'hover'*/)
+          n.parentNode.classList.add('hover', 'pad')
+          n.parentNode.setAttribute('data-hint', i)
         });
       })
     </script>
@@ -27,7 +29,12 @@
 
     <h1><a href="#" accesskey="1"><svg class="icon-config text-n"><path/></svg> Granum v2</a></h1>
 
-    <h3>Colors</h3>
+    <h2 id="config">Config <a href="#config" class="x1 small text-n">#</a></h2>
+    <div><label><input type="checkbox" id="invert"> Invert</label></div>
+    <div><label><input type="checkbox" id="debug"> Debug</label></div>
+    <div><label><input type="checkbox" id="x1" checked> Heading hashes</label></div>
+    
+    <h2 id="colors">Colors <a href="#colors" class="x1 small text-n">#</a></h2>
     
     <span>Default</span>
     <a href="#x">Link</a>
@@ -49,132 +56,53 @@
     <span class="bg-w">Warning</span>
     <span class="bg-e">Error</span>
     
-    <h3>Icons (82)</h3>
     
-    <!--
-    add asc attach audio back ban bookmark box card chart chat close collapse columns config copy date delete desc down download edit energy exit expand file find first flag folder forward grid heart help home image info key last layers left link list lock mail menu mic more no none ok open pause phone photo pin play power print rec refresh right send settings share sort sound star stop storage sum tag text time tree up upload user video view warning world
-    -->
+    <h2 id="modal">Modal <a href="#modal" class="x1 small text-n">#</a></h2>
     
-    <div class="icons -h3">
-    <a class="pad"><svg class="icon-menu" title="Menu"><path/></svg></a>
-    <a class="pad"><svg class="icon-sort"><path/></svg></a>
-    <a class="pad"><svg class="icon-more"><path/></svg></a>
-    <a class="pad"><svg class="icon-grid"><path/></svg></a>
-    <a class="pad"><svg class="icon-home"><path/></svg></a>
-    <a class="pad"><svg class="icon-find"><path/></svg></a>
-    <a class="pad"><svg class="icon-config"><path/></svg></a>
-    <a class="pad"><svg class="icon-close"><path/></svg></a>
-    <a class="pad"><svg class="icon-user"><path/></svg></a>
-    <a class="pad"><svg class="icon-exit"><path/></svg></a>
-    <a class="pad"><svg class="icon-key"><path/></svg></a>
-    <a class="pad"><svg class="icon-lock"><path/></svg></a>
-    <a class="pad"><svg class="icon-edit"><path/></svg></a>
-    <a class="pad"><svg class="icon-add"><path/></svg></a>
-    <a class="pad"><svg class="icon-delete"><path/></svg></a>
-    <a class="pad"><svg class="icon-ok"><path/></svg></a>
-    <a class="pad"><svg class="icon-up"><path/></svg></a>
-    <a class="pad"><svg class="icon-down"><path/></svg></a>
-    <a class="pad"><svg class="icon-left"><path/></svg></a>
-    <a class="pad"><svg class="icon-right"><path/></svg></a>
-    <a class="pad"><svg class="icon-asc"><path/></svg></a>
-    <a class="pad"><svg class="icon-desc"><path/></svg></a>
-    <a class="pad"><svg class="icon-back"><path/></svg></a>
-    <a class="pad"><svg class="icon-forward"><path/></svg></a>
-    <a class="pad"><svg class="icon-upload"><path/></svg></a>
-    <a class="pad"><svg class="icon-download"><path/></svg></a>
-    <a class="pad"><svg class="icon-first"><path/></svg></a>
-    <a class="pad"><svg class="icon-last"><path/></svg></a>
-    <a class="pad"><svg class="icon-folder"><path/></svg></a>
-    <a class="pad"><svg class="icon-open"><path/></svg></a>
-    <a class="pad"><svg class="icon-file"><path/></svg></a>
-    <a class="pad"><svg class="icon-attach"><path/></svg></a>
-    <a class="pad"><svg class="icon-audio"><path/></svg></a>
-    <a class="pad"><svg class="icon-video"><path/></svg></a>
-    <a class="pad"><svg class="icon-image"><path/></svg></a>
-    <a class="pad"><svg class="icon-text"><path/></svg></a>
-    <a class="pad"><svg class="icon-tree"><path/></svg></a>
-    <a class="pad"><svg class="icon-list"><path/></svg></a>
-    <a class="pad"><svg class="icon-link"><path/></svg></a>
-    <a class="pad"><svg class="icon-chart"><path/></svg></a>
-    <a class="pad"><svg class="icon-no"><path/></svg></a>
-    <a class="pad"><svg class="icon-ban"><path/></svg></a>
-    <a class="pad"><svg class="icon-warning"><path/></svg></a>
-    <a class="pad"><svg class="icon-info"><path/></svg></a>
-    <a class="pad"><svg class="icon-share"><path/></svg></a>
-    <a class="pad"><svg class="icon-world"><path/></svg></a>
-    <a class="pad"><svg class="icon-flag"><path/></svg></a>
-    <a class="pad"><svg class="icon-pin"><path/></svg></a>
-    <a class="pad"><svg class="icon-date"><path/></svg></a>
-    <a class="pad"><svg class="icon-time"><path/></svg></a>
-    <a class="pad"><svg class="icon-refresh"><path/></svg></a>
-    <a class="pad"><svg class="icon-view"><path/></svg></a>
-    <a class="pad"><svg class="icon-card"><path/></svg></a>
-    <a class="pad"><svg class="icon-sum"><path/></svg></a>
-    <a class="pad"><svg class="icon-copy"><path/></svg></a>
-    <a class="pad"><svg class="icon-help"><path/></svg></a>
-    <a class="pad"><svg class="icon-phone"><path/></svg></a>
-    <a class="pad"><svg class="icon-mail"><path/></svg></a>
-    <a class="pad"><svg class="icon-chat"><path/></svg></a>
-    <a class="pad"><svg class="icon-send"><path/></svg></a>
-    <a class="pad"><svg class="icon-bookmark"><path/></svg></a>
-    <a class="pad"><svg class="icon-star"><path/></svg></a>
-    <a class="pad"><svg class="icon-heart"><path/></svg></a>
-    <a class="pad"><svg class="icon-tag"><path/></svg></a>
-    <a class="pad"><svg class="icon-expand"><path/></svg></a>
-    <a class="pad"><svg class="icon-collapse"><path/></svg></a>
-    <a class="pad"><svg class="icon-box"><path/></svg></a>
-    <a class="pad"><svg class="icon-columns"><path/></svg></a>
-    <a class="pad"><svg class="icon-storage"><path/></svg></a>
-    <a class="pad"><svg class="icon-settings"><path/></svg></a>
-    <a class="pad"><svg class="icon-power"><path/></svg></a>
-    <a class="pad"><svg class="icon-energy"><path/></svg></a>
-    <a class="pad"><svg class="icon-sound"><path/></svg></a>
-    <a class="pad"><svg class="icon-mic"><path/></svg></a>
-    <a class="pad"><svg class="icon-photo"><path/></svg></a>
-    <a class="pad"><svg class="icon-print"><path/></svg></a>
-    <a class="pad"><svg class="icon-play"><path/></svg></a>
-    <a class="pad"><svg class="icon-pause"><path/></svg></a>
-    <a class="pad"><svg class="icon-stop"><path/></svg></a>
-    <a class="pad"><svg class="icon-rec"><path/></svg></a>
-    <a class="pad"><svg class="icon-layers"><path/></svg></a>
-    <a class="pad"><svg class="icon-none"><path/></svg></a>
-    <a class="pad"><svg class="icon-unknown"><path/></svg></a>
+    <p>
+      <a href="#mod1"><svg class="icon-collapse text"><path/></svg> Modal</a> &nbsp;
+      <a href="#mod2"><svg class="icon-expand text"><path/></svg> Fullscreen</a> &nbsp;
+    </p>
+    <div id="mod1" class="modal target pad">
+      <a href="#cancel" class="corner pad hover"><svg class="icon-close text-n"><path/></svg></a>
+      Modal 1
+      <p><a href="#mod2">Next modal</a></p>
+      <p><a href="#cancel">Close</a></p>
     </div>
+    <a href="#close1" class="overlay"></a>
 
-    
-    <h3>Grid</h3>
-    <p>Don't use <code>.row.wrap</code> with <code>.row > .scroll</code>.</p>
-    <div class="row resp -wrap stretch gap -mid -vert full" style="height:80vh;">
-      <div class="pad bg-n col-0">Col</div>
-      <div class="pad bg-i col-1"><div class="pop"><a>Popup</a><div class="pad">Popups and dropdowns can overflow non-scrollable parent grid item</div></div></div>
-      <div class="pad bg-y col-2 scroll scrollbar     row vert">
-        <div class="bg-i">Nested grid</div>
-        <div class="bg-w col-1 nobr scroll scrollbar">Custom scrollbar is used for this block<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</div>
-        <div class="bg-e">5</div>
-      </div>
-      <div class="pad bg-w scroll nobr">Horizontal overflow and scroll. WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW</div>
-      <div class="pad bg-e scroll">Vertical overflow and scroll.<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</div>
+    <div id="mod2" class="modal full target pad">
+      <a href="#mod1" class="corner pad"><svg class="icon-close text-n"><path/></svg></a>
+      Modal 2
+      <p><a href="#mod1">Previous modal</a></p>
+      <p><a href="#cancel">Close</a></p>
     </div>
+    <a href="#mod1" class="overlay"></a>
     
-    <h3>Modal gallery</h3>
+    <h2 id="gallery">Gallery <a href="#gallery" class="x1 small text-n">#</a></h2>
     
-    <a href="#modal"><svg class="icon-expand text"><path/></svg> Modal</a> &nbsp;
-    <!-- <a href="#gallery"><svg class="icon-folder text-w"><path/></svg> Gallery</a> &nbsp; -->
-    <a href="#img1"><svg class="icon-image text-y"><path/></svg> Image</a>
-    <div id="modal" class="modal full target -bg-n">
+    <p>
+      <!--a href="#gallery"><svg class="icon-expand text"><path/></svg> Gallery</a-->
+      <a href="#img1"><svg class="icon-image text-y"><path/></svg> Image</a>
+    </p>
+    <div class="row gap stretch">
+      <a href="#img1"><img alt="pic" class="fit" src="https://placehold.co/200x100/933/fff.png?text=Red"></a>
+      <a href="#img2"><img alt="pic" class="fit" src="https://placehold.co/180x120/393/fff.png?text=Green"></a>
+      <a href="#img3"><img alt="pic" class="fit" src="https://placehold.co/200x200/039/fff.png?text=Blue"></a>
+      <a href="#img4"><img alt="pic" class="fit" src="https://placehold.co/150x200/777/fff.png?text=Grey"></a>
+    </div>
+    <div id="gallery" class="modal full target">
       <div class="corner">
         <a href="#cancel" class="pad"><svg class="icon-close text-n"><path/></svg></a>
       </div>
-      <div id="gallery" class="target">
-        <a href="#img2"><img id="img1" alt="pic" src="https://placehold.co/300x200/933/fff.png?text=Red" class="target" loading="lazy"></a>
-        <a href="#img3"><img id="img2" alt="pic" src="https://placehold.co/300x200/393/fff.png?text=Green" class="target" loading="lazy"></a>
-        <a href="#img4"><img id="img3" alt="pic" src="https://placehold.co/300x200/039/fff.png?text=Blue" class="target" loading="lazy"></a>
-        <a href="#img1"><img id="img4" alt="pic" src="https://placehold.co/300x200/777/fff.png?text=Grey" class="target" loading="lazy"></a>
-      </div>
+      <a href="#img2"><img id="img1" alt="pic" src="https://placehold.co/400x200/933/fff.png?text=Red" class="target" loading="lazy"></a>
+      <a href="#img3"><img id="img2" alt="pic" src="https://placehold.co/300x200/393/fff.png?text=Green" class="target" loading="lazy"></a>
+      <a href="#img4"><img id="img3" alt="pic" src="https://placehold.co/200x200/039/fff.png?text=Blue" class="target" loading="lazy"></a>
+      <a href="#img1"><img id="img4" alt="pic" src="https://placehold.co/220x300/777/fff.png?text=Grey" class="target" loading="lazy"></a>
     </div>
     <a href="#close" class="overlay"></a>
 
-    <h3>Target</h3>
+    <h2 id="target">Target <a href="#target" class="x1 small text-n">#</a></h2>
     
     <div>
       <a href="#trg">Open by hash</a>
@@ -186,8 +114,8 @@
       <div class="bg-n pad">Target</div>
     </div>
 
-    <h3>Popup</h3>
-    <div class="pop"><a class="hover">Default</a><div class="pad">Info<br>More info</div></div>
+    <h2 id="popup">Popup <a href="#popup" class="x1 small text-n">#</a></h2>
+    <div class="pop"><a class="hover">Default</a> <div class="pad">Info<br>More info</div></div>
     &mdash;
     <div class="pop"><a>Center</a><div class="pad pos-c">Info<br>More info</div></div>
     &mdash;
@@ -213,14 +141,13 @@
       </div>
     </div>
     
-    <h3>Tabs</h3>
+    <h2 id="tabs">Tabs <a href="#tabs" class="x1 small text-n">#</a></h2>
     
-    <ul class="row tabs subpad hover">
-      <li><b>Tabs by list hash</b></li>
+    <ul class="row tabs pads hover">
+      <li><b>List hash</b></li>
       <li><a href="#tab1">One</a></li>
       <li><a href="#tab2">Two</a></li>
       <li><a href="#tab3">Three</a></li>
-      <li class="shift"><a href="#tab3-inner">Inner</a></li>
     </ul>
     <div class="pad bg-n">
       <div id="tab1">
@@ -228,41 +155,72 @@
         <div class="text-e">No active tab hilite</div>
       </div>
       <div id="tab2">Tab 2</div>
-      <div id="tab3">Tab 3. <b id="tab3-inner">Inner target</b></div>
+      <div id="tab3">
+        <ul class="row tabs pads hover">
+          <li><b>Nested</b></li>
+          <li><a href="#tab1n">One</a></li>
+          <li><a href="#tab2n">Two</a></li>
+          <li><a href="#tab3n">Three</a></li>
+        </ul>
+        <div class="pad bg-y">
+          <div id="tab1n">Tab 1</div>
+          <div id="tab2n">Tab 2<br>line</div>
+          <div id="tab3n">Tab 3<br>line<br>line</div>
+        </div>
+      </div>
     </div>
     
-    <div class="row tabs subpad hover mar">
-      <b>Tabs by div hash</b>
+    <div class="row tabs pads hover mar">
+      <b>Div hash</b>
       <a href="#tab1a">One</a>
-      <div id="tab1a" class="pad bg-n">
+      <div id="tab1a" class="pad bg-i">
         <div class="text-e">Jumps to hash</div>
         <div class="text-i">No active tab hilite for inner targets</div>
         <div class="text-w">No common container for content</div>
       </div>
       <a href="#tab2a">Two</a>
-      <div id="tab2a" class="pad bg-n">Tab 2</div>
+      <div id="tab2a" class="pad bg-i">Tab 2</div>
       <a href="#tab3a">Three</a>
-      <div id="tab3a" class="pad bg-n">Tab 3. <b id="tab3a-inner">Inner target</b></div>
-      <a href="#tab3a-inner" class="shift">Inner</a>
+      <div id="tab3a" class="pad bg-i">
+        <div class="row tabs pads hover">
+          <b>Nested</b>
+          <a href="#tab1an">One</a>
+          <div id="tab1an" class="pad bg-y">Tab 1</div>
+          <a href="#tab2an">Two</a>
+          <div id="tab2an" class="pad bg-y">Tab 2<br>line</div>
+          <a href="#tab3an">Three</a>
+          <div id="tab3an" class="pad bg-y">Tab 3<br>line<br>line</div>
+        </div>
+      </div>
     </div>
 
-    <div class="row tabs subpad hover mar">
-      <b>Tabs by label</b>
+    <div class="row tabs pads hover mar">
+      <b>Label</b>
       <label class="check"><input type="radio" name="tabs">One</label>
-      <div class="pad bg-n">Tab 1</div>
+      <div class="pad bg-w">Tab 1</div>
       <label class="check"><input type="radio" name="tabs" checked>Two</label>
-      <div class="pad bg-n">
+      <div class="pad bg-w">
         <div class="text-w">No common container for content</div>
         <div class="text-w">Extra non-semantic markup</div>
         <div class="text-y">Can start with any tab</div>
         <div class="text-y">Keeps on hash change</div>
       </div>
       <label class="check"><input type="radio" name="tabs">Three</label>
-      <div class="pad bg-n">Tab 3</div>
+      <div class="pad bg-w">
+        <div class="row tabs pads hover">
+          <b>Nested</b>
+          <label class="check"><input type="radio" name="tabsn">One</label>
+          <div class="pad bg-y">Tab 1</div>
+          <label class="check"><input type="radio" name="tabsn" checked>Two</label>
+          <div class="pad bg-y">Tab 2<br>line</div>
+          <label class="check"><input type="radio" name="tabsn">Three</label>
+          <div class="pad bg-y">Tab 3<br>line<br>line</div>
+        </div>
+      </div>
     </div>
     
-    <h3>Dropdown</h3>
-    <ul class="row -vert resp bg-l mid subpad hover">
+    <h2 id="dropdown">Dropdown <a href="#dropdown" class="x1 small text-n">#</a></h2>
+    <ul class="row -vert resp bg-l mid pads hover">
     <!--ul class="row gap"-->
       <li><a>Colors<br><small class="text-n">Info</small></a>
         <ul>
@@ -298,7 +256,8 @@
       <li class="shift -mid"><form><input type="search" size="8"></form></li>
     </ul>
     
-    <h3>Accordion</h3>
+    <h2 id="accordion">Accordion <a href="#accordion" class="x1 small text-n">#</a></h2>
+    
     <ul>
       <li><a href="#list1">Colors</a>
         <ul id="list1" class="target">
@@ -333,7 +292,7 @@
       <li><a>Three</a></li>
     </ul>
 
-    <h3>Tree</h3>
+    <h2 id="tree">Tree <a href="#tree" class="x1 small text-n">#</a></h2>
     <ul>
       <li><label class="check"><input type="checkbox">Colors</label>
         <ul>
@@ -368,7 +327,172 @@
       <li><a>Three</a></li>
     </ul>
 
-    <h3>Info</h3>
+    <h2 id="table">Table <a href="#table" class="x1 small text-n">#</a></h2>
+    
+    <form id="edit" action="#table">
+    
+      <p><a href="#confirm" class="bg-n hover pad"><svg class="icon-edit text-i"><path/></svg> Confirm selected row</a>
+      <div id="confirm" class="modal target pad">
+        <a href="#cancel" class="corner pad"><svg class="icon-close text-n"><path/></svg></a>
+        <p>Value<br><input name="value" type="text" required></p>
+        <p><button type="submit">Send</button></p>
+      </div>
+      
+      <div class="scroll">
+      <table class="bord hover pads serif">
+        <caption>Status colors</caption>
+        <thead>
+          <tr><th>Status<th>Text<th>Hilite<th>Invert</tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><label><input type="radio" name="item" value="note"></label>
+            <td>Note
+            <td class="text-n">Text <a href="x">Link</a>
+            <td class="bg-n">Text <a href="x">Link</a>
+            <td class="inv-n">Text <a href="x">Link</a>
+          </tr>
+          <tr>
+            <td><label><input type="radio" name="item" value="info"></label>
+            <td>Info
+            <td class="text-i">Text <a href="x">Link</a>
+            <td class="bg-i">Text <a href="x">Link</a>
+            <td class="inv-i">Text <a href="x">Link</a>
+          </tr>
+          <tr>
+            <td><label><input type="radio" name="item" value="success"></label>
+            <td>Success
+            <td class="text-y">Text <a href="x">Link</a>
+            <td class="bg-y">Text <a href="x">Link</a>
+            <td class="inv-y">Text <a href="x">Link</a>
+          </tr>
+          <tr>
+            <td><label><input type="radio" name="item" value="warning"></label>
+            <td>Warning
+            <td class="text-w">Text <a href="x">Link</a>
+            <td class="bg-w">Text <a href="x">Link</a>
+            <td class="inv-w">Text <a href="x">Link</a>
+          </tr>
+          <tr>
+            <td><label><input type="radio" name="item" value="error"></label>
+            <td>Error
+            <td class="text-e">Text <a href="x">Link</a>
+            <td class="bg-e">Text <a href="x">Link</a>
+            <td class="inv-e">Text <a href="x">Link</a>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      
+    </form>
+
+    <h2 id="grid">Grid <a href="#grid" class="x1 small text-n">#</a></h2>
+    <p>Don't use <code>.row.wrap</code> with <code>.row > .scroll</code>.</p>
+    <div class="row resp -wrap stretch gap -mid -vert full" style="height:80vh;">
+      <div class="pad bg-n col-0">Col</div>
+      <div class="pad bg-i col-1"><div class="pop"><a>Popup</a><div class="pad">Popups and dropdowns can overflow non-scrollable parent grid item</div></div></div>
+      <div class="pad bg-y col-2 scroll scrollbar     row vert">
+        <div class="bg-i">Nested grid</div>
+        <div class="bg-w col-1 nobr scroll scrollbar">Custom scrollbar is used for this block<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</div>
+        <div class="bg-e">5</div>
+      </div>
+      <div class="pad bg-w scroll nobr">Horizontal overflow and scroll. WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW</div>
+      <div class="pad bg-e scroll">Vertical overflow and scroll.<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</div>
+    </div>
+    
+    <h2 id="icons">Icons (82) <a href="#icons" class="x1 small text-n">#</a></h2>
+    
+    <!--
+    add asc attach audio back ban bookmark box card chart chat close collapse columns config copy date delete desc down download edit energy exit expand file find first flag folder forward grid heart help home image info key last layers left link list lock mail menu mic more no none ok open pause phone photo pin play power print rec refresh right send settings share sort sound star stop storage sum tag text time tree up upload user video view warning world
+    -->
+    
+    <div class="icons -h3">
+    <a><svg class="icon-menu" title="Menu"><path/></svg></a>
+    <a><svg class="icon-sort"><path/></svg></a>
+    <a><svg class="icon-more"><path/></svg></a>
+    <a><svg class="icon-grid"><path/></svg></a>
+    <a><svg class="icon-home"><path/></svg></a>
+    <a><svg class="icon-find"><path/></svg></a>
+    <a><svg class="icon-config"><path/></svg></a>
+    <a><svg class="icon-close"><path/></svg></a>
+    <a><svg class="icon-user"><path/></svg></a>
+    <a><svg class="icon-exit"><path/></svg></a>
+    <a><svg class="icon-key"><path/></svg></a>
+    <a><svg class="icon-lock"><path/></svg></a>
+    <a><svg class="icon-edit"><path/></svg></a>
+    <a><svg class="icon-add"><path/></svg></a>
+    <a><svg class="icon-delete"><path/></svg></a>
+    <a><svg class="icon-ok"><path/></svg></a>
+    <a><svg class="icon-up"><path/></svg></a>
+    <a><svg class="icon-down"><path/></svg></a>
+    <a><svg class="icon-left"><path/></svg></a>
+    <a><svg class="icon-right"><path/></svg></a>
+    <a><svg class="icon-asc"><path/></svg></a>
+    <a><svg class="icon-desc"><path/></svg></a>
+    <a><svg class="icon-back"><path/></svg></a>
+    <a><svg class="icon-forward"><path/></svg></a>
+    <a><svg class="icon-upload"><path/></svg></a>
+    <a><svg class="icon-download"><path/></svg></a>
+    <a><svg class="icon-first"><path/></svg></a>
+    <a><svg class="icon-last"><path/></svg></a>
+    <a><svg class="icon-folder"><path/></svg></a>
+    <a><svg class="icon-open"><path/></svg></a>
+    <a><svg class="icon-file"><path/></svg></a>
+    <a><svg class="icon-attach"><path/></svg></a>
+    <a><svg class="icon-audio"><path/></svg></a>
+    <a><svg class="icon-video"><path/></svg></a>
+    <a><svg class="icon-image"><path/></svg></a>
+    <a><svg class="icon-text"><path/></svg></a>
+    <a><svg class="icon-tree"><path/></svg></a>
+    <a><svg class="icon-list"><path/></svg></a>
+    <a><svg class="icon-link"><path/></svg></a>
+    <a><svg class="icon-chart"><path/></svg></a>
+    <a><svg class="icon-no"><path/></svg></a>
+    <a><svg class="icon-ban"><path/></svg></a>
+    <a><svg class="icon-warning"><path/></svg></a>
+    <a><svg class="icon-info"><path/></svg></a>
+    <a><svg class="icon-share"><path/></svg></a>
+    <a><svg class="icon-world"><path/></svg></a>
+    <a><svg class="icon-flag"><path/></svg></a>
+    <a><svg class="icon-pin"><path/></svg></a>
+    <a><svg class="icon-date"><path/></svg></a>
+    <a><svg class="icon-time"><path/></svg></a>
+    <a><svg class="icon-refresh"><path/></svg></a>
+    <a><svg class="icon-view"><path/></svg></a>
+    <a><svg class="icon-card"><path/></svg></a>
+    <a><svg class="icon-sum"><path/></svg></a>
+    <a><svg class="icon-copy"><path/></svg></a>
+    <a><svg class="icon-help"><path/></svg></a>
+    <a><svg class="icon-phone"><path/></svg></a>
+    <a><svg class="icon-mail"><path/></svg></a>
+    <a><svg class="icon-chat"><path/></svg></a>
+    <a><svg class="icon-send"><path/></svg></a>
+    <a><svg class="icon-bookmark"><path/></svg></a>
+    <a><svg class="icon-star"><path/></svg></a>
+    <a><svg class="icon-heart"><path/></svg></a>
+    <a><svg class="icon-tag"><path/></svg></a>
+    <a><svg class="icon-expand"><path/></svg></a>
+    <a><svg class="icon-collapse"><path/></svg></a>
+    <a><svg class="icon-box"><path/></svg></a>
+    <a><svg class="icon-columns"><path/></svg></a>
+    <a><svg class="icon-storage"><path/></svg></a>
+    <a><svg class="icon-settings"><path/></svg></a>
+    <a><svg class="icon-power"><path/></svg></a>
+    <a><svg class="icon-energy"><path/></svg></a>
+    <a><svg class="icon-sound"><path/></svg></a>
+    <a><svg class="icon-mic"><path/></svg></a>
+    <a><svg class="icon-photo"><path/></svg></a>
+    <a><svg class="icon-print"><path/></svg></a>
+    <a><svg class="icon-play"><path/></svg></a>
+    <a><svg class="icon-pause"><path/></svg></a>
+    <a><svg class="icon-stop"><path/></svg></a>
+    <a><svg class="icon-rec"><path/></svg></a>
+    <a><svg class="icon-layers"><path/></svg></a>
+    <a><svg class="icon-none"><path/></svg></a>
+    <a><svg class="icon-unknown"><path/></svg></a>
+    </div>
+
+    <h2 id="info">Info <a href="#info" class="x1 small text-n">#</a></h2>
     
     <div class="scroll">
     <table class="bord hover">
@@ -397,11 +521,11 @@
         <tr><th>Component<th>Markup<th>Method<th>Features</tr>
       </thead>
       <tbody>
-        <tr><td>Popup/hint<td>.pop<td>hover / label<td></tr>
+        <tr><td>Popup<td>.pop<td>hover / label<td></tr>
+        <tr><td>Hint<td>[data-hint]<td>hover<td></tr>
         <tr><td>Dropdown<td>ul.row<td>hover<td></tr>
         <tr><td>Toggle<td>#, .target / label<td>hash / label<td>jump / -</tr>
-        <tr><td>Accordion tree<td>ul # .target<td>hash<td>jump</tr>
-        <tr><td>Tree<td>ul<td>label<td></tr>
+        <tr><td>Accordion / tree<td>ul # .target / ul<td>hash / label<td>jump / -</tr>
         <tr><td>Tabs<td>.tabs # / .tabs label<td>hash / label<td>jump / -</tr>
         <tr><td>Modal<td>.modal.target<td>hash<td>overlay</tr>
         <tr><td>Gallery<td>.modal.target img.target<td>hash<td>overlay</tr>
