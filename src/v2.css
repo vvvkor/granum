@@ -10,7 +10,7 @@
   --rfsz: 1.2;
   --bg: #fcfcfc;
   --bgl: #8881;
-  --over: #fff9;
+  --over: #0001;
   --text: #222;
   --link: #03a;
   --act: #06f;
@@ -26,9 +26,9 @@
   --hue-y: 120;/*120*/
   --hue-w: 37;/*40*/
   --hue-e: 0;
-  --satur: 90%;
-  --lit: 45%;
-  --alpha: 20%;
+  --rsatur: 90%;/*90*/
+  --rlit: 45%;/*45*/
+  --alpha: 20%;/*20*/
   
   /* dependent */
   --risz: 16 * var(--rfsz) * 1.2;  /* *1 */
@@ -85,18 +85,20 @@ a.act, a[href^="#"]:has(+:target), .check:has(:checked), .tabs:not(:has(:target)
 
 /* colors */
 [class].text {color:var(--text);}/*hue*/
-[class].bg {background-color:var(--bg);}
+[class].back {background-color:var(--bg);}
 [class].bgl {background-color:var(--bgl);}
-/* as vars */
-[class*="-n"] {--hue:var(--hue-n);--satur:0%;--lit:60%;}
-[class*="-i"] {--hue:var(--hue-i);}
-[class*="-y"], :valid~[data-valid] {--hue:var(--hue-y);--lit:35%;}
-[class*="-w"], mark {--hue:var(--hue-w);}
-[class*="-e"], :invalid~[data-invalid] {--hue:var(--hue-e);}
-[class][class*="text-"], :valid~[data-valid], :invalid~[data-invalid] {color:hsl(var(--hue) var(--satur) calc(var(--lit) - 5%));}
-[class][class*="bg-"], mark {background-color:hsl(var(--hue) var(--satur) var(--lit) / var(--alpha));}
-[class][class*="inv-"] {background-color:hsl(var(--hue) calc(var(--satur) - 15%) calc(var(--lit) - 3%));color:var(--bg);}
-[class][class*="inv-"] a {color:var(--bg);}
+/* as vars - todo: simplify*/
+.nn, .ii, .yy, .ww, .ee {--satur:var(--rsatur);--lit:var(--rlit);}
+.nn {--hue:var(--hue-n);--satur:0%;--lit:calc(var(--rlit) + 15%);}
+.ii {--hue:var(--hue-i);}
+.yy {--hue:var(--hue-y);--lit:calc(var(--rlit) - 10%);}
+.ww {--hue:var(--hue-w);}
+.ee {--hue:var(--hue-e);}
+.tx[class] {color:hsl(var(--hue) var(--satur) calc(var(--lit) - 5%));}
+.bg[class] {background-color:hsl(var(--hue) var(--satur) calc(var(--lit) + 0%) / var(--alpha));}
+.bk[class] {background-color:hsl(var(--hue) calc(var(--satur) - 15%) calc(var(--lit) - 3%));color:var(--bg);}
+.bk[class] a {color:var(--bg);}
+mark {background-color:hsl(var(--hue-w) var(--rsatur) var(--rlit) / var(--alpha));}
 
 
 /* grid */
@@ -126,7 +128,8 @@ a.act, a[href^="#"]:has(+:target), .check:has(:checked), .tabs:not(:has(:target)
   form:has([type="radio"]:checked) .modal.confirm
 ) + .overlay, 
 body:has(:target:is(.target.modal, .target.modal :target)) #overlay,
-body:has(:target:is(.target.modal, .target.modal :target)):not(:has(#overlay)):before
+body:has(:target:is(.target.modal, .target.modal :target)):not(:has(#overlay)):before,
+body:has(.dialog[open]):before
   {content:'';display:block;position:fixed;inset:0;background:var(--over);}
 .overlay {z-index:101;}
 #overlay, body:before {z-index:100;}
@@ -137,11 +140,15 @@ body:has(dialog:not([open]):target):not(:has(#overlay[id])):before
   */
 body:has(.modal.full:target, .modal.full :target) {overflow:hidden;}
 /* modal */
-.modal {position:fixed;border:none;background-color:var(--bg);box-shadow:var(--shade);z-index:130;}
-  .modal:not(.full) {min-height:10rem;max-height:83vh;min-width:18rem;inset:50% auto auto 50%;transform:translate(-50%,-50%);}
+.modal, .dialog[open] {position:fixed;border:none;background-color:var(--bg);box-shadow:var(--shade);z-index:130;}
+  .modal:not(.full), .dialog[open] {min-height:10rem;max-height:83vh;min-width:18rem;inset:50% auto auto 50%;transform:translate(-50%,-50%);}
   .modal.full {inset:0;/*calc(5 * var(--gap));*/}
 a:has(img:target), ul.row li {-webkit-tap-highlight-color:transparent;}
 img:target {position:absolute;display:block;inset:0;width:100%;height:100%;object-fit:contain;}
+/* details.dialog */
+.dialog>summary {list-style:none;}
+.dialog:not([open])>summary>:last-child, .dialog[open]>summary>:not(:last-child) {display:none;}
+.dialog:not([open]) {display:inline;}
 /* pop, drop, hover, arrow; box pop/drop, onhover */
 .pop, ul.row li {position:relative;}
 .pop {display:inline-block;}
@@ -195,7 +202,7 @@ ul.tabs+div>:first-child, ul.tabs[class]+div>:is(:target, :has(:target)) {displa
 /* list */
 
 /* form */
-button {cursor:pointer;}
+button, summary {cursor:pointer;}
 form:has(:invalid) :is(button:not([type]), [type="submit"]) {opacity:.5;pointer-events:none;}
 form:not(:has([type="radio"]:checked)) .confirm {display:none;}
 
@@ -293,7 +300,7 @@ form:not(:has([type="radio"]:checked)) .confirm {display:none;}
 
 /* modifiers */
 .fit {margin:0;padding:0;border:none;border-radius:0;box-shadow:0;background:none;}
-.wrap {margin-left:auto;margin-right:auto;max-width:45em;}
+.wrap {max-width:45em;}
 .full:not(.modal) {height:100vh;height:100dvh;}
 .nobr {white-space:nowrap;}
 .mar {margin:var(--mar);}
@@ -303,7 +310,11 @@ a.pad {display:inline-block;}
 ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div), table.pads>*>tr>* {padding:var(--pad);}
 ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div) {display:block;}  
 .scroll {overflow:auto;min-width:5em;min-height:5em;}
-.corner {position:absolute;top:0;right:0;z-index:1;}
+.center {margin-left:auto;margin-right:auto;}
+.l {text-align:left;}
+.c, .tag {text-align:center;}
+.r {text-align:right;}
+.corner {position:absolute;top:0;right:0;width:auto;z-index:1;}
   .row:not(.vert) .push {margin-right:auto;}
   .row:not(.vert) .shift {margin-left:auto;}
   .row:not(.vert) .push + .shift {margin-left:0;}

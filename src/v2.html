@@ -17,7 +17,7 @@
           const j = i.slice(0, 1).toUpperCase() + i.slice(1)
           n.parentNode.title = i
           //n.parentNode.append(' ' + j)
-          n.classList.add('text-n'/*, 'pad'/*, 'bg-n', 'hover'*/)
+          n.classList.add('tx', 'nn'/*, 'pad'/*, 'bg', 'hover'*/)
           n.parentNode.classList.add('hover', 'pad')
           n.parentNode.setAttribute('data-hint', i)
         });
@@ -25,18 +25,18 @@
     </script>
   </head>
   <body class="-invert">
-  <div class="wrap pad">
+  <div class="wrap center pad">
 
-    <h1><a href="#" accesskey="1"><svg class="icon-config text-n"><path/></svg> Granum v2</a></h1>
+    <h1><a href="#" accesskey="1"><svg class="icon-config tx nn"><path/></svg> Granum v2</a></h1>
 
-    <h2 id="config">Config <a href="#config" class="x1 small text-n">#</a></h2>
+    <h2 id="config">Config <a href="#config" class="x1 small tx nn">#</a></h2>
     
-    <div><a href="?#"><svg class="icon-refresh text-y"><path/></svg> Reset URL</a></div>
+    <div><a href="?#"><svg class="icon-refresh tx yy"><path/></svg> Reset URL</a></div>
     <div><label><input type="checkbox" id="invert"> Invert</label></div>
-    <div><label class="link"><input type="checkbox" id="debug" hidden> Debug</label></div>
+    <div><label class="link"><input type="checkbox" id="debug" hidden><svg class="icon-warning tx ww"><path/></svg> Debug</label></div>
     <div><label><input type="checkbox" id="x1" checked> Heading hashes</label></div>
     
-    <h2 id="colors">Colors <a href="#colors" class="x1 small text-n">#</a></h2>
+    <h2 id="colors">Colors <a href="#colors" class="x1 small tx nn">#</a></h2>
     
     <span>Default</span>
     <a href="#x">Link</a>
@@ -45,32 +45,48 @@
     <span class="bgl">Lite</span>
     <br>
     <span class="text">Text</span>
-    <span class="text-n">Note</span>
-    <span class="text-i">Info</span>
-    <span class="text-y">Success</span>
-    <span class="text-w">Warning</span>
-    <span class="text-e">Error</span>
+    <span class="tx nn">Note</span>
+    <span class="tx ii">Info</span>
+    <span class="tx yy">Success</span>
+    <span class="tx ww">Warning</span>
+    <span class="tx ee">Error</span>
     <br>
-    <span class="bg">Text</span>
-    <span class="bg-n">Note</span>
-    <span class="bg-i">Info</span>
-    <span class="bg-y">Success</span>
-    <span class="bg-w">Warning</span>
-    <span class="bg-e">Error</span>
+    <span class="back">Text</span>
+    <span class="bg nn">Note</span>
+    <span class="bg ii">Info</span>
+    <span class="bg yy">Success</span>
+    <span class="bg ww">Warning</span>
+    <span class="bg ee">Error</span>
     
     
-    <h2 id="modal">Modal <a href="#modal" class="x1 small text-n">#</a></h2>
+    <h2 id="modal">Modal <a href="#modal" class="x1 small tx nn">#</a></h2>
     
-    <p>
+    <div class="mar">
+      Basic:
       <a href="#mod1"><svg class="icon-collapse text"><path/></svg> Modal</a> &nbsp;
       <a href="#mod2"><svg class="icon-expand text"><path/></svg> Fullscreen</a> &nbsp;
-      <a href="#modal-input"><svg class="icon-edit text-i"><path/></svg> Focus input</a> &nbsp;
-      <a href="#dlg"><svg class="icon-chat text-i"><path/></svg> Dialog</a> &nbsp;
-      <span><a id="link-dlgm" href="#dlgm" onclick="dlgm.showModal()"><svg class="icon-chat text-y"><path/></svg> Modal dialog</a> &nbsp;</span>
-    </p>
+      <a href="#modal-input"><svg class="icon-edit tx ii"><path/></svg> Focus input</a> &nbsp;
+      <br>
+      Experimental:
+      <a href="#dlg"><svg class="icon-chat tx ii"><path/></svg> Dialog</a> &nbsp;
+      <span><a id="link-dlgm" href="#dlgm" onclick="dlgm.showModal()"><svg class="icon-chat tx yy"><path/></svg> Modal dialog JS</a> &nbsp;</span>
+      <!--span><a id="link-dlgx" href="#dlgx" onclick="dlgx.showModal()"><svg class="icon-chat tx yy"><path/></svg> Modal dialog*</a> &nbsp;</span-->
+      
+      <details class="dialog">
+        <summary id="sum" class="">
+          <div class="link -hover"><svg class="icon-open tx ww"><path/></svg> Summary modal</div>
+          <div class="pad bg nn r"><a class="-pad"><svg class="icon-close tx nn"><path/></svg></a></div>
+        </summary>
+        <div class="pad">
+          <div class="tx ee">No clickable backdrop</div>
+          <div class="tx ee">Initial summary disappears on open</div>
+          <div class="tx ee">Locked to single closing element</div>
+        </div>
+      </details>
+    </div>
     
     <div id="mod1" class="modal target pad">
-      <a href="#cancel" class="corner pad hover"><svg class="icon-close text-n"><path/></svg></a>
+      <a href="#cancel" class="corner pad hover"><svg class="icon-close tx nn"><path/></svg></a>
       Modal 1
       <p><input id="modal-input"></p>
       <p><a href="#mod2">Next modal</a></p>
@@ -79,7 +95,7 @@
     <a href="#close-mod1" class="overlay"></a>
 
     <div id="mod2" class="modal full target pad">
-      <a href="#mod1" class="corner pad"><svg class="icon-close text-n"><path/></svg></a>
+      <a href="#mod1" class="corner pad"><svg class="icon-close tx nn"><path/></svg></a>
       Modal 2
       <p><a href="#mod1">Previous modal</a></p>
       <p><a href="#cancel">Close</a></p>
@@ -87,30 +103,39 @@
     <a href="#mod1" class="overlay"></a>
     
     <!--details>
-      <summary id="sum">Summary</summary>
+      <summary id="sum">Summary with modal details - can not close</summary>
       <div class="pad modal">Details <label for="sum">Close - NOT WORKING</label></div>
     </details-->
     
-    <dialog id="dlg" open class="modal target">
-      Dialog with custom dropback
-      <a href="#cancel" class="corner pad"><svg class="icon-close text-n"><path/></svg></a>
+    <dialog id="dlg" class="modal target" open>
+      Dialog with custom backdrop
+      <a href="#cancel" class="corner pad"><svg class="icon-close tx nn"><path/></svg></a>
       <p><a href="#cancel">Close</a></p>
+      <p>Do not use formmethod to close. Escape not working which is good, because after closed natively (esc/formmethod/(backdrop)), not posiible to show with js</p>
     </dialog>
     <a href="#close-dlg" class="overlay"></a>
 
     <dialog id="dlgm" class="modal">
-      Modal dialog with native dropback
-      <form><button formmethod="dialog" class="corner fit pad hover"><svg class="icon-close text-n"><path/></svg></button></form>
+      Modal dialog with native backdrop, needs js
+      <form><button formmethod="dialog" class="corner fit pad hover"><svg class="icon-close tx nn"><path/></svg></button></form>
       <p><form><button formmethod="dialog">Close</button></form></p>
     </dialog>
-    <a href="#close-dlgm" class="overlay"></a>
+    <!--a href="#close-dlgm" class="overlay"></a-->
+
+    <!--dialog id="dlgx" class="modal target" open>
+      Modal dialog with native backdrop, with fallback
+      <form><button formmethod="dialog" class="corner fit pad hover"><svg class="icon-close tx nn"><path/></svg></button></form>
+      <p><form><button formmethod="dialog">Close</button></form></p>
+      <p>After closed natively (esc/formmethod/(backdrop)), not posiible to show with js</p>
+    </dialog>
+    <a href="#close-dlgx" class="overlay"></a-->
     
-    <h2 id="gallery">Gallery <a href="#gallery" class="x1 small text-n">#</a></h2>
+    <h2 id="gallery">Gallery <a href="#gallery" class="x1 small tx nn">#</a></h2>
     
     <p>
       <!--a href="#gallery"><svg class="icon-expand text"><path/></svg> Gallery</a-->
-      <a href="#img1"><svg class="icon-image text-y"><path/></svg> Image</a>
-      <label for="debug" class="link hover">Debug</label>
+      <a href="#img1"><svg class="icon-image tx yy"><path/></svg> Image</a>&nbsp; 
+      <label for="debug" class="link hover"><svg class="icon-warning tx ww"><path/></svg> Debug</label>
     </p>
     <div class="row gap stretch">
       <a href="#img1"><img alt="pic" class="fit" src="https://placehold.co/200x100/933/fff.png?text=Red"></a>
@@ -120,7 +145,7 @@
     </div>
     <div id="gallery" class="modal full target">
       <div class="corner">
-        <a href="#cancel" class="pad"><svg class="icon-close text-n"><path/></svg></a>
+        <a href="#cancel" class="pad"><svg class="icon-close tx nn"><path/></svg></a>
       </div>
       <a href="#img2"><img id="img1" alt="pic" src="https://placehold.co/400x200/933/fff.png?text=Red" class="target" loading="lazy"></a>
       <a href="#img3"><img id="img2" alt="pic" src="https://placehold.co/300x200/393/fff.png?text=Green" class="target" loading="lazy"></a>
@@ -129,19 +154,24 @@
     </div>
     <a href="#close-gallery" class="overlay"></a>
 
-    <h2 id="target">Target <a href="#target" class="x1 small text-n">#</a></h2>
+    <h2 id="target">Target <a href="#target" class="x1 small tx nn">#</a></h2>
     
     <div>
       <a href="#trg">Open by hash</a>
-      <div id="trg" class="target bg-n pad">Target <a href="#x">Close</a></div>
+      <div id="trg" class="target bg nn pad">Target <a href="#x">Close</a></div>
     </div>
     
     <div>
       <label class="check"><input type="checkbox">Open by label</label>
-      <div class="bg-n pad">Target</div>
+      <div class="bg nn pad">Target</div>
     </div>
 
-    <h2 id="popup">Popup <a href="#popup" class="x1 small text-n">#</a></h2>
+    <details>
+      <summary class="link">Open details</summary>
+      <div class="bg nn pad">Target</div>
+    </details>
+      
+    <h2 id="popup">Popup <a href="#popup" class="x1 small tx nn">#</a></h2>
     
     <div class="pop"><a class="hover">Default</a> <div class="pad">Info<br>More info</div></div>
     &mdash;
@@ -165,11 +195,11 @@
     <div>
       <div class="pop">
         <label class="check hover"><input type="checkbox">Open by label</label>
-        <div class="bg-n pad">Target</div>
+        <div class="bg nn pad">Target</div>
       </div>
     </div>
     
-    <h2 id="tabs">Tabs <a href="#tabs" class="x1 small text-n">#</a></h2>
+    <h2 id="tabs">Tabs <a href="#tabs" class="x1 small tx nn">#</a></h2>
     
     <ul class="row tabs pads hover">
       <li><b>List hash</b></li>
@@ -177,10 +207,10 @@
       <li><a href="#tab2">Two</a></li>
       <li><a href="#tab3">Three</a></li>
     </ul>
-    <div class="pad bg-n">
+    <div class="pad bg nn">
       <div id="tab1">
-        <div class="text-e">Jumps to hash</div>
-        <div class="text-e">No active tab hilite</div>
+        <div class="tx ee">Jumps to hash</div>
+        <div class="tx ee">No active tab highlight</div>
       </div>
       <div id="tab2">Tab 2</div>
       <div id="tab3">
@@ -190,7 +220,7 @@
           <li><a href="#tab2n">Two</a></li>
           <li><a href="#tab3n">Three</a></li>
         </ul>
-        <div class="pad bg-y">
+        <div class="pad bg yy">
           <div id="tab1n">Tab 1</div>
           <div id="tab2n">Tab 2<br>line</div>
           <div id="tab3n">Tab 3<br>line<br>line</div>
@@ -201,23 +231,23 @@
     <div class="row tabs pads hover mar">
       <b>Div hash</b>
       <a href="#tab1a">One</a>
-      <div id="tab1a" class="pad bg-i">
-        <div class="text-e">Jumps to hash</div>
-        <div class="text-i">No active tab hilite for inner targets</div>
-        <div class="text-w">No common container for content</div>
+      <div id="tab1a" class="pad bg ii">
+        <div class="tx ee">Jumps to hash</div>
+        <div class="tx ii">No active tab highlight for inner targets</div>
+        <div class="tx ww">No common container for content</div>
       </div>
       <a href="#tab2a">Two</a>
-      <div id="tab2a" class="pad bg-i">Tab 2</div>
+      <div id="tab2a" class="pad bg ii">Tab 2</div>
       <a href="#tab3a">Three</a>
-      <div id="tab3a" class="pad bg-i">
+      <div id="tab3a" class="pad bg ii">
         <div class="row tabs pads hover">
           <b>Nested</b>
           <a href="#tab1an">One</a>
-          <div id="tab1an" class="pad bg-y">Tab 1</div>
+          <div id="tab1an" class="pad bg yy">Tab 1</div>
           <a href="#tab2an">Two</a>
-          <div id="tab2an" class="pad bg-y">Tab 2<br>line</div>
+          <div id="tab2an" class="pad bg yy">Tab 2<br>line</div>
           <a href="#tab3an">Three</a>
-          <div id="tab3an" class="pad bg-y">Tab 3<br>line<br>line</div>
+          <div id="tab3an" class="pad bg yy">Tab 3<br>line<br>line</div>
         </div>
       </div>
     </div>
@@ -225,34 +255,34 @@
     <div class="row tabs pads hover mar">
       <b>Label</b>
       <label class="check"><input type="radio" name="tabs">One</label>
-      <div class="pad bg-w">Tab 1</div>
+      <div class="pad bg ww">Tab 1</div>
       <label class="check"><input type="radio" name="tabs" checked>Two</label>
-      <div class="pad bg-w">
-        <div class="text-w">No common container for content</div>
-        <div class="text-w">Extra non-semantic markup</div>
-        <div class="text-y">Can start with any tab</div>
-        <div class="text-y">Keeps on hash change</div>
+      <div class="pad bg ww">
+        <div class="tx ww">No common container for content</div>
+        <div class="tx ww">Extra non-semantic markup</div>
+        <div class="tx yy">Can start with any tab</div>
+        <div class="tx yy">Keeps on hash change</div>
       </div>
       <label class="check"><input type="radio" name="tabs">Three</label>
-      <div class="pad bg-w">
+      <div class="pad bg ww">
         <div class="row tabs pads hover">
           <b>Nested</b>
           <label class="check"><input type="radio" name="tabsn">One</label>
-          <div class="pad bg-y">Tab 1</div>
+          <div class="pad bg yy">Tab 1</div>
           <label class="check"><input type="radio" name="tabsn" checked>Two</label>
-          <div class="pad bg-y">Tab 2<br>line</div>
+          <div class="pad bg yy">Tab 2<br>line</div>
           <label class="check"><input type="radio" name="tabsn">Three</label>
-          <div class="pad bg-y">Tab 3<br>line<br>line</div>
+          <div class="pad bg yy">Tab 3<br>line<br>line</div>
         </div>
       </div>
     </div>
     
-    <h2 id="dropdown">Dropdown <a href="#dropdown" class="x1 small text-n">#</a></h2>
+    <h2 id="dropdown">Dropdown <a href="#dropdown" class="x1 small tx nn">#</a></h2>
     <ul class="row -vert resp bgl mid pads hover">
     <!--ul class="row gap"-->
-      <li><a>Colors<br><small class="text-n">Info</small></a>
+      <li><a>Colors<br><small class="tx nn">Info</small></a>
         <ul>
-          <li><a>Red<br><small class="text-n">Info</small></a>
+          <li><a>Red<br><small class="tx nn">Info</small></a>
             <ul>
               <li><a href="#x">Orange</a></li>
               <li><a href="#x">Pink</a></li>
@@ -273,7 +303,7 @@
           </li>
         </ul>
       </li>
-      <li><a><svg class="icon-flag text-n"><path/></svg> Languages</a>
+      <li><a><svg class="icon-flag tx nn"><path/></svg> Languages</a>
         <ul class="p-os-bl">
           <li><a href="#x">English</a></li>
           <li><a href="#x">Spanish</a></li>
@@ -284,7 +314,7 @@
       <li class="shift -mid"><form><input type="search" size="8"></form></li>
     </ul>
     
-    <h2 id="accordion">Accordion <a href="#accordion" class="x1 small text-n">#</a></h2>
+    <h2 id="accordion">Accordion <a href="#accordion" class="x1 small tx nn">#</a></h2>
     
     <ul>
       <li><a href="#list1">Colors</a>
@@ -320,7 +350,7 @@
       <li><a>Three</a></li>
     </ul>
 
-    <h2 id="tree">Tree <a href="#tree" class="x1 small text-n">#</a></h2>
+    <h2 id="tree">Tree <a href="#tree" class="x1 small tx nn">#</a></h2>
     
     <ul>
       <li><label class="check"><input type="checkbox">Colors</label>
@@ -356,17 +386,17 @@
       <li><a>Three</a></li>
     </ul>
 
-    <h2 id="table">Table <a href="#table" class="x1 small text-n">#</a></h2>
+    <h2 id="table">Table <a href="#table" class="x1 small tx nn">#</a></h2>
     
     
     <p>
-      <a href="#multiname" class="bg-n hover"><svg class="icon-edit text-i"><path/></svg> Confirm selected items</a>
-      <a href="?#table"><svg class="icon-refresh text-y"><path/></svg> Reset URL</a>
+      <a href="#multiname" class="bg nn hover"><svg class="icon-edit tx ii"><path/></svg> Confirm selected items</a>
+      <a href="?#table"><svg class="icon-refresh tx yy"><path/></svg> Reset URL</a>
     </p>
     <form id="mult" action="#table">
       <div id="confirm" class="modal target pad">
         <h3>Confirm multiple items</h3>
-        <a href="#cancel" class="corner pad"><svg class="icon-close text-n"><path/></svg></a>
+        <a href="#cancel" class="corner pad"><svg class="icon-close tx nn"><path/></svg></a>
         <p>Name<br><input id="multiname" name="name" type="text" required></p>
         <p><button name="button" value="multiple">Send</button></p>
       </div>
@@ -376,7 +406,7 @@
       
       <div class="modal confirm -target pad">
         <h3>Confirm single item</h3>
-        <button type="reset" class="corner fit pad hover"><svg class="icon-close text-n"><path/></svg></button>
+        <button type="reset" class="corner fit pad hover"><svg class="icon-close tx nn"><path/></svg></button>
         <p>Value<br><input name="value" type="text" required title=""></p>
         <p>
           <button name="button" value="untyped">Button</button>
@@ -401,46 +431,46 @@
             <td>
               <input form="mult" type="checkbox" name="items" value="note"><path/></svg> &nbsp;
               <input type="radio" name="item" value="note"><path/></svg>
-            <td class="text-n">Note
-            <td><a href="x" class="text-n">Note</a>
-            <td class="bg-n">Text <a href="x">Link</a>
-            <td class="inv-n">Text <a href="x">Link</a>
+            <td class="tx nn">Note
+            <td><a href="x" class="tx nn">Note</a>
+            <td class="bg nn">Text <a href="x">Link</a>
+            <td class="bk nn">Text <a href="x">Link</a>
           </tr>
           <tr>
             <td>
               <input form="mult" type="checkbox" name="items" value="info"><path/></svg> &nbsp;
               <input type="radio" name="item" value="info">
-            <td class="text-i">Info
-            <td><a href="x" class="text-i">Info</a>
-            <td class="bg-i">Text <a href="x">Link</a>
-            <td class="inv-i">Text <a href="x">Link</a>
+            <td class="tx ii">Info
+            <td><a href="x" class="tx ii">Info</a>
+            <td class="bg ii">Text <a href="x">Link</a>
+            <td class="bk ii">Text <a href="x">Link</a>
           </tr>
           <tr>
             <td>
               <input form="mult" type="checkbox" name="items" value="success"><path/></svg> &nbsp;
-              <label><input type="radio" name="item" value="success" hidden><svg class="icon-edit text-i"><path/></svg></label>
-            <td class="text-y">Success
-            <td><a href="x" class="text-y">Success</a>
-            <td class="bg-y">Text <a href="x">Link</a>
-            <td class="inv-y">Text <a href="x">Link</a>
+              <label><input type="radio" name="item" value="success" hidden><svg class="icon-edit tx ii"><path/></svg></label>
+            <td class="tx yy">Success
+            <td><a href="x" class="tx yy">Success</a>
+            <td class="bg yy">Text <a href="x">Link</a>
+            <td class="bk yy">Text <a href="x">Link</a>
           </tr>
           <tr>
             <td>
               <input form="mult" type="checkbox" name="items" value="warning"><path/></svg> &nbsp;
-              <label><input type="radio" name="item" value="warning" hidden><svg class="icon-edit text-i"><path/></svg></label>
-            <td class="text-w">Warning
-            <td><a href="x" class="text-w">Warning</a>
-            <td class="bg-w">Text <a href="x">Link</a>
-            <td class="inv-w">Text <a href="x">Link</a>
+              <label><input type="radio" name="item" value="warning" hidden><svg class="icon-edit tx ii"><path/></svg></label>
+            <td class="tx ww">Warning
+            <td><a href="x" class="tx ww">Warning</a>
+            <td class="bg ww">Text <a href="x">Link</a>
+            <td class="bk ww">Text <a href="x">Link</a>
           </tr>
           <tr>
             <td>
               <input form="mult" type="checkbox" name="items" value="error"><path/></svg> &nbsp;
               <input type="radio" name="item" value="error">
-            <td class="text-e">Error
-            <td><a href="x" class="text-e">Error</a>
-            <td class="bg-e">Text <a href="x">Link</a>
-            <td class="inv-e">Text <a href="x">Link</a>
+            <td class="tx ee">Error
+            <td><a href="x" class="tx ee">Error</a>
+            <td class="bg ee">Text <a href="x">Link</a>
+            <td class="bk ee">Text <a href="x">Link</a>
           </tr>
         </tbody>
       </table>
@@ -448,21 +478,21 @@
       
     </form>
 
-    <h2 id="grid">Grid <a href="#grid" class="x1 small text-n">#</a></h2>
+    <h2 id="grid">Grid <a href="#grid" class="x1 small tx nn">#</a></h2>
     <p>Don't use <code>.row.wrap</code> with <code>.row > .scroll</code>.</p>
     <div class="row resp -wrap stretch gap -mid -vert full" style="height:80vh;">
-      <div class="pad bg-n col-0">Col</div>
-      <div class="pad bg-i col-1"><div class="pop"><a>Popup</a><div class="pad">Popups and dropdowns can overflow non-scrollable parent grid item</div></div></div>
-      <div class="pad bg-y col-2 scroll scrollbar     row vert">
-        <div class="bg-i">Nested grid</div>
-        <div class="bg-w col-1 nobr scroll scrollbar">Custom scrollbar is used for this block<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</div>
-        <div class="bg-e">5</div>
+      <div class="pad bg nn col-0">Col</div>
+      <div class="pad bg ii col-1"><div class="pop"><a>Popup</a><div class="pad">Popups and dropdowns can overflow non-scrollable parent grid item</div></div></div>
+      <div class="pad bg yy col-2 scroll scrollbar     row vert">
+        <div class="bg ii">Nested grid</div>
+        <div class="bg ww col-1 nobr scroll scrollbar">Custom scrollbar is used for this block<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</div>
+        <div class="bg ee">5</div>
       </div>
-      <div class="pad bg-w scroll nobr">Horizontal overflow and scroll. WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW</div>
-      <div class="pad bg-e scroll">Vertical overflow and scroll.<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</div>
+      <div class="pad bg ww scroll nobr">Horizontal overflow and scroll. WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW</div>
+      <div class="pad bg ee scroll">Vertical overflow and scroll.<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</div>
     </div>
     
-    <h2 id="icons">Icons (82) <a href="#icons" class="x1 small text-n">#</a></h2>
+    <h2 id="icons">Icons (82) <a href="#icons" class="x1 small tx nn">#</a></h2>
     
     <!--
     add asc attach audio back ban bookmark box card chart chat close collapse columns config copy date delete desc down download edit energy exit expand file find first flag folder forward grid heart help home image info key last layers left link list lock mail menu mic more no none ok open pause phone photo pin play power print rec refresh right send settings share sort sound star stop storage sum tag text time tree up upload user video view warning world
@@ -554,24 +584,25 @@
     <a><svg class="icon-unknown"><path/></svg></a>
     </div>
 
-    <h2 id="info">Info <a href="#info" class="x1 small text-n">#</a></h2>
+    <h2 id="info">Info <a href="#info" class="x1 small tx nn">#</a></h2>
     
     <div class="scroll">
     <table class="bord hover">
       <caption>Toggle methods comparation</caption>
       <thead>
-        <tr><th>Feature<th>Hash<th>Label + checkbox</tr>
+        <tr><th>Feature<th>Hash<th>Label + checkbox<th>Details</tr>
       </thead>
       <tbody>
-        <tr><td>Markup<td class="bg-y">clean; free placement<td class="bg-e">extra label + checkbox; target must be next</tr>
-        <tr><td>Link<td class="bg-y">by link hash<td class="bg-y">by link hash (optional)</tr>
-        <tr><td>Initial show<td class="bg-w">by link hash (single)<td class="bg-y">by checkbox; by link hash (single)</tr>
-        <tr><td>Close on click<td class="bg-e">no<td class="bg-w">if not linked</tr>
-        <tr><td>Hilite<td class="bg-w">if target is next<td class="bg-y">yes (target is always next)</tr>
-        <tr><td>Nested<td class="bg-y">yes<td class="bg-y">yes</tr>
-        <tr><td>Multiple selected<td class="bg-e">no<td class="bg-y">yes</tr>
-        <tr><td>Scroll<td class="bg-w">jumps to target<td class="bg-y">no jump</tr>
-        <tr><td>Keep on hash change<td class="bg-w">no<td class="bg-y">yes</tr>
+        <tr><td>Markup<td class="bg yy">clean; free placement<td class="bg ee">extra label + checkbox; target must be next<td class="bg yy">native</tr>
+        <tr><td>Link<td class="bg yy">by link hash<td class="bg yy">by link hash (optional)<td class="bg yy">summary</tr>
+        <tr><td>Initial show<td class="bg ww">by link hash (single)<td class="bg yy">by checkbox; by link hash (single)<td class="bg yy">[open]</tr>
+        <tr><td>Close on repeating click<td class="bg ee">no<td class="bg ww">if not linked<td class="bg yy">yes</tr>
+        <tr><td>Highlight<td class="bg ww">if target is next<td class="bg yy">yes (target is always next)<td class="bg yy">yes</tr>
+        <tr><td>Nested<td class="bg yy">yes<td class="bg yy">yes<td class="bg yy">yes</tr>
+        <tr><td>Multiple selected<td class="bg ee">no<td class="bg yy">yes<td class="bg yy">yes</tr>
+        <tr><td>Scroll<td class="bg ww">jumps to target<td class="bg yy">no jump<td class="bg yy">no jump</tr>
+        <tr><td>Keep on hash change<td class="bg ww">no<td class="bg yy">yes<td class="bg yy">yes</tr>
+        <tr><td>Backdrop<td class="bg yy">link<td class="bg yy">reset button<td class="bg yy">no link</tr>
       </tbody>
     </table>
     </div>
@@ -586,7 +617,7 @@
         <tr><td>Popup<td>.pop<td>hover / label<td></tr>
         <tr><td>Hint<td>[data-hint]<td>hover<td></tr>
         <tr><td>Dropdown<td>ul.row<td>hover<td></tr>
-        <tr><td>Toggle<td>#, .target / label<td>hash / label<td>jump / -</tr>
+        <tr><td>Toggle<td>#, .target / label / details<td>hash / label / summary<td>jump / - / -</tr>
         <tr><td>Accordion / tree<td>ul # .target / ul<td>hash / label<td>jump / -</tr>
         <tr><td>Tabs<td>.tabs # / .tabs label<td>hash / label<td>jump / -</tr>
         <tr><td>Modal<td>.modal.target<td>hash<td>overlay</tr>
