@@ -76,12 +76,12 @@ pre code {font-size:100%;}
 /* status border color? */
 
 /* links */
-a[href], .check, .pop>a, ul.row a {color:var(--link);/*text-decoration:none;*/cursor:pointer;text-underline-offset:.15em;}
+a[href], .link, .check, .pop>a, ul.row a {color:var(--link);/*text-decoration:none;*/cursor:pointer;text-underline-offset:.15em;}
   ul.row li:has(>a) {cursor:pointer;}
   a:not([href]), a[href^="#"], a.pad, ul.pads a, .tabs>a {text-decoration:none;}
 a.act, a[href^="#"]:has(+:target), .check:has(:checked), .tabs:not(:has(:target))>a:first-of-type {color:var(--act);background-color:var(--bg-act);}
-a[href]:hover, .check:hover, .pop:hover>a, ul.row li:hover>a {color:var(--hover);}
-a.hover:hover, .check.hover:hover, ul.hover li:is(:hover, :has(:hover)):has(>a), .pop:hover>a.hover, table.hover tbody tr:hover>*, .tabs.hover>:is(a,label):hover {/*background-color:var(--bgl);*/box-shadow:var(--shade-hover);}
+:is(a[href], .link, .check):hover, .pop:hover>a, ul.row li:hover>a {color:var(--hover);}
+:is(a, button, .link, .check).hover:hover, ul.hover li:is(:hover, :has(:hover)):has(>a), .pop:hover>a.hover, table.hover tbody tr:hover>*, .tabs.hover>:is(a,label):hover {/*background-color:var(--bgl);*/box-shadow:var(--shade-hover);}
 
 /* colors */
 [class].text {color:var(--text);}/*hue*/
@@ -118,13 +118,26 @@ a.hover:hover, .check.hover:hover, ul.hover li:is(:hover, :has(:hover)):has(>a),
 /* + .check: hilite, unscroll, nested, multiple, initial show, can close */
 .target:not(:target):not(:has(:target)), .check:not(:has(:checked)) + :not(:target):not(:has(:target)), .check input {display:none;}
 .target, .tabs+div :target, .tabs :target {scroll-margin-top:5rem;}
-/*overlay*/
-.overlay, #overlay {cursor:default;display:none;}
-:is(.target:target, .target:has(:target)) + .overlay, body:has(:target:is(.modal, .modal :target)) #overlay, body:has(:target:is(.modal, .modal :target)):not(:has(#overlay)):before {content:'';display:block;position:fixed;inset:0;background:var(--over);z-index:100;}
-.overlay[class][class] {z-index:101;}
+/* overlay - todo: simplify */
+.overlay, #overlay {cursor:default;display:none;border:none;}
+:is(
+  .target:target,
+  .target:has(:target),
+  form:has([type="radio"]:checked) .modal.confirm
+) + .overlay, 
+body:has(:target:is(.target.modal, .target.modal :target)) #overlay,
+body:has(:target:is(.target.modal, .target.modal :target)):not(:has(#overlay)):before
+  {content:'';display:block;position:fixed;inset:0;background:var(--over);}
+.overlay {z-index:101;}
+#overlay, body:before {z-index:100;}
+/*
+body:has(dialog:not([open]):target) #overlay[id],
+body:has(dialog:not([open]):target):not(:has(#overlay[id])):before
+  {display:none;}
+  */
 body:has(.modal.full:target, .modal.full :target) {overflow:hidden;}
 /* modal */
-.modal {position:fixed;background-color:var(--bg);box-shadow:var(--shade);z-index:130;}
+.modal {position:fixed;border:none;background-color:var(--bg);box-shadow:var(--shade);z-index:130;}
   .modal:not(.full) {min-height:10rem;max-height:83vh;min-width:18rem;inset:50% auto auto 50%;transform:translate(-50%,-50%);}
   .modal.full {inset:0;/*calc(5 * var(--gap));*/}
 a:has(img:target), ul.row li {-webkit-tap-highlight-color:transparent;}
@@ -183,7 +196,9 @@ ul.tabs+div>:first-child, ul.tabs[class]+div>:is(:target, :has(:target)) {displa
 
 /* form */
 button {cursor:pointer;}
-form:has(:invalid) button {opacity:.5;pointer-events:none;}
+form:has(:invalid) :is(button:not([type]), [type="submit"]) {opacity:.5;pointer-events:none;}
+form:not(:has([type="radio"]:checked)) .confirm {display:none;}
+
 /* use grid, no .field, validate, button   */
 
 /* table */
@@ -277,6 +292,7 @@ form:has(:invalid) button {opacity:.5;pointer-events:none;}
 .icon-none>path {--w:1;d:path("M1 1z");}
 
 /* modifiers */
+.fit {margin:0;padding:0;border:none;border-radius:0;box-shadow:0;background:none;}
 .wrap {margin-left:auto;margin-right:auto;max-width:45em;}
 .full:not(.modal) {height:100vh;height:100dvh;}
 .nobr {white-space:nowrap;}

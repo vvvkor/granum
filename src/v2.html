@@ -30,8 +30,10 @@
     <h1><a href="#" accesskey="1"><svg class="icon-config text-n"><path/></svg> Granum v2</a></h1>
 
     <h2 id="config">Config <a href="#config" class="x1 small text-n">#</a></h2>
+    
+    <div><a href="?#"><svg class="icon-refresh text-y"><path/></svg> Reset URL</a></div>
     <div><label><input type="checkbox" id="invert"> Invert</label></div>
-    <div><label><input type="checkbox" id="debug"> Debug</label></div>
+    <div><label class="link"><input type="checkbox" id="debug" hidden> Debug</label></div>
     <div><label><input type="checkbox" id="x1" checked> Heading hashes</label></div>
     
     <h2 id="colors">Colors <a href="#colors" class="x1 small text-n">#</a></h2>
@@ -62,14 +64,19 @@
     <p>
       <a href="#mod1"><svg class="icon-collapse text"><path/></svg> Modal</a> &nbsp;
       <a href="#mod2"><svg class="icon-expand text"><path/></svg> Fullscreen</a> &nbsp;
+      <a href="#modal-input"><svg class="icon-edit text-i"><path/></svg> Focus input</a> &nbsp;
+      <a href="#dlg"><svg class="icon-chat text-i"><path/></svg> Dialog</a> &nbsp;
+      <span><a id="link-dlgm" href="#dlgm" onclick="dlgm.showModal()"><svg class="icon-chat text-y"><path/></svg> Modal dialog</a> &nbsp;</span>
     </p>
+    
     <div id="mod1" class="modal target pad">
       <a href="#cancel" class="corner pad hover"><svg class="icon-close text-n"><path/></svg></a>
       Modal 1
+      <p><input id="modal-input"></p>
       <p><a href="#mod2">Next modal</a></p>
       <p><a href="#cancel">Close</a></p>
     </div>
-    <a href="#close1" class="overlay"></a>
+    <a href="#close-mod1" class="overlay"></a>
 
     <div id="mod2" class="modal full target pad">
       <a href="#mod1" class="corner pad"><svg class="icon-close text-n"><path/></svg></a>
@@ -79,11 +86,31 @@
     </div>
     <a href="#mod1" class="overlay"></a>
     
+    <!--details>
+      <summary id="sum">Summary</summary>
+      <div class="pad modal">Details <label for="sum">Close - NOT WORKING</label></div>
+    </details-->
+    
+    <dialog id="dlg" open class="modal target">
+      Dialog with custom dropback
+      <a href="#cancel" class="corner pad"><svg class="icon-close text-n"><path/></svg></a>
+      <p><a href="#cancel">Close</a></p>
+    </dialog>
+    <a href="#close-dlg" class="overlay"></a>
+
+    <dialog id="dlgm" class="modal">
+      Modal dialog with native dropback
+      <form><button formmethod="dialog" class="corner fit pad hover"><svg class="icon-close text-n"><path/></svg></button></form>
+      <p><form><button formmethod="dialog">Close</button></form></p>
+    </dialog>
+    <a href="#close-dlgm" class="overlay"></a>
+    
     <h2 id="gallery">Gallery <a href="#gallery" class="x1 small text-n">#</a></h2>
     
     <p>
       <!--a href="#gallery"><svg class="icon-expand text"><path/></svg> Gallery</a-->
       <a href="#img1"><svg class="icon-image text-y"><path/></svg> Image</a>
+      <label for="debug" class="link hover">Debug</label>
     </p>
     <div class="row gap stretch">
       <a href="#img1"><img alt="pic" class="fit" src="https://placehold.co/200x100/933/fff.png?text=Red"></a>
@@ -95,12 +122,12 @@
       <div class="corner">
         <a href="#cancel" class="pad"><svg class="icon-close text-n"><path/></svg></a>
       </div>
-      <a href="#img2"><img id="img1" alt="pic" src="https://placehold.co/400x200/933/fff.png?text=RED" class="target" loading="lazy"></a>
-      <a href="#img3"><img id="img2" alt="pic" src="https://placehold.co/300x200/393/fff.png?text=GREEN" class="target" loading="lazy"></a>
-      <a href="#img4"><img id="img3" alt="pic" src="https://placehold.co/200x200/039/fff.png?text=BLUE" class="target" loading="lazy"></a>
-      <a href="#img1"><img id="img4" alt="pic" src="https://placehold.co/220x300/777/fff.png?text=GREY" class="target" loading="lazy"></a>
+      <a href="#img2"><img id="img1" alt="pic" src="https://placehold.co/400x200/933/fff.png?text=Red" class="target" loading="lazy"></a>
+      <a href="#img3"><img id="img2" alt="pic" src="https://placehold.co/300x200/393/fff.png?text=Green" class="target" loading="lazy"></a>
+      <a href="#img4"><img id="img3" alt="pic" src="https://placehold.co/200x200/039/fff.png?text=Blue" class="target" loading="lazy"></a>
+      <a href="#img1"><img id="img4" alt="pic" src="https://placehold.co/220x300/777/fff.png?text=Grey" class="target" loading="lazy"></a>
     </div>
-    <a href="#close" class="overlay"></a>
+    <a href="#close-gallery" class="overlay"></a>
 
     <h2 id="target">Target <a href="#target" class="x1 small text-n">#</a></h2>
     
@@ -115,6 +142,7 @@
     </div>
 
     <h2 id="popup">Popup <a href="#popup" class="x1 small text-n">#</a></h2>
+    
     <div class="pop"><a class="hover">Default</a> <div class="pad">Info<br>More info</div></div>
     &mdash;
     <div class="pop"><a>Center</a><div class="pad pos-c">Info<br>More info</div></div>
@@ -293,6 +321,7 @@
     </ul>
 
     <h2 id="tree">Tree <a href="#tree" class="x1 small text-n">#</a></h2>
+    
     <ul>
       <li><label class="check"><input type="checkbox">Colors</label>
         <ul>
@@ -329,54 +358,87 @@
 
     <h2 id="table">Table <a href="#table" class="x1 small text-n">#</a></h2>
     
-    <form id="edit" action="#table">
     
-      <p><a href="#confirm" class="bg-n hover pad"><svg class="icon-edit text-i"><path/></svg> Confirm selected row</a>
+    <p>
+      <a href="#multiname" class="bg-n hover"><svg class="icon-edit text-i"><path/></svg> Confirm selected items</a>
+      <a href="?#table"><svg class="icon-refresh text-y"><path/></svg> Reset URL</a>
+    </p>
+    <form id="mult" action="#table">
       <div id="confirm" class="modal target pad">
+        <h3>Confirm multiple items</h3>
         <a href="#cancel" class="corner pad"><svg class="icon-close text-n"><path/></svg></a>
-        <p>Value<br><input name="value" type="text" required></p>
-        <p><button type="submit">Send</button></p>
+        <p>Name<br><input id="multiname" name="name" type="text" required></p>
+        <p><button name="button" value="multiple">Send</button></p>
       </div>
+    </form>
       
-      <div class="scroll">
+    <form id="edit" action="#table">
+      
+      <div class="modal confirm -target pad">
+        <h3>Confirm single item</h3>
+        <button type="reset" class="corner fit pad hover"><svg class="icon-close text-n"><path/></svg></button>
+        <p>Value<br><input name="value" type="text" required title=""></p>
+        <p>
+          <button name="button" value="untyped">Button</button>
+          <button type="submit" name="button" value="submit">Submit</button>
+          <input type="submit" name="button" value="Input">
+          <button type="reset">Cancel</button>
+        </p>
+      </div>
+      <button type="reset" class="overlay"></button>
+      <a href="#close1" class="overlay"></a>
+  
+      <div id="status" class="scroll">
       <table class="bord hover pads serif">
         <caption>Status colors</caption>
         <thead>
-          <tr><th>Status<th>Text<th>Hilite<th>Invert</tr>
+          <tr>
+            <th><input type="checkbox" onclick="this.closest('table').querySelectorAll('[type=checkbox]').forEach(n => n.checked = this.checked)">
+            <th>Text<th>Link<th>Back<th>Invert</tr>
         </thead>
         <tbody>
           <tr>
-            <td><label><input type="radio" name="item" value="note"></label>
-            <td>Note
-            <td class="text-n">Text <a href="x">Link</a>
+            <td>
+              <input form="mult" type="checkbox" name="items" value="note"><path/></svg> &nbsp;
+              <input type="radio" name="item" value="note"><path/></svg>
+            <td class="text-n">Note
+            <td><a href="x" class="text-n">Note</a>
             <td class="bg-n">Text <a href="x">Link</a>
             <td class="inv-n">Text <a href="x">Link</a>
           </tr>
           <tr>
-            <td><label><input type="radio" name="item" value="info"></label>
-            <td>Info
-            <td class="text-i">Text <a href="x">Link</a>
+            <td>
+              <input form="mult" type="checkbox" name="items" value="info"><path/></svg> &nbsp;
+              <input type="radio" name="item" value="info">
+            <td class="text-i">Info
+            <td><a href="x" class="text-i">Info</a>
             <td class="bg-i">Text <a href="x">Link</a>
             <td class="inv-i">Text <a href="x">Link</a>
           </tr>
           <tr>
-            <td><label><input type="radio" name="item" value="success"></label>
-            <td>Success
-            <td class="text-y">Text <a href="x">Link</a>
+            <td>
+              <input form="mult" type="checkbox" name="items" value="success"><path/></svg> &nbsp;
+              <label><input type="radio" name="item" value="success" hidden><svg class="icon-edit text-i"><path/></svg></label>
+            <td class="text-y">Success
+            <td><a href="x" class="text-y">Success</a>
             <td class="bg-y">Text <a href="x">Link</a>
             <td class="inv-y">Text <a href="x">Link</a>
           </tr>
           <tr>
-            <td><label><input type="radio" name="item" value="warning"></label>
-            <td>Warning
-            <td class="text-w">Text <a href="x">Link</a>
+            <td>
+              <input form="mult" type="checkbox" name="items" value="warning"><path/></svg> &nbsp;
+              <label><input type="radio" name="item" value="warning" hidden><svg class="icon-edit text-i"><path/></svg></label>
+            <td class="text-w">Warning
+            <td><a href="x" class="text-w">Warning</a>
             <td class="bg-w">Text <a href="x">Link</a>
             <td class="inv-w">Text <a href="x">Link</a>
           </tr>
           <tr>
-            <td><label><input type="radio" name="item" value="error"></label>
-            <td>Error
-            <td class="text-e">Text <a href="x">Link</a>
+            <td>
+              <input form="mult" type="checkbox" name="items" value="error"><path/></svg> &nbsp;
+              <input type="radio" name="item" value="error">
+            <td class="text-e">Error
+            <td><a href="x" class="text-e">Error</a>
             <td class="bg-e">Text <a href="x">Link</a>
             <td class="inv-e">Text <a href="x">Link</a>
           </tr>
@@ -535,11 +597,17 @@
     </table>
     </div>
 
-    
+    <h3>JavaScript</h3>
+    <ul>
+      <li><a href="#status">Check all boxes</a>
+      <li><a href="#link-dlgm" onclick="dlgm.showModal()">Show native modal dialog</a>
+    </ul>
+        
     <!--p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</p-->
     
   </div>
   <!-- common -->
   <a id="overlay" href="#cancel" accesskey="x"></a>
+  <a class="target" href="?#" accesskey="z"></a>
   </body>
 </html>
