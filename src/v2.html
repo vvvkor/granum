@@ -39,7 +39,12 @@
     <h2 id="colors">Colors <a href="#colors" class="x1 small tx nn">#</a></h2>
     
     <span>Default</span>
-    <a href="#x">Link</a>
+    <a href="?#">Link</a>
+    <a href="?#" class="hover">Hover</a>
+    <a href="?#" class="act">Active</a>
+    <a href="?#" class="act hover">ActHover</a>
+    <a href="?#" class="inact">Inactive</a>
+    <a href="#x">Hash</a>
     <a>Unlink</a>
     <mark>Mark</mark>
     <span class="bgl">Lite</span>
@@ -167,7 +172,7 @@
     </div>
 
     <details>
-      <summary class="link">Open details</summary>
+      <summary class="link fit hover">Open details</summary>
       <div class="bg nn pad">Target</div>
     </details>
       
@@ -479,6 +484,7 @@
     </form>
 
     <h2 id="grid">Grid <a href="#grid" class="x1 small tx nn">#</a></h2>
+    
     <p>Don't use <code>.row.wrap</code> with <code>.row > .scroll</code>.</p>
     <div class="row resp -wrap stretch gap -mid -vert full" style="height:80vh;">
       <div class="pad bg nn col-0">Col</div>
@@ -490,6 +496,31 @@
       </div>
       <div class="pad bg ww scroll nobr">Horizontal overflow and scroll. WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW</div>
       <div class="pad bg ee scroll">Vertical overflow and scroll.<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</div>
+    </div>
+    
+    <h2 id="container">Container <a href="#container" class="x1 small tx nn">#</a></h2>
+    
+    <div class="container">
+      <div class="bgl ww pad">
+        <div class="container">
+          <div class="bg yy pad">
+            Narrow
+          </div>
+          <div class="bg ee pad">
+            Container
+          </div>
+        </div>
+      </div>
+      <div class="bg nn pad col-3">
+        <div class="container">
+          <div class="bg yy pad">
+            Wide
+          </div>
+          <div class="bg ee pad">
+            Container
+          </div>
+        </div>
+      </div>
     </div>
     
     <h2 id="icons">Icons (82) <a href="#icons" class="x1 small tx nn">#</a></h2>
@@ -590,7 +621,7 @@
     <table class="bord hover">
       <caption>Toggle methods comparation</caption>
       <thead>
-        <tr><th>Feature<th>Hash<th>Label + checkbox<th>Details</tr>
+        <tr><th>Feature<th>:target<th>:checked<th>details</tr>
       </thead>
       <tbody>
         <tr><td>Markup<td class="bg yy">clean; free placement<td class="bg ee">extra label + checkbox; target must be next<td class="bg yy">native</tr>
@@ -603,6 +634,7 @@
         <tr><td>Scroll<td class="bg ww">jumps to target<td class="bg yy">no jump<td class="bg yy">no jump</tr>
         <tr><td>Keep on hash change<td class="bg ww">no<td class="bg yy">yes<td class="bg yy">yes</tr>
         <tr><td>Backdrop<td class="bg yy">link<td class="bg yy">reset button<td class="bg yy">no link</tr>
+        <tr><td>Responsive state<td class="bg yy">yes<td class="bg yy">yy<td class="bg ee">no</tr>
       </tbody>
     </table>
     </div>
@@ -611,22 +643,24 @@
     <table class="bord hover">
       <caption>Toggler components</caption>
       <thead>
-        <tr><th>Component<th>Markup<th>Method<th>Features</tr>
+        <tr><th>Component<th>Markup<th>Method<th>Features<th>Preferred method</tr>
       </thead>
       <tbody>
-        <tr><td>Popup<td>.pop<td>hover / label<td></tr>
-        <tr><td>Hint<td>[data-hint]<td>hover<td></tr>
-        <tr><td>Dropdown<td>ul.row<td>hover<td></tr>
-        <tr><td>Toggle<td>#, .target / label / details<td>hash / label / summary<td>jump / - / -</tr>
-        <tr><td>Accordion / tree<td>ul # .target / ul<td>hash / label<td>jump / -</tr>
-        <tr><td>Tabs<td>.tabs # / .tabs label<td>hash / label<td>jump / -</tr>
-        <tr><td>Modal<td>.modal.target<td>hash<td>overlay</tr>
-        <tr><td>Gallery<td>.modal.target img.target<td>hash<td>overlay</tr>
-        <tr><td>Drawer<td>.drawer(.target)<td>hash<td>overlay</tr>
-        <tr><td>Stick<td>.stick<td>-<td></tr>
+        <tr><td>Popup<td>.pop<td>hover / label<td><td>:hover</tr>
+        <tr><td>Hint<td>[data-hint]<td>hover<td><td>:hover</tr>
+        <tr><td>Dropdown<td>ul.row<td>hover<td><td>:hover</tr>
+        <tr><td>Toggle<td>#, .target / label / details<td>hash / label / summary<td>jump / - / -<td>details (:target, :checked)</tr>
+        <tr><td>Accordion / tree<td>ul # .target / ul<td>hash / label<td>jump / -<td>:target</tr>
+        <tr><td>Tabs<td>.tabs # / .tabs label<td>hash / label<td>jump / -<td>:checked (:target, :target v2)</tr>
+        <tr><td>Modal<td>.modal.target<td>hash<td>overlay<td>:target</tr>
+        <tr><td>Gallery<td>.modal.target img.target<td>hash<td>overlay<td>:target</tr>
+        <tr><td>Drawer<td>.drawer(.target)<td>hash<td>overlay<td>:target</tr>
+        <tr><td>Stick<td>.stick<td>-<td><td>sticky</tr>
       </tbody>
     </table>
     </div>
+    <p class="tx nn">Native <code>dialog</code> could be used for modals, but it has no way to open without JS.</p>
+    <p class="tx nn">Native <code>details</code> could be used for modals, but it is locked to single closing element.</p>
 
     <h3>JavaScript</h3>
     <ul>

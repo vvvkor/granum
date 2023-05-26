@@ -9,7 +9,7 @@
   /* basic */
   --rfsz: 1.2;
   --bg: #fcfcfc;
-  --bgl: #8881;
+  --bgl: #9992;
   --over: #0001;
   --text: #222;
   --link: #03a;
@@ -49,7 +49,7 @@ table {border-collapse:collapse;border-spacing:0}
 td, th {padding:0;text-align:left}
 * {box-sizing:content-box;}
 table, img, embed, iframe, object, audio, video, button, input, select, textarea,
-	.wrap, .row, .row>*, .modal, .drawer, .stick, .full {box-sizing:border-box;}
+	.wrap, .row, .row>*, .container, .container>*, .modal, .drawer, .stick, .full {box-sizing:border-box;}
 
 button, [type="submit"], [type="search"] {-webkit-appearance:none;} /* safari */
 button::-moz-focus-inner, [type="submit"]::-moz-focus-inner {border:none;} /* firefox */
@@ -76,10 +76,10 @@ pre code {font-size:100%;}
 /* status border color? */
 
 /* links */
-a[href], .link, .check, .pop>a, ul.row a {color:var(--link);/*text-decoration:none;*/cursor:pointer;text-underline-offset:.15em;}
+a[href], .link, .check, .pop>a, ul.row a {display:inline;color:var(--link);/*text-decoration:none;*/cursor:pointer;text-underline-offset:.15em;}
   ul.row li:has(>a) {cursor:pointer;}
   a:not([href]), a[href^="#"], a.pad, ul.pads a, .tabs>a {text-decoration:none;}
-a.act, a[href^="#"]:has(+:target), .check:has(:checked), .tabs:not(:has(:target))>a:first-of-type {color:var(--act);background-color:var(--bg-act);}
+a.act, a[href^="#"]:has(+:target), .check:has(:checked), .tabs:not(:has(:target))>a:first-of-type, [open]>.link {color:var(--act);background-color:var(--bg-act);}
 :is(a[href], .link, .check):hover, .pop:hover>a, ul.row li:hover>a {color:var(--hover);}
 :is(a, button, .link, .check).hover:hover, ul.hover li:is(:hover, :has(:hover)):has(>a), .pop:hover>a.hover, table.hover tbody tr:hover>*, .tabs.hover>:is(a,label):hover {/*background-color:var(--bgl);*/box-shadow:var(--shade-hover);}
 
@@ -203,7 +203,7 @@ ul.tabs+div>:first-child, ul.tabs[class]+div>:is(:target, :has(:target)) {displa
 
 /* form */
 button, summary {cursor:pointer;}
-form:has(:invalid) :is(button:not([type]), [type="submit"]) {opacity:.5;pointer-events:none;}
+.inact, form:has(:invalid) :is(button:not([type]), [type="submit"]) {opacity:.5;filter:grayscale(1);pointer-events:none;}
 form:not(:has([type="radio"]:checked)) .confirm {display:none;}
 
 /* use grid, no .field, validate, button   */
@@ -299,7 +299,7 @@ form:not(:has([type="radio"]:checked)) .confirm {display:none;}
 .icon-none>path {--w:1;d:path("M1 1z");}
 
 /* modifiers */
-.fit {margin:0;padding:0;border:none;border-radius:0;box-shadow:0;background:none;}
+.fit {margin:0;padding:0;border:none;border-radius:0;box-shadow:none;background:none;list-style:none;}
 .wrap {max-width:45em;}
 .full:not(.modal) {height:100vh;height:100dvh;}
 .nobr {white-space:nowrap;}
@@ -330,6 +330,13 @@ ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div) {display:block;}
   ul.row.resp {width:var(--minw);}
   ul.row.resp[class] ul:not([class*="pos-"]) {left:100%;top:0;}
   ul.row.resp li:has(ul)>a:after {position:absolute;right:.5em;top:50%;transform:translateY(-60%);}
+}
+
+/* containers */
+body, .container>* {container: block / inline-size;}
+@container (min-width: 450px) {
+  .container {display:flex;}
+  .container>:not([class*="col-"]) {flex:1;}
 }
 
 /* invert */
