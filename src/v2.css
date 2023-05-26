@@ -103,10 +103,11 @@ mark {background-color:hsl(var(--hue-w) var(--rsatur) var(--rlit) / var(--alpha)
 
 /* grid */
 /* +ul, +row, +vert, +mid, +scroll, +gap, +wrap, +resp, +col-1, +push, +shift, vert-scroll */
-.row {display:flex;}
-.row.vert {flex-direction:column;}
+.row {--flow:row nowrap;--wid:auto;--push:auto;display:flex;flex-flow:var(--flow);width:var(--wid);}
+.row.wrap, ul.row, .tabs {--flow:row wrap;}
+.row.vert {--flow:column nowrap;--push:0;}
+ul.row.vert {--wid:var(--minw);}
 .row.gap {gap:var(--gap);}
-.row.wrap, ul.row {flex-wrap:wrap;}
   .row:not(ul).mid {align-items:center;}
   .row>.mid, ul.row>li>.mid:not(ul) {align-self:center;}
 .col-1, .stretch>* {flex:1;}
@@ -149,7 +150,7 @@ img:target {position:absolute;display:block;inset:0;width:100%;height:100%;objec
 .dialog>summary {list-style:none;}
 .dialog:not([open])>summary>:last-child, .dialog[open]>summary>:not(:last-child) {display:none;}
 .dialog:not([open]) {display:inline;}
-/* pop, drop, hover, arrow; box pop/drop, onhover */
+/* pop, drop */
 .pop, ul.row li {position:relative;}
 .pop {display:inline-block;}
   /* for variable items height */
@@ -158,31 +159,30 @@ img:target {position:absolute;display:block;inset:0;width:100%;height:100%;objec
   ul.row li:has(ul)>a:after {display:inline-block;content:'\a0\a0\203a';color:var(--text);opacity:.5;}
   ul.row ul li:has(ul)>a:after, ul.row.vert li:has(ul)>a:after {position:absolute;right:.5em;top:50%;transform:translateY(-60%);}
   /**/
-ul.row.vert {width:var(--minw);}
 .pop:not(:hover):not(:has(.check))>:last-child, ul.row li:not(:hover)>ul {display:none;}
 .pop>:last-child, ul.row ul {position:absolute;background-color:var(--bg);box-shadow:var(--shade);min-width:var(--minw);z-index:50;}
-:is(.pop>:last-child, ul.row:not(.vert)>li>ul):not([class*="pos-"]) {left:0;top:100%;}
-ul.row ul:not([class*="pos-"]) {left:100%;top:0;}
+.pop>:last-child, ul.row ul {inset:var(--pos);}
+ul, ul.vert>li>ul {--pos:0 auto auto 100%;}
+.pop:last-child, .row>li>ul {--pos:100% auto auto 0;}
 ul.row, ul.row ul {list-style:none;margin:0;padding:0;}
-.pos-tl {inset:auto 0 100% auto;}
-.pos-t  {inset:auto auto 100% 50%;}
-.pos-tr {inset:auto auto 100% 0;}
-.pos-bl {inset:100% 0 auto auto;}
-.pos-b  {inset:100% auto auto 50%;}
-.pos-br {inset:100% auto auto 0;}
-.pos-rt {inset:auto auto 0 100%;}
-.pos-r  {inset:50% auto auto 100%;}
-.pos-rb {inset:0 auto auto 100%;}
-.pos-lt {inset:auto 100% 0 auto;}
-.pos-l  {inset:50% 100% auto auto;}
-.pos-lb {inset:0 100% auto auto;}
+[class].pos-tl {--pos:auto 0 100% auto;}
+[class].pos-t  {--pos:auto auto 100% 50%;}
+[class].pos-tr {--pos:auto auto 100% 0;}
+[class].pos-bl {--pos:100% 0 auto auto;}
+[class].pos-b  {--pos:100% auto auto 50%;}
+[class].pos-br {--pos:100% auto auto 0;}
+[class].pos-rt {--pos:auto auto 0 100%;}
+[class].pos-r  {--pos:50% auto auto 100%;}
+[class].pos-rb {--pos:0 auto auto 100%;}
+[class].pos-lt {--pos:auto 100% 0 auto;}
+[class].pos-l  {--pos:50% 100% auto auto;}
+[class].pos-lb {--pos:0 100% auto auto;}
+[class].pos-c {--pos:50% auto auto 50%;transform:translate(-50%,-50%);}
 .pos-t, .pos-b {transform:translateX(-50%);}
 .pos-l, .pos-r {transform:translateY(-50%);}
-.pos-c {left:50%;top:50%;transform:translate(-50%,-50%);}
 /* tabs */
 .tabs a, .tabs>label {border-bottom:2px solid transparent;}
 .tabs a:is(.act, :hover), .tabs>label:is(:has(:checked), :hover), .tabs>a:has(+:target), .tabs:not(:has(:target))>a:first-of-type {border-color:initial;}
-  .tabs {flex-wrap:wrap;}
   .tabs>div {order:10;width:100%;}
 ul.tabs+div>*, ul.tabs[class]+div:has(:target)>* {display:none;}
 ul.tabs+div>:first-child, ul.tabs[class]+div>:is(:target, :has(:target)) {display:block;}
@@ -315,8 +315,8 @@ ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div) {display:block;}
 .c, .tag {text-align:center;}
 .r {text-align:right;}
 .corner {position:absolute;top:0;right:0;width:auto;z-index:1;}
-  .row:not(.vert) .push {margin-right:auto;}
-  .row:not(.vert) .shift {margin-left:auto;}
+  .row .push {margin-right:var(--push);}
+  .row .shift {margin-left:var(--push);}
   .row:not(.vert) .push + .shift {margin-left:0;}
 /* +pad bord mar ~mid rad shade */
 
@@ -325,11 +325,10 @@ ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div) {display:block;}
 	:root {
     --rfsz: 1;
   }
-  .row.resp {flex-direction:column;}
-  .row.resp>:is(.push, .shift) {margin:0;}
-  ul.row.resp {width:var(--minw);}
-  ul.row.resp[class] ul:not([class*="pos-"]) {left:100%;top:0;}
-  ul.row.resp li:has(ul)>a:after {position:absolute;right:.5em;top:50%;transform:translateY(-60%);}
+  .row.resp {--flow:column nowrap;--push:0;}
+  ul.row.resp {--wid:var(--minw);}
+  ul.row.resp ul {--pos:0 auto auto 100%;} /* avoids custom pos */
+  ul.row.resp li:has(ul)>a:after {position:absolute;right:.5em;top:50%;transform:translateY(-60%);} /* arrow */
 }
 
 /* containers */
