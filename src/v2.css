@@ -156,8 +156,8 @@ img:target {position:absolute;display:block;inset:0;width:100%;height:100%;objec
   /* for variable items height */
   ul.row.mid:not(.vert) li {display:flex;align-items:center;}
   /* subnav arrow */
-  ul.row li:has(ul)>a:after {display:inline-block;content:'\a0\a0\203a';color:var(--text);opacity:.5;}
-  ul.row ul li:has(ul)>a:after, ul.row.vert li:has(ul)>a:after {position:absolute;right:.5em;top:50%;transform:translateY(-60%);}
+  ul.row li:has(ul)>a {padding-right:calc(1.5 * var(--gap));}
+  ul.row li:has(ul)>a:after {content:'\a0\a0\203a';color:var(--text);opacity:.5;position:absolute;right:.5em;top:50%;transform:translateY(-60%);}
   /**/
 .pop:not(:hover):not(:has(.check))>:last-child, ul.row li:not(:hover)>ul {display:none;}
 .pop>:last-child, ul.row ul {position:absolute;background-color:var(--bg);box-shadow:var(--shade);min-width:var(--minw);z-index:50;}
@@ -328,7 +328,6 @@ ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div) {display:block;}
   .row.resp {--flow:column nowrap;--push:0;}
   ul.row.resp {--wid:var(--minw);}
   ul.row.resp ul {--pos:0 auto auto 100%;} /* avoids custom pos */
-  ul.row.resp li:has(ul)>a:after {position:absolute;right:.5em;top:50%;transform:translateY(-60%);} /* arrow */
 }
 
 /* containers */
