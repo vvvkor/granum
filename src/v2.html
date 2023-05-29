@@ -27,8 +27,6 @@
   <body class="-invert">
   <div class="wrap center pad">
 
-    <h1><a href="#" accesskey="1"><svg class="icon-config tx nn"><path/></svg> Granum v2</a></h1>
-
     <h2 id="config">Config <a href="#config" class="x1 small tx nn">#</a></h2>
     
     <div><a href="?#"><svg class="icon-refresh tx yy"><path/></svg> Reset URL</a></div>
@@ -66,13 +64,12 @@
     
     <h2 id="modal">Modal <a href="#modal" class="x1 small tx nn">#</a></h2>
     
-    <p>
-      Basic:
-      <a href="#mod1"><svg class="icon-collapse text"><path/></svg> Modal</a> &nbsp;
-      <a href="#mod2"><svg class="icon-expand text"><path/></svg> Fullscreen</a> &nbsp;
-      <a href="#modal-input"><svg class="icon-edit tx ii"><path/></svg> Focus input</a> &nbsp;
-      <a id="link-dlgm" href="#dlgm" onclick="dlgm.showModal()"><svg class="icon-chat tx yy"><path/></svg> Modal dialog JS</a> &nbsp;
-    </p>
+    <ul class="row gap">
+      <li><a href="#mod1"><svg class="icon-collapse text"><path/></svg> Modal</a></li>
+      <li><a href="#mod2"><svg class="icon-expand text"><path/></svg> Fullscreen</a></li>
+      <li><a href="#modal-input"><svg class="icon-edit tx ii"><path/></svg> Focus input</a></li>
+      <li><a id="link-dlgm" href="#dlgm" onclick="dlgm.showModal()"><svg class="icon-chat tx yy"><path/></svg> Modal dialog JS</a></li>
+    </ul>
     
     <div id="mod1" class="modal target pad">
       <a href="#cancel" class="corner pad hover"><svg class="icon-close tx nn"><path/></svg></a>
@@ -100,11 +97,11 @@
     
     <h2 id="gallery">Gallery <a href="#gallery" class="x1 small tx nn">#</a></h2>
     
-    <p>
-      <!--a href="#gallery"><svg class="icon-expand text"><path/></svg> Gallery</a-->
-      <a href="#img1"><svg class="icon-image tx yy"><path/></svg> Image</a>&nbsp; 
-      <label for="debug" class="link hover"><svg class="icon-warning tx ww"><path/></svg> Debug</label>
-    </p>
+    <ul class="row gap mar">
+      <!--li><a href="#gallery"><svg class="icon-expand text"><path/></svg> Gallery</a></li-->
+      <li><a href="#img1"><svg class="icon-image tx yy"><path/></svg> Image</a></li>
+      <li><label for="debug" class="link hover"><svg class="icon-warning tx ww"><path/></svg> Debug</label></li>
+    </ul>
     <div class="row gap stretch">
       <a href="#img1"><img alt="pic" class="fit" src="https://placehold.co/200x100/933/fff.png?text=Red"></a>
       <a href="#img2"><img alt="pic" class="fit" src="https://placehold.co/180x120/393/fff.png?text=Green"></a>
@@ -135,7 +132,7 @@
     </div>
 
     <details>
-      <summary class="link fit hover">Open details</summary>
+      <summary class="link -fit hover">Open details</summary>
       <div class="bg nn pad">Target</div>
     </details>
       
@@ -246,6 +243,7 @@
     </div>
     
     <h2 id="dropdown">Dropdown <a href="#dropdown" class="x1 small tx nn">#</a></h2>
+    
     <ul class="row -vert resp bgl mid pads hover">
     <!--ul class="row gap"-->
       <li><a>Colors<br><small class="tx nn">Info</small></a>
@@ -356,7 +354,6 @@
 
     <h2 id="table">Table <a href="#table" class="x1 small tx nn">#</a></h2>
     
-    
     <p>
       <a href="#multiname" class="bg nn hover"><svg class="icon-edit tx ii"><path/></svg> Confirm selected items</a>
       <a href="?#table"><svg class="icon-refresh tx yy"><path/></svg> Reset URL</a>
@@ -449,7 +446,7 @@
     <h2 id="grid">Grid <a href="#grid" class="x1 small tx nn">#</a></h2>
     
     <p>Don't use <code>.row.wrap</code> with <code>.row > .scroll</code>.</p>
-    <div class="row resp -wrap stretch gap -mid -vert full" style="height:80vh;">
+    <div class="row resp -wrap stretch gap -mid -vert full" style="height:20em;">
       <div class="pad bg nn col-0">Col</div>
       <div class="pad bg ii col-1"><div class="pop"><a>Popup</a><div class="pad">Popups and dropdowns can overflow non-scrollable parent grid item</div></div></div>
       <div class="pad bg yy col-2 scroll scrollbar     row vert">
@@ -464,23 +461,25 @@
     <h2 id="container">Container <a href="#container" class="x1 small tx nn">#</a></h2>
     
     <div class="container">
-      <div class="bgl ww pad">
-        <div class="container">
-          <div class="bg yy pad">
-            Narrow
-          </div>
-          <div class="bg ee pad">
-            Container
+      <div class="row aware">
+        <div class="bgl ww pad col-1 container">
+          <div class="row aware stretch">
+            <div class="bg yy pad">
+              Narrow
+            </div>
+            <div class="bg ee pad">
+              Container
+            </div>
           </div>
         </div>
-      </div>
-      <div class="bg nn pad col-3">
-        <div class="container">
-          <div class="bg yy pad">
-            Wide
-          </div>
-          <div class="bg ee pad">
-            Container
+        <div class="bg nn pad col-3 container">
+          <div class="row aware stretch">
+            <div class="bg yy pad">
+              Wide
+            </div>
+            <div class="bg ee pad">
+              Container
+            </div>
           </div>
         </div>
       </div>
