@@ -37,6 +37,9 @@
     <h2 id="colors">Colors <a href="#colors" class="x1 small tx nn">#</a></h2>
     
     <span>Default</span>
+    <mark>Mark</mark>
+    <span class="bgl">Lite</span>
+    <br>
     <a href="?#">Link</a>
     <a href="?#" class="hover">Hover</a>
     <a href="?#" class="act">Active</a>
@@ -44,8 +47,7 @@
     <a href="?#" class="inact">Inactive</a>
     <a href="#x">Hash</a>
     <a>Unlink</a>
-    <mark>Mark</mark>
-    <span class="bgl">Lite</span>
+    <a class="hover">UnlinkHover</a>
     <br>
     <span class="text">Text</span>
     <span class="tx nn">Note</span>
@@ -162,7 +164,12 @@
         <label class="check hover"><input type="checkbox">Open by label</label>
         <div class="bg nn pad">Target</div>
       </div>
+      <details class="pop">
+        <summary class="link -fit hover">Open details</summary>
+        <div class="bg nn pad">Pop<p>p<p>p<p>p<p>p</div>
+      </details>
     </div>
+      
     
     <h2 id="tabs">Tabs <a href="#tabs" class="x1 small tx nn">#</a></h2>
     
@@ -282,7 +289,7 @@
     
     <h2 id="accordion">Accordion <a href="#accordion" class="x1 small tx nn">#</a></h2>
     
-    <ul>
+    <ul class="-fit">
       <li><a href="#list1">Colors</a>
         <ul id="list1" class="target">
           <li><a href="#list11">Red</a>
@@ -318,23 +325,23 @@
 
     <h2 id="tree">Tree <a href="#tree" class="x1 small tx nn">#</a></h2>
     
-    <ul>
-      <li><label class="check"><input type="checkbox">Colors</label>
+    <ul class="-fit">
+      <li><label class="check"><input type="checkbox" name="acc">Colors (one of them)</label>
         <ul>
-          <li><label class="check"><input type="checkbox">Red</label>
+          <li><label class="check"><input type="radio" name="acc1">Red</label>
             <ul>
               <li><a>Orange</a></li>
               <li><a>Pink</a></li>
               <li><a>Carmine</a></li>
             </ul>
           </li>
-          <li><label class="check"><input type="checkbox">Green</label>
+          <li><label class="check"><input type="radio" name="acc1">Green</label>
             <ul>
               <li><a>Lime</a></li>
               <li><a>Tile</a></li>
             </ul>
           </li>
-          <li><label class="check"><input type="checkbox">Blue</label>
+          <li><label class="check"><input type="radio" name="acc1">Blue</label>
             <ul id="blue">
               <li><a>Navy</a></li>
               <li><a>Cyan</a></li>
@@ -342,7 +349,7 @@
           </li>
         </ul>
       </li>
-      <li><label class="check"><input type="checkbox" checked>Languages</label>
+      <li><label class="check"><input type="checkbox" name="acc" checked>Languages</label>
         <ul>
           <li><a>English</a></li>
           <li><a>Spanish</a></li>
@@ -351,7 +358,86 @@
       </li>
       <li><a>Three</a></li>
     </ul>
+    
+    <h2 id="subdetailslist">Subdetails list <a href="#subdetailslist" class="x1 small tx nn">#</a></h2>
 
+    <ul class="hover -fit">
+      <li>
+        <details><summary class="link hover">Colors</summary>
+        <ul>
+          <li>
+            <details><summary>Red</summary>
+            <ul>
+              <li><a>Orange</a></li>
+              <li><a>Pink</a></li>
+              <li><a>Carmine</a></li>
+            </ul>
+            </details>
+          </li>
+          <li>
+            <details><summary>Green</summary>
+            <ul>
+              <li><a>Lime</a></li>
+              <li><a>Tile</a></li>
+            </ul>
+            </details>
+          </li>
+          <li>
+            <details><summary>Blue</summary>
+            <ul>
+              <li><a>Navy</a></li>
+              <li><a>Cyan</a></li>
+            </ul>
+            </details>
+          </li>
+        </ul>
+        </details>
+      </li>
+      <li>
+        <details><summary>Languages</summary>
+        <ul>
+          <li><a>English</a></li>
+          <li><a>Spanish</a></li>
+          <li><a>Russian</a></li>
+        </ul>
+        </details>
+      </li>
+      <li><a href="#x">Three</a></li>
+    </ul>
+
+    <h2 id="subdetails">Subdetails <a href="#subdetails" class="x1 small tx nn">#</a></h2>
+
+    <details><summary class="-link -hover">Colors</summary>
+      <details><summary>Red</summary>
+      <ul>
+        <li><a>Orange</a></li>
+        <li><a>Pink</a></li>
+        <li><a>Carmine</a></li>
+      </ul>
+      </details>
+      <details><summary>Green</summary>
+      <ul>
+        <li><a>Lime</a></li>
+        <li><a>Tile</a></li>
+      </ul>
+      </details>
+      <details><summary>Blue</summary>
+      <ul>
+        <li><a>Navy</a></li>
+        <li><a>Cyan</a></li>
+      </ul>
+      </details>
+    </details>
+    <details><summary>Languages</summary>
+    <ul>
+      <li><a>English</a></li>
+      <li><a>Spanish</a></li>
+      <li><a>Russian</a></li>
+    </ul>
+    </details>
+    <div>Three</div>
+
+    
     <h2 id="table">Table <a href="#table" class="x1 small tx nn">#</a></h2>
     
     <p>
@@ -384,7 +470,7 @@
       <a href="#close1" class="overlay"></a>
   
       <div id="status" class="scroll">
-      <table class="bord hover pads serif">
+      <table class="bord hover serif">
         <caption>Status colors</caption>
         <thead>
           <tr>
@@ -446,7 +532,7 @@
     <h2 id="grid">Grid <a href="#grid" class="x1 small tx nn">#</a></h2>
     
     <p>Don't use <code>.row.wrap</code> with <code>.row > .scroll</code>.</p>
-    <div class="row resp -wrap stretch gap -mid -vert full" style="height:20em;">
+    <div class="row resp -wrap stretch gap -mid -vert full" style="height:30em;">
       <div class="pad bg nn col-0">Col</div>
       <div class="pad bg ii col-1"><div class="pop"><a>Popup</a><div class="pad">Popups and dropdowns can overflow non-scrollable parent grid item</div></div></div>
       <div class="pad bg yy col-2 scroll scrollbar     row vert">
@@ -586,17 +672,17 @@
         <tr><th>Feature<th>:target<th>:checked<th>details</tr>
       </thead>
       <tbody>
-        <tr><td>Markup<td class="bg yy">clean; free placement<td class="bg ee">extra label + checkbox; target must be next<td class="bg yy">native</tr>
-        <tr><td>Link<td class="bg yy">by link hash<td class="bg yy">by link hash (optional)<td class="bg yy">summary</tr>
-        <tr><td>Initial show<td class="bg ww">by link hash (single)<td class="bg yy">by checkbox; by link hash (single)<td class="bg yy">[open]</tr>
-        <tr><td>Close on repeating click<td class="bg ee">no<td class="bg ww">if not linked<td class="bg yy">yes</tr>
-        <tr><td>Highlight<td class="bg ww">if target is next<td class="bg yy">yes (target is always next)<td class="bg yy">yes</tr>
-        <tr><td>Nested<td class="bg yy">yes<td class="bg yy">yes<td class="bg yy">yes</tr>
-        <tr><td>Multiple selected<td class="bg ee">no<td class="bg yy">yes<td class="bg yy">yes</tr>
-        <tr><td>Scroll<td class="bg ww">jumps to target<td class="bg yy">no jump<td class="bg yy">no jump</tr>
-        <tr><td>Keep on hash change<td class="bg ww">no<td class="bg yy">yes<td class="bg yy">yes</tr>
-        <tr><td>Backdrop<td class="bg yy">link<td class="bg yy">reset button<td class="bg yy">no link</tr>
-        <tr><td>Responsive state<td class="bg yy">yes<td class="bg yy">yy<td class="bg ee">no</tr>
+        <tr><td>Markup<td class="tx yy">clean; free placement<td class="tx ee">extra label + checkbox; target must be next<td class="tx yy">native</tr>
+        <tr><td>Link<td class="tx yy">by link hash<td class="tx yy">by link hash (optional)<td class="tx yy">summary</tr>
+        <tr><td>Initial show<td class="tx ww">by link hash (single)<td class="tx yy">by checkbox; by link hash (single)<td class="tx yy">[open]</tr>
+        <tr><td>Close on repeating click<td class="tx ee">no<td class="tx ww">if not linked<td class="tx yy">yes</tr>
+        <tr><td>Highlight<td class="tx ww">if target is next<td class="tx yy">yes (target is always next)<td class="tx yy">yes</tr>
+        <tr><td>Nested<td class="tx yy">yes<td class="tx yy">yes<td class="tx yy">yes</tr>
+        <tr><td>Multiple selected<td class="tx ee">no<td class="tx yy">yes<td class="tx yy">yes</tr>
+        <tr><td>Scroll<td class="tx ww">jumps to target<td class="tx yy">no jump<td class="tx yy">no jump</tr>
+        <tr><td>Keep on hash change<td class="tx ww">no<td class="tx yy">yes<td class="tx yy">yes</tr>
+        <tr><td>Backdrop<td class="tx yy">link<td class="tx yy">reset button<td class="tx yy">no link</tr>
+        <tr><td>Responsive state<td class="tx yy">yes<td class="tx yy">yy<td class="tx ee">no</tr>
       </tbody>
     </table>
     </div>
@@ -605,19 +691,20 @@
     <table class="bord hover">
       <caption>Toggler components</caption>
       <thead>
-        <tr><th>Component<th>Markup<th>Method<th>Features<th>Preferred method</tr>
+        <tr><th>Component<th>Markup<th>Method<th>Features</tr>
       </thead>
       <tbody>
-        <tr><td>Popup<td>.pop<td>hover / label<td><td>:hover</tr>
-        <tr><td>Hint<td>[data-hint]<td>hover<td><td>:hover</tr>
-        <tr><td>Dropdown<td>ul.row<td>hover<td><td>:hover</tr>
-        <tr><td>Toggle<td>#, .target / label / details<td>hash / label / summary<td>jump / - / -<td>details (:target, :checked)</tr>
-        <tr><td>Accordion / tree<td>ul # .target / ul<td>hash / label<td>jump / -<td>:target</tr>
-        <tr><td>Tabs<td>.tabs # / .tabs label<td>hash / label<td>jump / -<td>:checked (:target, :target v2)</tr>
-        <tr><td>Modal<td>.modal.target<td>hash<td>overlay<td>:target</tr>
-        <tr><td>Gallery<td>.modal.target img.target<td>hash<td>overlay<td>:target</tr>
-        <tr><td>Drawer<td>.drawer(.target)<td>hash<td>overlay<td>:target</tr>
-        <tr><td>Stick<td>.stick<td>-<td><td>sticky</tr>
+        <tr><td>Popup<td>.pop<td>:hover / :checked / details<td></tr>
+        <tr><td>Hint<td>[data-hint]<td>:hover<td></tr>
+        <tr><td>Dropdown<td>ul.row<td>:hover<td></tr>
+        <tr><td>Toggle<td>.target:target / label / <b>details</b><td>:target / :checked / summary<td>jump / - / -</tr>
+        <tr><td>Accordion<td>ul .target:target / <b>ul label [radio]</b><td>:target / :checked<td>jump / -</tr>
+        <tr><td>Tree<td><b>ul label</b> / ul details / details<td>:checked / summary / summary<td>-</tr>
+        <tr><td>Tabs<td>.tabs :target / <b>.tabs label [radio]</b><td>:target / :checked<td>jump / -</tr>
+        <tr><td>Modal<td>.modal.target<td>:target<td>overlay</tr>
+        <tr><td>Gallery<td>.modal.target img.target<td>:target<td>overlay</tr>
+        <tr><td>Drawer<td>.drawer(.target)<td>:target<td>overlay</tr>
+        <tr><td>Stick<td>.stick<td>-<td>sticky</tr>
       </tbody>
     </table>
     </div>
