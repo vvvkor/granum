@@ -66,29 +66,13 @@
     
     <h2 id="modal">Modal <a href="#modal" class="x1 small tx nn">#</a></h2>
     
-    <div class="mar">
+    <p>
       Basic:
       <a href="#mod1"><svg class="icon-collapse text"><path/></svg> Modal</a> &nbsp;
       <a href="#mod2"><svg class="icon-expand text"><path/></svg> Fullscreen</a> &nbsp;
       <a href="#modal-input"><svg class="icon-edit tx ii"><path/></svg> Focus input</a> &nbsp;
-      <br>
-      Experimental:
-      <a href="#dlg"><svg class="icon-chat tx ii"><path/></svg> Dialog</a> &nbsp;
-      <span><a id="link-dlgm" href="#dlgm" onclick="dlgm.showModal()"><svg class="icon-chat tx yy"><path/></svg> Modal dialog JS</a> &nbsp;</span>
-      <!--span><a id="link-dlgx" href="#dlgx" onclick="dlgx.showModal()"><svg class="icon-chat tx yy"><path/></svg> Modal dialog*</a> &nbsp;</span-->
-      
-      <details class="dialog">
-        <summary id="sum" class="">
-          <div class="link -hover"><svg class="icon-open tx ww"><path/></svg> Summary modal</div>
-          <div class="pad bg nn r"><a class="-pad"><svg class="icon-close tx nn"><path/></svg></a></div>
-        </summary>
-        <div class="pad">
-          <div class="tx ee">No clickable backdrop</div>
-          <div class="tx ee">Initial summary disappears on open</div>
-          <div class="tx ee">Locked to single closing element</div>
-        </div>
-      </details>
-    </div>
+      <a id="link-dlgm" href="#dlgm" onclick="dlgm.showModal()"><svg class="icon-chat tx yy"><path/></svg> Modal dialog JS</a> &nbsp;
+    </p>
     
     <div id="mod1" class="modal target pad">
       <a href="#cancel" class="corner pad hover"><svg class="icon-close tx nn"><path/></svg></a>
@@ -100,40 +84,19 @@
     <a href="#close-mod1" class="overlay"></a>
 
     <div id="mod2" class="modal full target pad">
-      <a href="#mod1" class="corner pad"><svg class="icon-close tx nn"><path/></svg></a>
+      <a href="#cancel" class="corner pad"><svg class="icon-close tx nn"><path/></svg></a>
       Modal 2
       <p><a href="#mod1">Previous modal</a></p>
       <p><a href="#cancel">Close</a></p>
     </div>
     <a href="#mod1" class="overlay"></a>
-    
-    <!--details>
-      <summary id="sum">Summary with modal details - can not close</summary>
-      <div class="pad modal">Details <label for="sum">Close - NOT WORKING</label></div>
-    </details-->
-    
-    <dialog id="dlg" class="modal target" open>
-      Dialog with custom backdrop
-      <a href="#cancel" class="corner pad"><svg class="icon-close tx nn"><path/></svg></a>
-      <p><a href="#cancel">Close</a></p>
-      <p>Do not use formmethod to close. Escape not working which is good, because after closed natively (esc/formmethod/(backdrop)), not posiible to show with js</p>
-    </dialog>
-    <a href="#close-dlg" class="overlay"></a>
 
     <dialog id="dlgm" class="modal">
-      Modal dialog with native backdrop, needs js
       <form><button formmethod="dialog" class="corner fit pad hover"><svg class="icon-close tx nn"><path/></svg></button></form>
+      Native modal dialog <br>with native backdrop <br>needs js to open<br><input>
       <p><form><button formmethod="dialog">Close</button></form></p>
     </dialog>
-    <!--a href="#close-dlgm" class="overlay"></a-->
 
-    <!--dialog id="dlgx" class="modal target" open>
-      Modal dialog with native backdrop, with fallback
-      <form><button formmethod="dialog" class="corner fit pad hover"><svg class="icon-close tx nn"><path/></svg></button></form>
-      <p><form><button formmethod="dialog">Close</button></form></p>
-      <p>After closed natively (esc/formmethod/(backdrop)), not posiible to show with js</p>
-    </dialog>
-    <a href="#close-dlgx" class="overlay"></a-->
     
     <h2 id="gallery">Gallery <a href="#gallery" class="x1 small tx nn">#</a></h2>
     
