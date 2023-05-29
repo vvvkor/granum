@@ -331,7 +331,7 @@ ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div) {display:block;}
 }
 
 /* containers */
-body, .container>* {container: block / inline-size;}
+.container>* {container: block / inline-size;}
 @container (min-width: 450px) {
   .container {display:flex;}
   .container>:not([class*="col-"]) {flex:1;}
