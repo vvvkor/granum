@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="v2.css">
     <!--script defer src="granum.js"></script-->
     <script>
+      // demo icons
       document.addEventListener('DOMContentLoaded', e => {
         console.log('loaded');
         [...document.querySelectorAll('.icons [class*="icon-"]')].forEach(n => {
@@ -21,6 +22,35 @@
           n.parentNode.classList.add('hover', 'pad')
           n.parentNode.setAttribute('data-hint', i)
         });
+      })
+      
+      // enhancements
+      
+      // use URL params
+      document.addEventListener('DOMContentLoaded', e => {
+        const u = new URL(location.href)
+        document.querySelectorAll('[data-get]').forEach(n => n[n.matches('input,textarea,select') ? 'value' : 'innerText'] = u.searchParams.getAll(n.dataset.get).join(', '))
+      })
+      const act = (n, k, f) => (n.dataset.parent ? n.closest(n.dataset.parent) : document).querySelectorAll(n.dataset[k]).forEach(m => f(m))
+      document.addEventListener('click', e => {
+        const n = e.target
+        // check all boxes
+        if (n.dataset.check) act(n, 'check', m => m.checked = n.checked)
+        // toggle classes
+        else if (n.dataset.nodes) {
+          if (n.type == 'checkbox') act(n, 'nodes', m => m.classList[n.checked != ('reverse' in n.dataset) ? 'add' : 'remove'](...n.value.split(/\s+/)))
+          else if (n.type == 'radio') act(n, 'nodes', m => m.className = n.value)
+        }
+        // show native modal
+        else if (n.dataset.modal) document.querySelector(n.dataset.modal).showModal()
+      })
+      document.addEventListener('keydown', e => {
+        // close modals and popups
+        if (e.key == 'Escape') {
+          location.hash = '#escape'
+          document.querySelectorAll('details.pop').forEach(n => n.removeAttribute('open'))
+          document.querySelectorAll('.pop>.check>:checked').forEach(n => n.checked = false)
+        }
       })
     </script>
   </head>
@@ -62,6 +92,15 @@
     <span class="bg yy">Success</span>
     <span class="bg ww">Warning</span>
     <span class="bg ee">Error</span>
+
+    <nav id="set-classes">
+    <div class="bg nn">
+      <label><input type="radio" name="color" value="bg ee" data-parent="nav" data-nodes="div"> Red</label>
+      <label><input type="radio" name="color" value="bg yy" data-parent="nav" data-nodes="div"> Green</label>
+      <label><input type="radio" name="color" value="bg ii" data-parent="nav" data-nodes="div"> Blue</label>
+      <label><input type="radio" name="color" value="bg ww" data-parent="nav" data-nodes="div"> Yellow</label>
+    </div>
+    </nav>
     
     
     <h2 id="modal">Modal <a href="#modal" class="x1 small tx nn">#</a></h2>
@@ -70,7 +109,7 @@
       <li><a href="#mod1"><svg class="icon-collapse text"><path/></svg> Modal</a></li>
       <li><a href="#mod2"><svg class="icon-expand text"><path/></svg> Fullscreen</a></li>
       <li><a href="#modal-input"><svg class="icon-edit tx ii"><path/></svg> Focus input</a></li>
-      <li><a id="link-dlgm" href="#dlgm" onclick="dlgm.showModal()"><svg class="icon-chat tx yy"><path/></svg> Modal dialog JS</a></li>
+      <li><a id="link-dlgm" href="#dlgm" data-modal="#dlgm"><svg class="icon-chat tx yy"><path/></svg> Modal dialog JS</a></li>
     </ul>
     
     <div id="mod1" class="modal target pad">
@@ -140,7 +179,9 @@
       
     <h2 id="popup">Popup <a href="#popup" class="x1 small tx nn">#</a></h2>
     
-    <div class="pop"><a class="hover">Default</a> <div class="pad">Info<br>More info</div></div>
+    <div class="pop"><a class="hover">Default</a> <div class="pad">Info<br>Text
+      <div class="pop"><a class="hover">Nested</a> <div class="pad">More info<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</div></div>
+    </div></div>
     &mdash;
     <div class="pop"><a>Center</a><div class="pad pos-c">Info<br>More info</div></div>
     &mdash;
@@ -251,192 +292,238 @@
     
     <h2 id="dropdown">Dropdown <a href="#dropdown" class="x1 small tx nn">#</a></h2>
     
-    <ul class="row -vert resp bgl mid pads hover">
-    <!--ul class="row gap"-->
-      <li><a>Colors<br><small class="tx nn">Info</small></a>
-        <ul>
-          <li><a>Red<br><small class="tx nn">Info</small></a>
-            <ul>
-              <li><a href="#x">Orange</a></li>
-              <li><a href="#x">Pink</a></li>
-              <li><a href="#x">Carmine</a></li>
-            </ul>
-          </li>
-          <li><a>Green</a>
-            <ul>
-              <li><a href="#x">Lime</a></li>
-              <li><a href="#x">Tile</a></li>
-            </ul>
-          </li>
-          <li><a>Blue</a>
-            <ul class="pos-rt">
-              <li><a href="#x">Navy</a></li>
-              <li><a href="#x">Cyan</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li class="-push"><a href="#x"><svg class="icon-link"><path/></svg> Link</a></li>
-      <li><a>Languages</a>
-        <ul class="pos-bl">
-          <li><a href="#x">English</a></li>
-          <li><a href="#x">Spanish</a></li>
-          <li><a href="#x">Russian</a></li>
-        </ul>
-      </li>
-      <li class="shift -mid"><form><input type="search" size="8"></form></li>
-    </ul>
+    <div>
+      <p id="toggle-classes">
+        <label><input type="checkbox" value="vert" data-parent="div" data-nodes="div>ul"> Vert</label>
+        <label><input type="checkbox" value="resp" data-parent="div" data-nodes="div>ul"> Resp</label>
+        <label><input type="checkbox" value="aware" data-parent="div" data-nodes="div>ul"> Aware</label>
+        <label><input type="checkbox" value="col-2" data-parent="div" data-nodes="aside"> Limit</label>
+      </p>
+      <div class="row">
+        <div class="container col-1">
+          <ul class="row bgl mid pads hover">
+          <!--ul class="row gap"-->
+            <li><a>Style<br><small class="tx nn">CSS</small></a>
+              <ul>
+                <li><a>Color<br><small class="tx nn">Status</small></a>
+                  <ul>
+                    <li><a href="#x" class="tx ee">Red</a></li>
+                    <li><a href="#x" class="tx yy">Green</a></li>
+                    <li><a href="#x" class="tx ii">Blue</a></li>
+                  </ul>
+                </li>
+                <li><a>Font</a>
+                  <ul>
+                    <li class="serif"><a href="#x">Serif</a></li>
+                    <li class="sans"><a href="#x">Sans</a></li>
+                    <li class="mono"><a href="#x">Mono</a></li>
+                  </ul>
+                </li>
+                <li><a>Position</a>
+                  <ul class="pos-rt">
+                    <li><a href="#x">Relative</a></li>
+                    <li><a href="#x">Absolute</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="-push"><a href="#x"><svg class="icon-text tx nn"><path/></svg> Text</a></li>
+            <li><a>Markup</a>
+              <ul class="pos-bl">
+                <li><a href="?">Semantics</a></li>
+                <li><a href="?">Decoration</a></li>
+                <li><a href="?">Function</a></li>
+              </ul>
+            </li>
+            <li><a>Tags</a>
+              <ul class="-scrollbar">
+                <li><a href="#x">a</a></li>
+                <li><a href="#x">b</a></li>
+                <li><a href="#x">code</a></li>
+                <li><a href="#x">div</a></li>
+                <li><a href="#x">em</a></li>
+                <li><a href="#x">form</a></li>
+                <li><a href="#x">g</a></li>
+                <li><a href="#x">h1</a></li>
+                <li><a href="#x">img</a></li>
+                <li><a href="#x">kbd</a></li>
+                <li><a href="#x">li</a></li>
+                <li><a href="#x">mark</a></li>
+                <li><a href="#x">nav</a></li>
+              </ul>
+            </li>
+            <li class="shift -mid"><form action="?#search"><input type="search" name="q" size="8"></form></li>
+          </ul>
+        </div>
+        <aside>
+        </aside>
+      </div>
+    </div>
     
-    <h2 id="accordion">Accordion <a href="#accordion" class="x1 small tx nn">#</a></h2>
+    <div id="search" class="modal target pad">
+      <a href="#cancel" class="corner pad hover"><svg class="icon-close tx nn"><path/></svg></a>
+      Search results: <b data-get="q"></b>
+      <p><input data-get="q"></p>
+    </div>
     
-    <ul class="-fit">
-      <li><a href="#list1">Colors</a>
-        <ul id="list1" class="target">
-          <li><a href="#list11">Red</a>
-            <ul id="list11" class="target">
-              <li><a>Orange</a></li>
-              <li><a>Pink</a></li>
-              <li><a>Carmine</a></li>
-            </ul>
-          </li>
-          <li><a href="#list12">Green</a>
-            <ul id="list12" class="target">
-              <li><a>Lime</a></li>
-              <li><a>Tile</a></li>
-            </ul>
-          </li>
-          <li><a href="#list13">Blue</a>
-            <ul id="list13" class="target">
-              <li><a>Navy</a></li>
-              <li><a>Cyan</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li><a href="#list2">Languages</a>
-        <ul id="list2" class="target">
-          <li><a>English</a></li>
-          <li><a>Spanish</a></li>
-          <li><a>Russian</a></li>
-        </ul>
-      </li>
-      <li><a>Three</a></li>
-    </ul>
+    <h2 id="trees">Trees <a href="#trees" class="x1 small tx nn">#</a></h2>
+    
+    <div class="row resp stretch">
+      <div class="stack">
+      
+        <h3 id="accordion">Accordion <a href="#accordion" class="x1 small tx nn">#</a></h3>
+        
+        <div>
+          <p>
+            <label><input type="checkbox" value="fit" data-parent="div" data-nodes="div>ul"> Fit</label>
+            <label><input type="checkbox" value="link hover" data-parent="div" data-nodes="ul label, ul a"> Hover</label>
+          </p>
+          <ul class="-fit">
+            <li><a href="#list1">Style</a>
+              <ul id="list1" class="target">
+                <li><a href="#list11">Color</a>
+                  <ul id="list11" class="target">
+                    <li><a class="tx ee">Red</a></li>
+                    <li><a class="tx yy">Green</a></li>
+                    <li><a class="tx ii">Blue</a></li>
+                  </ul>
+                </li>
+                <li><a href="#list12">Font</a>
+                  <ul id="list12" class="target">
+                    <li class="serif"><a>Serif</a></li>
+                    <li class="sans"><a>Sans</a></li>
+                    <li class="mono"><a>Mono</a></li>
+                  </ul>
+                </li>
+                <li><a href="#list13">Position</a>
+                  <ul id="list13" class="target">
+                    <li><a>Relative</a></li>
+                    <li><a>Absolute</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="#list2">Markup</a>
+              <ul id="list2" class="target">
+                <li><a>Semantics</a></li>
+                <li><a>Decoration</a></li>
+                <li><a>Function</a></li>
+              </ul>
+            </li>
+            <li><a href="#x"><svg class="icon-text tx nn"><path/></svg> Text</a></li>
+          </ul>
+        </div>
 
-    <h2 id="tree">Tree <a href="#tree" class="x1 small tx nn">#</a></h2>
-    
-    <ul class="-fit">
-      <li><label class="check"><input type="checkbox" name="acc">Colors (one of them)</label>
-        <ul>
-          <li><label class="check"><input type="radio" name="acc1">Red</label>
-            <ul>
-              <li><a>Orange</a></li>
-              <li><a>Pink</a></li>
-              <li><a>Carmine</a></li>
-            </ul>
-          </li>
-          <li><label class="check"><input type="radio" name="acc1">Green</label>
-            <ul>
-              <li><a>Lime</a></li>
-              <li><a>Tile</a></li>
-            </ul>
-          </li>
-          <li><label class="check"><input type="radio" name="acc1">Blue</label>
-            <ul id="blue">
-              <li><a>Navy</a></li>
-              <li><a>Cyan</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li><label class="check"><input type="checkbox" name="acc" checked>Languages</label>
-        <ul>
-          <li><a>English</a></li>
-          <li><a>Spanish</a></li>
-          <li><a>Russian</a></li>
-        </ul>
-      </li>
-      <li><a>Three</a></li>
-    </ul>
-    
-    <h2 id="subdetailslist">Subdetails list <a href="#subdetailslist" class="x1 small tx nn">#</a></h2>
+      </div>
+      <div class="stack">
 
-    <ul class="hover -fit">
-      <li>
-        <details><summary class="link hover">Colors</summary>
-        <ul>
-          <li>
-            <details><summary>Red</summary>
+        <h3 id="tree">Tree <a href="#tree" class="x1 small tx nn">#</a></h3>
+        
+        <form action="#tree">
+          <div class="modal confirm -target pad">
+            <h3>Confirm selected item</h3>
+            <button type="reset" class="corner fit pad hover"><svg class="icon-close tx nn"><path/></svg></button>
+            <p>Value<br><input name="value" type="text" required title=""></p>
+            <p>
+              <button>Button</button>
+              <button type="reset">Cancel</button>
+            </p>
+          </div>
+          <button type="reset" class="overlay"></button>
+          <!--a href="#close1" class="overlay"></a-->
+      
+        <div>
+          <p>
+            <label><input type="checkbox" value="fit" data-parent="div" data-nodes="div>ul"> Fit</label>
+            <label><input type="checkbox" value="link hover" data-parent="div" data-nodes="ul label, ul a"> Hover</label>
+            <label><input type="checkbox" value="target" data-parent="div" data-nodes="ul .link" data-reverse> Confirm</label>
+          </p>
+          <ul>
+            <li>
+              <label class="link target"><input type="radio" name="item" value="style" hidden><svg class="icon-edit tx ii"><path/></svg></label>
+              <label class="check"><input type="checkbox">Style (one of them)</label>
+              <ul>
+                <li><label class="check"><input type="radio" name="style" value="color">Color</label>
+                  <ul>
+                    <li><a class="tx ee">Red</a></li>
+                    <li><a class="tx yy">Green</a></li>
+                    <li><a class="tx ii">Blue</a></li>
+                  </ul>
+                </li>
+                <li><label class="check"><input type="radio" name="style" value="font">Font</label>
+                  <ul>
+                    <li class="serif"><a>Serif</a></li>
+                    <li class="sans"><a>Sans</a></li>
+                    <li class="mono"><a>Mono</a></li>
+                  </ul>
+                </li>
+                <li><label class="check"><input type="radio" name="style" value="position">Position (#pos)</label>
+                  <ul id="pos">
+                    <li><a>Relative</a></li>
+                    <li><a>Absolute</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <label class="link target"><input type="radio" name="item" value="markup" hidden><svg class="icon-edit tx ii"><path/></svg></label>
+              <label class="check"><input type="checkbox" checked>Markup (open)</label>
+              <ul>
+                <li><a>Semantics</a></li>
+                <li><a>Decoration</a></li>
+                <li><a>Function</a></li>
+              </ul>
+            </li>
+            <li>
+              <label class="link target"><input type="radio" name="item" value="text" hidden><svg class="icon-edit tx ii"><path/></svg></label>
+              <a href="#x"><svg class="icon-text tx nn"><path/></svg> Text</a>
+            </li>
+          </ul>
+        </div>
+        </form>
+
+      </div>
+      <div class="stack">
+      
+        <h3 id="details-nested">Nested details <a href="#details-nested" class="x1 small tx nn">#</a></h3>
+
+        <div>
+          <p><label><input type="checkbox" value="fit link hover" data-parent="div" data-nodes="summary"> Fit and hover</label></p>
+          <details><summary class="-link -hover -fit">Style</summary>
+            <details><summary>Color</summary>
             <ul>
-              <li><a>Orange</a></li>
-              <li><a>Pink</a></li>
-              <li><a>Carmine</a></li>
+              <li><a class="tx ee">Red</a></li>
+              <li><a class="tx yy">Green</a></li>
+              <li><a class="tx ii">Blue</a></li>
             </ul>
             </details>
-          </li>
-          <li>
-            <details><summary>Green</summary>
+            <details><summary>Font</summary>
             <ul>
-              <li><a>Lime</a></li>
-              <li><a>Tile</a></li>
+              <li class="serif"><a>Serif</a></li>
+              <li class="sans"><a>Sans</a></li>
+              <li class="mono"><a>Mono</a></li>
             </ul>
             </details>
-          </li>
-          <li>
-            <details><summary>Blue</summary>
+            <details><summary>Position</summary>
             <ul>
-              <li><a>Navy</a></li>
-              <li><a>Cyan</a></li>
+              <li><a>Relative</a></li>
+              <li><a>Absolute</a></li>
             </ul>
             </details>
-          </li>
-        </ul>
-        </details>
-      </li>
-      <li>
-        <details><summary>Languages</summary>
-        <ul>
-          <li><a>English</a></li>
-          <li><a>Spanish</a></li>
-          <li><a>Russian</a></li>
-        </ul>
-        </details>
-      </li>
-      <li><a href="#x">Three</a></li>
-    </ul>
-
-    <h2 id="subdetails">Subdetails <a href="#subdetails" class="x1 small tx nn">#</a></h2>
-
-    <details><summary class="-link -hover">Colors</summary>
-      <details><summary>Red</summary>
-      <ul>
-        <li><a>Orange</a></li>
-        <li><a>Pink</a></li>
-        <li><a>Carmine</a></li>
-      </ul>
-      </details>
-      <details><summary>Green</summary>
-      <ul>
-        <li><a>Lime</a></li>
-        <li><a>Tile</a></li>
-      </ul>
-      </details>
-      <details><summary>Blue</summary>
-      <ul>
-        <li><a>Navy</a></li>
-        <li><a>Cyan</a></li>
-      </ul>
-      </details>
-    </details>
-    <details><summary>Languages</summary>
-    <ul>
-      <li><a>English</a></li>
-      <li><a>Spanish</a></li>
-      <li><a>Russian</a></li>
-    </ul>
-    </details>
-    <div>Three</div>
-
+          </details>
+          <details><summary>Markup</summary>
+          <ul>
+            <li><a>Semantics</a></li>
+            <li><a>Decoration</a></li>
+            <li><a>Function</a></li>
+          </ul>
+          </details>
+          <div><a href="#x"><svg class="icon-text tx nn"><path/></svg> Text</a></div>
+        </div>
+        
+      </div>
+    </div>
+    
     
     <h2 id="table">Table <a href="#table" class="x1 small tx nn">#</a></h2>
     
@@ -444,16 +531,14 @@
       <a href="#multiname" class="bg nn hover"><svg class="icon-edit tx ii"><path/></svg> Confirm selected items</a>
       <a href="?#table"><svg class="icon-refresh tx yy"><path/></svg> Reset URL</a>
     </p>
-    <form id="mult" action="#table">
-      <div id="confirm" class="modal target pad">
-        <h3>Confirm multiple items</h3>
-        <a href="#cancel" class="corner pad"><svg class="icon-close tx nn"><path/></svg></a>
-        <p>Name<br><input id="multiname" name="name" type="text" required></p>
-        <p><button name="button" value="multiple">Send</button></p>
-      </div>
+    <form id="mult" action="#table" class="modal target pad">
+      <h3>Confirm multiple items</h3>
+      <a href="#cancel" class="corner pad"><svg class="icon-close tx nn"><path/></svg></a>
+      <p>Name<br><input id="multiname" name="name" type="text" required></p>
+      <p><button name="button" value="multiple">Send</button></p>
     </form>
       
-    <form id="edit" action="#table">
+    <form action="#table">
       
       <div class="modal confirm -target pad">
         <h3>Confirm single item</h3>
@@ -474,7 +559,7 @@
         <caption>Status colors</caption>
         <thead>
           <tr>
-            <th><input type="checkbox" onclick="this.closest('table').querySelectorAll('[type=checkbox]').forEach(n => n.checked = this.checked)">
+            <th><input type="checkbox" data-check="[type=checkbox]" data-parent="table">
             <th>Text<th>Link<th>Back<th>Invert</tr>
         </thead>
         <tbody>
@@ -499,7 +584,7 @@
           <tr>
             <td>
               <input form="mult" type="checkbox" name="items" value="success"><path/></svg> &nbsp;
-              <label><input type="radio" name="item" value="success" hidden><svg class="icon-edit tx ii"><path/></svg></label>
+              <label class="link"><input type="radio" name="item" value="success" hidden><svg class="icon-edit tx ii"><path/></svg></label>
             <td class="tx yy">Success
             <td><a href="x" class="tx yy">Success</a>
             <td class="bg yy">Text <a href="x">Link</a>
@@ -508,7 +593,7 @@
           <tr>
             <td>
               <input form="mult" type="checkbox" name="items" value="warning"><path/></svg> &nbsp;
-              <label><input type="radio" name="item" value="warning" hidden><svg class="icon-edit tx ii"><path/></svg></label>
+              <label class="link"><input type="radio" name="item" value="warning" hidden><svg class="icon-edit tx ii"><path/></svg></label>
             <td class="tx ww">Warning
             <td><a href="x" class="tx ww">Warning</a>
             <td class="bg ww">Text <a href="x">Link</a>
@@ -699,7 +784,7 @@
         <tr><td>Dropdown<td>ul.row<td>:hover<td></tr>
         <tr><td>Toggle<td>.target:target / label / <b>details</b><td>:target / :checked / summary<td>jump / - / -</tr>
         <tr><td>Accordion<td>ul .target:target / <b>ul label [radio]</b><td>:target / :checked<td>jump / -</tr>
-        <tr><td>Tree<td><b>ul label</b> / ul details / details<td>:checked / summary / summary<td>-</tr>
+        <tr><td>Tree<td><b>ul label</b> / details<td>:checked / summary<td>-</tr>
         <tr><td>Tabs<td>.tabs :target / <b>.tabs label [radio]</b><td>:target / :checked<td>jump / -</tr>
         <tr><td>Modal<td>.modal.target<td>:target<td>overlay</tr>
         <tr><td>Gallery<td>.modal.target img.target<td>:target<td>overlay</tr>
@@ -711,10 +796,15 @@
     <p class="tx nn">Native <code>dialog</code> could be used for modals, but it has no way to open without JS.</p>
     <p class="tx nn">Native <code>details</code> could be used for modals, but it is locked to single closing element.</p>
 
-    <h3>JavaScript</h3>
+    <h2 id="js">JavaScript enhancements <a href="#js" class="x1 small tx nn">#</a></h2>
     <ul>
-      <li><a href="#status">Check all boxes</a>
-      <li><a href="#link-dlgm" onclick="dlgm.showModal()">Show native modal dialog</a>
+      <li><code>[data-get="urlParamName"]</code> - <a href="?q=abc#search">set content or value from URL</a>
+      <li><code>[data-modal="querySelector"]</code> - <a href="#link-dlgm" data-modal="#dlgm">open native modal dialog</a>
+      <li><code>[data-check="querySelector"]([data-parent])</code> - <a href="#status">check all boxes</a>
+      <li><code>[data-nodes="querySelector"]([data-parent][data-reverse])[type="checkbox"][value]</code> - <a href="#toggle-classes">toggle classes</a>
+      <li><code>[data-nodes="querySelector"]([data-parent][data-reverse])[type="radio"][value]</code> - <a href="#set-classes">set classes</a>
+      <li><code>onkeyup:Escape</code> - close all modals and popups
+      <li><code>onkeyup:Escape</code> - close all modals and popups
     </ul>
         
     <!--p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</p-->
