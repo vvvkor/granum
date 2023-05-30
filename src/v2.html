@@ -25,11 +25,12 @@
       })
       
       // enhancements
-      
-      // use URL params
       document.addEventListener('DOMContentLoaded', e => {
+        // use URL params
         const u = new URL(location.href)
         document.querySelectorAll('[data-get]').forEach(n => n[n.matches('input,textarea,select') ? 'value' : 'innerText'] = u.searchParams.getAll(n.dataset.get).join(', '))
+        // remove title on [data-hint]
+        document.querySelectorAll('[data-hint]').forEach(n => n.removeAttribute('title'))
       })
       const act = (n, k, f) => (n.dataset.parent ? n.closest(n.dataset.parent) : document).querySelectorAll(n.dataset[k]).forEach(m => f(m))
       document.addEventListener('click', e => {
@@ -102,15 +103,33 @@
     </div>
     </nav>
     
-    
+    <div>
+      Images
+      <img alt="Red" class="-wide -center c" width="80" src="https://placehold.co/200x100/933/fff.png?text=Red">
+      <img alt="Red" class="-wide -center c" width="80" src="https://placehold.co/180x120/393/fff.png?text=Green">
+      <img alt="Red" class="-wide -center c" width="80" src="https://placehold.co/200x200/039/fff.png?text=Blue">
+    </div>
+
     <h2 id="modal">Modal <a href="#modal" class="x1 small tx nn">#</a></h2>
     
     <ul class="row gap">
       <li><a href="#mod1"><svg class="icon-collapse text"><path/></svg> Modal</a></li>
       <li><a href="#mod2"><svg class="icon-expand text"><path/></svg> Fullscreen</a></li>
       <li><a href="#modal-input"><svg class="icon-edit tx ii"><path/></svg> Focus input</a></li>
+      <li><a href="#drawer"><svg class="icon-right tx ii"><path/></svg> Drawer</a></li>
+      <li><a href="#drawer2"><svg class="icon-left tx ii"><path/></svg> Drawer</a></li>
       <li><a id="link-dlgm" href="#dlgm" data-modal="#dlgm"><svg class="icon-chat tx yy"><path/></svg> Modal dialog JS</a></li>
     </ul>
+    
+    <div id="drawer" class="drawer pad">
+      <a href="#cancel" class="corner pad"><svg class="icon-close tx nn"><path/></svg></a>
+      Drawer
+    </div>
+    
+    <div id="drawer2" class="drawer shift pad">
+      <a href="#cancel" class="corner pad"><svg class="icon-close tx nn"><path/></svg></a>
+      Drawer
+    </div>
     
     <div id="mod1" class="modal target pad">
       <a href="#cancel" class="corner pad hover"><svg class="icon-close tx nn"><path/></svg></a>
@@ -164,17 +183,17 @@
     
     <div>
       <a href="#trg">Open by hash</a>
-      <div id="trg" class="target bg nn pad">Target <a href="#x">Close</a></div>
+      <div id="trg" class="target bgl pad">Target <a href="#x">Close</a></div>
     </div>
     
     <div>
       <label class="check"><input type="checkbox">Open by label</label>
-      <div class="bg nn pad">Target</div>
+      <div class="bgl pad">Target</div>
     </div>
 
     <details>
       <summary class="link -fit hover">Open details</summary>
-      <div class="bg nn pad">Target</div>
+      <div class="bgl pad">Target</div>
     </details>
       
     <h2 id="popup">Popup <a href="#popup" class="x1 small tx nn">#</a></h2>
@@ -210,6 +229,12 @@
         <div class="bg nn pad">Pop<p>p<p>p<p>p<p>p</div>
       </details>
     </div>
+    <div>
+      Hints:
+      <a data-hint="Cascading Style Sheets" title="Cascading Style Sheets" class="">CSS</a>
+      <a data-hint="Hypertext Markup Language" title="Hypertext Markup Language" class="pos-b">HTML</a>
+      <a data-hint="Hypertext Transfer Protocol" title="Hypertext Transfer Protocol" class="pos-r">HTTP</a>
+    </div>
       
     
     <h2 id="tabs">Tabs <a href="#tabs" class="x1 small tx nn">#</a></h2>
@@ -220,7 +245,7 @@
       <li><a href="#tab2">Two</a></li>
       <li><a href="#tab3">Three</a></li>
     </ul>
-    <div class="pad bg nn">
+    <div class="pad bgl">
       <div id="tab1">
         <div class="tx ee">Jumps to hash</div>
         <div class="tx ee">No active tab highlight</div>
@@ -555,12 +580,12 @@
       <a href="#close1" class="overlay"></a>
   
       <div id="status" class="scroll">
-      <table class="bord hover serif">
+      <table class="bord hover serif wide mid">
         <caption>Status colors</caption>
         <thead>
           <tr>
-            <th><input type="checkbox" data-check="[type=checkbox]" data-parent="table">
-            <th>Text<th>Link<th>Back<th>Invert</tr>
+            <th><input form="mult" type="checkbox" data-check="[type=checkbox]" data-parent="table">
+            <th>Text<th>Link<th>Back<th>Invert<th>Button</tr>
         </thead>
         <tbody>
           <tr>
@@ -571,6 +596,7 @@
             <td><a href="x" class="tx nn">Note</a>
             <td class="bg nn">Text <a href="x">Link</a>
             <td class="bk nn">Text <a href="x">Link</a>
+            <td><button class="bk nn" type="reset">Button</button>
           </tr>
           <tr>
             <td>
@@ -580,24 +606,27 @@
             <td><a href="x" class="tx ii">Info</a>
             <td class="bg ii">Text <a href="x">Link</a>
             <td class="bk ii">Text <a href="x">Link</a>
+            <td><button class="bk ii" type="reset">Button</button>
           </tr>
           <tr>
             <td>
               <input form="mult" type="checkbox" name="items" value="success"><path/></svg> &nbsp;
-              <label class="link"><input type="radio" name="item" value="success" hidden><svg class="icon-edit tx ii"><path/></svg></label>
+              <label class="link"><input type="radio" name="item" value="success" hidden><svg class="icon-edit tx yy"><path/></svg></label>
             <td class="tx yy">Success
             <td><a href="x" class="tx yy">Success</a>
             <td class="bg yy">Text <a href="x">Link</a>
             <td class="bk yy">Text <a href="x">Link</a>
+            <td><button class="bk yy" type="reset">Button</button>
           </tr>
           <tr>
             <td>
               <input form="mult" type="checkbox" name="items" value="warning"><path/></svg> &nbsp;
-              <label class="link"><input type="radio" name="item" value="warning" hidden><svg class="icon-edit tx ii"><path/></svg></label>
+              <label class="link"><input type="radio" name="item" value="warning" hidden><svg class="icon-edit tx ww"><path/></svg></label>
             <td class="tx ww">Warning
             <td><a href="x" class="tx ww">Warning</a>
             <td class="bg ww">Text <a href="x">Link</a>
             <td class="bk ww">Text <a href="x">Link</a>
+            <td><button class="bk ww" type="reset">Button</button>
           </tr>
           <tr>
             <td>
@@ -607,6 +636,7 @@
             <td><a href="x" class="tx ee">Error</a>
             <td class="bg ee">Text <a href="x">Link</a>
             <td class="bk ee">Text <a href="x">Link</a>
+            <td><button class="bk ee" type="reset">Button</button>
           </tr>
         </tbody>
       </table>
@@ -773,7 +803,7 @@
     </div>
     
     <div class="scroll">
-    <table class="bord hover">
+    <table class="line hover -c -r3">
       <caption>Toggler components</caption>
       <thead>
         <tr><th>Component<th>Markup<th>Method<th>Features</tr>
@@ -799,11 +829,11 @@
     <h2 id="js">JavaScript enhancements <a href="#js" class="x1 small tx nn">#</a></h2>
     <ul>
       <li><code>[data-get="urlParamName"]</code> - <a href="?q=abc#search">set content or value from URL</a>
+      <li><code>[data-hint]</code> - <a href="#popup">remove native title</a>
       <li><code>[data-modal="querySelector"]</code> - <a href="#link-dlgm" data-modal="#dlgm">open native modal dialog</a>
       <li><code>[data-check="querySelector"]([data-parent])</code> - <a href="#status">check all boxes</a>
       <li><code>[data-nodes="querySelector"]([data-parent][data-reverse])[type="checkbox"][value]</code> - <a href="#toggle-classes">toggle classes</a>
       <li><code>[data-nodes="querySelector"]([data-parent][data-reverse])[type="radio"][value]</code> - <a href="#set-classes">set classes</a>
-      <li><code>onkeyup:Escape</code> - close all modals and popups
       <li><code>onkeyup:Escape</code> - close all modals and popups
     </ul>
         
