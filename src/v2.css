@@ -46,6 +46,7 @@
   --pad-s: calc(.25 * var(--gap)) calc(.5 * var(--gap));
   --pad-xs: calc(.12 * var(--gap)) calc(.25 * var(--gap));
   --mar: var(--gap) 0;
+  --mar-s: calc(.5 * var(--gap)) 0;
   --shade-hover: inset 0 0 0 200vh var(--bgl);
 }
 
@@ -110,7 +111,7 @@ a[href], .link, .check, .pop>a, ul.row a {display:inline;color:var(--link);/*tex
   ul.row li:has(>a) {cursor:pointer;}
   a:not([href]), a[href^="#"], a.pad, ul.pads a, .tabs>a {text-decoration:none;}
 a.act, a[href^="#"]:has(+:target), .check:has(:checked), .tabs:not(:has(:target))>a:first-of-type, [open]>.link {color:var(--act);background-color:var(--bg-act);}
-:is(a[href], .link, .check):hover, .pop:hover>a, ul.row li:hover>a {color:var(--hover);}
+:is(a[href]:not(.pad), .link, .check):hover, .pop:hover>a:not(.pad), ul.row li:hover>a:not(.pad) {color:var(--hover);}
 :is(a, button, .link, .check, summary).hover:hover, ul.row.hover li:is(:hover, :has(:hover)):has(>a), .pop:hover>a.hover, table.hover tbody tr:hover>*, .tabs.hover>:is(a,label):hover {/*background-color:var(--bgl);*/box-shadow:var(--shade-hover);}
 
 /* colors */
@@ -168,8 +169,8 @@ body:has(.target.modal:target, .target.modal :target, .drawer:target, .drawer :t
 body:has(.modal.full:target, .modal.full :target) {overflow:hidden;}
 
 /* modal */
-.modal {position:fixed;z-index:130;}
-  .modal:not(.full) {min-height:10rem;max-height:83vh;min-width:18rem;inset:50% auto auto 50%;transform:translate(-50%,-50%);}
+.modal {position:fixed;z-index:130;overflow:auto;}
+  .modal:not(.full) {min-height:10rem;max-height:83vh;min-width:18rem;max-width:90vw;inset:50% auto auto 50%;transform:translate(-50%,-50%);}
   .modal.full {inset:0;/*calc(5 * var(--gap));*/}
 a:has(img:target), ul.row li {-webkit-tap-highlight-color:transparent;}
 img:target {position:absolute;display:block;inset:0;width:100%;height:100%;object-fit:contain;}
@@ -254,7 +255,7 @@ input, button, select, textarea {padding:.2em;margin:.1em 0;border:thin solid #a
 button, [type="submit"] {padding:var(--pad);margin:.2em 0;}
 	button, [type="submit"], a.pad:not(.bord) {border:thin solid transparent;}
 button:not([disabled]), [type="submit"]:not([disabled]), summary {cursor:pointer;}
-form>button, form>[type="submit"] {padding:var(--pas-s);margin:0;}
+form>button, form>[type="submit"] {padding:var(--pad-xs);margin:0;}
 input[readonly] {background-color:var(--bgl);}
 /* focus */
 button:hover:not([disabled]), [type="submit"]:hover:not([disabled]),
@@ -266,9 +267,12 @@ button:focus, input:focus, select:focus, textarea:focus, [contenteditable]:focus
 .inact, [disabled], form:has(:invalid) .detect:is(button:not([type]), [type="submit"]) {opacity:.3;/*filter:grayscale(1);*/}
 [disabled] {cursor:not-allowed;}
 form:not(:has(:not(.check)>[type="radio"]:checked)) .confirm {display:none;}
-:valid~.report, :invalid~.approve, .fresh~:is(.report, .approve) {display:none;}
+:valid~.report, :invalid~.approve, .fresh~:is(.report, .approve)/*, form:not(:focus-within) :is(.report, .approve)*/ {display:none;}
+/* layout */
+table.form>*>tr>:first-child:not(:only-child) {padding-top:calc(.6 * var(--gap));min-width:var(--mwid);--mwdiff:0em;--mwid:calc(8em - var(--mwdiff));text-align:var(--ali);--ali:right}
+fieldset table.form>*>tr>:first-child:not(:only-child) {--mwdiff:calc(1.5 * var(--gap) - 1px);}
+form p {margin:var(--mar-s);}
 
-/* use grid, no .field, validate, button   */
 
 /* table */
 caption, figcaption {text-align:left;font-style:italic;}
@@ -279,8 +283,8 @@ table.bord {border:none;}
 table.bord>*>tr>* {border:var(--bord);}
 table.line>*>tr>* {border-bottom:var(--bord);}
   table.line>:last-child>tr:last-child>* {border-bottom:none;}
-table.mid tr>*, tr.mid>*, tr>.mid, img.mid, img.c {vertical-align:middle;}
-table.c tr>* {text-align:center;}
+table.mid>*>tr>*, tr.mid>*, tr>.mid, img.mid, img.c {vertical-align:middle;}
+table.c>*tr>* {text-align:center;}
 .r1 td:nth-child(1) {text-align:right;}
 .r2 td:nth-child(2) {text-align:right;}
 .r3 td:nth-child(3) {text-align:right;}
@@ -409,6 +413,8 @@ ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div) {display:block;}
   .row.resp {--flow:column nowrap;--push:0;}
   ul.row.resp {--wid:var(--min-pop-w);}
   ul.row.resp ul {--pos:0 auto auto 100%;} /* avoids custom pos */
+  table.form.resp, table.form.resp>*, table.form.resp>*>tr, table.form.resp[class][class]>*>tr>* {display:block;padding:0;--mwid:auto;--ali:left;}
+  table.form.resp>*>tr {margin:calc(.5 * var(--gap));}
 }
 
 @media (max-width: 449px) {
@@ -421,6 +427,8 @@ ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div) {display:block;}
   .row.aware {--flow:column nowrap;--push:0;}
   ul.row.aware {--wid:var(--min-pop-w);}
   ul.row:is(.vert, .aware) ul {--pos:20% auto auto calc(var(--min-pop-w) * .5);} /* compact */
+  table.form.aware, table.form.aware>*, table.form.aware>*>tr, table.form.aware[class][class]>*>tr>* {display:block;padding:0;--mwid:auto;--ali:left;}
+  table.form.aware>*>tr {margin:calc(.5 * var(--gap));}
 }
 /**/
 

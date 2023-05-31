@@ -30,6 +30,7 @@
         const u = new URL(location.href)
         document.querySelectorAll('[data-get]:not(form), form[data-get] [name]').forEach(n => {
           const v = u.searchParams.getAll(n.dataset.get || n.name)
+          if (v.length < 1) return
           if (['checkbox', 'radio'].includes(n.type)) n.checked = v.includes(n.value)
           else if (n.matches('input,textarea,select')) n.value = v.join(', ')
           else n.textContent = v.join(', ')
@@ -173,9 +174,19 @@
       <li><a id="link-dlgm" href="#dlgm" data-modal="#dlgm"><svg class="icon-chat tx yy"><path/></svg> Modal dialog JS</a></li>
     </ul>
     
-    <div id="drawer" class="drawer pad">
-      <a href="#cancel" class="corner pad"><svg class="icon-close tx nn"><path/></svg></a>
-      Drawer
+    <div id="drawer" class="drawer row vert stack line">
+      <header class="pad">
+        <a href="#cancel" class="corner pad"><svg class="icon-close tx nn"><path/></svg></a>
+        Drawer
+      </header>
+      <div class="pad col-1 scroll">
+        <details>
+          <summary>Overflow</summary>
+          <p>WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+          <p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p
+        </details>
+      </div>
+      <footer class="pad">Footer</footer>
     </div>
     
     <div id="drawer2" class="drawer shift pad">
@@ -183,12 +194,23 @@
       Drawer
     </div>
     
-    <div id="mod1" class="modal target pad">
-      <a href="#cancel" class="corner pad hover"><svg class="icon-close tx nn"><path/></svg></a>
-      Modal 1
-      <p><input id="modal-input"></p>
-      <p><a href="#mod2">Next modal</a></p>
-      <p><a href="#cancel">Close</a></p>
+    <div id="mod1" class="modal target row vert stack line">
+      <header class="pad">
+        <a href="#cancel" class="corner pad hover"><svg class="icon-close tx nn"><path/></svg></a>
+        Modal 1
+      </header>
+      <div class="pad scroll">
+        <p><input id="modal-input"></p>
+        <details>
+          <summary>Overflow</summary>
+          <p>WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+          <p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p
+        </details>
+      </div>
+      <footer class="pad">
+        <a href="#mod2" class="bk ii pad rad">Next modal</a> &nbsp;
+        <a href="#cancel">Close</a>
+      </footer>
     </div>
     <a href="#close-mod1" class="overlay"></a>
 
@@ -440,14 +462,9 @@
     <div id="search" class="modal target pad">
       <a href="#cancel" class="corner pad hover"><svg class="icon-close tx nn"><path/></svg></a>
       Search results: <b data-get="q"></b>
-      <form action="?#search">
-        <input name="q" data-get><br>
-        <input type="checkbox" name="box" value="a" data-get><br>
-        <input type="checkbox" name="box" value="b" data-get><br>
-        <input type="radio" name="radio" value="x" data-get><br>
-        <input type="radio" name="radio" value="y" data-get><br>
-        <input type="radio" name="radio" value="z" data-get><br>
-        <select name="sel" data-get><option>1</option><option>2</option><option>3</option></select><br>
+      <form action="?#search" class="mar">
+        <p>Search string<br><input name="q" data-get></p>
+        <p>Category<br><select name="sel" data-get><option selected>all</option><option>CSS</option><option>HTML</option></select></p>
         <p><button>Search</button></p>
       </form>
     </div>
@@ -749,53 +766,62 @@
     
     <h2 id="form">Form <a href="#form" class="x1 small tx nn">#</a></h2>
     
-    <form action="?#form" data-get>
-      <div>
-        <input    required name="q" data-get placeholder="Name">
-        <span class="report tx ee">Required</span>
-        <span class="approve tx yy">OK</span>
-      </div>
-      <div>
-        <input    required type="checkbox" name="box" value="a" data-get id="bx1"> <label for="bx1">Mandatory box</label>
-        <span class="report tx ee">Required</span>
-        <span class="approve tx yy">OK</span>
-      </div>
-      <div>
-        <label>
-          <input type="checkbox" name="box" value="b" data-get> Optional box with same name
-        </label>
-      </div>
-      <fieldset>
-        <legend>Letter</legend>
-        <input    required type="radio" name="radio" value="x" data-get id="ri1"> <label for="ri1">X</label><br>
-        <input    required type="radio" name="radio" value="y" data-get id="ri2"> <label for="ri2">Y</label><br>
-        <input    required type="radio" name="radio" value="z" data-get id="ri3"> <label for="ri3">Z</label>
-        <div class="report tx ee">Required</div>
-        <div class="approve tx yy">OK</div>
-      </fieldset>
-      <div>
-        <select   required name="sel"><option></option><option>1</option><option>2</option><option>3</option></select>
-        <span class="report tx ee">Required</span>
-        <span class="approve tx yy">OK</span>
-      </div>
-      <div>
-        <textarea required name="area"></textarea>
-        <div class="report tx ee">Required</div>
-        <div class="approve tx yy">OK</div>
-      </div>
-      <div>
-        <input readonly placeholder="readonly">
-        <input disabled placeholder="disabled">
-      </div>
-      <p>
-        <button>Search</button>
-        <button class="detect">Search (detect)</button>
-        <button type="reset">Reset</button>
-        <button disabled>Disabled</button>
-        <a class="pad bord rad hover" href="?#form"><svg class="icon-refresh tx yy"><path/></svg> Reset URL</a>
-        &nbsp; <a href="#">Top</a>
-      </p>
-      <p>
+    <form action="?#form" data-get class="container" data-style="max-width:400px;">
+      <!--button class="">OK</button-->
+    <table class="form aware">
+      <tr>
+        <td><label for="nm">Name</label>
+        <td>
+          <input required type="text" id="nm" name="nm" placeholder="Name">
+          <span class="report tx ee">Required</span>
+          <span class="approve tx yy">OK</span>
+      <tr><td><td>
+          <input required type="checkbox" name="box" value="a" id="bx1"> <label for="bx1">Mandatory box</label>
+          <span class="report tx ee">Required</span>
+          <span class="approve tx yy">OK</span>
+      <tr><td><td>
+          <label>
+            <input type="checkbox" name="box" value="b"> Optional box with same name
+          </label>
+      <tr><td colspan="2">
+        <fieldset>
+          <legend>Fieldset</legend>
+          <table class="form aware">
+            <tr><td><td>
+                <input required type="radio" name="radio" value="one" id="ri1"> <label for="ri1">One</label><br>
+                <input required type="radio" name="radio" value="two" id="ri2"> <label for="ri2">Two</label><br>
+                <input required type="radio" name="radio" value="three" id="ri3"> <label for="ri3">Three</label>
+                <div class="report tx ee">Required</div>
+                <div class="approve tx yy">OK</div>
+            <tr>
+              <td><label for="cust">Custom</label>
+              <td><div><input id="cust" name="custom"></div>
+          </table>
+        </fieldset>
+      <tr>
+        <td><label for="sel">Select</label>
+        <td>
+          <select required id="sel" name="sel"><option></option><option>1</option><option>2</option><option>3</option></select>
+          <span class="report tx ee">Required</span>
+          <span class="approve tx yy">OK</span>
+      <tr>
+        <td><label for="area">Area</label>
+        <td>
+          <textarea required id="area" name="area"></textarea>
+          <div class="report tx ee">Required</div>
+          <div class="approve tx yy">OK</div>
+      <tr>
+        <td>Readonly<td><input readonly placeholder="readonly">
+      <tr>
+        <td>Disabled<td><input disabled placeholder="disabled">
+      <tr><td><td>
+          <button>OK</button>
+          <button class="detect">OK (detect)</button>
+          <button type="reset" class="bk nn">Reset</button>
+          <button disabled>Disabled</button>
+          <a class="pad bord rad hover" href="?#form"><svg class="icon-refresh tx yy"><path/></svg> Reset URL</a>
+          &nbsp; <a href="#">Top</a>
+      <tr><td><td>
         <button class="-detect bgl">OK</button>
         <button class="-detect bg nn">OK</button>
         <button class="-detect bg ii">OK</button>
@@ -809,7 +835,7 @@
         <button class="-detect bk yy">OK</button>
         <button class="-detect bk ww">OK</button>
         <button class="-detect bk ee">OK</button>
-      </p>
+    </table>
     </form>
     
     <h2 id="icons">Icons (82) <a href="#icons" class="x1 small tx nn">#</a></h2>
