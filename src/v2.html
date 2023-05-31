@@ -19,7 +19,7 @@
           n.parentNode.title = i
           //n.parentNode.append(' ' + j)
           n.classList.add('tx', 'nn'/*, 'pad'/*, 'bg', 'hover'*/)
-          n.parentNode.classList.add('hover', 'pad')
+          n.parentNode.classList.add('hover', 'pad'/*, 'pos-r'*/)
           n.parentNode.setAttribute('data-hint', i)
         });
       })
@@ -28,9 +28,16 @@
       document.addEventListener('DOMContentLoaded', e => {
         // use URL params
         const u = new URL(location.href)
-        document.querySelectorAll('[data-get]').forEach(n => n[n.matches('input,textarea,select') ? 'value' : 'innerText'] = u.searchParams.getAll(n.dataset.get).join(', '))
+        document.querySelectorAll('[data-get]:not(form), form[data-get] [name]').forEach(n => {
+          const v = u.searchParams.getAll(n.dataset.get || n.name)
+          if (['checkbox', 'radio'].includes(n.type)) n.checked = v.includes(n.value)
+          else if (n.matches('input,textarea,select')) n.value = v.join(', ')
+          else n.textContent = v.join(', ')
+        })
         // remove title on [data-hint]
         document.querySelectorAll('[data-hint]').forEach(n => n.removeAttribute('title'))
+        // fresh inputs
+        document.querySelectorAll('[name]').forEach(n => n.classList.add('fresh'))
       })
       const act = (n, k, f) => (n.dataset.parent ? n.closest(n.dataset.parent) : document).querySelectorAll(n.dataset[k]).forEach(m => f(m))
       document.addEventListener('click', e => {
@@ -44,6 +51,8 @@
         }
         // show native modal
         else if (n.dataset.modal) document.querySelector(n.dataset.modal).showModal()
+        // validate form
+        else if (n.form && n.matches('button, [type="submit"]')) n.form.querySelectorAll('[name]').forEach(n => n.classList.remove('fresh'))
       })
       document.addEventListener('keydown', e => {
         // close modals and popups
@@ -53,6 +62,10 @@
           document.querySelectorAll('.pop>.check>:checked').forEach(n => n.checked = false)
         }
       })
+      // validate field
+      document.addEventListener('blur', e => e.target.classList.remove('fresh'), true)
+      // validate radio
+      document.addEventListener('blur', e => e.target.form ? e.target.form.querySelectorAll(`[name="${e.target.name}"]`).forEach(n => n.classList.remove('fresh')) : null, true)
     </script>
   </head>
   <body class="-invert">
@@ -62,8 +75,42 @@
     
     <div><a href="?#"><svg class="icon-refresh tx yy"><path/></svg> Reset URL</a></div>
     <div><label><input type="checkbox" id="invert"> Invert</label></div>
-    <div><label class="link"><input type="checkbox" id="debug" hidden><svg class="icon-warning tx ww"><path/></svg> Debug</label></div>
+    <div><label class="link check"><input type="checkbox" id="debug" hidden><svg class="icon-warning tx ww"><path/></svg> Debug</label></div>
     <div><label><input type="checkbox" id="x1" checked> Heading hashes</label></div>
+    
+    <h2 id="typo">Typography <a href="#typo" class="x1 small tx nn">#</a></h2>
+    
+    <p>
+    Text
+    <a href="?#">Link</a>
+    <a>Unlink</a>
+    <code>Code</code>
+    <kbd>Kbd</kbd>
+    <q>Quote</q>
+    <small>Small</small>
+    <mark>Mark</mark>
+    <abbr title="Abbreviation">Abbr</abbr>
+    x<sub>sub</sub>
+    x<sup>super</sup>
+    </p>
+
+    <hr>
+    <blockquote>Block quote</blockquote>
+    <pre>Preformatted text
+<code>Code: <var>window</var> = <kbd class="text-y" onclick="this.textContent = window.innerWidth + ' x ' + window.innerHeight">click</kbd></code></pre>
+
+      <details>
+      <summary>Headings</summary>
+      <div class="pad bgl stack">
+        <h1>Heading 1<b class="-target"><br>has a second line</b></h1> Some text. <span class="-target">More text. And more text. And more text. And more text. And more text. Another word. And more text. Like this one.<br> Final line.</span> 
+        <h2>Heading 2<b class="-target"><br>has a second line</b></h2> Some text. <span class="-target">More text. And more text. And more text. And more text. And more text. Another word. And more text. Like this one.<br> Final line.</span>
+        <h3>Heading 3<b class="-target"><br>has a second line</b></h3> Some text. <span class="-target">More text. And more text. And more text. And more text. And more text. Another word. And more text. Like this one.<br> Final line.</span>
+        <h4>Heading 4<b class="-target"><br>has a second line</b></h4> Some text. <span class="-target">More text. And more text. And more text. And more text. And more text. Another word. And more text. Like this one.<br> Final line.</span>
+        <h5>Heading 5<b class="-target"><br>has a second line</b></h5> Some text. <span class="-target">More text. And more text. And more text. And more text. And more text. Another word. And more text. Like this one.<br> Final line.</span>
+        <h6>Heading 6<b class="-target"><br>has a second line</b></h6> Some text. <span class="-target">More text. And more text. And more text. And more text. And more text. Another word. And more text. Like this one.<br> Final line.</span>
+      </div>
+      </details>
+
     
     <h2 id="colors">Colors <a href="#colors" class="x1 small tx nn">#</a></h2>
     
@@ -102,13 +149,18 @@
       <label><input type="radio" name="color" value="bg ww" data-parent="nav" data-nodes="div"> Yellow</label>
     </div>
     </nav>
-    
+    <hr>
     <div>
       Images
       <img alt="Red" class="-wide -center c" width="80" src="https://placehold.co/200x100/933/fff.png?text=Red">
-      <img alt="Red" class="-wide -center c" width="80" src="https://placehold.co/180x120/393/fff.png?text=Green">
-      <img alt="Red" class="-wide -center c" width="80" src="https://placehold.co/200x200/039/fff.png?text=Blue">
+      <img alt="Green" class="-wide -center c" width="80" src="https://placehold.co/180x120/393/fff.png?text=Green">
+      <img alt="Blue" class="-wide -center c" width="80" src="https://placehold.co/200x200/039/fff.png?text=Blue">
     </div>
+    <hr>
+    <figure class="">
+      <img alt="Red" class="" width="80" src="https://placehold.co/200x200/039/fff.png?text=Blue">
+      <figcaption>Figure caption</figcaption>
+    </figure>
 
     <h2 id="modal">Modal <a href="#modal" class="x1 small tx nn">#</a></h2>
     
@@ -388,12 +440,21 @@
     <div id="search" class="modal target pad">
       <a href="#cancel" class="corner pad hover"><svg class="icon-close tx nn"><path/></svg></a>
       Search results: <b data-get="q"></b>
-      <p><input data-get="q"></p>
+      <form action="?#search">
+        <input name="q" data-get><br>
+        <input type="checkbox" name="box" value="a" data-get><br>
+        <input type="checkbox" name="box" value="b" data-get><br>
+        <input type="radio" name="radio" value="x" data-get><br>
+        <input type="radio" name="radio" value="y" data-get><br>
+        <input type="radio" name="radio" value="z" data-get><br>
+        <select name="sel" data-get><option>1</option><option>2</option><option>3</option></select><br>
+        <p><button>Search</button></p>
+      </form>
     </div>
     
     <h2 id="trees">Trees <a href="#trees" class="x1 small tx nn">#</a></h2>
     
-    <div class="row resp stretch">
+    <div class="row gap resp stretch">
       <div class="stack">
       
         <h3 id="accordion">Accordion <a href="#accordion" class="x1 small tx nn">#</a></h3>
@@ -450,7 +511,7 @@
             <button type="reset" class="corner fit pad hover"><svg class="icon-close tx nn"><path/></svg></button>
             <p>Value<br><input name="value" type="text" required title=""></p>
             <p>
-              <button>Button</button>
+              <button class="detect">Button</button>
               <button type="reset">Cancel</button>
             </p>
           </div>
@@ -549,18 +610,18 @@
       </div>
     </div>
     
-    
     <h2 id="table">Table <a href="#table" class="x1 small tx nn">#</a></h2>
     
     <p>
-      <a href="#multiname" class="bg nn hover"><svg class="icon-edit tx ii"><path/></svg> Confirm selected items</a>
+      <a href="#multiname" class="-bg -nn -hover"><svg class="icon-edit tx ii"><path/></svg> Confirm selected items</a>
       <a href="?#table"><svg class="icon-refresh tx yy"><path/></svg> Reset URL</a>
     </p>
+    
     <form id="mult" action="#table" class="modal target pad">
       <h3>Confirm multiple items</h3>
       <a href="#cancel" class="corner pad"><svg class="icon-close tx nn"><path/></svg></a>
       <p>Name<br><input id="multiname" name="name" type="text" required></p>
-      <p><button name="button" value="multiple">Send</button></p>
+      <p><button name="button" value="multiple" class="detect">Send</button></p>
     </form>
       
     <form action="#table">
@@ -570,16 +631,16 @@
         <button type="reset" class="corner fit pad hover"><svg class="icon-close tx nn"><path/></svg></button>
         <p>Value<br><input name="value" type="text" required title=""></p>
         <p>
-          <button name="button" value="untyped">Button</button>
-          <button type="submit" name="button" value="submit">Submit</button>
-          <input type="submit" name="button" value="Input">
+          <button class="detect" name="button" value="button">Button</button>
+          <button class="detect" name="button" value="button-submit" type="submit">Submit</button>
+          <input  class="detect" name="button" value="input-submit"  type="submit">
           <button type="reset">Cancel</button>
         </p>
       </div>
       <button type="reset" class="overlay"></button>
       <a href="#close1" class="overlay"></a>
   
-      <div id="status" class="scroll">
+      <div id="status" class="scroll mar">
       <table class="bord hover serif wide mid">
         <caption>Status colors</caption>
         <thead>
@@ -590,7 +651,7 @@
         <tbody>
           <tr>
             <td>
-              <input form="mult" type="checkbox" name="items" value="note"><path/></svg> &nbsp;
+              <input form="mult" type="checkbox" name="items" value="note"><path/></svg>&nbsp;
               <input type="radio" name="item" value="note"><path/></svg>
             <td class="tx nn">Note
             <td><a href="x" class="tx nn">Note</a>
@@ -600,7 +661,7 @@
           </tr>
           <tr>
             <td>
-              <input form="mult" type="checkbox" name="items" value="info"><path/></svg> &nbsp;
+              <input form="mult" type="checkbox" name="items" value="info"><path/></svg>&nbsp;
               <input type="radio" name="item" value="info">
             <td class="tx ii">Info
             <td><a href="x" class="tx ii">Info</a>
@@ -610,7 +671,7 @@
           </tr>
           <tr>
             <td>
-              <input form="mult" type="checkbox" name="items" value="success"><path/></svg> &nbsp;
+              <input form="mult" type="checkbox" name="items" value="success"><path/></svg>&nbsp;
               <label class="link"><input type="radio" name="item" value="success" hidden><svg class="icon-edit tx yy"><path/></svg></label>
             <td class="tx yy">Success
             <td><a href="x" class="tx yy">Success</a>
@@ -620,7 +681,7 @@
           </tr>
           <tr>
             <td>
-              <input form="mult" type="checkbox" name="items" value="warning"><path/></svg> &nbsp;
+              <input form="mult" type="checkbox" name="items" value="warning"><path/></svg>&nbsp;
               <label class="link"><input type="radio" name="item" value="warning" hidden><svg class="icon-edit tx ww"><path/></svg></label>
             <td class="tx ww">Warning
             <td><a href="x" class="tx ww">Warning</a>
@@ -630,7 +691,7 @@
           </tr>
           <tr>
             <td>
-              <input form="mult" type="checkbox" name="items" value="error"><path/></svg> &nbsp;
+              <input form="mult" type="checkbox" name="items" value="error"><path/></svg>&nbsp;
               <input type="radio" name="item" value="error">
             <td class="tx ee">Error
             <td><a href="x" class="tx ee">Error</a>
@@ -685,6 +746,71 @@
         </div>
       </div>
     </div>
+    
+    <h2 id="form">Form <a href="#form" class="x1 small tx nn">#</a></h2>
+    
+    <form action="?#form" data-get>
+      <div>
+        <input    required name="q" data-get placeholder="Name">
+        <span class="report tx ee">Required</span>
+        <span class="approve tx yy">OK</span>
+      </div>
+      <div>
+        <input    required type="checkbox" name="box" value="a" data-get id="bx1"> <label for="bx1">Mandatory box</label>
+        <span class="report tx ee">Required</span>
+        <span class="approve tx yy">OK</span>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" name="box" value="b" data-get> Optional box with same name
+        </label>
+      </div>
+      <fieldset>
+        <legend>Letter</legend>
+        <input    required type="radio" name="radio" value="x" data-get id="ri1"> <label for="ri1">X</label><br>
+        <input    required type="radio" name="radio" value="y" data-get id="ri2"> <label for="ri2">Y</label><br>
+        <input    required type="radio" name="radio" value="z" data-get id="ri3"> <label for="ri3">Z</label>
+        <div class="report tx ee">Required</div>
+        <div class="approve tx yy">OK</div>
+      </fieldset>
+      <div>
+        <select   required name="sel"><option></option><option>1</option><option>2</option><option>3</option></select>
+        <span class="report tx ee">Required</span>
+        <span class="approve tx yy">OK</span>
+      </div>
+      <div>
+        <textarea required name="area"></textarea>
+        <div class="report tx ee">Required</div>
+        <div class="approve tx yy">OK</div>
+      </div>
+      <div>
+        <input readonly placeholder="readonly">
+        <input disabled placeholder="disabled">
+      </div>
+      <p>
+        <button>Search</button>
+        <button class="detect">Search (detect)</button>
+        <button type="reset">Reset</button>
+        <button disabled>Disabled</button>
+        <a class="pad bord rad hover" href="?#form"><svg class="icon-refresh tx yy"><path/></svg> Reset URL</a>
+        &nbsp; <a href="#">Top</a>
+      </p>
+      <p>
+        <button class="-detect bgl">OK</button>
+        <button class="-detect bg nn">OK</button>
+        <button class="-detect bg ii">OK</button>
+        <button class="-detect bg yy">OK</button>
+        <button class="-detect bg ww">OK</button>
+        <button class="-detect bg ee">OK</button>
+        <br>
+        <button class="-detect">OK</button>
+        <button class="-detect bk nn">OK</button>
+        <button class="-detect bk ii">OK</button>
+        <button class="-detect bk yy">OK</button>
+        <button class="-detect bk ww">OK</button>
+        <button class="-detect bk ee">OK</button>
+      </p>
+    </form>
     
     <h2 id="icons">Icons (82) <a href="#icons" class="x1 small tx nn">#</a></h2>
     
@@ -780,7 +906,7 @@
 
     <h2 id="info">Info <a href="#info" class="x1 small tx nn">#</a></h2>
     
-    <div class="scroll">
+    <div class="scroll mar">
     <table class="bord hover">
       <caption>Toggle methods comparation</caption>
       <thead>
@@ -802,7 +928,7 @@
     </table>
     </div>
     
-    <div class="scroll">
+    <div class="scroll mar">
     <table class="line hover -c -r3">
       <caption>Toggler components</caption>
       <thead>
@@ -828,7 +954,7 @@
 
     <h2 id="js">JavaScript enhancements <a href="#js" class="x1 small tx nn">#</a></h2>
     <ul>
-      <li><code>[data-get="urlParamName"]</code> - <a href="?q=abc#search">set content or value from URL</a>
+      <li><code>[data-get="urlParamName"], [data-get][name], form[data-get] [name]</code> - <a href="?q=abc#search">set content or value from URL</a>
       <li><code>[data-hint]</code> - <a href="#popup">remove native title</a>
       <li><code>[data-modal="querySelector"]</code> - <a href="#link-dlgm" data-modal="#dlgm">open native modal dialog</a>
       <li><code>[data-check="querySelector"]([data-parent])</code> - <a href="#status">check all boxes</a>

@@ -19,6 +19,8 @@
   --shade: 0 .1em .8em 0em #0003;
   --rgap: 1em;
   --gap: 1em;
+  --bord: thin solid #0002;
+  --rad: .2em;
   --min-pop-w: 10em;
   --max-pop-h: 20em;
   /* status */
@@ -31,6 +33,10 @@
   --rlit: 45%;/*45*/
   --rlit-bg: 88%;/*45*/
   --alpha-bg: 100%;/*20*/
+  /* fonts */
+  --serif: "PT Serif", Georgia, serif;
+  --sans: "PT Sans", Roboto, "Segoe UI", sans-serif;
+  --mono: "PT Mono", monospace;;
   
   /* dependent */
   --risz: 16 * var(--rfsz) * 1.2;  /* *1 */
@@ -38,6 +44,7 @@
   --isz: var(--risz);
   --pad: calc(.5 * var(--gap)) var(--gap);
   --pad-s: calc(.25 * var(--gap)) calc(.5 * var(--gap));
+  --pad-xs: calc(.12 * var(--gap)) calc(.25 * var(--gap));
   --mar: var(--gap) 0;
   --shade-hover: inset 0 0 0 200vh var(--bgl);
 }
@@ -62,8 +69,8 @@ html {font-size:calc(100% * var(--rfsz));}
 body {line-height:1.5;color:var(--text);background-color:var(--bg);}
 input, button, select, textarea, table {font:inherit;}
 main, img.fit, img.center /*, table.roll*/ {display:block;}
-img.wide {width:100%;}
-img.c {border-radius:50%;aspect-ratio:1;}
+  img.wide {width:100%;}
+  img.c {border-radius:50%;aspect-ratio:1;}
 h1, .h1 {--fsz:2;}
 h2, .h2 {--fsz:1.55;}
 h3, .h3 {--fsz:1.2}
@@ -73,13 +80,27 @@ h6, .h6 {--fsz:.67;}
 h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6,small,.small {font-size:calc(100% * var(--fsz));--isz:calc(var(--risz) * var(--fsz))}
 h1, h2, h3, h4, h5, h6{margin:calc(2 * var(--rgap)) 0 var(--rgap) 0;}
 h1, h2, .h1, .h2 {line-height:1.3;}
-.sans, .tag, body {font-family:"PT Sans", Roboto, "Segoe UI", sans-serif;}
-.serif {font-family:"PT Serif", Georgia, serif;}
-.mono, pre, code, kbd, samp {font-family:"PT Mono", monospace;font-size:90%;}
-pre code {font-size:100%;}
+.sans, .tag, body {font-family:var(--sans);}
+.serif {font-family:var(--serif);}
+.mono, pre, code, kbd, samp {font-family:var(--mono);font-size:90%;}
+  pre, code  {white-space:pre-wrap;}
+  pre {overflow:auto;max-height:80vh;}
+  pre code {font-size:100%;}
+  code, kbd {padding:var(--pad-xs);}
+.fit, pre code {margin:0;padding:0;border:none;border-radius:0;box-shadow:none;background:none;}
+.mar, .row.mar, ul, ol, dl, blockquote, pre, hr, p, figure {margin:var(--mar);}
+.pad, .row.pad, fieldset, blockquote, pre {padding:var(--pad);}
+	legend, .tag {padding:0 .4em;}
+.bord, kbd, fieldset, hr {border:var(--bord);}
+  hr {border-width:thin 0 0 0;}
+.rad, code, kbd, pre, button, [type="submit"] {border-radius:var(--rad);}
+  abbr {border-bottom:thin dotted;text-decoration:none;}
+sub, sup {line-height:0em;}
+	.tag {min-width:.7em;border-radius:.75em;}
+
 	.stack>:first-child {margin-top:0;}
 	.stack>:last-child {margin-bottom:0;}
-  .stack.line>:not(:last-child) {border-bottom:thin solid #0002;}
+  .stack.line>:not(:last-child) {border-bottom:var(--bord);}
 /* heading font bar tag */
 /* status border color? */
 
@@ -95,8 +116,9 @@ a.act, a[href^="#"]:has(+:target), .check:has(:checked), .tabs:not(:has(:target)
 /* colors */
 [class].text {color:var(--text);}/*hue*/
 [class].back {background-color:var(--bg);}
-[class].bgl {background-color:var(--bgl);}
-/* as vars - todo: simplify*/
+[class].bgl, blockquote, pre, code {background-color:var(--bgl);}
+
+/* status */
 .nn, .ii, .yy, .ww, .ee {--satur:var(--rsatur);--lit:var(--rlit);}
 .nn, [data-hint]:after {--hue:var(--nn);--satur:0%;--lit:calc(var(--rlit) + 15%);}
 .ii {--hue:var(--ii);}
@@ -108,6 +130,7 @@ a.act, a[href^="#"]:has(+:target), .check:has(:checked), .tabs:not(:has(:target)
 .bk[class], [data-hint]:after {background-color:hsl(var(--hue) calc(var(--satur) - 0%) var(--lit));color:var(--bg);}
 .bk[class] a {color:var(--bg);}
 mark {background-color:hsl(var(--ww) var(--rsatur) var(--rlit-bg) / var(--alpha-bg));}
+:is(button, [type="submit"]):not(.tx, .bg, .bk, .bgl), a.tag {background-color:var(--link);color:var(--bg);}
 
 
 /* grid */
@@ -176,7 +199,7 @@ ul, ul.vert>li>ul {--pos:0 auto auto 100%;}
 .pop:last-child, .row>li>ul {--pos:100% auto auto 0;}
 [data-hint]:after {white-space:nowrap;padding:var(--pad-s);--lit:30%;/*xbackground-color:hsl(var(--ww) 100% 70%);*/}
   [data-hint]:not([class*="pos-"]):after {--pos:auto auto 100% 0;}
-  [data-hint] {border-bottom:thin dashed #ccc;cursor:help;}
+  [data-hint] {/*border-bottom:thin dashed #ccc;*/cursor:help;}
 ul.row, ul.row ul, ul.row li {list-style:none;margin:0;padding:0;}
   ul.row ul {padding:calc(1 * var(--gap)) 0;}
 [class].pos-tl {--pos:auto 0 100% auto;}
@@ -224,20 +247,37 @@ dt {font-weight:bold;}
 .row, .fit, ul.fit ul {list-style:none;}
 
 /* form */
-button, summary {cursor:pointer;}
-.inact, form:has(:invalid) :is(button:not([type]), [type="submit"]) {opacity:.5;filter:grayscale(1);pointer-events:none;}
+fieldset {min-width:0;} /* fix overflow */
+input, select {max-width:100%;}
+textarea {width:100%;display:block;}
+input, button, select, textarea {padding:.2em;margin:.1em 0;border:thin solid #aaa;}
+button, [type="submit"] {padding:var(--pad);margin:.2em 0;}
+	button, [type="submit"], a.pad:not(.bord) {border:thin solid transparent;}
+button:not([disabled]), [type="submit"]:not([disabled]), summary {cursor:pointer;}
+form>button, form>[type="submit"] {padding:var(--pas-s);margin:0;}
+input[readonly] {background-color:var(--bgl);}
+/* focus */
+button:hover:not([disabled]), [type="submit"]:hover:not([disabled]),
+button:focus, input:focus, select:focus, textarea:focus, [contenteditable]:focus/*, summary:focus*/
+  {box-shadow:0 0 0 .15em #aaa4;outline:none;}
+[name]:invalid:not(.fresh):focus {box-shadow:0 0 0 .15em #f665;}
+:is([type="checkbox"], [type="radio"]):invalid:not(.fresh) + :is(span, label) {color:#c00;}
+/* validation */
+.inact, [disabled], form:has(:invalid) .detect:is(button:not([type]), [type="submit"]) {opacity:.3;/*filter:grayscale(1);*/}
+[disabled] {cursor:not-allowed;}
 form:not(:has(:not(.check)>[type="radio"]:checked)) .confirm {display:none;}
+:valid~.report, :invalid~.approve, .fresh~:is(.report, .approve) {display:none;}
 
 /* use grid, no .field, validate, button   */
 
 /* table */
-caption {}
+caption, figcaption {text-align:left;font-style:italic;}
 table.wide {width:100%;}
 table:not(.fit)>*>tr>* {padding:var(--pad-s);}
 tr>* {vertical-align:top;background-clip:padding-box;}
 table.bord {border:none;}
-table.bord>*>tr>* {border:thin solid #0002;}
-table.line>*>tr>* {border-bottom:thin solid #0002;}
+table.bord>*>tr>* {border:var(--bord);}
+table.line>*>tr>* {border-bottom:var(--bord);}
   table.line>:last-child>tr:last-child>* {border-bottom:none;}
 table.mid tr>*, tr.mid>*, tr>.mid, img.mid, img.c {vertical-align:middle;}
 table.c tr>* {text-align:center;}
@@ -342,16 +382,10 @@ table.c tr>* {text-align:center;}
 .icon-none>path {--w:1;d:path("M1 1z");}
 
 /* modifiers */
-.fit {margin:0;padding:0;border:none;border-radius:0;box-shadow:none;background:none;}
 .wrap {max-width:45em;}
 .full:not(.modal) {height:100vh;height:100dvh;}
 .nobr {white-space:nowrap;}
-.mar, .row.mar {margin:var(--mar);}
-.pad, .row.pad {padding:var(--pad);}
 /*a.pad,*/ [class*="icon-"].pad {padding:calc(.5 * var(--gap));}
-a.pad {display:inline-block;}
-ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div), table.pads>*>tr>* {padding:var(--pad);}
-ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div) {display:block;}  
 .scroll {overflow:auto;min-width:5em;min-height:5em;}
 .center {margin-left:auto;margin-right:auto;}
 .l {text-align:left;}
@@ -361,7 +395,11 @@ ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div) {display:block;}
   .row .push {margin-right:var(--push);}
   .row .shift {margin-left:var(--push);}
   .row:not(.vert) .push + .shift {margin-left:0;}
-/* +pad bord mar ~mid rad shade */
+/* modifiers fix */
+a.pad {display:inline-block;}
+ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div), table.pads>*>tr>* {padding:var(--pad);}
+ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div) {display:block;}  
+/* +pad +bord +mar +mid rad shade */
 
 /* mobile */
 @media (max-width: 899px) {
@@ -416,8 +454,9 @@ html:has(#x1:not(:checked)) .x8,
 html:has(#x1:not(:checked)) .x9
 {display:none;}
 
-/* test */
+/* debug */
 html:has(#debug:checked) .row>*>img:only-child {object-fit:contain;background:var(--bgl);}
+html:has(#debug:checked) .fresh {background:#cfc;box-shadow:0 0 .5em #0909;}
 
 /*
 z-index
