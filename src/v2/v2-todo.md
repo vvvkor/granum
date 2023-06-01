@@ -18,14 +18,18 @@
 - [data-nodes="querySelector"]([data-parent][data-reverse])[type="radio"][value] - set classes
 - onkeyup:Escape - close all modals and popups
 
-## Order / cleanup
+## Order / cleanup / docs
 
 !- naming: .bgl =.dialog etc, --rlit etc
+- write docs
 = move dialog experiments to some test files [removed]
 + describe preferred toggler components variants in table
 + describe drawbacks of using dialog and details for modal
 
 ## Todo
+
+- col align?
+- icons: recount to viewBox 16, use :before clip-path, scale as --fsz, separate file
 
 - avoid flashing of validation .report
 - .badge:has(.tag)
@@ -48,6 +52,7 @@
 = native modal with fallback, tgl cmp: dialog [after closed natively (esc/formmethod/(backdrop)), not posiible to show with js]
 = data-filter [requires js]
 = confirm&prompt using label>a# [not posible]
++ native dlg close color, also confirm dlgs
 + vert scroll in modal, drawer with .stack
 + form layout: [form.container table.form.aware]
 + .rad

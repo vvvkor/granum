@@ -136,7 +136,7 @@ a.act, a[href^="#"]:has(+:target), .check:has(:checked), .tabs:not(:has(:target)
 .bk[class], [data-hint]:after {background-color:hsl(var(--hue) calc(var(--satur) - 0%) var(--lit));color:var(--bg);}
 .bk[class] a {color:var(--bg);}
 mark {background-color:hsl(var(--ww) var(--rsatur) var(--rlit-bg) / var(--alpha-bg));}
-:is(button, [type="submit"]):not(.tx, .bg, .bk, .bgl), a.tag {background-color:var(--link);color:var(--bg);}
+:is(button, [type="submit"]):not(.tx, .bg, .bk, .bgl, .fit), a.tag {background-color:var(--link);color:var(--bg);}
 
 
 /* grid */
@@ -188,7 +188,7 @@ img:target {position:absolute;display:block;inset:0;width:100%;height:100%;objec
 
 /* pop, drop, hint */
 .pop, ul.row li, [data-hint] {position:relative;}
-.pop>:last-child, /*[data-hint]:after,*/ ul.row ul, .modal, .drawer {/*border:none;*/background-color:var(--bg);box-shadow:var(--shade);}
+.pop>:last-child, /*[data-hint]:after,*/ ul.row ul, .modal, .drawer {border:none;background-color:var(--bg);box-shadow:var(--shade);}
 .pop {display:inline-block;}
   /* for variable items height */
   ul.row.mid:not(.vert) li {display:flex;align-items:center;}
