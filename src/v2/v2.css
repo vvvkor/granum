@@ -8,6 +8,10 @@
 :root{
   /* basic */
   --rfsz: 1.2;
+  --lh: 1.5;
+  --icon-vert: -15%;
+  /*--icon-pad: 1.2;*/ /* used with .ic = icon:before*/
+  --icon-scale: 1.2;
   --bg: #fcfcfc;
   --bgl: #9992;
   --over: #0002;
@@ -17,7 +21,7 @@
   --bg-act: #def;
   --hover: #c00;
   --shade: 0 .1em .8em 0em #0003;
-  --rgap: 1em;
+  --rgap: 1rem;
   --gap: 1em;
   --bord: thin solid #0002;
   --rad: .2em;
@@ -39,8 +43,8 @@
   --mono: "PT Mono", monospace;;
   
   /* dependent */
-  --risz: 16 * var(--rfsz) * 1.2;  /* *1 */
-  --ishift: -15%; /* 10% */
+  --risz: 16 * var(--rfsz) * var(--icon-scale);  /* *1 */
+  --ishift: var(--icon-vert); /* 10% */
   --isz: var(--risz);
   --pad: calc(.5 * var(--gap)) var(--gap);
   --pad-s: calc(.25 * var(--gap)) calc(.5 * var(--gap));
@@ -67,7 +71,8 @@ button::-moz-focus-inner, [type="submit"]::-moz-focus-inner {border:none;} /* fi
 
 /* typography */
 html {font-size:calc(100% * var(--rfsz));}
-body {line-height:1.5;color:var(--text);background-color:var(--bg);}
+body {color:var(--text);background-color:var(--bg);}
+body, h1, h2, .h1, .h2 {line-height:var(--lh);}
 input, button, select, textarea, table {font:inherit;}
 main, img.fit, img.center /*, table.roll*/ {display:block;}
   img.wide {width:100%;}
@@ -80,7 +85,7 @@ h5, .h5, small, .small {--fsz:.83;}
 h6, .h6 {--fsz:.67;}
 h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6,small,.small {font-size:calc(100% * var(--fsz));--isz:calc(var(--risz) * var(--fsz))}
 h1, h2, h3, h4, h5, h6{margin:calc(2 * var(--rgap)) 0 var(--rgap) 0;}
-h1, h2, .h1, .h2 {line-height:1.3;}
+h1, h2, .h1, .h2 {--lh:1.3;}
 .sans, .tag, body {font-family:var(--sans);}
 .serif {font-family:var(--serif);}
 .mono, pre, code, kbd, samp {font-family:var(--mono);font-size:90%;}
@@ -126,7 +131,7 @@ a.act, a[href^="#"]:has(+:target), .check:has(:checked), .tabs:not(:has(:target)
 .yy {--hue:var(--yy);--lit:calc(var(--rlit) - 12%);}
 .ww {--hue:var(--ww);}
 .ee {--hue:var(--ee);}
-.tx[class] {color:hsl(var(--hue) var(--satur) calc(var(--lit) - 5%));}
+.tx[class], .ic[class]:before {color:hsl(var(--hue) var(--satur) calc(var(--lit) - 5%));}
 .bg[class] {background-color:hsl(var(--hue) var(--satur) var(--rlit-bg) / var(--alpha-bg));}
 .bk[class], [data-hint]:after {background-color:hsl(var(--hue) calc(var(--satur) - 0%) var(--lit));color:var(--bg);}
 .bk[class] a {color:var(--bg);}
@@ -295,101 +300,10 @@ table.c>*tr>* {text-align:center;}
 .r8 td:nth-child(8) {text-align:right;}
 .r9 td:nth-child(9) {text-align:right;}
 
-/* scroll */
-
-/* icon */
-[class*="icon-"] {display:inline-block;--iszp:calc(1px * var(--isz));width:var(--iszp);height:var(--iszp);fill:currentColor;vertical-align:var(--ishift);/*background:#ddd;*/}
-[class*="icon-"]>path {/*display:block;*/transform:scale(calc(var(--isz) / var(--w)));--w:100;d:path("M50 30l20 20,-20 20,-20-20z");fill:currentColor;}
-
-.icon-menu>path {--w:7;d:path("M.5 1h6v1h-6zm0 2h6v1h-6zm0 2h6v1h-6z");}
-.icon-more>path {--w:17;d:path("M7 2h3v3h-3zm0 5h3v3h-3zm0 5h3v3h-3z");}
-.icon-grid>path {--w:7;d:path("M1 1h2v2h-2zM4 1h2v2h-2zM1 4h2v2h-2zM4 4h2v2h-2z");}
-.icon-find>path {--w:12;d:path("M5 1a4 4 0 1 0 .01 0zm0 1a3 3 0 1 1-.01 0m3 5l-1 1 3 3 1-1z");}
-.icon-config>path {--w:220;d:path("M35 67l75 -44 75 44 0 89-75 44-75-44zm75 8a35 35 0 1 0 .01 0z");}
-.icon-user>path {--w:10;d:path("M5 9C13 -1.5 -3 -1.5 5 9zM1 8.5q4 1 8 0-4 -3 -8 0z");}
-.icon-lock>path {--w:10;d:path("M1.5 4h7v5h-7zm1 0c0-4 5-4 5 0h-1c0-3-3-3-3 0zm2 1v2h1v-2z");}
-.icon-edit>path {--w:10;d:path("M7 1q1.6 .4 2 2l-5 5-3 1 1-3zM2.3 6.3l-.5 1.5.4.4 1.5-.5z");}
-.icon-add>path {--w:7;d:path("M3 1h1v2h2v1h-2v2h-1v-2h-2v-1h2z");}
-.icon-delete>path {--w:20;d:path("M5 3l5 5 5-5 2 2-5 5 5 5-2 2-5-5-5 5-2-2 5-5-5-5z");}
-.icon-ok>path {--w:100;d:path("M10 48l11-9 18 22 40-50 11 9-51 65z");}
-.icon-up>path {--w:12;d:path("M2 7l-1-1 5-5 5 5-1 1 -3.25 -3.2v7h-1.5v-7z");}
-.icon-down>path {--w:12;d:path("M2 5l-1 1 5 5 5-5-1-1 -3.25 3.2v-7h-1.5v7z");}
-.icon-left>path {--w:12;d:path("M7 2l-1-1 -5 5 5 5 1-1 -3.2 -3.25h7v-1.5h-7z");}
-.icon-right>path {--w:12;d:path("M5 2l 1-1 5 5 -5 5 -1-1 3.2 -3.25h-7v-1.5h7z");}
-.icon-download>path {--w:10;d:path("M1 8h8v1h-8zm1-3.7h2v-3h2v3h2l-3 3z");}
-.icon-folder>path {--w:12;d:path("M1 1.5h4l1 2h5v7h-10zm1 3v5h8v-5z");}
-.icon-file>path {--w:12;d:path("M2 1h5l3 3v7h-8zm1 1v8h6v-6h-2v-2z");}
-.icon-image>path {--w:12;d:path("M1 2h10v8h-10zm1 1v5l3-3 2 2 1-1 2 2 v-5zm5.5 .5a1 1 0 1 0 .001 0z");}
-.icon-list>path {--w:7;d:path("M1 1h1v1h-1zm0 2h1v1h-1zm0 2h1v1h-1z M3 1h3v1h-3zm0 2h3v1h-3zm0 2h3v1h-3z");}
-.icon-chart>path {--w:10;d:path("M1 9v-3h2v3zm3 0v-5h2v5zm3 0v-7h2v7z");}
-.icon-ban>path {--w:20;d:path("M10 2a8 8 0 1 0 .01 0m0 2a6 6 0 1 1 -.01 0zm-4.5 .5l-1 1 10 10 1-1z");}
-.icon-warning>path {--w:15;d:path("M7.5 1.2l-6.4 12h12.8zm0 9a1 1 0 1 1-.01 0c-3-7 3-7 0 0z");}
-.icon-info>path {--w:20;d:path("M10 2a8 8 0 1 0 .01 0zm-1 3h2v2h-2zm-1 4h3v5l1 1h-3v-5");}
-.icon-share>path {--w:22;d:path("M6 8a3 3 0 1 0 .01 0zm10-5a3 3 0 1 0 .01 0zm0 10a3 3 0 1 0 .01 0zm-10-3v2l10 5v-2zv2l10-5v-2z");}
-.icon-world>path {--w:24;d:path("M12 2a10 10 0 1 0 .01 0zm0 2a8 8 0 1 1-.01 0za6 8 0 1 0 .01 0za4.4 8 0 1 1-.01 0za1 8 0 1 0 .01 0zm8 8a8 .4 0 1 0 0 .01z");}
-.icon-pin>path {--w:10;d:path("M2 4a3 3 0 0 1 6 0q0 2 -3 5q-3-3-3-5zm3 -2a2 2 0 1 0 .01 0z");}
-.icon-time>path {--w:24;d:path("M12 2a10 10 0 1 1 -.01 0zm0 2a8 8 0 1 0 .01 0zm-1.2 1h2v6.5l3.5 3.5-1.5 1.5-4-4z");}
-.icon-refresh>path {--w:9;d:path("M1.5 8v-3h3l-1 1q2 1.5 4-1q-1.5 4-5 2zm6-7v3h-3l1-1q-2-1.5-4 1q1.5-4 5-2z");}
-.icon-copy>path {--w:12;d:path("M2 3 h1v7h5v1h-6zm2-2h6v8h-6zm1 1v6h4v-6z");}
-.icon-mail>path {--w:14;d:path("M1 2.5h12v9h-12zm1 1v1l5 3 5 -3v-1zm0 2v5h10v-5l-5 3z");}
-.icon-send>path {--w:12;d:path("M1 2l10 4-10 4 1.5-3.6 6-.4-6-.4z");}
-
-.icon-sort>path {--w:7;d:path("M1 1h2v1h-2zm0 2h3.5v1h-3.5zm0 2h5v1h-5z");}
-.icon-home>path {--w:10;d:path("M1 4.8h1v4h2v-3h2v3h2v-4h1l-4-4z");}
-.icon-close>path {--w:12;d:path("M2 1l4 4 4-4 1 1-4 4 4 4-1 1-4-4-4 4-1-1 4-4-4-4z");}
-.icon-exit>path {--w:10;d:path("M1 1h4v1h-3v6h3v1h-4zm2 3h3v-2l3 3-3 3v-2h-3z");}
-.icon-key>path {--w:20;d:path("M2 16l7-7v-4l3-3q7 0 7 7l-3 3h-4l-6 6h-4zm3 1h1l6-6h-1zm11-12a1.5 1.5 0 1 0 .01 .01z");}
-.icon-asc>path {--w:10;d:path("M1 6l4-4 4 4-1 1-3-3-3 3z");}
-.icon-desc>path {--w:10;d:path("M1 4l4 4 4-4-1-1-3 3-3-3z");}
-.icon-back>path {--w:10;d:path("M6 1l1 1-3 3 3 3-1 1-4-4z");}
-.icon-forward>path {--w:10;d:path("M4 1l4 4-4 4-1-1 3-3-3-3z");}
-.icon-upload>path {--w:10;d:path("M1 8h8v1h-8zm1-4h2v3h2v-3h2l-3-3z");}
-.icon-first>path {--w:12;d:path("M2 2h1.5v8h-1.5zm2 4l6-4v8z");}
-.icon-last>path {--w:12;d:path("M2 2v8l6-4zm6.5 0h1.5v8h-1.5z");}
-.icon-open>path {--w:12;d:path("M.5 1.5h4l1 2h6.3l-2.3 7h-9zm3 3l-2 5h7l2-5z");}
-.icon-attach>path {--w:15;d:path("M4.5 11q0 3 3 3t3-3v-8q0-2-2-2t-2 2v7h1v-7q0-1 1-1t1 1v8q0 2-2 2t-2-2v-7h-1z");}
-.icon-audio>path {--w:19;d:path("M8 14h-1v-10l8-2v10h-1v-6.5l-6 1.5za3 2 -20 1 1 0 -.01zm7-2a3 2 -20 1 1 0 -.01z");}
-.icon-video>path {--w:12;d:path("M1 3h7v2l3-2v6l-3-2v2h-7z");}
-.icon-text>path {--w:12;d:path("M2 1h5l3 3v7h-8zm1 1v8h6v-6h-2v-2zm1 4h4v1h-4zm0 2h4v1h-4z");}
-.icon-tree>path {--w:26;d:path("M9 3h8v6h-3v3h8v5h2v6h-6v-6h2v-3h-6v3h2v6h-6v-6h2v-3h-6v3h2v6h-6v-6h2v-5h8v-3h-3z");}
-.icon-link>path {--w:17;d:path("M12 1h2l2 2v2l-4 4h-2l5-5-2-2-5 5v-2zm-5 7h-2l-4 4v2l2 2h2l4-4v-2l-5 5-2-2zm-1 4l-1-1 6-6 1 1z");}
-.icon-no>path {--w:7;d:path("M1 3h5v1h-5z");}
-.icon-flag>path {--w:10;d:path("M2 1h1v1q2-1 3 0t3-0v4q-2 1-3 0t-3 0v3h-1z");}
-.icon-date>path {--w:11;d:path("M1 1.5h9v8h-9zm1 2v5h7v-5zm.5-3v2h1.5v-2zm4.5 0v2h1.5v-2z");}
-.icon-view>path {--w:12;d:path("m1 6q5-6 10 0v1q-5 -6-10 0zm5-3a2.8 2.8 0 1 1 -.01 0zm0 1.8a1.1 1.1 0 1 0 .01 0z");}
-.icon-card>path {--w:14;d:path("M1 3.5q0-1 1-1h10q1 0 1 1v7q0 1 -1 1h-10q-1 0-1-1zm1 0v1h10v-1zm0 3v4h10v-4z");}
-.icon-sum>path {--w:12;d:path("M2.5 3v-1h7v1h-5l3 3-3 3h5v1h-7v-1l3-3z");}
-.icon-help>path {--w:18;d:path("M9 2a7 7 0 1 0 .01 0zm-3 5q0-3 3-3t3 3c0 3-2 2-2 4h-2c0-3 2-2 2-4q0-1-1-1t-1 1zm3 4.5a1.3 1.3 0 1 1 -.01 0z");}
-.icon-phone>path {--w:13;d:path("M3 1l2 3-1.2 1.2 4 4 1.2-1.2 3 2c-3 6 -15 -6 -9-9z");}
-.icon-chat>path {--w:12;d:path("M6 1.2a5 4 0 1 0 .01 0zm0 1a4 3 0 1 1-.01 0zm-3.8 5.5l-1 3 4-2z");}
-.icon-bookmark>path {--w:8;d:path("M4 5l-2 2v-6h4v6z");}
-.icon-star>path {--w:32;d:path("M16 2 l9 28-23-18 28 0-23 18z");}
-.icon-heart>path {--w:6;d:path("M3 2c2-2 4 1 0 3c-4-2-2-5 0-3z");}
-.icon-tag>path {--w:9;d:path("M1 5.2l4-4h3v3l-4 4zm6-3.1a.6 .6 0 1 0 .01 .01z");}
-.icon-expand>path {--w:10;d:path("M1 1h3v1h-2v2h-1zm5 0h3v3h-1v-2h-2zm2 5h1v3h-3v-1h2zm-7 0h1v2h2v1h-3z");}
-.icon-collapse>path {--w:10;d:path("M4 4h-3v-1h2v-2h1zm2 0v-3h1v2h2v1zm0 2h3v1h-2v2h-1zm-2 0v3h-1v-2h-2v-1z");}
-.icon-box>path {--w:26;d:path("M3 6l10-2.7 10 2.7-10 3zm-.8 1.2l10 3v13l-10-4zm21.6 0l-10 3v13l10-4z");}
-.icon-columns>path {--w:16;d:path("M1.5 2.5h13v11h-13zm1 2v8h5v-8zm6 0v8h5v-8z");}
-.icon-storage>path {--w:14;d:path("M1.5 4.5v-3h11v3zm0 4zv-3h11v3zm0 4zv-3h11v3zm8 -2v1h2v-1zm0-4v1h2v-1zm0-4v1h2v-1z");}
-.icon-settings>path {--w:11;d:path("M1 2h9v1h-9zm0 3h9v1h-9zm0 3h9v1h-9zm2-7h1v3h-1zm4 3h1v3h-1zm-3 3h1v3h-1z");}
-.icon-power>path {--w:18;d:path("M6 3a6.7 6.7 0 1 0 6 0v2a4.9 4.9 0 1 1 -6 0zm2-1.5h2v8h-2z");}
-.icon-energy>path {--w:11;d:path("M5 1.5l-2 4h2l-2 5 5-6h-2l2-3z");}
-.icon-sound>path {--w:9;d:path("M3 6h-2v-3h2l3-2v7zm3.7-3q2 1.5 0 3z");}
-.icon-mic>path {--w:20;d:path("M7 5 a3 3 0 1 1 6 0v4a3 3 0 1 1 -6 0zm-2 4a5 5 0 1 0 10 0zm4 4v3h-3v2h8v-2h-3v-3z");}
-.icon-photo>path {--w:10;d:path("M1 2.5h2l1-1h2l1 1h2v5h-8zm4 .5a1.8 1.8 0 1 0 .01 0z");}
-.icon-print>path {--w:10;d:path("M1 2.5h2v-1h4v1h2v4h-8zm2 2l-1 4h6l-1-4zm4-1h1v-.5h-1z");}
-.icon-play>path {--w:12;d:path("M3 2v8l7-4z");}
-.icon-pause>path {--w:9;d:path("M2 2h2v5h-2zm3 0h2v5h-2z");}
-.icon-stop>path {--w:9;d:path("M2 2h5v5h-5z");}
-.icon-rec>path {--w:10;d:path("M5 2a3 3 0 1 0 .01 0z");}
-.icon-layers>path {--w:14;d:path("M1 5.5l6-3 6 3-6 3zm0 3l2-1 4 2 4-2 2 1-6 3z");}
-.icon-none>path {--w:1;d:path("M1 1z");}
-
 /* modifiers */
 .wrap {max-width:45em;}
 .full:not(.modal) {height:100vh;height:100dvh;}
 .nobr {white-space:nowrap;}
-/*a.pad,*/ [class*="icon-"].pad {padding:calc(.5 * var(--gap));}
 .scroll {overflow:auto;min-width:5em;min-height:5em;}
 .center {margin-left:auto;margin-right:auto;}
 .l {text-align:left;}

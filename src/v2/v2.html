@@ -8,7 +8,9 @@
     <meta name="theme-color" media="(prefers-color-scheme:dark)" content="#04a">
     <link rel="icon" type="image/svg" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20220%20220'%3E%3Cpath%20fill='%23f50'%20d='M35%2067l75%20-44%2075%2044%200%2089-75%2044-75-44zm75%208a35%2035%200%201%200%20.01%200z'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="v2.css">
-    <!--script defer src="granum.js"></script-->
+    <link rel="stylesheet" href="v2-icons-svg.css">
+    <!--link rel="stylesheet" href="v2-icons-clip-norm.css"-->
+    <script defer src="v2.js"></script>
     <script>
       // demo icons
       document.addEventListener('DOMContentLoaded', e => {
@@ -23,55 +25,13 @@
           n.parentNode.setAttribute('data-hint', i)
         });
       })
-      
-      // enhancements
-      document.addEventListener('DOMContentLoaded', e => {
-        // use URL params
-        const u = new URL(location.href)
-        document.querySelectorAll('[data-get]:not(form), form[data-get] [name]').forEach(n => {
-          const v = u.searchParams.getAll(n.dataset.get || n.name)
-          if (v.length < 1) return
-          if (['checkbox', 'radio'].includes(n.type)) n.checked = v.includes(n.value)
-          else if (n.matches('input,textarea,select')) n.value = v.join(', ')
-          else n.textContent = v.join(', ')
-        })
-        // remove title on [data-hint]
-        document.querySelectorAll('[data-hint]').forEach(n => n.removeAttribute('title'))
-        // fresh inputs
-        document.querySelectorAll('[name]').forEach(n => n.classList.add('fresh'))
-      })
-      const act = (n, k, f) => (n.dataset.parent ? n.closest(n.dataset.parent) : document).querySelectorAll(n.dataset[k]).forEach(m => f(m))
-      document.addEventListener('click', e => {
-        const n = e.target
-        // check all boxes
-        if (n.dataset.check) act(n, 'check', m => m.checked = n.checked)
-        // toggle classes
-        else if (n.dataset.nodes) {
-          if (n.type == 'checkbox') act(n, 'nodes', m => m.classList[n.checked != ('reverse' in n.dataset) ? 'add' : 'remove'](...n.value.split(/\s+/)))
-          else if (n.type == 'radio') act(n, 'nodes', m => m.className = n.value)
-        }
-        // show native modal
-        else if (n.dataset.modal) document.querySelector(n.dataset.modal).showModal()
-        // validate form
-        else if (n.form && n.matches('button, [type="submit"]')) n.form.querySelectorAll('[name]').forEach(n => n.classList.remove('fresh'))
-      })
-      document.addEventListener('keydown', e => {
-        // close modals and popups
-        if (e.key == 'Escape') {
-          location.hash = '#escape'
-          document.querySelectorAll('details.pop').forEach(n => n.removeAttribute('open'))
-          document.querySelectorAll('.pop>.check>:checked').forEach(n => n.checked = false)
-        }
-      })
-      // validate field
-      document.addEventListener('blur', e => e.target.classList.remove('fresh'), true)
-      // validate radio
-      document.addEventListener('blur', e => e.target.form ? e.target.form.querySelectorAll(`[name="${e.target.name}"]`).forEach(n => n.classList.remove('fresh')) : null, true)
     </script>
   </head>
   <body class="-invert">
   <div class="wrap center pad">
 
+    <h1><svg class="icon-config tx nn"><path/></svg> Granum v2</h1>
+  
     <h2 id="config">Config <a href="#config" class="x1 small tx nn">#</a></h2>
     
     <div><a href="?#"><svg class="icon-refresh tx yy"><path/></svg> Reset URL</a></div>
