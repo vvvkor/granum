@@ -1,0 +1,15 @@
+<style>
+  body {--rfsz:2;--fsz:var(--rfsz);font:100%/1.5 sans-serif;}
+  h1 {--fsz:4;margin:0;}
+  body, h1 {font-size:calc(1em * var(--fsz));}
+  .pad {padding:.5em 1em;background:#eee;display:inline-block;}
+  .icon:before {content:'';display:inline-block;background:#999;
+    --sc:calc(16 / var(--w));--isz:calc(16px * var(--fsz) * var(--sc));width:var(--isz);height:var(--isz);
+    margin-right:.5em;vertical-align:-10%;/*transform:scale(1.2);*/}
+  x.icon:before {clip-path:polygon(0% 0%, 50% 20%, 100% 0%, 50% 100%);}
+  .icon:before {--w:32;clip-path:path("M 0 0   L 10 5, 20 0, 20 32z");}
+  .icon:before {xtransform:scale(calc(var(--fsz) / var(--rfsz) * var(--sc)));transform-origin:0 0;}
+</style>
+
+<h1 class="icon">Heading</h1>
+<a class="pad icon">Link</a>
