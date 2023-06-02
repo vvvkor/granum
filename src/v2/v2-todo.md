@@ -20,6 +20,7 @@
 
 ## Order / cleanup / docs
 
+!!!- test: mob, ff, safari (icons, overlay)
 !- naming: .bgl =.dialog etc, --rlit etc
 - write docs
 = move dialog experiments to some test files [removed]
