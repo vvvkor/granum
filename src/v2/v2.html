@@ -8,8 +8,8 @@
     <meta name="theme-color" media="(prefers-color-scheme:dark)" content="#04a">
     <link rel="icon" type="image/svg" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20220%20220'%3E%3Cpath%20fill='%23f50'%20d='M35%2067l75%20-44%2075%2044%200%2089-75%2044-75-44zm75%208a35%2035%200%201%200%20.01%200z'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="v2.css">
-    <link rel="stylesheet" href="v2-icons-svg.css">
-    <!--link rel="stylesheet" href="v2-icons-clip-norm.css"-->
+    <!--link rel="stylesheet" href="v2-icons-svg.css"-->
+    <link rel="stylesheet" href="v2-icons-clip.css">
     <script defer src="v2.js"></script>
     <script>
       // demo icons
@@ -20,9 +20,11 @@
           const j = i.slice(0, 1).toUpperCase() + i.slice(1)
           n.parentNode.title = i
           //n.parentNode.append(' ' + j)
-          n.classList.add('tx', 'nn'/*, 'pad'/*, 'bg', 'hover'*/)
-          n.parentNode.classList.add('hover', 'pad'/*, 'pos-r'*/)
-          n.parentNode.setAttribute('data-hint', i)
+          n.classList.add('ic', 'nn'/*, 'pad'/*, 'bg', 'hover'*/)
+          //n.parentNode.classList.add('hover', 'pad'/*, 'pos-r'*/)
+          //n.parentNode.setAttribute('data-hint', i)
+          n.classList.add('hover', 'pad'/*, 'pos-r'*/)
+          n.setAttribute('data-hint', i)
         });
       })
     </script>
@@ -30,11 +32,11 @@
   <body class="-invert">
   <div class="wrap center pad">
 
-    <h1><svg class="icon-config tx nn"><path/></svg> Granum v2</h1>
+    <h1 class="icon-config ic ii">Granum v2 <small>Small</small></h1>
   
     <h2 id="config">Config <a href="#config" class="x1 small tx nn">#</a></h2>
     
-    <div><a href="?#"><svg class="icon-refresh tx yy"><path/></svg> Reset URL</a></div>
+    <div><a href="?#" class="icon-refresh ic yy">Reset URL</a></div>
     <div><label><input type="checkbox" id="invert"> Invert</label></div>
     <div><label class="link check"><input type="checkbox" id="debug" hidden><svg class="icon-warning tx ww"><path/></svg> Debug</label></div>
     <div><label><input type="checkbox" id="x1" checked> Heading hashes</label></div>
@@ -126,7 +128,7 @@
     <h2 id="modal">Modal <a href="#modal" class="x1 small tx nn">#</a></h2>
     
     <ul class="row gap">
-      <li><a href="#mod1"><svg class="icon-collapse text"><path/></svg> Modal</a></li>
+      <li><a href="#mod1" class="icon-collapse ic nn">Modal</a></li>
       <li><a href="#mod2"><svg class="icon-expand text"><path/></svg> Fullscreen</a></li>
       <li><a href="#modal-input"><svg class="icon-edit tx ii"><path/></svg> Focus input</a></li>
       <li><a href="#drawer"><svg class="icon-right tx ii"><path/></svg> Drawer</a></li>
@@ -156,7 +158,7 @@
     
     <div id="mod1" class="modal target row vert stack line">
       <header class="pad">
-        <a href="#cancel" class="corner pad hover"><svg class="icon-close tx nn"><path/></svg></a>
+        <a href="#cancel" class="corner pad hover icon-close ic nn empty"><i>Close</i></a>
         Modal 1
       </header>
       <div class="pad scroll">
@@ -775,7 +777,7 @@
       <tr>
         <td>Disabled<td><input disabled placeholder="disabled">
       <tr><td><td>
-          <button>OK</button>
+          <button class="icon-ok">OK</button>
           <button class="detect">OK (detect)</button>
           <button type="reset" class="bk nn">Reset</button>
           <button disabled>Disabled</button>
@@ -805,6 +807,92 @@
     -->
     
     <div class="icons -h3">
+    <a class="icon-menu"></a>
+    <a class="icon-sort"></a>
+    <a class="icon-more"></a>
+    <a class="icon-grid"></a>
+    <a class="icon-home"></a>
+    <a class="icon-find"></a>
+    <a class="icon-config"></a>
+    <a class="icon-close"></a>
+    <a class="icon-user"></a>
+    <a class="icon-exit"></a>
+    <a class="icon-key"></a>
+    <a class="icon-lock"></a>
+    <a class="icon-edit"></a>
+    <a class="icon-add"></a>
+    <a class="icon-delete"></a>
+    <a class="icon-ok"></a>
+    <a class="icon-up"></a>
+    <a class="icon-down"></a>
+    <a class="icon-left"></a>
+    <a class="icon-right"></a>
+    <a class="icon-asc"></a>
+    <a class="icon-desc"></a>
+    <a class="icon-back"></a>
+    <a class="icon-forward"></a>
+    <a class="icon-upload"></a>
+    <a class="icon-download"></a>
+    <a class="icon-first"></a>
+    <a class="icon-last"></a>
+    <a class="icon-folder"></a>
+    <a class="icon-open"></a>
+    <a class="icon-file"></a>
+    <a class="icon-attach"></a>
+    <a class="icon-audio"></a>
+    <a class="icon-video"></a>
+    <a class="icon-image"></a>
+    <a class="icon-text"></a>
+    <a class="icon-tree"></a>
+    <a class="icon-list"></a>
+    <a class="icon-link"></a>
+    <a class="icon-chart"></a>
+    <a class="icon-no"></a>
+    <a class="icon-ban"></a>
+    <a class="icon-warning"></a>
+    <a class="icon-info"></a>
+    <a class="icon-share"></a>
+    <a class="icon-world"></a>
+    <a class="icon-flag"></a>
+    <a class="icon-pin"></a>
+    <a class="icon-date"></a>
+    <a class="icon-time"></a>
+    <a class="icon-refresh"></a>
+    <a class="icon-view"></a>
+    <a class="icon-card"></a>
+    <a class="icon-sum"></a>
+    <a class="icon-copy"></a>
+    <a class="icon-help"></a>
+    <a class="icon-phone"></a>
+    <a class="icon-mail"></a>
+    <a class="icon-chat"></a>
+    <a class="icon-send"></a>
+    <a class="icon-bookmark"></a>
+    <a class="icon-star"></a>
+    <a class="icon-heart"></a>
+    <a class="icon-tag"></a>
+    <a class="icon-expand"></a>
+    <a class="icon-collapse"></a>
+    <a class="icon-box"></a>
+    <a class="icon-columns"></a>
+    <a class="icon-storage"></a>
+    <a class="icon-settings"></a>
+    <a class="icon-power"></a>
+    <a class="icon-energy"></a>
+    <a class="icon-sound"></a>
+    <a class="icon-mic"></a>
+    <a class="icon-photo"></a>
+    <a class="icon-print"></a>
+    <a class="icon-play"></a>
+    <a class="icon-pause"></a>
+    <a class="icon-stop"></a>
+    <a class="icon-rec"></a>
+    <a class="icon-layers"></a>
+    <a class="icon-none"></a>
+    <a class="icon-unknown"></a>
+    </div>
+    
+    <!--div class="icons -h3">
     <a><svg class="icon-menu" title="Menu"><path/></svg></a>
     <a><svg class="icon-sort"><path/></svg></a>
     <a><svg class="icon-more"><path/></svg></a>
@@ -888,7 +976,7 @@
     <a><svg class="icon-layers"><path/></svg></a>
     <a><svg class="icon-none"><path/></svg></a>
     <a><svg class="icon-unknown"><path/></svg></a>
-    </div>
+    </div-->
 
     <h2 id="info">Info <a href="#info" class="x1 small tx nn">#</a></h2>
     

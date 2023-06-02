@@ -1,15 +1,28 @@
 <style>
-  body {--rfsz:2;--fsz:var(--rfsz);font:100%/1.5 sans-serif;}
-  h1 {--fsz:4;margin:0;}
-  body, h1 {font-size:calc(1em * var(--fsz));}
+  body {--rfsz:1;--fsz:var(--rfsz);font:100%/1.5 sans-serif;}
+  h1 {--fsz:calc(2 * var(--rfsz));margin:0;}
+  body, h1 {font-size:calc(1rem * var(--fsz));}
   .pad {padding:.5em 1em;background:#eee;display:inline-block;}
-  .icon:before {content:'';display:inline-block;background:#999;
-    --sc:calc(16 / var(--w));--isz:calc(16px * var(--fsz) * var(--sc));width:var(--isz);height:var(--isz);
-    margin-right:.5em;vertical-align:-10%;/*transform:scale(1.2);*/}
-  x.icon:before {clip-path:polygon(0% 0%, 50% 20%, 100% 0%, 50% 100%);}
-  .icon:before {--w:32;clip-path:path("M 0 0   L 10 5, 20 0, 20 32z");}
-  .icon:before {xtransform:scale(calc(var(--fsz) / var(--rfsz) * var(--sc)));transform-origin:0 0;}
+  
+  /*.icon:before {clip-path:polygon(0% 0%, 50% 20%, 100% 0%, 50% 100%);}*/
+  [class*="icon-"] {--w:16;--path:path("M8 4l4 4,-4 4,-4-4z");}
+  [class*="icon-"]:before {content:'';display:inline-block;width:1em;height:1em;margin-right:.5em;vertical-align:-10%;}
+  [class*="icon-"]:before {
+    --sc:calc(var(--fsz) * 16 / var(--w));
+    background:currentColor;
+    outline:20em solid currentColor;
+    /*box-shadow:0 0 0 20em #c00;*/
+    clip-path:var(--path);
+    transform:scale(var(--sc));
+    transform-origin:0 0;}
+  
+  .icon-arrow {--w:32;--path:path("M 0 0   L 20 5, 32 0, 32 32z");}
+  .icon-nav {--w:7;--path:path("M1 1h5v1h-5zm0 2h5v1h-5zm0 2h5v1h-5z");}
+  .icon-sort {--w:70;--path:path("M10 10h30v10h-30zm0 20h40v10h-40zm0 20h50v10h-50z");}
 </style>
 
-<h1 class="icon">Heading</h1>
-<a class="pad icon">Link</a>
+<h1 class="icon icon-arrow">Head</h1>
+<a href="#" class="pad icon-default">Link</a>
+<a class="pad icon-arrow">Link</a>
+<a class="pad icon-nav">Link</a>
+<a class="pad icon-sort">Link</a>

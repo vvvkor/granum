@@ -7,10 +7,8 @@
 */
 :root{
   /* basic */
-  --rfsz: 1.2;
+  --font-scale: 1.2;
   --lh: 1.5;
-  --icon-vert: -15%;
-  /*--icon-pad: 1.2;*/ /* used with .ic = icon:before*/
   --icon-scale: 1.2;
   --bg: #fcfcfc;
   --bgl: #9992;
@@ -43,9 +41,8 @@
   --mono: "PT Mono", monospace;;
   
   /* dependent */
-  --risz: 16 * var(--rfsz) * var(--icon-scale);  /* *1 */
-  --ishift: var(--icon-vert); /* 10% */
-  --isz: var(--risz);
+  --icon-vert: calc(1% * (var(--icon-scale) * 50 - 60)); /* -10% for scale 1, 0 for scale 1.2 */
+  --icon-mar: calc(1em * (var(--icon-scale) - .7)); /* .3em for scale 1, .5em for scale 1.2 */
   --pad: calc(.5 * var(--gap)) var(--gap);
   --pad-s: calc(.25 * var(--gap)) calc(.5 * var(--gap));
   --pad-xs: calc(.12 * var(--gap)) calc(.25 * var(--gap));
@@ -70,8 +67,7 @@ button, [type="submit"], [type="search"] {-webkit-appearance:none;} /* safari */
 button::-moz-focus-inner, [type="submit"]::-moz-focus-inner {border:none;} /* firefox */
 
 /* typography */
-html {font-size:calc(100% * var(--rfsz));}
-body {color:var(--text);background-color:var(--bg);}
+body {color:var(--text);background-color:var(--bg);font-size:calc(100% * var(--font-scale));}
 body, h1, h2, .h1, .h2 {line-height:var(--lh);}
 input, button, select, textarea, table {font:inherit;}
 main, img.fit, img.center /*, table.roll*/ {display:block;}
@@ -80,10 +76,10 @@ main, img.fit, img.center /*, table.roll*/ {display:block;}
 h1, .h1 {--fsz:2;}
 h2, .h2 {--fsz:1.55;}
 h3, .h3 {--fsz:1.2}
-h4, .h4 {--fsz:1;}
+h4, .h4, body {--fsz:1;}
 h5, .h5, small, .small {--fsz:.83;}
 h6, .h6 {--fsz:.67;}
-h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6,small,.small {font-size:calc(100% * var(--fsz));--isz:calc(var(--risz) * var(--fsz))}
+h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6,small,.small {font-size:calc(100% * var(--fsz));}
 h1, h2, h3, h4, h5, h6{margin:calc(2 * var(--rgap)) 0 var(--rgap) 0;}
 h1, h2, .h1, .h2 {--lh:1.3;}
 .sans, .tag, body {font-family:var(--sans);}
@@ -322,7 +318,7 @@ ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div) {display:block;}
 /* mobile */
 @media (max-width: 899px) {
 	:root {
-    --rfsz: 1;
+    --font-scale: 1;
   }
   .row.resp {--flow:column nowrap;--push:0;}
   ul.row.resp {--wid:var(--min-pop-w);}
