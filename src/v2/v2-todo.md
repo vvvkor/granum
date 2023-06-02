@@ -29,15 +29,13 @@
 
 ## Todo
 
-- col align?
-- icons: recount to viewBox 16, use :before clip-path, scale as --fsz, separate file
-
-- avoid flashing of validation .report
-- .badge:has(.tag)
-- stick top nav
+- see comments in css
+- spinner
+- bar
 
 - docs: images section: img.wide.center.c.mid.fit
-- summary.>.on.off, .check .on.off, .pop>not-last>.on.off, ul.row li .on.off, ?a(>.on.off)+targrt
+- summary.>.on.off, .check .on.off, .pop>not-last>.on.off, ul.row li .on.off, ?a(>.on.off)+target
+  - toggle icon
   - details: custom icon [.link or .fit, use svg.icon-x.on.off]
 - wide pop = hover tabs = ul.drop
 - text/icon: white with shade (for gallery)
@@ -53,6 +51,10 @@
 = native modal with fallback, tgl cmp: dialog [after closed natively (esc/formmethod/(backdrop)), not posiible to show with js]
 = data-filter [requires js]
 = confirm&prompt using label>a# [not posible]
++ stick top nav
++ .badge.tag
++ avoid flashing of validation .report [animation:delay-appear]
++ icons: recount to viewBox 16, use :before clip-path, scale as --fsz, separate file
 + native dlg close color, also confirm dlgs
 + vert scroll in modal, drawer with .stack
 + form layout: [form.container table.form.aware]
