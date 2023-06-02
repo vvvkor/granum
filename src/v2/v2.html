@@ -30,9 +30,9 @@
     </script>
   </head>
   <body class="-invert">
-  
+  <!--a href="#" class="icon-asc ic nn back pad rad shade corner pos-r"></a-->
   <!--div class="row -full">
-    <div class="col-1 pad bg nn stick scroll">Stick<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</div>
+    <aside class="col-1 pad bg nn stick scroll">Stick<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</aside>
     <div class="col-3 pad bgl">Content<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</div>
   </div-->
   
@@ -64,12 +64,12 @@
   
     <h2 id="config">Config <a href="#config" class="x1 small tx nn">#</a></h2>
     
-    <div class="row gap">
-      <div><label><input type="checkbox" id="x2" checked> Topnav</label></div>
+    <div class="row gap nobr wrap">
+      <div><label class="link check icon-menu ic nn"><input type="checkbox" id="x2" checked hidden> Topnav</label></div>
       <div><a href="?#" class="icon-refresh ic yy">Reset URL</a></div>
       <div><label><input type="checkbox" id="invert"> Invert</label></div>
       <div><label class="link check icon-warning ic ww"><input type="checkbox" id="debug" hidden>Debug</label></div>
-      <div><label><input type="checkbox" id="x1" checked> Heading hashes</label></div>
+      <div><label><input type="checkbox" id="x1" checked> Anchors</label></div>
     </div>
     
     <h2 id="typo">Typography <a href="#typo" class="x1 small tx nn">#</a></h2>
@@ -121,15 +121,16 @@
           <span class="bgl">Lite</span>
           <span class="tag bk ii">Tag</span>
           <span class="tag">8</span>
-          <span class="tag rad">125</span>
+          <span class="tag rad bg ii">999</span>
+          <span class="tag rad bk yy">125</span>
         </div>
         <div class="row gap mar mid wrap">
           <span class="badge">Badge<span class="tag">8</span></span>
           <span class="badge">Dot<span class="tag"></span></span>
-          <span class="badge"><a class="icon-grid"></a><b class="tag ww">5</b></span>
-          <span class="badge"><a class="icon-grid"></a><b class="tag ww"></b></span>
-          <span class="badge pad rad bgl">Pad<span class="tag yy">3</span></span>
-          <span class="badge pad rad bgl">Dot<span class="tag yy"></span></span>
+          <span class="badge"><a class="icon-grid"></a><b class="tag bk ww">5</b></span>
+          <span class="badge"><a class="icon-grid"></a><b class="tag bk ww"></b></span>
+          <span class="badge pad rad bgl">Pad<span class="tag bk yy">3</span></span>
+          <span class="badge pad rad bgl">Dot<span class="tag bk yy"></span></span>
           <button class="badge">Button<span class="tag">1</span></button>
           <button class="badge bk yy">Dot<span class="tag"></span></button>
         </div>
@@ -418,15 +419,16 @@
         <label><input type="checkbox" value="vert" data-parent="div" data-nodes="div>ul"> Vert</label>
         <label><input type="checkbox" value="resp" data-parent="div" data-nodes="div>ul"> Resp</label>
         <label><input type="checkbox" value="aware" data-parent="div" data-nodes="div>ul"> Aware</label>
+        <label><input type="checkbox" value="container" data-parent="div" data-nodes=".col-1"> Container</label>
         <label><input type="checkbox" value="col-2" data-parent="div" data-nodes="aside"> Limit</label>
       </p>
       <div class="row">
-        <div class="container col-1">
+        <div class="-container col-1">
           <ul class="row bgl mid pads hover">
           <!--ul class="row gap"-->
             <li><a>Style<br><small class="tx nn">CSS</small></a>
               <ul>
-                <li><a><span class="-badge">Color <small class="tag">3</small></span><br><small class="tx nn">Status</small></a>
+                <li><a><span class="-badge">Color <span class="tag">3</span></span><br><small class="tx nn">Status</small></a>
                   <ul>
                     <li><a href="#x" class="tx ee">Red</a></li>
                     <li><a href="#x" class="tx yy">Green</a></li>

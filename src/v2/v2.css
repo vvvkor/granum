@@ -109,10 +109,11 @@ sub, sup {line-height:0em;}
 
 .stack>:first-child {margin-top:0;}
 .stack>:last-child {margin-bottom:0;}
+.pad.stack {padding:var(--gap);} /* optional */
 .stack.line>:not(:last-child) {border-bottom:var(--bord);}
 
-/* heading font bar tag */
-/* status border color? */
+/* todo: bar */
+/* todo: status border color? */
 
 /* links */
 a[href], .link, .check, .pop>a, ul.row a {display:inline;color:var(--link);/*text-decoration:none;*/cursor:pointer;text-underline-offset:.15em;}
@@ -124,28 +125,27 @@ a.act, a[href^="#"]:has(+:target), .check:has(:checked), .tabs:not(:has(:target)
 :is(a, button, .link, .check, summary).hover:hover, ul.row.hover li:is(:hover, :has(:hover)):has(>a), .pop:hover>a.hover, table.hover tbody tr:hover>*, .tabs.hover>:is(a,label):hover {/*background-color:var(--bgl);*/box-shadow:var(--shade-hover);}
 
 /* colors */
-[class].text {color:var(--text);}/*hue*/
+[class].text {color:var(--text);}
 [class].back, .stick {background-color:var(--bg);}
 [class].bgl, blockquote, pre, code {background-color:var(--bgl);}
 
 /* status */
-.nn, .ii, .yy, .ww, .ee, .tag {--satur:var(--rsatur);--lit:var(--rlit);}
+.nn, .ii, .yy, .ww, .ee {--satur:var(--rsatur);--lit:var(--rlit);}
 .nn, [data-hint]:after {--hue:var(--nn);--satur:0%;--lit:calc(var(--rlit) + 15%);}
-.tag {--hue:var(--ee);}
 .ii {--hue:var(--ii);--lit:calc(var(--rlit) - 3%);}
 .yy {--hue:var(--yy);--lit:calc(var(--rlit) - 12%);}
 .ww {--hue:var(--ww);}
 .ee {--hue:var(--ee);}
 .tx[class], .ic[class]:before {color:hsl(var(--hue) var(--satur) calc(var(--lit) - 5%));}
 .bg[class] {background-color:hsl(var(--hue) var(--satur) var(--rlit-bg) / var(--alpha-bg));}
-.bk[class], [data-hint]:after, .tag {background-color:hsl(var(--hue) calc(var(--satur) - 0%) var(--lit));color:var(--bg);}
+.bk[class], [data-hint]:after {background-color:hsl(var(--hue) calc(var(--satur) - 0%) var(--lit));color:var(--bg);}
 .bk[class] a {color:var(--bg);}
 mark {background-color:hsl(var(--ww) var(--rsatur) var(--rlit-bg) / var(--alpha-bg));}
-:is(button, [type="submit"]):not(.tx, .bg, .bk, .bgl, .fit) {background-color:var(--link);color:var(--bg);}
+:is(button, [type="submit"]):not(.tx, .bg, .bk, .bgl, .back, .fit) {background-color:var(--link);color:var(--bg);}
+.tag:not(.tx, .bg, .bk, .bgl, .back, .fit) {background-color:hsl(var(--ee) var(--rsatur) var(--rlit));color:var(--bg);}
 
 
 /* grid */
-/* +ul, +row, +vert, +mid, +scroll, +gap, +wrap, +resp, +col-1, +push, +shift, vert-scroll */
 .row {--flow:row nowrap;--wid:auto;--push:auto;display:flex;flex-flow:var(--flow);width:var(--wid);}
 .row.wrap, ul.row, .tabs {--flow:row wrap;}
 .row.vert {--flow:column nowrap;--push:0;}
@@ -160,8 +160,6 @@ ul.row.vert {--wid:var(--min-pop-w);}
 .row>*>img:only-child {width:100%;height:100%;aspect-ratio:3/2;}
 
 /* toggle */
-/* + hash: can link (for initial show), clean markup, limited hilite, nested */
-/* + .check: hilite, unscroll, nested, multiple, initial show, can close */
 .target:not(:target):not(:has(:target)), .check:not(:has(:checked)) + :not(:target):not(:has(:target)), .check input {display:none;}
 .target, .tabs+div :target, .tabs :target, :is(h1,h2,h3):target {scroll-margin-top:5rem;}
 /* overlay - todo: simplify */
@@ -208,7 +206,7 @@ img:target {position:absolute;display:block;inset:0;width:100%;height:100%;objec
   .pop>:last-child:not(:has(.pop)), ul.row ul:not(:has(ul)) {max-height:var(--max-pop-h);overflow:auto;}
 ul, ul.vert>li>ul {--pos:0 auto auto 100%;}
 .pop:last-child, .row>li>ul {--pos:100% auto auto 0;}
-[data-hint]:after {white-space:nowrap;padding:var(--pad-s);--lit:30%;/*xbackground-color:hsl(var(--ww) 100% 70%);*/}
+[data-hint]:after {white-space:nowrap;padding:var(--pad-s);--lit:30%;}
   [data-hint]:not([class*="pos-"]):after {--pos:auto auto 100% 0;}
   [data-hint] {/*border-bottom:thin dashed #ccc;*/cursor:help;}
 ul.row, ul.row ul, ul.row li {list-style:none;margin:0;padding:0;}
@@ -240,12 +238,8 @@ ul.tabs+div>:first-child, ul.tabs[class]+div>:is(:target, :has(:target)) {displa
   .tabs>a:first-of-type+div, .tabs[class]>a+div:is(:target, :has(:target)) {display:block;}
 
 
-/* +toggle, +tabs, +tree: optionally use +label */
-/* +modal, +gallery, drawer, +accordion */
-/* gallery: +close, back, bg */
-/* modal: small/full, +close icon, vert scroll */
-/* stick, stack */
-/* js: store, unscroll? */
+/* todo: gallery: close with shade, back, bg */
+/* todo: js: store, unscroll? */
 
 
 /* list */
@@ -315,7 +309,7 @@ table.c>*tr>* {text-align:center;}
 .l {text-align:left;}
 .c, .tag {text-align:center;}
 .r {text-align:right;}
-.corner {position:absolute;top:0;right:0;width:auto;z-index:1;}
+.corner {position:absolute;top:0;right:0;width:auto;z-index:40;}
   .row .push {margin-right:var(--push);}
   .row .shift {margin-left:var(--push);}
   .row:not(.vert) .push + .shift {margin-left:0;}
@@ -323,19 +317,16 @@ table.c>*tr>* {text-align:center;}
 a.pad, .tag {display:inline-block;}
 ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div), table.pads>*>tr>* {padding:var(--pad);}
 ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div) {display:block;}  
-/* +pad +bord +mar +mid rad shade */
 
 @media screen {
-	.stick {position:sticky;top:0;z-index:41;}
-	footer.stick {top:auto;bottom:0;z-index:40;}
+	.stick {position:sticky;top:0;z-index:35;}
+	footer.stick {top:auto;bottom:0;z-index:30;}
 	.row .stick{align-self:start;max-height:100vh;max-height:100dvh;}
 }
 
 /* mobile */
 @media (max-width: 899px) {
-	:root {
-    --font-scale: 1;
-  }
+	:root {--font-scale: 1;}
   .row.resp {--flow:column nowrap;--push:0;}
   ul.row.resp {--wid:var(--min-pop-w);}
   ul.row.resp ul {--pos:0 auto auto 100%;} /* avoids custom pos */
@@ -348,6 +339,7 @@ ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div) {display:block;}
 }
 
 /* containers */
+/* todo: fix .pop and icons visible below dropdown */
 .container {container: block / inline-size;}
 @container block (max-width: 450px) {
   .row.aware {--flow:column nowrap;--push:0;}
@@ -400,9 +392,9 @@ html:has(#debug:checked) .fresh {background:#cfc;box-shadow:0 0 .5em #0909;}
 
 /*
 z-index
-1   .corner
 10  .badge>.tag
-40 .stick
+30 .stick
+40   .corner
 50  .pop
 50  .drop
 100 #overlay

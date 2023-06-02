@@ -20,6 +20,9 @@
 
 ## Order / cleanup / docs
 
+- naming: read=post, bgl=transparent=tr
+- see comments in css
+- cleanup and organize css
 !!!- test: mob, ff, safari (icons, overlay)
 !- naming: .bgl =.dialog etc, --rlit etc
 - write docs
@@ -29,9 +32,12 @@
 
 ## Todo
 
-- see comments in css
+- corner bottom fixed: .pos-* ?
+  - link to top
+- brighter orange text and bg mark
 - spinner
 - bar
+- swap icons on toggle (js?)
 
 - docs: images section: img.wide.center.c.mid.fit
 - summary.>.on.off, .check .on.off, .pop>not-last>.on.off, ul.row li .on.off, ?a(>.on.off)+target
@@ -51,6 +57,9 @@
 = native modal with fallback, tgl cmp: dialog [after closed natively (esc/formmethod/(backdrop)), not posiible to show with js]
 = data-filter [requires js]
 = confirm&prompt using label>a# [not posible]
++ button requires .bk BUT .tag does not: unify! [.bk required for both]
++ .pad.stack
++  dont use .cont by default for dropdown demo, cause .pop and icons visible from below
 + stick top nav
 + .badge.tag
 + avoid flashing of validation .report [animation:delay-appear]

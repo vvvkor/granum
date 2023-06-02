@@ -1,5 +1,29 @@
 # Docs
 
+## Awaited browser support
+
+- :has() in Firefox
+- Safari? (nedds testing)
+
+## z-index
+
+- 10  `.badge>.tag`
+- 30  `footer.stick`
+- 35  `.stick`
+- 40  `.corner`
+- 50  `[data-hint]`
+- 50  `.pop`
+- 50  `.drop`
+- 100 `#overlay`
+- 101 `.overlay`
+- 120 `.drawer`
+- 130 `.modal`
+
+## Typical layouts
+
+- `.row.resp.full > .col-1 + .col-3.scroll.row.vert > header + .col-2.scroll + (.scroll > table) + footer` - vertical with scroll
+- `.row > .col-1.stick.scroll + .col-3` - sticky aside
+
 ## Global
 
 - `#invert:checked` - dark mode
@@ -14,6 +38,7 @@
 - `.scroll` - 
 - `.scrollbar` - 
 - `.stick` - 
+  - `footer.stick` - 
 - `.stack` - 
 - `.corner` - 
 - `.read` - 
