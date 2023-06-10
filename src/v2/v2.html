@@ -833,8 +833,21 @@
     <div class="mar bord pad resize">Resize</div>
     
     <h2 id="form">Form <a href="#form" class="x1 small tx nn">#</a></h2>
+
+    <h3>Grid form</h3>
+    <div class="container bord rad pad bg nn">
+    <form id="gform" class="grid-form" action="?#gform" data-get>
+      <label for="gnm">Name</label>
+      <div><input required type="text" id="gnm" name="nm" placeholder="Name" size="5"> <div class="report tx ee">Required</div></div>
+      <label for="garea">Area</label>
+      <textarea required id="garea" name="area"></textarea>
+      <label><input type="checkbox" name="box" value="b"> Optional box with same name</label>
+      <div><button name>OK</button></div>
+    </form>
+    </div>
     
-    <form action="?#form" data-get class="container" data-style="max-width:400px;">
+    <h3>Table form</h3>
+    <form id="tform" action="?#tform" data-get class="container" data-style="max-width:400px;">
       <!--button class="">OK</button-->
     <table class="form aware">
       <tr>

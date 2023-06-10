@@ -1,9 +1,6 @@
-svg[class*="icon-"] {display:none;}
-
 [class*="icon-"].empty > * {display:none;}
 [class*="icon-"]:not(:empty):not(.empty):before {margin-right:var(--icon-mar, .3em);}
 
-/* v1. static */
 /* complex scaling is needed because path() can be defined only in px */
 [class*="icon-"] {--w:16;--p:path("M8 4l4 4,-4 4,-4-4z");/*overflow:hidden;*/}
 [class*="icon-"]:before {content:'';display:inline-block;width:1em;height:1em;vertical-align:var(--icon-vert, -10%);}
@@ -16,20 +13,6 @@ svg[class*="icon-"] {display:none;}
   /*box-shadow:0 0 0 20em #c00;*/
   clip-path: var(--p);
 }
-
-/* v2.absolute * /
-
-[class*="icon-"] {--w:16;--p:path("M8 4l4 4,-4 4,-4-4z");position:relative;}
-[class*="icon-"]:before {content:'';display:inline-block;position:absolute;width:1em;height:1em;vertical-align:var(--icon-vert, -10%);}
-[class*="icon-"]:before {
-  --sc: calc(var(--font-scale, 1) * var(--fsz, 1) * 16 / var(--w) * var(--icon-scale, 1));
-  transform: scale(var(--sc));
-  transform-origin: 0 0;
-  background: currentColor;
-  outline: 20em solid currentColor;
-  clip-path: var(--p);
-}
-/**/
 
 .icon-menu {--w:7;--p:path("M.5 1h6v1h-6zm0 2h6v1h-6zm0 2h6v1h-6z");}
 .icon-more {--w:17;--p:path("M7 2h3v3h-3zm0 5h3v3h-3zm0 5h3v3h-3z");}

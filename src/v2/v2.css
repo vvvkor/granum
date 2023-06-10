@@ -169,6 +169,22 @@ ul.row.vert {--wid:var(--min-pop-w);}
 .cell-3 {grid-column-end:span 3;}
 .cell-4 {grid-column-end:span 4;}
 
+/* grid-form (todo: rename; test with all input types; inline form) */
+.grid-form {grid-template-columns:1fr;justify-items:start;}
+.grid-form>:is([name], :has([name]))+* {margin-top:calc(.5 * var(--gap));}
+@media (width >= 50rem) { /* < 800px */
+/*@container block (width >= 25rem) { /* todo: 2-columns layout if @media>50rem AND @container>25rem */
+  .grid-form:not(.vert) {grid-template-columns:minmax(min(40%, 8rem), 1fr) 3fr;align-items:first baseline;gap:var(--pad);}
+  .grid-form[class]>* {margin-top:0;}
+  /* todo: how to detect left/right item? */
+  .grid-form:not(.vert)>:not([name], :has([name])) {justify-self:right;}
+  .grid-form:not(.vert)>:is([name], :has([name])) {grid-column-start:2;}
+}
+@container block (width < 25rem) {
+  /* todo: stacked form */
+}
+
+
 /* toggle */
 .target:not(:target):not(:has(:target)), .check:not(:has(:checked)) + :not(:target):not(:has(:target)), .check input {display:none;}
 /*.target, .tabs+div :target, .tabs :target, :is(h1,h2,h3):target {scroll-margin-top:5rem;}*/
@@ -339,7 +355,7 @@ ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div) {display:block;}
 }
 
 /* mobile */
-@media (max-width: 899px) {
+@media (width < 50rem) { /* < 800px */
 	:root {--font-scale: 1;}
   .row.resp {--flow:column nowrap;--push:0;}
   ul.row.resp {--wid:var(--min-pop-w);}
@@ -348,14 +364,14 @@ ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div) {display:block;}
   table.form.resp>*>tr {margin:calc(.5 * var(--gap));}
 }
 
-@media (max-width: 449px) {
+@media (width < 25rem) { /* < 400px */
   ul.row:is(.vert, .resp) ul {--pos:20% auto auto calc(var(--min-pop-w) * .5);} /* compact */
 }
 
 /* containers */
 /* todo: fix .pop and icons visible below dropdown */
 .container {container: block / inline-size;}
-@container block (max-width: 450px) {
+@container block (width < 25rem) {
   .row.aware {--flow:column nowrap;--push:0;}
   ul.row.aware {--wid:var(--min-pop-w);}
   ul.row:is(.vert, .aware) ul {--pos:20% auto auto calc(var(--min-pop-w) * .5);} /* compact */
