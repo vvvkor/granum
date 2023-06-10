@@ -37,6 +37,7 @@
 - `.full` - 
 - `.scroll` - 
 - `.scrollbar` - 
+- `.resize` - 
 - `.stick` - 
   - `footer.stick` - 
 - `.stack` - 
@@ -122,7 +123,14 @@
 - `.col-1` - 
 - `.col-2` - 
 - `.col-3` - 
-- `> * > img` - 
+- `> * > img` - aspect 3/2
+
+## Grid
+
+- `.grid-*` - 
+- `.gap` - 
+- `> .cell-2,3,4` - 
+- `> * > img` - aspect 3/2
 
 ## Toggle
 

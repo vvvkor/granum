@@ -61,7 +61,7 @@ table {border-collapse:collapse;border-spacing:0}
 td, th {padding:0;text-align:left}
 * {box-sizing:content-box;}
 table, img, embed, iframe, object, audio, video, button, input, select, textarea,
-	.read, .row, .row>*, .container, .container>*, .modal, .drawer, .stick, .full {box-sizing:border-box;}
+	.col, .row, .row>*, .container, .container>*, .modal, .drawer, .stick, .full {box-sizing:border-box;}
 
 button, [type="submit"], [type="search"] {-webkit-appearance:none;} /* safari */
 button::-moz-focus-inner, [type="submit"]::-moz-focus-inner {border:none;} /* firefox */
@@ -116,7 +116,8 @@ sub, sup {line-height:0em;}
 /* todo: status border color? */
 
 /* links */
-a[href], .link, .check, .pop>a, ul.row a {display:inline;color:var(--link);/*text-decoration:none;*/cursor:pointer;text-underline-offset:.15em;}
+a[href], .link, .check, .pop>a, ul.row a {display:inline;color:var(--link);/*text-decoration:none;*/cursor:pointer;text-underline-offset:.2em;text-decoration-thickness:1px;}
+  a[href^="#"] {text-decoration-style:dashed;}
   ul.row ul {cursor:default;}
   ul.row li:has(>a) {cursor:pointer;}
   a:not([href]), a[href^="#"], a.pad, ul.pads a, .tabs>a {text-decoration:none;}
@@ -145,23 +146,33 @@ mark {background-color:hsl(var(--ww) var(--rsatur) var(--rlit-bg) / var(--alpha-
 .tag:not(.tx, .bg, .bk, .bgl, .back, .fit) {background-color:hsl(var(--ee) var(--rsatur) var(--rlit));color:var(--bg);}
 
 
-/* grid */
+/* row */
 .row {--flow:row nowrap;--wid:auto;--push:auto;display:flex;flex-flow:var(--flow);width:var(--wid);}
 .row.wrap, ul.row, .tabs {--flow:row wrap;}
 .row.vert {--flow:column nowrap;--push:0;}
 ul.row.vert {--wid:var(--min-pop-w);}
-.row.gap {gap:var(--gap);}
+.row.gap, [class*="grid-"].gap {gap:var(--gap);}
   .row:not(ul).mid {align-items:center;}
   .row>.mid, ul.row>li>.mid:not(ul) {align-self:center;}
 .col-1, .stretch>* {flex:1;}
 .col-0 {flex:initial;}
 .col-2 {flex:2;}
 .col-3 {flex:3;}
-.row>*>img:only-child {width:100%;height:100%;aspect-ratio:3/2;}
+:is(.row, [class*="grid-"])>*>img:only-child {width:100%;height:100%;aspect-ratio:3/2;}
+
+/* grid */
+[class*="grid-"] {--cell-width:16rem;display:grid;grid-template-columns:repeat(auto-fill, minmax(min(100%, var(--cell-width)), 1fr));}
+.grid-xs {--cell-width:8rem;}
+.grid-s {--cell-width:12rem;}
+.grid-l {--cell-width:24rem;}
+.cell-2 {grid-column-end:span 2;}
+.cell-3 {grid-column-end:span 3;}
+.cell-4 {grid-column-end:span 4;}
 
 /* toggle */
 .target:not(:target):not(:has(:target)), .check:not(:has(:checked)) + :not(:target):not(:has(:target)), .check input {display:none;}
-.target, .tabs+div :target, .tabs :target, :is(h1,h2,h3):target {scroll-margin-top:5rem;}
+/*.target, .tabs+div :target, .tabs :target, :is(h1,h2,h3):target {scroll-margin-top:5rem;}*/
+html {scroll-padding-top:5rem;scroll-behavior:smooth;}
 /* overlay - todo: simplify */
 .overlay, #overlay {cursor:default;display:none;border:none;}
 :is(
@@ -178,13 +189,13 @@ body:has(.modal.full:target, .modal.full :target) {overflow:hidden;}
 
 /* modal */
 .modal {position:fixed;z-index:130;overflow:auto;}
-  .modal:not(.full) {min-height:10rem;max-height:83vh;min-width:18rem;max-width:90vw;inset:50% auto auto 50%;transform:translate(-50%,-50%);}
+  .modal:not(.full) {min-height:10rem;max-height:83dvh;min-width:18rem;max-width:90vw;inset:50% auto auto 50%;transform:translate(-50%,-50%);}
   .modal.full {inset:0;/*calc(5 * var(--gap));*/}
 a:has(img:target), ul.row li {-webkit-tap-highlight-color:transparent;}
 img:target {position:absolute;display:block;inset:0;width:100%;height:100%;object-fit:contain;}
 
 /* drawer */
-.drawer {position:fixed;inset:0 auto 0 -21em;width:80%;max-width:20em;z-index:120;transition:left .2s, right .2s;overflow:auto;}
+.drawer {position:fixed;inset:0 auto 0 -21em;width:min(20em, 80%);z-index:120;transition:left .2s, right .2s;overflow:auto;}
 .drawer:target {left:0;}
 .drawer.shift {inset:0 -21em 0 auto;}
 .drawer.shift:target {right:0;}
@@ -199,7 +210,7 @@ img:target {position:absolute;display:block;inset:0;width:100%;height:100%;objec
   ul.row li:has(ul)>a {padding-right:calc(1.5 * var(--gap));}
   ul.row li:has(ul)>a:after {content:'\a0\a0\203a';color:var(--text);opacity:.5;position:absolute;right:.5em;top:50%;transform:translateY(-60%);}
   /**/
-.pop:not(:hover):not(:has(.check), [open])>:last-child, ul.row li:not(:hover)>ul {display:none;}
+.pop:not(:hover, :has(>:first-child.check), [open]) > :last-child, ul.row li:not(:hover)>ul {display:none;}
   [data-hint]:hover:after {content:attr(data-hint);/*user-select:auto;*/}
 .pop>:last-child, ul.row ul, [data-hint]:after {position:absolute;inset:var(--pos);transform:var(--mov);z-index:50;}
 .pop>:last-child, ul.row ul {min-width:var(--min-pop-w);}
@@ -231,11 +242,13 @@ ul.row, ul.row ul, ul.row li {list-style:none;margin:0;padding:0;}
 .tabs a, .tabs>label {border-bottom:2px solid transparent;}
 .tabs a:is(.act, :hover), .tabs>label:is(:has(:checked), :hover), .tabs>a:has(+:target), .tabs:not(:has(:target))>a:first-of-type {border-color:initial;}
   .tabs>div {order:10;width:100%;}
-ul.tabs+div>*, ul.tabs[class]+div:has(:target)>* {display:none;}
-ul.tabs+div>:first-child, ul.tabs[class]+div>:is(:target, :has(:target)) {display:block;}
+ul.tabs + div:not(:has(:target)) > :not(:first-child),
+ul.tabs + div:has(:target) > :not(:is(:target, :has(:target)))
+{display:none;}
   /* v2 */
-  .tabs>a+div, .tabs[class]:has(:target)>a+div {display:none;}
-  .tabs>a:first-of-type+div, .tabs[class]>a+div:is(:target, :has(:target)) {display:block;}
+  .tabs:not(:has(:target)) > a:not(:first-of-type)+div,
+  .tabs:has(:target) > a+div:not(:is(:target, :has(:target)))
+  {display:none;}
 
 
 /* todo: gallery: close with shade, back, bg */
@@ -301,11 +314,12 @@ table.c>*tr>* {text-align:center;}
 .r9 td:nth-child(9) {text-align:right;}
 
 /* modifiers */
-.read {max-width:45em;}
+.resize {resize:both;overflow:auto;}
+.col {max-width:45em;}
 .full:not(.modal) {height:100vh;height:100dvh;}
 .nobr {white-space:nowrap;}
 .scroll {overflow:auto;min-width:5em;min-height:5em;}
-.center {margin-left:auto;margin-right:auto;}
+.center {margin-inline:auto;}
 .l {text-align:left;}
 .c, .tag {text-align:center;}
 .r {text-align:right;}

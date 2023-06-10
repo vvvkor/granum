@@ -59,7 +59,7 @@
     </div>
   </div>
   
-  <div class="read center pad">
+  <div class="col center pad">
     <h1 class="icon-config ic ww">Granum v2 <small>Small</small></h1>
   
     <h2 id="config">Config <a href="#config" class="x1 small tx nn">#</a></h2>
@@ -172,7 +172,7 @@
 
       <details>
       <summary>Images</summary>
-      <div class="mar shade pad rad">
+      <div class="mar shade pad rad bord">
         <div class="mar">
           Image
           <img alt="Red"   class="-wide -center c" width="70" src="https://placehold.co/200x100/b33/fff.png?text=Red">
@@ -180,8 +180,10 @@
           <img alt="Blue"  class="-wide -center c" width="70" src="https://placehold.co/200x200/039/fff.png?text=Blue">
         </div>
         <hr>
+        <img alt="Red" class="center" width="70" src="https://placehold.co/200x100/b33/fff.png?text=Red">
+        <hr>
         <figure class="">
-          <img alt="Red" class="" width="80" src="https://placehold.co/200x200/039/fff.png?text=Blue">
+          <img alt="Red" class="-center" width="80" src="https://placehold.co/200x200/039/fff.png?text=Blue">
           <figcaption>Figure caption</figcaption>
         </figure>
       </div>
@@ -373,7 +375,7 @@
     
     <h2 id="popup">Popup <a href="#popup" class="x1 small tx nn">#</a></h2>
     
-    <div class="pop"><a class="hover">Default</a> <div class="pad">Info<br>Text
+    <div class="pop"><a class="hover">Default</a> <div class="pad">Info<br>Text <span><a class="check"></a></span>
       <div class="pop"><a class="hover">Nested</a> <div class="pad">More info<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</div></div>
     </div></div>
     &mdash;
@@ -748,18 +750,35 @@
 
     <h2 id="grid">Grid <a href="#grid" class="x1 small tx nn">#</a></h2>
     
-    <p>Don't use <code>.row.wrap</code> with <code>.row > .scroll</code>.</p>
-    <div class="row resp -wrap stretch gap -mid -vert full" style="height:30em;">
-      <div class="pad bg nn col-0">Col</div>
-      <div class="pad bg ii col-1"><div class="pop"><a>Popup</a><div class="pad">Popups and dropdowns can overflow non-scrollable parent grid item</div></div></div>
-      <div class="pad bg yy col-2 scroll scrollbar     row vert">
-        <div class="bg ii">Nested grid</div>
-        <div class="bg ww col-1 nobr scroll scrollbar">Custom scrollbar is used for this block<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</div>
-        <div class="bg ee">5</div>
+    <a href="#row1">Row 1</a> (Don't use <code>.row.wrap</code> with <code>.row > .scroll</code>)
+    <div id="row1" class="target modal full">
+      <a href="#cancel" class="corner pad icon-close ic nn"></a>
+      <div class="row resp -wrap stretch gap -mid -vert full" data-style="height:30em;">
+        <div class="pad bord col-0 resize" data-style="min-width:10rem;">First</div>
+        <div class="pad bg ii col-1"><div class="pop"><a>Popup</a><div class="pad">Popups and dropdowns can overflow non-scrollable parent grid item</div></div></div>
+        <div class="pad bg yy col-2 scroll scrollbar -resize     row vert">
+          <div class="bg ii">Nested grid</div>
+          <div class="bg ww col-1 nobr scroll scrollbar">Custom scrollbar is used for this block<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</div>
+          <div class="bg ee">5</div>
+        </div>
+        <div class="pad bg ww scroll nobr">Horizontal overflow and scroll. WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW</div>
+        <div class="pad bg ee scroll">Vertical overflow and scroll.<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</div>
+        <div class="col-0 pad bg nn">Last</div>
       </div>
-      <div class="pad bg ww scroll nobr">Horizontal overflow and scroll. WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW</div>
-      <div class="pad bg ee scroll">Vertical overflow and scroll.<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</div>
     </div>
+    
+    <details class="mar">
+      <summary>Regular grid</summary>
+      <div class="grid-xs gap mar">
+        <div class="pad bg nn -resize">1</div>
+        <div class="pad bg nn">2</div>
+        <a href="#img1"><img alt="pic" class="fit" src="https://placehold.co/200x100/b33/fff.png?text=***"></a>
+        <a href="#img2"><img alt="pic" class="fit" src="https://placehold.co/180x120/393/fff.png?text=///"></a>
+        <a href="#img3"><img alt="pic" class="fit" src="https://placehold.co/200x200/039/fff.png?text=~~~"></a>
+        <a href="#img4"><img alt="pic" class="fit" src="https://placehold.co/150x200/777/fff.png?text=^^^"></a>
+        <div class="pad bg nn -cell-2">7</div>
+      </div>
+    </details>
 
     <details class="mar">
       <summary>Sticky header and footer</summary>
@@ -810,6 +829,8 @@
         </div>
       </div>
     </div>
+    
+    <div class="mar bord pad resize">Resize</div>
     
     <h2 id="form">Form <a href="#form" class="x1 small tx nn">#</a></h2>
     
