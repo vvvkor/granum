@@ -43,11 +43,12 @@
   /* dependent */
   --icon-vert: calc(1% * (var(--icon-scale) * 50 - 60)); /* -10% for scale 1, 0 for scale 1.2 */
   --icon-mar: calc(1em * (var(--icon-scale) - .7)); /* .3em for scale 1, .5em for scale 1.2 */
-  --pad: calc(.5 * var(--gap)) var(--gap);
-  --pad-s: calc(.25 * var(--gap)) calc(.5 * var(--gap));
+  --gap-s: calc(.5 * var(--gap));
+  --pad: var(--gap-s) var(--gap);
+  --pad-s: calc(.25 * var(--gap)) var(--gap-s);
   --pad-xs: calc(.12 * var(--gap)) calc(.25 * var(--gap));
   --mar: var(--gap) 0;
-  --mar-s: calc(.5 * var(--gap)) 0;
+  --mar-s: var(--gap-s) 0;
   --shade-hover: inset 0 0 0 200vh var(--bgl);
 }
 
@@ -92,6 +93,7 @@ h1, h2, .h1, .h2 {--lh:1.3;}
 .fit, pre code {margin:0;padding:0;border:none;border-radius:0;box-shadow:none;background:none;}
 .mar, .row.mar, ul, ol, dl, blockquote, pre, hr, p, figure {margin:var(--mar);}
 .pad, .row.pad, fieldset, blockquote, pre {padding:var(--pad);}
+	legend {margin-left:var(--gap);}
 	legend, .tag {padding:0 .3em;}
 	.tag {min-width:.6em;border-radius:.6em;line-height:1.2;}
 .shade {box-shadow:var(--shade);}
@@ -169,19 +171,22 @@ ul.row.vert {--wid:var(--min-pop-w);}
 .cell-3 {grid-column-end:span 3;}
 .cell-4 {grid-column-end:span 4;}
 
-/* grid-form (todo: rename; test with all input types; inline form) */
-.grid-form {grid-template-columns:1fr;justify-items:start;}
-.grid-form>:is([name], :has([name]))+* {margin-top:calc(.5 * var(--gap));}
-@media (width >= 50rem) { /* < 800px */
-/*@container block (width >= 25rem) { /* todo: 2-columns layout if @media>50rem AND @container>25rem */
-  .grid-form:not(.vert) {grid-template-columns:minmax(min(40%, 8rem), 1fr) 3fr;align-items:first baseline;gap:var(--pad);}
-  .grid-form[class]>* {margin-top:0;}
-  /* todo: how to detect left/right item? */
-  .grid-form:not(.vert)>:not([name], :has([name])) {justify-self:right;}
-  .grid-form:not(.vert)>:is([name], :has([name])) {grid-column-start:2;}
+/* form as grid */
+.form {--cols:minmax(min(40%, 8rem), 1fr) 3fr;--line:2;--label-align:right;--form-gap:var(--pad);--form-mar:calc((2 - var(--line)) * var(--gap-s));--col-full:1/calc(1 + var(--line));--pad-fset:calc((2 - var(--line)) * var(--gap));}
+.form {display:grid;justify-items:start;align-items:first baseline;grid-template-columns:var(--cols);gap:var(--form-gap);}
+.form>:not([name], :has([name])) {justify-self:var(--label-align);}
+.form>:is([name], :has([name])) {grid-column-start:var(--line);}
+.form>:is([name], :has([name])) + * {margin-top:var(--form-mar);}
+.form[class] fieldset, .form .wide {grid-column:var(--col-full);justify-self:stretch;}
+.form[class] fieldset {padding:var(--gap-s) var(--pad-fset);}
+.form legend {margin-left:calc(var(--gap) - var(--pad-fset) - .3em);}
+/* responsive form */
+.form.vert {--cols:1fr;--line:1;--label-align:left;--form-gap:0;}
+@media (width < 50rem) {
+  .form.resp {--cols:1fr;--line:1;--label-align:left;--form-gap:0;}
 }
 @container block (width < 25rem) {
-  /* todo: stacked form */
+  .form.aware {--cols:1fr;--line:1;--label-align:left;--form-gap:0;}
 }
 
 
@@ -302,10 +307,9 @@ button:focus, input:focus, select:focus, textarea:focus, [contenteditable]:focus
 form:not(:has(:not(.check)>[type="radio"]:checked)) .confirm {display:none;}
 :valid~.report, :invalid~.approve, .fresh~:is(.report, .approve)/*, form:not(:focus-within) :is(.report, .approve)*/ {display:none;}
 /* layout */
-table.form>*>tr>:first-child:not(:only-child) {padding-top:calc(.6 * var(--gap));min-width:var(--mwid);--mwdiff:0em;--mwid:calc(8em - var(--mwdiff));text-align:var(--ali);--ali:right}
-fieldset table.form>*>tr>:first-child:not(:only-child) {--mwdiff:calc(1.5 * var(--gap) - 1px);}
+table.tform>*>tr>:first-child:not(:only-child) {padding-top:calc(.6 * var(--gap));min-width:var(--mwid);--mwdiff:0em;--mwid:calc(8em - var(--mwdiff));text-align:var(--ali);--ali:right}
+fieldset table.tform>*>tr>:first-child:not(:only-child) {--mwdiff:calc(1.5 * var(--gap) - 1px);}
 form p {margin:var(--mar-s);}
-
 
 
 /* table */
@@ -360,12 +364,12 @@ ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div) {display:block;}
   .row.resp {--flow:column nowrap;--push:0;}
   ul.row.resp {--wid:var(--min-pop-w);}
   ul.row.resp ul {--pos:0 auto auto 100%;} /* avoids custom pos */
-  table.form.resp, table.form.resp>*, table.form.resp>*>tr, table.form.resp[class][class]>*>tr>* {display:block;padding:0;--mwid:auto;--ali:left;}
-  table.form.resp>*>tr {margin:calc(.5 * var(--gap));}
+  table.tform.resp, table.tform.resp>*, table.tform.resp>*>tr, table.tform.resp[class][class]>*>tr>* {display:block;padding:0;--mwid:auto;--ali:left;}
+  table.tform.resp>*>tr {margin:calc(.5 * var(--gap));}
 }
 
 @media (width < 25rem) { /* < 400px */
-  ul.row:is(.vert, .resp) ul {--pos:20% auto auto calc(var(--min-pop-w) * .5);} /* compact */
+  ul.row:is(.vert, .resp) ul {--pos:20% auto auto calc(var(--min-pop-w) * .5);} /* compact dropdown */
 }
 
 /* containers */
@@ -375,8 +379,8 @@ ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div) {display:block;}
   .row.aware {--flow:column nowrap;--push:0;}
   ul.row.aware {--wid:var(--min-pop-w);}
   ul.row:is(.vert, .aware) ul {--pos:20% auto auto calc(var(--min-pop-w) * .5);} /* compact */
-  table.form.aware, table.form.aware>*, table.form.aware>*>tr, table.form.aware[class][class]>*>tr>* {display:block;padding:0;--mwid:auto;--ali:left;}
-  table.form.aware>*>tr {margin:calc(.5 * var(--gap));}
+  table.tform.aware, table.tform.aware>*, table.tform.aware>*>tr, table.tform.aware[class][class]>*>tr>* {display:block;padding:0;--mwid:auto;--ali:left;}
+  table.tform.aware>*>tr {margin:var(--gap-s);}
 }
 /**/
 

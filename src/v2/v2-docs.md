@@ -83,10 +83,17 @@
 
 ## Form
 
-- `.detect` - 
-- `.report` - 
-- `.approve` - 
-- `.fresh` - 
+- `.form` - 
+  - `.vert` - 
+  - `.resp` - 
+  - `.aware` - 
+  - `> [name]` - 
+- `> .wide` - 
+- `button.detect` - 
+- `input, select, textarea` - 
+  - `.report` - 
+  - `.approve` - 
+  - `.fresh` - 
 - `form .confirm` - 
 
 ## Table
@@ -106,6 +113,7 @@
 - `.container` - 
 - `.row.aware` - 
 - `.form.aware` - 
+- `.tform.aware` - 
 
 ## Row
 

@@ -835,21 +835,50 @@
     <h2 id="form">Form <a href="#form" class="x1 small tx nn">#</a></h2>
 
     <h3>Grid form</h3>
-    <div class="container bord rad pad bg nn">
-    <form id="gform" class="grid-form" action="?#gform" data-get>
+    <div class="container bord rad pad bgl">
+    <form id="gform" class="form resp" action="?#gform" data-get>
       <label for="gnm">Name</label>
       <div><input required type="text" id="gnm" name="nm" placeholder="Name" size="5"> <div class="report tx ee">Required</div></div>
+      <label for="gsel">Select</label>
+      <div>
+        <select required id="gsel" name="sel"><option></option><option>1</option><option>2</option><option>3</option></select>
+        <span class="report tx ee">Required</span>
+      </div>
       <label for="garea">Area</label>
       <textarea required id="garea" name="area"></textarea>
-      <label><input type="checkbox" name="box" value="b"> Optional box with same name</label>
-      <div><button name>OK</button></div>
+      <label><input type="checkbox" name="gbox" value="a"> Optional box</label>
+      <fieldset>
+        <legend>Fieldset</legend>
+        <div class="form aware">
+          <span>Radio</span>
+          <div>
+            <input required type="radio" name="radio" value="one" id="ri1"> <label for="ri1">One</label><br>
+            <input required type="radio" name="radio" value="two" id="ri2"> <label for="ri2">Two</label><br>
+            <input required type="radio" name="radio" value="three" id="ri3"> <label for="ri3">Three</label>
+            <div class="report tx ee">Required</div>
+            <div class="approve tx yy">OK</div>
+          </div>
+          <label for="gcust">Custom</label>
+          <input id="gcust" name="custom">
+        </div>
+      </fieldset>
+      <label class="wide tx nn">
+        <input name="gagree" type="checkbox">
+        Label with text long enough to occupy full width
+      </label>
+      <div>
+        <button name>OK</button>
+        <button name class="bk nn">Cancel</button>
+        <a class="pad bgl bord rad hover icon-refresh ic yy" href="?#form">Reset URL</a>
+        &nbsp; <a href="#">Top</a>
+      </div>
     </form>
     </div>
     
     <h3>Table form</h3>
     <form id="tform" action="?#tform" data-get class="container" data-style="max-width:400px;">
       <!--button class="">OK</button-->
-    <table class="form aware">
+    <table class="tform aware">
       <tr>
         <td><label for="nm">Name</label>
         <td>
@@ -867,7 +896,7 @@
       <tr><td colspan="2">
         <fieldset>
           <legend>Fieldset</legend>
-          <table class="form aware">
+          <table class="tform aware">
             <tr><td><td>
                 <input required type="radio" name="radio" value="one" id="ri1"> <label for="ri1">One</label><br>
                 <input required type="radio" name="radio" value="two" id="ri2"> <label for="ri2">Two</label><br>

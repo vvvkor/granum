@@ -4,9 +4,11 @@
 
 ## Requirements
 
-- :has() - not implemented in Firefox as of 2023-05-24
+- :has() - for interactivity, forms and validation - not implemented in Firefox as of 2023-05-24
 - loading="lazy"
-- svg d:path() in css
+= svg d:path() in css
+- clip-path:path() for icons
+- oklch() for colors - not on Win7
 
 ## JS enhancements
 
@@ -20,6 +22,7 @@
 
 ## Order / cleanup / docs
 
+- !!! Naming, constants, defaults, destruct, guard, edge, small funcs
 - naming: read=post, bgl=transparent=tr
 - see comments in css
 - cleanup and organize css
@@ -30,11 +33,30 @@
 + describe preferred toggler components variants in table
 + describe drawbacks of using dialog and details for modal
 
+## Learn
+
++ @container
+~ @layer
+~ conic-gradient for pie chart
+~ :where()
+= grid place-items:center
+= grid-tpl-cols: repeat(auto-fill, minmax)
+= grid-auto-rows
+
 ## Todo
+
+- @container bug (icon over dropdown)
+- remove .tform (after testing grid form)
+- corner bottom fixed: .pos-*? (sticky link to top)
+- colors: oklch()
+- .bt, def .tx/.ic, def .nn, hsl??? oklch()!!!
+- dark mode @atmos.style
 
 - corner bottom fixed: .pos-* ?
   - link to top
 - brighter orange text and bg mark
+- animate gallery
+- drawer.resp
 - spinner
 - bar
 - swap icons on toggle (js?)
@@ -50,6 +72,7 @@
 - lazy using --img, cause loading attr fails wo js
 - dropzone
 = details pad 1.5
+= anchor = a#:target + .target [scrolls anyway]
 = --flex
 = .resp to .vert-mobile/desktop [.resp]
 = .resp: ?two breakpoints; .target-l/m/s; .vert-l/m/s instead of .resp
@@ -57,9 +80,16 @@
 = native modal with fallback, tgl cmp: dialog [after closed natively (esc/formmethod/(backdrop)), not posiible to show with js]
 = data-filter [requires js]
 = confirm&prompt using label>a# [not posible]
++ @media a < width <= b
++ resize:both !!!
++ +width:min(), =padding:max(), =font:clamp
++ root: scroll-pad, scroll-behaviour
++ margin-inline
++ form as grid
++ pop:notHas 1.check
 + button requires .bk BUT .tag does not: unify! [.bk required for both]
 + .pad.stack
-+  dont use .cont by default for dropdown demo, cause .pop and icons visible from below
++ dont use .cont by default for dropdown demo, cause .pop and icons visible from below
 + stick top nav
 + .badge.tag
 + avoid flashing of validation .report [animation:delay-appear]
