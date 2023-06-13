@@ -28,6 +28,9 @@
         });
       })
     </script>
+    <style>
+      .diagonals {background:repeating-linear-gradient(135deg, #fff, #fff 1em, #f6f6f6 1em, #f6f6f6 2em);}
+    </style>
   </head>
   <body class="-invert">
   <!--a href="#" class="icon-asc ic nn back pad rad shade corner pos-r"></a-->
@@ -666,7 +669,8 @@
     
     <p>
       <a href="#multiname" class="-bg -nn -hover icon-edit ic ii">Confirm selected items</a> &nbsp;
-      <a href="?#table" class="icon-refresh ic yy">Reset URL</a>
+      <a href="?#table" class="icon-refresh ic yy">Reset URL</a> &nbsp;
+      <span><label class="check icon-layers ic nn"><input type="checkbox" value="diagonals" data-nodes="#tbl"> Stripes</label></span>
     </p>
     
     <form id="mult" action="#table" class="modal target pad">
@@ -693,7 +697,7 @@
       <a href="#close1" class="overlay"></a>
   
       <div id="status" class="scroll mar">
-      <table class="bord hover serif wide mid" style="background:repeating-linear-gradient(135deg, #fff, #fff 1em, #f6f6f6 1em, #f6f6f6 2em);">
+      <table id="tbl" class="bord hover serif wide mid">
         <caption>Status colors</caption>
         <thead>
           <tr>

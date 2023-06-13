@@ -44,12 +44,12 @@
 
 ## Todo
 
+-? default .tx/.ic, default .nn
 = .cont .aware => .cont .resp-s
 - corner bottom fixed: .pos-*? (sticky link to top)
-- default .tx/.ic, default .nn
 
 - animate gallery
-- drawer.resp
+- drawer.resp (js responsive class [data-resp] ?)
 - spinner
 - bar
 - swap icons on toggle (js?)
@@ -74,6 +74,7 @@
 = native modal with fallback, tgl cmp: dialog [after closed natively (esc/formmethod/(backdrop)), not posiible to show with js]
 = data-filter [requires js]
 = confirm&prompt using label>a# [not posible]
++ table stripes on/off
 + naming: read=col, bgl=transparent=tr
 + remove .tform (after testing grid form)
 + .bt
