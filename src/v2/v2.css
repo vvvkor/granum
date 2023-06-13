@@ -141,7 +141,7 @@ blockquote, pre, code {background-color:var(--bgl);}
 .ww {--hue:var(--ww);}
 .ee {--hue:var(--ee);--dlit:-5%;}
 .tx[class] {color:hsl(var(--hue) var(--satur) calc(var(--lt) - 5%));}
-.ic[class]:before {color:hsl(var(--hue) var(--satur) var(--lt));}
+[class*="icon-"][class]:before {color:hsl(var(--hue) var(--satur) var(--lt));}
 .bg[class] {background-color:hsl(var(--hue) var(--satur) var(--lit-bg));}
 .bt[class] {background-color:hsl(var(--hue) var(--satur) var(--lit) / var(--alpha-bg));}
 .bk[class], [data-hint]:after {background-color:hsl(var(--hue) var(--satur) var(--lt, var(--lit)));color:var(--bg);}

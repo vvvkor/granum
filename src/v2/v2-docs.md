@@ -62,6 +62,7 @@
 - `.tag` - 
 - `.badge .tag` - 
 - `.nn, .ii, .yy, .ww, .ee` - 
+- `.icon-* .ee` - 
 - `.tx .ee` - 
 - `.bt .ee` - 
 - `.bg .ee` - 
@@ -170,4 +171,3 @@
 
 - `.icon-*` - 
 - `.empty` - 
-- `.ic .ee` - 

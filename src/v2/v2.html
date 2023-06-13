@@ -20,7 +20,7 @@
           const j = i.slice(0, 1).toUpperCase() + i.slice(1)
           n.parentNode.title = i
           //n.parentNode.append(' ' + j)
-          n.classList.add('ic', 'nn'/*, 'pad'/*, 'bg', 'hover'*/)
+          n.classList.add('-ic', 'nn'/*, 'pad'/*, 'bg', 'hover'*/)
           //n.parentNode.classList.add('hover', 'pad'/*, 'pos-r'*/)
           //n.parentNode.setAttribute('data-hint', i)
           n.classList.add('hover', 'pad'/*, 'pos-r'*/)
@@ -33,7 +33,7 @@
     </style>
   </head>
   <body class="-invert">
-  <!--a href="#" class="icon-asc ic nn back pad rad shade corner pos-r"></a-->
+  <!--a href="#" class="icon-asc -ic nn back pad rad shade corner pos-r"></a-->
   <!--div class="row -full">
     <aside class="col-1 pad bg nn stick scroll">Stick<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</aside>
     <div class="col-3 pad bt nn">Content<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</div>
@@ -58,20 +58,20 @@
       <a href="#icons">Icons</a>
       <!--a href="#info">Info</a-->
       <a href="#js">JS</a>
-      <label for="x2" class="icon-asc shift link ic nn"></label>
+      <label for="x2" class="icon-asc shift link -ic nn"></label>
     </div>
   </div>
   
   <div class="col center pad">
-    <h1 class="icon-config ic ww">Granum v2</h1>
+    <h1 class="icon-config -ic ww">Granum v2</h1>
   
     <h2 id="config">Config <a href="#config" class="x1 small tx nn">#</a></h2>
     
     <div class="row gap nobr wrap">
-      <div><label class="link check icon-menu ic nn"><input type="checkbox" id="x2" checked hidden> Topnav</label></div>
-      <div><a href="?#" class="icon-refresh ic yy">Reset URL</a></div>
+      <div><label class="link check icon-menu -ic nn"><input type="checkbox" id="x2" checked hidden> Topnav</label></div>
+      <div><a href="?#" class="icon-refresh -ic yy">Reset URL</a></div>
       <div><label><input type="checkbox" id="invert"> Invert</label></div>
-      <div><label class="link check icon-warning ic ww"><input type="checkbox" id="debug" hidden>Debug</label></div>
+      <div><label class="link check icon-warning -ic ww"><input type="checkbox" id="debug" hidden>Debug</label></div>
       <div><label><input type="checkbox" id="x1" checked> Anchors</label></div>
     </div>
     
@@ -204,17 +204,17 @@
     <h2 id="modal">Modal <a href="#modal" class="x1 small tx nn">#</a></h2>
     
     <ul class="row gap">
-      <li><a href="#mod1" class="icon-collapse ic nn">Modal</a></li>
+      <li><a href="#mod1" class="icon-collapse -ic nn">Modal</a></li>
       <li><a href="#mod2" class="icon-expand text">Fullscreen</a></li>
-      <li><a href="#modal-input" class="icon-edit ic ii">Focus input</a></li>
-      <li><a href="#drawer" class="icon-right ic nn">Drawer</a></li>
-      <li><a href="#drawer2" class="icon-left ic nn">Drawer</a></li>
-      <li><a id="link-dlgm" class="icon-chat ic yy" href="#dlgm" data-modal="#dlgm">Modal dialog JS</a></li>
+      <li><a href="#modal-input" class="icon-edit -ic ii">Focus input</a></li>
+      <li><a href="#drawer" class="icon-right -ic nn">Drawer</a></li>
+      <li><a href="#drawer2" class="icon-left -ic nn">Drawer</a></li>
+      <li><a id="link-dlgm" class="icon-chat -ic yy" href="#dlgm" data-modal="#dlgm">Modal dialog JS</a></li>
     </ul>
     
     <div id="drawer" class="drawer row vert stack line">
       <header class="pad">
-        <a href="#cancel" class="corner pad icon-close ic nn"></a>
+        <a href="#cancel" class="corner pad icon-close -ic nn"></a>
         Drawer
       </header>
       <div class="pad col-1 scroll">
@@ -228,13 +228,13 @@
     </div>
     
     <div id="drawer2" class="drawer shift pad">
-      <a href="#cancel" class="corner pad icon-close ic nn"></a>
+      <a href="#cancel" class="corner pad icon-close -ic nn"></a>
       Drawer right
     </div>
     
     <div id="mod1" class="modal target row vert stack line">
       <header class="pad">
-        <a href="#cancel" class="corner pad hover icon-close ic nn empty"><i>Close</i></a>
+        <a href="#cancel" class="corner pad hover icon-close -ic nn empty"><i>Close</i></a>
         Modal 1
       </header>
       <div class="pad scroll">
@@ -254,7 +254,7 @@
 
     <div id="mod2" class="modal full target -pad row vert stack line">
       <div class="col-1 pad">
-        <a href="#cancel" class="corner pad icon-close ic nn"></a>
+        <a href="#cancel" class="corner pad icon-close -ic nn"></a>
         Modal 2
         <p><a href="#mod1">Previous modal</a></p>
       </div>
@@ -265,7 +265,7 @@
     <a href="#mod1" class="overlay"></a>
 
     <dialog id="dlgm" class="modal">
-      <form><button formmethod="dialog" class="corner fit pad hover icon-close ic nn"></button></form>
+      <form><button formmethod="dialog" class="corner fit pad hover icon-close -ic nn"></button></form>
       Native modal dialog <br>with native backdrop <br>needs js to open<br><input>
       <form><p><button formmethod="dialog">Close</button></p></form>
     </dialog>
@@ -274,8 +274,8 @@
     <h2 id="gallery">Gallery <a href="#gallery" class="x1 small tx nn">#</a></h2>
     
     <ul class="row gap mar">
-      <li><a href="#img1" class="icon-image ic ee">Image</a></li>
-      <li><label for="debug" class="link hover icon-warning ic ww">Debug</label></li>
+      <li><a href="#img1" class="icon-image -ic ee">Image</a></li>
+      <li><label for="debug" class="link hover icon-warning -ic ww">Debug</label></li>
     </ul>
     <div class="row gap stretch">
       <a href="#img1"><img alt="pic" class="fit" src="https://placehold.co/200x100/b33/fff.png?text=***"></a>
@@ -285,7 +285,7 @@
     </div>
     <div id="gallery" class="modal full target">
       <div class="corner">
-        <a href="#cancel" class="pad icon-close ic nn"></a>
+        <a href="#cancel" class="pad icon-close -ic nn"></a>
       </div>
       <a href="#img2"><img id="img1" alt="pic" src="https://placehold.co/400x200/b33/fff.png?text=Red" class="target" loading="lazy"></a>
       <a href="#img3"><img id="img2" alt="pic" src="https://placehold.co/300x200/393/fff.png?text=Green" class="target" loading="lazy"></a>
@@ -468,12 +468,12 @@
                 </li>
               </ul>
             </li>
-            <li class="-push"><a href="#x" class="icon-text ic nn">Text</a></li>
+            <li class="-push"><a href="#x" class="icon-text -ic nn">Text</a></li>
             <li><a>Markup</a>
               <ul class="pos-bl">
-                <li><a href="?" class="icon-info ic ii">Semantics</a></li>
-                <li><a href="?" class="icon-bookmark ic ee">Decoration</a></li>
-                <li><a href="?" class="icon-energy ic ww">Function</a></li>
+                <li><a href="?" class="icon-info -ic ii">Semantics</a></li>
+                <li><a href="?" class="icon-bookmark -ic ee">Decoration</a></li>
+                <li><a href="?" class="icon-energy -ic ww">Function</a></li>
               </ul>
             </li>
             <li><a>Tags</a>
@@ -502,7 +502,7 @@
     </div>
     
     <div id="search" class="modal target pad">
-      <a href="#cancel" class="corner pad hover icon-close ic nn"></a>
+      <a href="#cancel" class="corner pad hover icon-close -ic nn"></a>
       Search results: <b data-get="q"></b>
       <form action="?#search" class="mar">
         <p>Search string<br><input name="q" data-get></p>
@@ -555,7 +555,7 @@
                 <li><a>Function</a></li>
               </ul>
             </li>
-            <li><a href="#x" class="icon-text ic nn">Text</a></li>
+            <li><a href="#x" class="icon-text -ic nn">Text</a></li>
           </ul>
         </div>
 
@@ -567,7 +567,7 @@
         <form action="#tree">
           <div class="modal confirm -target pad">
             <h3>Confirm selected item</h3>
-            <button type="reset" class="corner fit pad hover icon-close ic nn"></button>
+            <button type="reset" class="corner fit pad hover icon-close -ic nn"></button>
             <p>Value<br><input name="value" type="text" required title=""></p>
             <p>
               <button class="detect">Button</button>
@@ -585,7 +585,7 @@
           </p>
           <ul>
             <li>
-              <label class="link target icon-edit ic ii"><input type="radio" name="item" value="style" hidden></label>
+              <label class="link target icon-edit -ic ii"><input type="radio" name="item" value="style" hidden></label>
               <label class="check"><input type="checkbox">Style (one of them)</label>
               <ul>
                 <li><label class="check"><input type="radio" name="style" value="color">Color</label>
@@ -611,7 +611,7 @@
               </ul>
             </li>
             <li>
-              <label class="link target icon-edit ic ii"><input type="radio" name="item" value="markup" hidden></label>
+              <label class="link target icon-edit -ic ii"><input type="radio" name="item" value="markup" hidden></label>
               <label class="check"><input type="checkbox" checked>Markup (open)</label>
               <ul>
                 <li><a>Semantics</a></li>
@@ -620,8 +620,8 @@
               </ul>
             </li>
             <li>
-              <label class="link target icon-edit ic ii"><input type="radio" name="item" value="text" hidden></label>
-              <a href="#x" class="icon-text ic nn">Text</a>
+              <label class="link target icon-edit -ic ii"><input type="radio" name="item" value="text" hidden></label>
+              <a href="#x" class="icon-text -ic nn">Text</a>
             </li>
           </ul>
         </div>
@@ -663,7 +663,7 @@
             <li><a>Function</a></li>
           </ul>
           </details>
-          <div><a href="#x" class="icon-text ic nn">Text</a></div>
+          <div><a href="#x" class="icon-text -ic nn">Text</a></div>
         </div>
         
       </div>
@@ -672,14 +672,14 @@
     <h2 id="table">Table <a href="#table" class="x1 small tx nn">#</a></h2>
     
     <p>
-      <a href="#multiname" class="-bg -nn -hover icon-edit ic ii">Confirm selected items</a> &nbsp;
-      <a href="?#table" class="icon-refresh ic yy">Reset URL</a> &nbsp;
-      <span><label class="check icon-layers ic nn"><input type="checkbox" value="diagonals" data-nodes="#tbl"> Stripes</label></span>
+      <a href="#multiname" class="-bg -nn -hover icon-edit -ic ii">Confirm selected items</a> &nbsp;
+      <a href="?#table" class="icon-refresh -ic yy">Reset URL</a> &nbsp;
+      <span><label class="check icon-layers -ic nn"><input type="checkbox" value="diagonals" data-nodes="#tbl"> Stripes</label></span>
     </p>
     
     <form id="mult" action="#table" class="modal target pad">
       <h3>Confirm multiple items</h3>
-      <a href="#cancel" class="corner pad icon-close ic nn"></a>
+      <a href="#cancel" class="corner pad icon-close -ic nn"></a>
       <p>Name<br><input id="multiname" name="name" type="text" required></p>
       <p><button name="button" value="multiple" class="detect">Send</button></p>
     </form>
@@ -688,7 +688,7 @@
       
       <div class="modal confirm -target pad">
         <h3>Confirm single item</h3>
-        <button type="reset" class="corner fit pad hover icon-close ic nn"></button>
+        <button type="reset" class="corner fit pad hover icon-close -ic nn"></button>
         <p>Value<br><input name="value" type="text" required title=""></p>
         <p>
           <button class="detect" name="button" value="button">Button</button>
@@ -734,7 +734,7 @@
           <tr>
             <td>
               <input form="mult" type="checkbox" name="items" value="success">&nbsp;
-              <label class="link icon-edit ic ii"><input type="radio" name="item" value="success" hidden></label>
+              <label class="link icon-edit -ic ii"><input type="radio" name="item" value="success" hidden></label>
             <td class="tx yy">Success
             <td><a href="x" class="tx yy">Success</a>
             <td class="bt yy">Text <a href="x">Link</a>
@@ -745,7 +745,7 @@
           <tr>
             <td>
               <input form="mult" type="checkbox" name="items" value="warning">&nbsp;
-              <label class="link icon-edit ic ww"><input type="radio" name="item" value="warning" hidden></label>
+              <label class="link icon-edit -ic ww"><input type="radio" name="item" value="warning" hidden></label>
             <td class="tx ww">Warning
             <td><a href="x" class="tx ww">Warning</a>
             <td class="bt ww">Text <a href="x">Link</a>
@@ -774,7 +774,7 @@
     
     <a href="#layout1">Layout</a> (Don't use <code>.row.wrap</code> with <code>.row > .scroll</code>)
     <div id="layout1" class="target modal full">
-      <a href="#cancel" class="corner pad icon-close ic nn"></a>
+      <a href="#cancel" class="corner pad icon-close -ic nn"></a>
       <div class="row resp -wrap stretch gap -mid -vert full" data-style="height:30em;">
         <div class="pad bord col-0 resize" data-style="min-width:10rem;">First</div>
         <div class="pad bg ii col-1"><div class="pop"><a>Popup</a><div class="pad">Popups and dropdowns can overflow non-scrollable parent grid item</div></div></div>
@@ -912,7 +912,7 @@
       </div>
       <div>
         <button name disabled>Disabled</button>
-        <a class="pad bt nn bord rad hover" href="?#form"><span class="icon-refresh ic yy">Reset URL</span></a>
+        <a class="pad bt nn bord rad hover" href="?#form"><span class="icon-refresh -ic yy">Reset URL</span></a>
         &nbsp; <a href="#">Top</a>
       </div>
       <div>
@@ -988,7 +988,7 @@
           <button type="reset" class="bk nn">Reset</button>
       <tr><td><td>
           <button disabled>Disabled</button>
-          <a class="pad bord rad hover icon-refresh ic yy" href="?#form">Reset URL</a>
+          <a class="pad bord rad hover icon-refresh -ic yy" href="?#form">Reset URL</a>
           &nbsp; <a href="#">Top</a>
       <tr><td><td>
         <button class="-detect bt nn">OK</button>
