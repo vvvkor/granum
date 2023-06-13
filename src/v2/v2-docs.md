@@ -63,6 +63,7 @@
 - `.badge .tag` - 
 - `.nn, .ii, .yy, .ww, .ee` - 
 - `.tx .ee` - 
+- `.bt .ee` - 
 - `.bg .ee` - 
 - `.bk .ee` - 
 - `.text` - 
@@ -71,7 +72,6 @@
 - `.inact` - 
 - `.hover` - 
 - `.back` - 
-- `.bgl` - 
 
 ## Image
 
@@ -113,7 +113,6 @@
 - `.container` - 
 - `.row.aware` - 
 - `.form.aware` - 
-- `.tform.aware` - 
 
 ## Row
 

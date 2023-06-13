@@ -8,7 +8,7 @@
 - loading="lazy"
 = svg d:path() in css
 - clip-path:path() for icons
-- oklch() for colors - not on Win7
+- !!! oklch() for colors - not on Win7
 
 ## JS enhancements
 
@@ -23,11 +23,10 @@
 ## Order / cleanup / docs
 
 - !!! Naming, constants, defaults, destruct, guard, edge, small funcs
-- naming: read=post, bgl=transparent=tr
+!- naming: --rsatur etc
 - see comments in css
 - cleanup and organize css
 !!!- test: mob, ff, safari (icons, overlay)
-!- naming: .bgl =.dialog etc, --rlit etc
 - write docs
 = move dialog experiments to some test files [removed]
 + describe preferred toggler components variants in table
@@ -45,16 +44,10 @@
 
 ## Todo
 
-- @container bug (icon over dropdown)
-- remove .tform (after testing grid form)
+= .cont .aware => .cont .resp-s
 - corner bottom fixed: .pos-*? (sticky link to top)
-- colors: oklch()
-- .bt, def .tx/.ic, def .nn, hsl??? oklch()!!!
-- dark mode @atmos.style
+- default .tx/.ic, default .nn
 
-- corner bottom fixed: .pos-* ?
-  - link to top
-- brighter orange text and bg mark
 - animate gallery
 - drawer.resp
 - spinner
@@ -66,11 +59,12 @@
   - toggle icon
   - details: custom icon [.link or .fit, use svg.icon-x.on.off]
 - wide pop = hover tabs = ul.drop
-- text/icon: white with shade (for gallery)
-- smart grid
 - checker:has(:checked) {active color} - for debug label
 - lazy using --img, cause loading attr fails wo js
 - dropzone
+~ text/icon: white with shade (for gallery)
+= colors: oklch() [not supported on win8]
+= dark mode @atmos.style
 = details pad 1.5
 = anchor = a#:target + .target [scrolls anyway]
 = --flex
@@ -80,6 +74,12 @@
 = native modal with fallback, tgl cmp: dialog [after closed natively (esc/formmethod/(backdrop)), not posiible to show with js]
 = data-filter [requires js]
 = confirm&prompt using label>a# [not posible]
++ naming: read=col, bgl=transparent=tr
++ remove .tform (after testing grid form)
++ .bt
++ @container bug (icon over dropdown) [.cont:pos,z-index - for stacking context]
++ brighter orange text and bg mark
++ smart grid
 + @media a < width <= b
 + resize:both !!!
 + +width:min(), =padding:max(), =font:clamp

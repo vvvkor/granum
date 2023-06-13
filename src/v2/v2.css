@@ -11,7 +11,6 @@
   --lh: 1.5;
   --icon-scale: 1.2;
   --bg: #fcfcfc;
-  --bgl: #9992;
   --over: #0002;
   --text: #222;
   --link: #03a;
@@ -29,12 +28,12 @@
   --nn: 200;
   --ii: 195;/*195*/
   --yy: 120;/*120*/
-  --ww: 35;/*40*/
+  --ww: 35;/*35*/
   --ee: 0;
-  --rsatur: 90%;/*90*/
-  --rlit: 48%;/*45..48*/
-  --rlit-bg: 88%;/*88*/
-  --alpha-bg: 100%;/*100*/
+  --rsatur: 95%;/*90*/
+  --lit: 47%;/*45..48*/
+  --lit-bg: 90%;/*88..92*/
+  --alpha-bg: 8%;/*15*/
   /* fonts */
   --serif: "PT Serif", Georgia, serif;
   --sans: "PT Sans", Roboto, "Segoe UI", sans-serif;
@@ -49,6 +48,7 @@
   --pad-xs: calc(.12 * var(--gap)) calc(.25 * var(--gap));
   --mar: var(--gap) 0;
   --mar-s: var(--gap-s) 0;
+  --bgl: hsl(var(--nn) 0% var(--lit) / var(--alpha-bg));
   --shade-hover: inset 0 0 0 200vh var(--bgl);
 }
 
@@ -125,27 +125,29 @@ a[href], .link, .check, .pop>a, ul.row a {display:inline;color:var(--link);/*tex
   a:not([href]), a[href^="#"], a.pad, ul.pads a, .tabs>a {text-decoration:none;}
 a.act, a[href^="#"]:has(+:target), .check:has(:checked), .tabs:not(:has(:target))>a:first-of-type, [open]>.link {color:var(--act);background-color:var(--bg-act);}
 :is(a[href]:not(.pad), .link, .check):hover, .pop:hover>a:not(.pad), ul.row li:hover>a:not(.pad) {color:var(--hover);}
-:is(a, button, .link, .check, summary).hover:hover, ul.row.hover li:is(:hover, :has(:hover)):has(>a), .pop:hover>a.hover, table.hover tbody tr:hover>*, .tabs.hover>:is(a,label):hover {/*background-color:var(--bgl);*/box-shadow:var(--shade-hover);}
+:is(a, button, .link, .check, summary).hover:hover, ul.row.hover li:is(:hover, :has(:hover)):has(>a), .pop:hover>a.hover, table.hover tbody tr:hover>*, .tabs.hover>:is(a,label):hover {box-shadow:var(--shade-hover);}
 
 /* colors */
 [class].text {color:var(--text);}
 [class].back, .stick {background-color:var(--bg);}
-[class].bgl, blockquote, pre, code {background-color:var(--bgl);}
+blockquote, pre, code {background-color:var(--bgl);}
 
 /* status */
-.nn, .ii, .yy, .ww, .ee {--satur:var(--rsatur);--lit:var(--rlit);}
-.nn, [data-hint]:after {--hue:var(--nn);--satur:0%;--lit:calc(var(--rlit) + 15%);}
-.ii {--hue:var(--ii);--lit:calc(var(--rlit) - 3%);}
-.yy {--hue:var(--yy);--lit:calc(var(--rlit) - 12%);}
+.nn, .ii, .yy, .ww, .ee, .tag, mark {--lt:calc(var(--lit) + var(--dlit, 0%));--satur:var(--rsatur);}
+.nn, [data-hint]:after {--hue:var(--nn);--satur:0%;--dlit:15%;}
+.ii {--hue:var(--ii);--dlit:-3%;}
+.yy {--hue:var(--yy);--dlit:-12%;}
 .ww {--hue:var(--ww);}
-.ee {--hue:var(--ee);}
-.tx[class], .ic[class]:before {color:hsl(var(--hue) var(--satur) calc(var(--lit) - 5%));}
-.bg[class] {background-color:hsl(var(--hue) var(--satur) var(--rlit-bg) / var(--alpha-bg));}
-.bk[class], [data-hint]:after {background-color:hsl(var(--hue) calc(var(--satur) - 0%) var(--lit));color:var(--bg);}
+.ee {--hue:var(--ee);--dlit:-5%;}
+.tx[class] {color:hsl(var(--hue) var(--satur) calc(var(--lt) - 5%));}
+.ic[class]:before {color:hsl(var(--hue) var(--satur) var(--lt));}
+.bg[class] {background-color:hsl(var(--hue) var(--satur) var(--lit-bg));}
+.bt[class] {background-color:hsl(var(--hue) var(--satur) var(--lit) / var(--alpha-bg));}
+.bk[class], [data-hint]:after {background-color:hsl(var(--hue) var(--satur) var(--lt, var(--lit)));color:var(--bg);}
 .bk[class] a {color:var(--bg);}
-mark {background-color:hsl(var(--ww) var(--rsatur) var(--rlit-bg) / var(--alpha-bg));}
-:is(button, [type="submit"]):not(.tx, .bg, .bk, .bgl, .back, .fit) {background-color:var(--link);color:var(--bg);}
-.tag:not(.tx, .bg, .bk, .bgl, .back, .fit) {background-color:hsl(var(--ee) var(--rsatur) var(--rlit));color:var(--bg);}
+mark {background-color:hsl(var(--ww) var(--satur) /*var(--lit-bg)*/ 85%);}
+:is(button, [type="submit"]):not(.tx, .bg, .bk, .bt, .back, .fit) {background-color:var(--link);color:var(--bg);}
+.tag:not(.tx, .bg, .bk, .bt, .back, .fit) {background-color:hsl(var(--ee) var(--rsatur) var(--lit));color:var(--bg);}
 
 
 /* row */
@@ -182,12 +184,6 @@ ul.row.vert {--wid:var(--min-pop-w);}
 .form legend {margin-left:calc(var(--gap) - var(--pad-fset) - .3em);}
 /* responsive form */
 .form.vert {--cols:1fr;--line:1;--label-align:left;--form-gap:0;}
-@media (width < 50rem) {
-  .form.resp {--cols:1fr;--line:1;--label-align:left;--form-gap:0;}
-}
-@container block (width < 25rem) {
-  .form.aware {--cols:1fr;--line:1;--label-align:left;--form-gap:0;}
-}
 
 
 /* toggle */
@@ -222,7 +218,7 @@ img:target {position:absolute;display:block;inset:0;width:100%;height:100%;objec
 .drawer.shift:target {right:0;}
 
 /* pop, drop, hint */
-.pop, ul.row li, [data-hint] {position:relative;}
+.pop, ul.row li, [data-hint] {position:relative;/*z-index:20;*/}
 .pop>:last-child, /*[data-hint]:after,*/ ul.row ul, .modal, .drawer {border:none;background-color:var(--bg);box-shadow:var(--shade);}
 .pop {display:inline-block;}
   /* for variable items height */
@@ -302,13 +298,11 @@ button:focus, input:focus, select:focus, textarea:focus, [contenteditable]:focus
 [name]:invalid:not(.fresh):focus {box-shadow:0 0 0 .15em #f665;}
 :is([type="checkbox"], [type="radio"]):invalid:not(.fresh) + :is(span, label) {color:#c00;}
 /* validation */
-.inact, [disabled], form:has(:invalid) .detect:is(button:not([type]), [type="submit"]) {opacity:.3;/*filter:grayscale(1);*/}
-[disabled] {cursor:not-allowed;}
+.inact, form:has(:invalid) .detect:is(button:not([type]), [type="submit"]) {opacity:.3;pointer-events:none;/*filter:grayscale(1);*/}
+[disabled] {cursor:not-allowed;opacity:.3;}
 form:not(:has(:not(.check)>[type="radio"]:checked)) .confirm {display:none;}
 :valid~.report, :invalid~.approve, .fresh~:is(.report, .approve)/*, form:not(:focus-within) :is(.report, .approve)*/ {display:none;}
 /* layout */
-table.tform>*>tr>:first-child:not(:only-child) {padding-top:calc(.6 * var(--gap));min-width:var(--mwid);--mwdiff:0em;--mwid:calc(8em - var(--mwdiff));text-align:var(--ali);--ali:right}
-fieldset table.tform>*>tr>:first-child:not(:only-child) {--mwdiff:calc(1.5 * var(--gap) - 1px);}
 form p {margin:var(--mar-s);}
 
 
@@ -351,6 +345,7 @@ table.c>*tr>* {text-align:center;}
 a.pad, .tag {display:inline-block;}
 ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div), table.pads>*>tr>* {padding:var(--pad);}
 ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div) {display:block;}  
+ul.pads li>form {padding:0 var(--gap);}
 
 @media screen {
 	.stick {position:sticky;top:0;z-index:35;}
@@ -364,8 +359,7 @@ ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div) {display:block;}
   .row.resp {--flow:column nowrap;--push:0;}
   ul.row.resp {--wid:var(--min-pop-w);}
   ul.row.resp ul {--pos:0 auto auto 100%;} /* avoids custom pos */
-  table.tform.resp, table.tform.resp>*, table.tform.resp>*>tr, table.tform.resp[class][class]>*>tr>* {display:block;padding:0;--mwid:auto;--ali:left;}
-  table.tform.resp>*>tr {margin:calc(.5 * var(--gap));}
+  .form.resp {--cols:1fr;--line:1;--label-align:left;--form-gap:0;}
 }
 
 @media (width < 25rem) { /* < 400px */
@@ -373,15 +367,14 @@ ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div) {display:block;}
 }
 
 /* containers */
-/* todo: fix .pop and icons visible below dropdown */
-.container {container: block / inline-size;}
+.container {container: block / inline-size;position:relative;z-index:20;}
 @container block (width < 25rem) {
   .row.aware {--flow:column nowrap;--push:0;}
   ul.row.aware {--wid:var(--min-pop-w);}
-  ul.row:is(.vert, .aware) ul {--pos:20% auto auto calc(var(--min-pop-w) * .5);} /* compact */
-  table.tform.aware, table.tform.aware>*, table.tform.aware>*>tr, table.tform.aware[class][class]>*>tr>* {display:block;padding:0;--mwid:auto;--ali:left;}
-  table.tform.aware>*>tr {margin:var(--gap-s);}
+  ul.row:is(.vert, .aware) ul {--pos:20% auto auto calc(var(--min-pop-w) * .5);} /* compact dropdown */
+  .form.aware {--cols:1fr;--line:1;--label-align:left;--form-gap:0;}
 }
+
 /**/
 
 /* invert */
@@ -427,10 +420,11 @@ html:has(#debug:checked) .fresh {background:#cfc;box-shadow:0 0 .5em #0909;}
 /*
 z-index
 10  .badge>.tag
+20 .container
 30 .stick
 40   .corner
-50  .pop
-50  .drop
+50  .pop > div
+50  .drop > ul
 100 #overlay
 101 .overlay
 120 .drawer
