@@ -223,7 +223,7 @@ html {scroll-padding-top:5rem;scroll-behavior:smooth;}
 ) + .overlay, 
 body:has(.target.modal:target, .target.modal :target, .drawer:target, .drawer :target) #overlay,
 body:has(.target.modal:target, .target.modal :target, .drawer:target, .drawer :target):not(:has(#overlay)):before
-  {content:'';display:block;position:fixed;inset:0;background:var(--over);}
+  {content:'';display:block;position:fixed;inset:-3em;background:var(--over);}
 .overlay {z-index:101;}
 #overlay, body:before {z-index:100;}
 body:has(.modal.full:target, .modal.full :target) {overflow:hidden;}

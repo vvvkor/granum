@@ -44,6 +44,7 @@
 
 ## Todo
 
+- resize: vert/hor only
 -? default .tx/.ic, default .nn
 = .cont .aware => .cont .resp-s
 - corner bottom fixed: .pos-*? (sticky link to top)
@@ -74,6 +75,7 @@
 = native modal with fallback, tgl cmp: dialog [after closed natively (esc/formmethod/(backdrop)), not posiible to show with js]
 = data-filter [requires js]
 = confirm&prompt using label>a# [not posible]
++ modal@m: overlay outline bottom
 + table stripes on/off
 + naming: read=col, bgl=transparent=tr
 + remove .tform (after testing grid form)

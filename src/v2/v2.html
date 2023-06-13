@@ -252,11 +252,15 @@
     </div>
     <a href="#close-mod1" class="overlay"></a>
 
-    <div id="mod2" class="modal full target pad">
-      <a href="#cancel" class="corner pad icon-close ic nn"></a>
-      Modal 2
-      <p><a href="#mod1">Previous modal</a></p>
-      <p><a href="#cancel">Close</a></p>
+    <div id="mod2" class="modal full target -pad row vert stack line">
+      <div class="col-1 pad">
+        <a href="#cancel" class="corner pad icon-close ic nn"></a>
+        Modal 2
+        <p><a href="#mod1">Previous modal</a></p>
+      </div>
+      <div class="pad c">
+        <a href="#cancel">Close</a>
+      </div>
     </div>
     <a href="#mod1" class="overlay"></a>
 
@@ -768,8 +772,8 @@
 
     <h2 id="grid">Grid <a href="#grid" class="x1 small tx nn">#</a></h2>
     
-    <a href="#row1">Row 1</a> (Don't use <code>.row.wrap</code> with <code>.row > .scroll</code>)
-    <div id="row1" class="target modal full">
+    <a href="#layout1">Layout</a> (Don't use <code>.row.wrap</code> with <code>.row > .scroll</code>)
+    <div id="layout1" class="target modal full">
       <a href="#cancel" class="corner pad icon-close ic nn"></a>
       <div class="row resp -wrap stretch gap -mid -vert full" data-style="height:30em;">
         <div class="pad bord col-0 resize" data-style="min-width:10rem;">First</div>
