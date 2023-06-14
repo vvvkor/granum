@@ -51,7 +51,7 @@
 - `.rad` - 
 - `.shade` - 
 - `.pad` - 
-- `.pads` - 
+- `div.pads > *` - 
 - `.h1 ... .h6` - 
 - `.small` - 
 - `.sans, .serif, .mono` - 
@@ -87,6 +87,7 @@
 - `.form` - 
   - `.vert` - 
   - `.resp` - 
+  - `.resp-s` - 
   - `.aware` - 
   - `> [name]` - 
 - `> .wide` - 
@@ -111,9 +112,10 @@
 
 ## Container
 
-- `.container` - 
-- `.row.aware` - 
-- `.form.aware` - 
+- `.container, html` - 
+- `.row.resp/resp-s` - 
+- `ul.row.resp/resp-s` - 
+- `.form.resp/resp-s` - 
 
 ## Row
 
@@ -125,6 +127,7 @@
 - `> .mid` - 
 - `.gap` - 
 - `.resp` - 
+- `.resp-s` - 
 - `.push` - 
 - `.shift` - 
 - `.col-0` - 
@@ -135,9 +138,9 @@
 
 ## Grid
 
-- `.grid-*` - 
+- `.grid-xs/s/m/l` - 
 - `.gap` - 
-- `> .cell-2,3,4` - 
+- `> .span-2/3/4` - 
 - `> * > img` - aspect 3/2
 
 ## Toggle
@@ -146,6 +149,7 @@
   - `.pads` - 
   - `.vert` - 
   - `.resp` - 
+  - `.resp-s` - 
   - `.mid` - 
   - `.` - 
   - `.pos-*` - 
@@ -156,7 +160,8 @@
 - `.tree` - 
 - `.tabs` - 
   - `.pads` - 
-- `` - 
+- `.show-l/m/s` - 
+- `.hide-l/m/s` - 
 
 ## Modal
 

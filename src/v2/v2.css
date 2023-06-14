@@ -96,7 +96,7 @@ h1, h2, .h1, .h2 {--lh:1.3;}
 .pad, .row.pad, fieldset, blockquote, pre {padding:var(--pad);}
 	legend {margin-left:var(--gap);}
 	legend, .tag {padding:0 .3em;}
-	.tag {min-width:.6em;border-radius:.6em;line-height:1.2;}
+	.tag {min-width:.6em;border-radius:.6em;line-height:1.2;vertical-align:10%;}
 .shade {box-shadow:var(--shade);}
 .bord, kbd, fieldset, hr {border:var(--bord);}
   hr {border-width:thin 0 0 0;}
@@ -105,7 +105,7 @@ h1, h2, .h1, .h2 {--lh:1.3;}
 sub, sup {line-height:0em;}
 
 .badge {position:relative;display:inline-block;}
-.badge>.tag {position:absolute;top:0;right:0;--fsz:.75;transform:translate(50%,-50%);z-index:10;}
+.badge>.tag {position:absolute;top:0;right:0;/*--fsz:.75;*/transform:translate(50%,-50%);z-index:10;}
 .badge:not(button, [type="submit"], .pad) > .tag {right:-.3em;top:.3em;}
 .badge[class*="icon-"]>.tag {right:auto;left:1.5em;top:.2em;transform:translate(-50%,-50%);}
 .badge>.tag:empty {font-size:.5em;min-height:1.2em;}
@@ -141,7 +141,7 @@ blockquote, pre, code {background-color:var(--bgl);}
 .ww {--hue:var(--ww);}
 .ee {--hue:var(--ee);--dlit:-5%;}
 .tx[class] {color:hsl(var(--hue) var(--satur) calc(var(--lt) - 5%));}
-[class*="icon-"][class]:before {color:hsl(var(--hue) var(--satur) var(--lt));}
+.ic[class]:before {color:hsl(var(--hue) var(--satur) var(--lt));}
 .bg[class] {background-color:hsl(var(--hue) var(--satur) var(--lit-bg));}
 .bt[class] {background-color:hsl(var(--hue) var(--satur) var(--lit) / var(--alpha-bg));}
 .bk[class], [data-hint]:after {background-color:hsl(var(--hue) var(--satur) var(--lt, var(--lit)));color:var(--bg);}
@@ -193,9 +193,9 @@ ul.row.vert {--wid:var(--min-pop-w);}
 .grid-xs {--cell-width:8rem;}
 .grid-s {--cell-width:12rem;}
 .grid-l {--cell-width:24rem;}
-.cell-2 {grid-column-end:span 2;}
-.cell-3 {grid-column-end:span 3;}
-.cell-4 {grid-column-end:span 4;}
+.span-2 {grid-column-end:span 2;}
+.span-3 {grid-column-end:span 3;}
+.span-4 {grid-column-end:span 4;}
 
 /* form as grid */
 .form {--cols:minmax(min(40%, 8rem), 1fr) 3fr;--line:2;--label-align:right;--form-gap:var(--pad);--form-mar:calc((2 - var(--line)) * var(--gap-s));--col-full:1/calc(1 + var(--line));--pad-fset:calc((2 - var(--line)) * var(--gap));}
@@ -213,7 +213,7 @@ ul.row.vert {--wid:var(--min-pop-w);}
 /* toggle */
 .target:not(:target):not(:has(:target)), .check:not(:has(:checked)) + :not(:target):not(:has(:target)), .check input {display:none;}
 /*.target, .tabs+div :target, .tabs :target, :is(h1,h2,h3):target {scroll-margin-top:5rem;}*/
-html {scroll-padding-top:5rem;scroll-behavior:smooth;}
+html {scroll-padding-top:5rem;/*scroll-behavior:smooth;*/}
 /* overlay - todo: simplify */
 .overlay, #overlay {cursor:default;display:none;border:none;}
 :is(
@@ -370,6 +370,7 @@ a.pad, .tag {display:inline-block;}
 ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div), table.pads>*>tr>* {padding:var(--pad);}
 ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div) {display:block;}  
 ul.pads li>form {padding:0 var(--gap);}
+div.pads>* {padding:var(--pad);}
 
 @media screen {
 	.stick {position:sticky;top:0;z-index:35;}
@@ -377,26 +378,34 @@ ul.pads li>form {padding:0 var(--gap);}
 	.row .stick{align-self:start;max-height:100vh;max-height:100dvh;}
 }
 
+/* containers */
+html, .container {container: block / inline-size;position:relative;z-index:20;}
+
+/* desktop */
+@container block (width >= 50rem) { /* >= 800px */
+  .show-l {display:block !important;}
+  .hide-l {display:none !important;}
+}
+
 /* mobile */
-@media (width < 50rem) { /* < 800px */
-	:root {--font-scale: 1;}
+@container block (width < 50rem) { /* < 800px */
+	body {--font-scale: 1;}
   .row.resp {--flow:column nowrap;--push:0;}
   ul.row.resp {--wid:var(--min-pop-w);}
   ul.row.resp ul {--pos:0 auto auto 100%;} /* avoids custom pos */
   .form.resp {--cols:1fr;--line:1;--label-align:left;--form-gap:0;}
+  .show-m {display:block !important;}
+  .hide-m {display:none !important;}
 }
 
-@media (width < 25rem) { /* < 400px */
-  ul.row:is(.vert, .resp) ul {--pos:20% auto auto calc(var(--min-pop-w) * .5);} /* compact dropdown */
-}
-
-/* containers */
-.container {container: block / inline-size;position:relative;z-index:20;}
+/* phone */
 @container block (width < 25rem) {
-  .row.aware {--flow:column nowrap;--push:0;}
-  ul.row.aware {--wid:var(--min-pop-w);}
-  ul.row:is(.vert, .aware) ul {--pos:20% auto auto calc(var(--min-pop-w) * .5);} /* compact dropdown */
-  .form.aware {--cols:1fr;--line:1;--label-align:left;--form-gap:0;}
+  .row.resp-s {--flow:column nowrap;--push:0;}
+  ul.row.resp-s {--wid:var(--min-pop-w);}
+  ul.row:is(.vert, .resp, .resp-s) ul {--pos:20% auto auto calc(var(--min-pop-w) * .5);} /* compact dropdown */
+  .form.resp-s {--cols:1fr;--line:1;--label-align:left;--form-gap:0;}
+  .show-s {display:block !important;}
+  .hide-s {display:none !important;}
 }
 
 /**/

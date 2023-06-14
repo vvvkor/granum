@@ -44,17 +44,14 @@
 
 ## Todo
 
-- resize: vert/hor only
-= .cont .aware => .cont .resp-s
-- corner bottom fixed: .pos-*? (sticky link to top)
-
+- swap icons on toggle (js?)
 - animate gallery
 - drawer.resp (js responsive class [data-resp] ?)
-- swap icons on toggle (js?)
+
 - spinner
 - bar
-
-- docs: images section: img.wide.center.c.mid.fit
+- resize: vert/hor only
+- corner bottom fixed: .pos-*? (sticky link to top)
 - summary.>.on.off, .check .on.off, .pop>not-last>.on.off, ul.row li .on.off, ?a(>.on.off)+target
   - toggle icon
   - details: custom icon [.link or .fit, use svg.icon-x.on.off]
@@ -62,7 +59,10 @@
 - checker:has(:checked) {active color} - for debug label
 - lazy using --img, cause loading attr fails wo js
 - dropzone
+~ icons: ~box, =link, +layers
 ~ text/icon: white with shade (for gallery)
+= containers inside Grid section
+= col-* => cell-*
 = colors: oklch() [not supported on win8]
 = dark mode @atmos.style
 = details pad 1.5
@@ -74,6 +74,17 @@
 = native modal with fallback, tgl cmp: dialog [after closed natively (esc/formmethod/(backdrop)), not posiible to show with js]
 = data-filter [requires js]
 = confirm&prompt using label>a# [not posible]
++ show/hide-l/m/s
++ docs: images section: img.wide.center.c.mid.fit
++ .cont .aware => .cont .resp-s
++ html = .container
++ div.pads
++ cell-* => .span-*
++ docs: colored icons
++ info: show by link, backdrop
++ !info cmp: target: separate placement
++ icon with default color? .ic!
++ tag: shift up
 + default status color for .icon-* [only icon color]
 + modal@m: overlay outline bottom
 + table stripes on/off
