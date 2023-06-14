@@ -44,17 +44,16 @@
 
 ## Todo
 
-- swap icons on toggle (js?)
+- summary.>.on.off, .check .on.off, .pop>not-last>.on.off, ul.row li .on.off, ?a(>.on.off)+target
+  - toggle icon
+  - details: custom icon [.link or .fit, use svg.icon-x.on.off]
+
 - animate gallery
 - drawer.resp (js responsive class [data-resp] ?)
-
 - spinner
 - bar
 - resize: vert/hor only
 - corner bottom fixed: .pos-*? (sticky link to top)
-- summary.>.on.off, .check .on.off, .pop>not-last>.on.off, ul.row li .on.off, ?a(>.on.off)+target
-  - toggle icon
-  - details: custom icon [.link or .fit, use svg.icon-x.on.off]
 - wide pop = hover tabs = ul.drop
 - checker:has(:checked) {active color} - for debug label
 - lazy using --img, cause loading attr fails wo js
@@ -74,6 +73,7 @@
 = native modal with fallback, tgl cmp: dialog [after closed natively (esc/formmethod/(backdrop)), not posiible to show with js]
 = data-filter [requires js]
 = confirm&prompt using label>a# [not posible]
++ swap icons on toggle (!forward/desc, !folder/open, !menu/close, ok/no, !add/no, expand/collapse, play/pause  )
 + show/hide-l/m/s
 + docs: images section: img.wide.center.c.mid.fit
 + .cont .aware => .cont .resp-s

@@ -176,3 +176,4 @@
 
 - `.icon-*` - 
 - `.empty` - 
+- `(.check/[open]>/a[#]).icon-(folder/forward/add/menu)` - toggle icon to `.icon-(open/desc/no/close)` respectively

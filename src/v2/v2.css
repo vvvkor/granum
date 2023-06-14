@@ -140,6 +140,7 @@ blockquote, pre, code {background-color:var(--bgl);}
 .yy {--hue:var(--yy);--dlit:-12%;}
 .ww {--hue:var(--ww);}
 .ee {--hue:var(--ee);--dlit:-5%;}
+[data-hint]:after {--lt:40%;}
 .tx[class] {color:hsl(var(--hue) var(--satur) calc(var(--lt) - 5%));}
 .ic[class]:before {color:hsl(var(--hue) var(--satur) var(--lt));}
 .bg[class] {background-color:hsl(var(--hue) var(--satur) var(--lit-bg));}
@@ -149,30 +150,6 @@ blockquote, pre, code {background-color:var(--bgl);}
 mark {background-color:hsl(var(--ww) var(--satur) /*var(--lit-bg)*/ 85%);}
 :is(button, [type="submit"]):not(.tx, .bg, .bk, .bt, .back, .fit) {background-color:var(--link);color:var(--bg);}
 .tag:not(.tx, .bg, .bk, .bt, .back, .fit) {background-color:hsl(var(--ee) var(--rsatur) var(--lit));color:var(--bg);}
-
-
-/*
-mark {background-color:hsl(var(--ww) 100% 85%);}
-.tx {color: hsl(var(--hue, var(--nn)) var(--satur, var(--rsatur)) calc(var(--lt) - 5%));}
-[class*="icon-"]:is(.nn, .ii, .yy, .ww, .ee):before {color: hsl(var(--hue, var(--nn)) var(--satur, var(--rsatur)) calc(var(--lt) - 5%));}
-.bt, .bg, .bk, .tag, button, [type="submit"] {background-color: hsl(var(--hue, var(--nn)) var(--satur, var(--rsatur)) var(--lt) / var(--alpha, 100%));}
-.bk, :is(.tag, button, [type="submit"]):not(.bt, .bg), .bk a {color:var(--bg);}
-.nn, .ii, .yy, .ww, .ee, .tag, button, [type="submit"], [class*="icon-"]:before {
-  --dlit:0%;
-  --alpha:100%;
-  --lt:calc(var(--lit) + var(--dlit, 0%));
-}
-  :is(button, [type="submit"]):not(.nn, .ii, .yy, .ww, .ee) {--hue:var(--ll);--dlit:-10%;}
-  .tag {--hue:var(--ee);}
-  .nn {--hue:var(--nn);--satur:0%;--dlit:15%;}
-  :is(.ii, .yy, .ww, .ee) {--satur:var(--rsatur);}
-  .ii {--hue:var(--ii);--dlit:-3%;}
-  .yy {--hue:var(--yy);--dlit:-12%;}
-  .ww {--hue:var(--ww);}
-  .ee {--hue:var(--ee);--dlit:-5%;}
-  .bg {--dlit:43%;}
-  .bt {--alpha:8%;--dlit:0%;}
-*/
 
 /* row */
 .row {--flow:row nowrap;--wid:auto;--push:auto;display:flex;flex-flow:var(--flow);width:var(--wid);}
@@ -258,7 +235,7 @@ img:target {position:absolute;display:block;inset:0;width:100%;height:100%;objec
   .pop>:last-child:not(:has(.pop)), ul.row ul:not(:has(ul)) {max-height:var(--max-pop-h);overflow:auto;}
 ul, ul.vert>li>ul {--pos:0 auto auto 100%;}
 .pop:last-child, .row>li>ul {--pos:100% auto auto 0;}
-[data-hint]:after {white-space:nowrap;padding:var(--pad-s);--lit:30%;}
+[data-hint]:after {white-space:nowrap;padding:var(--pad-s);}
   [data-hint]:not([class*="pos-"]):after {--pos:auto auto 100% 0;}
   [data-hint] {/*border-bottom:thin dashed #ccc;*/cursor:help;}
 ul.row, ul.row ul, ul.row li {list-style:none;margin:0;padding:0;}
