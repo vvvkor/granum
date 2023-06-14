@@ -112,7 +112,7 @@
 
 ## Container
 
-- `.container, html` - 
+- `.container` - 
 - `.row.resp/resp-s` - 
 - `ul.row.resp/resp-s` - 
 - `.form.resp/resp-s` - 

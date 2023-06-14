@@ -379,16 +379,30 @@ div.pads>* {padding:var(--pad);}
 }
 
 /* containers */
-html, .container {container: block / inline-size;position:relative;z-index:20;}
+/* can not have <html> as container, because modals are centered inside container */
+.container {container: block / inline-size;position:relative;z-index:20;}
 
-/* desktop */
-@container block (width >= 50rem) { /* >= 800px */
+/* desktop > 800px */
+@media (width >= 50rem) {
+  .show-l {display:block !important;}
+  .hide-l {display:none !important;}
+}
+@container block (width >= 50rem) {
   .show-l {display:block !important;}
   .hide-l {display:none !important;}
 }
 
-/* mobile */
-@container block (width < 50rem) { /* < 800px */
+/* mobile < 800px */
+@media (width < 50rem) {
+	body {--font-scale: 1;}
+  .row.resp {--flow:column nowrap;--push:0;}
+  ul.row.resp {--wid:var(--min-pop-w);}
+  ul.row.resp ul {--pos:0 auto auto 100%;} /* avoids custom pos */
+  .form.resp {--cols:1fr;--line:1;--label-align:left;--form-gap:0;}
+  .show-m {display:block !important;}
+  .hide-m {display:none !important;}
+}
+@container block (width < 50rem) {
 	body {--font-scale: 1;}
   .row.resp {--flow:column nowrap;--push:0;}
   ul.row.resp {--wid:var(--min-pop-w);}
@@ -398,7 +412,15 @@ html, .container {container: block / inline-size;position:relative;z-index:20;}
   .hide-m {display:none !important;}
 }
 
-/* phone */
+/* phone < 400px */
+@media (width < 25rem) {
+  .row.resp-s {--flow:column nowrap;--push:0;}
+  ul.row.resp-s {--wid:var(--min-pop-w);}
+  ul.row:is(.vert, .resp, .resp-s) ul {--pos:20% auto auto calc(var(--min-pop-w) * .5);} /* compact dropdown */
+  .form.resp-s {--cols:1fr;--line:1;--label-align:left;--form-gap:0;}
+  .show-s {display:block !important;}
+  .hide-s {display:none !important;}
+}
 @container block (width < 25rem) {
   .row.resp-s {--flow:column nowrap;--push:0;}
   ul.row.resp-s {--wid:var(--min-pop-w);}
