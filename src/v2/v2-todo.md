@@ -44,11 +44,6 @@
 
 ## Todo
 
-- summary.>.on.off, .check .on.off, .pop>not-last>.on.off, ul.row li .on.off, ?a(>.on.off)+target
-  - toggle icon
-  - details: custom icon [.link or .fit, use svg.icon-x.on.off]
-
-- animate gallery
 - drawer.resp (js responsive class [data-resp] ?)
 - spinner
 - bar
@@ -60,6 +55,7 @@
 - dropzone
 ~ icons: ~box, =link, +layers
 ~ text/icon: white with shade (for gallery)
+=~ animate gallery
 = containers inside Grid section
 = col-* => cell-*
 = colors: oklch() [not supported on win8]
@@ -73,6 +69,14 @@
 = native modal with fallback, tgl cmp: dialog [after closed natively (esc/formmethod/(backdrop)), not posiible to show with js]
 = data-filter [requires js]
 = confirm&prompt using label>a# [not posible]
++ a:visited
++ remove .act bg
++ dlit for every status
++ js mem
++ .check [name]
++ (.check>checked, [open]>summary, a[#]+:target) .on.off
+  + toggle icon
+  + details: custom icon [.link or .fit, use svg.icon-x.on.off]
 + swap icons on toggle (!forward/desc, !folder/open, !menu/close, ok/no, !add/no, expand/collapse, play/pause  )
 + show/hide-l/m/s
 + docs: images section: img.wide.center.c.mid.fit

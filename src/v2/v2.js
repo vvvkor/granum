@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', e => {
+  // restore inputs
+  document.querySelectorAll('.mem[id]').forEach(n => {
+    const v = localStorage.getItem('val-' + n.id)
+    if (v == null) return
+    if (['checkbox', 'radio'].includes(n.type)) n.checked = (v == n.value)
+    else n.value = v
+  })
   // use URL params
   const u = new URL(location.href)
   document.querySelectorAll('[data-get]:not(form), form[data-get] [name]').forEach(n => {
@@ -28,6 +35,14 @@ document.addEventListener('click', ({target: n}) => {
   else if (n.dataset.modal) document.querySelector(n.dataset.modal).showModal()
   // validate form
   else if (n.form && n.matches('button, [type="submit"]')) n.form.querySelectorAll('[name]').forEach(n => n.classList.remove('fresh'))
+})
+
+document.addEventListener('input', ({target: n}) => {
+  // store inputs
+  if (n.id && n.classList.contains('mem')) {
+    if (n.type == 'radio') (n.closest('form') || document).querySelectorAll(`[type="radio"][name="${n.name}"][id]`).forEach(m => localStorage.removeItem('val-' + m.id))
+    localStorage.setItem('val-' + n.id, (['checkbox', 'radio'].includes(n.type) && !n.checked) ? '' : n.value)
+  }
 })
 
 document.addEventListener('keydown', e => {

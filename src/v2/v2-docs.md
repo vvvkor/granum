@@ -73,6 +73,7 @@
 - `.inact` - 
 - `.hover` - 
 - `.back` - 
+- `.inv` - Invert (use with caution)
 
 ## Image
 
@@ -156,6 +157,8 @@
 - `.pop` - 
   - `.pos-*` - 
 - `.target` - 
+  - `.off` - 
+  - `.on` - 
 - `.check` - 
 - `.tree` - 
 - `.tabs` - 

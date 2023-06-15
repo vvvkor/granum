@@ -9,7 +9,7 @@
     <link rel="icon" type="image/svg" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20220%20220'%3E%3Cpath%20fill='%23f50'%20d='M35%2067l75%20-44%2075%2044%200%2089-75%2044-75-44zm75%208a35%2035%200%201%200%20.01%200z'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="v2.css">
     <!--link rel="stylesheet" href="v2-icons-svg.css"-->
-    <link rel="stylesheet" href="v2-icons-clip.css">
+    <link rel="stylesheet" href="v2-icons.css">
     <script defer src="v2.js"></script>
     <script>
       // demo icons
@@ -68,11 +68,12 @@
     <!--h2 id="config">Config <a href="#config" class="x1 small tx nn">#</a></h2-->
     
     <div class="row gap nobr wrap">
-      <div><label class="link check icon-menu ic nn"><input type="checkbox" id="x2" checked hidden> Topnav</label></div>
+      <div><label class="link check icon-menu ic nn"><input type="checkbox" id="x2" checked class="mem"> Topnav</label></div>
       <div><a href="?#" class="icon-refresh ic yy">Reset URL</a></div>
       <div><label><input type="checkbox" id="invert"> Invert</label></div>
       <div><label class="link check icon-warning ic ww"><input type="checkbox" id="debug" hidden>Debug</label></div>
       <div><label><input type="checkbox" id="x1" checked> Anchors</label></div>
+      <a href="https://github.com/vvvkor/granum">GitHub</a>
     </div>
     
     <h2 id="typo">Typography <a href="#typo" class="x1 small tx nn">#</a></h2>
@@ -283,7 +284,7 @@
       <a href="#img3"><img alt="pic" class="fit" src="https://placehold.co/200x200/039/fff.png?text=~~~"></a>
       <a href="#img4"><img alt="pic" class="fit" src="https://placehold.co/150x200/777/fff.png?text=^^^"></a>
     </div>
-    <div id="gallery" class="modal full target">
+    <div id="gallery" class="modal full target inv">
       <div class="corner">
         <a href="#cancel" class="pad icon-close ic nn"></a>
       </div>
@@ -297,17 +298,17 @@
     <h2 id="target">Target <a href="#target" class="x1 small tx nn">#</a></h2>
     
     <div>
-      <a href="#trg" class="icon-forward ic nn">Open by hash</a>
+      <a href="#trg" class="icon-forward ic nn hover">Open by hash <i class="off tx nn">(closed)</i><i class="on tx yy">(open)</i></a>
       <div id="trg" class="target bt nn pad">Target <a href="#x">Close</a></div>
     </div>
     
     <div>
-      <label class="check icon-folder act-icon-open ic ww"><input type="checkbox">Open by label</label>
+      <label class="check icon-folder act-icon-open ic ww hover"><input type="checkbox">Open by label <i class="off tx nn">(closed)</i><i class="on tx yy">(open)</i></label>
       <div class="bt nn pad">Target</div>
     </div>
 
     <details>
-      <summary class="link -fit hover icon-add ic nn">Open details</summary>
+      <summary class="link -fit icon-add ic nn hover">Open details <i class="off tx nn">(closed)</i><i class="on tx yy">(open)</i></summary>
       <div class="bt nn pad">Target</div>
     </details>
     
@@ -877,7 +878,7 @@
     <form id="gform" class="form resp" action="?#gform" data-get>
       <label for="nm">Name</label>
       <div>
-        <input required type="text" id="nm" name="nm" placeholder="Name">
+        <input required type="text" id="nm" name="nm" placeholder="Name" class="mem">
         <span class="report tx ee">Required</span>
         <span class="approve tx yy">OK</span>
       </div>
@@ -904,9 +905,9 @@
         <div class="form resp-s">
           <span>Radio</span>
           <div>
-            <input required type="radio" name="radio" value="one" id="ri1"> <label for="ri1">One</label><br>
-            <input required type="radio" name="radio" value="two" id="ri2"> <label for="ri2">Two</label><br>
-            <input required type="radio" name="radio" value="three" id="ri3"> <label for="ri3">Three</label>
+            <input required type="radio" name="radio" value="one" id="ri1" class="mem"> <label for="ri1">One</label><br>
+            <input required type="radio" name="radio" value="two" id="ri2" class="mem"> <label for="ri2">Two</label><br>
+            <input required type="radio" name="radio" value="three" id="ri3" class="mem"> <label for="ri3">Three</label>
             <div class="report tx ee">Required</div>
             <div class="approve tx yy">OK</div>
           </div>

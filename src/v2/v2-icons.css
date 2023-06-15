@@ -2,7 +2,7 @@
 [class*="icon-"]:not(:empty):not(.empty):before {margin-right:var(--icon-mar, .3em);}
 
 /* complex scaling is needed because path() can be defined only in px */
-[class*="icon-"] {z-index:1;--w:16;--p:path("M8 4l4 4,-4 4,-4-4z");/*overflow:hidden;*//*filter:drop-shadow(0 0 .1em var(--text));*/}
+[class*="icon-"] {-webkit-tap-highlight-color:transparent;z-index:1;--w:16;--p:path("M8 4l4 4,-4 4,-4-4z");/*overflow:hidden;*//*filter:drop-shadow(0 0 .1em var(--text));*/}
 [class*="icon-"]:before {content:'';display:inline-block;width:1em;height:1em;vertical-align:var(--icon-vert, -10%);}
 [class*="icon-"]:before {
   --sc: calc(var(--font-scale, 1) * var(--fsz, 1) * 16 / var(--w) * var(--icon-scale, 1));

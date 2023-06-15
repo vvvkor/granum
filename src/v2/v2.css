@@ -13,7 +13,9 @@
   --bg: #fcfcfc;
   --over: #0002;
   --text: #222;
-  --link: #03a;
+  --ll: 222; /*link*/
+  --link: hsl(var(--ll), 100%, 33%);/* #03a; */
+  --visit: #506;
   --act: #06f;
   --bg-act: #def;
   --hover: #c00;
@@ -25,7 +27,6 @@
   --min-pop-w: 10em;
   --max-pop-h: 20em;
   /* status */
-  /*--ll: 222; /*link*/
   --nn: 200;
   --ii: 195;/*195*/
   --yy: 120;/*120*/
@@ -120,11 +121,12 @@ sub, sup {line-height:0em;}
 
 /* links */
 a[href], .link, .check, .pop>a, ul.row a {display:inline;color:var(--link);/*text-decoration:none;*/cursor:pointer;text-underline-offset:.2em;text-decoration-thickness:1px;}
+  a:not([href^="#"])/*[href*="//"]*/:visited {color:var(--visit);}
   a[href^="#"] {text-decoration-style:dashed;}
   ul.row ul {cursor:default;}
   ul.row li:has(>a) {cursor:pointer;}
   a:not([href]), a[href^="#"], a.pad, ul.pads a, .tabs>a {text-decoration:none;}
-a.act, a[href^="#"]:has(+:target), .check:has(:checked), .tabs:not(:has(:target))>a:first-of-type, [open]>.link {color:var(--act);background-color:var(--bg-act);}
+a.act, a[href^="#"]:has(+:target), .check:has(:checked), .tabs:not(:has(:target))>a:first-of-type, [open]>.link {color:var(--act);/*background-color:var(--bg-act);*/}
 :is(a[href]:not(.pad), .link, .check):hover, .pop:hover>a:not(.pad), ul.row li:hover>a:not(.pad) {color:var(--hover);}
 :is(a, button, .link, .check, summary).hover:hover, ul.row.hover li:is(:hover, :has(:hover)):has(>a), .pop:hover>a.hover, table.hover tbody tr:hover>*, .tabs.hover>:is(a,label):hover {box-shadow:var(--shade-hover);}
 
@@ -138,7 +140,7 @@ blockquote, pre, code {background-color:var(--bgl);}
 .nn, [data-hint]:after {--hue:var(--nn);--satur:0%;--dlit:15%;}
 .ii {--hue:var(--ii);--dlit:-3%;}
 .yy {--hue:var(--yy);--dlit:-12%;}
-.ww {--hue:var(--ww);}
+.ww {--hue:var(--ww);--dlit:0%;}
 .ee {--hue:var(--ee);--dlit:-5%;}
 [data-hint]:after {--lt:40%;}
 .tx[class] {color:hsl(var(--hue) var(--satur) calc(var(--lt) - 5%));}
@@ -188,7 +190,10 @@ ul.row.vert {--wid:var(--min-pop-w);}
 
 
 /* toggle */
-.target:not(:target):not(:has(:target)), .check:not(:has(:checked)) + :not(:target):not(:has(:target)), .check input {display:none;}
+.target:not(:target):not(:has(:target)), .check:not(:has(:checked)) + :not(:target):not(:has(:target)), .check input:not([name]) {display:none;}
+  .check:has(:checked) .off, [open]>summary .off, [href^="#"]:has(+:target) .off,
+  .check:not(:has(:checked)) .on, :not([open])>summary .on, [href^="#"]:not(:has(+:target)) .on
+   {display:none;}
 /*.target, .tabs+div :target, .tabs :target, :is(h1,h2,h3):target {scroll-margin-top:5rem;}*/
 html {scroll-padding-top:5rem;/*scroll-behavior:smooth;*/}
 /* overlay - todo: simplify */
@@ -209,8 +214,8 @@ body:has(.modal.full:target, .modal.full :target) {overflow:hidden;}
 .modal {position:fixed;z-index:130;overflow:auto;}
   .modal:not(.full) {min-height:10rem;max-height:90dvh;min-width:18rem;max-width:90vw;inset:50% auto auto 50%;transform:translate(-50%,-50%);}
   .modal.full {inset:0;/*calc(5 * var(--gap));*/}
-a:has(img:target), ul.row li, [class*="icon-"] {-webkit-tap-highlight-color:transparent;}
-img:target {position:absolute;display:block;inset:0;width:100%;height:100%;object-fit:contain;}
+a:has(img/*:target*/), ul.row li {-webkit-tap-highlight-color:transparent;}
+img:target/*, a:has(+a img.target:target) img.target*/ {position:absolute;display:block;inset:0;width:100%;height:100%;object-fit:contain;}
 
 /* drawer */
 .drawer {position:fixed;inset:0 auto 0 -21em;width:min(20em, 80%);z-index:120;transition:left .2s, right .2s;overflow:auto;}
@@ -329,6 +334,8 @@ table.c>*tr>* {text-align:center;}
 .r9 td:nth-child(9) {text-align:right;}
 
 /* modifiers */
+.inv[class] {color:var(--bg);background-color:var(--text);}
+.inv[class] a, a.inv[class] {color:hsl(var(--ll) 100% 80%);}
 .resize {resize:both;overflow:auto;}
 .col {max-width:45em;}
 .full:not(.modal) {height:100vh;height:100dvh;}
@@ -410,12 +417,12 @@ div.pads>* {padding:var(--pad);}
 /**/
 
 /* invert */
-html, .invert {background:var(--bg);}
+html, .invert {background-color:var(--bg);}
 html, img, video, iframe, .invert {filter:var(--mode);}
 html {--mode:none;}
-html.invert, html:has(#invert:checked) {--mode:invert(.9) hue-rotate(180deg);}
+html.invert, html:has(#invert:checked) {--mode:invert(.95) hue-rotate(180deg);}
 @media (prefers-color-scheme: dark) {
-  html:not(.invert) {--mode:invert(.9) hue-rotate(180deg);}
+  html:not(.invert) {--mode:invert(.95) hue-rotate(180deg);}
   html.invert, html:has(#invert:checked) {--mode:none;}
 }
 
@@ -441,13 +448,15 @@ html:has(#x9:not(:checked)) .x9
 
 /* animations */
 .modal:not(.full)/*, ul.row ul*/ {animation:appear .3s;}
+/*.modal img:target {animation:appear .5s both;}*/
+/*.modal img:not(:target) {animation:appear 2.3s reverse both;}*/
 .report, .approve{animation:delay-appear .5s;}
 @keyframes appear { 0% {opacity:0;} 100% {opacity:1;} }
 @keyframes delay-appear { 0% {opacity:0;} 30% {opacity:0;} 100% {opacity:1;} }
 
 /* debug */
-html:has(#debug:checked) .row>*>img:only-child {object-fit:contain;background:var(--bgl);}
-html:has(#debug:checked) .fresh {background:#cfc;box-shadow:0 0 .5em #0909;}
+html:has(#debug:checked) .row>*>img:only-child {object-fit:contain;background-color:var(--bgl);}
+html:has(#debug:checked) .fresh {background-color:#cfc;box-shadow:0 0 .5em #0909;}
 
 /*
 z-index
