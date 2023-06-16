@@ -32,7 +32,7 @@
       .diagonals {background:repeating-linear-gradient(135deg, #fff, #fff 1em, #f6f6f6 1em, #f6f6f6 2em);}
     </style>
   </head>
-  <body class="-invert">
+  <body class="-invert" data-break="800,400">
   <!--a href="#" class="icon-asc ic nn back pad rad shade corner pos-r"></a-->
   <!--div class="row -full">
     <aside class="col-1 pad bg nn stick scroll">Stick<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</aside>
@@ -73,6 +73,11 @@
       <div><label><input type="checkbox" id="invert"> Invert</label></div>
       <div><label class="link check icon-warning ic ww"><input type="checkbox" id="debug" hidden>Debug</label></div>
       <div><label><input type="checkbox" id="x1" checked> Anchors</label></div>
+      <div>
+        <span data-resp="hide,hide,tag bk ee">Small</span>
+        <span data-resp="hide,tag bk ww,hide">Medium</span>
+        <span data-resp="tag bk ii,hide,hide">Large</span>
+      </div>
       <a href="https://github.com/vvvkor/granum">GitHub</a>
     </div>
     
@@ -97,7 +102,7 @@
     <pre>Preformatted text
 <code>Code: <var>window</var> = <kbd class="text-y" onclick="this.textContent = window.innerWidth + ' x ' + window.innerHeight">click</kbd></code></pre>
 
-      <details>
+      <details id="details-headings" class="mem">
       <summary>Headings</summary>
       <div class="pad mar bord rad stack">
         <h1>Heading 1<b class="-target"><br>has a second line</b></h1>
@@ -116,7 +121,7 @@
       </details>
 
     
-      <details>
+      <details id="details-colors" class="mem" open>
       <summary>Colors</summary>
       <div class="mar shade pad rad">
         <div class="-row -gap mar">
@@ -183,7 +188,7 @@
       </div>
       </details>
 
-      <details>
+      <details id="details-images" class="mem">
       <summary>Images</summary>
       <div class="mar shade pad rad bord">
         <div class="mar">
@@ -282,9 +287,9 @@
       <a href="#img1"><img alt="pic" class="fit" src="https://placehold.co/200x100/b33/fff.png?text=***"></a>
       <a href="#img2"><img alt="pic" class="fit" src="https://placehold.co/180x120/393/fff.png?text=///"></a>
       <a href="#img3"><img alt="pic" class="fit" src="https://placehold.co/200x200/039/fff.png?text=~~~"></a>
-      <a href="#img4"><img alt="pic" class="fit" src="https://placehold.co/150x200/777/fff.png?text=^^^"></a>
+      <a href="#img4"><img alt="pic" class="fit" src="https://placehold.co/150x200/777/fff.png?text=---"></a>
     </div>
-    <div id="gallery" class="modal full target inv">
+    <div id="modal-gallery" class="modal full target inv">
       <div class="corner">
         <a href="#cancel" class="pad icon-close ic nn"></a>
       </div>
@@ -379,24 +384,24 @@
 
     <div class="row tabs pads hover mar">
       <b>Label</b>
-      <label class="check"><input type="radio" name="tabs">One</label>
+      <label class="check"><input type="radio" name="tabs" id="tb1" class="mem">One</label>
       <div class="pad bg ww">Tab 1</div>
-      <label class="check"><input type="radio" name="tabs" checked>Two</label>
+      <label class="check"><input type="radio" name="tabs" checked id="tb2" class="mem">Two</label>
       <div class="pad bg ww">
         <div class="tx ww">No common container for content</div>
         <div class="tx ww">Extra non-semantic markup</div>
         <div class="tx yy">Can start with any tab</div>
         <div class="tx yy">Keeps on hash change</div>
       </div>
-      <label class="check"><input type="radio" name="tabs">Three</label>
+      <label class="check"><input type="radio" name="tabs" id="tb3" class="mem">Three</label>
       <div class="pad bg ww">
         <div class="row tabs pads hover">
           <b>Nested</b>
-          <label class="check"><input type="radio" name="tabsn">One</label>
+          <label class="check"><input type="radio" name="tabsn" id="tb3a" class="mem">One</label>
           <div class="pad bg yy">Tab 1</div>
-          <label class="check"><input type="radio" name="tabsn" checked>Two</label>
+          <label class="check"><input type="radio" name="tabsn" checked id="tb3b" class="mem">Two</label>
           <div class="pad bg yy">Tab 2<br>line</div>
-          <label class="check"><input type="radio" name="tabsn">Three</label>
+          <label class="check"><input type="radio" name="tabsn" id="tb3c" class="mem">Three</label>
           <div class="pad bg yy">Tab 3<br>line<br>line</div>
         </div>
       </div>
@@ -647,7 +652,7 @@
 
         <div>
           <p><label><input type="checkbox" value="fit link hover" data-parent="div" data-nodes="summary"> Fit and hover</label></p>
-          <details><summary class="-link -hover -fit">Style</summary>
+          <details id="details-style" open class="mem"><summary class="-link -hover -fit">Style</summary>
             <details><summary>Color</summary>
             <ul>
               <li><a class="tx ee">Red</a></li>
@@ -725,7 +730,7 @@
           <tr>
             <td>
               <input form="mult" type="checkbox" name="items" value="note">&nbsp;
-              <input type="radio" name="item" value="note"><path/></svg>
+              <input type="radio" name="item" value="note">
             <td class="tx nn">Note
             <td><a href="x" class="tx nn icon-file">Note</a>
             <td class="bt nn">Text <a href="x">Link</a>
@@ -810,7 +815,7 @@
         <a href="#img1"><img alt="pic" class="fit" src="https://placehold.co/200x100/b33/fff.png?text=***"></a>
         <a href="#img2"><img alt="pic" class="fit" src="https://placehold.co/180x120/393/fff.png?text=///"></a>
         <a href="#img3"><img alt="pic" class="fit" src="https://placehold.co/200x200/039/fff.png?text=~~~"></a>
-        <a href="#img4"><img alt="pic" class="fit" src="https://placehold.co/150x200/777/fff.png?text=^^^"></a>
+        <a href="#img4"><img alt="pic" class="fit" src="https://placehold.co/150x200/777/fff.png?text=---"></a>
         <div class="pad bg nn -span-2">7</div>
       </div>
     </details>
@@ -884,22 +889,22 @@
       </div>
       <label for="sel">Select</label>
       <div>
-        <select required id="sel" name="sel"><option></option><option>1</option><option>2</option><option>3</option></select>
+        <select required id="sel" name="sel" class="mem"><option value="">-</option><option>1</option><option>2</option><option>3</option></select>
         <span class="report tx ee">Required</span>
         <span class="approve tx yy">OK</span>
       </div>
       <label for="area">Area</label>
       <div>
-        <textarea required id="area" name="area"></textarea>
+        <textarea required id="area" name="area" class="mem"></textarea>
         <div class="report tx ee">Required</div>
         <div class="approve tx yy">OK</div>
       </div>
       <span>
-        <input required type="checkbox" name="box" value="a" id="bx1"> <label for="bx1">Mandatory box</label>
+        <input required type="checkbox" name="box" value="a" id="bx1" class="mem"> <label for="bx1">Mandatory box</label>
         <span class="report tx ee">Required</span>
         <span class="approve tx yy">OK</span>
       </span>
-      <label><input type="checkbox" name="box" value="b"> Optional box with same name</label>
+      <label><input type="checkbox" name="box" value="b" id="bx2" class="mem"> Optional box with same name</label>
       <fieldset>
         <legend>Fieldset</legend>
         <div class="form resp-s">
@@ -912,29 +917,29 @@
             <div class="approve tx yy">OK</div>
           </div>
           <label for="cust">Custom</label>
-          <input id="cust" name="custom">
+          <input id="cust" name="custom" class="mem">
           <!--textarea required id="area2" name="area2"></textarea-->
         </div>
       </fieldset>
       <label class="wide tx nn">
-        <input name="agree" type="checkbox">
+        <input name="agree" type="checkbox" id="agree" class="mem">
         Label with text long enough to occupy full width
       </label>
-      <span>Readonly</span><input name readonly placeholder="readonly">
-      <span>Disabled</span><input name disabled placeholder="disabled">
+      <span>Readonly</span><input name="ro" readonly placeholder="readonly">
+      <span>Disabled</span><input name="dis" disabled placeholder="disabled">
       
       <div>
-        <button name class="icon-ok">OK</button>
+        <button name="ok" class="icon-ok">OK</button>
         <button class="detect">OK (detect)</button>
         <button type="reset" class="bk nn">Reset</button>
       </div>
       <div>
-        <button name disabled>Disabled</button>
+        <button name="ds" disabled>Disabled</button>
         <a class="pad bt nn bord rad hover" href="?#form"><span class="icon-refresh ic yy">Reset URL</span></a>
         &nbsp; <a href="#">Top</a>
       </div>
       <div>
-        <button class="-detect bt nn" name>OK</button>
+        <button class="-detect bt nn" name="ok2">OK</button>
         <button class="-detect bg nn">OK</button>
         <button class="-detect bg ii">OK</button>
         <button class="-detect bg yy">OK</button>
@@ -1254,12 +1259,14 @@
 
     <h2 id="js">JavaScript enhancements <a href="#js" class="x1 small tx nn">#</a></h2>
     <ul>
+      <li><code>[id].mem</code> - store <a href="#form">input values</a> and <a href="#details-nested">details open state</a>
       <li><code>[data-get="urlParamName"], [data-get][name], form[data-get] [name]</code> - <a href="?q=abc#search">set content or value from URL</a>
       <li><code>[data-hint]</code> - <a href="#popup">remove native title</a>
       <li><code>[data-modal="querySelector"]</code> - <a href="#link-dlgm" data-modal="#dlgm">open native modal dialog</a>
       <li><code>[data-check="querySelector"]([data-parent])</code> - <a href="#status">check all boxes</a>
       <li><code>[data-nodes="querySelector"]([data-parent][data-reverse])[type="checkbox"][value]</code> - <a href="#toggle-classes">toggle classes</a>
       <li><code>[data-nodes="querySelector"]([data-parent][data-reverse])[type="radio"][value]</code> - <a href="#set-classes">set classes</a>
+      <li><code>body[data-break="800,400"] *[data-resp="class-l,class-m,class-s"]</code> - <a href="#"> set breakpoints and responsize classes</a>
       <li><code>onkeyup:Escape</code> - close all modals and popups
     </ul>
         

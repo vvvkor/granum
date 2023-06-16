@@ -44,6 +44,8 @@
 
 ## Todo
 
+- write docs
+
 - drawer.resp (js responsive class [data-resp] ?)
 - spinner
 - bar
@@ -69,6 +71,11 @@
 = native modal with fallback, tgl cmp: dialog [after closed natively (esc/formmethod/(backdrop)), not posiible to show with js]
 = data-filter [requires js]
 = confirm&prompt using label>a# [not posible]
++ docs&info on .mem
++ check tabs mem
++ details.mem
++ data-resp
++ validate
 + a:visited
 + remove .act bg
 + dlit for every status

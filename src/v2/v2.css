@@ -97,7 +97,7 @@ h1, h2, .h1, .h2 {--lh:1.3;}
 .pad, .row.pad, fieldset, blockquote, pre {padding:var(--pad);}
 	legend {margin-left:var(--gap);}
 	legend, .tag {padding:0 .3em;}
-	.tag {min-width:.6em;border-radius:.6em;line-height:1.2;vertical-align:10%;}
+	.tag {min-width:.6em;border-radius:.6em;line-height:1.2;vertical-align:5%;}
 .shade {box-shadow:var(--shade);}
 .bord, kbd, fieldset, hr {border:var(--bord);}
   hr {border-width:thin 0 0 0;}
@@ -190,7 +190,7 @@ ul.row.vert {--wid:var(--min-pop-w);}
 
 
 /* toggle */
-.target:not(:target):not(:has(:target)), .check:not(:has(:checked)) + :not(:target):not(:has(:target)), .check input:not([name]) {display:none;}
+.target:not(:target):not(:has(:target)), .check:not(:has(:checked)) + :not(:target):not(:has(:target)), .check input {display:none;}
   .check:has(:checked) .off, [open]>summary .off, [href^="#"]:has(+:target) .off,
   .check:not(:has(:checked)) .on, :not([open])>summary .on, [href^="#"]:not(:has(+:target)) .on
    {display:none;}
@@ -365,14 +365,16 @@ div.pads>* {padding:var(--pad);}
 /* containers */
 /* can not have <html> as container, because modals are centered inside container */
 .container {container: block / inline-size;position:relative;z-index:20;}
+.show {display:initial !important;}
+.hide {display:none !important;}
 
 /* desktop > 800px */
 @media (width >= 50rem) {
-  .show-l {display:block !important;}
+  .show-l {display:initial !important;}
   .hide-l {display:none !important;}
 }
 @container block (width >= 50rem) {
-  .show-l {display:block !important;}
+  .show-l {display:initial !important;}
   .hide-l {display:none !important;}
 }
 
@@ -383,7 +385,7 @@ div.pads>* {padding:var(--pad);}
   ul.row.resp {--wid:var(--min-pop-w);}
   ul.row.resp ul {--pos:0 auto auto 100%;} /* avoids custom pos */
   .form.resp {--cols:1fr;--line:1;--label-align:left;--form-gap:0;}
-  .show-m {display:block !important;}
+  .show-m {display:initial !important;}
   .hide-m {display:none !important;}
 }
 @container block (width < 50rem) {
@@ -392,7 +394,7 @@ div.pads>* {padding:var(--pad);}
   ul.row.resp {--wid:var(--min-pop-w);}
   ul.row.resp ul {--pos:0 auto auto 100%;} /* avoids custom pos */
   .form.resp {--cols:1fr;--line:1;--label-align:left;--form-gap:0;}
-  .show-m {display:block !important;}
+  .show-m {display:initial !important;}
   .hide-m {display:none !important;}
 }
 
@@ -402,7 +404,7 @@ div.pads>* {padding:var(--pad);}
   ul.row.resp-s {--wid:var(--min-pop-w);}
   ul.row:is(.vert, .resp, .resp-s) ul {--pos:20% auto auto calc(var(--min-pop-w) * .5);} /* compact dropdown */
   .form.resp-s {--cols:1fr;--line:1;--label-align:left;--form-gap:0;}
-  .show-s {display:block !important;}
+  .show-s {display:initial !important;}
   .hide-s {display:none !important;}
 }
 @container block (width < 25rem) {
@@ -410,7 +412,7 @@ div.pads>* {padding:var(--pad);}
   ul.row.resp-s {--wid:var(--min-pop-w);}
   ul.row:is(.vert, .resp, .resp-s) ul {--pos:20% auto auto calc(var(--min-pop-w) * .5);} /* compact dropdown */
   .form.resp-s {--cols:1fr;--line:1;--label-align:left;--form-gap:0;}
-  .show-s {display:block !important;}
+  .show-s {display:initial !important;}
   .hide-s {display:none !important;}
 }
 

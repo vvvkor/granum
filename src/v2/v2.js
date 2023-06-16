@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', e => {
-  // restore inputs
+  // restore inputs/details
   document.querySelectorAll('.mem[id]').forEach(n => {
     const v = localStorage.getItem('val-' + n.id)
     if (v == null) return
     if (['checkbox', 'radio'].includes(n.type)) n.checked = (v == n.value)
+    else if (n.matches('details')) n.open = !!v
     else n.value = v
   })
   // use URL params
@@ -45,6 +46,11 @@ document.addEventListener('input', ({target: n}) => {
   }
 })
 
+document.addEventListener('toggle', ({target: n}) => {
+  // store details
+  if (n.matches('details') && n.id && n.classList.contains('mem')) localStorage.setItem('val-' + n.id, n.open ? 1 : '')
+}, true)
+
 document.addEventListener('keydown', e => {
   // close modals and popups
   if (e.key == 'Escape') {
@@ -58,3 +64,19 @@ document.addEventListener('blur', ({target: n}) => {
   if (n.form) n.form.querySelectorAll(`[name="${n.name}"]`).forEach(m => m.classList.remove('fresh')) // validate radio
   else n.classList.remove('fresh') // validate field
 }, true)
+
+// responsive class
+window.addEventListener('resize', () => {
+  const b = document.body
+  const w = (b.dataset.break || '800,400').split(',')
+  w.push(0)
+  const m = w.findIndex(x => window.innerWidth >= Number(x))
+  if (b._m == null || b._m != m) {
+    b._m = m
+    document.querySelectorAll('[data-resp]').forEach(n => {
+      const c = n.dataset.resp.split(',')
+      n.className = (c[m] != null ? c[m] : c.pop()) || ''
+    })
+  }
+})
+window.dispatchEvent(new Event('resize'))

@@ -163,8 +163,8 @@
 - `.tree` - 
 - `.tabs` - 
   - `.pads` - 
-- `.show-l/m/s` - 
-- `.hide-l/m/s` - 
+- `.show, .show-l/m/s` - 
+- `.hide, .hide-l/m/s` - 
 
 ## Modal
 
@@ -180,3 +180,15 @@
 - `.icon-*` - 
 - `.empty` - 
 - `(.check/[open]>/a[#]).icon-(folder/forward/add/menu)` - toggle icon to `.icon-(open/desc/no/close)` respectively
+
+## JavaScript enhancements
+
+- `[id].mem` - store input values and details open state
+- `[data-get="urlParamName"], [data-get][name], form[data-get] [name]` - set content or value from URL
+- `[data-hint]` - remove native title
+- `[data-modal="querySelector"]` - open native modal dialog
+- `[data-check="querySelector"]([data-parent])` - check all boxes
+- `[data-nodes="querySelector"]([data-parent][data-reverse])[type="checkbox"][value]` - toggle classes
+- `[data-nodes="querySelector"]([data-parent][data-reverse])[type="radio"][value]` - set classes
+- `body[data-break="800,400"] *[data-resp="class-l,class-m,class-s"]` - set breakpoints and responsize classes
+- `onkeyup:Escape` - close all modals and popups
