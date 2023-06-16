@@ -60,6 +60,13 @@ document.addEventListener('keydown', e => {
   }
 })
 
+window.addEventListener('hashchange', e => {
+  if (location.hash == '#clear') {
+    localStorage.clear()
+    location.hash = '#cleared'
+  }
+})
+
 document.addEventListener('blur', ({target: n}) => {
   if (n.form) n.form.querySelectorAll(`[name="${n.name}"]`).forEach(m => m.classList.remove('fresh')) // validate radio
   else n.classList.remove('fresh') // validate field

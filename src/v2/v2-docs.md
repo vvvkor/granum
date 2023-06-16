@@ -30,6 +30,7 @@
 - `#overlay` - default overlay for `.modal` and `.drawer`
 - `#x1:checked .x1 ... .x9` - toggle items
 - `#debug:checked` - custom styling
+- `#clear` - clear localStorage
 
 ## Modifiers
 

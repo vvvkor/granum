@@ -1,7 +1,5 @@
 # Granum v2
 
-- pwa: bottom bar color
-
 ## Requirements
 
 - :has() - for interactivity, forms and validation - not implemented in Firefox as of 2023-05-24
@@ -10,24 +8,14 @@
 - clip-path:path() for icons
 - !!! oklch() for colors - not on Win7
 
-## JS enhancements
-
-- [data-get="urlParamName"], [data-get][name], form[data-get] [name] - set content or value from URL
-- [data-hint] - remove native title
-- [data-modal="querySelector"] - open native modal dialog
-- [data-check="querySelector"]([data-parent]) - check all boxes
-- [data-nodes="querySelector"]([data-parent][data-reverse])[type="checkbox"][value] - toggle classes
-- [data-nodes="querySelector"]([data-parent][data-reverse])[type="radio"][value] - set classes
-- onkeyup:Escape - close all modals and popups
-
 ## Order / cleanup / docs
 
+- !!! write docs
 - !!! Naming, constants, defaults, destruct, guard, edge, small funcs
-!- naming: --rsatur etc
+- !!! test: +mob, =ff, -safari (icons, overlay)
+- naming: --rsatur etc
 - see comments in css
 - cleanup and organize css
-!!!- test: mob, ff, safari (icons, overlay)
-- write docs
 = move dialog experiments to some test files [removed]
 + describe preferred toggler components variants in table
 + describe drawbacks of using dialog and details for modal
@@ -43,9 +31,6 @@
 = grid-auto-rows
 
 ## Todo
-
-- 3 escapes, #clear: clear local storage
-- write docs
 
 - drawer.resp (js responsive class [data-resp] ?)
 - spinner
@@ -72,6 +57,7 @@
 = native modal with fallback, tgl cmp: dialog [after closed natively (esc/formmethod/(backdrop)), not posiible to show with js]
 = data-filter [requires js]
 = confirm&prompt using label>a# [not posible]
++ #clear: clear local storage
 + docs&info on .mem
 + check tabs mem
 + details.mem
