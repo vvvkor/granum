@@ -44,6 +44,7 @@
 
 ## Todo
 
+- 3 escapes, #clear: clear local storage
 - write docs
 
 - drawer.resp (js responsive class [data-resp] ?)
