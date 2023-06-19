@@ -75,9 +75,9 @@
       <div><label><input type="checkbox" id="invert"> Invert</label></div>
       <div><label><input type="checkbox" id="x1" checked> Anchors</label></div>
       <div>
-        <span data-resp="hide,hide,tag bk ee">Small</span>
-        <span data-resp="hide,tag bk ww,hide">Medium</span>
-        <span data-resp="tag bk ii,hide,hide">Large</span>
+        <span class="hide" data-resp="hide,hide,tag bk ee">Small</span>
+        <span class="hide" data-resp="hide,tag bk ww,hide">Medium</span>
+        <span class="hide" data-resp="tag bk ii,hide,hide">Large</span>
       </div>
       <a href="https://github.com/vvvkor/granum">GitHub</a>
     </div>
@@ -177,13 +177,24 @@
         <button class="bk yy">Success</button>
         <button class="bk ww">Warning</button>
         <button class="bk ee">Error</button>
+        <br>
+        <a class="">Def</a>
+        <a class="tx">Tx</a>
+        <a class="tx nn">Tx</a>
+        <a class="bt">Bt</a>
+        <a class="bt nn">Bt</a>
+        <a class="bg">Bg</a>
+        <a class="bg nn">Bg</a>
+        <a class="bk">Bk</a>
+        <a class="bk nn">Bk</a>
 
         <nav id="set-classes" class="mar">
-          <div class="bg nn">
-            <label><input type="radio" name="color" value="bg ee" data-parent="nav" data-nodes="div"> Red</label>
-            <label><input type="radio" name="color" value="bg yy" data-parent="nav" data-nodes="div"> Green</label>
-            <label><input type="radio" name="color" value="bg ii" data-parent="nav" data-nodes="div"> Blue</label>
-            <label><input type="radio" name="color" value="bg ww" data-parent="nav" data-nodes="div"> Yellow</label>
+          <div class="pad bg nn">
+            <label><input type="radio" name="color" value="pad bg" data-parent="nav" data-nodes="div" checked> Grey</label>
+            <label><input type="radio" name="color" value="pad bg ee" data-parent="nav" data-nodes="div"> Red</label>
+            <label><input type="radio" name="color" value="pad bg yy" data-parent="nav" data-nodes="div"> Green</label>
+            <label><input type="radio" name="color" value="pad bg ii" data-parent="nav" data-nodes="div"> Blue</label>
+            <label><input type="radio" name="color" value="pad bg ww" data-parent="nav" data-nodes="div"> Yellow</label>
           </div>
         </nav>
       </div>
@@ -292,19 +303,22 @@
     </div>
     <div id="modal-gallery" class="modal full target inv">
       <div class="corner">
+        <!--a href="#back" class="pad icon-left ic nn"></a-->
+        <a href="#prev" class="pad icon-prev ic nn"></a>
+        <a href="#next" class="pad icon-next ic nn"></a>
         <a href="#cancel" class="pad icon-close ic nn"></a>
       </div>
-      <a href="#img2"><img id="img1" alt="pic" src="https://placehold.co/400x200/b33/fff.png?text=Red" class="target" loading="lazy"></a>
-      <a href="#img3"><img id="img2" alt="pic" src="https://placehold.co/300x200/393/fff.png?text=Green" class="target" loading="lazy"></a>
-      <a href="#img4"><img id="img3" alt="pic" src="https://placehold.co/200x200/039/fff.png?text=Blue" class="target" loading="lazy"></a>
-      <a href="#img1"><img id="img4" alt="pic" src="https://placehold.co/220x300/777/fff.png?text=Grey" class="target" loading="lazy"></a>
+      <a href="#img2"><img id="img1" alt="pic" src="https://placehold.co/400x200/b33/fff.png?text=Red"   class="target" loading="lazy" data-prev="#img4" data-next="#img2"></a>
+      <a href="#img3"><img id="img2" alt="pic" src="https://placehold.co/300x200/393/fff.png?text=Green" class="target" loading="lazy" data-prev="#img1" data-next="#img3"></a>
+      <a href="#img4"><img id="img3" alt="pic" src="https://placehold.co/200x200/039/fff.png?text=Blue"  class="target" loading="lazy" data-prev="#img2" data-next="#img4"></a>
+      <a href="#img1"><img id="img4" alt="pic" src="https://placehold.co/220x300/777/fff.png?text=Grey"  class="target" loading="lazy" data-prev="#img3" data-next="#img1"></a>
     </div>
     <a href="#close-gallery" class="overlay"></a>
 
     <h2 id="target">Target <a href="#target" class="x1 small tx nn">#</a></h2>
     
     <div>
-      <a href="#trg" class="icon-forward ic nn hover">Open by hash <i class="off tx nn">(closed)</i><i class="on tx yy">(open)</i></a>
+      <a href="#trg" class="icon-next ic nn hover">Open by hash <i class="off tx nn">(closed)</i><i class="on tx yy">(open)</i></a>
       <div id="trg" class="target bt nn pad">Target <a href="#x">Close</a></div>
     </div>
     
@@ -437,7 +451,7 @@
         <div class="bg nn pad">Target</div>
       </div> &nbsp;
       <details class="pop">
-        <summary class="link -fit hover icon-forward ic nn">Open details</summary>
+        <summary class="link -fit hover icon-next ic nn">Open details</summary>
         <div class="bg nn pad">Pop<p>p<p>p<p>p<p>p</div>
       </details>
     </div>
@@ -1034,7 +1048,7 @@
     <h2 id="icons">Icons (82) <a href="#icons" class="x1 small tx nn">#</a></h2>
     
     <!--
-    add asc attach audio back ban bookmark box card chart chat close collapse columns config copy date delete desc down download edit energy exit expand file find first flag folder forward grid heart help home image info key last layers left link list lock mail menu mic more no none ok open pause phone photo pin play power print rec refresh right send settings share sort sound star stop storage sum tag text time tree up upload user video view warning world
+    add asc attach audio ban bookmark box card chart chat close collapse columns config copy date delete desc down download edit energy exit expand file find first flag folder grid heart help home image info key last layers left link list lock mail menu mic more no next none ok open pause phone photo pin play power prev print rec refresh right send settings share sort sound star stop storage sum tag text time tree up upload user video view warning world
     -->
     
     <div class="icons -h3">
@@ -1060,8 +1074,8 @@
     <a class="icon-right"></a>
     <a class="icon-asc"></a>
     <a class="icon-desc"></a>
-    <a class="icon-back"></a>
-    <a class="icon-forward"></a>
+    <a class="icon-prev"></a>
+    <a class="icon-next"></a>
     <a class="icon-upload"></a>
     <a class="icon-download"></a>
     <a class="icon-first"></a>
@@ -1146,8 +1160,8 @@
     <a><svg class="icon-right"><path/></svg></a>
     <a><svg class="icon-asc"><path/></svg></a>
     <a><svg class="icon-desc"><path/></svg></a>
-    <a><svg class="icon-back"><path/></svg></a>
-    <a><svg class="icon-forward"><path/></svg></a>
+    <a><svg class="icon-prev"><path/></svg></a>
+    <a><svg class="icon-next"><path/></svg></a>
     <a><svg class="icon-upload"><path/></svg></a>
     <a><svg class="icon-download"><path/></svg></a>
     <a><svg class="icon-first"><path/></svg></a>
@@ -1229,7 +1243,7 @@
         <tr><td>Scroll<td class="tx ww">jumps to target<td class="tx yy">no jump<td class="tx yy">no jump</tr>
         <tr><td>Keep on hash change<td class="tx ww">no<td class="tx yy">yes<td class="tx yy">yes</tr>
         <tr><td>Backdrop<td class="tx yy">link<td class="tx yy">label<td class="tx ww">passive</tr>
-        <tr><td>Responsive state<td class="tx yy">yes<td class="tx yy">yy<td class="tx ee">no</tr>
+        <tr><td>Responsive state<td class="tx yy">yes<td class="tx yy">yes<td class="tx ee">no</tr>
       </tbody>
     </table>
     </div>
@@ -1270,6 +1284,9 @@
       <li><code>body[data-break="800,400"] *[data-resp="class-l,class-m,class-s"]</code> - <a href="#"> set breakpoints and responsize classes</a>
       <li><code>onkeyup:Escape</code> - close all modals and popups
       <li><code>#clear</code> - <a href="#clear">clear localStorage</a>
+      <li><code>#back</code> - <a href="#back">go back</a>
+      <li><code>#prev</code> - <a href="#img1">go to hash</a> defined in <code>:target[data-prev]</code>
+      <li><code>#next</code> - <a href="#img1">go to hash</a> defined in <code>:target[data-next]</code>
     </ul>
         
     <!--p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</p-->

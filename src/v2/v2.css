@@ -1,10 +1,3 @@
-/*
-  vars:
-  r = root
-  f = font
-  i = icon
-  sz = size
-*/
 :root{
   /* basic */
   --font-scale: 1.2;
@@ -116,9 +109,6 @@ sub, sup {line-height:0em;}
 .pad.stack {padding:var(--gap);} /* optional */
 .stack.line>:not(:last-child) {border-bottom:var(--bord);}
 
-/* todo: bar */
-/* todo: status border color? */
-
 /* links */
 a[href], .link, .check, .pop>a, ul.row a {display:inline;color:var(--link);/*text-decoration:none;*/cursor:pointer;text-underline-offset:.2em;text-decoration-thickness:1px;}
   a:not([href^="#"])/*[href*="//"]*/:visited {color:var(--visit);}
@@ -136,8 +126,9 @@ a.act, a[href^="#"]:has(+:target), .check:has(:checked), .tabs:not(:has(:target)
 blockquote, pre, code {background-color:var(--bgl);}
 
 /* status */
-.nn, .ii, .yy, .ww, .ee, .tag, mark {--lt:calc(var(--lit) + var(--dlit, 0%));--satur:var(--rsatur);}
-.nn, [data-hint]:after {--hue:var(--nn);--satur:0%;--dlit:15%;}
+.nn, .ii, .yy, .ww, .ee, .tx, .bt, .bg, .bk {--lt:calc(var(--lit) + var(--dlit, 0%));}
+.nn, [data-hint]:after, .tx, .bt, .bg, .bk {--hue:var(--nn);--satur:0%;--dlit:15%;}
+.ii, .yy, .ww, .ee {--satur:var(--rsatur);}
 .ii {--hue:var(--ii);--dlit:-3%;}
 .yy {--hue:var(--yy);--dlit:-12%;}
 .ww {--hue:var(--ww);--dlit:0%;}
@@ -149,7 +140,7 @@ blockquote, pre, code {background-color:var(--bgl);}
 .bt[class] {background-color:hsl(var(--hue) var(--satur) var(--lit) / var(--alpha-bg));}
 .bk[class], [data-hint]:after {background-color:hsl(var(--hue) var(--satur) var(--lt, var(--lit)));color:var(--bg);}
 .bk[class] a {color:var(--bg);}
-mark {background-color:hsl(var(--ww) var(--satur) /*var(--lit-bg)*/ 85%);}
+mark {background-color:hsl(var(--ww) var(--rsatur) /*var(--lit-bg)*/ 85%);}
 :is(button, [type="submit"]):not(.tx, .bg, .bk, .bt, .back, .fit) {background-color:var(--link);color:var(--bg);}
 .tag:not(.tx, .bg, .bk, .bt, .back, .fit) {background-color:hsl(var(--ee) var(--rsatur) var(--lit));color:var(--bg);}
 
@@ -187,7 +178,6 @@ ul.row.vert {--wid:var(--min-pop-w);}
 .form legend {margin-left:calc(var(--gap) - var(--pad-fset) - .3em);}
 /* responsive form */
 .form.vert {--cols:1fr;--line:1;--label-align:left;--form-gap:0;}
-
 
 /* toggle */
 .target:not(:target):not(:has(:target)), .check:not(:has(:checked)) + :not(:target):not(:has(:target)), .check input {display:none;}
@@ -273,11 +263,6 @@ ul.tabs + div:has(:target) > :not(:is(:target, :has(:target)))
   .tabs:has(:target) > a+div:not(:is(:target, :has(:target)))
   {display:none;}
 
-
-/* todo: gallery: close with shade, back, bg */
-/* todo: js: store, unscroll? */
-
-
 /* list */
 ul {list-style:disc outside;}
 ul, ol, dl {margin:var(--mar);}
@@ -310,7 +295,6 @@ form:not(:has(:not(.check)>[type="radio"]:checked)) .confirm {display:none;}
 :valid~.report, :invalid~.approve, .fresh~:is(.report, .approve)/*, form:not(:focus-within) :is(.report, .approve)*/ {display:none;}
 /* layout */
 form p {margin:var(--mar-s);}
-
 
 /* table */
 caption, figcaption {text-align:left;font-style:italic;}
@@ -364,12 +348,13 @@ div.pads>* {padding:var(--pad);}
 
 /* containers */
 /* can not have <html> as container, because modals are centered inside container */
+/* do not use .modal and .drawer inside container (position and z-index issues) */
 .container {container: block / inline-size;position:relative;z-index:20;}
 .show {display:initial !important;}
 .hide {display:none !important;}
 
-/* desktop > 800px */
-@media (width >= 50rem) {
+/* desktop >= 960px */
+@media (width >= 60rem) {
   .show-l {display:initial !important;}
   .hide-l {display:none !important;}
 }
@@ -398,8 +383,8 @@ div.pads>* {padding:var(--pad);}
   .hide-m {display:none !important;}
 }
 
-/* phone < 400px */
-@media (width < 25rem) {
+/* phone < 480px */
+@media (width < 30rem) {
   .row.resp-s {--flow:column nowrap;--push:0;}
   ul.row.resp-s {--wid:var(--min-pop-w);}
   ul.row:is(.vert, .resp, .resp-s) ul {--pos:20% auto auto calc(var(--min-pop-w) * .5);} /* compact dropdown */
@@ -416,8 +401,6 @@ div.pads>* {padding:var(--pad);}
   .hide-s {display:none !important;}
 }
 
-/**/
-
 /* invert */
 html, .invert {background-color:var(--bg);}
 html, img, video, iframe, .invert {filter:var(--mode);}
@@ -432,9 +415,6 @@ html.invert, html:has(#invert:checked) {--mode:invert(.95) hue-rotate(180deg);}
 .scrollbar::-webkit-scrollbar{width:.5em;height:.5em;background:#eee;}
 .scrollbar::-webkit-scrollbar-thumb{background:#ccc;}
 .scrollbar{scrollbar-width:thin;scrollbar-color:#ccc #eee;}
-
-/* label with link */
-
 
 /* switches */
 html:has(#x1:not(:checked)) .x1,

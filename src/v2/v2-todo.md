@@ -14,7 +14,6 @@
 - !!! Naming, constants, defaults, destruct, guard, edge, small funcs
 - !!! test: +mob, =ff, -safari (icons, overlay)
 - naming: --rsatur etc
-- see comments in css
 - cleanup and organize css
 = move dialog experiments to some test files [removed]
 + describe preferred toggler components variants in table
@@ -43,6 +42,8 @@
 - dropzone
 ~ icons: ~box, =link, +layers
 ~ text/icon: white with shade (for gallery)
+= link icon
+= modal/drawer inside .cont [NO]
 =~ animate gallery
 = containers inside Grid section
 = col-* => cell-*
@@ -57,6 +58,13 @@
 = native modal with fallback, tgl cmp: dialog [after closed natively (esc/formmethod/(backdrop)), not posiible to show with js]
 = data-filter [requires js]
 = confirm&prompt using label>a# [not posible]
++ data-resp use default class
++ Icons prev/next
++ gal #prev/#next
++ #back
++ tx,bt,bg,bk: default nn
++ info: fix yy text
++ breakpoints: 600,900px? 40,60rem? [30,50rem]
 + #clear: clear local storage
 + docs&info on .mem
 + check tabs mem

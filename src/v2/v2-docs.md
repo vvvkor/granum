@@ -26,11 +26,10 @@
 
 ## Global
 
-- `#invert:checked` - dark mode
 - `#overlay` - default overlay for `.modal` and `.drawer`
 - `#x1:checked .x1 ... .x9` - toggle items
+- `#invert:checked` - dark mode
 - `#debug:checked` - custom styling
-- `#clear` - clear localStorage
 
 ## Modifiers
 
@@ -114,7 +113,7 @@
 
 ## Container
 
-- `.container` - 
+- `.container` - (Do not use `.modal` and `.drawer` inside container)
 - `.row.resp/resp-s` - 
 - `ul.row.resp/resp-s` - 
 - `.form.resp/resp-s` - 
@@ -193,3 +192,7 @@
 - `[data-nodes="querySelector"]([data-parent][data-reverse])[type="radio"][value]` - set classes
 - `body[data-break="800,400"] *[data-resp="class-l,class-m,class-s"]` - set breakpoints and responsize classes
 - `onkeyup:Escape` - close all modals and popups
+- `#clear` - clear localStorage
+- `#back` - go back
+- `#prev` - go to hash defined in `:target[data-prev]`
+- `#next` - go to hash defined in `:target[data-next]`

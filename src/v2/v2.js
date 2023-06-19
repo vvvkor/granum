@@ -24,7 +24,8 @@ document.addEventListener('DOMContentLoaded', e => {
 
 const act = (n, k, f) => (n.dataset.parent ? n.closest(n.dataset.parent) : document).querySelectorAll(n.dataset[k]).forEach(m => f(m))
 
-document.addEventListener('click', ({target: n}) => {
+document.addEventListener('click', e => {
+  const n = e.target
   // check all boxes
   if (n.dataset.check) act(n, 'check', m => m.checked = n.checked)
   // toggle classes
@@ -36,6 +37,17 @@ document.addEventListener('click', ({target: n}) => {
   else if (n.dataset.modal) document.querySelector(n.dataset.modal).showModal()
   // validate form
   else if (n.form && n.matches('button, [type="submit"]')) n.form.querySelectorAll('[name]').forEach(n => n.classList.remove('fresh'))
+  //go back
+  else if (n.hash == '#back') {
+    history.go(-1)
+    e.preventDefault()
+  }
+  // prev/next
+  else if (location.hash && ['#prev', '#next'].includes(n.hash)) {
+    e.preventDefault()
+    const id = document.querySelector(location.hash)?.dataset[n.hash == '#prev' ? 'prev' : 'next']
+    if (id) location.hash = id
+  }
 })
 
 document.addEventListener('input', ({target: n}) => {
