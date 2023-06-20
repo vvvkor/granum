@@ -165,6 +165,7 @@
   - `.pads` - 
 - `.show, .show-l/m/s` - 
 - `.hide, .hide-l/m/s` - 
+- `.hide-js, .show-js` - 
 
 ## Modal
 
@@ -183,6 +184,7 @@
 
 ## JavaScript enhancements
 
+- `body.js` - class `js` added to `body` if JavaScript is enabled
 - `[id].mem` - store input values and details open state
 - `[data-get="urlParamName"], [data-get][name], form[data-get] [name]` - set content or value from URL
 - `[data-hint]` - remove native title

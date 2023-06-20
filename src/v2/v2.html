@@ -41,7 +41,7 @@
   
   <div class="x2 stick pad shade small">
     <div class="row gap wrap">
-      <a href="#" class="text"><b>Granum</b></a>
+      <a href="#" class="text" accesskey="3"><b>Granum</b></a>
       <!--a href="#config">Config</a-->
       <a href="#typo">Typo</a>
       <a href="#modal">Modal</a>
@@ -63,7 +63,7 @@
   </div>
   
   <div class="col center pad">
-    <h1 class="icon-config ic ww">Granum v2</h1>
+    <h1 id="top" class="icon-config ic ww">Granum v2</h1>
   
     <!--h2 id="config">Config <a href="#config" class="x1 small tx nn">#</a></h2-->
     
@@ -304,8 +304,9 @@
     <div id="modal-gallery" class="modal full target inv">
       <div class="corner">
         <!--a href="#back" class="pad icon-left ic nn"></a-->
-        <a href="#prev" class="pad icon-prev ic nn"></a>
-        <a href="#next" class="pad icon-next ic nn"></a>
+        <a href="#img1" class="pad icon-first ic nn hide-js"></a>
+        <a href="#prev" class="pad icon-prev ic nn show-js" accesskey="b"></a>
+        <a href="#next" class="pad icon-next ic nn show-js" accesskey="n"></a>
         <a href="#cancel" class="pad icon-close ic nn"></a>
       </div>
       <a href="#img2"><img id="img1" alt="pic" src="https://placehold.co/400x200/b33/fff.png?text=Red"   class="target" loading="lazy" data-prev="#img4" data-next="#img2"></a>
@@ -526,7 +527,7 @@
                 <li><a href="#x">nav</a></li>
               </ul>
             </li>
-            <li class="shift -mid"><form action="?#search"><input type="search" name="q" size="8" class="rad"></form></li>
+            <li class="shift -mid"><form action="?#search"><input type="search" name="q" size="8" class="rad" accesskey="4"></form></li>
           </ul>
         </div>
         <aside>
@@ -733,6 +734,16 @@
       <button type="reset" class="overlay"></button>
       <a href="#close1" class="overlay"></a>
   
+      <p id="table-classes">
+        <label><input type="checkbox" value="bord" data-parent="form" data-nodes="table" checked> Border</label>
+        <label><input type="checkbox" value="line" data-parent="form" data-nodes="table"> Line</label>
+        <label><input type="checkbox" value="pads" data-parent="form" data-nodes="table"> Pads</label>
+        <label><input type="checkbox" value="fit" data-parent="form" data-nodes="table"> Fit</label>
+        <label><input type="checkbox" value="c" data-parent="form" data-nodes="table"> Center</label>
+        <label><input type="checkbox" value="mid" data-parent="form" data-nodes="table" checked> Middle</label>
+        <label><input type="checkbox" value="wide" data-parent="form" data-nodes="table" checked> Wide</label>
+      </p>
+      
       <div id="status" class="scroll mar">
       <table id="tbl" class="bord hover serif wide mid">
         <caption>Status colors</caption>
@@ -867,7 +878,7 @@
     
     <div class="container">
       <div class="row resp-s">
-        <div class="bt nn ww pad col-1 container">
+        <div class="bt nn pad col-1 container">
           <div class="row resp-s stretch">
             <div class="bg yy pad">
               Narrow
@@ -898,7 +909,7 @@
     <form id="gform" class="form resp" action="?#gform" data-get>
       <label for="nm">Name</label>
       <div>
-        <input required type="text" id="nm" name="nm" placeholder="Name" class="mem">
+        <input required type="text" id="nm" name="nm" placeholder="Name" class="mem" accesskey="9">
         <span class="report tx ee">Required</span>
         <span class="approve tx yy">OK</span>
       </div>
@@ -1294,6 +1305,6 @@
   </div>
   <!-- common -->
   <a id="overlay" href="#cancel" accesskey="x"></a>
-  <a class="target" href="?#" accesskey="z"></a>
+  <a class="target" href="?#tp" accesskey="1"></a>
   </body>
 </html>

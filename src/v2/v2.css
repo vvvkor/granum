@@ -129,12 +129,12 @@ blockquote, pre, code {background-color:var(--bgl);}
 .nn, .ii, .yy, .ww, .ee, .tx, .bt, .bg, .bk {--lt:calc(var(--lit) + var(--dlit, 0%));}
 .nn, [data-hint]:after, .tx, .bt, .bg, .bk {--hue:var(--nn);--satur:0%;--dlit:15%;}
 .ii, .yy, .ww, .ee {--satur:var(--rsatur);}
-.ii {--hue:var(--ii);--dlit:-3%;}
-.yy {--hue:var(--yy);--dlit:-12%;}
+.ii {--hue:var(--ii);--dlit:-5%;}
+.yy {--hue:var(--yy);--dlit:-5%;--satur:calc(var(--rsatur) * .6);}
 .ww {--hue:var(--ww);--dlit:0%;}
 .ee {--hue:var(--ee);--dlit:-5%;}
 [data-hint]:after {--lt:40%;}
-.tx[class] {color:hsl(var(--hue) var(--satur) calc(var(--lt) - 5%));}
+.tx[class] {color:hsl(var(--hue) var(--satur) calc(var(--lt) - 10%));}
 .ic[class]:before {color:hsl(var(--hue) var(--satur) var(--lt));}
 .bg[class] {background-color:hsl(var(--hue) var(--satur) var(--lit-bg));}
 .bt[class] {background-color:hsl(var(--hue) var(--satur) var(--lit) / var(--alpha-bg));}
@@ -306,7 +306,7 @@ table.bord>*>tr>* {border:var(--bord);}
 table.line>*>tr>* {border-bottom:var(--bord);}
   table.line>:last-child>tr:last-child>* {border-bottom:none;}
 table.mid>*>tr>*, tr.mid>*, tr>.mid, img.mid, img.c {vertical-align:middle;}
-table.c>*tr>* {text-align:center;}
+table.c>*>tr>* {text-align:center;}
 .r1 td:nth-child(1) {text-align:right;}
 .r2 td:nth-child(2) {text-align:right;}
 .r3 td:nth-child(3) {text-align:right;}
@@ -351,7 +351,8 @@ div.pads>* {padding:var(--pad);}
 /* do not use .modal and .drawer inside container (position and z-index issues) */
 .container {container: block / inline-size;position:relative;z-index:20;}
 .show {display:initial !important;}
-.hide {display:none !important;}
+.hide, body.js .hide-js, body:not(.js) .show-js {display:none !important;}
+
 
 /* desktop >= 960px */
 @media (width >= 60rem) {

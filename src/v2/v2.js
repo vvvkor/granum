@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', e => {
+  document.body.classList.add('js')
+  
   // restore inputs/details
   document.querySelectorAll('.mem[id]').forEach(n => {
     const v = localStorage.getItem('val-' + n.id)
