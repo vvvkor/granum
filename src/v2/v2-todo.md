@@ -37,7 +37,7 @@
 - resize: vert/hor only
 - corner bottom fixed: .pos-*? (sticky link to top)
 - wide pop = hover tabs = ul.drop
-- checker:has(:checked) {active color} - for debug label
+- checker:not(:has(:checked)) {hide} - appearing items
 - lazy using --img, cause loading attr fails wo js
 - dropzone
 ~ icons: ~box, =link, +layers

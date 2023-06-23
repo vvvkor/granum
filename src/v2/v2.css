@@ -330,9 +330,7 @@ table.c>*>tr>* {text-align:center;}
 .c, .tag {text-align:center;}
 .r {text-align:right;}
 .corner {position:absolute;top:0;right:0;width:auto;z-index:40;}
-  .row .push {margin-right:var(--push);}
-  .row .shift {margin-left:var(--push);}
-  .row:not(.vert) .push + .shift {margin-left:0;}
+.row .push+*, .row .shift {margin-left:var(--push);}
 /* modifiers fix */
 a.pad, .tag {display:inline-block;}
 ul.pads li>:not(ul, form), .tabs:not(ul).pads>:not(div), table.pads>*>tr>* {padding:var(--pad);}
@@ -445,8 +443,10 @@ html:has(#debug:checked) .fresh {background-color:#cfc;box-shadow:0 0 .5em #0909
 z-index
 10  .badge>.tag
 20 .container
-30 .stick
+30 footer.stick
+35 .stick
 40   .corner
+50  `[data-hint]`
 50  .pop > div
 50  .drop > ul
 100 #overlay
