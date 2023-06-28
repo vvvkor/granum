@@ -1,7 +1,7 @@
 :root{
   /* basic */
-  --font-scale: 1.2;
   --lh: 1.5;
+  --font-scale: 1.2;
   --icon-scale: 1.2;
   --bg: #fcfcfc;
   --over: #0002;
@@ -25,10 +25,10 @@
   --yy: 120;/*120*/
   --ww: 35;/*35*/
   --ee: 0;
-  --rsatur: 95%;/*90*/
+  --satur: 95%;/*90*/
   --lit: 47%;/*45..48*/
-  --lit-bg: 90%;/*88..92*/
-  --alpha-bg: 8%;/*15*/
+  --bg-lit: 90%;/*88..92*/
+  --bg-alpha: 8%;/*15*/
   /* fonts */
   --serif: "PT Serif", Georgia, serif;
   --sans: "PT Sans", Roboto, "Segoe UI", sans-serif;
@@ -43,8 +43,8 @@
   --pad-xs: calc(.12 * var(--gap)) calc(.25 * var(--gap));
   --mar: var(--gap) 0;
   --mar-s: var(--gap-s) 0;
-  --bgl: hsl(var(--nn) 0% var(--lit) / var(--alpha-bg));
-  --shade-hover: inset 0 0 0 200vh var(--bgl);
+  --bgn: hsl(var(--nn) 0% var(--lit) / var(--bg-alpha)); /* same as .bt.nn */
+  --shade-hover: inset 0 0 0 200vh var(--bgn);
 }
 
 /* reset */
@@ -123,26 +123,26 @@ a.act, a[href^="#"]:has(+:target), .check:has(:checked), .tabs:not(:has(:target)
 /* colors */
 [class].text {color:var(--text);}
 [class].back, .stick {background-color:var(--bg);}
-blockquote, pre, code {background-color:var(--bgl);}
+blockquote, pre, code {background-color:var(--bgn);}
 
 /* status */
 .nn, .ii, .yy, .ww, .ee, .tx, .bt, .bg, .bk {--lt:calc(var(--lit) + var(--dlit, 0%));}
-.nn, [data-hint]:after, .tx, .bt, .bg, .bk {--hue:var(--nn);--satur:0%;--dlit:15%;}
-.ii, .yy, .ww, .ee {--satur:var(--rsatur);}
+.nn, [data-hint]:after, .tx, .bt, .bg, .bk {--hue:var(--nn);--sat:0%;--dlit:15%;}
+.ii, .yy, .ww, .ee {--sat:var(--satur);}
 .ii {--hue:var(--ii);--dlit:-5%;}
-.yy {--hue:var(--yy);--dlit:-5%;--satur:calc(var(--rsatur) * .6);}
+.yy {--hue:var(--yy);--dlit:-5%;--sat:calc(var(--satur) * .6);}
 .ww {--hue:var(--ww);--dlit:0%;}
 .ee {--hue:var(--ee);--dlit:-5%;}
 [data-hint]:after {--lt:40%;}
-.tx[class] {color:hsl(var(--hue) var(--satur) calc(var(--lt) - 10%));}
-.ic[class]:before {color:hsl(var(--hue) var(--satur) var(--lt));}
-.bg[class] {background-color:hsl(var(--hue) var(--satur) var(--lit-bg));}
-.bt[class] {background-color:hsl(var(--hue) var(--satur) var(--lit) / var(--alpha-bg));}
-.bk[class], [data-hint]:after {background-color:hsl(var(--hue) var(--satur) var(--lt, var(--lit)));color:var(--bg);}
+.tx[class] {color:hsl(var(--hue) var(--sat) calc(var(--lt) - 10%));}
+.ic[class]:before {color:hsl(var(--hue) var(--sat) var(--lt));}
+.bg[class] {background-color:hsl(var(--hue) var(--sat) var(--bg-lit));}
+.bt[class] {background-color:hsl(var(--hue) var(--sat) var(--lit) / var(--bg-alpha));}
+.bk[class], [data-hint]:after {background-color:hsl(var(--hue) var(--sat) var(--lt, var(--lit)));color:var(--bg);}
 .bk[class] a {color:var(--bg);}
-mark {background-color:hsl(var(--ww) var(--rsatur) /*var(--lit-bg)*/ 85%);}
+mark {background-color:hsl(var(--ww) var(--satur) /*var(--bg-lit)*/ 85%);}
 :is(button, [type="submit"]):not(.tx, .bg, .bk, .bt, .back, .fit) {background-color:var(--link);color:var(--bg);}
-.tag:not(.tx, .bg, .bk, .bt, .back, .fit) {background-color:hsl(var(--ee) var(--rsatur) var(--lit));color:var(--bg);}
+.tag:not(.tx, .bg, .bk, .bt, .back, .fit) {background-color:hsl(var(--ee) var(--satur) var(--lit));color:var(--bg);}
 
 /* row */
 .row {--flow:row nowrap;--wid:auto;--push:auto;display:flex;flex-flow:var(--flow);width:var(--wid);}
@@ -281,7 +281,7 @@ button, [type="submit"] {padding:var(--pad);margin:.2em 0;}
 	button, [type="submit"], a.pad:not(.bord) {border:thin solid transparent;}
 button:not([disabled]), [type="submit"]:not([disabled]), summary {cursor:pointer;}
 form>button, form>[type="submit"] {padding:var(--pad-xs);margin:0;}
-input[readonly] {background-color:var(--bgl);}
+input[readonly] {background-color:var(--bgn);}
 /* focus */
 button:hover:not([disabled]), [type="submit"]:hover:not([disabled]),
 button:focus, input:focus, select:focus, textarea:focus, [contenteditable]:focus/*, summary:focus*/
@@ -436,7 +436,7 @@ html:has(#x9:not(:checked)) .x9
 @keyframes delay-appear { 0% {opacity:0;} 30% {opacity:0;} 100% {opacity:1;} }
 
 /* debug */
-html:has(#debug:checked) .row>*>img:only-child {object-fit:contain;background-color:var(--bgl);}
+html:has(#debug:checked) .row>*>img:only-child {object-fit:contain;background-color:var(--bgn);}
 html:has(#debug:checked) .fresh {background-color:#cfc;box-shadow:0 0 .5em #0909;}
 
 /*

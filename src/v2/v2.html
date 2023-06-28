@@ -43,7 +43,7 @@
     <div class="row gap wrap">
       <a href="#" class="text" accesskey="3"><b>Granum</b></a>
       <!--a href="#config">Config</a-->
-      <a href="#typo">Typo</a>
+      <a href="#typo">Text</a>
       <a href="#modal">Modal</a>
       <!--a href="#gallery">Gallery</a-->
       <a href="#target">Target</a>
@@ -816,7 +816,7 @@
 
     <h2 id="grid">Grid <a href="#grid" class="x1 small tx nn">#</a></h2>
     
-    <a href="#layout1">Layout</a> (Don't use <code>.row.wrap</code> with <code>.row > .scroll</code>)
+    <a href="#layout1">Fixed layout</a> (Don't use <code>.row.wrap</code> with <code>.row > .scroll</code>)
     <div id="layout1" class="target modal full">
       <a href="#cancel" class="corner pad icon-close ic nn"></a>
       <div class="row resp -wrap stretch gap -mid -vert full" data-style="height:30em;">
@@ -830,6 +830,26 @@
         <div class="pad bg ww scroll nobr">Horizontal overflow and scroll. WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW</div>
         <div class="pad bg ee scroll">Vertical overflow and scroll.<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</div>
         <div class="col-0 pad bg nn">Last</div>
+      </div>
+    </div>
+    
+    <br><a href="#layout2">Layout with responsive sticky aside</a>
+    <div id="layout2" class="target modal full">
+        <a href="#layout2-aside" class="icon-menu hide-l pad ic nn"></a>
+      <div id="layout2-top" class="corner">
+        <a href="#cancel" class="pad icon-close ic nn"></a>
+      </div>
+      <div class="row -full">
+        <div id="layout2-aside" class="col-1 stick scroll scrollbar pad bt -shade full" data-resp="col-1 stick scroll scrollbar pad bt -shade full,drawer pad shade scrollbar,drawer pad bg shade scrollbar">
+          <a href="#layout2-top" class="corner pad icon-close ic nn hide-l"></a>
+          Aside
+          <p><a href="#pos1">up</a>
+          <p><a href="#pos2">down</a>
+          <p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p
+        </div>
+        <div class="col-3">
+          <div class="col center pad"><h3 id="pos1">Content</h3><p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p id="pos2">end.</div>
+        </div>
       </div>
     </div>
     

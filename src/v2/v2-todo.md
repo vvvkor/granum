@@ -10,12 +10,12 @@
 
 ## Order / cleanup / docs
 
-- !!! write docs
 - !!! Naming, constants, defaults, destruct, guard, edge, small funcs
-- !!! test: +mob, =ff, -safari (icons, overlay)
-- naming: --rsatur etc
+- !!! test: +mob, +edge, =ff, -safari (icons, overlay)
++ naming: --rsatur etc
 - cleanup and organize css
 = move dialog experiments to some test files [removed]
++ write docs
 + describe preferred toggler components variants in table
 + describe drawbacks of using dialog and details for modal
 
