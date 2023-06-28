@@ -126,8 +126,8 @@ a.act, a[href^="#"]:has(+:target), .check:has(:checked), .tabs:not(:has(:target)
 blockquote, pre, code {background-color:var(--bgn);}
 
 /* status */
-.nn, .ii, .yy, .ww, .ee, .tx, .bt, .bg, .bk {--lt:calc(var(--lit) + var(--dlit, 0%));}
-.nn, [data-hint]:after, .tx, .bt, .bg, .bk {--hue:var(--nn);--sat:0%;--dlit:15%;}
+.nn, .ii, .yy, .ww, .ee, .tx, .bd, .bt, .bg, .bk {--lt:calc(var(--lit) + var(--dlit, 0%));}
+.nn, [data-hint]:after, .tx, .bd, .bt, .bg, .bk {--hue:var(--nn);--sat:0%;--dlit:15%;}
 .ii, .yy, .ww, .ee {--sat:var(--satur);}
 .ii {--hue:var(--ii);--dlit:-5%;}
 .yy {--hue:var(--yy);--dlit:-5%;--sat:calc(var(--satur) * .6);}
@@ -135,14 +135,15 @@ blockquote, pre, code {background-color:var(--bgn);}
 .ee {--hue:var(--ee);--dlit:-5%;}
 [data-hint]:after {--lt:40%;}
 .tx[class] {color:hsl(var(--hue) var(--sat) calc(var(--lt) - 10%));}
+.bd[class] {border:thin solid hsl(var(--hue) var(--sat) var(--lt));}
 .ic[class]:before {color:hsl(var(--hue) var(--sat) var(--lt));}
 .bg[class] {background-color:hsl(var(--hue) var(--sat) var(--bg-lit));}
 .bt[class] {background-color:hsl(var(--hue) var(--sat) var(--lit) / var(--bg-alpha));}
 .bk[class], [data-hint]:after {background-color:hsl(var(--hue) var(--sat) var(--lt, var(--lit)));color:var(--bg);}
 .bk[class] a {color:var(--bg);}
 mark {background-color:hsl(var(--ww) var(--satur) /*var(--bg-lit)*/ 85%);}
-:is(button, [type="submit"]):not(.tx, .bg, .bk, .bt, .back, .fit) {background-color:var(--link);color:var(--bg);}
-.tag:not(.tx, .bg, .bk, .bt, .back, .fit) {background-color:hsl(var(--ee) var(--satur) var(--lit));color:var(--bg);}
+:is(button, [type="submit"]):not(.tx, .bd, .bt, .bg, .bk, .back, .fit) {background-color:var(--link);color:var(--bg);}
+.tag:not(.tx, .bd, .bt, .bg, .bk, .back, .fit) {background-color:hsl(var(--ee) var(--satur) var(--lit));color:var(--bg);}
 
 /* row */
 .row {--flow:row nowrap;--wid:auto;--push:auto;display:flex;flex-flow:var(--flow);width:var(--wid);}

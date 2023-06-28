@@ -66,9 +66,10 @@
 
 - `.tag` - tagged text
 - `.badge .tag` - tag with additional info, like counters
-- `.nn, .ii, .yy, .ww, .ee` - status colors (use with `.tx, .ic, .bt, .bg, .bk`)
+- `.nn, .ii, .yy, .ww, .ee` - status colors (use with `.tx, .ic, .bt, .bg, .bk, .bd`)
 - `.tx` - text color
 - `.ic` - icon color
+- `.bd` - border color
 - `.bt` - semi-transparent light background
 - `.bg` - light background
 - `.bk` - dark background

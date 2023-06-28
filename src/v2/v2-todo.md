@@ -58,6 +58,7 @@
 = native modal with fallback, tgl cmp: dialog [after closed natively (esc/formmethod/(backdrop)), not posiible to show with js]
 = data-filter [requires js]
 = confirm&prompt using label>a# [not posible]
++ border color [.bd]
 + table options
 + hide-js, alt-Prev
 + data-resp use default class
