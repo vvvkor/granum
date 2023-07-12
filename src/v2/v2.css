@@ -32,7 +32,13 @@
   /* fonts */
   --serif: "PT Serif", Georgia, serif;
   --sans: "PT Sans", Roboto, "Segoe UI", sans-serif;
-  --mono: "PT Mono", monospace;;
+  --mono: "PT Mono", monospace;
+  /* font stacks from modernfontstacks.com */
+  /*--serif: "PT Serif", Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif; /* Transitional */
+  /*--serif: "PT Serif", Superclarendon, 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', Georgia, serif; /* Antique */
+  /*--sans: "PT Sans", Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif; /* Neo-Grotesque */
+  /*--mono: "PT Mono", ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace; /* Monospace Code */
+  /*--mono: "PT Mono", 'Nimbus Mono PS', 'Courier New', monospace; /* Monospace Slab Serif */
   
   /* dependent */
   --icon-vert: calc(1% * (var(--icon-scale) * 50 - 60)); /* -10% for scale 1, 0 for scale 1.2 */
