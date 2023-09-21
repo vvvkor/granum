@@ -245,6 +245,7 @@ More icons are available with [granum-icons-ext.css](granum-icons-ext.css)
 - `form[data-restore]` - automatically store and restore form data *(requires [granum-restore.js](granum-restore.js))*
   - `[data-restore="IDENT"]` - optional form identifier
   - `input[data-unstore]` - exclude input from storage
+- `form[data-get], input[data-get], input[data-get="name"]` - fill named inputs from GET params *(requires [granum-restore.js](granum-restore.js))*
 - `input[data-nodes][value][data-set][data-unset]` - set classes
   - input can be one of: `checkbox`, `radio`, `select`
   - `[data-nodes]` - target elements selector
