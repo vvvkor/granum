@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="granum-dropdown.css">
     <link rel="stylesheet" href="granum-grid.css">
     <link rel="stylesheet" href="granum-print.css">
+      <link rel="stylesheet" href="granum-freedrag.css">
+      <link rel="stylesheet" href="granum-progress.css">
     <script defer src="granum.js"></script>
     <script defer src="granum-dialog.js"></script>
     <script defer src="granum-restore.js"></script>
@@ -22,6 +24,8 @@
     <script defer src="granum-edit.js"></script>
     <script defer src="granum-drag.js"></script>
     <script defer src="granum-split.js"></script>
+      <script defer src="granum-freedrag.js"></script>
+      <script defer src="granum-progress.js"></script>
     <script>
       document.addEventListener('granum-start', e => console.log('granum start', e))
       document.addEventListener('granum-ready', e => console.log('granum ready', e))
@@ -1232,7 +1236,7 @@ x<sup>super</sup>
 </ul-->
 
 
-<h3 id="icon-ext"><a href="#icon">Extended iconset</a> <a href="#top" class="fit icon-up l"></a></h3>
+<h3 id="icon-ext"><a href="#icon-ext">Extended iconset</a> <a href="#top" class="fit icon-up l"></a></h3>
 <a href="#ext" class="toggle icon-desc" data-act="icon-desc" data-inact="icon-forward">Show</a>
 <div id="ext" class="target mem">
   <ul id="icons-gen" class="grid grid-4 resp sans -text-n -row hover" data-resp="grid grid-4 sans, grid grid-2 sans"><!-- generate demo icons... --></ul>
@@ -1250,6 +1254,35 @@ x<sup>super</sup>
     d.append(li);
   })
 </script>
+
+<h3 id="addons"><a href="#addons">Add-ons</a> <a href="#top" class="fit icon-up l"></a></h3>
+
+<p><button data-process="3,5,10,60">Start process</button></p>
+<script>
+  document.addEventListener('click', e => {
+    const n = e.target.closest('[data-process]')
+    if (n) {
+      const times = n.dataset.process
+        .split(',')
+        .map(t => [t, 0]) // max, cur
+      times.forEach(([max, cur], i) => {
+          setTimeout(() => {
+            document.dispatchEvent(new CustomEvent('granum-progress', {detail: {name: `Item ${i} (${max})`, event: {loaded: times[i][1], total: times[i][0]}}}))
+            times[i][1]++
+            if (times[i][1] < times[i][0]) ;// setTimeout
+          }, 1000)
+        })
+    }
+  })
+</script>
+
+<div class="freedrag rad" id="demodrag">
+  <div class="pad handle icon-grid bg-w">Drag me</div>
+  <div class="pad">Draggable content</div>
+</div>
+<p>Fill text.</p>
+<p>Fill text.</p>
+
 
 </main>
 <hr>
