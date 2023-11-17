@@ -1257,23 +1257,30 @@ x<sup>super</sup>
 
 <h3 id="addons"><a href="#addons">Add-ons</a> <a href="#top" class="fit icon-up l"></a></h3>
 
-<p><button data-process="3,5,10,60">Start process</button></p>
+<p><button data-process="30,50,100">Start process</button></p>
 <script>
+  const chunk = (xtimes, name) => {
+    const i = times.findIndex(t => t[0] == name)
+    if (i == -1) return
+    document.dispatchEvent(new CustomEvent('granum-progress', {detail: {name: times[i][0], event: {total: times[i][1], loaded: times[i][2]}}}))
+    if (times[i][2] < times[i][1]) {
+      setTimeout(() => chunk(times, name), 100)
+      times[i][2]++
+    }
+  }
+  let times = []
   document.addEventListener('click', e => {
     const n = e.target.closest('[data-process]')
     if (n) {
-      const times = n.dataset.process
-        .split(',')
-        .map(t => [t, 0]) // max, cur
-      times.forEach(([max, cur], i) => {
-          setTimeout(() => {
-            document.dispatchEvent(new CustomEvent('granum-progress', {detail: {name: `Item ${i} (${max})`, event: {loaded: times[i][1], total: times[i][0]}}}))
-            times[i][1]++
-            if (times[i][1] < times[i][0]) ;// setTimeout
-          }, 1000)
-        })
+      times = n.dataset.process.split(',').map((t, i) => [`Item ${i} (${t / 10} sec)`, t, 0]) // max, cur
+      times.forEach(([name, max, cur], i) => chunk(times /*null*/, name))
     }
   })
+  /*
+  document.addEventListener('granum-cancel', e => {
+    times = times.filter(t => t[0] != e.detail)
+  })
+  */
 </script>
 
 <div class="freedrag rad" id="demodrag">
