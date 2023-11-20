@@ -17,7 +17,6 @@
       const r1 = dragged.getBoundingClientRect()
       const r2 = h.getBoundingClientRect()
       shift = [r2.left - r1.left + e.offsetX, r2.top - r1.top + e.offsetY]
-      console.log(shift)
     }
   })
 
