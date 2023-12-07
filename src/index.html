@@ -29,7 +29,10 @@
     <script>
       document.addEventListener('granum-start', e => console.log('granum start', e))
       document.addEventListener('granum-ready', e => console.log('granum ready', e))
-      window.addEventListener('resize', () => info.textContent = window.innerWidth + ' px') // with scrollbar
+      window.addEventListener('resize', () => {
+        info.textContent = window.innerWidth + ' px' // with scrollbar
+        info2.textContent = window.devicePixelRatio
+      })
       // window.addEventListener('resize', () => info.textContent = document.documentElement.clientWidth + 'px') // without scrollbar
       document.addEventListener('granum-drag', e => console.log('granum drag', e))
     </script>
@@ -204,7 +207,7 @@ x<sup>super</sup>
 <hr>
 <blockquote>Block quote</blockquote>
 <pre>Preformatted text
-<code>Code: window.innerWidth = <var id="info" class="text-y" title="window.innerWidth"></var></code></pre>
+<code>Code: window.innerWidth = <var id="info" class="text-y" title="window.innerWidth"></var>, window.devicePixelRatio = <var id="info2" class="text-y" title="window.devicePixelRatio"></var></code></pre>
 <!--img class="fit" alt="Grey" src="https://placehold.co/300x200/039/fff?text=Blue"-->
 
 <details class="hx">

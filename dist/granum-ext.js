@@ -1,4 +1,4 @@
-/*! granum-ext.js v1.2.126 */
+/*! granum-ext.js v1.2.127 */
 
 (() => {
 
@@ -817,7 +817,7 @@ document.addEventListener('pointerdown', e => {
 
 document.addEventListener('pointermove', e => {
   if (!cur) return;
-  const d = e[f[4]]
+  const d = e[f[4]] / window.devicePixelRatio
   const n = next(cur, d, true)
   if (!n) return
   const m = d != 0 ? next(cur, -d) : null 

@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="granum-dropdown.css">
     <link rel="stylesheet" href="granum-grid.css">
     <link rel="stylesheet" href="granum-print.css">
+      <link rel="stylesheet" href="granum-freedrag.css">
+      <link rel="stylesheet" href="granum-progress.css">
     <script defer src="granum.js"></script>
     <script defer src="granum-dialog.js"></script>
     <script defer src="granum-restore.js"></script>
@@ -22,13 +24,18 @@
     <script defer src="granum-edit.js"></script>
     <script defer src="granum-drag.js"></script>
     <script defer src="granum-split.js"></script>
+      <script defer src="granum-freedrag.js"></script>
+      <script defer src="granum-progress.js"></script>
     <script>
-		document.addEventListener('granum-start', e => console.log('granum start', e))
-		document.addEventListener('granum-ready', e => console.log('granum ready', e))
-		window.addEventListener('resize', () => info.textContent = window.innerWidth + ' px') // with scrollbar
-		// window.addEventListener('resize', () => info.textContent = document.documentElement.clientWidth + 'px') // without scrollbar
-		document.addEventListener('granum-drag', e => console.log('granum drag', e))
-	</script>
+      document.addEventListener('granum-start', e => console.log('granum start', e))
+      document.addEventListener('granum-ready', e => console.log('granum ready', e))
+      window.addEventListener('resize', () => {
+        info.textContent = window.innerWidth + ' px' // with scrollbar
+        info2.textContent = window.devicePixelRatio
+      })
+      // window.addEventListener('resize', () => info.textContent = document.documentElement.clientWidth + 'px') // without scrollbar
+      document.addEventListener('granum-drag', e => console.log('granum drag', e))
+    </script>
   </head>
   <body id="top" data-break-x="500,400,300,200" data-dt-x="." class="mem">
   <div id="topbar-container" class="xstick mem">
@@ -74,7 +81,7 @@ icons, status colors, and even more.
 Typography and styling is minimal and unobtrusive.
 -->
 
-<p class="text-n">v1.2.126</p>
+<p class="text-n">v1.2.127</p>
 
 <p>
 <b>3 KB</b> minified and gzipped.<br>
@@ -200,7 +207,7 @@ x<sup>super</sup>
 <hr>
 <blockquote>Block quote</blockquote>
 <pre>Preformatted text
-<code>Code: window.innerWidth = <var id="info" class="text-y" title="window.innerWidth"></var></code></pre>
+<code>Code: window.innerWidth = <var id="info" class="text-y" title="window.innerWidth"></var>, window.devicePixelRatio = <var id="info2" class="text-y" title="window.devicePixelRatio"></var></code></pre>
 <!--img class="fit" alt="Grey" src="https://placehold.co/300x200/039/fff?text=Blue"-->
 
 <details class="hx">
@@ -288,7 +295,7 @@ x<sup>super</sup>
 	<div class="bar mar text-n" style="--v:90"></div>
   <br>
 	<div>
-	<a href="#1" class="l badge icon-grid"><sup class="tag bg-e">9</sup></a>
+	<a href="#1" class="l badge icon-grid"> Badge<sup class="tag bg-e">9</sup></a>
 	<a href="#1" class="l badge icon-user text-w spot">Users<span class="tag bg-y">3</span></a>
 	<a href="#1" class="l badge">Texts<span class="tag">5</span></a>
 	<a href="#1" class="l badge">Errors<span class="tag bg-e">8</span></a>
@@ -662,7 +669,7 @@ x<sup>super</sup>
     <nav class="bg-y">
       <ul class="row drop hover">
         <li><a href="#x">One</a>
-        <li><a href="#x">Two</a>
+        <li><a href="#layout">Two</a>
           <ul class="">
             <li><a href="#x">Uno</a>
             <li><a href="#x">Dos</a>
@@ -677,7 +684,7 @@ x<sup>super</sup>
           <ul class="row drop hover">
             <li><a href="#x">Aaa</a>
             <li><a href="#x">Bbb</a>
-            <li><a href="#x">Ccc</a>
+            <li><a href="#layout">Ccc</a>
               <ul class="">
                 <li><a href="#x">111</a>
                 <li><a href="#x">222</a>
@@ -1232,7 +1239,7 @@ x<sup>super</sup>
 </ul-->
 
 
-<h3 id="icon-ext"><a href="#icon">Extended iconset</a> <a href="#top" class="fit icon-up l"></a></h3>
+<h3 id="icon-ext"><a href="#icon-ext">Extended iconset</a> <a href="#top" class="fit icon-up l"></a></h3>
 <a href="#ext" class="toggle icon-desc" data-act="icon-desc" data-inact="icon-forward">Show</a>
 <div id="ext" class="target mem">
   <ul id="icons-gen" class="grid grid-4 resp sans -text-n -row hover" data-resp="grid grid-4 sans, grid grid-2 sans"><!-- generate demo icons... --></ul>
@@ -1250,6 +1257,42 @@ x<sup>super</sup>
     d.append(li);
   })
 </script>
+
+<h3 id="addons"><a href="#addons">Add-ons</a> <a href="#top" class="fit icon-up l"></a></h3>
+
+<p><button data-process="30,50,100">Start process</button></p>
+<script>
+  const chunk = (xtimes, name) => {
+    const i = times.findIndex(t => t[0] == name)
+    if (i == -1) return
+    document.dispatchEvent(new CustomEvent('granum-progress', {detail: {name: times[i][0], event: {total: times[i][1], loaded: times[i][2]}}}))
+    if (times[i][2] < times[i][1]) {
+      setTimeout(() => chunk(times, name), 100)
+      times[i][2]++
+    }
+  }
+  let times = []
+  document.addEventListener('click', e => {
+    const n = e.target.closest('[data-process]')
+    if (n) {
+      times = n.dataset.process.split(',').map((t, i) => [`Item ${i} (${t / 10} sec)`, t, 0]) // max, cur
+      times.forEach(([name, max, cur], i) => chunk(times /*null*/, name))
+    }
+  })
+  /*
+  document.addEventListener('granum-cancel', e => {
+    times = times.filter(t => t[0] != e.detail)
+  })
+  */
+</script>
+
+<div class="freedrag rad" id="demodrag">
+  <div class="pad handle icon-grid bg-w">Drag me</div>
+  <div class="pad">Draggable content</div>
+</div>
+<p>Fill text.</p>
+<p>Fill text.</p>
+
 
 </main>
 <hr>

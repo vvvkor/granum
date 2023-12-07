@@ -1,4 +1,4 @@
-/*! granum-icons.css v1.2.126 */
+/*! granum-icons.css v1.2.127 */
 
 /*
 .test [class*="icon-"] {position:relative;}
@@ -32,14 +32,22 @@
 	content: "";
 	margin-right: .5em;
 	display: inline-block;
+	overflow: hidden;
+  /* as bg */
 	width: 1em;
 	height: 1em;
-	overflow: hidden;
+	background-size: 115%;/*contain;*/
 	transform: translate(0, .15em);/* scale(1.2);*/
 	background-position: 50% 50%;
-	background-size: 115%;/*contain;*/
 	background-repeat: no-repeat;
+  /**/
+  /* as content * /
+  width:1.15em;
+  height:1.15em;
+  margin-bottom:-.23em;}
+  /**/
 }
+
 [class*="icon-"].empty>* {display:none;}
 [class*="icon-"]:empty:before, [class*="icon-"].empty:before {margin: 0;}
 
@@ -61,6 +69,11 @@ button[class*="icon-"]:before, button [class*="icon-"]:before, .inv:before, .tag
 .spin {display:inline-block;width:1em;height:1em;border-radius:50%;border:.15em solid;border-top-color:transparent;animation:rotating 1s linear infinite;}
 @keyframes rotating { to {transform:rotate(360deg);} }
 
+/*
+.icon-menu2:before {
+	content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7'%3E%3Cpath d='M.5 1h6v1h-6zm0 2h6v1h-6zm0 2h6v1h-6z'/%3E%3C/svg%3E");
+}
+*/
 .icon-menu:before {
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7'%3E%3Cpath d='M.5 1h6v1h-6zm0 2h6v1h-6zm0 2h6v1h-6z'/%3E%3C/svg%3E");
 }
