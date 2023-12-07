@@ -1,4 +1,4 @@
-/*! granum-split.js v1.2.127 */
+/*! granum-split.js v1.2.128 */
 
 (() => {
 
@@ -6,9 +6,10 @@ let min = 50
 let cur = null // splitter
 let f = []
 const ff = {
-  h: ['width', 'minWidth', 'offsetWidth', 'clientWidth', 'movementX'],
-  v: ['height', 'minHeight', 'offsetHeight', 'clientHeight', 'movementY'],
+  h: ['width', 'minWidth', 'offsetWidth', 'clientWidth', 'movementX', 'pageX'],
+  v: ['height', 'minHeight', 'offsetHeight', 'clientHeight', 'movementY', 'pageY'],
 }
+let start = 0
 
 const mode = (n) => f = ff[n.parentNode.classList.contains('vert') ? 'v' : 'h']
 const jam = () => items(cur, true).some(n => n[f[2]] < min)
@@ -71,6 +72,7 @@ document.addEventListener('pointerdown', e => {
     min = Number(n.parentNode.dataset.min) || 50
     cur = n
     cur.classList.add('act')
+    start = e[f[5]]
     mode(n)
     items(cur).forEach(m => setSize(m, m[f[2]])) // prepare all
   }
@@ -78,7 +80,9 @@ document.addEventListener('pointerdown', e => {
 
 document.addEventListener('pointermove', e => {
   if (!cur) return;
-  const d = e[f[4]] / window.devicePixelRatio
+  //const d = e[f[4]] / window.devicePixelRatio
+  const d = e[f[5]] - start
+  start = e[f[5]]
   const n = next(cur, d, true)
   if (!n) return
   const m = d != 0 ? next(cur, -d) : null 
