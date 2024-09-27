@@ -1,3 +1,5 @@
+/*! granum-progress.js v1.2.130 */
+
 ;(() => {
   
   let uploads = []

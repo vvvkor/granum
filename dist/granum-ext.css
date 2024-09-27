@@ -1,4 +1,4 @@
-/*! granum-ext.css v1.2.129 */
+/*! granum-ext.css v1.2.130 */
 
 /* reset */
 img, embed, iframe, object, audio, video {max-width:100%;}
@@ -722,4 +722,10 @@ button[class*="icon-"]:before, button [class*="icon-"]:before, .inv:before, .tag
 	input, select, textarea {border-width:0 0 thin 0;}
 }
 
+
+.freedrag {position:absolute;z-index:90;background:#fff;box-shadow:0 .1em .8em 0em #0003;overflow:auto;}
+.freedrag .handle[class] {cursor:move;user-select:none;touch-action:none;}
+
+
+.progress {position:fixed;right:1em;bottom:0;padding:.5em 1em;background:#fff;box-shadow:0 .1em .8em 0em #0003;border-radius:.5em .5em 0 0;z-index:85;}
 
