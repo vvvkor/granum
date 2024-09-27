@@ -1,4 +1,4 @@
-/*! granum-split.js v1.2.128 */
+/*! granum-split.js v1.2.129 */
 
 (() => {
 
@@ -72,8 +72,8 @@ document.addEventListener('pointerdown', e => {
     min = Number(n.parentNode.dataset.min) || 50
     cur = n
     cur.classList.add('act')
-    start = e[f[5]]
     mode(n)
+    start = e[f[5]]
     items(cur).forEach(m => setSize(m, m[f[2]])) // prepare all
   }
 })
