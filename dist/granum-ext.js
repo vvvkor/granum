@@ -1,4 +1,4 @@
-/*! granum-ext.js v1.2.130 */
+/*! granum-ext.js v1.2.131 */
 
 (() => {
 
@@ -745,8 +745,8 @@ let min = 50
 let cur = null // splitter
 let f = []
 const ff = {
-  h: ['width', 'minWidth', 'offsetWidth', 'clientWidth', 'movementX', 'pageX'],
-  v: ['height', 'minHeight', 'offsetHeight', 'clientHeight', 'movementY', 'pageY'],
+  h: ['width', 'minWidth', 'offsetWidth', 'clientWidth', 'movementX', 'pageX', 'left'],
+  v: ['height', 'minHeight', 'offsetHeight', 'clientHeight', 'movementY', 'pageY', 'top'],
 }
 let start = 0
 
@@ -822,6 +822,11 @@ document.addEventListener('pointermove', e => {
   //const d = e[f[4]] / window.devicePixelRatio
   const d = e[f[5]] - start
   start = e[f[5]]
+
+  // if pointer is not over current splitter and moves towards current splitter, then skip
+  const s = cur.getBoundingClientRect()
+  if ((e[f[5]] < s[f[6]] && d > 0) || (e[f[5]] > s[f[6]] + 5 && d < 0)) return
+
   const n = next(cur, d, true)
   if (!n) return
   const m = d != 0 ? next(cur, -d) : null 

@@ -1,4 +1,4 @@
-/*! granum-progress.js v1.2.130 */
+/*! granum-progress.js v1.2.131 */
 
 ;(() => {
   
