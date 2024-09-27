@@ -1,4 +1,4 @@
-/*! granum-split.js v1.2.131 */
+/*! granum-split.js v1.2.132 */
 
 (() => {
 
@@ -6,8 +6,8 @@ let min = 50
 let cur = null // splitter
 let f = []
 const ff = {
-  h: ['width', 'minWidth', 'offsetWidth', 'clientWidth', 'movementX', 'pageX', 'left'],
-  v: ['height', 'minHeight', 'offsetHeight', 'clientHeight', 'movementY', 'pageY', 'top'],
+  h: ['width', 'minWidth', 'offsetWidth', 'clientWidth', 'movementX', 'clientX', 'left'],
+  v: ['height', 'minHeight', 'offsetHeight', 'clientHeight', 'movementY', 'clientY', 'top'],
 }
 let start = 0
 

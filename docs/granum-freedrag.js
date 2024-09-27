@@ -1,4 +1,4 @@
-/*! granum-freedrag.js v1.2.131 */
+/*! granum-freedrag.js v1.2.132 */
 
 ;(() => {
   
