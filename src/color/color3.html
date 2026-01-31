@@ -1,0 +1,128 @@
+<style>
+
+/* universal */
+
+body {font:120%/1.5 sans-serif;}
+button, table, input, textarea, select, [contenteditable] {font:inherit;/*line-height:1.2;*/}
+table {border-collapse:collapse;}
+.mar {margin:1em 0;}
+.pad {padding:.5em 1em;}
+
+/* 1. global defaults */
+:root{
+  /* base */
+  /* common */
+  --base-line: 2px;
+  --base-radius:.3em;
+  --base-border: #ddd;
+  --base-shadow-hover: #9993;
+  /* tags */
+  --button-bg: #fff;
+  --input-bg: #fff;
+  --input-text: #000;
+  --input-border: #ccc;
+  /* status */
+  --neutral: #333;
+  --neutral-lite: #eee;
+  --primary-lite: #def;
+  --primary: #039;
+  --primary-lite: #def;
+  --note: #888;
+  --note-lite: #eee;
+  --info: #08a;
+  --info-lite: #bef;
+  --success: #181;
+  --success-lite: #beb;
+  --warning: #d70;
+  --warning-lite: #fd9;
+  --danger: #c00;
+  --danger-lite: #fbb;
+}
+
+/* 2. hue pallette */
+.status-neutral {--status:var(--neutral);--status-lite:var(--neutral-lite);}
+.status-primary {--status:var(--primary);--status-lite:var(--primary-lite);}
+.status-note {--status:var(--note);--status-lite:var(--note-lite);}
+.status-info {--status:var(--info);--status-lite:var(--info-lite);}
+.status-success {--status:var(--success);--status-lite:var(--success-lite);}
+.status-warning {--status:var(--warning);--status-lite:var(--warning-lite);}
+.status-danger {--status:var(--danger);--status-lite:var(--danger-lite);}
+
+/* 3. status */
+:where(.bg) {background-color:var(--neutral-lite);}
+:where(.bord:not(table), table.bord tr>*) {border:var(--base-line) solid var(--base-border);box-sizing:border-box;}
+:where([class*="status-"]:not(.bg)) {color:var(--status);} /* .text */
+:where([class*="status-"].bg) {background-color:var(--status-lite);}
+:where([class*="status-"].bord) {border-color:var(--status);}
+
+/* 4. elements */
+body {color:var(--neutral);background-color:#fff;var(--neutral-lite);}
+a {color:var(var(--status), --primary);}
+button.bord {color:var(--status, var(--primary));background-color:var(--button-bg);border:var(--base-line) solid var(--status, currentColor);}
+button:not(.bord), .tag {color:var(--button-bg);background-color:var(--status, var(--primary));border:var(--base-line) solid transparent;}
+input, textarea, select, [contenteditable] {color:var(--input-text);background-color:var(--input-bg);border:var(--base-line) solid var(--status, var(--input-border));border-radius:var(--base-radius);}
+:is(input, textarea, select, [contenteditable]).bg {background-color:var(--status-lite, var(--neutral-lite));}
+
+/* 5. states */
+:visited {}
+:hover {}
+:active {}
+:invalid {}
+:focus {}
+:focus-visible {}
+:disabled {}
+
+/* 6. decor */
+.bord:not(table), button, .rad {border-radius:var(--base-radius);}
+
+</style>
+
+<body class="hide-link-underline">
+  <pre>
+  todo: :visited, .act, :hover, :focus
+
+  * span.status.bg.bord
+  * a.status
+  * input.status.bg
+  * button.status.bord
+  * td.status.bg
+  </pre>
+  <table class="bord info">
+    <tr>
+      <td class="bg success bord">aaaaa
+      <td class="bg warning bord">bbbbb
+      <td class="bg danger">ccccc
+      <td class="">ddddd
+  </table>
+</body>
+
+<script>
+  const tags = ['span', 'a', 'input', 'button', 'td']
+  const classes = ['', 'bg', /*'bg text',*/ 'bord', /*'bord text',*/ 'bord bg', /*'bord text bg'/*, 'inv'*/]
+  //const states = ['', 'neutral', 'primary', 'note', 'info', 'success', 'warning', 'danger']
+  const states = ['', 'status-neutral', 'status-danger']
+  for (const tag of tags) {
+    const tab = (tag == 'td')
+    const sec = document.createElement(tab ? 'table' : 'section')
+    sec.classList.add('mar')
+    if (tab) sec.classList.add('bord')
+    for (const cls of classes) {
+      const row = document.createElement(tab ? 'tr' : 'div')
+      for (const state of states) {
+        const item = document.createElement(tag)
+        const lnk = (tag == 'a')
+        const inp = (tag == 'input')
+        const btn = (tag == 'button')
+        const prop = inp ? 'value' : 'textContent'
+        item[prop] = lnk ? 'link' : tag // + '.' + cls
+        if (inp) item.size = 3
+        if (inp || btn) item.name = 'in'
+        if (lnk) item.href = '#link'
+        item.classList.add(...[...cls.split(' '), state].filter(v => v))
+        row.append(item, ' ')
+      }
+      sec.append(row)
+    }
+    document.body.append(sec)
+  }
+</script>
