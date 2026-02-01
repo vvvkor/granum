@@ -40,20 +40,22 @@ table {border-collapse:collapse;}
 }
 
 /* 2. hue pallette */
-.status-neutral {--status:var(--neutral);--status-lite:var(--neutral-lite);}
-.status-primary {--status:var(--primary);--status-lite:var(--primary-lite);}
-.status-note {--status:var(--note);--status-lite:var(--note-lite);}
-.status-info {--status:var(--info);--status-lite:var(--info-lite);}
-.status-success {--status:var(--success);--status-lite:var(--success-lite);}
-.status-warning {--status:var(--warning);--status-lite:var(--warning-lite);}
-.status-danger {--status:var(--danger);--status-lite:var(--danger-lite);}
+.neutral {--status:var(--neutral);--status-lite:var(--neutral-lite);}
+.primary {--status:var(--primary);--status-lite:var(--primary-lite);}
+.note {--status:var(--note);--status-lite:var(--note-lite);}
+.info {--status:var(--info);--status-lite:var(--info-lite);}
+.success {--status:var(--success);--status-lite:var(--success-lite);}
+.warning {--status:var(--warning);--status-lite:var(--warning-lite);}
+.danger {--status:var(--danger);--status-lite:var(--danger-lite);}
 
 /* 3. status */
 :where(.bg) {background-color:var(--neutral-lite);}
 :where(.bord:not(table), table.bord tr>*) {border:var(--base-line) solid var(--base-border);box-sizing:border-box;}
-:where([class*="status-"]:not(.bg)) {color:var(--status);} /* .text */
-:where([class*="status-"].bg) {background-color:var(--status-lite);}
-:where([class*="status-"].bord) {border-color:var(--status);}
+:where(.neutral, .primary, .note, .info, .success, .warning, .danger){
+  :where(&.text, &:not(.bg, .bord)) {color:var(--status);} /* .text */
+  :where(&.bg) {background-color:var(--status-lite);}
+  :where(&.bord:not(table), &:is(table.bord) tr>*) {border-color:var(--status);}
+}
 
 /* 4. elements */
 body {color:var(--neutral);background-color:#fff;var(--neutral-lite);}
@@ -100,7 +102,7 @@ input, textarea, select, [contenteditable] {color:var(--input-text);background-c
   const tags = ['span', 'a', 'input', 'button', 'td']
   const classes = ['', 'bg', /*'bg text',*/ 'bord', /*'bord text',*/ 'bord bg', /*'bord text bg'/*, 'inv'*/]
   //const states = ['', 'neutral', 'primary', 'note', 'info', 'success', 'warning', 'danger']
-  const states = ['', 'status-neutral', 'status-danger']
+  const states = ['', 'neutral', 'danger']
   for (const tag of tags) {
     const tab = (tag == 'td')
     const sec = document.createElement(tab ? 'table' : 'section')
