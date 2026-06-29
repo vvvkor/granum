@@ -1,8 +1,0 @@
-label:has([type="file"]) {display:inline-block;overflow:hidden;position:relative;}
-label:has([type="file"]):hover {/*border-color:var(--link) !important;*/}
-label [type="file"] {position:absolute;inset:0;overflow:hidden;border:0;padding:10em;outline:none;cursor:pointer;}
-label:has([type="file"]) {outline:.2em solid transparent;}
-label:has([type="file"]:is(:focus, :focus-visible, :hover)) {outline-color:var(--outline-hover);}
-label:has([type="file"]:focus) {outline-color:var(--outline-focus);}
-label:has([type="file"]:focus-visible) {outline-color:var(--outline-focus-visible);}
-label:has([type="file"]:invalid) {outline-color:var(--outline-invalid);}

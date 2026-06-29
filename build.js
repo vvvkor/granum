@@ -1,11 +1,11 @@
 // run: node ./build.js
 
-const dir = './src/granum2024/'
-const src = './src/granum2024/asset/granum2024.css'
+const dir = './src/'
+const src = './src/asset/granum.css'
 const dist = './dist/'
 const docs = './docs/'
-const distMinCss = './dist/granum2024.min.css'
-const distMinJs = './dist/granum2024.min.js'
+const distMinCss = './dist/granum.min.css'
+const distMinJs = './dist/granum.min.js'
 
 const replace = require('replace-in-file')
 const {name, version} = require('./package.json')
@@ -48,7 +48,7 @@ Object.entries(iconPaths).forEach(([n, [w, p]]) => {
   const act = Object.entries(acts).filter(([a, b]) => b == n || syn.includes(b)).map(([a]) => a)
   icons.push(cssMaskIcon(w, p, n, syn, act))
 })
-fs.writeFileSync('./src/granum2024/asset/icon-shapes.css', icons.join('\n'), {flag: 'w'})
+fs.writeFileSync('./src/asset/icon-shapes.css', icons.join('\n'), {flag: 'w'})
 
 // cleanup
 
@@ -106,7 +106,7 @@ const options = {
 
 // minify js
 
-;['granum2024']
+;['granum']
 .forEach(n => {
   console.log('Minify ' + n + '.js...')
   const js = fs.readFileSync(dir + 'asset/' + n + '.js', 'utf8')
@@ -131,20 +131,20 @@ const options = {
 
 fs.copyFileSync(dir + 'asset/customize.js', docs + 'customize.js')
 fs.copyFileSync(dir + 'asset/icon-paths.js', docs + 'icon-paths.js')
-fs.copyFileSync(distMinCss, docs + 'granum2024.min.css')
-fs.copyFileSync(distMinJs, docs + 'granum2024.min.js')
-fs.copyFileSync(dir + 'granum2024.html', docs + 'index.html')
+fs.copyFileSync(distMinCss, docs + 'granum.min.css')
+fs.copyFileSync(distMinJs, docs + 'granum.min.js')
+fs.copyFileSync(dir + 'index.html', docs + 'index.html')
 const replace_options = {
   files: [
     docs + 'index.html',
   ],
   from: [
-    /asset\/granum2024\./g,
+    /asset\/granum\./g,
     /asset\/customize\./g,
     /asset\/icon-paths\./g,
   ],
   to: [
-    'granum2024.min.', // + version,
+    'granum.min.', // + version,
     'customize.',
     'icon-paths.',
   ],
@@ -158,4 +158,4 @@ catch (error) {
   console.error('Replace error:', error)
 }
 
-require('./build-icons.js')
+//require('./build-icons.js')
