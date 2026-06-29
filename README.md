@@ -30,6 +30,13 @@ and include bundled styles and scripts from `dist` directory.
 ## CDN
 
 ```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/granum@2">
+<!-- optional -->
+<script src="https://cdn.jsdelivr.net/npm/granum@2/dist/granum.min.js" defer></script>
+```
+or
+
+```html
 <link rel="stylesheet" href="https://unpkg.com/granum@2">
 <!-- optional -->
 <script src="https://unpkg.com/granum@2/dist/granum.min.js" defer></script>
