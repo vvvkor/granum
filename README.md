@@ -1,6 +1,4 @@
-# Drafts
-
-## Granum experiments
+## Granum v2
 
 ### CSS features
 
