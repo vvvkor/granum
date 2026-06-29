@@ -30,9 +30,9 @@ and include bundled styles and scripts from `dist` directory.
 ## CDN
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/granum">
+<link rel="stylesheet" href="https://unpkg.com/granum@2">
 <!-- optional -->
-<script src="https://unpkg.com/granum/dist/granum.min.js" defer></script>
+<script src="https://unpkg.com/granum@2/dist/granum.min.js" defer></script>
 ```
 
 ## Features

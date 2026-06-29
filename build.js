@@ -1,4 +1,5 @@
 // run: node ./build.js
+// run: npm publish
 
 const dir = './src/'
 const src = './src/asset/granum.css'
