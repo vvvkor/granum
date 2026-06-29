@@ -1,0 +1,32 @@
+## Todo
+
+- (+) icons: synonyms (ok, search, pin, more, add, world, tree, view, columns, no, energy); sory by category
+- (+) toggle active with [css] (js?)
+- (-) minimal.css
+- (=) compatible.css (no :has)
+- (-) @screen
+- (-) +js +doc (+acts-relative-to-parent, +map-editable-to-area, +table-filter, +table-sort, +checkall, drag, =dialog, v2 (+esc,+#back,+#prev,+#next,+#open,+toggle-class,+get-url,+hint-untitle)) (split, freedrag, pos?, process), resp-class, items, +alert-confirm-prompt
+- (+) table: .fix-head, .fix-col
+- (+) slider
+- (+) columns
+- (=?) container: overflow?
+- (-?) mobile: stretch date inputs?
+- (+) progress
+- (+) .tag
+- (+) toggle.js (+dropdown, +hint, +pop:hover =.pop#target; +tree-nest-details, +target, +accordion, +modal, +drawer, +gallery, +tabs, +.check)
+- (+) .screenX .ifX (responsive) = .hide-s/m/l, .show-s/m/l (override #target)
+- (+) .resp-X, .hide/show-X, @container
+- (+) .input details.pop
+- (+) validate: border & .input
+- (+) status color vars
+- (+) vars by files; inverted
+- (+) .pop.pos fix position
+- (=?) .invert {--link:link-invert}
+- (+) mobile: footer.stick inside container? [inside scrollable]
+- (=) icon @print [enable bg grapgics]
+- (+) .icon-spin
+- (+) #x1:checked
+- (+) @print
+- (+) .scrollbar
+- (=) .h1
+- (=) .check

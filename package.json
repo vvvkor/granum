@@ -1,6 +1,28 @@
 {
   "name": "granum",
   "version": "2.1.2",
+  "main": "dist/granum.min.css",
+  "description": "CSS micro framework",
+  "scripts": {
+    "build": "node ./build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vvvkor/granum.git"
+  },
+  "keywords": [
+    "css",
+    "javascript",
+    "lightweight",
+    "micro",
+    "framework"
+  ],
+  "author": "Vadim Korolev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vvvkor/granum/issues"
+  },
+  "homepage": "https://github.com/vvvkor/granum#readme",
   "devDependencies": {
     "clean-css": "^5.3.3",
     "replace-in-file": "^7.1.0",

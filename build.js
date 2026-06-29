@@ -134,6 +134,7 @@ fs.copyFileSync(dir + 'asset/icon-paths.js', docs + 'icon-paths.js')
 fs.copyFileSync(distMinCss, docs + 'granum.min.css')
 fs.copyFileSync(distMinJs, docs + 'granum.min.js')
 fs.copyFileSync(dir + 'index.html', docs + 'index.html')
+fs.copyFileSync(dir + 'docs.md', docs + 'docs.md')
 const replace_options = {
   files: [
     docs + 'index.html',
