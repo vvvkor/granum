@@ -83,6 +83,23 @@ body a.invert {color:var(--link-invert);}
 /* progress */
 progress {accent-color:var(--ff, var(--link));}
 
+/* progress - custom * /
+progress {
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius:.3em;
+  overflow: hidden;
+  border: none;
+  width: 20em;
+  max-width: 100%;
+  height: .5em;
+  background-color:var(--line, #eee);
+  vertical-align:middle;
+}
+progress::-webkit-progress-bar {background-color:var(--line, #eee);border-radius:.3em;}
+progress::-webkit-progress-value {background-color:var(--ff, var(--link));border-radius:.3em;}
+progress::-moz-progress-bar {background-color:var(--ff, var(--link));}
+
 
 /* smart dark mode */
 
