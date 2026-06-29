@@ -1,6 +1,56 @@
-## Granum v2
+# Granum
 
-### CSS features
+CSS micro framework.  
+Ultra compact set of styles and behaviours for basic web pages.
+
+14 KB minified and gzipped.  
+With icons, components and some JavaScript.
+
+[Demo](https://vvvkor.github.io/granum/) · [Docs](https://github.com/vvvkor/granum/blob/main/docs/docs.md)
+
+## Usage
+
+### npm
+
+```shell
+npm install granum
+```
+
+### Manual
+
+[Download](https://github.com/vvvkor/granum/archive/refs/heads/main.zip)
+and include bundled styles and scripts from `dist` directory.
+
+```html
+<link rel="stylesheet" href="granum.min.css">
+<!-- optional -->
+<script src="granum.min.js" defer></script>
+```
+
+## CDN
+
+```html
+<link rel="stylesheet" href="https://unpkg.com/granum">
+<!-- optional -->
+<script src="https://unpkg.com/granum/dist/granum.min.js" defer></script>
+```
+
+## Features
+
+- lightweight
+- simple class names
+- modern
+- responsive
+- mobile friendly
+- semantic
+- valid
+- cross-browser
+- JavaScript is optional
+- neutral style
+- no floats
+- no hacks
+
+## Components
 
 - custom checkbox, radio, switch
 - interactive components: modal, drawer, gallery, popup, tooltips, dropdown, tabs, slider
@@ -12,9 +62,8 @@
 - form validation
 - status colors, spacing, tags, badges
 - `mask-image` SVG icons (100+)
-- <del>`clip-path` SVG icons (80+)</del>
 
-### JS features
+## JavaScript hooks
 
 - toggle CSS `class`
 - filter table
@@ -27,3 +76,11 @@
 - alert, confirm, prompt
 - escape
 - _customize CSS `var`s_
+
+## Browser suppport
+
+Modern browsers.
+
+## License
+
+[MIT](./LICENSE)
