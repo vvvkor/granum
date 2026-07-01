@@ -27,7 +27,7 @@ html {scroll-padding-top:5rem;}
 .gallery {}
 
 /* common */
-:where(ul.row) ul, :where(.pop) > *+:last-child, :where(.modal, .drawer, .popwin, dialog), [data-hint]:after, dialog[popover="hint"] {box-sizing:border-box;background:var(--back);box-shadow:var(--shade);}
+:where(ul.row) ul, :where(.pop) > *+:last-child, :where(.modal, .drawer, .popwin, dialog), [data-hint]:after, [popover="hint"] {box-sizing:border-box;background:var(--back);box-shadow:var(--shade);}
 :is(.modal, .target):where(:not(:target, :has(:target), .show)) {display:none;}
 
 /* check */
@@ -109,7 +109,7 @@ ul.row ul {padding:calc(1 * var(--gap)) 0;}
   div.pop>*+:last-child {--pos:100% auto auto 0;}
   div.pop.l>*+:last-child {--pos:100% 0 auto auto;}
 [data-hint]:is(:hover, :focus):after {content:attr(data-hint);}
-  [data-hint]:after, dialog[popover="hint"] {white-space:nowrap;padding:calc(.2 * var(--gap)) calc(.5 * var(--gap));--pos:auto auto 100% 0;}
+  [data-hint]:after, [popover="hint"] {white-space:nowrap;padding:calc(.2 * var(--gap)) calc(.5 * var(--gap));--pos:auto auto 100% 0;}
   [data-hint].l:after {--pos:auto 0 100% auto;}
   [data-hint].c:after {--pos:auto auto 100% 50%;translate:-50% 0;}
   [data-hint] {cursor:help;}

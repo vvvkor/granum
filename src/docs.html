@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- TODO: menu, structure, features, class switches -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Granum Framework - Interactive Documentation</title>
+    
+    <!-- Granum Framework from CDN -- >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/granum@2">
+    <script src="https://cdn.jsdelivr.net/npm/granum@2/dist/granum.min.js" defer></script>
+    -->
+    <!-- Granum Framework Local -->
+    <link rel="stylesheet" href="asset/granum.css">
+    <script src="asset/granum.js" defer></script>
+    
+    <style>
+        body { padding: 2rem; line-height: 1.6; }
+        pre { background: var(--hilite); padding: 1rem; border-radius: var(--radius) var(--radius) 0 0; overflow-x: auto; border: thin solid var(--line); margin-bottom: 0; }
+        code { font-family: var(--mono); font-size: 0.9em; }
+        h2 { margin-top: 3rem; border-bottom: 2px solid var(--link); padding-bottom: 0.5rem; color: var(--link); }
+        h3 { margin-top: 2rem; }
+        .hero { text-align: center; margin-bottom: 3rem; padding: 2rem; background: var(--hilite); border-radius: var(--radius); }
+        
+        /* Live Preview Block Styling */
+        .demo-preview {
+            background: var(--back-default, #fff);
+            border: thin dashed var(--line, #ccc);
+            border-top: none;
+            border-radius: 0 0 var(--radius) var(--radius);
+            padding: var(--gap);
+            margin-bottom: var(--gap);
+            position: relative;
+            min-height: 3rem;
+        }
+        .demo-preview::before {
+            content: "▶ Live Preview";
+            display: block;
+            font-size: 0.75em;
+            font-weight: bold;
+            color: var(--front-note, #888);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding-bottom: 0.4em;
+            border-bottom: thin solid var(--line);
+            margin-bottom: 0.8em;
+        }
+        
+    </style>
+    <script defer>
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll('.demo-preview').forEach(n => {
+          const pre = document.createElement('pre')
+          const code = document.createElement('code')
+          let s = n.innerHTML.replace(/^[\r\n]+|[\r\n\s]+$/g, '')
+          const offset = s.match(/^ */) || ''
+          if (offset) {
+            const re = new RegExp('(^|[\\n\\r])' + offset, 'g')
+            s = s.replace(re, '$1')
+          }
+          code.textContent = s // '' + offset + s.replace(/(^|[\n\r]) {6}/g, '$1')
+            //.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+          pre.append(code)
+          n.before(pre)
+        })
+      })
+    </script>
+</head>
+<body class="wide-m center">
+
+    <div class="hero">
+        <h1>Granum Framework</h1>
+        <p class="note">Interactive Developer Documentation</p>
+        <p><small>Try clicking the buttons, toggling the switches, and resizing your browser window!</small></p>
+    </div>
+
+    <h2>1. Getting Started</h2>
+    <p>Include the CSS and JS files in your HTML. The JS file is optional but recommended for progressive enhancements.</p>
+    <pre><code>&lt;link rel="stylesheet" href="granum.min.css"&gt;
+&lt;script src="granum.min.js" defer&gt;&lt;/script&gt;</code></pre>
+
+    <h2>2. Layout & Grid System</h2>
+    
+    <h3>Flexbox Rows</h3>
+    <p>Use <code>.row</code> for horizontal layouts. Add <code>.wrap</code> to allow wrapping, and <code>.gap</code> for spacing.</p>
+    <div class="demo-preview">
+      <div class="row gap">
+          <div class="col-1 bg note pad">Flex 1</div>
+          <div class="col-2 bg note pad">Flex 2 (Takes 2x space)</div>
+      </div>
+    </div>
+
+    <h3>Auto-Filling CSS Grid</h3>
+    <p>Use <code>.grid-*</code> classes to create responsive grids that automatically fill available space based on minimum cell widths.</p>
+    <div class="demo-preview">
+      <div class="grid-m gap">
+          <div class="bg note pad">Card 1</div>
+          <div class="bg note pad">Card 2</div>
+          <div class="bg note pad">Card 3</div>
+          <div class="bg note pad">Card 4</div>
+      </div>
+    </div>
+
+    <h2>3. Typography, Colors & Theming</h2>
+    
+    <h3>Semantic Colors</h3>
+    <p>Apply contextual colors to text, backgrounds, or borders using utility classes.</p>
+    <div class="demo-preview">
+      <span class="tag note">Note</span>
+      <span class="tag info">Information</span>
+      <span class="tag success">Success</span>
+      <span class="tag warning">Warning</span>
+      <span class="tag danger">Danger</span>
+    </div>
+
+    <h3>Dark Mode Toggle</h3>
+    <p>Granum supports dark mode natively. Click the button below to invert the entire page!</p>
+    <div class="demo-preview">
+        <input type="checkbox" id="invert" hidden>
+        <label for="invert" class="button">Toggle Dark Mode (Click Me!)</label>
+    </div>
+
+    <h2>4. CSS-Only Interactive Components</h2>
+    
+    <h3>Modals & Drawers (old style)</h3>
+    <p><small class="tag warning">Deprecated</small></p>
+    <p>Triggered via URL hash fragments. Pure CSS, no JavaScript required!</p>
+    <div class="demo-preview">
+        <a href="#demo-modal-1" class="button">Open Modal</a>
+        <a href="#demo-drawer-1" class="button success">Open Drawer</a>
+
+        <div id="demo-modal-1" class="modal pad stack">
+            <h3>Modal Title</h3>
+            <p>This is a pure CSS modal triggered by the URL hash.</p>
+            <a href="#close" class="button">Close Modal</a>
+        </div>
+        <a href="#close" class="backdrop"></a>
+
+        <aside id="demo-drawer-1" class="drawer pad stack">
+            <h3>Drawer Content</h3>
+            <p>This is a slide-out drawer.</p>
+            <a href="#close" class="button">Close Drawer</a>
+        </aside>
+        <a href="#close" class="backdrop"></a>
+    </div>
+
+    <h3>Dropdowns & Popups</h3>
+    <p>Using native <code>&lt;details&gt;</code> elements.</p>
+    <div class="demo-preview">
+        <details class="pop">
+            <summary class="button">Options ▾</summary>
+            <div class="pad bord">
+                <a href="#" class="row">Edit Item</a>
+                <a href="#" class="row danger">Delete Item</a>
+            </div>
+        </details>
+    </div>
+
+    <h3>Tabs</h3>
+    <p><small class="tag info">Enhanced with JavaScript</small></p>
+    <p>Controlled via hash links.</p>
+    <div class="demo-preview">
+        <ul class="tabs row">
+            <li><a href="#demo-tab-1" class="act">Tab 1</a></li>
+            <li><a href="#demo-tab-2">Tab 2</a></li>
+        </ul>
+        <div class="bord">
+            <section id="demo-tab-1" class="pad show">This is the content for Tab 1.</section>
+            <section id="demo-tab-2" class="pad">This is the content for Tab 2.</section>
+        </div>
+    </div>
+
+    <h3>Tooltips</h3>
+    <p><small class="tag success">Modern</small></p>
+    <div class="demo-preview">
+      <button popovertarget="tip-1">Click me</button>
+      <button popovertarget="tip-1" class="nodec">Click me</button>
+      <div id="tip-1" popover="hint" class="small">This is a tooltip</div>
+    </div>
+    
+    <h3>Tooltips (old style)</h3>
+    <p><small class="tag warning">Deprecated</small></p>
+   <div class="demo-preview">
+        <span data-hint="This is a tooltip" class="pad bord">Hover over me</span>
+        <span data-hint="Another hint!" class="pad bord info">Or me</span>
+    </div>
+
+    <h2>5. Forms & Inputs</h2>
+    
+    <h3>Grid Forms</h3>
+    <p>Use <code>.form</code> and <code>.resp</code> for aligned, responsive form layouts.</p>
+    <div class="demo-preview">
+      <div class="container resize bord pad">
+        <form class="form resp" onsubmit="return false;">
+            <label for="demo-name">Name</label>
+            <input type="text" id="demo-name" placeholder="Enter name">
+            <label for="demo-email">Email</label>
+            <input type="email" id="demo-email" placeholder="Enter email">
+            <span class="shift">
+                <button type="submit" class="success">Submit</button>
+            </span>
+        </form>
+        <footer class="small r">Resize me</footer>
+      </div>
+    </div>
+
+    <h3>Custom Checkboxes & Switches</h3>
+    <div class="demo-preview">
+      <div class="boxes">
+        <label><input type="checkbox" checked> Standard Checkbox</label>
+        <br>
+        <label><input type="checkbox" class="switch"> Toggle Switch</label>
+        <br>
+        <label><input type="radio" name="radio-1" value="1"> Radio</label>
+        <br>
+        <label><input type="radio" name="radio-1" value="2"> Radio</label>
+      </div>
+    </div>
+
+    <h2>6. Advanced Data Tables</h2>
+    
+    <h3>Sorting & Filtering</h3>
+    <p><small class="tag info">Requires JavaScript</small></p>
+    <p>Click the headers to sort, or type in the search box to filter.</p>
+    <div class="demo-preview">
+        <input type="search" data-filter="#demo-table" placeholder="Search table..." class="mar">
+        <table id="demo-table" class="sort bord hover">
+            <thead><tr>
+                <th class="sort">Name (Click to sort)</th>
+                <th class="sort">Age (Click to sort)</th>
+                <th class="sort">Date (Click to sort)</th>
+            </tr></thead>
+            <tbody>
+                <tr><td>Alice</td><td>28</td><td>01.07.2000</td></tr>
+                <tr><td>Bob</td><td>34</td><td>02.02.2000</td></tr>
+                <tr><td>Charlie</td><td>22</td><td>01.07.2025</td></tr>
+                <tr><td>Dan</td><td>15</td><td>02.12.2024</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>7. JavaScript Enhancements</h2>
+    
+    <h3>Dynamic Class Toggling (<code>[data-nodes]</code>)</h3>
+    <p><small class="tag info">Requires JavaScript</small></p>
+    <p>Toggle CSS classes on target elements based on input state.</p>
+    <div class="demo-preview">
+        <label>
+            <input type="checkbox" data-nodes="#demo-target-box" value="success bord">
+            Highlight Target
+        </label>
+        <div id="demo-target-box" class="pad mar">
+            I will get 'success' and 'bord' classes when checked!
+        </div>
+    </div>
+
+    <h3>State Persistence (<code>.mem</code>)</h3>
+    <p><small class="tag info">Requires JavaScript</small></p>
+    <p>Type something below, then refresh the page. The input and checkbox states are saved to LocalStorage!</p>
+    <div class="demo-preview">
+        <input id="mem-text" type="text" class="mem" placeholder="This text is saved on reload...">
+        <br>
+        <label><input id="mem-box" type="checkbox" class="mem"> Remember this checkbox state</label>
+    </div>
+
+    <h2>8. Utilities & Helpers</h2>
+    
+    <h3 id="populate-inputs">Populate inputs from URL (<code>[data-get]</code>)</h3>
+    <p>Click to <a href="?cap=Test&box=1#populate-inputs">populate</a> or <a href="?#populate-inputs">clear</a> inputs</p>
+    <div class="demo-preview">
+      <form data-get>
+        <input type="text" name="caption" data-get="cap"><!-- override name -->
+        <br>
+        <label><input type="checkbox" name="box" value="1"> Box</label>
+      </form>
+    </div>
+
+    <h3>Responsive Display Toggles</h3>
+    <p>Show/hide elements based on viewport width. Resize your browser window to see them appear/disappear.</p>
+    <div class="demo-preview">
+        <div class="hide-m hide-l pad info">Visible on Small screens only (&lt; 32rem)</div>
+        <div class="hide-s pad success">Visible on Medium/Large screens (≥ 32rem)</div>
+    </div>
+
+    <footer class="pad mar center note">
+        <p>Granum Framework Interactive Documentation &copy; 2026.</p>
+    </footer>
+
+</body>
+</html>

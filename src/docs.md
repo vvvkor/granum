@@ -36,7 +36,7 @@
 ## Inputs
 
 - .input
-- .switch
+- .boxes .switch
 - .dropzone
 
 ## Validation
