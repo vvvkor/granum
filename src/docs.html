@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Granum Framework - Interactive Documentation</title>
     
-    <!-- Granum Framework from CDN -- >
+    <!-- Granum Framework from CDN - - >
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/granum@2">
     <script src="https://cdn.jsdelivr.net/npm/granum@2/dist/granum.min.js" defer></script>
     -->
@@ -23,6 +23,9 @@
         .hero { text-align: center; margin-bottom: 3rem; padding: 2rem; background: var(--hilite); border-radius: var(--radius); }
         
         /* Live Preview Block Styling */
+        .demo-code {
+            max-height: 25vh;
+        }
         .demo-preview {
             background: var(--back-default, #fff);
             border: thin dashed var(--line, #ccc);
@@ -47,7 +50,7 @@
         }
         
     </style>
-    <script defer>
+    <script>
       document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll('.demo-preview').forEach(n => {
           const pre = document.createElement('pre')
@@ -60,6 +63,7 @@
           }
           code.textContent = s // '' + offset + s.replace(/(^|[\n\r]) {6}/g, '$1')
             //.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+          pre.classList.add('demo-code')
           pre.append(code)
           n.before(pre)
         })
@@ -122,6 +126,43 @@
 
     <h2>4. CSS-Only Interactive Components</h2>
     
+    <h3>Modals & Drawers</h3>
+    <p><small class="tag success">Modern</small></p>
+    <p>Pure CSS, no JavaScript required!
+      Requires Invoker Commands API.
+      Closes on click outside or opening another dialog.
+      Has styleable <code>::backdrop</code>.
+      Autofocus.
+      Nestable.
+      With JavaScript, closes on Escape and traps focus.
+    </p>  
+    <p>  
+      <select data-nodes="#dialog-1">
+        <option value="pad">Modal</option>
+        <option value="pad drawer">Drawer left</option>
+        <option value="pad drawer r">Drawer right</option>
+        <option value="pad full">Fullscreen</option>
+      </select>
+    </p>
+    <div class="demo-preview">
+      <button command="show-modal" commandfor="dialog-1">Open dialog</button>
+      <dialog id="dialog-1" closedby="any" class="pad">
+        Modal content
+        <p><input autofocus="" placeholder="autofocus"></p>
+        <button type="button" command="close" commandfor="dialog-1">Close</button>
+      </dialog>
+    </div>
+        <!--div class="-full info bg row vert" style="height:50vh;">
+          <header>Header</header>
+          <div class="col-1 scroll bg note">
+            Content
+            <p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p
+            </p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p
+            </p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p
+          </p></div>
+          <footer>Footer</footer>
+        </div-->
+
     <h3>Modals & Drawers (old style)</h3>
     <p><small class="tag warning">Deprecated</small></p>
     <p>Triggered via URL hash fragments. Pure CSS, no JavaScript required!</p>
@@ -136,7 +177,7 @@
         </div>
         <a href="#close" class="backdrop"></a>
 
-        <aside id="demo-drawer-1" class="drawer pad stack">
+        <aside id="demo-drawer-1" class="drawer pad full stack">
             <h3>Drawer Content</h3>
             <p>This is a slide-out drawer.</p>
             <a href="#close" class="button">Close Drawer</a>
