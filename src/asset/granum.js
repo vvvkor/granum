@@ -97,12 +97,18 @@ document.addEventListener('click', e => {
     const b = h.closest('thead').nextElementSibling
     if (b.rows.length > 1) {
       const c = h.closest('table').dataset.sort || 'info'
-      const x = [...b.rows].map(m => [m, m.cells[i].textContent.replace(/\s+$/, '')]).map(m => [m[0], m[1], parseFloat(m[1])])
-      const k = isNaN(x[0][2]) ? 1 : 2
-      const r = h.classList.contains(c) ? (x[0][k] < x[x.length-1][k] ? -1 : 1) : 1
+      const x = [...b.rows].map(m => [m, m.cells[i].textContent.replace(/\s+$/, '')])
+        .map(m => ({tr: m[0], s: m[1], n: m[1] === '' || isNaN(m[1]) ? -Infinity : Number(m[1]), d: new Date(m[1]).getTime() || -Infinity}))
+      const y = ['n', 'd'].map(k => x.filter(l => l.s && isFinite(l[k])).length)
+      const k = h.dataset.sort || (y[0] > 1 ? 'n' : (y[1] > 1 ? 'd' : 's'))
+      const r = h.classList.contains(c) && !h.classList.contains(c + '-desc') ? -1 : 1
+      //console.log(k, y, r, x)
       x.sort((a, b) => a[k] < b[k] ? -r : (a[k] > b[k] ? r : 0))
-      x.forEach(m => b.append(m[0]))
-      ;[...h.parentNode.children].forEach(m => m.classList.toggle(c, m == h))
+      x.forEach(m => b.append(m.tr))
+      ;[...h.parentNode.children].forEach(m => {
+        m.classList.toggle(c, m == h)
+        m.classList.toggle(c + '-desc', m == h && r < 0)
+      })
     }
   }
 

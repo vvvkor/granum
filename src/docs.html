@@ -133,7 +133,24 @@
       With JavaScript, closes on Escape and traps focus.
     </p>  
     <p>  
-      Mode of complex modal: <select data-nodes="#dialog-2">
+      Mode of dialog: <select data-nodes="#dialog-1">
+        <option value="pad trans">Modal</option>
+        <option value="full pad">Fullscreen</option>
+        <option value="drawer trans pad">Drawer left</option>
+        <option value="drawer shift trans pad">Drawer right</option>
+      </select>
+    </p>
+    <div class="demo-preview">
+      <button command="show-modal" commandfor="dialog-1">Open dialog</button>
+      <dialog id="dialog-1" closedby="any" class="modal trans pad">
+        <p>Dialog content</p>
+        <button command="close" commandfor="dialog-1">Close</button>
+      </dialog>
+    </div>
+
+    <h3>Scrollable Dialogs</h3>
+    <p>  
+      Mode of dialog: <select data-nodes="#dialog-2">
         <option value="row vert modal trans">Modal</option>
         <option value="row vert modal full">Fullscreen</option>
         <option value="row vert drawer trans">Drawer left</option>
@@ -141,41 +158,21 @@
       </select>
     </p>
     <div class="demo-preview">
-      <button command="show-modal" commandfor="dialog-1">Open simple dialog</button>
       <button command="show-modal" commandfor="dialog-2" class="nodec">Open complex dialog</button>
       
-      <dialog id="dialog-1" closedby="any" class="modal pad">
-        <p>Dialog content</p>
-        <button command="close" commandfor="dialog-1">Close</button>
-      </dialog>
-      
       <dialog id="dialog-2" closedby="any" class="modal row vert">
-        <!--
-        Modal content
-        <p><input autofocus="" placeholder="autofocus"></p>
-        <button command="close" commandfor="dialog-1">Close</button>
-        -->
-          <header class="pad bg note">Modal Title</header>
-          <div class="pad col-1 scroll">
-            This is a pure CSS modal triggered by the URL hash.
-            <p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p
-          </div>
-          <footer class="pad bg note">
-            <a href="#close">Close Modal (JS)</a>
-            <button class="nodec" command="close" commandfor="dialog-1">Close</button>
-          </footer>
+        <header class="pad bg note">Modal Title</header>
+        <div class="pad col-1 scroll">
+          <p><input autofocus></p>
+          This is a pure CSS modal triggered by the URL hash.
+          <p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p
+        </div>
+        <footer class="pad bg note">
+          <a href="#close">Close Modal (JS)</a>
+          <button class="nodec" command="close" commandfor="dialog-1">Close</button>
+        </footer>
       </dialog>
     </div>
-        <!--div class="-full info bg row vert" style="height:50vh;">
-          <header>Header</header>
-          <div class="col-1 scroll bg note">
-            Content
-            <p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p
-            </p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p
-            </p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p
-          </p></div>
-          <footer>Footer</footer>
-        </div-->
 
     <h3>Modals & Drawers (old style)</h3>
     <p><small class="tag warning">Deprecated</small></p>
@@ -248,8 +245,8 @@
     <h3>Tooltips (old style)</h3>
     <p><small class="tag warning">Deprecated</small></p>
    <div class="demo-preview">
-        <span data-hint="This is a tooltip" class="pad bord">Hover over me</span>
-        <span data-hint="Another hint!" class="pad bord info">Or me</span>
+        <span data-hint="This is a tooltip" class="pad bord" tabindex="0">Hover over me</span>
+        <span data-hint="Another hint!" class="pad bord info" tabindex="0">Or me</span>
     </div>
 
     <h2>5. Forms & Inputs</h2>
@@ -271,17 +268,15 @@
       </div>
     </div>
 
-    <h3>Custom Checkboxes & Switches</h3>
+    <h3>Checkboxes & Switches</h3>
     <div class="demo-preview">
-      <div class="-boxes">
-        <label><input type="checkbox" checked> Standard Checkbox</label>
-        <br>
-        <label><input type="checkbox" class="switch"> Toggle Switch</label>
-        <br>
-        <label><input type="radio" name="radio-1" value="1"> Radio</label>
-        <br>
-        <label><input type="radio" name="radio-1" value="2"> Radio</label>
-      </div>
+      <label><input type="checkbox"> Standard Checkbox</label>
+      <br>
+      <label><input type="checkbox" class="switch"> Toggle Switch</label>
+      <br>
+      <label><input type="radio" name="radio-1" value="1"> Radio</label>
+      <br>
+      <label><input type="radio" name="radio-1" value="2"> Radio</label>
     </div>
 
     <h2>6. Advanced Data Tables</h2>
@@ -290,19 +285,22 @@
     <p><small class="tag info">Requires JavaScript</small></p>
     <p>Click the headers to sort, or type in the search box to filter.</p>
     <div class="demo-preview">
-        <input type="search" data-filter="#demo-table" placeholder="Search table..." class="mar">
-        <table id="demo-table" class="sort bord hover">
-            <thead><tr>
-                <th class="sort">Name (Click to sort)</th>
-                <th class="sort">Age (Click to sort)</th>
-                <th class="sort">Date (Click to sort)</th>
-            </tr></thead>
-            <tbody>
-                <tr><td>Alice</td><td>28</td><td>01.07.2000</td></tr>
-                <tr><td>Bob</td><td>34</td><td>02.02.2000</td></tr>
-                <tr><td>Charlie</td><td>22</td><td>01.07.2025</td></tr>
-                <tr><td>Dan</td><td>15</td><td>02.12.2024</td></tr>
-            </tbody>
+        <input type="search" data-filter="#demo-table" placeholder="Search table..." class="mar show-js">
+        <table id="demo-table" class="sort bord hover r2">
+          <thead>
+            <tr>
+              <th class="sort">Name</th>
+              <th class="sort" data-sort="n">Age</th>
+              <th class="sort" data-sort="d">Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Alice</td><td>0</td><td>01.07.2000</td></tr>
+            <tr><td>Bob</td><td>34</td><td>02.02.2000</td></tr>
+            <tr><td>Charlie</td><td>-22</td><td>7/1 2025</td></tr>
+            <tr><td>Dan</td><td>15.5</td><td>2024-12-01</td></tr>
+            <tr><td>None</td><td></td><td></td></tr>
+          </tbody>
         </table>
     </div>
 

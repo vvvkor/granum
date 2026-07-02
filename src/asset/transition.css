@@ -22,7 +22,7 @@ ul.row ul {animation:appear var(--dur);}
 .drawer/*:not(dialog)*/ {transition:left var(--dur), right var(--dur);}
 
 /* simple mode (smooth in, sharp out) */
-:is(.modal, dialog):not(.full, .drawer) {animation:appear var(--dur);}
+:is(.modal, :modal):not(.full, .drawer) {animation:appear var(--dur);}
 /*
 dialog.drawer{animation:slide-left var(--dur);}
 dialog.drawer.shift[open]{transition:none;animation:slide-right var(--dur);}

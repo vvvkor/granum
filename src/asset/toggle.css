@@ -15,7 +15,7 @@
 */
 
 :root {
-  --backdrop: #6669;/*#0006;/*#0002;*/
+  --backdrop: #6665;/*#6669;/*#0006;/*#0002;*/
   --drawer-width: 20rem;
   --pop-height: 20rem;
 }
@@ -51,26 +51,28 @@ details.pop.l > div {left:auto;right:0;}
 /* pop auto position */
 .popwin {position:fixed;z-index:110;max-width:var(--list-width);max-height:45vh;overflow:auto;}
 
-/* modal - do not nest!*/
-.modal {z-index:100;position:fixed;overflow:auto;}
-.modal:not(.full) {min-height:10rem;max-height:90dvh;min-width:18rem;max-width:90vw;inset:38% auto auto 50%;transform:translate(-50%,-38%);}
-.modal.full {inset:0;/*calc(5 * var(--gap));*/}
-body:has(.modal.full:target, .modal.full :target) {overflow:hidden;}
+/* modal (do not nest .modal)! */
+.modal, :modal {z-index:100;position:fixed;overflow:auto;}
+:is(.modal, :modal):not(.full, .drawer) {min-height:10rem;max-height:90dvh;min-width:18rem;max-width:90vw;inset:38% auto auto 50%;transform:translate(-50%,-38%);}
+:is(.modal, :modal).full {inset:0;/*calc(5 * var(--gap));*/ margin:0;width:auto;height:auto;max-width:none;max-height:none;}
+body:has(.modal.full:target, .modal.full :target, .full:modal[open]) {overflow:hidden;}
 
 /* gallery*/
 img:target {position:absolute;display:block;inset:0;width:100%;height:100%;object-fit:contain;}
 .corner {position:absolute;inset:0 0 auto auto;z-index:10;}
 
 /* drawer */
-.drawer {--wdr:calc(1em + var(--drawer-width));position:fixed;inset:0 auto 0 calc(0em - var(--wdr));width:min(var(--drawer-width), 80%);z-index:80;overflow:auto;}
+.drawer {--wdr:calc(1em + var(--drawer-width));position:fixed;inset:0 auto 0 calc(0em - var(--wdr));width:min(var(--drawer-width), 80%);z-index:80;overflow:auto; height:auto;max-height:none;margin:0;}
 .drawer:not(.shift):is(:target, :has(:target), .show, dialog[open]) {left:0em;}
 .drawer.shift {inset:0 calc(0px - var(--wdr)) 0 auto;}
 .drawer.shift:is(:target, :has(:target), .show, dialog[open]) {right:0em;}
+:where(dialog.drawer) {display:block;}
 
 /* backdrop */
+:modal::backdrop {background:var(--backdrop);}
 :where(.backdrop) {
   display:none;position:fixed;inset:-5em;z-index:70;cursor:default;outline:none;
-  background:var(--backdrop);opacity:.5;
+  background:var(--backdrop);
   /*backdrop-filter:blur(.1em) contrast(.7) brightness(.9);*/
 }
 :where(body > .backdrop) {z-index:60;}
@@ -108,7 +110,7 @@ ul.row ul {padding:calc(1 * var(--gap)) 0;}
   div.pop>*+:last-child:not(:has(div.pop)), ul.row ul:not(:has(ul)) {max-height:var(--pop-height);overflow:auto;}
   div.pop>*+:last-child {--pos:100% auto auto 0;}
   div.pop.l>*+:last-child {--pos:100% 0 auto auto;}
-[data-hint]:is(:hover, :focus):after {content:attr(data-hint);}
+[data-hint]:is(:hover, :focus, :active):after {content:attr(data-hint);}
   [data-hint]:after, [popover="hint"] {white-space:nowrap;padding:calc(.2 * var(--gap)) calc(.5 * var(--gap));--pos:auto auto 100% 0;}
   [data-hint].l:after {--pos:auto 0 100% auto;}
   [data-hint].c:after {--pos:auto auto 100% 50%;translate:-50% 0;}
@@ -116,10 +118,6 @@ ul.row ul {padding:calc(1 * var(--gap)) 0;}
 
 /* dialog */
 :where(dialog, [popover]) {border:none;padding:0;}
-dialog:not([popover])::backdrop {background:#6665;/*var(--backdrop);*//*pointer-events:all !important;*//*-a11y*/}
-dialog.full {inset:0;margin:0;width:auto;height:auto;max-width:none;max-height:none;}
-dialog.drawer {height:auto;max-height:none;margin:0;}
-body:has(dialog.full:open) {overflow:hidden;}
 /*
 @media (width < 32rem) {
   dialog:not([popover]) {inset:0;width:auto;height:auto;max-width:none;max-height:none;}
