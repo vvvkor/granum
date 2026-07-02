@@ -284,9 +284,20 @@
     <h3>Sorting & Filtering</h3>
     <p><small class="tag info">Requires JavaScript</small></p>
     <p>Click the headers to sort, or type in the search box to filter.</p>
+    <p>
+      Style options:
+      <label><input type="checkbox" data-nodes="#table-1" value="bord" checked><code>.bord</code></label>
+      <label><input type="checkbox" data-nodes="#table-1" value="line"><code>.line</code></label>
+      <label><input type="checkbox" data-nodes="#table-1" value="hover"><code>.hover</code></label>
+      <label><input type="checkbox" data-nodes="#table-1" value="wide"><code>.wide</code></label>
+      <label><input type="checkbox" data-nodes="#table-1" value="mid"><code>.mid</code></label>
+      <label><input type="checkbox" data-nodes="#table-1" value="fit"><code>.fit</code></label>
+      <label><input type="checkbox" data-nodes="#table-1" value="c"><code>.c</code></label>
+      <!--label class="check"><input type="checkbox" data-nodes="#table-1" value="c" class="hide"><code>.c</code></label-->
+    </p>
     <div class="demo-preview">
-        <input type="search" data-filter="#demo-table" placeholder="Search table..." class="mar show-js">
-        <table id="demo-table" class="sort bord hover r2">
+        <input type="search" data-filter="#table-1" placeholder="Search table..." class="mar show-js">
+        <table id="table-1" class="sort r2">
           <thead>
             <tr>
               <th class="sort">Name</th>
@@ -296,10 +307,10 @@
           </thead>
           <tbody>
             <tr><td>Alice</td><td>0</td><td>01.07.2000</td></tr>
-            <tr><td>Bob</td><td>34</td><td>02.02.2000</td></tr>
-            <tr><td>Charlie</td><td>-22</td><td>7/1 2025</td></tr>
-            <tr><td>Dan</td><td>15.5</td><td>2024-12-01</td></tr>
-            <tr><td>None</td><td></td><td></td></tr>
+            <tr><td>Dan</td><td>150.5</td><td>2024-12-01</td></tr>
+            <tr><td>bob</td><td>150.15</td><td>02.02.2000</td></tr>
+            <tr><td>Charlie\</td><td>-22</td><td>7/1 2025</td></tr>
+            <tr><td>No<br>name</td><td>-</td><td>-</td></tr>
           </tbody>
         </table>
     </div>

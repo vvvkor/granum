@@ -103,7 +103,8 @@ document.addEventListener('click', e => {
       const k = h.dataset.sort || (y[0] > 1 ? 'n' : (y[1] > 1 ? 'd' : 's'))
       const r = h.classList.contains(c) && !h.classList.contains(c + '-desc') ? -1 : 1
       //console.log(k, y, r, x)
-      x.sort((a, b) => a[k] < b[k] ? -r : (a[k] > b[k] ? r : 0))
+      //x.sort((a, b) => a[k] < b[k] ? -r : (a[k] > b[k] ? r : 0))
+      x.sort((a, b) => r * (k == 's' ? a[k].localeCompare(b[k], undefined, {numeric: true /*, caseFirst: false */}) : a[k] - b[k]))
       x.forEach(m => b.append(m.tr))
       ;[...h.parentNode.children].forEach(m => {
         m.classList.toggle(c, m == h)
@@ -193,7 +194,9 @@ document.addEventListener('input', e => {
 
   // filter table
   if (n.dataset.filter) act(n, 'filter', t => t.querySelectorAll('tbody tr')
-    .forEach(m => m.hidden = !(' ' + m.textContent.replace(/\s+/g, ' ') + ' ').match(new RegExp(n.value, 'i'))))
+    //.forEach(m => m.hidden = !(' ' + m.textContent.replace(/\s+/g, ' ') + ' ').match(new RegExp(n.value, 'i'))))
+    //.forEach(m => m.hidden = !(' ' + ([...m.cells].map(c => c.textContent).join(' ')).replace(/\s+/g, ' ') + ' ').match(new RegExp(n.value, 'i'))))
+    .forEach(m => m.hidden = -1 === (' ' + ([...m.cells].map(c => c.textContent).join(' ')).replace(/\s+/g, ' ') + ' ').toLowerCase().indexOf(n.value.toLowerCase())))
   
   // map contenteditable to textarea
   const a = n.dataset.area

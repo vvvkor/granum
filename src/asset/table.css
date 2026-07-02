@@ -5,8 +5,8 @@ table:not(.fit)>*>tr>* {padding:calc(.25 * var(--gap)) calc(.5 * var(--gap));}
 table.bord {border:none;}
 table.bord>*>tr>* {border:var(--bord);}
 table.line>*>tr>* {border-bottom:var(--bord);}
-  table.line>:last-child>tr:last-child>* {border-bottom:none;}
-table.c>*>tr>* {text-align:center;}
+  table.line:not(.bord)>:last-child>tr:last-child>* {border-bottom:none;}
+:where(table.c>*)>tr>* {text-align:center;}
 /*
 .c1 td:nth-child(1) {text-align:center;}
 .c2 td:nth-child(2) {text-align:center;}
