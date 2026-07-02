@@ -19,12 +19,14 @@ details[open] {height:auto;overflow:clip;}
 
 ul.row ul {animation:appear var(--dur);}
 
-.drawer:not(dialog) {transition:left var(--dur), right var(--dur);}
+.drawer/*:not(dialog)*/ {transition:left var(--dur), right var(--dur);}
 
 /* simple mode (smooth in, sharp out) */
 :is(.modal, dialog):not(.full, .drawer) {animation:appear var(--dur);}
+/*
 dialog.drawer{animation:slide-left var(--dur);}
-dialog.drawer.shift{transition:none;animation:slide-right var(--dur);}
+dialog.drawer.shift[open]{transition:none;animation:slide-right var(--dur);}
+*/
 
 /* complex mode (smooth in and out) * /
 :is(.modal, dialog):not(.full, .drawer), dialog:not(.drawer)::backdrop {opacity:0;transition:opacity var(--dur), display var(--dur) allow-discrete, overlay var(--dur) allow-discrete;}

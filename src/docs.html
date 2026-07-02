@@ -16,23 +16,17 @@
     
     <style>
         body { padding: 2rem; line-height: 1.6; }
-        pre { background: var(--hilite); padding: 1rem; border-radius: var(--radius) var(--radius) 0 0; overflow-x: auto; border: thin solid var(--line); margin-bottom: 0; }
-        code { font-family: var(--mono); font-size: 0.9em; }
         h2 { margin-top: 3rem; border-bottom: 2px solid var(--link); padding-bottom: 0.5rem; color: var(--link); }
         h3 { margin-top: 2rem; }
         .hero { text-align: center; margin-bottom: 3rem; padding: 2rem; background: var(--hilite); border-radius: var(--radius); }
         
         /* Live Preview Block Styling */
-        .demo-code {
-            max-height: 25vh;
-        }
+
         .demo-preview {
             background: var(--back-default, #fff);
-            border: thin dashed var(--line, #ccc);
-            border-top: none;
-            border-radius: 0 0 var(--radius) var(--radius);
+            border: thin solid var(--line, #ccc);
             padding: var(--gap);
-            margin-bottom: var(--gap);
+            margin-top: var(--gap);
             position: relative;
             min-height: 3rem;
         }
@@ -48,6 +42,8 @@
             border-bottom: thin solid var(--line);
             margin-bottom: 0.8em;
         }
+        pre.demo-code { max-height: 25vh; margin-top:0; background: var(--hilite); padding: 1rem; overflow-x: auto; border: thin solid var(--line); border-radius:0; border-top:none; }
+        .demo-code code { font-family: var(--mono); font-size: 0.9em; }
         
     </style>
     <script>
@@ -65,7 +61,7 @@
             //.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
           pre.classList.add('demo-code')
           pre.append(code)
-          n.before(pre)
+          n.after(pre)
         })
       })
     </script>
@@ -120,8 +116,8 @@
     <h3>Dark Mode Toggle</h3>
     <p>Granum supports dark mode natively. Click the button below to invert the entire page!</p>
     <div class="demo-preview">
-        <input type="checkbox" id="invert" hidden>
-        <label for="invert" class="button">Toggle Dark Mode (Click Me!)</label>
+        <input type="checkbox" id="invert">
+        <label for="invert">Toggle Dark Mode (Click Me!)</label>
     </div>
 
     <h2>4. CSS-Only Interactive Components</h2>
@@ -137,19 +133,37 @@
       With JavaScript, closes on Escape and traps focus.
     </p>  
     <p>  
-      <select data-nodes="#dialog-1">
-        <option value="pad">Modal</option>
-        <option value="pad drawer">Drawer left</option>
-        <option value="pad drawer r">Drawer right</option>
-        <option value="pad full">Fullscreen</option>
+      Mode of complex modal: <select data-nodes="#dialog-2">
+        <option value="row vert modal trans">Modal</option>
+        <option value="row vert modal full">Fullscreen</option>
+        <option value="row vert drawer trans">Drawer left</option>
+        <option value="row vert drawer shift trans">Drawer right</option>
       </select>
     </p>
     <div class="demo-preview">
-      <button command="show-modal" commandfor="dialog-1">Open dialog</button>
-      <dialog id="dialog-1" closedby="any" class="pad">
+      <button command="show-modal" commandfor="dialog-1">Open simple dialog</button>
+      <button command="show-modal" commandfor="dialog-2" class="nodec">Open complex dialog</button>
+      
+      <dialog id="dialog-1" closedby="any" class="modal pad">
+        <p>Dialog content</p>
+        <button command="close" commandfor="dialog-1">Close</button>
+      </dialog>
+      
+      <dialog id="dialog-2" closedby="any" class="modal row vert">
+        <!--
         Modal content
         <p><input autofocus="" placeholder="autofocus"></p>
-        <button type="button" command="close" commandfor="dialog-1">Close</button>
+        <button command="close" commandfor="dialog-1">Close</button>
+        -->
+          <header class="pad bg note">Modal Title</header>
+          <div class="pad col-1 scroll">
+            This is a pure CSS modal triggered by the URL hash.
+            <p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p
+          </div>
+          <footer class="pad bg note">
+            <a href="#close">Close Modal (JS)</a>
+            <button class="nodec" command="close" commandfor="dialog-1">Close</button>
+          </footer>
       </dialog>
     </div>
         <!--div class="-full info bg row vert" style="height:50vh;">
@@ -167,29 +181,41 @@
     <p><small class="tag warning">Deprecated</small></p>
     <p>Triggered via URL hash fragments. Pure CSS, no JavaScript required!</p>
     <div class="demo-preview">
-        <a href="#demo-modal-1" class="button">Open Modal</a>
-        <a href="#demo-drawer-1" class="button success">Open Drawer</a>
+        <a href="#demo-modal-1">Open Modal</a>
+        <a href="#demo-modal-2">Open Fullscreen</a>
+        <a href="#demo-drawer-1">Open Drawer</a>
 
-        <div id="demo-modal-1" class="modal pad stack">
+        <div id="demo-modal-1" class="modal pad stack trans">
             <h3>Modal Title</h3>
             <p>This is a pure CSS modal triggered by the URL hash.</p>
-            <a href="#close" class="button">Close Modal</a>
+            <a href="#close">Close Modal</a>
         </div>
         <a href="#close" class="backdrop"></a>
 
-        <aside id="demo-drawer-1" class="drawer pad full stack">
+        <aside id="demo-drawer-1" class="drawer pad stack trans">
             <h3>Drawer Content</h3>
             <p>This is a slide-out drawer.</p>
-            <a href="#close" class="button">Close Drawer</a>
+            <a href="#close">Close Drawer</a>
         </aside>
         <a href="#close" class="backdrop"></a>
+
+        <div id="demo-modal-2" class="modal full row vert trans">
+          <header class="pad bg note">Modal Title</header>
+          <div class="col-1 scroll">
+            This is a pure CSS modal triggered by the URL hash.
+            <p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p
+          </div>
+          <footer class="pad bg note"><a href="#close">Close Modal</a></footer>
+        </div>
+        <a href="#close" class="backdrop"></a>
+
     </div>
 
     <h3>Dropdowns & Popups</h3>
     <p>Using native <code>&lt;details&gt;</code> elements.</p>
     <div class="demo-preview">
         <details class="pop">
-            <summary class="button">Options ▾</summary>
+            <summary>Options ▾</summary>
             <div class="pad bord">
                 <a href="#" class="row">Edit Item</a>
                 <a href="#" class="row danger">Delete Item</a>
@@ -206,7 +232,7 @@
             <li><a href="#demo-tab-2">Tab 2</a></li>
         </ul>
         <div class="bord">
-            <section id="demo-tab-1" class="pad show">This is the content for Tab 1.</section>
+            <section id="demo-tab-1" class="pad">This is the content for Tab 1.</section>
             <section id="demo-tab-2" class="pad">This is the content for Tab 2.</section>
         </div>
     </div>
@@ -247,7 +273,7 @@
 
     <h3>Custom Checkboxes & Switches</h3>
     <div class="demo-preview">
-      <div class="boxes">
+      <div class="-boxes">
         <label><input type="checkbox" checked> Standard Checkbox</label>
         <br>
         <label><input type="checkbox" class="switch"> Toggle Switch</label>

@@ -12,7 +12,8 @@
 @import "icon-animate.css";
 @import "form.css";
 @import "input.css";
-@import "custom-switch.css";
+/*@import "custom-box.css";*/
+@import "switch.css";
 @import "dropzone.css";
 @import "layout.css";
 @import "toggle.css";
