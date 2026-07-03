@@ -38,6 +38,8 @@ const dlg = e => {
   if (n && n.matches('dialog:not([popover])')) n.showModal()
 }
 
+const ns = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+
 document.addEventListener('DOMContentLoaded', e => {
   document.body.classList.add('js')
   
@@ -96,19 +98,21 @@ document.addEventListener('click', e => {
     const i = h.cellIndex
     const b = h.closest('thead').nextElementSibling
     if (b.rows.length > 1) {
-      const c = h.closest('table').dataset.sort || 'info'
+      const c = h.closest('table').dataset.sort || 'icon-asc'
+      const d = c.replace(/\basc\b/, 'desc')
       const x = [...b.rows].map(m => [m, m.cells[i].textContent.replace(/\s+$/, '')])
-        .map(m => ({tr: m[0], s: m[1], n: m[1] === '' || isNaN(m[1]) ? -Infinity : Number(m[1]), d: new Date(m[1]).getTime() || -Infinity}))
-      const y = ['n', 'd'].map(k => x.filter(l => l.s && isFinite(l[k])).length)
-      const k = h.dataset.sort || (y[0] > 1 ? 'n' : (y[1] > 1 ? 'd' : 's'))
-      const r = h.classList.contains(c) && !h.classList.contains(c + '-desc') ? -1 : 1
-      //console.log(k, y, r, x)
-      //x.sort((a, b) => a[k] < b[k] ? -r : (a[k] > b[k] ? r : 0))
-      x.sort((a, b) => r * (k == 's' ? a[k].localeCompare(b[k], undefined, {numeric: true /*, caseFirst: false */}) : a[k] - b[k]))
-      x.forEach(m => b.append(m.tr))
+        .map(m => [
+          m[0],
+          m[1].replace(/\b(\d\d)\.(\d\d)\.(\d{4})\b/g, '$3-$2-$1').replace(/\b(\d\d?)\/(\d\d?)[\/,]\s?(\d{4})\b/g, (s, m, d, y) => y + '-' + m.padStart(2, '0') + '-' + d.padStart(2, '0')),
+          m[1].match(/[\/\.-].*[\/\.-]/) ? NaN : parseFloat(m[1])
+        ])
+      const r = h.classList.contains(c) && !h.classList.contains(d) ? -1 : 1
+      console.log(r, x)
+      x.sort((a, b) => r * (a[2] - b[2] || a[1].localeCompare(b[1], undefined, {numeric: true})))
+      x.forEach(m => b.append(m[0]))
       ;[...h.parentNode.children].forEach(m => {
         m.classList.toggle(c, m == h)
-        m.classList.toggle(c + '-desc', m == h && r < 0)
+        m.classList.toggle(d, m == h && r < 0)
       })
     }
   }
@@ -194,9 +198,7 @@ document.addEventListener('input', e => {
 
   // filter table
   if (n.dataset.filter) act(n, 'filter', t => t.querySelectorAll('tbody tr')
-    //.forEach(m => m.hidden = !(' ' + m.textContent.replace(/\s+/g, ' ') + ' ').match(new RegExp(n.value, 'i'))))
-    //.forEach(m => m.hidden = !(' ' + ([...m.cells].map(c => c.textContent).join(' ')).replace(/\s+/g, ' ') + ' ').match(new RegExp(n.value, 'i'))))
-    .forEach(m => m.hidden = -1 === (' ' + ([...m.cells].map(c => c.textContent).join(' ')).replace(/\s+/g, ' ') + ' ').toLowerCase().indexOf(n.value.toLowerCase())))
+    .forEach(m => m.hidden = !ns([...m.cells].map(c => c.textContent).join(' ')).replace(/\s+/g, ' ').includes(ns(n.value))))
   
   // map contenteditable to textarea
   const a = n.dataset.area

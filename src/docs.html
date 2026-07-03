@@ -48,9 +48,10 @@
     </style>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        document.querySelectorAll('.demo-preview').forEach(n => {
-          const pre = document.createElement('pre')
-          const code = document.createElement('code')
+        
+        // update code preview
+        const showCode = (n, code=null) => {
+          if (!code) code = n.nextElementSibling.firstElementChild
           let s = n.innerHTML.replace(/^[\r\n]+|[\r\n\s]+$/g, '')
           const offset = s.match(/^ */) || ''
           if (offset) {
@@ -59,10 +60,34 @@
           }
           code.textContent = s // '' + offset + s.replace(/(^|[\n\r]) {6}/g, '$1')
             //.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        }
+      
+        // prepare code preview
+        document.querySelectorAll('.demo-preview').forEach(n => {
+          const pre = document.createElement('pre')
+          const code = document.createElement('code')
+          showCode(n, code)
           pre.classList.add('demo-code')
           pre.append(code)
           n.after(pre)
         })
+        
+        // observe code changes
+        const config = { 
+          childList: true,
+          subtree: true,
+          characterData: true,
+          attributes: true,
+        };
+        const onMutate = (mutationList, observer) => {
+          for (const mutation of mutationList) {
+            console.log(`Change type detected: ${mutation.type} on `, mutation.target);
+            const demo = mutation.target.closest('.demo-preview')
+            if (demo) showCode(demo)
+          }
+        };
+        const observer = new MutationObserver(onMutate);
+        document.querySelectorAll('.demo-preview').forEach(n => observer.observe(n, config));
       })
     </script>
 </head>
@@ -296,23 +321,24 @@
       <!--label class="check"><input type="checkbox" data-nodes="#table-1" value="c" class="hide"><code>.c</code></label-->
     </p>
     <div class="demo-preview">
-        <input type="search" data-filter="#table-1" placeholder="Search table..." class="mar show-js">
-        <table id="table-1" class="sort r2">
-          <thead>
-            <tr>
-              <th class="sort">Name</th>
-              <th class="sort" data-sort="n">Age</th>
-              <th class="sort" data-sort="d">Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Alice</td><td>0</td><td>01.07.2000</td></tr>
-            <tr><td>Dan</td><td>150.5</td><td>2024-12-01</td></tr>
-            <tr><td>bob</td><td>150.15</td><td>02.02.2000</td></tr>
-            <tr><td>Charlie\</td><td>-22</td><td>7/1 2025</td></tr>
-            <tr><td>No<br>name</td><td>-</td><td>-</td></tr>
-          </tbody>
-        </table>
+      <input type="search" data-filter="#table-1" placeholder="Search table..." class="mar show-js">
+      <table id="table-1" class="sort r2">
+        <thead>
+          <tr>
+            <th class="sort">Name</th>
+            <th class="sort">Age</th>
+            <th class="sort">Date</th>
+            <th class="sort">String</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Alice</td><td>0</td><td>01.07.2000</td><td>Cafe</td></tr>
+          <tr><td>Dan</td><td>150.50 km</td><td>2024-12-01</td><td>café</td></tr>
+          <tr><td>bob</td><td>150.15 km</td><td>02.02.2000</td><td>café</td></tr>
+          <tr><td>Charlie</td><td>-22</td><td>7/1/2025</td><td>coffee</td></tr>
+          <tr><td>No<br>name</td><td></td><td>-</td><td></td></tr>
+        </tbody>
+      </table>
     </div>
 
     <h2>7. JavaScript Enhancements</h2>
