@@ -197,8 +197,10 @@ document.addEventListener('input', e => {
   if (n.dataset.nodes) cls(n)
 
   // filter table
-  if (n.dataset.filter) act(n, 'filter', t => t.querySelectorAll('tbody tr')
-    .forEach(m => m.hidden = !ns([...m.cells].map(c => c.textContent).join(' ')).replace(/\s+/g, ' ').includes(ns(n.value))))
+  if (n.dataset.filter) act(n, 'filter', t => t.querySelectorAll('tbody tr').forEach(m => {
+    const s = ns([...m.cells].map(c => c.textContent).join(' '))
+    m.hidden = !ns(n.value).trim().split(/\s+/).every(q => s.includes(q))
+  }))
   
   // map contenteditable to textarea
   const a = n.dataset.area

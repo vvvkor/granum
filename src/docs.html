@@ -108,10 +108,49 @@
     
     <h3>Flexbox Rows</h3>
     <p>Use <code>.row</code> for horizontal layouts. Add <code>.wrap</code> to allow wrapping, and <code>.gap</code> for spacing.</p>
+    <p>
+      Container options: 
+      <label><input type="checkbox" data-nodes="#row-1-container" value="container resize"><code>.container.resize</code></label>
+      <br>
+      Row options:
+      <!-- stick.resize (.resp@container@media) -->
+      <label><input type="checkbox" data-nodes="#row-1" value="gap" checked><code>.gap</code></label>
+      <label><input type="checkbox" data-nodes="#row-1" value="mid"><code>.mid</code></label>
+      <label><input type="checkbox" data-nodes="#row-1" value="stretch"><code>.stretch</code></label>
+      <label><input type="checkbox" data-nodes="#row-1" value="wrap"><code>.wrap</code></label>
+      <label><input type="checkbox" data-nodes="#row-1" value="resp"><code>.resp</code></label>
+      <label><input type="checkbox" data-nodes="#row-1" value="resp-s"><code>.resp-s</code></label>
+      <label><input type="checkbox" data-nodes="#row-1" value="vert"><code>.vert</code></label>
+      <label><input type="checkbox" data-nodes="#row-1" value="full"><code>.full</code></label>
+      <label><input type="checkbox" data-nodes="#row-1" value="resize"><code>.resize</code></label>
+      <br>
+      Column 1:
+      <select data-nodes="#column-1">
+        <option value="bg note pad">default</option>
+        <option value="bg note pad col-0">0x</option>
+        <option value="bg note pad col-0 push">0x & margin</option>
+        <option value="bg note pad col-1" selected>1x</option>
+        <option value="bg note pad col-2">2x</option>
+        <option value="bg note pad col-2 scroll">2x scroll</option>
+        <option value="bg note pad col-3">3x</option>
+      </select>
+      Column 2:
+      <select data-nodes="#column-2">
+        <option value="bg note pad">default</option>
+        <option value="bg note pad col-0">0x</option>
+        <option value="bg note pad col-0 shift">0x & margin</option>
+        <option value="bg note pad col-1">1x</option>
+        <option value="bg note pad col-2">2x</option>
+        <option value="bg note pad col-2 scroll" selected>2x & scroll</option>
+        <option value="bg note pad col-3">3x</option>
+      </select>
+    </p>
     <div class="demo-preview">
-      <div class="row gap">
-          <div class="col-1 bg note pad">Flex 1</div>
-          <div class="col-2 bg note pad">Flex 2 (Takes 2x space)</div>
+      <div id="row-1-container">
+        <div class="row gap" id="row-1">
+          <div class="bg note pad col-1" id="column-1">Column 1</div>
+          <div class="bg note pad col-2 scroll" id="column-2">Column 2<br>Text<br>Text<br>Text<br>Text</div>
+        </div>
       </div>
     </div>
 
@@ -158,7 +197,8 @@
       With JavaScript, closes on Escape and traps focus.
     </p>  
     <p>  
-      Mode of dialog: <select data-nodes="#dialog-1">
+      Mode of dialog:
+      <select data-nodes="#dialog-1">
         <option value="pad trans">Modal</option>
         <option value="full pad">Fullscreen</option>
         <option value="drawer trans pad">Drawer left</option>
@@ -175,7 +215,8 @@
 
     <h3>Scrollable Dialogs</h3>
     <p>  
-      Mode of dialog: <select data-nodes="#dialog-2">
+      Mode of dialog:
+      <select data-nodes="#dialog-2">
         <option value="row vert modal trans">Modal</option>
         <option value="row vert modal full">Fullscreen</option>
         <option value="row vert drawer trans">Drawer left</option>
