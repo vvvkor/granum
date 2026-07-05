@@ -22,6 +22,7 @@
   ul.row.gap>li>:not(ul, form) {padding-inline:0;}
   ul.row li>form {padding:calc(.2 * var(--gap));}
 .row.vert {--flow:column nowrap;--push:0;}
+  .row.vert > :not(.scroll) {min-height:min-content;} /* deny shrink */
 .row.gap, [class*="grid-"].gap {gap:var(--gap);}
   .row:not(ul).mid {align-items:center;}
   ul.row li {display:flex;}

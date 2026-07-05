@@ -33,8 +33,9 @@ const foc = (e) => {
 
 const dlg = e => {
   const n = location.hash ? document.querySelector(location.hash) : null
-  const m = document.querySelector('dialog[open]:not([popover])')
-  if (m && !m.contains(n)) m.close()
+  //const m = document.querySelector('dialog[open]:not([popover])')
+  //if (m && !m.contains(n)) m.close()
+  ;[...document.querySelectorAll('dialog[open]:not([popover])')].filter(m => !m.contains(n)).forEach(m => m.close())
   if (n && n.matches('dialog:not([popover])')) n.showModal()
 }
 
