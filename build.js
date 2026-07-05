@@ -141,7 +141,7 @@ fs.copyFileSync(dir + 'docs.md', docs + 'docs.md')
 const replace_options = {
   files: [
     docs + 'index.html',
-    docs + 'demo.html',
+    docs + 'docs.html',
   ],
   from: [
     /asset\/granum\./g,
