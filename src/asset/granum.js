@@ -1,4 +1,3 @@
-/*! granum.js */
 (() => {
   
 const act = (n, k, f) => (n.dataset.parent ? n.closest(n.dataset.parent) : document)?.querySelectorAll(n.dataset[k]).forEach(m => f(m))

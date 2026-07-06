@@ -68,6 +68,7 @@ fs.writeFileSync('./src/asset/icon-shapes.css', icons.join('\n'), {flag: 'w'})
 
 // build css
 
+fs.writeFileSync(distMinCss, '/*! Granum v' + version + ' */\n', {flag: 'w'})
 const options = {
   // keepSpecialComments: '*',
 }
@@ -102,9 +103,8 @@ const options = {
   let min = (new CleanCSS(options).minify(css)).styles
 
   min = '/*! ' + n + '.css */\n' + min // + 'v' + version + ' */\n' + min
-  fs.writeFileSync(distMinCss, min + '\n\n', {flag: 'as'})
+  fs.writeFileSync(distMinCss, min + '\n', {flag: 'as'})
 })
-
 
 // minify js
 
@@ -125,7 +125,7 @@ const options = {
       comments: /^!/,
     }
   })
-  fs.writeFileSync(distMinJs, res.code)
+  fs.writeFileSync(distMinJs, '/*! Granum v' + version + ' */\n' + res.code)
   if (res.error) console.error('UglifyJS failed [' + n + '.js]: ' + res.error)
 })
 
@@ -147,11 +147,13 @@ const replace_options = {
     /asset\/granum\./g,
     /asset\/customize\./g,
     /asset\/icon-paths\./g,
+    /v\d+\.\d+\.\d+/g
   ],
   to: [
     'granum.min.', // + version,
     'customize.',
     'icon-paths.',
+    'v' + version,
   ],
 }
 
