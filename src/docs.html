@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
-<!-- TODO: menu, structure, features, class switches -->
+<html lang="en" class="-invert">
+<!-- TODO: menu, structure, features -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Granum Framework - Interactive Documentation</title>
+    <title>Granum v2 - Documentation</title>
+    <meta name="theme-color" content="#fff">
+    <meta name="theme-color" media="(prefers-color-scheme:dark)" content="#04a">
+    <link rel="icon" type="image/svg" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20220%20220'%3E%3Cpath%20fill='%23666'%20d='M35%2067l75%20-44%2075%2044%200%2089-75%2044-75-44zm75%208a35%2035%200%201%200%20.01%200z'/%3E%3C/svg%3E">
     
     <!-- Granum Framework from CDN - - >
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/granum@2">
@@ -15,10 +18,7 @@
     <script src="asset/granum.js" defer></script>
     
     <style>
-        body { padding: 2rem; line-height: 1.6; }
-        h2 { margin-top: 3rem; border-bottom: 2px solid var(--link); padding-bottom: 0.5rem; color: var(--link); }
-        h3 { margin-top: 2rem; }
-        .hero { text-align: center; margin-bottom: 3rem; padding: 2rem; background: var(--hilite); border-radius: var(--radius); }
+        h2 { border-bottom: medium solid var(--line); }
         
         /* Live Preview Block Styling */
 
@@ -31,7 +31,7 @@
             min-height: 3rem;
         }
         .demo-preview::before {
-            content: "▶ Live Preview";
+            content: "▶ Preview";
             display: block;
             font-size: 0.75em;
             font-weight: bold;
@@ -91,20 +91,29 @@
       })
     </script>
 </head>
-<body class="wide-m center">
-
+<body class="wide-m center pad">
     <div class="hero">
-        <h1>Granum Framework</h1>
-        <p class="note">Interactive Developer Documentation</p>
-        <p><small>Try clicking the buttons, toggling the switches, and resizing your browser window!</small></p>
+      <h1>Granum Framework</h1>
+      <p class="note">Developer Documentation</p>
+    </div>
+    
+    <div class="row gap wrap mar nodec">
+      <a href="#start">Start</a>
+      <a href="#layout">Layout</a>
+      <a href="#typo">Typography</a>
+      <a href="#comp">Components</a>
+      <a href="#form">Form</a>
+      <a href="#table">Table</a>
+      <a href="#js">JS</a>
+      <a href="#util">Util</a>
     </div>
 
-    <h2>1. Getting Started</h2>
+    <h2 id="start">1. Getting Started</h2>
     <p>Include the CSS and JS files in your HTML. The JS file is optional but recommended for progressive enhancements.</p>
     <pre><code>&lt;link rel="stylesheet" href="granum.min.css"&gt;
 &lt;script src="granum.min.js" defer&gt;&lt;/script&gt;</code></pre>
 
-    <h2>2. Layout & Grid System</h2>
+    <h2 id="layout">2. Layout & Grid System</h2>
     
     <h3>Flexbox Rows</h3>
     <p>Use <code>.row</code> for horizontal layouts. Add <code>.wrap</code> to allow wrapping, and <code>.gap</code> for spacing.</p>
@@ -165,11 +174,29 @@
       </div>
     </div>
 
-    <h2>3. Typography, Colors & Theming</h2>
+    <h2 id="typo">3. Typography, Colors & Theming</h2>
     
     <h3>Semantic Colors</h3>
     <p>Apply contextual colors to text, backgrounds, or borders using utility classes.</p>
     <div class="demo-preview">
+      <span class="note">Note</span>
+      <span class="info">Information</span>
+      <span class="success">Success</span>
+      <span class="warning">Warning</span>
+      <span class="danger">Danger</span>
+      <br>
+      <span class="bg note">Note</span>
+      <span class="bg info">Information</span>
+      <span class="bg success">Success</span>
+      <span class="bg warning">Warning</span>
+      <span class="bg danger">Danger</span>
+      <br>
+      <span class="bord note">Note</span>
+      <span class="bord info">Information</span>
+      <span class="bord success">Success</span>
+      <span class="bord warning">Warning</span>
+      <span class="bord danger">Danger</span>
+      <br>
       <span class="tag note">Note</span>
       <span class="tag info">Information</span>
       <span class="tag success">Success</span>
@@ -177,18 +204,85 @@
       <span class="tag danger">Danger</span>
     </div>
 
-    <h3>Dark Mode Toggle</h3>
-    <p>Granum supports dark mode natively. Click the button below to invert the entire page!</p>
+    <h3>Dark Mode</h3>
+    <p>Invert the entire page.</p>
     <div class="demo-preview">
         <input type="checkbox" id="invert">
-        <label for="invert">Toggle Dark Mode (Click Me!)</label>
+        <label for="invert">Toggle dark mode</label>
     </div>
 
-    <h2>4. CSS-Only Interactive Components</h2>
+    <h2 id="comp">4. CSS-Only Interactive Components</h2>
+    
+    <h3>Dropdown navigation</h3>
+    <p>  
+      Style options:
+      <label><input type="checkbox" data-nodes="#menu-1" value="hilite" checked><code>.hilite</code></label>
+      <label><input type="checkbox" data-nodes="#menu-1" value="mid" checked><code>.mid</code></label>
+      <label><input type="checkbox" data-nodes="#menu-1" value="resp" checked><code>.resp</code></label>
+      <label><input type="checkbox" data-nodes="#menu-1" value="hover" checked><code>.hover</code></label>
+      <label><input type="checkbox" data-nodes="#menu-1" value="trans"><code>.trans</code></label>
+      <label><input type="checkbox" data-nodes="#menu-1" value="click"><code>.click</code></label>
+      <label><input type="checkbox" data-nodes="#menu-1" value="gap"><code>.gap</code></label>
+      <label><input type="checkbox" data-nodes="#menu-1" value="scroll"><code>.scroll</code></label>
+    </p>
+    <div class="demo-preview">
+      <ul id="menu-1" class="row  hilite mid hover resp trans">
+        <li><a tabindex="0"><span>Style<br><small class="note">CSS</small></span></a>
+          <ul>
+            <li><a tabindex="0"><span class="col-1">Color<br><small class="note">Status</small></span><small class="tag c -success">3</small></a>
+              <ul class="rad">
+                <li><a href="#x" class="danger">Red</a></li>
+                <li><a href="#x" class="success">Green</a></li>
+                <li><a href="#x" class="info">Blue</a></li>
+              </ul>
+            </li>
+            <li><a tabindex="0"><span class="col-1">Font</span><small class="tag info bg">3</small></a>
+              <ul>
+                <li class="serif"><a href="#x">Serif</a></li>
+                <li class="sans"><a href="#x">Sans</a></li>
+                <li class="mono"><a href="#x">Mono</a></li>
+              </ul>
+            </li>
+            <li><a tabindex="0"><span>Position <sup class="tag c danger">2</sup></span></a>
+              <ul>
+                <li><a href="#x">Relative</a></li>
+                <li><a href="#x">Absolute</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="push"><a href="#x" class="icon-text note ic">Text</a></li>
+        <li class="shift push"><a tabindex="0">Markup</a>
+          <ul class="l">
+            <li><a href="?" class="icon-info info ic">Semantics</a></li>
+            <li><a href="?" class="icon-bookmark danger ic">Decoration</a></li>
+            <li><a href="?" class="icon-flash warning ic">Function</a></li>
+          </ul>
+        </li>
+        <li class="-push"><a tabindex="0">Tags</a>
+          <ul class="scrollbar">
+            <li><a href="#x">a</a></li>
+            <li><a href="#x">b</a></li>
+            <li><a href="#x">code</a></li>
+            <li><a href="#x">div</a></li>
+            <li><a href="#x">em</a></li>
+            <li><a href="#x">form</a></li>
+            <li><a href="#x">g</a></li>
+            <li><a href="#x">h1</a></li>
+            <li><a href="#x">img</a></li>
+            <li><a href="#x">kbd</a></li>
+            <li><a href="#x">li</a></li>
+            <li><a href="#x">mark</a></li>
+            <li><a href="#x">nav</a></li>
+          </ul>
+        </li>
+        <li class="shift -mid"><form data-get action="?#find"><div class="input"><input id="find" type="search" name="q" size="8" accesskey="4"><button class="-hover icon-find"></button></div></form></li>
+      </ul>
+    </div>
     
     <h3>Modals & Drawers</h3>
     <p><small class="tag success">Modern</small></p>
-    <p>Pure CSS, no JavaScript required!
+    <p>Pure CSS, no JavaScript required.
       Requires Invoker Commands API.
       Closes on Escape key, command button, click outside. <!-- or opening another dialog. -->
       Has styleable <code>::backdrop</code>.
@@ -201,10 +295,12 @@
     <p>  
       Mode of dialog:
       <select data-nodes="#dialog-1">
-        <option value="pad trans">Modal</option>
+        <option value="pad">Modal</option>
+        <option value="pad trans">Modal & transition</option>
         <option value="full pad">Fullscreen</option>
-        <option value="drawer trans pad">Drawer left</option>
-        <option value="drawer shift trans pad">Drawer right</option>
+        <option value="drawer pad">Drawer left</option>
+        <option value="drawer trans pad">Drawer left & transition</option>
+        <option value="drawer shift trans pad">Drawer right & transition</option>
       </select>
     </p>
     <div class="demo-preview">
@@ -277,30 +373,42 @@
 
     </div>
 
-    <h3>Dropdowns & Popups</h3>
+    <h3>Popups</h3>
+    <p><small class="tag success">Modern</small></p>
+    <p>Using <code>[popover]</code>.</p>
+    <div class="demo-preview">
+      <button popovertarget="popup-1">Show popup</button>
+      <button popovertarget="popup-1" class="nodec">Show popup</button>
+      <div id="popup-1" popover class="pad">Popup content<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</div>
+    </div>
+    
+    <h3>Popups disclosure</h3>
     <p>Using native <code>&lt;details&gt;</code> elements.</p>
     <div class="demo-preview">
-        <details class="pop">
-            <summary>Options ▾</summary>
-            <div class="pad bord">
-                <a href="#" class="row">Edit Item</a>
-                <a href="#" class="row danger">Delete Item</a>
-            </div>
-        </details>
+      Before
+      <details class="pop">
+        <summary>Options ▾</summary>
+        <div class="pad bord">
+          <a href="#" class="row">Edit Item</a>
+          <a href="#" class="row danger">Delete Item</a>
+        </div>
+      </details>
+      After
     </div>
 
-    <h3>Tabs</h3>
-    <p><small class="tag info">Enhanced with JavaScript</small></p>
-    <p>Controlled via hash links.</p>
+    <h3>Popups on hover</h3>
+    <p>Using <code>:hover</code> state. Add <code>.pos</code> for automatic positioning.</p>
     <div class="demo-preview">
-        <ul class="tabs row">
-            <li><a href="#demo-tab-1" class="act">Tab 1</a></li>
-            <li><a href="#demo-tab-2">Tab 2</a></li>
-        </ul>
-        <div class="bord">
-            <section id="demo-tab-1" class="pad">This is the content for Tab 1.</section>
-            <section id="demo-tab-2" class="pad">This is the content for Tab 2.</section>
+      <div class="mar">
+        Before
+        <div class="pop pos">
+          <a class="hover" tabindex="0">Default</a>
+          <div class="pad">Info<br>Text <span><a class="check"></a></span>
+          <div class="pop pos l"><a class="hover" tabindex="0">Nested</a> <div class="pad">More info<p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p></div></div>
+          </div>
         </div>
+        After.
+      </div>
     </div>
 
     <h3>Tooltips</h3>
@@ -318,20 +426,44 @@
         <span data-hint="Another hint!" class="pad bord info" tabindex="0">Or me</span>
     </div>
 
-    <h2>5. Forms & Inputs</h2>
+    <h3>Tabs</h3>
+    <p><small class="tag info">Enhanced with JavaScript</small></p>
+    <p>Controlled via hash links.</p>
+    <div class="demo-preview"><!-- stack line -->
+      <ul class="tabs row">
+        <li><b>Tabs</b></li>
+        <li><a href="#demo-tab-1">Tab 1</a></li>
+        <li><a href="#demo-tab-2">Tab 2</a></li>
+      </ul>
+      <div class="bord">
+        <section id="demo-tab-1" class="pad">This is the content for Tab 1.</section>
+        <section id="demo-tab-2" class="pad">This is the content for Tab 2.</section>
+      </div>
+    </div>
+
+    <h2 id="form">5. Forms & Inputs</h2>
     
     <h3>Grid Forms</h3>
     <p>Use <code>.form</code> and <code>.resp</code> for aligned, responsive form layouts.</p>
+    <p>
+      Style options:
+      <label><input type="checkbox" data-nodes="#form-1" value="resp" checked><code>.resp</code></label>
+      <label><input type="checkbox" data-nodes="#form-1" value="just"><code>.just</code></label>
+      <label><input type="checkbox" data-nodes="#form-1" value="stretch"><code>.stretch</code></label>
+    </p>
     <div class="demo-preview">
       <div class="container resize bord pad">
-        <form class="form resp" onsubmit="return false;">
+        <form id="form-1" class="form resp" onsubmit="return false;">
             <label for="demo-name">Name</label>
-            <input type="text" id="demo-name" placeholder="Enter name">
+            <span>
+              <input type="text" id="demo-name" placeholder="Enter name" required>
+              <small class="tip"><span class="danger">Required</span><span class="success">Correct</span></small>
+            </span>
+            <br>
             <label for="demo-email">Email</label>
             <input type="email" id="demo-email" placeholder="Enter email">
-            <span class="shift">
-                <button type="submit" class="success">Submit</button>
-            </span>
+            <br>
+            <button type="submit" class="shift success detect">Submit</button>
         </form>
         <footer class="small r">Resize me</footer>
       </div>
@@ -348,7 +480,7 @@
       <label><input type="radio" name="radio-1" value="2"> Radio</label>
     </div>
 
-    <h2>6. Advanced Data Tables</h2>
+    <h2 id="table">6. Data Tables</h2>
     
     <h3>Sorting & Filtering</h3>
     <p><small class="tag info">Requires JavaScript</small></p>
@@ -385,7 +517,7 @@
       </table>
     </div>
 
-    <h2>7. JavaScript Enhancements</h2>
+    <h2 id="js">7. JavaScript Enhancements</h2>
     
     <h3>Dynamic Class Toggling (<code>[data-nodes]</code>)</h3>
     <p><small class="tag info">Requires JavaScript</small></p>
@@ -409,7 +541,7 @@
         <label><input id="mem-box" type="checkbox" class="mem"> Remember this checkbox state</label>
     </div>
 
-    <h2>8. Utilities & Helpers</h2>
+    <h2 id="util">8. Utilities & Helpers</h2>
     
     <h3 id="populate-inputs">Populate inputs from URL (<code>[data-get]</code>)</h3>
     <p>Click to <a href="?cap=Test&box=1#populate-inputs">populate</a> or <a href="?#populate-inputs">clear</a> inputs</p>
@@ -432,5 +564,6 @@
         <p>Granum Framework Interactive Documentation &copy; 2026.</p>
     </footer>
 
+    <a href="#cancel" class="hide" accesskey="x">Cancel</a>
 </body>
 </html>

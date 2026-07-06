@@ -15,7 +15,7 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0px 100em var(--back-default) i
 button {border-radius:var(--radius);}
 button:not(:disabled), .check {cursor:pointer;}
   /*button*/:disabled {opacity:.5;cursor:not-allowed;}
-  .inact, form:has(:invalid) .detect {opacity:.5;pointer-events:none;/*filter:grayscale(1);*/}
+  .inact, form:has(:invalid) .detect {interactivity:inert;opacity:.5;pointer-events:none;/*filter:grayscale(1);*/}
 button {min-width:6em;}
 /*input[type="submit"] {background-color:var(--line);}*/
 

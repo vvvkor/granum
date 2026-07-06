@@ -17,7 +17,7 @@
 :root {
   --backdrop: #6665;/*#6669;/*#0006;/*#0002;*/
   --drawer-width: 20rem;
-  --pop-height: 20rem;
+  --pop-height: min(20rem, 80vh);
 }
 
 html {scroll-padding-top:5rem;}
@@ -27,7 +27,7 @@ html {scroll-padding-top:5rem;}
 .gallery {}
 
 /* common */
-:where(ul.row) ul, :where(.pop) > *+:last-child, :where(.modal, .drawer, .popwin, dialog), [data-hint]:after, [popover="hint"] {box-sizing:border-box;background:var(--back);box-shadow:var(--shade);}
+:where(ul.row) ul, :where(.pop) > *+:last-child, :where(.modal, .drawer, .popwin, dialog), [data-hint]:after, [popover] {box-sizing:border-box;background:var(--back);box-shadow:var(--shade);}
 :is(.modal, .target, dialog):where(:not(:target, :has(:target), .show, .drawer, [open])) {display:none;}
 
 /* check */

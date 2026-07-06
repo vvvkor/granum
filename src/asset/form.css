@@ -21,7 +21,8 @@
 
 /* validation tips */
 
-.form .tip {display:block;margin-block:calc(.3 * var(--gap));/*line-height:1.2;*/}
+.form .tip {display:block;/*line-height:1.2;*/}
+:valid + .tip:has(.success), :invalid + .tip:has(.danger) {margin-block:calc(.3 * var(--gap));}
 /*:not(:user-valid, :user-invalid) + .tip > :is(.danger, .success), :user-valid + .tip > .danger, :user-invalid + .tip > .success {display:none;}*/
 :valid + .tip > .danger, :invalid + .tip > .success {display:none;}
 .input:not(:has(:invalid)) + .tip > .danger, .input:has(:invalid) + .tip > .success {display:none;}
