@@ -1,7 +1,7 @@
 :root {
   --input-accent: #06f; /*var(--link, #06f);*/
 }
-:is([type="checkbox"], [type="radio"]) {width:1.2em;height:1.2em;vertical-align:-15%;margin:0 .2em;}
+:is([type="checkbox"], [type="radio"]) {width:1.2em;height:1.2em;vertical-align:-15%;margin:0 .2em;accent-color:var(--input-accent);}
 
 .switch {--input-color:var(--line-input, #999);appearance:none;display:inline-block;background-color:var(--input-color);border-radius:1em;position:relative;transition:background-color .2s;line-height:1.2;width:2.2em;/*height:1.2em;vertical-align:-15%;margin:0 .2em;*/}
 .switch:checked {--input-color:var(--input-accent);}
