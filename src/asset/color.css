@@ -13,7 +13,7 @@
   --front-note: #888;
   --front-info: #08a;
   --front-success: #181;
-  --front-warning: /*#c60;*/#d70;
+  --front-warning: /*#c60;*//*#d70;*/#b70;
   --front-danger: #c00;
   --back-note: #eee;
   --back-info: #bef;
@@ -81,7 +81,7 @@ body a.invert {color:var(--link-invert);}
 :invalid:focus, .input:has(:invalid):focus-within {outline-color:var(--outline-invalid);}
 
 /* progress */
-progress {accent-color:var(--ff, var(--link));}
+progress {accent-color:var(--ff, var(--input-accent, var(--link)));}
 
 /* progress - custom * /
 progress {

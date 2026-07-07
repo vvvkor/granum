@@ -15,7 +15,9 @@
     -->
     <!-- Granum Framework Local -->
     <link rel="stylesheet" href="granum.min.css">
-    <script src="granum.min.js" defer></script>
+    <script defer src="granum.min.js"></script>
+    <script defer src="customize.js"></script>
+    <script defer src="icon-paths.js"></script>
     
     <style>
         h2 { border-bottom: medium solid var(--line); }
@@ -47,8 +49,20 @@
         
     </style>
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
+      document.addEventListener('DOMContentLoaded', () => {
         
+
+        // demo icons
+        Object.entries(window.iconPaths).forEach(([name, [width, path]]) => {
+          divIcons.innerHTML += `<a class="icon-${name}"></a>`
+        });
+        [...divIcons.querySelectorAll('[class*="icon-"]')].forEach((n, i) => {
+          n.title = (i + 1) + '. ' + n.getAttribute('class').slice(5)
+          n.classList.add('pad', 'hover', 'c'/*, 'act'*/)
+          n.dataset.hint = n.title
+          n.addEventListener('click', e => n.classList.toggle('act'))
+        });
+
         // update code preview
         const showCode = (n, code=null) => {
           if (!code) code = n.nextElementSibling.firstElementChild
@@ -106,6 +120,8 @@
       <a href="#table">Table</a>
       <a href="#js">JS</a>
       <a href="#util">Util</a>
+      <a href="#icon">Icons</a>
+      <button command="show-modal" commandfor="customize" class="nodec icon-config">Customize</button>
     </div>
 
     <h2 id="start">1. Getting Started</h2>
@@ -605,6 +621,73 @@
     <footer class="pad mar center note">
         <p>Granum Framework Interactive Documentation &copy; 2026.</p>
     </footer>
+
+    
+    <h2 id="icon">9. Icons</h2>
+    <div id="divIcons"></div>
+
+<!-- customize -->
+
+      <dialog id="customize" closedby="any" class="drawer shift trans pad">
+        <div class="r"><a href="#close" class="icon-close">Close</a></div>
+        <h3 class="mar">Customize style</h3>
+        <form class="-form -resp mem">
+          <div class="hilite mar pad rad">
+            <button class="var-reset">Reset</button>
+            <input type="checkbox" class="switch" checked>
+            <input type="checkbox" checked>
+            <progress value=".75" style="max-width:3em;">p</progress>
+          </div>
+          <hr class="wide">
+          <div class="row gap stretch">
+            <div>
+              <div class="form">
+                <label for="var-gap">Gap</label>
+                <input id="var-gap" type="number" class="var" name="gap" min="0" max="2" step=".1" value="1" data-unit="em">
+                <br>
+                <!--label for="var-fs">Font size</label>
+                <input id="var-fs" type="number" class="var" name="root-font-size" min=".8" max="2" step=".1" value="1">
+                <br-->
+                <label for="var-radius">Radius</label>
+                <input id="var-radius" type="number" class="var" name="radius" min="0" max="2" step=".1" value="1" data-unit="em">
+                <br>
+                <label for="var-back">Background</label>
+                <input id="var-back" type="color" class="var" name="back">
+              </div>
+            </div>
+            <div>
+              <div class="form">
+                <label for="var-front">Text</label>
+                <input id="var-front" type="color" class="var" name="front">
+                <br>
+                <label for="var-link">Link</label>
+                <input id="var-link" type="color" class="var" name="link">
+                <br>
+                <label for="var-line">Line</label>
+                <input id="var-line" type="color" class="var" name="line">
+                <br>
+                <label for="var-linei">Input border</label>
+                <input id="var-linei" type="color" class="var" name="line-input">
+                <br>
+                <label for="var-sw">Switch accent</label>
+                <input id="var-sw" type="color" class="var" name="input-accent">
+                <!--
+                <br>
+                <label for="var-hilite">Hilite</label>
+                <input id="var-hilite" type="color" class="var" name="hilite">
+                -->
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="mar">
+            <label for="vars">Custom style</label>
+            <textarea id="vars" class="wide" readonly></textarea>
+          </div>
+        </form>
+      </dialog><!-- /#customize -->
+
+<!-- accesskeys -->
 
     <a href="#top" class="hide" accesskey="1">Top</a>
     <a href="#cancel" class="hide" accesskey="x">Cancel</a>
