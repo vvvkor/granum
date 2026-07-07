@@ -43,7 +43,7 @@
 ## Validation
 
 - .validate
-- .tip
+- .form.used .tip
 - .detect
 - .inact
 

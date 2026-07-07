@@ -454,7 +454,7 @@
     <h2 id="form">5. Forms & Inputs</h2>
     
     <h3>Grid Forms</h3>
-    <p>Use <code>.form</code> and <code>.resp</code> for aligned, responsive form layouts.</p>
+    <p>Use <code>.form.resp</code> for aligned, responsive form layouts.</p>
     <p>
       Style options:
       <label><input type="checkbox" data-nodes="#form-1" value="resp" checked><code>.resp</code></label>
@@ -463,19 +463,51 @@
     </p>
     <div class="demo-preview">
       <div class="container resize bord pad">
-        <form id="form-1" class="form resp" onsubmit="return false;">
-            <label for="demo-name">Name</label>
-            <span>
-              <input type="text" id="demo-name" placeholder="Enter name" required>
-              <small class="tip"><span class="danger">Required</span><span class="success">Correct</span></small>
-            </span>
-            <br>
-            <label for="demo-email">Email</label>
-            <input type="email" id="demo-email" placeholder="Enter email">
-            <br>
-            <button type="submit" class="shift success detect">Submit</button>
+        <form id="form-1" class="form resp" action="#form">
+          <label for="name-1">Name</label>
+          <input type="text" id="name-1" name="name">
+          <br>
+          <label for="email-1">Email</label>
+          <input type="email" id="email-1" name="email">
+          <br>
+          <button type="submit" class="shift">Submit</button>
         </form>
         <footer class="small r">Resize me</footer>
+      </div>
+    </div>
+
+    <h3>Form validation</h3>
+    <p>
+      Inside <code>.form</code>, use <code>.tip > .success, .tip > .danger</code> after input for tips.<br>
+      Use <code>.form.used</code> to show tips only after user interaction.<br>
+      Use <code>button.detect</code> to enable button only if form is valid.
+    </p>
+    <p>
+      <label><input type="checkbox" data-nodes="#form-2" value="used"><code>.used</code></label>
+    </p>
+    <div class="demo-preview">
+      <div class="container bord pad">
+        <form id="form-2" class="form resp" action="#form-2">
+          <label for="name-2">Name</label>
+          <span>
+            <input type="text" id="name-2" name="name" placeholder="Enter name" required>
+            <small class="tip">
+              <span class="danger">Required</span>
+              <span class="success">OK</span>
+            </small>
+          </span>
+          <br>
+          <label for="email-2">Email</label>
+          <span>
+            <span class="input">[<input type="email" id="email-2" name="email" placeholder="Enter email">]</span>
+            <small class="tip">Hint: 
+              <span class="danger">Incorrect e-mail</span>
+              <span class="success">OK</span>
+            </small>
+          </span>
+          <br>
+          <button type="submit" class="shift success detect">Submit</button>
+        </form>
       </div>
     </div>
 
