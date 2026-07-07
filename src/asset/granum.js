@@ -4,7 +4,12 @@ const act = (n, k, f) => (n.dataset.parent ? n.closest(n.dataset.parent) : docum
 
 const cls = n => {
   if (n.type == 'checkbox') act(n, 'nodes', m => m.classList[n.checked != ('reverse' in n.dataset) ? 'add' : 'remove'](...n.value.split(/\s+/)))
-  else if ((n.type == 'radio' && n.checked) || n.options) act(n, 'nodes', m => m.className = n.value)
+  else if (n.options || (n.type == 'radio' && n.checked)) { // toggle
+    const list = n.options ? n.options : (n.closest('form') || document).querySelectorAll('[name=' + n.name + ']')
+    act(n, 'nodes', m => m.classList.remove(...[...list].map(x => x.value).join(' ').split(/\s+/)))
+    act(n, 'nodes', m => m.classList.add(...n.value.split(/\s+/)))
+  }
+  //else if ((n.type == 'radio' && n.checked) || n.options) act(n, 'nodes', m => m.className = n.value) // just set
 }
 
 const tgl = (n, e) => {

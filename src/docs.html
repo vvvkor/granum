@@ -167,8 +167,16 @@
 
     <h3>Auto-Filling CSS Grid</h3>
     <p>Use <code>.grid-*</code> classes to create responsive grids that automatically fill available space based on minimum cell widths.</p>
+    <p>
+      Column width:
+      <label><input type="radio" name="grid-col" data-nodes="#grid-1" value="grid-xs"><code>.grid-xs</code></label>
+      <label><input type="radio" name="grid-col" data-nodes="#grid-1" value="grid-s" checked><code>.grid-s</code></label>
+      <label><input type="radio" name="grid-col" data-nodes="#grid-1" value="grid-m"><code>.grid-m</code></label>
+      <label><input type="radio" name="grid-col" data-nodes="#grid-1" value="grid-l"><code>.grid-l</code></label>
+      <label><input type="checkbox" data-nodes="#grid-1" value="gap" checked><code>.gap</code></label>
+    </p>
     <div class="demo-preview">
-      <div class="grid-m gap">
+      <div class="grid-m gap" id="grid-1">
           <div class="bg note pad">Card 1</div>
           <div class="bg note pad">Card 2</div>
           <div class="bg note pad">Card 3</div>
