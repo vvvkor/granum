@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Granum v2.1.9 - Documentation</title>
+    <title>Granum v2.1.10 - Documentation</title>
     <meta name="theme-color" content="#fff">
     <meta name="theme-color" media="(prefers-color-scheme:dark)" content="#04a">
     <link rel="icon" type="image/svg" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20220%20220'%3E%3Cpath%20fill='%23666'%20d='M35%2067l75%20-44%2075%2044%200%2089-75%2044-75-44zm75%208a35%2035%200%201%200%20.01%200z'/%3E%3C/svg%3E">
@@ -93,7 +93,7 @@
 </head>
 <body class="wide-m center pad">
     <div class="hero" id="top">
-      <h1>Granum v2.1.9</h1>
+      <h1>Granum v2.1.10</h1>
       <p class="note">Developer Documentation</p>
     </div>
     
@@ -479,11 +479,11 @@
     <h3>Form validation</h3>
     <p>
       Inside <code>.form</code>, use <code>.tip > .success, .tip > .danger</code> after input for tips.<br>
-      Use <code>.form.used</code> to show tips only after user interaction.<br>
+      Use <code>.form.lazy</code> to show tips only after user interaction.<br>
       Use <code>button.detect</code> to enable button only if form is valid.
     </p>
     <p>
-      <label><input type="checkbox" data-nodes="#form-2" value="used"><code>.used</code></label>
+      <label><input type="checkbox" data-nodes="#form-2" value="lazy"><code>.lazy</code></label>
     </p>
     <div class="demo-preview">
       <div class="container bord pad">
