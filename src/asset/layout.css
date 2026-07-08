@@ -58,6 +58,7 @@
 .stack>:first-child {margin-top:0;}
 .stack>:last-child {margin-bottom:0;}
 .stack.line>:not(:last-child) {border-bottom:var(--bord);}
+.stack.line>* {margin-block:0;}
 
 /* stick */
 @media screen {

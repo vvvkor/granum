@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Granum v2.1.10 - Documentation</title>
+    <title>Granum v2.1.11 - Documentation</title>
     <meta name="theme-color" content="#fff">
     <meta name="theme-color" media="(prefers-color-scheme:dark)" content="#04a">
     <link rel="icon" type="image/svg" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20220%20220'%3E%3Cpath%20fill='%23666'%20d='M35%2067l75%20-44%2075%2044%200%2089-75%2044-75-44zm75%208a35%2035%200%201%200%20.01%200z'/%3E%3C/svg%3E">
@@ -31,6 +31,8 @@
             margin-top: var(--gap);
             position: relative;
             min-height: 3rem;
+            resize: both;
+            overflow: auto;
         }
         .demo-preview::before {
             content: "▶ Preview";
@@ -44,7 +46,7 @@
             border-bottom: thin solid var(--line);
             margin-bottom: 0.8em;
         }
-        pre.demo-code { max-height: 25vh; margin-top:0; background: var(--hilite); padding: 1rem; overflow-x: auto; border: thin solid var(--line); border-radius:0; border-top:none; }
+        pre.demo-code { max-height: 25vh; margin-top:-1px; background: var(--hilite); padding: 1rem; overflow-x: auto; border: thin solid var(--line); border-radius:0;  }
         .demo-code code { font-family: var(--mono); font-size: 0.9em; }
         
     </style>
@@ -107,7 +109,7 @@
 </head>
 <body class="wide-m center pad">
     <div class="hero" id="top">
-      <h1>Granum v2.1.10</h1>
+      <h1>Granum v2.1.11</h1>
       <p class="note">Developer Documentation</p>
     </div>
     
@@ -122,6 +124,10 @@
       <a href="#util">Util</a>
       <a href="#icon">Icons</a>
       <button command="show-modal" commandfor="customize" class="nodec icon-config">Customize</button>
+      <a href="https://github.com/vvvkor/granum" class="-neutral an-im-swing">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="-1 -1 18 18" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+        GitHub
+      </a>
     </div>
 
     <h2 id="start">1. Getting Started</h2>
@@ -193,10 +199,32 @@
     </p>
     <div class="demo-preview">
       <div class="grid-m gap" id="grid-1">
-          <div class="bg note pad">Card 1</div>
-          <div class="bg note pad">Card 2</div>
-          <div class="bg note pad">Card 3</div>
-          <div class="bg note pad">Card 4</div>
+        <div class="bg note pad">Card 1</div>
+        <div class="bg note pad">Card 2</div>
+        <div class="bg note pad">Card 3</div>
+        <div class="bg note pad">Card 4</div>
+      </div>
+    </div>
+
+    <h3>Stack</h3>
+    <p>Use <code>.stack</code> to avoid outer margins. Use <code>.stack.line</code> to add borders between items.</p>
+    <p>
+      Container style:
+      <label><input type="checkbox" data-nodes="#stack-1-container" value="bord" checked><code>.bord</code></label>
+      <label><input type="checkbox" data-nodes="#stack-1-container" value="pad"><code>.pad</code></label>
+      <br>
+      Stack style:
+      <label><input type="radio" name="stack-mode" data-nodes="#stack-1" value="">none</label>
+      <label><input type="radio" name="stack-mode" data-nodes="#stack-1" value="stack" checked><code>.stack</code></label>
+      <label><input type="radio" name="stack-mode" data-nodes="#stack-1" value="stack line"><code>.stack.line</code></label>
+    </p>
+    <div class="demo-preview">
+      <div class="bord hilite" id="stack-1-container">
+        <div class="stack" id="stack-1">
+          <p class="bg note pad">Paragraph 1</p>
+          <p class="bg note pad">Paragraph 2</p>
+          <p class="bg note pad">Paragraph 3</p>
+        </div>
       </div>
     </div>
 
@@ -233,8 +261,31 @@
     <h3>Dark Mode</h3>
     <p>Invert the entire page.</p>
     <div class="demo-preview">
-        <input type="checkbox" id="invert">
-        <label for="invert">Toggle dark mode</label>
+      <input type="checkbox" id="invert">
+      <label for="invert">Toggle dark mode</label>
+    </div>
+
+    <h3>List</h3>
+    <p>
+      Style options:<br>
+      <label><input type="radio" name="list-mode" data-nodes="#list-1" value="" checked>none</label><br>
+      <label><input type="radio" name="list-mode" data-nodes="#list-1" value="fit"><code>.fit</code></label><br>
+      <label><input type="radio" name="list-mode" data-nodes="#list-1" value="row"><code>.row</code></label>
+      <label><input type="checkbox" data-nodes="#list-1" value="resp"><code>.resp</code></label>
+      <label><input type="checkbox" data-nodes="#list-1" value="vert"><code>.vert</code></label>
+      <label><input type="checkbox" data-nodes="#list-1" value="gap"><code>.gap</code></label>
+      <label><input type="checkbox" data-nodes="#list-1" value="scroll"><code>.scroll</code></label>
+      <label><input type="checkbox" data-nodes="#list-1" value="hover"><code>.hover</code></label>
+      <label><input type="checkbox" data-nodes="#list-1" value="mid"><code>.mid</code></label>
+      <!--label><input type="checkbox" data-nodes="#list-1" value="wrap"><code>.wrap</code></label-->
+    </p>
+    <div class="demo-preview">
+      <ul id="list-1">
+        <li><a href="#list-1">Alpha</a></li>
+        <li><a href="#list-1">Beta</a></li>
+        <li><a href="#list-1">Gamma</a></li>
+        <li><a href="#list-1"><span>Delta<br><small>line</small></span></a></li>
+      </ul>
     </div>
 
     <h2 id="comp">4. CSS-Only Interactive Components</h2>
@@ -473,12 +524,13 @@
     <p>Use <code>.form.resp</code> for aligned, responsive form layouts.</p>
     <p>
       Style options:
+      <label><input type="checkbox" data-nodes="#form-1" value="form" checked><code>.form</code></label>
       <label><input type="checkbox" data-nodes="#form-1" value="resp" checked><code>.resp</code></label>
       <label><input type="checkbox" data-nodes="#form-1" value="just"><code>.just</code></label>
       <label><input type="checkbox" data-nodes="#form-1" value="stretch"><code>.stretch</code></label>
     </p>
     <div class="demo-preview">
-      <div class="container resize bord pad">
+      <div class="container bord pad">
         <form id="form-1" class="form resp" action="#form">
           <label for="name-1">Name</label>
           <input type="text" id="name-1" name="name">
@@ -488,7 +540,6 @@
           <br>
           <button type="submit" class="shift">Submit</button>
         </form>
-        <footer class="small r">Resize me</footer>
       </div>
     </div>
 
@@ -599,11 +650,13 @@
         <label><input id="mem-box" type="checkbox" class="mem"> Remember this checkbox state</label>
     </div>
 
-    <h2 id="util">8. Utilities & Helpers</h2>
-    
     <h3 id="populate-inputs">Populate inputs from URL (<code>[data-get]</code>)</h3>
-    <p>Click to <a href="?cap=Test&box=1#populate-inputs">populate</a> or <a href="?#populate-inputs">clear</a> inputs</p>
+    <p><small class="tag info">Requires JavaScript</small></p>
     <div class="demo-preview">
+      <p>
+        Click to <a href="?cap=Test&box=1#populate-inputs">populate</a>
+        or <a href="?#populate-inputs">clear</a> inputs.
+      </p>
       <form data-get>
         <input type="text" name="caption" data-get="cap"><!-- override name -->
         <br>
@@ -611,6 +664,8 @@
       </form>
     </div>
 
+    <h2 id="util">8. Utilities & Helpers</h2>
+    
     <h3>Responsive Display Toggles</h3>
     <p>Show/hide elements based on viewport width. Resize your browser window to see them appear/disappear.</p>
     <div class="demo-preview">
@@ -629,7 +684,10 @@
 <!-- customize -->
 
       <dialog id="customize" closedby="any" class="drawer shift trans pad">
-        <div class="r"><a href="#close" class="icon-close">Close</a></div>
+        <div class="row mid gap">
+          <label for="invert" class="ic-on-moon" style="color:var(--link);cursor:pointer;">Toggle dark mode</label>
+          <a href="#close" class="icon-close shift">Close</a>
+        </div>
         <h3 class="mar">Customize style</h3>
         <form class="-form -resp mem">
           <div class="hilite mar pad rad">

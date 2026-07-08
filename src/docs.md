@@ -98,6 +98,7 @@
 
 ## Icons
 
+- .icon
 - .icon-x.empty:empty
 - .icon-menu/close, -next/desc, -folder/open, -add/no, -expand/collapse
 - .icon-menu/close, -next/desc, -folder/open, -add/no, -expand/collapse

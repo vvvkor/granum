@@ -1,12 +1,18 @@
-/* bg mask */
-[class*="icon-"]:before {
+.icon, [class*="icon-"]:before {
   --icon-size: calc(1em * var(--icon-scale, 1.25));
-  content: '';
   display: inline-block;
   width: var(--icon-size);
   height:var(--icon-size);
   vertical-align:calc((1em - var(--icon-size)) / 2 - .14em);
   animation: var(--anim, none);
+}
+
+/* svg */
+.icon {fill: currentColor;}
+
+/* bg mask */
+[class*="icon-"]:before {
+  content: '';
   background: currentColor;
   mask-image: var(--i);
   mask-repeat: no-repeat;
