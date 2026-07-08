@@ -12,9 +12,9 @@
   /* status */
   --front-note: #888;
   --front-info: #08a;
-  --front-success: #181;
+  --front-success: /*#181;*/#181;
   --front-warning: /*#c60;*//*#d70;*/#b70;
-  --front-danger: #c00;
+  --front-danger: /*#c00;*/#c33;
   --back-note: #eee;
   --back-info: #bef;
   --back-success: #beb;
@@ -45,20 +45,23 @@ a:where([href]:not([href^="#"]):visited) {color:var(--visited);}
 a:where([href]:hover) {color:var(--hover);}
 a:where([href]:active), details[open] > summary, .act, .check:has(:checked) {color:var(--active);}
 
-button   {--ff:var(--link);}
+button   {--ff:var(--link);--fff:var(--link);}
 .tag     {--ff:var(--front-note);}
-:where(button, .tag).bord {--ff:var(--front);--bb:var(--back);}
+:where(button, .tag).bord {--ff:var(--fff, var(--front));--bb:var(--back);}
 .neutral {--ff:var(--front);--bb:var(--back);}
 .note    {--ff:var(--front-note);--bb:var(--back-note);}
 .info    {--ff:var(--front-info);--bb:var(--back-info);}
 .success {--ff:var(--front-success);--bb:var(--back-success);}
 .warning {--ff:var(--front-warning);--bb:var(--back-warning);}
 .danger  {--ff:var(--front-danger);--bb:var(--back-danger);}
+  /*:where(button:not(.bg)).bord {--bb:var(--back);}*/
 
+:where(button, .tag).bord {background-color:var(--back);}
 .text, .ic:before, :where(.neutral, .note, .info, .success, .warning, .danger, button, .tag):not(.bg, .ic) {color:var(--ff, var(--front));}
-.bg, button, .tag {background-color:var(--bb, var(--back));}
+.bg {background-color:var(--bb, var(--back));}
 .bord {border:thin solid var(--ff, var(--line));}
 :where(button, .tag):not(.bord) {color:var(--front-invert);background-color:var(--ff, var(--front-note));}
+/*button.bord:not(.bg) {background-color:var(--back);}*/
 
 /* invert */
 body .invert {color:var(--front-invert);}

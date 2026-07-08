@@ -13,6 +13,7 @@ code, kbd {padding:calc(.1 * var(--gap)) calc(.2 * var(--gap));}
 pre code {padding:0;border:none;border-radius:0;}
 .mar, ul, ol, dl, blockquote, pre, hr, p, figure {margin:var(--gap) 0;}
 .pad, button, fieldset, blockquote, pre {padding:calc(.5 * var(--gap)) var(--gap);border:thin solid transparent;}
+/*[class] button {border-width:2px;font-weight:bold;}*/
 /*legend {margin-left:var(--gap);}*/
 legend {padding:0 calc(.25 * var(--gap));}
 /*.bord,*/ kbd, fieldset, hr {border:var(--bord);}

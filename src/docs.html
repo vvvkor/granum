@@ -25,35 +25,35 @@
         /* Live Preview Block Styling */
 
         .demo-preview {
-            background: var(--back-default, #fff);
-            border: thin solid var(--line, #ccc);
-            padding: var(--gap);
-            margin-top: var(--gap);
-            position: relative;
-            min-height: 3rem;
-            resize: both;
-            overflow: auto;
+          background: var(--back-default, #fff);
+          border: thin solid var(--line, #ccc);
+          padding: var(--gap);
+          margin-top: var(--gap);
+          position: relative;
+          min-height: 3rem;
+        }
+        .demo-preview:not(.no-resize){
+          resize: both;
+          overflow: auto;
         }
         .demo-preview::before {
-            content: "▶ Preview";
-            display: block;
-            font-size: 0.75em;
-            font-weight: bold;
-            color: var(--front-note, #888);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            padding-bottom: 0.4em;
-            border-bottom: thin solid var(--line);
-            margin-bottom: 0.8em;
+          content: "▶ Preview";
+          display: block;
+          font-size: 0.75em;
+          font-weight: bold;
+          color: var(--front-note, #888);
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          padding-bottom: 0.4em;
+          border-bottom: thin solid var(--line);
+          margin-bottom: 0.8em;
         }
         pre.demo-code { max-height: 25vh; margin-top:-1px; background: var(--hilite); padding: 1rem; overflow-x: auto; border: thin solid var(--line); border-radius:0;  }
         .demo-code code { font-family: var(--mono); font-size: 0.9em; }
-        
     </style>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         
-
         // demo icons
         Object.entries(window.iconPaths).forEach(([name, [width, path]]) => {
           divIcons.innerHTML += `<a class="icon-${name}"></a>`
@@ -77,15 +77,26 @@
           code.textContent = s // '' + offset + s.replace(/(^|[\n\r]) {6}/g, '$1')
             //.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
         }
+        
+        const unstyle = e => {
+          const d = e.target.matches('.demo-preview') ? e.target : null
+          if (d && e.offsetX > d.clientWidth - 16 && e.offsetY > d.clientHeight - 16) {
+            console.log(e.offsetX, d.clientWidth)
+            d.style = ''
+          }
+        }
       
         // prepare code preview
         document.querySelectorAll('.demo-preview').forEach(n => {
+          // code
           const pre = document.createElement('pre')
           const code = document.createElement('code')
           showCode(n, code)
           pre.classList.add('demo-code')
           pre.append(code)
           n.after(pre)
+          // reset resized
+          n.addEventListener('dblclick', unstyle)
         })
         
         // observe code changes
@@ -97,7 +108,7 @@
         };
         const onMutate = (mutationList, observer) => {
           for (const mutation of mutationList) {
-            console.log(`Change type detected: ${mutation.type} on `, mutation.target);
+            //console.log(`Change type detected: ${mutation.type} on `, mutation.target);
             const demo = mutation.target.closest('.demo-preview')
             if (demo) showCode(demo)
           }
@@ -107,28 +118,33 @@
       })
     </script>
 </head>
-<body class="wide-m center pad">
+<body>
+
+  <nav class="stick row gap wrap nodec small shade pad">
+    <b>Granum v0.0.0</b>
+    <a href="#start">Start</a>
+    <a href="#layout">Layout</a>
+    <a href="#typo">Typography</a>
+    <a href="#table">Table</a>
+    <a href="#form">Form</a>
+    <a href="#comp">Components</a>
+    <a href="#js">JS</a>
+    <a href="#util">Util</a>
+    <a href="#icon">Icons</a>
+    <button command="show-modal" commandfor="customize" class="shift nodec icon-config">Customize</button>
+    <a href="https://github.com/vvvkor/granum" class="-neutral an-im-swing">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="-1 -1 18 18" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+      GitHub
+    </a>
+  </nav>
+    
+  <main class="wide-m center pad">
+    
     <div class="hero" id="top">
       <h1>Granum v0.0.0</h1>
       <p class="note">Developer Documentation</p>
     </div>
     
-    <div class="row gap wrap mar nodec">
-      <a href="#start">Start</a>
-      <a href="#layout">Layout</a>
-      <a href="#typo">Typography</a>
-      <a href="#comp">Components</a>
-      <a href="#form">Form</a>
-      <a href="#table">Table</a>
-      <a href="#js">JS</a>
-      <a href="#util">Util</a>
-      <a href="#icon">Icons</a>
-      <button command="show-modal" commandfor="customize" class="nodec icon-config">Customize</button>
-      <a href="https://github.com/vvvkor/granum" class="-neutral an-im-swing">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="-1 -1 18 18" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
-        GitHub
-      </a>
-    </div>
 
     <h2 id="start">1. Getting Started</h2>
     <p>Include the CSS and JS files in your HTML. The JS file is optional but recommended for progressive enhancements.</p>
@@ -197,12 +213,19 @@
       <label><input type="radio" name="grid-col" data-nodes="#grid-1" value="grid-l"><code>.grid-l</code></label>
       <label><input type="checkbox" data-nodes="#grid-1" value="gap" checked><code>.gap</code></label>
     </p>
+    <p>
+      First column span:
+      <label><input type="radio" name="grid-cell" data-nodes="#grid-1-cell-3" value="" checked><i>default</i></label>
+      <label><input type="radio" name="grid-cell" data-nodes="#grid-1-cell-3" value="span-2"><code>.span-2</code></label>
+      <label><input type="radio" name="grid-cell" data-nodes="#grid-1-cell-3" value="span-3"><code>.span-3</code></label>
+      <label><input type="radio" name="grid-cell" data-nodes="#grid-1-cell-3" value="span-4"><code>.span-4</code></label>
+    </p>
     <div class="demo-preview">
       <div class="grid-m gap" id="grid-1">
-        <div class="bg note pad">Card 1</div>
-        <div class="bg note pad">Card 2</div>
-        <div class="bg note pad">Card 3</div>
-        <div class="bg note pad">Card 4</div>
+        <div class="bg note pad" id="grid-1-cell-1">Cell 1</div>
+        <div class="bg note pad">Cell 2</div>
+        <div class="bg note pad" id="grid-1-cell-3">Cell 3</div>
+        <div class="bg note pad">Cell 4</div>
       </div>
     </div>
 
@@ -214,7 +237,7 @@
       <label><input type="checkbox" data-nodes="#stack-1-container" value="pad"><code>.pad</code></label>
       <br>
       Stack style:
-      <label><input type="radio" name="stack-mode" data-nodes="#stack-1" value="">none</label>
+      <label><input type="radio" name="stack-mode" data-nodes="#stack-1" value=""><i>none</i></label>
       <label><input type="radio" name="stack-mode" data-nodes="#stack-1" value="stack" checked><code>.stack</code></label>
       <label><input type="radio" name="stack-mode" data-nodes="#stack-1" value="stack line"><code>.stack.line</code></label>
     </p>
@@ -232,30 +255,31 @@
     
     <h3>Semantic Colors</h3>
     <p>Apply contextual colors to text, backgrounds, or borders using utility classes.</p>
-    <div class="demo-preview">
+    <p>
+      <label><input type="checkbox" data-nodes="#colors-container > *" value="bord"><code>.bord</code></label>
+      <label><input type="checkbox" data-nodes="#colors-container > *" value="bg"><code>.bg</code></label>
+      <label><input type="checkbox" data-nodes="#colors-container > *" value="text"><code>.text</code></label>
+      <label><input type="checkbox" data-nodes="#colors-container > *" value="shade"><code>.shade</code></label>
+      <label><input type="checkbox" data-nodes="#colors-container > *" value="hilite"><code>.hilite</code></label>
+      <label><input type="checkbox" data-nodes="#colors-container > *" value="pad"><code>.pad</code></label>
+      <label><input type="checkbox" data-nodes="#colors-container > *" value="pads"><code>.pads</code></label>
+      <label><input type="checkbox" data-nodes="#colors-container > *" value="rad"><code>.rad</code></label>
+      <label><input type="checkbox" data-nodes="#colors-container > a" value="hover"><code>.hover</code></label>
+      <label><input type="checkbox" data-nodes="#colors-container > *" value="act"><code>.act</code></label>
+      <label><input type="checkbox" data-nodes="#colors-container > *" value="invert"><code>.invert</code></label>
+      <label><input type="checkbox" data-nodes="#colors-container > *" value="tag"><code>.tag</code></label>
+      <label><input type="checkbox" data-nodes="#colors-container > *" value="c"><code>.c</code></label>
+    </p>
+    <div id="colors-container" class="demo-preview">
+      <span class="">Default</span>
+      <a href="#link" class="">Link</a>
+      <a href="#link" class="neutral">Neutral</a>
+      <a href="#link" class="danger">Danger</a>
       <span class="note">Note</span>
       <span class="info">Information</span>
       <span class="success">Success</span>
       <span class="warning">Warning</span>
       <span class="danger">Danger</span>
-      <br>
-      <span class="bg note">Note</span>
-      <span class="bg info">Information</span>
-      <span class="bg success">Success</span>
-      <span class="bg warning">Warning</span>
-      <span class="bg danger">Danger</span>
-      <br>
-      <span class="bord note">Note</span>
-      <span class="bord info">Information</span>
-      <span class="bord success">Success</span>
-      <span class="bord warning">Warning</span>
-      <span class="bord danger">Danger</span>
-      <br>
-      <span class="tag note">Note</span>
-      <span class="tag info">Information</span>
-      <span class="tag success">Success</span>
-      <span class="tag warning">Warning</span>
-      <span class="tag danger">Danger</span>
     </div>
 
     <h3>Dark Mode</h3>
@@ -268,7 +292,7 @@
     <h3>List</h3>
     <p>
       Style options:<br>
-      <label><input type="radio" name="list-mode" data-nodes="#list-1" value="" checked>none</label><br>
+      <label><input type="radio" name="list-mode" data-nodes="#list-1" value="" checked><i>default</i></label><br>
       <label><input type="radio" name="list-mode" data-nodes="#list-1" value="fit"><code>.fit</code></label><br>
       <label><input type="radio" name="list-mode" data-nodes="#list-1" value="row"><code>.row</code></label>
       <label><input type="checkbox" data-nodes="#list-1" value="resp"><code>.resp</code></label>
@@ -288,7 +312,133 @@
       </ul>
     </div>
 
-    <h2 id="comp">4. CSS-Only Interactive Components</h2>
+    <h2 id="table">4. Data Tables</h2>
+    
+    <h3>Sorting & Filtering</h3>
+    <p><small class="tag info">Requires JavaScript</small></p>
+    <p>Click the headers to sort, or type in the search box to filter.</p>
+    <p>
+      Style options:
+      <label><input type="checkbox" data-nodes="#table-1" value="bord" checked><code>.bord</code></label>
+      <label><input type="checkbox" data-nodes="#table-1" value="line"><code>.line</code></label>
+      <label><input type="checkbox" data-nodes="#table-1" value="hover"><code>.hover</code></label>
+      <label><input type="checkbox" data-nodes="#table-1" value="wide"><code>.wide</code></label>
+      <label><input type="checkbox" data-nodes="#table-1" value="mid"><code>.mid</code></label>
+      <label><input type="checkbox" data-nodes="#table-1" value="fit"><code>.fit</code></label>
+      <label><input type="checkbox" data-nodes="#table-1" value="c"><code>.c</code></label>
+      <!--label class="check"><input type="checkbox" data-nodes="#table-1" value="c" class="hide"><code>.c</code></label-->
+    </p>
+    <div class="demo-preview">
+      <input type="search" data-filter="#table-1" placeholder="Search table..." class="mar show-js">
+      <table id="table-1" class="sort r2">
+        <thead>
+          <tr>
+            <th class="sort">Name</th>
+            <th class="sort">Age</th>
+            <th class="sort">Date</th>
+            <th class="sort">String</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Alice</td><td>0</td><td>01.07.2000</td><td>Cafe</td></tr>
+          <tr><td>Dan</td><td>150.50 km</td><td>2024-12-01</td><td>café</td></tr>
+          <tr><td>bob</td><td>150.15 km</td><td>02.02.2000</td><td>café</td></tr>
+          <tr><td>Charlie</td><td>-22</td><td>7/1/2025</td><td>coffee</td></tr>
+          <tr><td>No<br>name</td><td></td><td>-</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="form">5. Forms & Inputs</h2>
+    
+    <h3>Grid Forms</h3>
+    <p>Use <code>.form.resp</code> for aligned, responsive form layouts.</p>
+    <p>
+      Form options:
+      <label><input type="checkbox" data-nodes="body" value="container"><code>body.container</code></label>
+      <label><input type="checkbox" data-nodes="#form-1-container" value="container" checked><code>div.container</code></label>
+      <label><input type="checkbox" data-nodes="#form-1" value="form" checked><code>.form</code></label>
+      <label><input type="checkbox" data-nodes="#form-1" value="resp" checked><code>.resp</code></label>
+      <label><input type="checkbox" data-nodes="#form-1" value="just"><code>.just</code></label>
+      <label><input type="checkbox" data-nodes="#form-1" value="stretch"><code>.stretch</code></label>
+      <br>
+      Button position:
+      <label><input type="checkbox" data-nodes="#form-1 button" value="shift" checked><code>.shift</code></label>
+      <label><input type="checkbox" data-nodes="#form-1 button" value="span"><code>.span</code></label>
+      <label><input type="checkbox" data-nodes="#form-1 button" value="wide"><code>.wide</code></label>
+      <label><input type="checkbox" data-nodes="#form-1 button" value="just-c"><code>.just-c</code></label>
+      <label><input type="checkbox" data-nodes="#form-1 button" value="just-r"><code>.just-r</code></label>
+      <br>
+      Button style:
+      <label><input type="checkbox" data-nodes="#form-1 button" value="inact"><code>.inact</code></label>
+      <label><input type="checkbox" data-nodes="#form-1 button" value="neutral"><code>.neutral</code></label>
+      <label><input type="checkbox" data-nodes="#form-1 button" value="success"><code>.success</code></label>
+      <label><input type="checkbox" data-nodes="#form-1 button" value="danger"><code>.danger</code></label>
+      <label><input type="checkbox" data-nodes="#form-1 button" value="bord"><code>.bord</code></label>
+      <label><input type="checkbox" data-nodes="#form-1 button" value="bg"><code>.bg</code></label>
+      <label><input type="checkbox" data-nodes="#form-1 button" value="text"><code>.text</code></label>
+    </p>
+    <div class="demo-preview">
+      <div id="form-1-container" class="container bord pad">
+        <form id="form-1" class="form resp" action="#form">
+          <label for="name-1">Name</label>
+          <input type="text" id="name-1" name="name">
+          <br>
+          <label for="email-1">Email</label>
+          <input type="email" id="email-1" name="email">
+          <br>
+          <button type="submit" class="shift">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <h3>Form validation</h3>
+    <p>
+      Inside <code>.form</code>, use <code>.tip > .success, .tip > .danger</code> after input for tips.<br>
+      Use <code>.form.lazy</code> to show tips only after user interaction.<br>
+      Use <code>button.detect</code> to enable button only if form is valid.
+    </p>
+    <p>
+      Validation mode: <label><input type="checkbox" data-nodes="#form-2" value="lazy"><code>.lazy</code></label>
+    </p>
+    <div class="demo-preview">
+      <div class="container bord pad">
+        <form id="form-2" class="form resp" action="#form-2">
+          <label for="name-2">Name</label>
+          <span>
+            <input type="text" id="name-2" name="name" placeholder="Enter name" required>
+            <small class="tip">
+              <span class="danger">Required</span>
+              <span class="success">OK</span>
+            </small>
+          </span>
+          <br>
+          <label for="email-2">Email</label>
+          <span>
+            <span class="input">[<input type="email" id="email-2" name="email" placeholder="Enter email">]</span>
+            <small class="tip">Hint: 
+              <span class="danger">Incorrect e-mail</span>
+              <span class="success">OK</span>
+            </small>
+          </span>
+          <br>
+          <button type="submit" class="shift success detect">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <h3>Checkboxes & Switches</h3>
+    <div class="demo-preview">
+      <label><input type="checkbox"> Standard Checkbox</label>
+      <br>
+      <label><input type="checkbox" class="switch"> Toggle Switch</label>
+      <br>
+      <label><input type="radio" name="radio-1" value="1"> Radio</label>
+      <br>
+      <label><input type="radio" name="radio-1" value="2"> Radio</label>
+    </div>
+
+    <h2 id="comp">6. Interactive Components</h2>
     
     <h3>Dropdown navigation</h3>
     <p>  
@@ -461,7 +611,7 @@
     
     <h3>Popups disclosure</h3>
     <p>Using native <code>&lt;details&gt;</code> elements.</p>
-    <div class="demo-preview">
+    <div class="demo-preview no-resize">
       Before
       <details class="pop">
         <summary>Options ▾</summary>
@@ -474,18 +624,21 @@
     </div>
 
     <h3>Popups on hover</h3>
-    <p>Using <code>:hover</code> state. Add <code>.pos</code> for automatic positioning.</p>
-    <div class="demo-preview">
-      <div class="mar">
-        Before
-        <div class="pop pos">
-          <a class="hover" tabindex="0">Default</a>
-          <div class="pad">Info<br>Text <span><a class="check"></a></span>
-          <div class="pop pos l"><a class="hover" tabindex="0">Nested</a> <div class="pad">More info<p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p></div></div>
-          </div>
+    <p><small class="tag info">Enhanced with JavaScript</small></p>
+    <p>Using <code>:hover</code> state. Add <code>.pos</code> for automatic positioning with JS.</p>
+    <p>  
+      Style options:
+      <label><input type="checkbox" data-nodes="#pop-1, #pop-2" value="pos"><code>.pos</code> (popup window will be moved to <code>body</code> on hover)</label>
+    </p>
+    <div class="demo-preview no-resize">
+      Before
+      <div id="pop-1" class="pop">
+        <a class="hover" tabindex="0">Default</a>
+        <div class="pad">Info<br>Text <span><a class="check"></a></span>
+        <div id="pop-2" class="pop l"><a class="hover" tabindex="0">Nested</a> <div class="pad">More info<p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p><p>p</p></div></div>
         </div>
-        After.
       </div>
+      After.
     </div>
 
     <h3>Tooltips</h3>
@@ -516,114 +669,6 @@
         <section id="demo-tab-1" class="pad">This is the content for Tab 1.</section>
         <section id="demo-tab-2" class="pad">This is the content for Tab 2.</section>
       </div>
-    </div>
-
-    <h2 id="form">5. Forms & Inputs</h2>
-    
-    <h3>Grid Forms</h3>
-    <p>Use <code>.form.resp</code> for aligned, responsive form layouts.</p>
-    <p>
-      Style options:
-      <label><input type="checkbox" data-nodes="#form-1" value="form" checked><code>.form</code></label>
-      <label><input type="checkbox" data-nodes="#form-1" value="resp" checked><code>.resp</code></label>
-      <label><input type="checkbox" data-nodes="#form-1" value="just"><code>.just</code></label>
-      <label><input type="checkbox" data-nodes="#form-1" value="stretch"><code>.stretch</code></label>
-    </p>
-    <div class="demo-preview">
-      <div class="container bord pad">
-        <form id="form-1" class="form resp" action="#form">
-          <label for="name-1">Name</label>
-          <input type="text" id="name-1" name="name">
-          <br>
-          <label for="email-1">Email</label>
-          <input type="email" id="email-1" name="email">
-          <br>
-          <button type="submit" class="shift">Submit</button>
-        </form>
-      </div>
-    </div>
-
-    <h3>Form validation</h3>
-    <p>
-      Inside <code>.form</code>, use <code>.tip > .success, .tip > .danger</code> after input for tips.<br>
-      Use <code>.form.lazy</code> to show tips only after user interaction.<br>
-      Use <code>button.detect</code> to enable button only if form is valid.
-    </p>
-    <p>
-      <label><input type="checkbox" data-nodes="#form-2" value="lazy"><code>.lazy</code></label>
-    </p>
-    <div class="demo-preview">
-      <div class="container bord pad">
-        <form id="form-2" class="form resp" action="#form-2">
-          <label for="name-2">Name</label>
-          <span>
-            <input type="text" id="name-2" name="name" placeholder="Enter name" required>
-            <small class="tip">
-              <span class="danger">Required</span>
-              <span class="success">OK</span>
-            </small>
-          </span>
-          <br>
-          <label for="email-2">Email</label>
-          <span>
-            <span class="input">[<input type="email" id="email-2" name="email" placeholder="Enter email">]</span>
-            <small class="tip">Hint: 
-              <span class="danger">Incorrect e-mail</span>
-              <span class="success">OK</span>
-            </small>
-          </span>
-          <br>
-          <button type="submit" class="shift success detect">Submit</button>
-        </form>
-      </div>
-    </div>
-
-    <h3>Checkboxes & Switches</h3>
-    <div class="demo-preview">
-      <label><input type="checkbox"> Standard Checkbox</label>
-      <br>
-      <label><input type="checkbox" class="switch"> Toggle Switch</label>
-      <br>
-      <label><input type="radio" name="radio-1" value="1"> Radio</label>
-      <br>
-      <label><input type="radio" name="radio-1" value="2"> Radio</label>
-    </div>
-
-    <h2 id="table">6. Data Tables</h2>
-    
-    <h3>Sorting & Filtering</h3>
-    <p><small class="tag info">Requires JavaScript</small></p>
-    <p>Click the headers to sort, or type in the search box to filter.</p>
-    <p>
-      Style options:
-      <label><input type="checkbox" data-nodes="#table-1" value="bord" checked><code>.bord</code></label>
-      <label><input type="checkbox" data-nodes="#table-1" value="line"><code>.line</code></label>
-      <label><input type="checkbox" data-nodes="#table-1" value="hover"><code>.hover</code></label>
-      <label><input type="checkbox" data-nodes="#table-1" value="wide"><code>.wide</code></label>
-      <label><input type="checkbox" data-nodes="#table-1" value="mid"><code>.mid</code></label>
-      <label><input type="checkbox" data-nodes="#table-1" value="fit"><code>.fit</code></label>
-      <label><input type="checkbox" data-nodes="#table-1" value="c"><code>.c</code></label>
-      <!--label class="check"><input type="checkbox" data-nodes="#table-1" value="c" class="hide"><code>.c</code></label-->
-    </p>
-    <div class="demo-preview">
-      <input type="search" data-filter="#table-1" placeholder="Search table..." class="mar show-js">
-      <table id="table-1" class="sort r2">
-        <thead>
-          <tr>
-            <th class="sort">Name</th>
-            <th class="sort">Age</th>
-            <th class="sort">Date</th>
-            <th class="sort">String</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Alice</td><td>0</td><td>01.07.2000</td><td>Cafe</td></tr>
-          <tr><td>Dan</td><td>150.50 km</td><td>2024-12-01</td><td>café</td></tr>
-          <tr><td>bob</td><td>150.15 km</td><td>02.02.2000</td><td>café</td></tr>
-          <tr><td>Charlie</td><td>-22</td><td>7/1/2025</td><td>coffee</td></tr>
-          <tr><td>No<br>name</td><td></td><td>-</td><td></td></tr>
-        </tbody>
-      </table>
     </div>
 
     <h2 id="js">7. JavaScript Enhancements</h2>
@@ -680,13 +725,13 @@
     
     <h2 id="icon">9. Icons</h2>
     <div id="divIcons"></div>
+  </main>
 
 <!-- customize -->
-
       <dialog id="customize" closedby="any" class="drawer shift trans pad">
         <div class="row mid gap">
           <label for="invert" class="ic-on-moon" style="color:var(--link);cursor:pointer;">Toggle dark mode</label>
-          <a href="#close" class="icon-close shift">Close</a>
+          <button command="close" commandfor="customize" class="icon-close nodec shift">Close</button>
         </div>
         <h3 class="mar">Customize style</h3>
         <form class="-form -resp mem">
