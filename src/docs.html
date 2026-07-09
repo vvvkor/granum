@@ -159,7 +159,7 @@
     
     <h3>Flexbox Rows</h3>
     <p>Use <code>.row</code> for horizontal layouts. Add <code>.wrap</code> to allow wrapping, and <code>.gap</code> for spacing.</p>
-    <p>
+    <p class="bord pad small">
       Container options: 
       <label><input type="checkbox" data-nodes="#row-1-container" value="container resize"><code>.container.resize</code></label>
       <label><input type="checkbox" data-nodes="#row-1-container" value="container resize scroll"><code>.container.resize.scroll</code></label>
@@ -206,7 +206,7 @@
 
     <h3>Auto-Filling Grid</h3>
     <p>Use <code>.grid-*</code> classes to create responsive grids that automatically fill available space based on minimum cell widths.</p>
-    <p>
+    <p class="bord pad small">
       Column width:
       <label><input type="radio" name="grid-col" data-nodes="#grid-1" value="grid-xs"><code>.grid-xs</code></label>
       <label><input type="radio" name="grid-col" data-nodes="#grid-1" value="grid-s" checked><code>.grid-s</code></label>
@@ -231,7 +231,7 @@
 
     <h3>Stack</h3>
     <p>Use <code>.stack</code> to avoid outer margins. Use <code>.stack.line</code> to add borders between items.</p>
-    <p>
+    <p class="bord pad small">
       Container style:
       <label><input type="checkbox" data-nodes="#stack-1-container" value="bord" checked><code>.bord</code></label>
       <label><input type="checkbox" data-nodes="#stack-1-container" value="pad"><code>.pad</code></label>
@@ -255,7 +255,7 @@
     
     <h3>Semantic Colors</h3>
     <p>Apply contextual colors to text, backgrounds, or borders using utility classes.</p>
-    <p>
+    <p class="bord pad small">
       <label><input type="checkbox" data-nodes="#colors-container > *" value="bord"><code>.bord</code></label>
       <label><input type="checkbox" data-nodes="#colors-container > *" value="bg"><code>.bg</code></label>
       <label><input type="checkbox" data-nodes="#colors-container > *" value="text"><code>.text</code></label>
@@ -290,7 +290,7 @@
     </div>
 
     <h3>List</h3>
-    <p>
+    <p class="bord pad small">
       Style options:<br>
       <label><input type="radio" name="list-mode" data-nodes="#list-1" value="" checked><i>default</i></label><br>
       <label><input type="radio" name="list-mode" data-nodes="#list-1" value="fit"><code>.fit</code></label><br>
@@ -317,7 +317,7 @@
     <h3>Sorting & Filtering</h3>
     <p><small class="tag info">Requires JavaScript</small></p>
     <p>Click the headers to sort, or type in the search box to filter.</p>
-    <p>
+    <p class="bord pad small">
       Style options:
       <label><input type="checkbox" data-nodes="#table-1" value="bord" checked><code>.bord</code></label>
       <label><input type="checkbox" data-nodes="#table-1" value="line"><code>.line</code></label>
@@ -353,7 +353,7 @@
     
     <h3>Grid Forms</h3>
     <p>Use <code>.form.resp</code> for aligned, responsive form layouts.</p>
-    <p>
+    <p class="bord pad small">
       Form options:
       <label><input type="checkbox" data-nodes="body" value="container"><code>body.container</code></label>
       <label><input type="checkbox" data-nodes="#form-1-container" value="container" checked><code>div.container</code></label>
@@ -398,7 +398,7 @@
       Use <code>.form.lazy</code> to show tips only after user interaction.<br>
       Use <code>button.detect</code> to enable button only if form is valid.
     </p>
-    <p>
+    <p class="bord pad small">
       Validation mode: <label><input type="checkbox" data-nodes="#form-2" value="lazy"><code>.lazy</code></label>
     </p>
     <div class="demo-preview">
@@ -441,7 +441,7 @@
     <h2 id="comp">6. Interactive Components</h2>
     
     <h3>Dropdown navigation</h3>
-    <p>  
+    <p class="bord pad small">  
       Style options:
       <label><input type="checkbox" data-nodes="#menu-1" value="hilite" checked><code>.hilite</code></label>
       <label><input type="checkbox" data-nodes="#menu-1" value="mid" checked><code>.mid</code></label>
@@ -519,7 +519,7 @@
       Appearance transition.
       Show in hash :target match (with JS).
     </p>  
-    <p>  
+    <p class="bord pad small">  
       Mode of dialog:
       <label><input type="radio" name="dlg-mode" data-nodes="#dialog-1" value="" checked><i>default modal</i></label>
       <label><input type="radio" name="dlg-mode" data-nodes="#dialog-1" value="full"><code>.full</code></label>
@@ -539,7 +539,7 @@
 <summary>Scrollable Dialog Example</summary>
 <div class="shade mar pads rad stack">
     <h3>Scrollable Dialogs</h3>
-    <p>  
+    <p class="bord pad small">  
       Mode of dialog:
       <label><input type="radio" name="dlg-mode-2" data-nodes="#dialog-2" value="" checked><i>default modal</i></label>
       <label><input type="radio" name="dlg-mode-2" data-nodes="#dialog-2" value="full"><code>.full</code></label>
@@ -655,7 +655,7 @@
     <h3>Popups on hover</h3>
     <p><small class="tag info">Enhanced with JavaScript</small></p>
     <p>Using <code>:hover</code> state. Add <code>.pos</code> for automatic positioning with JS.</p>
-    <p>  
+    <p class="bord pad small">  
       Style options:
       <label><input type="checkbox" data-nodes="#pop-1, #pop-2" value="pos"><code>.pos</code> (popup window will be moved to <code>body</code> on hover)</label>
     </p>
@@ -686,22 +686,22 @@
     <p><small class="tag info">Requires JavaScript</small></p>
     <p>Toggle CSS classes on target elements based on input state.</p>
     <div class="demo-preview">
-        <label>
-            <input type="checkbox" data-nodes="#demo-target-box" value="success bord">
-            Highlight Target
-        </label>
-        <div id="demo-target-box" class="pad mar">
-            I will get 'success' and 'bord' classes when checked!
-        </div>
+      <label>
+          <input type="checkbox" data-nodes="#demo-target-box" value="success bord">
+          Highlight Target
+      </label>
+      <div id="demo-target-box" class="pad mar">
+          I will get 'success' and 'bord' classes when checked!
+      </div>
     </div>
 
     <h3>State Persistence (<code>.mem</code>)</h3>
     <p><small class="tag info">Requires JavaScript</small></p>
     <p>Type something below, then refresh the page. The input and checkbox states are saved to LocalStorage!</p>
     <div class="demo-preview">
-        <input id="mem-text" type="text" class="mem" placeholder="This text is saved on reload...">
-        <br>
-        <label><input id="mem-box" type="checkbox" class="mem"> Remember this checkbox state</label>
+      <input id="mem-text" type="text" class="mem" placeholder="This text is saved on reload...">
+      <br>
+      <label><input id="mem-box" type="checkbox" class="mem"> Remember this checkbox state</label>
     </div>
 
     <h3 id="populate-inputs">Populate inputs from URL (<code>[data-get]</code>)</h3>
@@ -723,12 +723,12 @@
     <h3>Responsive Display Toggles</h3>
     <p>Show/hide elements based on viewport width. Resize your browser window to see them appear/disappear.</p>
     <div class="demo-preview">
-        <div class="hide-m hide-l pad info">Visible on Small screens only (&lt; 32rem)</div>
-        <div class="hide-s pad success">Visible on Medium/Large screens (≥ 32rem)</div>
+      <div class="hide-m hide-l pad info">Visible on Small screens only (&lt; 32rem)</div>
+      <div class="hide-s pad success">Visible on Medium/Large screens (≥ 32rem)</div>
     </div>
 
     <footer class="pad mar center note">
-        <p>Granum Framework Interactive Documentation &copy; 2026.</p>
+      <p>Granum Framework Interactive Documentation &copy; 2026.</p>
     </footer>
 
     
