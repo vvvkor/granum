@@ -229,7 +229,7 @@ window.addEventListener('close', e => (e.target.id == location.hash.slice(1)) ? 
 /* old-style modals and popups */
 
 document.addEventListener('keydown', e => {
-  // close modals and popups
+  // close modals and popups (no need for modern dialog/popover, works natively)
   if (e.key == 'Escape') {
     location.hash = '#escape'
     document.querySelectorAll('details.pop').forEach(n => n.removeAttribute('open'))

@@ -6,7 +6,7 @@
 - img.c.fit
 - table.wide.mid.fit.line.bord.c(.c#.r#)
 - ul.fit
-- .nobr .nodec
+- .nobr .nodec .nodec>* button.link label.link
 
 ## Space
 

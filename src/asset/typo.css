@@ -39,7 +39,7 @@ caption, figcaption {text-align:left;font-style:italic;}
 .nobr, button {white-space:nowrap;}
 
 /* link */
-a[href] {text-underline-offset:.2em;text-decoration-thickness:1px;}
+a[href], .link {text-underline-offset:.2em;text-decoration-thickness:1px;}
 
 /* image */
 main, img.fit, img.center {display:block;}

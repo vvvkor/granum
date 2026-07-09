@@ -120,7 +120,7 @@
 </head>
 <body>
 
-  <nav class="stick row gap wrap nodec small shade pad">
+  <nav class="stick row gap wrap -nodec small shade pad">
     <b>Granum v0.0.0</b>
     <a href="#start">Start</a>
     <a href="#layout">Layout</a>
@@ -131,10 +131,14 @@
     <a href="#js">JS</a>
     <a href="#util">Util</a>
     <a href="#icon">Icons</a>
-    <button command="show-modal" commandfor="customize" class="shift nodec icon-config">Customize</button>
-    <a href="https://github.com/vvvkor/granum" class="-neutral an-im-swing">
+    
+    <a href="#top" title="Top" class="icon-up note shift"></a>
+    <a href="#back" title="Back" class="icon-left note"></a>
+    <label for="invert" class="icon-sun link" title="Toggle dark mode"></label>
+    
+    <button command="show-modal" commandfor="customize" class="link icon-config" title="Customize"></button>
+    <a href="https://github.com/vvvkor/granum" class="-neutral an-im-swing" title="GitHub">
       <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="-1 -1 18 18" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
-      GitHub
     </a>
   </nav>
     
@@ -173,26 +177,23 @@
       <label><input type="checkbox" data-nodes="#row-1" value="resize"><code>.resize</code></label>
       <br>
       Column 1:
-      <select data-nodes="#column-1">
-        <option value="bg note pad">default</option>
-        <option value="bg note pad stick">stick</option>
-        <option value="bg note pad col-0">0x</option>
-        <option value="bg note pad col-0 push">0x & margin</option>
-        <option value="bg note pad col-1" selected>1x</option>
-        <option value="bg note pad col-2">2x</option>
-        <option value="bg note pad col-2 scroll">2x scroll</option>
-        <option value="bg note pad col-3">3x</option>
-      </select>
+      <label><input type="checkbox" data-nodes="#column-1" value="stick"><code>.stick</code></label>
+      <label><input type="checkbox" data-nodes="#column-1" value="push"><code>.push</code></label>
+      <label><input type="checkbox" data-nodes="#column-1" value="scroll"><code>.scroll</code></label>
+      <label><input type="radio" name="coln-1" data-nodes="#column-1" value="" checked><i>default</i></label>
+      <label><input type="radio" name="coln-1" data-nodes="#column-1" value="col-0"><code>.col-0</code></label>
+      <label><input type="radio" name="coln-1" data-nodes="#column-1" value="col-1"><code>.col-1</code></label>
+      <label><input type="radio" name="coln-1" data-nodes="#column-1" value="col-2"><code>.col-2</code></label>
+      <label><input type="radio" name="coln-1" data-nodes="#column-1" value="col-3"><code>.col-3</code></label>
       Column 2:
-      <select data-nodes="#column-2">
-        <option value="bg note pad">default</option>
-        <option value="bg note pad col-0">0x</option>
-        <option value="bg note pad col-0 shift">0x & margin</option>
-        <option value="bg note pad col-1">1x</option>
-        <option value="bg note pad col-2">2x</option>
-        <option value="bg note pad col-2 scroll" selected>2x & scroll</option>
-        <option value="bg note pad col-3">3x</option>
-      </select>
+      <label><input type="checkbox" data-nodes="#column-2" value="stick"><code>.stick</code></label>
+      <label><input type="checkbox" data-nodes="#column-2" value="shift"><code>.shift</code></label>
+      <label><input type="checkbox" data-nodes="#column-2" value="scroll" checked><code>.scroll</code></label>
+      <label><input type="radio" name="coln-2" data-nodes="#column-2" value=""><i>default</i></label>
+      <label><input type="radio" name="coln-2" data-nodes="#column-2" value="col-0"><code>.col-0</code></label>
+      <label><input type="radio" name="coln-2" data-nodes="#column-2" value="col-1"><code>.col-1</code></label>
+      <label><input type="radio" name="coln-2" data-nodes="#column-2" value="col-2" checked><code>.col-2</code></label>
+      <label><input type="radio" name="coln-2" data-nodes="#column-2" value="col-3"><code>.col-3</code></label>
     </p>
     <div class="demo-preview">
       <div id="row-1-container">
@@ -203,7 +204,7 @@
       </div>
     </div>
 
-    <h3>Auto-Filling CSS Grid</h3>
+    <h3>Auto-Filling Grid</h3>
     <p>Use <code>.grid-*</code> classes to create responsive grids that automatically fill available space based on minimum cell widths.</p>
     <p>
       Column width:
@@ -212,9 +213,8 @@
       <label><input type="radio" name="grid-col" data-nodes="#grid-1" value="grid-m"><code>.grid-m</code></label>
       <label><input type="radio" name="grid-col" data-nodes="#grid-1" value="grid-l"><code>.grid-l</code></label>
       <label><input type="checkbox" data-nodes="#grid-1" value="gap" checked><code>.gap</code></label>
-    </p>
-    <p>
-      First column span:
+      <br>
+      Third column span:
       <label><input type="radio" name="grid-cell" data-nodes="#grid-1-cell-3" value="" checked><i>default</i></label>
       <label><input type="radio" name="grid-cell" data-nodes="#grid-1-cell-3" value="span-2"><code>.span-2</code></label>
       <label><input type="radio" name="grid-cell" data-nodes="#grid-1-cell-3" value="span-3"><code>.span-3</code></label>
@@ -222,9 +222,9 @@
     </p>
     <div class="demo-preview">
       <div class="grid-m gap" id="grid-1">
-        <div class="bg note pad" id="grid-1-cell-1">Cell 1</div>
+        <div class="bg note pad">Cell 1</div>
         <div class="bg note pad">Cell 2</div>
-        <div class="bg note pad" id="grid-1-cell-3">Cell 3</div>
+        <div class="bg note pad bg info" id="grid-1-cell-3">Cell 3</div>
         <div class="bg note pad">Cell 4</div>
       </div>
     </div>
@@ -508,7 +508,7 @@
     </div>
     
     <h3>Modals & Drawers</h3>
-    <p><small class="tag success">Modern</small></p>
+    <!--p><small class="tag success">Modern</small></p-->
     <p>Pure CSS, no JavaScript required.
       Requires Invoker Commands API.
       Closes on Escape key, command button, click outside. <!-- or opening another dialog. -->
@@ -521,14 +521,11 @@
     </p>  
     <p>  
       Mode of dialog:
-      <select data-nodes="#dialog-1">
-        <option value="pad">Modal</option>
-        <option value="pad trans">Modal & transition</option>
-        <option value="full pad">Fullscreen</option>
-        <option value="drawer pad">Drawer left</option>
-        <option value="drawer trans pad">Drawer left & transition</option>
-        <option value="drawer shift trans pad">Drawer right & transition</option>
-      </select>
+      <label><input type="radio" name="dlg-mode" data-nodes="#dialog-1" value="" checked><i>default modal</i></label>
+      <label><input type="radio" name="dlg-mode" data-nodes="#dialog-1" value="full"><code>.full</code></label>
+      <label><input type="radio" name="dlg-mode" data-nodes="#dialog-1" value="drawer"><code>.drawer</code></label>
+      <label><input type="checkbox" data-nodes="#dialog-1" value="shift"><code>.shift</code></label>
+      <label><input type="checkbox" data-nodes="#dialog-1" value="trans" checked><code>.trans</code></label>
     </p>
     <div class="demo-preview">
       <button command="show-modal" commandfor="dialog-1">Open dialog</button>
@@ -538,18 +535,21 @@
       </dialog>
     </div>
 
+<details>
+<summary>Scrollable Dialog Example</summary>
+<div class="shade mar pads rad stack">
     <h3>Scrollable Dialogs</h3>
     <p>  
       Mode of dialog:
-      <select data-nodes="#dialog-2">
-        <option value="row vert trans">Modal</option>
-        <option value="row vert full">Fullscreen</option>
-        <option value="row vert drawer trans">Drawer left</option>
-        <option value="row vert drawer shift trans">Drawer right</option>
-      </select>
+      <label><input type="radio" name="dlg-mode-2" data-nodes="#dialog-2" value="" checked><i>default modal</i></label>
+      <label><input type="radio" name="dlg-mode-2" data-nodes="#dialog-2" value="full"><code>.full</code></label>
+      <label><input type="radio" name="dlg-mode-2" data-nodes="#dialog-2" value="drawer"><code>.drawer</code></label>
+      <label><input type="checkbox" data-nodes="#dialog-2" value="shift"><code>.shift</code></label>
+      <label><input type="checkbox" data-nodes="#dialog-2" value="trans" checked><code>.trans</code></label>
+
     </p>
     <div class="demo-preview">
-      <button command="show-modal" commandfor="dialog-2" class="nodec">Open complex dialog</button>
+      <button command="show-modal" commandfor="dialog-2" class="link">Open complex dialog</button>
       
       <dialog id="dialog-2" closedby="any" class="row vert trans">
         <header class="pad bg note">Modal Title</header>
@@ -559,12 +559,50 @@
           <p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p
         </div>
         <footer class="pad bg note row mid gap">
-          <button class="nodec" command="show-modal" commandfor="dialog-1">Open dialog-1</button>
+          <button class="link" command="show-modal" commandfor="dialog-1">Open dialog-1</button>
           <!--a href="#close">Close Modal (JS)</a-->
           <button class="shift" command="close" commandfor="dialog-2">Close</button>
         </footer>
       </dialog>
     </div>
+</div>
+</details>
+
+    <h3>Popups</h3>
+    <!--p><small class="tag success">Modern</small></p-->
+    <p>Using <code>[popover]</code>.</p>
+    <div class="demo-preview">
+      <button popovertarget="popup-1">Show popup</button>
+      <button popovertarget="popup-1" class="link">Show popup</button>
+      <div id="popup-1" popover class="pad">Popup content<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</div>
+    </div>
+    
+    <h3>Tooltips</h3>
+    <!--p><small class="tag success">Modern</small></p-->
+    <div class="demo-preview">
+      <button popovertarget="tip-1">Click me</button>
+      <button popovertarget="tip-1" class="link nodec">Click me</button>
+      <div id="tip-1" popover="hint" class="small">This is a tooltip</div>
+    </div>
+    
+    <h3>Tabs</h3>
+    <p><small class="tag info">Enhanced with JavaScript</small></p>
+    <p>Controlled via hash links.</p>
+    <div class="demo-preview"><!-- stack line -->
+      <ul class="tabs row">
+        <li><b>Tabs</b></li>
+        <li><a href="#demo-tab-1">Tab 1</a></li>
+        <li><a href="#demo-tab-2">Tab 2</a></li>
+      </ul>
+      <div class="bord">
+        <section id="demo-tab-1" class="pad">This is the content for Tab 1.</section>
+        <section id="demo-tab-2" class="pad">This is the content for Tab 2.</section>
+      </div>
+    </div>
+
+<details>
+<summary>Legacy Modals, Popups and Tooltips</summary>
+<div class="shade mar pads rad stack">
 
     <h3>Modals & Drawers (old style)</h3>
     <p><small class="tag warning">Deprecated</small></p>
@@ -600,15 +638,6 @@
 
     </div>
 
-    <h3>Popups</h3>
-    <p><small class="tag success">Modern</small></p>
-    <p>Using <code>[popover]</code>.</p>
-    <div class="demo-preview">
-      <button popovertarget="popup-1">Show popup</button>
-      <button popovertarget="popup-1" class="nodec">Show popup</button>
-      <div id="popup-1" popover class="pad">Popup content<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</div>
-    </div>
-    
     <h3>Popups disclosure</h3>
     <p>Using native <code>&lt;details&gt;</code> elements.</p>
     <div class="demo-preview no-resize">
@@ -641,14 +670,6 @@
       After.
     </div>
 
-    <h3>Tooltips</h3>
-    <p><small class="tag success">Modern</small></p>
-    <div class="demo-preview">
-      <button popovertarget="tip-1">Click me</button>
-      <button popovertarget="tip-1" class="nodec">Click me</button>
-      <div id="tip-1" popover="hint" class="small">This is a tooltip</div>
-    </div>
-    
     <h3>Tooltips (old style)</h3>
     <p><small class="tag warning">Deprecated</small></p>
    <div class="demo-preview">
@@ -656,20 +677,8 @@
         <span data-hint="Another hint!" class="pad bord info" tabindex="0">Or me</span>
     </div>
 
-    <h3>Tabs</h3>
-    <p><small class="tag info">Enhanced with JavaScript</small></p>
-    <p>Controlled via hash links.</p>
-    <div class="demo-preview"><!-- stack line -->
-      <ul class="tabs row">
-        <li><b>Tabs</b></li>
-        <li><a href="#demo-tab-1">Tab 1</a></li>
-        <li><a href="#demo-tab-2">Tab 2</a></li>
-      </ul>
-      <div class="bord">
-        <section id="demo-tab-1" class="pad">This is the content for Tab 1.</section>
-        <section id="demo-tab-2" class="pad">This is the content for Tab 2.</section>
-      </div>
-    </div>
+</div>
+</details>
 
     <h2 id="js">7. JavaScript Enhancements</h2>
     
@@ -730,7 +739,7 @@
 <!-- customize -->
       <dialog id="customize" closedby="any" class="drawer shift trans pad">
         <div class="row mid gap">
-          <label for="invert" class="ic-on-moon" style="color:var(--link);cursor:pointer;">Toggle dark mode</label>
+          <label for="invert" class="ic-on-moon link">Toggle dark mode</label>
           <button command="close" commandfor="customize" class="icon-close nodec shift">Close</button>
         </div>
         <h3 class="mar">Customize style</h3>
@@ -791,8 +800,12 @@
       </dialog><!-- /#customize -->
 
 <!-- accesskeys -->
-
+  
     <a href="#top" class="hide" accesskey="1">Top</a>
     <a href="#cancel" class="hide" accesskey="x">Cancel</a>
+
+<!-- common backdrop -->
+    <a href="#close-default" class="-backdrop"></a>
+
 </body>
 </html>
