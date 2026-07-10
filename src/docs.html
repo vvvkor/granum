@@ -25,6 +25,10 @@
         
         /* Live Preview Block Styling */
 
+        .options {
+          background: #fff;
+          border-left: medium solid var(--front-info);
+        }
         .demo-preview {
           background: var(--back, #fff6);
           border: thin solid var(--line, #ccc);
@@ -160,8 +164,8 @@
     
     <h3>Flexbox Rows</h3>
     <p>Use <code>.row</code> for horizontal layouts. Add <code>.wrap</code> to allow wrapping, and <code>.gap</code> for spacing.</p>
-    <details><summary class="icon-config"></summary>
-    <p class="bord pad small">
+    <!--details><summary class="icon-config small"></summary-->
+    <p class="options bord pad small">
       Container options: 
       <label><input type="checkbox" data-nodes="#row-1-container" value="container resize"><code>.container.resize</code></label>
       <label><input type="checkbox" data-nodes="#row-1-container" value="container resize scroll"><code>.container.resize.scroll</code></label>
@@ -197,7 +201,7 @@
       <label><input type="radio" name="coln-2" data-nodes="#column-2" value="col-2" checked><code>.col-2</code></label>
       <label><input type="radio" name="coln-2" data-nodes="#column-2" value="col-3"><code>.col-3</code></label>
     </p>
-    </details>
+    <!--/details-->
     <div class="demo-preview">
       <div id="row-1-container">
         <div class="row gap" id="row-1">
@@ -209,7 +213,7 @@
 
     <h3>Auto-Filling Grid</h3>
     <p>Use <code>.grid-*</code> classes to create responsive grids that automatically fill available space based on minimum cell widths.</p>
-    <p class="bord pad small">
+    <p class="options bord pad small">
       Column width:
       <label><input type="radio" name="grid-col" data-nodes="#grid-1" value="grid-xs"><code>.grid-xs</code></label>
       <label><input type="radio" name="grid-col" data-nodes="#grid-1" value="grid-s" checked><code>.grid-s</code></label>
@@ -234,7 +238,7 @@
 
     <h3>Stack</h3>
     <p>Use <code>.stack</code> to avoid outer margins. Use <code>.stack.line</code> to add borders between items.</p>
-    <p class="bord pad small">
+    <p class="options bord pad small">
       Container style:
       <label><input type="checkbox" data-nodes="#stack-1-container" value="bord" checked><code>.bord</code></label>
       <label><input type="checkbox" data-nodes="#stack-1-container" value="pad"><code>.pad</code></label>
@@ -258,7 +262,7 @@
     
     <h3>Semantic Colors</h3>
     <p>Apply contextual colors to text, backgrounds, or borders using utility classes.</p>
-    <p class="bord pad small">
+    <p class="options bord pad small">
       <label><input type="checkbox" data-nodes="#colors-container > *" value="bord"><code>.bord</code></label>
       <label><input type="checkbox" data-nodes="#colors-container > *" value="bg"><code>.bg</code></label>
       <label><input type="checkbox" data-nodes="#colors-container > *" value="text"><code>.text</code></label>
@@ -293,7 +297,7 @@
     </div>
 
     <h3>List</h3>
-    <p class="bord pad small">
+    <p class="options bord pad small">
       Style options:<br>
       <label><input type="radio" name="list-mode" data-nodes="#list-1" value="" checked><i>default</i></label><br>
       <label><input type="radio" name="list-mode" data-nodes="#list-1" value="fit"><code>.fit</code></label><br>
@@ -320,7 +324,7 @@
     <h3>Sorting & Filtering</h3>
     <p><small class="tag info">Requires JavaScript</small></p>
     <p>Click the headers to sort, or type in the search box to filter.</p>
-    <p class="bord pad small">
+    <p class="options bord pad small">
       Style options:
       <label><input type="checkbox" data-nodes="#table-1" value="bord" checked><code>.bord</code></label>
       <label><input type="checkbox" data-nodes="#table-1" value="line"><code>.line</code></label>
@@ -356,7 +360,7 @@
     
     <h3>Grid Forms</h3>
     <p>Use <code>.form.resp</code> for aligned, responsive form layouts.</p>
-    <p class="bord pad small">
+    <p class="options bord pad small">
       Form options:
       <label><input type="checkbox" data-nodes="body" value="container"><code>body.container</code></label>
       <label><input type="checkbox" data-nodes="#form-1-container" value="container" checked><code>div.container</code></label>
@@ -401,7 +405,7 @@
       Use <code>.form.lazy</code> to show tips only after user interaction.<br>
       Use <code>button.detect</code> to enable button only if form is valid.
     </p>
-    <p class="bord pad small">
+    <p class="options bord pad small">
       Validation mode: <label><input type="checkbox" data-nodes="#form-2" value="lazy"><code>.lazy</code></label>
     </p>
     <div class="demo-preview">
@@ -444,7 +448,7 @@
     <h2 id="comp">6. Interactive Components</h2>
     
     <h3>Dropdown navigation</h3>
-    <p class="bord pad small">  
+    <p class="options bord pad small">  
       Style options:
       <label><input type="checkbox" data-nodes="#menu-1" value="hilite" checked><code>.hilite</code></label>
       <label><input type="checkbox" data-nodes="#menu-1" value="mid" checked><code>.mid</code></label>
@@ -522,7 +526,7 @@
       Appearance transition.
       Show in hash :target match (with JS).
     </p>  
-    <p class="bord pad small">  
+    <p class="options bord pad small">  
       Mode of dialog:
       <label><input type="radio" name="dlg-mode" data-nodes="#dialog-1" value="" checked><i>default modal</i></label>
       <label><input type="radio" name="dlg-mode" data-nodes="#dialog-1" value="full"><code>.full</code></label>
@@ -542,14 +546,13 @@
 <summary>Scrollable Dialog Example</summary>
 <div class="shade mar pads rad stack">
     <h3>Scrollable Dialogs</h3>
-    <p class="bord pad small">  
+    <p class="options bord pad small">  
       Mode of dialog:
       <label><input type="radio" name="dlg-mode-2" data-nodes="#dialog-2" value="" checked><i>default modal</i></label>
       <label><input type="radio" name="dlg-mode-2" data-nodes="#dialog-2" value="full"><code>.full</code></label>
       <label><input type="radio" name="dlg-mode-2" data-nodes="#dialog-2" value="drawer"><code>.drawer</code></label>
       <label><input type="checkbox" data-nodes="#dialog-2" value="shift"><code>.shift</code></label>
       <label><input type="checkbox" data-nodes="#dialog-2" value="trans" checked><code>.trans</code></label>
-
     </p>
     <div class="demo-preview">
       <button command="show-modal" commandfor="dialog-2" class="link">Open complex dialog</button>
@@ -658,7 +661,7 @@
     <h3>Popups on hover</h3>
     <p><small class="tag info">Enhanced with JavaScript</small></p>
     <p>Using <code>:hover</code> state. Add <code>.pos</code> for automatic positioning with JS.</p>
-    <p class="bord pad small">  
+    <p class="options bord pad small">  
       Style options:
       <label><input type="checkbox" data-nodes="#pop-1, #pop-2" value="pos"><code>.pos</code> (popup window will be moved to <code>body</code> on hover)</label>
     </p>
@@ -675,9 +678,9 @@
 
     <h3>Tooltips (old style)</h3>
     <p><small class="tag warning">Deprecated</small></p>
-   <div class="demo-preview">
-        <span data-hint="This is a tooltip" class="pad bord" tabindex="0">Hover over me</span>
-        <span data-hint="Another hint!" class="pad bord info" tabindex="0">Or me</span>
+    <div class="demo-preview">
+      <span data-hint="This is a tooltip" class="pad bord" tabindex="0">Hover over me</span>
+      <span data-hint="Another hint!" class="pad bord info" tabindex="0">Or me</span>
     </div>
 
 </div>
