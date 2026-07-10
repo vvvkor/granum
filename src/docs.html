@@ -20,7 +20,7 @@
     <script defer src="asset/icon-paths.js"></script>
     
     <style>
-        body {background:var(--hilite, #f8f8f8);}
+        body {background:oklch(from var(--hilite, #ccc3) l c h / calc(alpha / 2.5));}
         h2 { border-bottom: medium solid var(--line); }
         
         /* Live Preview Block Styling */
@@ -61,7 +61,7 @@
         
         // demo icons
         Object.entries(window.iconPaths).forEach(([name, [width, path]]) => {
-          divIcons.innerHTML += `<a class="icon-${name}"></a>`
+          divIcons.innerHTML += '<a class="icon-' + name + '"></a>'
         });
         [...divIcons.querySelectorAll('[class*="icon-"]')].forEach((n, i) => {
           n.title = (i + 1) + '. ' + n.getAttribute('class').slice(5)
@@ -73,7 +73,7 @@
         // update code preview
         const showCode = (n, code=null) => {
           if (!code) code = n.nextElementSibling.firstElementChild
-          let s = n.innerHTML.replace(/^[\r\n]+|[\r\n\s]+$/g, '')
+          let s = n.innerHTML.replace(/^[\r\n]+|[\r\n\s]+$/g, '').replace(/\s+class=""/g, '')
           const offset = s.match(/^ */) || ''
           if (offset) {
             const re = new RegExp('(^|[\\n\\r])' + offset, 'g')
@@ -236,6 +236,23 @@
       </div>
     </div>
 
+    <h3>Columns</h3>
+    <p>Use <code>.columns-*</code> classes for columns.</p>
+    <p class="options bord pad small">
+      Column width:
+      <label><input type="radio" name="grid-col" data-nodes="#cols-1 > div" value="columns-xs"><code>.columns-xs</code></label>
+      <label><input type="radio" name="grid-col" data-nodes="#cols-1 > div" value="columns-s" checked><code>.columns-s</code></label>
+      <label><input type="radio" name="grid-col" data-nodes="#cols-1 > div" value="columns-m"><code>.columns-m</code></label>
+      <label><input type="radio" name="grid-col" data-nodes="#cols-1 > div" value="columns-l"><code>.columns-l</code></label>
+      <!--label><input type="checkbox" data-nodes="#cols-1" value="gap" checked><code>.gap</code></label-->
+    </p>
+    <div class="demo-preview" id="cols-1">
+      <div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tristique purus nec erat suscipit, eget rhoncus ipsum porta. Donec ut enim quam. Nulla neque purus, convallis eget justo vitae, aliquam hendrerit velit. Mauris metus tortor, eleifend id nibh quis, maximus pharetra ante. In auctor neque vitae ultrices sagittis. Aliquam posuere purus ac vulputate commodo. Quisque aliquet velit in sem aliquet laoreet.
+        Donec a neque velit. Integer viverra, diam at vehicula hendrerit, tortor libero pharetra nisi, vel convallis turpis ante id velit. Donec faucibus, ante aliquam interdum consectetur, sapien quam ullamcorper justo, vel pellentesque arcu diam et diam.
+      </div>
+    </div>
+
     <h3>Stack</h3>
     <p>Use <code>.stack</code> to avoid outer margins. Use <code>.stack.line</code> to add borders between items.</p>
     <p class="options bord pad small">
@@ -268,8 +285,6 @@
       <label><input type="checkbox" data-nodes="#colors-container > *" value="text"><code>.text</code></label>
       <label><input type="checkbox" data-nodes="#colors-container > *" value="shade"><code>.shade</code></label>
       <label><input type="checkbox" data-nodes="#colors-container > *" value="hilite"><code>.hilite</code></label>
-      <label><input type="checkbox" data-nodes="#colors-container > *" value="pad"><code>.pad</code></label>
-      <label><input type="checkbox" data-nodes="#colors-container > *" value="pads"><code>.pads</code></label>
       <label><input type="checkbox" data-nodes="#colors-container > *" value="rad"><code>.rad</code></label>
       <label><input type="checkbox" data-nodes="#colors-container > a" value="hover"><code>.hover</code></label>
       <label><input type="checkbox" data-nodes="#colors-container > *" value="act"><code>.act</code></label>
@@ -294,6 +309,26 @@
     <div class="demo-preview">
       <input type="checkbox" id="invert">
       <label for="invert">Toggle dark mode</label>
+    </div>
+
+    <h3>Spacing</h3>
+    <p></p>
+    <p class="options bord pad small">
+      <label><input type="checkbox" data-nodes="#space-container > *" value="fit"><code>.fit</code></label>
+      <label><input type="checkbox" data-nodes="#space-container > *" value="bord"><code>.bord</code></label>
+      <label><input type="checkbox" data-nodes="#space-container > *" value="rad"><code>.rad</code></label>
+      <label><input type="checkbox" data-nodes="#space-container > *" value="shade"><code>.shade</code></label>
+      <label><input type="checkbox" data-nodes="#space-container > *" value="pad"><code>.pad</code></label>
+      <label><input type="checkbox" data-nodes="#space-container > *" value="pads"><code>.pads</code></label>
+      <label><input type="checkbox" data-nodes="#space-container > *" value="mar"><code>.mar</code></label>
+      <label><input type="checkbox" data-nodes="#space-container > *" value="mars"><code>.mars</code></label>
+    </p>
+    <div id="space-container" class="demo-preview">
+      <div>Div</div>
+      <div>Div</div>
+      <div>Div</div>
+      <p>Paragraph</p>
+      <p>Paragraph</p>
     </div>
 
     <h3>List</h3>
@@ -739,7 +774,31 @@
 
     
     <h2 id="icon">9. Icons</h2>
+
+    <h3>Compact icons using <code>mask-image</code></h3>
     <div id="divIcons"></div>
+
+    <h3>Icons animation</h3>
+    <p class="options bord pad small">
+      Animation type: 
+      <label><input type="radio" name="anim" data-nodes="#anim-container > svg" value="" checked><i>none</i></label>
+      <label><input type="radio" name="anim" data-nodes="#anim-container > svg" value="anim-spin"><code>.anim-spin</code></label>
+      <label><input type="radio" name="anim" data-nodes="#anim-container > svg" value="anim-blink"><code>.anim-blink</code></label>
+      <label><input type="radio" name="anim" data-nodes="#anim-container > svg" value="anim-pulse"><code>.anim-pulse</code></label>
+      <label><input type="radio" name="anim" data-nodes="#anim-container > svg" value="anim-flip"><code>.anim-flip</code></label>
+      <label><input type="radio" name="anim" data-nodes="#anim-container > svg" value="anim-turn"><code>.anim-turn</code></label>
+      <label><input type="radio" name="anim" data-nodes="#anim-container > svg" value="anim-swing"><code>.anim-swing</code></label>
+    </p>
+    <div class="demo-preview" id="anim-container">
+      <a class="icon-refresh anim-spin success"></a>
+      <a class="icon-warning anim-blink warning"></a>
+      <a class="icon-heart anim-pulse danger"></a>
+      <a class="icon-bookmark anim-flip note"></a>
+      <a class="icon-anchor anim-turn info"></a>
+      <a class="icon-bell anim-swing neutral"></a>
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="-1 -1 18 18" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+    </div>
+
   </main>
 
 <!-- customize -->
