@@ -9,8 +9,6 @@
   --bord: thin solid var(--line);
   --shade: 0 .1rem .8rem 0 #0003;
   
-  --front-default: #000;
-  --back-default: #fff;
   --front: #333;
   --back: #fcfcfc;
   --link: #04a;

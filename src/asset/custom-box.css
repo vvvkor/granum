@@ -4,10 +4,10 @@
 :is([type="checkbox"], [type="radio"]) {width:1.2em;height:1.2em;vertical-align:-15%;margin:0 .2em;}
 
 /* radio, checkbox */
-.boxes :is([type="checkbox"], [type="radio"]) {--input-color:var(--back-default);appearance:none;display:inline-block;/*height:1.2em;width:1.2em;*/background-color:var(--input-color);border-radius:1em;/*vertical-align:-15%;*/position:relative;transition:background-color .2s;line-height:1.2;/*margin:0 .2em;*/border:thin solid transparent;}
+.boxes :is([type="checkbox"], [type="radio"]) {--input-color:var(--back-input);appearance:none;display:inline-block;/*height:1.2em;width:1.2em;*/background-color:var(--input-color);border-radius:1em;/*vertical-align:-15%;*/position:relative;transition:background-color .2s;line-height:1.2;/*margin:0 .2em;*/border:thin solid transparent;}
 .boxes :is([type="checkbox"], [type="radio"]):not(:checked) {border-color:var(--line-input, #999);}
 .boxes :is([type="checkbox"], [type="radio"]):checked {--input-color:var(--input-accent);}
-.boxes :is([type="checkbox"], [type="radio"]):before {position:absolute;inset:0;content:"";background-color:var(--back-default);clip-path:circle(23%);}
+.boxes :is([type="checkbox"], [type="radio"]):before {position:absolute;inset:0;content:"";background-color:var(--back-input);clip-path:circle(23%);}
 /* box */
 .boxes [type="checkbox"]:not(.switch) {border-radius:.25em;}
 .boxes [type="checkbox"]:not(.switch):before {clip-path:polygon(10% 50%,40% 80%,90% 30%,80% 20%,40% 60%,20% 40%);}

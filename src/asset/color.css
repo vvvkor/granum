@@ -32,7 +32,7 @@
 
 a:has(img), ul.row li {-webkit-tap-highlight-color:transparent;}
 
-body {color:var(--front);background-color:var(--back);}
+body, dialog, [popover] {color:var(--front);background-color:var(--back);}
 .diagonals {background:repeating-linear-gradient(135deg, #9990, #9990 1em, #9991 1em, #9991 2em);}
 
 .shade {box-shadow:var(--shade);}

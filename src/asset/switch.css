@@ -5,5 +5,5 @@
 
 .switch {--input-color:var(--line-input, #999);appearance:none;display:inline-block;background-color:var(--input-color);border-radius:1em;position:relative;transition:background-color .2s;line-height:1.2;width:2.2em;/*height:1.2em;vertical-align:-15%;margin:0 .2em;*/}
 .switch:checked {--input-color:var(--input-accent);}
-.switch:before {position:absolute;inset:0;content:"";background-color:var(--back-default);--pos:28%;clip-path:circle(25% at var(--pos) 50%);transition:clip-path .2s;}
+.switch:before {position:absolute;inset:0;content:"";background-color:var(--back-input);--pos:28%;clip-path:circle(25% at var(--pos) 50%);transition:clip-path .2s;}
 .switch:checked:before {--pos:72%;}

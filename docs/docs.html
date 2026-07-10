@@ -20,12 +20,13 @@
     <script defer src="icon-paths.js"></script>
     
     <style>
+        body {background:var(--hilite, #f8f8f8);}
         h2 { border-bottom: medium solid var(--line); }
         
         /* Live Preview Block Styling */
 
         .demo-preview {
-          background: var(--back-default, #fff);
+          background: var(--back, #fff6);
           border: thin solid var(--line, #ccc);
           padding: var(--gap);
           margin-top: var(--gap);
@@ -159,6 +160,7 @@
     
     <h3>Flexbox Rows</h3>
     <p>Use <code>.row</code> for horizontal layouts. Add <code>.wrap</code> to allow wrapping, and <code>.gap</code> for spacing.</p>
+    <details><summary class="icon-config"></summary>
     <p class="bord pad small">
       Container options: 
       <label><input type="checkbox" data-nodes="#row-1-container" value="container resize"><code>.container.resize</code></label>
@@ -195,6 +197,7 @@
       <label><input type="radio" name="coln-2" data-nodes="#column-2" value="col-2" checked><code>.col-2</code></label>
       <label><input type="radio" name="coln-2" data-nodes="#column-2" value="col-3"><code>.col-3</code></label>
     </p>
+    </details>
     <div class="demo-preview">
       <div id="row-1-container">
         <div class="row gap" id="row-1">
@@ -765,6 +768,11 @@
                 <br>
                 <label for="var-back">Background</label>
                 <input id="var-back" type="color" class="var" name="back">
+                <br>
+                <!-- todo: work with opacity
+                <label for="var-hilite">Hilite</label>
+                <input id="var-hilite" type="color" class="var" name="hilite">
+                -->
               </div>
             </div>
             <div>
@@ -772,8 +780,11 @@
                 <label for="var-front">Text</label>
                 <input id="var-front" type="color" class="var" name="front">
                 <br>
-                <label for="var-link">Link</label>
+                <label for="var-link">Link and Button</label>
                 <input id="var-link" type="color" class="var" name="link">
+                <br>
+                <label for="var-hilite">Active</label>
+                <input id="var-hilite" type="color" class="var" name="active">
                 <br>
                 <label for="var-line">Line</label>
                 <input id="var-line" type="color" class="var" name="line">
@@ -783,11 +794,6 @@
                 <br>
                 <label for="var-sw">Switch accent</label>
                 <input id="var-sw" type="color" class="var" name="input-accent">
-                <!--
-                <br>
-                <label for="var-hilite">Hilite</label>
-                <input id="var-hilite" type="color" class="var" name="hilite">
-                -->
               </div>
             </div>
           </div>
