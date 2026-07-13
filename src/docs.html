@@ -53,7 +53,7 @@
           border-bottom: thin solid var(--line);
           margin-bottom: 0.8em;
         }
-        pre.demo-code { max-height: 25vh; margin-top:-1px; background: var(--hilite); padding: 1rem; overflow-x: auto; border: thin solid var(--line); border-radius:0;  }
+        pre.demo-code { max-height: 20vh; margin-top:-1px; background: var(--hilite); padding: 1rem; overflow-x: auto; border: thin solid var(--line); border-radius:0;  }
         .demo-code code { font-family: var(--mono); font-size: 0.9em; }
     </style>
     <script>
@@ -166,10 +166,12 @@
     <p>Use <code>.row</code> for horizontal layouts. Add <code>.wrap</code> to allow wrapping, and <code>.gap</code> for spacing.</p>
     <!--details><summary class="icon-config small"></summary-->
     <p class="options bord pad small">
+      <!--
       Container options: 
       <label><input type="checkbox" data-nodes="#row-1-container" value="container resize"><code>.container.resize</code></label>
       <label><input type="checkbox" data-nodes="#row-1-container" value="container resize scroll"><code>.container.resize.scroll</code></label>
       <br>
+      -->
       Row options:
       <!-- stick.resize (.resp@container@media) -->
       <label><input type="checkbox" data-nodes="#row-1" value="gap" checked><code>.gap</code></label>
@@ -181,34 +183,36 @@
       <label><input type="checkbox" data-nodes="#row-1" value="vert"><code>.vert</code></label>
       <label><input type="checkbox" data-nodes="#row-1" value="full"><code>.full</code></label>
       <label><input type="checkbox" data-nodes="#row-1" value="resize"><code>.resize</code></label>
+      <label><input type="checkbox" data-nodes="#row-1" value="scroll"><code>.scroll</code></label>
       <br>
       Column 1:
-      <label><input type="checkbox" data-nodes="#column-1" value="stick"><code>.stick</code></label>
-      <label><input type="checkbox" data-nodes="#column-1" value="push"><code>.push</code></label>
-      <label><input type="checkbox" data-nodes="#column-1" value="scroll"><code>.scroll</code></label>
       <label><input type="radio" name="coln-1" data-nodes="#column-1" value="" checked><i>default</i></label>
       <label><input type="radio" name="coln-1" data-nodes="#column-1" value="col-0"><code>.col-0</code></label>
       <label><input type="radio" name="coln-1" data-nodes="#column-1" value="col-1"><code>.col-1</code></label>
       <label><input type="radio" name="coln-1" data-nodes="#column-1" value="col-2"><code>.col-2</code></label>
       <label><input type="radio" name="coln-1" data-nodes="#column-1" value="col-3"><code>.col-3</code></label>
+      <label><input type="checkbox" data-nodes="#column-1" value="stick"><code>.stick</code></label>
+      <label><input type="checkbox" data-nodes="#column-1" value="scroll"><code>.scroll</code></label>
+      <label><input type="checkbox" data-nodes="#column-1" value="push"><code>.push</code></label>
+      <br>
       Column 2:
-      <label><input type="checkbox" data-nodes="#column-2" value="stick"><code>.stick</code></label>
-      <label><input type="checkbox" data-nodes="#column-2" value="shift"><code>.shift</code></label>
-      <label><input type="checkbox" data-nodes="#column-2" value="scroll" checked><code>.scroll</code></label>
       <label><input type="radio" name="coln-2" data-nodes="#column-2" value=""><i>default</i></label>
       <label><input type="radio" name="coln-2" data-nodes="#column-2" value="col-0"><code>.col-0</code></label>
       <label><input type="radio" name="coln-2" data-nodes="#column-2" value="col-1"><code>.col-1</code></label>
       <label><input type="radio" name="coln-2" data-nodes="#column-2" value="col-2" checked><code>.col-2</code></label>
       <label><input type="radio" name="coln-2" data-nodes="#column-2" value="col-3"><code>.col-3</code></label>
+      <label><input type="checkbox" data-nodes="#column-2" value="stick"><code>.stick</code></label>
+      <label><input type="checkbox" data-nodes="#column-2" value="scroll" checked><code>.scroll</code></label>
+      <label><input type="checkbox" data-nodes="#column-2" value="shift"><code>.shift</code></label>
     </p>
     <!--/details-->
+      <!--div id="row-1-container">
+      </div-->
     <div class="demo-preview">
-      <div id="row-1-container">
         <div class="row gap" id="row-1">
           <div class="bg note pad col-1" id="column-1">Column 1</div>
           <div class="bg note pad col-2 scroll" id="column-2">Column 2<br>Text<br>Text<br>Text<br>Text</div>
         </div>
-      </div>
     </div>
 
     <h3>Auto-Filling Grid</h3>
@@ -249,7 +253,6 @@
     <div class="demo-preview" id="cols-1">
       <div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tristique purus nec erat suscipit, eget rhoncus ipsum porta. Donec ut enim quam. Nulla neque purus, convallis eget justo vitae, aliquam hendrerit velit. Mauris metus tortor, eleifend id nibh quis, maximus pharetra ante. In auctor neque vitae ultrices sagittis. Aliquam posuere purus ac vulputate commodo. Quisque aliquet velit in sem aliquet laoreet.
-        Donec a neque velit. Integer viverra, diam at vehicula hendrerit, tortor libero pharetra nisi, vel convallis turpis ante id velit. Donec faucibus, ante aliquam interdum consectetur, sapien quam ullamcorper justo, vel pellentesque arcu diam et diam.
       </div>
     </div>
 
@@ -275,6 +278,19 @@
       </div>
     </div>
 
+    <h3>Stick</h3>
+    <p>Use <code>.stick</code> to stick element to top or bottom.</p>
+    <p class="options bord pad small">
+      <label><input type="checkbox" data-nodes="#stick-1-container :is(header, footer)" value="stick" checked><code>.stick</code></label>
+    </p>
+    <div class="demo-preview no-resize" id="stick-1-container">
+      <div class="scroll resize bord" style="height:15em;">
+        <header class="stick shade pad">Header</header>
+        <article class="pad">Article<p>p<p>p<p>p<p>p<p>p<p>p</article>
+        <footer class="stick shade pad">Footer</footer>
+      </div>
+    </div>
+
     <h2 id="typo">3. Typography, Colors & Theming</h2>
     
     <h3>Semantic Colors</h3>
@@ -294,14 +310,19 @@
     </p>
     <div id="colors-container" class="demo-preview">
       <span class="">Default</span>
-      <a href="#link" class="">Link</a>
-      <a href="#link" class="neutral">Neutral</a>
-      <a href="#link" class="danger">Danger</a>
       <span class="note">Note</span>
       <span class="info">Information</span>
       <span class="success">Success</span>
       <span class="warning">Warning</span>
       <span class="danger">Danger</span>
+      <br>
+      <a href="#link" class="">Link</a>
+      <a href="#link" class="neutral">Neutral</a>
+      <a href="#link" class="note">Note</a>
+      <a href="#link" class="info">Information</a>
+      <a href="#link" class="success">Success</a>
+      <a href="#link" class="warning">Warning</a>
+      <a href="#link" class="danger">Danger</a>
     </div>
 
     <h3>Dark Mode</h3>
@@ -402,7 +423,7 @@
       <label><input type="checkbox" data-nodes="#form-1" value="form" checked><code>.form</code></label>
       <label><input type="checkbox" data-nodes="#form-1" value="resp" checked><code>.resp</code></label>
       <label><input type="checkbox" data-nodes="#form-1" value="just"><code>.just</code></label>
-      <label><input type="checkbox" data-nodes="#form-1" value="stretch"><code>.stretch</code></label>
+      <label><input type="checkbox" data-nodes="#form-1" value="cling"><code>.cling</code></label>
       <br>
       Button position:
       <label><input type="checkbox" data-nodes="#form-1 button" value="shift" checked><code>.shift</code></label>
@@ -479,6 +500,21 @@
       <br>
       <label><input type="radio" name="radio-1" value="2"> Radio</label>
     </div>
+    
+    <h3>Customized Inputs</h3>
+    <p>
+      Use <code>.input</code> wrapper for composite input.<br>
+      Use <code>.dropzone</code> for file input to turn it in a drop zone.
+    </p>
+    <div class="demo-preview">
+      <span class="input wide mar">
+        <div class="icon-mail">BEFORE</div>
+        <input type="email" id="email-3" name="email" placeholder="Enter email">
+        <div class="tip"><span class="danger icon-ban">INCORRECT</span><span class="success icon-check">OK</span></div>
+      </span>
+      <input type="file" class="dropzone wide">
+    </div>
+
 
     <h2 id="comp">6. Interactive Components</h2>
     
@@ -763,9 +799,11 @@
     
     <h3>Responsive Display Toggles</h3>
     <p>Show/hide elements based on viewport width. Resize your browser window to see them appear/disappear.</p>
-    <div class="demo-preview">
-      <div class="hide-m hide-l pad info">Visible on Small screens only (&lt; 32rem)</div>
-      <div class="hide-s pad success">Visible on Medium/Large screens (≥ 32rem)</div>
+    <div class="demo-preview container">
+      <div class="hide-m hide-l info">Visible on Small screens only (&lt; 32rem)</div>
+      <div class="hide-s success">Visible on Medium/Large screens (≥ 32rem)</div>
+      <div class="hide-cm hide-cl info">Visible in Small containers only (&lt; 32rem)</div>
+      <div class="hide-cs success">Visible in Medium/Large containers (≥ 32rem)</div>
     </div>
 
     <footer class="pad mar center note">

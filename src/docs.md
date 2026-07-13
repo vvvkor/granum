@@ -32,7 +32,7 @@
 
 ## Form
 
-- .form.resp.just.stretch > .shift.span.just-l/c/r/s (.resp@container)
+- .form.resp.just.cling > .shift.span.just-l/c/r/s (.resp@container)
 
 ## Inputs
 

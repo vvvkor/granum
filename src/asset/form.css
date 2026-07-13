@@ -12,7 +12,7 @@
   .form.resp > br + * {grid-column-start:1;}
   .form.resp > .shift {grid-column-start:2;}
   .form.resp > .span {grid-column:1 / span 2;}
-  :where(.form.resp.stretch) > *:is(:first-child, br + *):not(.span, .shift) {justify-self:end;}
+  :where(.form.resp.cling) > *:is(:first-child, br + *):not(.span, .shift) {justify-self:end;}
   .form.resp > .just-l {justify-self:start;}
   .form.resp > .just-c {justify-self:center;}
   .form.resp > .just-r {justify-self:end;}
