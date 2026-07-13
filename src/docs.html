@@ -677,6 +677,56 @@
       </div>
     </div>
 
+    <h3>Toggle content with <code>:checked</code></h3>
+    <p>Add <code>.check</code> class to label or checkbox to toggle following element.</p>
+    <div class="demo-preview">
+      <label class="check icon-desc"><input type="checkbox">Label 1</label>
+      <div class="bord pad">Target content</div>
+      <br>
+      <label class="icon-desc" for="check-1">Label 2</label>
+      <input id="check-1" type="checkbox" class="check">
+      <div class="bord pad">Target content</div>
+    </div>
+
+    <h3>Toggle content with URL hash</h3>
+    <div class="demo-preview">
+      <a href="#target-1">Show target</a>
+      <div id="target-1" class="target bord pad">
+        Target content<br>
+        <a href="#close">Close</a>
+      </div>
+    </div>
+
+    <h3>Slider with URL hash</h3>
+    <div class="demo-preview">
+        <div class="slider scrollbar nodec">
+          <div id="slide1" class="pad hilite row mid stretch">
+            <div class="c">
+              <a href="#slide4">&larr;</a>
+              One
+              <a href="#slide2">&rarr;</a>
+            </div>
+          </div>
+          <div id="slide2" class="info bg row mid">
+            <a href="#slide1" class="pad hover">&lsaquo;</a>
+            <div class="col-1 c pad">Two</div>
+            <a href="#slide3" class="pad hover">&rsaquo;</a>
+          </div>
+          <div id="slide3" class="pad warning bg">
+            Three
+          </div>
+          <div id="slide4" class="pad danger invert">
+            Four
+          </div>
+        </div>
+        <nav class="c nodec">
+          <a href="#slide1" class="pad">&#x25cf;</a>
+          <a href="#slide2" class="pad">&#x25cf;</a>
+          <a href="#slide3" class="pad">&#x25cf;</a>
+          <a href="#slide4" class="pad">&#x25cf;</a>
+        </nav>
+    </div>
+
 <details>
 <summary>Legacy Modals, Popups and Tooltips</summary>
 <div class="shade mar pads rad stack">
