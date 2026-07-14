@@ -1,8 +1,8 @@
 (() => {
   
-const act = (n, k, f) => (n.dataset.parent ? n.closest(n.dataset.parent) : document)?.querySelectorAll(n.dataset[k]).forEach(m => f(m))
+const act = (n, k, f) => (n.dataset.parent ? n.closest(n.dataset.parent) : document)?.querySelectorAll(n.dataset[k] || n.hash).forEach(m => f(m))
 
-const cls = n => {
+const cls = (n, e) => {
   if (n.type == 'checkbox') act(n, 'nodes', m => m.classList[n.checked != ('reverse' in n.dataset) ? 'add' : 'remove'](...n.value.split(/\s+/)))
   else if (n.options || (n.type == 'radio' && n.checked)) { // toggle
     const list = [...(n.options ? n.options : (n.closest('form') || document).querySelectorAll('[name=' + n.name + ']'))]
@@ -11,6 +11,11 @@ const cls = n => {
     if (n.value) act(n, 'nodes', m => m.classList.add(...n.value.split(/\s+/)))
   }
   //else if ((n.type == 'radio' && n.checked) || n.options) act(n, 'nodes', m => m.className = n.value) // just set
+  else if (n.dataset.value) {
+    e?.preventDefault()
+    if (e) n.classList.toggle('act')
+    act(n, '', m => m.classList[n.classList.contains('act') != ('reverse' in n.dataset) ? 'add' : 'remove'](...n.dataset.value.split(/\s+/)))
+  }
 }
 
 const tgl = (n, e) => {
@@ -18,9 +23,9 @@ const tgl = (n, e) => {
   if (d) {
     if (e) {
       e.preventDefault()
-      d.classList.toggle('hide')
+      n.classList.toggle('act')
     }
-    n.classList[d.classList.contains('hide') ? 'remove' : 'add']('act')
+    d.classList[n.classList.contains('act') ? 'remove' : 'add']('hide')
   }
 }
 
@@ -31,6 +36,7 @@ const tab = (n, e) => {
   ul.querySelectorAll('a[href^="#"]').forEach(a => a.classList[a == n ? 'add' : 'remove']('act'))
 }
 
+// focus in modal // legacy
 const foc = (e) => {
   const m = location.hash ? document.querySelector(location.hash)?.closest('.modal') : null
   if (m && !m.matches(':focus-within')) ((e?.type || !location.hash ? null : m.querySelector(location.hash)) || m.querySelector('button,input,select,textarea,[contenteditable]' + (e?.type == 'focusin' ? ',[href],[tabindex]:not([tabindex="-1"])' : '')))?.focus()
@@ -78,7 +84,7 @@ document.addEventListener('DOMContentLoaded', e => {
   })
   
   // init toggle classes
-  document.querySelectorAll('[data-nodes]').forEach(n => cls(n))
+  document.querySelectorAll('[data-nodes], [data-value]').forEach(n => cls(n))
 
   // init toggle
   document.querySelectorAll('[href="#open"]').forEach(n => tgl(n))
@@ -94,7 +100,7 @@ document.addEventListener('DOMContentLoaded', e => {
   setTimeout(foc, 100)
 })
 
-document.addEventListener('click', e => {
+document.addEventListener('click', async e => {
   const n = e.target
   const a = n.closest('a, button')
   
@@ -124,6 +130,9 @@ document.addEventListener('click', e => {
   }
 
   if (a) {
+    
+    // toggle classes
+    if (n.dataset.value) cls(n, e)
     
     // prev/next
     if (location.hash && ['#prev', '#next'].includes(a.hash)) {
@@ -166,8 +175,9 @@ document.addEventListener('click', e => {
       const n = document.querySelector(a.hash)
       if (n) {
         e.preventDefault()
-        n.select()
-        if (document.execCommand('copy') && !a.classList.contains('act')) {
+        await navigator.clipboard.writeText('value' in n ? n.value : n.textContent);
+        // n.select()
+        if (/*document.execCommand('copy') &&*/ !a.classList.contains('act')) {
           a.classList.add('act')
           setTimeout(() => a.classList.remove('act'), 3000)
         }
@@ -200,7 +210,7 @@ document.addEventListener('input', e => {
   if (n.dataset.check) act(n, 'check', m => m.checked = n.checked && !m.closest('[hidden]'))
   
   // toggle classes
-  if (n.dataset.nodes) cls(n)
+  if (n.dataset.nodes) cls(n, e)
 
   // filter table
   if (n.dataset.filter) act(n, 'filter', t => t.querySelectorAll('tbody tr').forEach(m => {
@@ -228,6 +238,7 @@ window.addEventListener('close', e => (e.target.id == location.hash.slice(1)) ? 
 
 /* old-style modals and popups */
 
+// escape key // legacy
 document.addEventListener('keydown', e => {
   // close modals and popups (no need for modern dialog/popover, works natively)
   if (e.key == 'Escape') {
@@ -248,6 +259,7 @@ document.addEventListener('blur', e => {
 })
 */
 
+// popup positioning // legacy
 document.addEventListener('mouseover', e => {
   // fix popup position, allow overflow
   const w = e.target.closest?.('.popwin')
@@ -271,7 +283,7 @@ document.addEventListener('mouseover', e => {
   }
 })
 
-// trap focus in modal
+// trap focus in modal // legacy
 document.addEventListener('focusin', foc)
 window.addEventListener('hashchange', foc)
 

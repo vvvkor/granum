@@ -125,7 +125,7 @@
 </head>
 <body>
 
-  <nav class="stick row gap wrap -nodec small shade pad">
+  <nav class="stick row gap wrap nodec small shade pad">
     <b>Granum v0.0.0</b>
     <a href="#start">Start</a>
     <a href="#layout">Layout</a>
@@ -320,7 +320,6 @@
       <div class="l">Align left</div>
       <div class="c">Align center</div>
       <div class="r">Align right</div>
-      <div class="center bord wide-s">Center block</div>
       <blockquote>Block quote</blockquote>
       <pre>Preformatted text
 <code>Code: <var>window</var> = <kbd class="text-y" onclick="this.textContent = window.innerWidth + ' x ' + window.innerHeight">click</kbd></code></pre>
@@ -400,6 +399,10 @@
       <a href="#link" class="success">Success</a>
       <a href="#link" class="warning">Warning</a>
       <a href="#link" class="danger">Danger</a>
+      <br>
+      <a href="#link" class="icon-check">Link with icon</a>
+      <a href="#link" class="icon-warning warning">Colored link with icon</a>
+      <a href="#link" class="icon-ban danger ic">Colored only icon</a>
     </div>
 
     <h3>Dark Mode</h3>
@@ -420,6 +423,13 @@
       <label><input type="checkbox" data-nodes="#space-container > *" value="pads"><code>.pads</code></label>
       <label><input type="checkbox" data-nodes="#space-container > *" value="mar"><code>.mar</code></label>
       <label><input type="checkbox" data-nodes="#space-container > *" value="mars"><code>.mars</code></label>
+      <label><input type="checkbox" data-nodes="#space-container > *" value="center"><code>.center</code></label>
+      <br>
+      Maximum width:
+      <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide-s"><code>.wide-s</code></label>
+      <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide-m"><code>.wide-m</code></label>
+      <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide-l"><code>.wide-l</code></label>
+      <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide"><code>.wide</code></label>
     </p>
     <div id="space-container" class="demo-preview">
       <div>Div</div>
@@ -607,7 +617,7 @@
       <label><input type="checkbox" data-nodes="#menu-1" value="gap"><code>.gap</code></label>
       <label><input type="checkbox" data-nodes="#menu-1" value="scroll"><code>.scroll</code></label>
     </p>
-    <div class="demo-preview">
+    <div class="demo-preview no-resize">
       <ul id="menu-1" class="row  hilite mid hover resp trans">
         <li><a tabindex="0"><span>Style<br><small class="note">CSS</small></span></a>
           <ul>
@@ -898,9 +908,35 @@
         <input type="checkbox" data-parent=".demo-preview" data-nodes="div" value="shade" data-reverse checked>
         No shadow (reverse action)
       </label>
+      <a href="#demo-target-box" data-value="serif" class="act">Serif</a>
       <div id="demo-target-box" class="pad mar">
-        This div will get 'success', 'bord' and 'shade' classes when checked
+        This div will get 'success', 'bord', 'shade', 'serif' classes when checked
       </div>
+    </div>
+
+    <h3>Toggle sub-list (<code>#open</code>)</h3>
+    <p class="options bord pad small">  
+      Style options:
+      <label><input type="checkbox" data-nodes="#list-2" value="fit" checked><code>.fit</code></label>
+      <!--label><input type="checkbox" data-nodes="#list-2" value="row mid hover"><code>.row.mid.hover</code></label-->
+    </p>
+    <div class="demo-preview no-resize">
+      <ul id="list-2" class="fit">
+        <li><span><a href="#open" class="icon-desc act"></a> Color (toggle icon and text)</span>
+          <ul>
+            <li><a>Red</a></li>
+            <li><a>Green</a></li>
+            <li><a>Blue</a></li>
+          </ul>
+        </li>
+        <li><a href="#open" class="icon-desc">Font (only toggle link)</a>
+          <ul>
+            <li><a>Serif</a></li>
+            <li><a>Sans</a></li>
+            <li><a>Mono</a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
 
     <h3>State Persistence (<code>.mem</code>)</h3>
@@ -936,7 +972,8 @@
 
     <h3>Copy input value</h3>
     <div class="demo-preview">
-      <input id="src-1" type="text" value="Example"> <a href="#src-1" class="copy icon-copy">Copy</a>
+      <input id="src-1" type="text" value="Value to copy"> <a href="#src-1" class="copy icon-copy">Copy</a><br>
+      <span id="src-2">Text to copy</span> <a href="#src-2" class="copy icon-copy">Copy</a>
     </div>
 
     <h3>Show password</h3>
