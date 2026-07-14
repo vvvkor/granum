@@ -59,7 +59,8 @@ body:has(.modal.full:target, .modal.full :target, .full:modal[open]) {overflow:h
 
 /* gallery*/
 img:target {position:absolute;display:block;inset:0;width:100%;height:100%;object-fit:contain;}
-.corner {position:absolute;inset:0 0 auto auto;z-index:10;}
+/*img.target:target {position:fixed;}*/
+/*.corner {position:absolute;inset:0 0 auto auto;z-index:10;}*/
 
 /* drawer */
 .drawer {--wdr:calc(1em + var(--drawer-width));position:fixed;inset:0 auto 0 calc(0em - var(--wdr));width:min(var(--drawer-width), 80%);z-index:80;overflow:auto; height:auto;max-height:none;margin:0;}

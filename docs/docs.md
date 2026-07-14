@@ -78,7 +78,8 @@
 - [data-hint]:hover
 - .target#target
 - .modal.full.show#target
-- .modal.full + (.corner a[#first] + a[#close]) + (a[#next] > img.target#target)
+- .modal.full + (.stick a[#first] + a[#close]) + (a[#next] > img.target#target)
+-- .modal.full + (--.corner a[#first] + a[#close]) + (a[#next] > img.target#target)
 - .drawer.shift.show#target
 - ul.row.tabs.gap + div>#
 - (label.check > input) + *
