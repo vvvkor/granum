@@ -290,6 +290,33 @@
         <footer class="stick shade pad">Footer</footer>
       </div>
     </div>
+    
+    <h3>Splitter</h3>
+    <p>Add <code>.resize</code> class to child nodes of the same <code>.row</code> container.</p>
+    <p class="options bord pad small">
+      Container styles:
+      <label><input type="checkbox" data-nodes="#splitter-1" value="resp" checked><code>.resp</code></label>
+      <label><input type="checkbox" data-nodes="#splitter-1" value="vert"><code>.vert</code></label>
+      <label><input type="checkbox" data-nodes="#splitter-1" value="full"><code>.full</code></label>
+      <!--br>
+      Item styles:
+      <label><input type="checkbox" data-nodes="#splitter-1 > *" value="scroll"><code>.scroll</code></label-->
+    </p>
+    <div class="demo-preview">
+      <div id="splitter-1" class="row gap resp">
+        <div class="resize bg warning pad" style="width:12em;">Left column
+          <div class="scroll">
+            <table class="bord bg neutral nobr">
+              <tr><th>Table
+              <tr><td>Value
+              <tr><td>Some very long text written to trigger horizontal scroll
+            </table>
+          </div>
+        </div>
+        <div class="resize bg info pad">Center<br>column</div>
+        <div class="scroll col-1 bg success pad">Right column</div>
+      </div>
+    </div>
 
     <h2 id="typo">3. Typography, Colors & Theming</h2>
 
@@ -308,6 +335,14 @@
         x<sub>sub</sub>
         x<sup>super</sup>
       </p>
+      <hr>
+      <blockquote>Block quote</blockquote>
+      <pre>Preformatted text
+<code>Code: <var>window</var> = <kbd class="text-y" onclick="this.textContent = window.innerWidth + ' x ' + window.innerHeight">click</kbd></code></pre>
+    </div>
+    
+    <h3>Text</h3>
+    <div class="demo-preview" id="links-container">
       <p>
         <span class="sans">Sans serif</span>
         <span class="serif">Serif</span>
@@ -316,24 +351,40 @@
         <span class="regular">Regular</span>
         <span class="mid">Middle</span>
       </p>
-      <hr>
       <div class="l">Align left</div>
       <div class="c">Align center</div>
       <div class="r">Align right</div>
-      <blockquote>Block quote</blockquote>
-      <pre>Preformatted text
-<code>Code: <var>window</var> = <kbd class="text-y" onclick="this.textContent = window.innerWidth + ' x ' + window.innerHeight">click</kbd></code></pre>
+      <p class="nobr">No auto wrap. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tristique purus nec erat suscipit, eget rhoncus ipsum porta.</p>
     </div>
     
+    <h3>Links and Buttons</h3>
+    <p class="options bord pad small">
+      <label><input type="checkbox" data-nodes="#links-container > *" value="act"><code>.act</code></label>
+      <label><input type="checkbox" data-nodes="#links-container > *" value="inact"><code>.inact</code></label>
+      <label><input type="checkbox" data-nodes="#links-container > *" value="nodec"><code>.nodec</code></label>
+      <label><input type="checkbox" data-nodes="#links-container > *" value="link"><code>.link</code></label>
+      <label><input type="checkbox" data-nodes="#links-container > *" value="success"><code>.success</code></label>
+      <label><input type="checkbox" data-nodes="#links-container > *" value="icon-link"><code>.icon-link</code></label>
+      <label><input type="checkbox" data-nodes="#links-container > *" value="ic"><code>.ic</code></label>
+      <label><input type="checkbox" data-nodes="#links-container > *" value="bord"><code>.bord</code></label>
+    </p>
+    <div class="demo-preview" id="links-container">
+      <span>Text</span>
+      <a href="#link">Link</a>
+      <button>Button</button>
+      <label>Label</label>
+    </div>
+
     <h3>Images</h3>
-    <div class="demo-preview">
-      <img class="c" alt="" src="https://placehold.co/400x200/b33/fff.png?text=***" width="80"> Circled image
-      <hr>
-      <img class="center" alt="" src="https://placehold.co/400x200/b33/fff.png?text=***" width="100">
-      <hr>
+    <p class="options bord pad small">
+      <label><input type="checkbox" data-nodes="#images-container img" value="c"><code>.c</code></label>
+      <label><input type="checkbox" data-nodes="#images-container img" value="center" checked><code>.center</code></label>
+      <label><input type="checkbox" data-nodes="#images-container img" value="wide"><code>.wide</code></label>
+    </p>
+    <div class="demo-preview" id="images-container">
       <figure>
-        <img class="" alt="" src="https://placehold.co/400x200/b33/fff.png?text=***" width="100">
-        <figcaption>Figure caption</figcaption>
+        <img class="center" alt="" src="https://placehold.co/400x200/b33/fff.png?text=***" width="100">
+        <figcaption class="c">Figure caption</figcaption>
       </figure>
     </div>
 
@@ -786,32 +837,33 @@
 
     <h3>Slider with URL hash</h3>
     <div class="demo-preview">
-        <div class="slider nodec">
-          <div id="slide1" class="pad hilite row mid stretch">
-            <div class="c">
-              <a href="#slide4">&larr;</a>
-              One
-              <a href="#slide2">&rarr;</a>
-            </div>
-          </div>
-          <div id="slide2" class="info bg row mid">
-            <a href="#slide1" class="pad hover">&lsaquo;</a>
-            <div class="col-1 c pad">Two</div>
-            <a href="#slide3" class="pad hover">&rsaquo;</a>
-          </div>
-          <div id="slide3" class="pad warning bg">
-            Three
-          </div>
-          <div id="slide4" class="pad danger invert">
-            Four
+      <div class="slider nodec">
+        <div id="slide1" class="pad hilite row mid stretch">
+          <div class="c">
+            <a href="#slide4">&larr;</a>
+            One
+            <a href="#slide2">&rarr;</a>
           </div>
         </div>
-        <nav class="c nodec">
-          <a href="#slide1" class="pad">&#x25cf;</a>
-          <a href="#slide2" class="pad">&#x25cf;</a>
-          <a href="#slide3" class="pad">&#x25cf;</a>
-          <a href="#slide4" class="pad">&#x25cf;</a>
-        </nav>
+        <div id="slide2" class="info bg row mid">
+          <a href="#slide1" class="pad hover">&lsaquo;</a>
+          <div class="col-1 c pad">Two</div>
+          <a href="#slide3" class="pad hover">&rsaquo;</a>
+        </div>
+        <div id="slide3" class="pad warning bg">
+          Three
+        </div>
+        <div id="slide4" class="pad warning invert">
+          <img class="wide" alt="" src="https://placehold.co/400x200/b33/fff.png?text=***">
+          <div>Four</div>
+        </div>
+      </div>
+      <nav class="c nodec">
+        <a href="#slide1" class="pad">&#x25cf;</a>
+        <a href="#slide2" class="pad">&#x25cf;</a>
+        <a href="#slide3" class="pad">&#x25cf;</a>
+        <a href="#slide4" class="pad">&#x25cf;</a>
+      </nav>
     </div>
 
 <details>

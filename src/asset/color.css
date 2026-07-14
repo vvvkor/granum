@@ -50,7 +50,7 @@ button.link:focus-visible {outline:.2em solid var(--outline-focus-visible);}
 :where(a, .link).nodec, .nodec :where(a, .link) {--decor:none;}
 .link {cursor:pointer;}
 
-button   {--ff:var(--link);--fff:var(--link);}
+button:where(:not(.link))   {--ff:var(--link);--fff:var(--link);}
 .tag     {--ff:var(--front-note);}
 :where(button, .tag).bord {--ff:var(--fff, var(--front));--bb:var(--back);}
 .neutral {--ff:var(--front);--bb:var(--back);}
@@ -62,7 +62,7 @@ button   {--ff:var(--link);--fff:var(--link);}
   /*:where(button:not(.bg)).bord {--bb:var(--back);}*/
 
 :where(button, .tag).bord {background-color:var(--back);}
-.text, .ic:before, :where(.neutral, .note, .info, .success, .warning, .danger, button, .tag):not(.bg, .ic) {color:var(--ff, var(--front));}
+.text, .ic:before, :where(.neutral, .note, .info, .success, .warning, .danger, button:not(.link), .tag):not(.bg, .ic) {color:var(--ff, var(--front));}
 .bg {background-color:var(--bb, var(--back));}
 .bord {border:thin solid var(--ff, var(--line));}
 :where(button, .tag):not(.bord, .link, .nodec) {color:var(--front-invert);background-color:var(--ff, var(--front-note));}

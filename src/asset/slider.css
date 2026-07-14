@@ -1,5 +1,7 @@
 .slider {height:16rem;max-height:50vh;overflow:auto;display:flex;scroll-snap-type:x mandatory;scroll-behavior:smooth;}
-.slider > div {box-sizing:border-box;width:100%;flex:none;scroll-snap-align:center;}
+.slider > div {box-sizing:border-box;width:100%;flex:none;scroll-snap-align:center;position:relative;}
+.slider > div > * {position:relative;z-index:1;}
+.slider > div > img.wide {position:absolute;inset:0;height:100%;}
 
 /*
 .slider + nav a {opacity:.25;padding-inline:.25em;filter:grayscale(1);}
