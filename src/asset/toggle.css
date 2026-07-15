@@ -24,7 +24,6 @@ html {scroll-padding-top:4rem;}
 
 /*.check {}*/
 /*.tree {}*/
-.gallery {}
 
 /* common */
 :where(ul.row) ul, :where(.pop) > *+:last-child, :where(.modal, .drawer, .popwin, dialog), [data-hint]:after, [popover] {box-sizing:border-box;background:var(--back);box-shadow:var(--shade);}
@@ -58,7 +57,8 @@ details.pop.l > div {left:auto;right:0;}
 body:has(.modal.full:target, .modal.full :target, .full:modal[open]) {overflow:hidden;}
 
 /* gallery*/
-img:target {position:absolute;display:block;inset:0;width:100%;height:100%;object-fit:contain;}
+.gallery img {display:none;}
+img:target, a:target > img:only-child {position:absolute;display:block;inset:0;width:100%;height:100%;object-fit:contain;}
 /*img.target:target {position:fixed;}*/
 /*.corner {position:absolute;inset:0 0 auto auto;z-index:10;}*/
 

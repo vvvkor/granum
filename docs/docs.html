@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Granum v2.1.14 - Documentation</title>
+    <title>Granum v2.1.15 - Documentation</title>
     <meta name="theme-color" content="#fff">
     <meta name="theme-color" media="(prefers-color-scheme:dark)" content="#04a">
     <link rel="icon" type="image/svg" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20220%20220'%3E%3Cpath%20fill='%23666'%20d='M35%2067l75%20-44%2075%2044%200%2089-75%2044-75-44zm75%208a35%2035%200%201%200%20.01%200z'/%3E%3C/svg%3E">
@@ -126,7 +126,7 @@
 <body>
 
   <nav class="stick row gap wrap nodec small shade pad">
-    <b>Granum v2.1.14</b>
+    <b>Granum v2.1.15</b>
     <a href="#start">Start</a>
     <a href="#layout">Layout</a>
     <a href="#typo">Typography</a>
@@ -150,7 +150,7 @@
   <main class="wide-m center pad">
     
     <div class="hero" id="top">
-      <h1>Granum v2.1.14</h1>
+      <h1>Granum v2.1.15</h1>
       <p class="note">Developer Documentation</p>
     </div>
     
@@ -380,6 +380,7 @@
       <label><input type="checkbox" data-nodes="#images-container img" value="c"><code>.c</code></label>
       <label><input type="checkbox" data-nodes="#images-container img" value="center" checked><code>.center</code></label>
       <label><input type="checkbox" data-nodes="#images-container img" value="wide"><code>.wide</code></label>
+      <label><input type="checkbox" data-nodes="#images-container img" value="fit"><code>.fit</code></label>
     </p>
     <div class="demo-preview" id="images-container">
       <figure>
@@ -459,8 +460,8 @@
     <h3>Dark Mode</h3>
     <p>Invert the entire page.</p>
     <div class="demo-preview">
-      <input type="checkbox" id="invert">
-      <label for="invert">Toggle dark mode</label>
+      <label><input type="checkbox" id="invert">Toggle dark mode (Pure CSS using <code>html:has(#invert:checked)</code>)</label><br>
+      <label><input type="checkbox" data-nodes="html" value="invert">Toggle dark mode (JS sets <code>html.invert</code>)</label>
     </div>
 
     <h3>Spacing</h3>
@@ -663,10 +664,15 @@
       <label><input type="checkbox" data-nodes="#menu-1" value="mid" checked><code>.mid</code></label>
       <label><input type="checkbox" data-nodes="#menu-1" value="resp" checked><code>.resp</code></label>
       <label><input type="checkbox" data-nodes="#menu-1" value="hover" checked><code>.hover</code></label>
-      <label><input type="checkbox" data-nodes="#menu-1" value="trans"><code>.trans</code></label>
       <label><input type="checkbox" data-nodes="#menu-1" value="click"><code>.click</code></label>
       <label><input type="checkbox" data-nodes="#menu-1" value="gap"><code>.gap</code></label>
       <label><input type="checkbox" data-nodes="#menu-1" value="scroll"><code>.scroll</code></label>
+      <br>
+      Transition:
+      <label><input type="radio" data-nodes="#menu-1" name="trans-1" value=""><i>none</i> (<code>.trans-off</code>)</label>
+      <label><input type="radio" data-nodes="#menu-1" name="trans-1" value="trans-slow"><code>.trans-slow</code></label>
+      <label><input type="radio" data-nodes="#menu-1" name="trans-1" value="trans" checked><code>.trans</code></label>
+      <label><input type="radio" data-nodes="#menu-1" name="trans-1" value="trans-fast"><code>.trans-fast</code></label>
     </p>
     <div class="demo-preview no-resize">
       <ul id="menu-1" class="row  hilite mid hover resp trans">
@@ -741,7 +747,12 @@
       <label><input type="radio" name="dlg-mode" data-nodes="#dialog-1" value="full"><code>.full</code></label>
       <label><input type="radio" name="dlg-mode" data-nodes="#dialog-1" value="drawer"><code>.drawer</code></label>
       <label><input type="checkbox" data-nodes="#dialog-1" value="shift"><code>.shift</code></label>
-      <label><input type="checkbox" data-nodes="#dialog-1" value="trans" checked><code>.trans</code></label>
+      <br>
+      Transition:
+      <label><input type="radio" data-nodes="#dialog-1" name="trans-2" value=""><i>none</i> (<code>.trans-off</code>)</label>
+      <label><input type="radio" data-nodes="#dialog-1" name="trans-2" value="trans-slow"><code>.trans-slow</code></label>
+      <label><input type="radio" data-nodes="#dialog-1" name="trans-2" value="trans" checked><code>.trans</code></label>
+      <label><input type="radio" data-nodes="#dialog-1" name="trans-2" value="trans-fast"><code>.trans-fast</code></label>
     </p>
     <div class="demo-preview">
       <button command="show-modal" commandfor="dialog-1">Open dialog</button>
@@ -751,7 +762,7 @@
       </dialog>
     </div>
 
-<details>
+<details class="mar">
 <summary>Scrollable Dialog Example</summary>
 <div class="shade mar pads rad stack">
     <h3>Scrollable Dialogs</h3>
@@ -869,31 +880,45 @@
     <h3>Gallery</h3>
     <p><small class="tag info">Enhanced with JavaScript</small></p>
     <div class="demo-preview no-resize">
-      <a href="#img1">Open gallery</a>
+      <a href="#im1">Gallery (pure CSS)</a><br>
       
-      <div class="modal full -invert">
+      <div class="modal full gallery">
+        <div class="stick hilite r small">
+          <a href="#im1"    class="pad note icon-first"></a>
+          <a href="#cancel" class="pad note icon-close"></a>
+        </div>
+        <a id="im1" href="#im2"><img loading="lazy" alt="Red"   src="https://placehold.co/400x200/b33/fff.png?text=***"></a>
+        <a id="im2" href="#im3"><img loading="lazy" alt="Green" src="https://placehold.co/300x200/393/fff.png?text=///"></a>
+        <a id="im3" href="#im4"><img loading="lazy" alt="Blue"  src="https://placehold.co/200x200/039/fff.png?text=~~~"></a>
+        <a id="im4" href="#im1"><img loading="lazy" alt="Grey"  src="https://placehold.co/220x300/777/fff.png?text=---"></a>
+      </div>
+
+      <a href="#i1">Gallery (pure CSS, no container)</a><br>
+      
+      <a id="i1" href="#i2" class="modal full"><img class="target" loading="lazy" alt="Red"   src="https://placehold.co/400x200/b33/fff.png?text=***"></a>
+      <a id="i2" href="#i3" class="modal full"><img class="target" loading="lazy" alt="Green" src="https://placehold.co/300x200/393/fff.png?text=///"></a>
+      <a id="i3" href="#i4" class="modal full"><img class="target" loading="lazy" alt="Blue"  src="https://placehold.co/200x200/039/fff.png?text=~~~"></a>
+      <a id="i4" href="#i1" class="modal full"><img class="target" loading="lazy" alt="Grey"  src="https://placehold.co/220x300/777/fff.png?text=---"></a>
+            
+      <a href="#img1">Gallery (with JS enhancements: previous, next, Escape key)</a>
+      
+      <div class="modal full">
         <div class="stick hilite r">
           <a href="#img1"   class="pad hover note icon-first hide-js"></a>
           <a href="#prev"   class="pad hover note icon-prev  show-js"></a>
           <a href="#next"   class="pad hover note icon-next  show-js"></a>
           <a href="#cancel" class="pad hover note icon-close"></a>
         </div>
-        <a href="#img2"><img id="img1" data-prev="#img4" data-next="#img2" class="target note bg" loading="lazy" alt="Red"   src="https://placehold.co/400x200/b33/fff.png?text=***"  ></a>
-        <a href="#img3"><img id="img2" data-prev="#img1" data-next="#img3" class="target note bg" loading="lazy" alt="Green" src="https://placehold.co/300x200/393/fff.png?text=///"></a>
-        <a href="#img4"><img id="img3" data-prev="#img2" data-next="#img4" class="target note bg" loading="lazy" alt="Blue"  src="https://placehold.co/200x200/039/fff.png?text=~~~" ></a>
-        <a href="#img1"><img id="img4" data-prev="#img3" data-next="#img1" class="target note bg" loading="lazy" alt="Grey"  src="https://placehold.co/220x300/777/fff.png?text=---" ></a>
+        <a id="img1" href="#img2"><img data-prev="#img4" data-next="#img2" class="target note bg" loading="lazy" alt="Red"   src="https://placehold.co/400x200/b33/fff.png?text=***"></a>
+        <a id="img2" href="#img3"><img data-prev="#img1" data-next="#img3" class="target note bg" loading="lazy" alt="Green" src="https://placehold.co/300x200/393/fff.png?text=///"></a>
+        <a id="img3" href="#img4"><img data-prev="#img2" data-next="#img4" class="target note bg" loading="lazy" alt="Blue"  src="https://placehold.co/200x200/039/fff.png?text=~~~"></a>
+        <a id="img4" href="#img1"><img data-prev="#img3" data-next="#img1" class="target note bg" loading="lazy" alt="Grey"  src="https://placehold.co/220x300/777/fff.png?text=---"></a>
       </div>
       
-      <a href="#i1">Open gallery simple</a>
-      <a href="#i2" class="modal full"><img id="i1" class="target" loading="lazy" alt="Red" src="https://placehold.co/400x200/b33/fff.png?text=***"></a>
-      <a href="#i3" class="modal full"><img id="i2" class="target" loading="lazy" alt="Green" src="https://placehold.co/300x200/393/fff.png?text=///"></a>
-      <a href="#i4" class="modal full"><img id="i3" class="target" loading="lazy" alt="Blue"  src="https://placehold.co/200x200/039/fff.png?text=~~~"></a>
-      <a href="#i1" class="modal full"><img id="i4" class="target" loading="lazy" alt="Grey"  src="https://placehold.co/220x300/777/fff.png?text=---"></a>
-            
     </div>
 
 
-<details>
+<details class="mar">
 <summary>Legacy Modals, Popups and Tooltips</summary>
 <div class="shade mar pads rad stack">
 
@@ -1018,6 +1043,15 @@
       </ul>
     </div>
 
+    <h3>Dialogs</h3>
+    <div class="demo-preview">
+      <button class="dialog" title="Alert text">Alert</button>
+      <button class="dialog" data-href="?q=test#find" title="Confirm your action" data-blank data-param="confirmed">Confirm</button>
+      <button class="dialog" data-href="?q=default#find" title="Type in your query" data-prompt="q">Prompt</button>
+      <a class="dialog" href="?q=test#find" title="Confirm your action" data-blank data-param="confirmed">Confirm</a>
+      <a class="dialog" href="?q=default#find" title="Type in your query" data-prompt="q">Prompt</a>
+    </div>
+
     <h3>State Persistence (<code>.mem</code>)</h3>
     <p>Type something below, then refresh the page. The input and checkbox states are saved to LocalStorage!</p>
     <div class="demo-preview">
@@ -1077,13 +1111,37 @@
     
     <h2 id="util">8. Utilities & Helpers</h2>
     
+    <h3>Visibility</h3>
+    <p class="options bord pad small">  
+      <label><input type="checkbox" data-nodes="#hide-1" value="hide" checked><code>.hide</code></label>
+      <label><input type="checkbox" data-nodes="#show-1" value="show" checked><code>.show</code></label>
+    </p>
+    <div class="demo-preview">
+      <div id="hide-1" class="bord pad hide">Hidden</div>
+      <div id="show-1" class="bord pad show" style="display:inline-block;">
+        Revert element's <code>display</code> to default (<code>block</code> for <code>div</code>)
+      </div>
+    </div>
+    
     <h3>Responsive Display Toggles</h3>
-    <p>Show/hide elements based on viewport width. Resize your browser window to see them appear/disappear.</p>
+    <p>Show/hide elements based on viewport or <code>.container</code> width. Resize your browser window or container to see them appear/disappear.</p>
     <div class="demo-preview container">
-      <div class="hide-m hide-l info">Visible on Small screens only (&lt; 32rem)</div>
-      <div class="hide-s success">Visible on Medium/Large screens (≥ 32rem)</div>
-      <div class="hide-cm hide-cl info">Visible in Small containers only (&lt; 32rem)</div>
-      <div class="hide-cs success">Visible in Medium/Large containers (≥ 32rem)</div>
+      <div class="hide-m hide-l info">Hidden on Medium/Large screens (&lt; 32rem)</div>
+      <div class="hide-s success">Hidden on Small screens (≥ 32rem)</div>
+      <div class="hide-cm hide-cl info">Hidden in Medium/Large containers (&lt; 32rem)</div>
+      <div class="hide-cs success">Hidden in Small containers (≥ 32rem)</div>
+      <br>
+      <div class="hide show-m show-l info">Visible on Medium/Large screens (&lt; 32rem)</div>
+      <div class="hide show-s success">Visible on Small screens (≥ 32rem)</div>
+      <div class="hide show-cm show-cl info">Visible in Medium/Large containers (&lt; 32rem)</div>
+      <div class="hide show-cs success">Visible in Small containers (≥ 32rem)</div>
+    </div>
+
+    <h3>JavaScript detection</h3>
+    <p>Show/hide elements based on JavaScript availabililty.</p>
+    <div class="demo-preview">
+      <div class="hide-js danger">JavaScript disabled</div>
+      <div class="show-js success">JavaScript enabled</div>
     </div>
 
     <footer class="pad mar center note">

@@ -74,8 +74,8 @@
 
 - details.pop.l[open] summary.icon-x > :last-child
 - ul.row.click:hover - see [row]
-- .pop.pos.l:hover
-- [data-hint]:hover
+-- .pop.pos.l:hover
+-- [data-hint]:hover
 - .target#target
 - .modal.full.show#target
 - .modal.full + (.stick a[#first] + a[#close]) + (a[#next] > img.target#target)
@@ -118,7 +118,7 @@
 - a[#prev] a[#next] :target[data-prev="#ID"][data-next="#ID"]
 - #open
 - #back
-- .pop.pos .popwin
+-- .pop.pos .popwin
 - a[#ID] [id].target -- ([id].toggle.hide.mem)
 - a.dialog[title][href][target="_blank"][data-prompt][data-def][data-param]
 - button.dialog[title][data-href][data-blank][data-prompt][data-def][data-param]
