@@ -133,8 +133,8 @@
     <a href="#table">Table</a>
     <a href="#form">Form</a>
     <a href="#comp">Components</a>
-    <a href="#js">JS</a>
     <a href="#util">Util</a>
+    <a href="#js">JS</a>
     <a href="#icon">Icons</a>
     
     <a href="#top" title="Top" class="icon-up note shift"></a>
@@ -160,7 +160,7 @@
     <pre><code>&lt;link rel="stylesheet" href="granum.min.css"&gt;
 &lt;script src="granum.min.js" defer&gt;&lt;/script&gt;</code></pre>
 
-    <h2 id="layout">2. Layout & Grid System</h2>
+    <h2 id="layout">2. Layout & Grid</h2>
     
     <h3>Flexbox Rows</h3>
     <p>Use <code>.row</code> for horizontal layouts. Add <code>.wrap</code> to allow wrapping, and <code>.gap</code> for spacing.</p>
@@ -998,7 +998,50 @@
 </div>
 </details>
 
-    <h2 id="js">7. JavaScript Enhancements</h2>
+    <h2 id="util">7. Utilities</h2>
+    
+    <h3>Visibility</h3>
+    <p class="options bord pad small">  
+      <label><input type="checkbox" data-nodes="#hide-1" value="hide" checked><code>.hide</code></label>
+      <label><input type="checkbox" data-nodes="#show-1" value="show" checked><code>.show</code></label>
+    </p>
+    <div class="demo-preview">
+      <div id="hide-1" class="bord pad hide">Hidden</div>
+      <div id="show-1" class="bord pad show" style="display:inline-block;">
+        Revert element's <code>display</code> to default (<code>block</code> for <code>div</code>)
+      </div>
+    </div>
+    
+    <h3>Responsive Display Toggles</h3>
+    <p>Show/hide elements based on viewport or <code>.container</code> width. Resize your browser window or container to see them appear/disappear.</p>
+    <div class="demo-preview container">
+      <div class="hide-l note">Viewport is not large</div>
+      <div class="hide-m info">Viewport is not medium</div>
+      <div class="hide-s success">Viewport is not small</div>
+      <div class="hide-cl note">Container is not large</div>
+      <div class="hide-cm info">Container is not medium</div>
+      <div class="hide-cs success">Container is not small</div>
+      <hr>
+      <div class="hide show-l note">Viewport is large</div>
+      <div class="hide show-m info">Viewport is medium</div>
+      <div class="hide show-s success">Viewport is small</div>
+      <div class="hide show-cl note">Container is large</div>
+      <div class="hide show-cm info">Container is medium</div>
+      <div class="hide show-cs success">Container is small</div>
+    </div>
+
+    <h3>JavaScript detection</h3>
+    <p>Show/hide elements based on JavaScript availabililty.</p>
+    <div class="demo-preview">
+      <div class="hide-js danger">JavaScript disabled</div>
+      <div class="show-js success">JavaScript enabled</div>
+    </div>
+
+    <footer class="pad mar center note">
+      <p>Granum Framework Interactive Documentation &copy; 2026.</p>
+    </footer>
+
+    <h2 id="js">8. JavaScript Enhancements</h2>
     <p><small class="tag info">Requires JavaScript</small></p>
     
     <h3>Dynamic Class Toggling (<code>[data-nodes]</code>)</h3>
@@ -1109,46 +1152,6 @@
       <a href="#back">Back</a>
     </div>
     
-    <h2 id="util">8. Utilities & Helpers</h2>
-    
-    <h3>Visibility</h3>
-    <p class="options bord pad small">  
-      <label><input type="checkbox" data-nodes="#hide-1" value="hide" checked><code>.hide</code></label>
-      <label><input type="checkbox" data-nodes="#show-1" value="show" checked><code>.show</code></label>
-    </p>
-    <div class="demo-preview">
-      <div id="hide-1" class="bord pad hide">Hidden</div>
-      <div id="show-1" class="bord pad show" style="display:inline-block;">
-        Revert element's <code>display</code> to default (<code>block</code> for <code>div</code>)
-      </div>
-    </div>
-    
-    <h3>Responsive Display Toggles</h3>
-    <p>Show/hide elements based on viewport or <code>.container</code> width. Resize your browser window or container to see them appear/disappear.</p>
-    <div class="demo-preview container">
-      <div class="hide-m hide-l info">Hidden on Medium/Large screens (&lt; 32rem)</div>
-      <div class="hide-s success">Hidden on Small screens (≥ 32rem)</div>
-      <div class="hide-cm hide-cl info">Hidden in Medium/Large containers (&lt; 32rem)</div>
-      <div class="hide-cs success">Hidden in Small containers (≥ 32rem)</div>
-      <br>
-      <div class="hide show-m show-l info">Visible on Medium/Large screens (&lt; 32rem)</div>
-      <div class="hide show-s success">Visible on Small screens (≥ 32rem)</div>
-      <div class="hide show-cm show-cl info">Visible in Medium/Large containers (&lt; 32rem)</div>
-      <div class="hide show-cs success">Visible in Small containers (≥ 32rem)</div>
-    </div>
-
-    <h3>JavaScript detection</h3>
-    <p>Show/hide elements based on JavaScript availabililty.</p>
-    <div class="demo-preview">
-      <div class="hide-js danger">JavaScript disabled</div>
-      <div class="show-js success">JavaScript enabled</div>
-    </div>
-
-    <footer class="pad mar center note">
-      <p>Granum Framework Interactive Documentation &copy; 2026.</p>
-    </footer>
-
-    
     <h2 id="icon">9. Icons</h2>
 
     <h3>Compact icons using <code>mask-image</code></h3>
@@ -1175,6 +1178,30 @@
       <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="-1 -1 18 18" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
     </div>
 
+    <h3>Icons toggle</h3>
+    <p>Some icons switch in active mode (<code>.act, :has(+:target), .check:has(:checked), [open]>summary</code>). Click icons to toggle.</p>
+    <div class="demo-preview" id="anim-container">
+      <p>
+      <label class="check icon-copy"><input type="checkbox"></label> <wbr>
+      <label class="check icon-menu"><input type="checkbox"></label> <wbr>
+      <label class="check icon-minus"><input type="checkbox"></label> <wbr>
+      <label class="check icon-folder"><input type="checkbox"></label> <wbr>
+      <label class="check icon-hide"><input type="checkbox"></label> <wbr>
+      <label class="check icon-expand"><input type="checkbox"></label> <wbr>
+      <label class="check icon-desc"><input type="checkbox"></label> <wbr>
+      <label class="check icon-next"><input type="checkbox"></label> <wbr>
+      <label class="check icon-sun"><input type="checkbox"></label> <wbr>
+      <label class="check icon-check"><input type="checkbox"></label> <wbr>
+      <label class="check icon-play"><input type="checkbox"></label> <wbr>
+      <label class="check icon-rec"><input type="checkbox"></label> <wbr>
+      </p>
+      <hr>
+      <a href="#act-1" class="icon-menu"></a> <span id="act-1" class="target">Content <a href="#close" class="icon-close">Close</a></span><br>
+      <a href="#act-2" class="icon-menu"></a> <span id="act-2">Content <a href="#back" class="icon-left"></a></span><br>
+      <label class="check icon-menu"><input type="checkbox"> Label</label> <span>Content</span>
+      <details><summary class="icon-menu">Summary</summary>Details</details>
+    </div>
+    
   </main>
 
 <!-- customize -->
