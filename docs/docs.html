@@ -528,27 +528,30 @@
       <label><input type="checkbox" data-nodes="#table-1" value="mid"><code>.mid</code></label>
       <label><input type="checkbox" data-nodes="#table-1" value="fit"><code>.fit</code></label>
       <label><input type="checkbox" data-nodes="#table-1" value="c"><code>.c</code></label>
-      <!--label class="check"><input type="checkbox" data-nodes="#table-1" value="c" class="hide"><code>.c</code></label-->
+      <label><input type="checkbox" data-nodes="#table-1" value="fix-head"><code>.fix-head</code></label>
+      <label><input type="checkbox" data-nodes="#table-1" value="fix-col"><code>.fix-col</code></label>
     </p>
-    <div class="demo-preview">
+    <div class="demo-preview no-resize">
       <input type="search" data-filter="#table-1" placeholder="Search table..." class="mar show-js">
-      <table id="table-1" class="sort r2">
-        <thead>
-          <tr>
-            <th class="sort">Name</th>
-            <th class="sort">Age</th>
-            <th class="sort">Date</th>
-            <th class="sort">String</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Alice</td><td>0</td><td>01.07.2000</td><td>Cafe</td></tr>
-          <tr><td>Dan</td><td>150.50 km</td><td>2024-12-01</td><td>café</td></tr>
-          <tr><td>bob</td><td>150.15 km</td><td>02.02.2000</td><td>café</td></tr>
-          <tr><td>Charlie</td><td>-22</td><td>7/1/2025</td><td>coffee</td></tr>
-          <tr><td>No<br>name</td><td></td><td>-</td><td></td></tr>
-        </tbody>
-      </table>
+      <div class="resize scroll">
+        <table id="table-1" class="sort r2">
+          <thead>
+            <tr>
+              <th class="sort">Name</th>
+              <th class="sort">Age</th>
+              <th class="sort">Date</th>
+              <th class="sort">String</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Alice</td><td>0</td><td>01.07.2000</td><td>Cafe</td></tr>
+            <tr><td>Dan</td><td>150.50 km</td><td>2024-12-01</td><td>café</td></tr>
+            <tr><td>bob</td><td>150.15 km</td><td>02.02.2000</td><td>café</td></tr>
+            <tr><td>Charlie</td><td>-22</td><td>7/1/2025</td><td>coffee</td></tr>
+            <tr><td>No<br>name</td><td></td><td>-</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <h2 id="form">5. Forms & Inputs</h2>

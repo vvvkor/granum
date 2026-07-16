@@ -4,7 +4,7 @@
 
 - .sans .serif .mono .l .r .c .mid .small .regular
 - img.c.fit
-- table.wide.mid.fit.line.bord.c(.c#.r#)
+- table.wide.mid.fit.line.bord.c(.c#.r#).fix-head.fix-col
 - ul.fit
 - .nobr .nodec .nodec>* button.link label.link
 

@@ -2,6 +2,7 @@
   .bord:where(.fix-head, .fix-col) tr>*+* {border-left:none;}
   .bord:where(.fix-head, .fix-col) tr+tr>* {border-top:none;}
   .line:where(.fix-head) tfoot tr>* {border-top:var(--bord);}
+  .line:where(.fix-col) tr>*:first-child {border-right:var(--bord);}
 .fix-head thead, .fix-head tfoot {position:sticky;}
 .fix-head thead {top:0;z-index:4;}
 .fix-head tfoot {bottom:0;z-index:3;}
