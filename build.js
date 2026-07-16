@@ -5,8 +5,9 @@ const dir = './src/'
 const src = './src/asset/granum.css'
 const dist = './dist/'
 const docs = './docs/'
-const distMinCss = './dist/granum.min.css'
-const distMinJs = './dist/granum.min.js'
+const distMinCss = './dist/granum'
+const distMinJs = './dist/granum'
+const head = "\x1b[36m%s\x1b[0m"
 
 const replace = require('replace-in-file')
 const {name, version} = require('./package.json')
@@ -40,9 +41,19 @@ function cssMaskIcon (w, p, n, s, a) {
     //.icon-menu.check:has(:checked), [open]>.icon-menu, .icon-menu[href^="#"]:has(+:target), .icon-menu.act
   return `${sel} {--i:url("data:image/svg+xml;utf8,${encodeSvg(svgIcon(w, p))}");}`
 }
+function minifyCss (n, options) {
+  console.log('Minify ' + n + '.css...')
+  const css = fs.readFileSync(dir + 'asset/' + n + '.css', 'utf8')
+  //let min = csso.minify(css, { restructure: false }).css // no support for media ranges
+  let min = (new CleanCSS(options).minify(css)).styles // no support for nested CSS
+  min = '/*! ' + n + '.css */\n' + min // + 'v' + version + ' */\n' + min
+  return min
+}
 
 // build src/icon-shapes.css
 
+console.log(head, 'Prepare icons (' + Object.keys(iconPaths).length + ')...')
+console.log('Icons: ', Object.keys(iconPaths).join(', '))
 const icons = []
 Object.entries(iconPaths).forEach(([n, [w, p]]) => {
   const syn = Object.entries(synonyms).filter(([s, orig]) => orig == n).map(([s]) => s)
@@ -53,6 +64,7 @@ fs.writeFileSync('./src/asset/icon-shapes.css', icons.join('\n'), {flag: 'w'})
 
 // cleanup
 
+console.log(head, 'Clear...')
 ;[/*dist + 'svg/', docs + 'svg/',*/ dist, docs].forEach(d => {
   console.log('Clear ' + d + '...')
   fs.readdirSync(d).forEach(n => {
@@ -68,46 +80,31 @@ fs.writeFileSync('./src/asset/icon-shapes.css', icons.join('\n'), {flag: 'w'})
 
 // build css
 
-fs.writeFileSync(distMinCss, '/*! Granum v' + version + ' */\n', {flag: 'w'})
+
+const bundles = [
+  ['bundle', distMinCss + '.min.css', ['var', 'reset', 'typo', 'space', 'display', 'table', 'table-fixed', 'color', /*'icon-path',*/ 'icon-mask', 'icon-shapes', 'icon-animate', 'form', 'input', /*'custom-box',*/ 'switch', 'dropzone', 'layout', 'toggle', 'transition', 'slider', 'print', ]],
+  ['core', distMinCss + '.core.min.css', ['var', 'reset', 'typo', 'space', 'display', 'table', 'table-fixed', 'color', 'form', 'input', 'switch', 'dropzone', 'layout', 'toggle', 'transition', 'slider', 'print', ]],
+  ['icons', distMinCss + '.icons.min.css', ['icon-mask', 'icon-shapes', 'icon-animate', ]],
+]
+const minified = {} // cache
 const options = {
   // keepSpecialComments: '*',
 }
-;[
-'var',
-'reset',
-'typo',
-'space',
-'display',
-'table',
-'table-fixed',
-'color',
-//'icon-path',
-'icon-mask',
-'icon-shapes',
-'icon-animate',
-'form',
-'input',
-//'custom-box',
-'switch',
-'dropzone',
-'layout',
-'toggle',
-'transition',
-'slider',
-'print'
-].forEach(n => {
-  console.log('Minify ' + n + '.css...')
-  const css = fs.readFileSync(dir + 'asset/' + n + '.css', 'utf8')
-  
-  //let min = csso.minify(css, { restructure: false }).css // no support for media ranges
-  let min = (new CleanCSS(options).minify(css)).styles
-
-  min = '/*! ' + n + '.css */\n' + min // + 'v' + version + ' */\n' + min
-  fs.writeFileSync(distMinCss, min + '\n', {flag: 'as'})
+bundles.forEach(([code, dst, list]) => {
+  console.log(head, 'Prepare CSS ' + code + ' ' + dst + '...')
+  fs.writeFileSync(dst, '/*! Granum v' + version + (code == 'bundle' ? '' : ' - ' + code) + ' */\n', {flag: 'w'})
+  list.forEach(n => {
+    const ex = (n in minified)
+    const min = ex ? minified[n] : minifyCss(n, options)
+    if (!ex) minified[n] = min
+    //else console.log('Reuse '+ n + '.css')
+    fs.writeFileSync(dst, min + '\n', {flag: 'as'})
+  })
 })
 
 // minify js
 
+console.log(head, 'Prepare JS bundle ' + distMinJs + '.min.js...')
 ;['granum']
 .forEach(n => {
   console.log('Minify ' + n + '.js...')
@@ -125,16 +122,20 @@ const options = {
       comments: /^!/,
     }
   })
-  fs.writeFileSync(distMinJs, '/*! Granum v' + version + ' */\n' + res.code)
+  fs.writeFileSync(distMinJs + '.min.js', '/*! Granum v' + version + ' */\n' + res.code)
   if (res.error) console.error('UglifyJS failed [' + n + '.js]: ' + res.error)
 })
 
 // copy demo html
 
+console.log(head, 'Prepare docs...')
+console.log('Copy assets...')
 fs.copyFileSync(dir + 'asset/customize.js', docs + 'customize.js')
 fs.copyFileSync(dir + 'asset/icon-paths.js', docs + 'icon-paths.js')
-fs.copyFileSync(distMinCss, docs + 'granum.min.css')
-fs.copyFileSync(distMinJs, docs + 'granum.min.js')
+fs.copyFileSync(distMinCss + '.min.css', docs + 'granum.min.css')
+fs.copyFileSync(distMinCss + '.core.min.css', docs + 'granum.core.min.css')
+fs.copyFileSync(distMinCss + '.icons.min.css', docs + 'granum.icons.min.css')
+fs.copyFileSync(distMinJs + '.min.js', docs + 'granum.min.js')
 fs.copyFileSync(dir + 'index.html', docs + 'index.html')
 fs.copyFileSync(dir + 'docs.html', docs + 'docs.html')
 fs.copyFileSync(dir + 'docs.md', docs + 'docs.md')
