@@ -158,7 +158,11 @@
     <h2 id="start">1. Getting Started</h2>
     <p>Include the CSS and JS files in your HTML. The JS file is optional but recommended for progressive enhancements.</p>
     <pre><code>&lt;link rel="stylesheet" href="granum.min.css"&gt;
-&lt;script src="granum.min.js" defer&gt;&lt;/script&gt;</code></pre>
+&lt;script src="granum.min.js" defer&gt;&lt;/script&gt; &lt;!-- optional --&gt;</code></pre>
+    <p>It is possible to include core styles and icons separately or skip icons completely.</p>
+    <pre><code>&lt;link rel="stylesheet" href="granum.core.min.css"&gt;
+&lt;link rel="stylesheet" href="granum.icons.min.css"&gt; &lt;!-- optional --&gt;
+&lt;script src="granum.min.js" defer&gt;&lt;/script&gt; &lt;!-- optional --&gt;</code></pre>
 
     <h2 id="layout">2. Layout & Grid</h2>
     
@@ -232,7 +236,7 @@
       <label><input type="radio" name="grid-cell" data-nodes="#grid-1-cell-3" value="span-4"><code>.span-4</code></label>
     </p>
     <div class="demo-preview">
-      <div class="grid-m gap" id="grid-1">
+      <div class="grid-s gap" id="grid-1">
         <div class="bg note pad">Cell 1</div>
         <div class="bg note pad">Cell 2</div>
         <div class="bg note pad bg info" id="grid-1-cell-3">Cell 3</div>
@@ -244,10 +248,10 @@
     <p>Use <code>.columns-*</code> classes for columns.</p>
     <p class="options bord pad small">
       Column width:
-      <label><input type="radio" name="grid-col" data-nodes="#cols-1 > div" value="columns-xs"><code>.columns-xs</code></label>
-      <label><input type="radio" name="grid-col" data-nodes="#cols-1 > div" value="columns-s" checked><code>.columns-s</code></label>
-      <label><input type="radio" name="grid-col" data-nodes="#cols-1 > div" value="columns-m"><code>.columns-m</code></label>
-      <label><input type="radio" name="grid-col" data-nodes="#cols-1 > div" value="columns-l"><code>.columns-l</code></label>
+      <label><input type="radio" name="columns-1" data-nodes="#cols-1 > div" value="columns-xs"><code>.columns-xs</code></label>
+      <label><input type="radio" name="columns-1" data-nodes="#cols-1 > div" value="columns-s" checked><code>.columns-s</code></label>
+      <label><input type="radio" name="columns-1" data-nodes="#cols-1 > div" value="columns-m"><code>.columns-m</code></label>
+      <label><input type="radio" name="columns-1" data-nodes="#cols-1 > div" value="columns-l"><code>.columns-l</code></label>
       <!--label><input type="checkbox" data-nodes="#cols-1" value="gap" checked><code>.gap</code></label-->
     </p>
     <div class="demo-preview" id="cols-1">
