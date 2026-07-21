@@ -18,16 +18,17 @@ const cls = (n, e) => {
   }
 }
 
-const tgl = (n, e) => {
+const tgl = (n, e, v) => {
   const d = n.hash == '#open'
     ? n.closest('li').querySelector('ul')
     : document.querySelector(n.hash)
   if (d) {
     if (e) {
-      e.preventDefault()
-      n.classList.toggle('act')
+      e.preventDefault?.()
+      n.classList.toggle('act', v)
     }
     d.classList[n.classList.contains('act') ? 'remove' : 'add']('hide', 'target')
+    if (e && v == null && d.matches('.mem[id]')) localStorage.setItem('val-' + d.id, d.classList.contains('hide') ? '' : 1)
   }
 }
 
@@ -57,13 +58,14 @@ const ns = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
 document.addEventListener('DOMContentLoaded', e => {
   document.body.classList.add('js')
   
-  // restore inputs/details
+  // restore inputs/details/.toggle
   document.querySelectorAll('.mem[id], form.mem [id]').forEach(n => {
     const v = localStorage.getItem('val-' + n.id)
     if (v == null) return
     if (n.matches('details')) n.open = !!v
     else if (['checkbox', 'radio'].includes(n.type)) n.checked = (v == n.value)
-    else n.value = v
+    else if ('value' in n) n.value = v
+    else document.querySelectorAll('.toggle[href="#' + n.id + '"]').forEach(a => tgl(a, {}, v))
   })
   
   // use URL params

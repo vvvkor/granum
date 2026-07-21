@@ -119,7 +119,7 @@
 - #open
 - #back
 -- .pop.pos .popwin
-- a[#ID](.toggle.act) [id].target
+- a[#ID](.toggle.act) [id](.target.mem)
 - a.dialog[title][href][target="_blank"][data-prompt][data-def][data-param]
 - button.dialog[title][data-href][data-blank][data-prompt][data-def][data-param]
 - :is(input, select, textarea, details)[id].mem, form.mem [id]
