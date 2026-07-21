@@ -61,6 +61,8 @@ button:where(:not(.link))   {--ff:var(--link);--fff:var(--link);}
 .danger  {--ff:var(--front-danger);--bb:var(--back-danger);}
   /*:where(button:not(.bg)).bord {--bb:var(--back);}*/
 
+:where(.bg) {--bb:initial;}
+:where(.text, .bord) {--ff:initial;}
 :where(button, .tag).bord {background-color:var(--back);}
 .text, .ic:before, :where(.neutral, .note, .info, .success, .warning, .danger, button:not(.link), .tag):not(.bg, .ic) {color:var(--ff, var(--front));}
 .bg {background-color:var(--bb, var(--back));}

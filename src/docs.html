@@ -55,6 +55,7 @@
         }
         pre.demo-code { max-height: 20vh; margin-top:-1px; background: var(--hilite); padding: 1rem; overflow-x: auto; border: thin solid var(--line); border-radius:0;  }
         .demo-code code { font-family: var(--mono); font-size: 0.9em; }
+        pre:has(code) + a.copy {display:block;margin-top:-2.5em;margin-right:.2em;float:right;}
     </style>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
@@ -102,6 +103,29 @@
           n.after(pre)
           // reset resized
           n.addEventListener('dblclick', unstyle)
+        })
+        
+        // add copy link
+        let seq = 0
+        document.querySelectorAll('pre:has(code)').forEach(n => {
+          seq++
+          const a = document.createElement('a')
+          a.classList.add('icon-copy', 'copy', 'note')
+          const id = n.id || 'code' + seq
+          if (!n.id) n.id = id
+          a.href = '#' + id
+          a.title = 'Copy'
+          n.after(a)
+        })
+        
+        // header anchors
+        document.querySelectorAll('h2, h3').forEach(n => {
+          if (!n.id) n.id = n.textContent.replace(/\W+/g, '-').replace(/-+/, '-').replace(/-+$/, '').toLowerCase()
+          const a = document.createElement('a')
+          a.href = '#' + n.id
+          a.textContent = ' #'
+          a.classList.add('note', 'nodec')
+          n.append(a)
         })
         
         // observe code changes
@@ -213,10 +237,10 @@
       <!--div id="row-1-container">
       </div-->
     <div class="demo-preview">
-        <div class="row gap" id="row-1">
-          <div class="bg note pad col-1" id="column-1">Column 1</div>
-          <div class="bg note pad col-2 scroll" id="column-2">Column 2<br>Text<br>Text<br>Text<br>Text</div>
-        </div>
+      <div class="row gap" id="row-1">
+        <div class="bg note pad col-1" id="column-1">Column 1</div>
+        <div class="bg note pad col-2 scroll" id="column-2">Column 2<br>Text<br>Text<br>Text<br>Text</div>
+      </div>
     </div>
 
     <h3>Auto-Filling Grid</h3>
@@ -283,7 +307,7 @@
     </div>
 
     <h3>Stick</h3>
-    <p>Use <code>.stick</code> to stick element to top or bottom.</p>
+    <p>Use <code>.stick</code> to stick an element to the top or bottom.</p>
     <p class="options bord pad small">
       <label><input type="checkbox" data-nodes="#stick-1-container :is(header, footer)" value="stick" checked><code>.stick</code></label>
     </p>
@@ -458,13 +482,13 @@
       <br>
       <a href="#link" class="icon-check">Link with icon</a>
       <a href="#link" class="icon-warning warning">Colored link with icon</a>
-      <a href="#link" class="icon-ban danger ic">Colored only icon</a>
+      <a href="#link" class="icon-ban danger ic">Colored icon only</a>
     </div>
 
     <h3>Dark Mode</h3>
     <p>Invert the entire page.</p>
     <div class="demo-preview">
-      <label><input type="checkbox" id="invert">Toggle dark mode (Pure CSS using <code>html:has(#invert:checked)</code>)</label><br>
+      <label><input type="checkbox" id="invert">Toggle dark mode (pure CSS using <code>html:has(#invert:checked)</code>)</label><br>
       <label><input type="checkbox" data-nodes="html" value="invert">Toggle dark mode (JS sets <code>html.invert</code>)</label>
     </div>
 
@@ -605,7 +629,7 @@
     <p>
       Inside <code>.form</code>, use <code>.tip > .success, .tip > .danger</code> after input for tips.<br>
       Use <code>.form.lazy</code> to show tips only after user interaction.<br>
-      Use <code>button.detect</code> to enable button only if form is valid.
+      Use <code>button.detect</code> to enable the button only if the form is valid.
     </p>
     <p class="options bord pad small">
       Validation mode: <label><input type="checkbox" data-nodes="#form-2" value="lazy"><code>.lazy</code></label>
@@ -740,7 +764,7 @@
     <!--p><small class="tag success">Modern</small></p-->
     <p>Pure CSS, no JavaScript required.
       Requires Invoker Commands API.
-      Closes on Escape key, command button, click outside. <!-- or opening another dialog. -->
+      Closes on Escape key, command button, or click outside. <!-- or opening another dialog. -->
       Has styleable <code>::backdrop</code>.
       Traps focus.
       Autofocus.
@@ -834,7 +858,7 @@
     </div>
 
     <h3>Toggle content with <code>:checked</code></h3>
-    <p>Add <code>.check</code> class to label or checkbox to toggle following element.</p>
+    <p>Add <code>.check</code> class to the label or checkbox to toggle the following element.</p>
     <div class="demo-preview">
       <label class="check icon-desc"><input type="checkbox">Label 1</label>
       <div class="bord pad">Target content</div>
@@ -979,10 +1003,10 @@
 
     <h3>Popups on hover</h3>
     <p><small class="tag info">Enhanced with JavaScript</small></p>
-    <p>Using <code>:hover</code> state. Add <code>.pos</code> for automatic positioning with JS.</p>
+    <p>Using a <code>:hover</code> state. Add <code>.pos</code> for automatic positioning with JS.</p>
     <p class="options bord pad small">  
       Style options:
-      <label><input type="checkbox" data-nodes="#pop-1, #pop-2" value="pos"><code>.pos</code> (popup window will be moved to <code>body</code> on hover)</label>
+      <label><input type="checkbox" data-nodes="#pop-1, #pop-2" value="pos"><code>.pos</code> (a popup window will be moved to the <code>body</code> on hover)</label>
     </p>
     <div class="demo-preview no-resize">
       Before
@@ -1022,23 +1046,25 @@
     <h3>Responsive Display Toggles</h3>
     <p>Show/hide elements based on viewport or <code>.container</code> width. Resize your browser window or container to see them appear/disappear.</p>
     <div class="demo-preview container">
-      <div class="hide-l note">Viewport is not large</div>
-      <div class="hide-m info">Viewport is not medium</div>
-      <div class="hide-s success">Viewport is not small</div>
-      <div class="hide-cl note">Container is not large</div>
-      <div class="hide-cm info">Container is not medium</div>
-      <div class="hide-cs success">Container is not small</div>
+      <b>Viewport:</b>
+      <span class="hide-l note">Not large</span>
+      <span class="hide-m info">Not medium</span>
+      <span class="hide-s neutral">Not small</span>
+      <span class="hide show-l danger">Large</span>
+      <span class="hide show-m warning">Medium</span>
+      <span class="hide show-s success">Small</span>
       <hr>
-      <div class="hide show-l note">Viewport is large</div>
-      <div class="hide show-m info">Viewport is medium</div>
-      <div class="hide show-s success">Viewport is small</div>
-      <div class="hide show-cl note">Container is large</div>
-      <div class="hide show-cm info">Container is medium</div>
-      <div class="hide show-cs success">Container is small</div>
+      <b>Container:</b>
+      <span class="hide-cl note">Not large</span>
+      <span class="hide-cm info">Not medium</span>
+      <span class="hide-cs neutral">Not small</span>
+      <span class="hide show-cl danger">Large</span>
+      <span class="hide show-cm warning">Medium</span>
+      <span class="hide show-cs success">Small</span>
     </div>
 
     <h3>JavaScript detection</h3>
-    <p>Show/hide elements based on JavaScript availabililty.</p>
+    <p>Show/hide elements based on JavaScript availability.</p>
     <div class="demo-preview">
       <div class="hide-js danger">JavaScript disabled</div>
       <div class="show-js success">JavaScript enabled</div>
@@ -1099,7 +1125,7 @@
     </div>
 
     <h3>State Persistence (<code>.mem</code>)</h3>
-    <p>Type something below, then refresh the page. The input and checkbox states are saved to LocalStorage!</p>
+    <p>Type something below, then refresh the page. The input and checkbox states are saved to the localStorage!</p>
     <div class="demo-preview">
       <input id="mem-text" type="text" class="mem" placeholder="This text is saved on reload...">
       <br>
@@ -1125,7 +1151,7 @@
     
     <h3>Check multiple boxes</h3>
     <div class="demo-preview">
-      <label><input type="checkbox" data-check="#set-1 input" name="all"> Toggle following boxes</label>
+      <label><input type="checkbox" data-check="#set-1 input" name="all"> Toggle the following boxes</label>
       <fieldset id="set-1" class="mar">
         <input type="checkbox" name="box-1">
         <input type="checkbox" name="box-2">
