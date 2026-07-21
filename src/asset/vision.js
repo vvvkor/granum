@@ -1,14 +1,13 @@
 ;(() => {
-  let cfg = localStorage.getItem('vision') || '{font: 14}'
+  let cfg = localStorage.getItem('vision') || '{"font": 14}'
   try {
     cfg = JSON.parse(cfg)
   }
   catch (e) {
     console.log('Faild parsing JSON: vision')
   }
-  
   const vision = {
-    cfg,
+    cfg: {...cfg},
     set: function (k, v) {
       this.cfg[k] = v
       this.apply()

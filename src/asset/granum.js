@@ -19,13 +19,15 @@ const cls = (n, e) => {
 }
 
 const tgl = (n, e) => {
-  const d = n.closest('li').querySelector('ul')
+  const d = n.hash == '#open'
+    ? n.closest('li').querySelector('ul')
+    : document.querySelector(n.hash)
   if (d) {
     if (e) {
       e.preventDefault()
       n.classList.toggle('act')
     }
-    d.classList[n.classList.contains('act') ? 'remove' : 'add']('hide')
+    d.classList[n.classList.contains('act') ? 'remove' : 'add']('hide', 'target')
   }
 }
 
@@ -87,7 +89,7 @@ document.addEventListener('DOMContentLoaded', e => {
   document.querySelectorAll('[data-nodes], [data-value]').forEach(n => cls(n))
 
   // init toggle
-  document.querySelectorAll('[href="#open"]').forEach(n => tgl(n))
+  document.querySelectorAll('[href="#open"], .toggle').forEach(n => tgl(n))
   document.querySelectorAll('.tabs').forEach(t => tab(t.querySelector('a[href^="#"]')))
   
   // remove title on [data-hint]
@@ -148,7 +150,7 @@ document.addEventListener('click', async e => {
     }
     
     //open
-    else if (a.hash == '#open') tgl(a, e)
+    else if (a.hash == '#open' || a.matches('.toggle')) tgl(a, e)
     else if (a.closest('.tabs')) tab(a, e)
 
     // confirm or prompt link

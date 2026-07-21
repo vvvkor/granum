@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Granum v2.2.1 - Documentation</title>
+    <title>Granum v2.2.2 - Documentation</title>
     <meta name="theme-color" content="#fff">
     <meta name="theme-color" media="(prefers-color-scheme:dark)" content="#04a">
     <link rel="icon" type="image/svg" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20220%20220'%3E%3Cpath%20fill='%23666'%20d='M35%2067l75%20-44%2075%2044%200%2089-75%2044-75-44zm75%208a35%2035%200%201%200%20.01%200z'/%3E%3C/svg%3E">
@@ -150,7 +150,7 @@
 <body>
 
   <nav class="stick row gap wrap nodec small shade pad">
-    <b>Granum v2.2.1</b>
+    <b>Granum v2.2.2</b>
     <a href="#start">Start</a>
     <a href="#layout">Layout</a>
     <a href="#typo">Typography</a>
@@ -174,7 +174,7 @@
   <main class="wide-m center pad">
     
     <div class="hero" id="top">
-      <h1>Granum v2.2.1</h1>
+      <h1>Granum v2.2.2</h1>
       <p class="note">Developer Documentation</p>
     </div>
     
@@ -869,11 +869,18 @@
     </div>
 
     <h3>Toggle content with URL hash</h3>
+    <p><small class="tag info">Enhanced with JavaScript</small></p>
     <div class="demo-preview">
       <a href="#target-1">Show target</a>
       <div id="target-1" class="target bord pad">
-        Target content<br>
+        Target content 1<br>
         <a href="#close">Close</a>
+      </div>
+      <hr>
+      <a href="#target-2" class="toggle">Show target (enhanced)</a>
+      <div id="target-2" class="target bord pad">
+        Target content 2<br>
+        <a href="#close" class="hide-js">Close</a>
       </div>
     </div>
 
