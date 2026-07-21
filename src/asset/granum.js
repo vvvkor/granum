@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', e => {
     if (n.matches('details')) n.open = !!v
     else if (['checkbox', 'radio'].includes(n.type)) n.checked = (v == n.value)
     else if ('value' in n) n.value = v
-    else document.querySelectorAll('.toggle[href="#' + n.id + '"]').forEach(a => tgl(a, {}, v))
+    else document.querySelectorAll('.toggle[href="#' + n.id + '"]').forEach(a => a.classList.toggle('act', !!v))
   })
   
   // use URL params

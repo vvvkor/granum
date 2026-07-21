@@ -245,7 +245,7 @@
     </div>
 
     <h3>Auto-Filling Grid</h3>
-    <p>Use <code>.grid-*</code> classes to create responsive grids that automatically fill available space based on minimum cell widths.</p>
+    <p>Use <code>.grid-*</code> to create responsive grids that automatically fill available space based on minimum cell widths.</p>
     <p class="options bord pad small">
       Column width:
       <label><input type="radio" name="grid-col" data-nodes="#grid-1" value="grid-xs"><code>.grid-xs</code></label>
@@ -270,7 +270,7 @@
     </div>
 
     <h3>Columns</h3>
-    <p>Use <code>.columns-*</code> classes for columns.</p>
+    <p>Use <code>.columns-*</code> for columns.</p>
     <p class="options bord pad small">
       Column width:
       <label><input type="radio" name="columns-1" data-nodes="#cols-1 > div" value="columns-xs"><code>.columns-xs</code></label>
@@ -321,7 +321,7 @@
     </div>
     
     <h3>Splitter</h3>
-    <p>Add <code>.resize</code> class to child nodes of the same <code>.row</code> container.</p>
+    <p>Use <code>.resize</code> on child nodes of the same <code>.row</code> container.</p>
     <p class="options bord pad small">
       Container styles:
       <label><input type="checkbox" data-nodes="#splitter-1" value="resp" checked><code>.resp</code></label>
@@ -828,7 +828,7 @@
 
     <h3>Popups</h3>
     <!--p><small class="tag success">Modern</small></p-->
-    <p>Using <code>[popover]</code>.</p>
+    <p>Use <code>[popover]</code>.</p>
     <div class="demo-preview">
       <button popovertarget="popup-1">Show popup</button>
       <button popovertarget="popup-1" class="link">Show popup</button>
@@ -859,12 +859,12 @@
     </div>
 
     <h3>Toggle content with <code>:checked</code></h3>
-    <p>Add <code>.check</code> class to the label or checkbox to toggle the following element.</p>
+    <p>Use <code>.check</code> on the label or checkbox to toggle the following element.</p>
     <div class="demo-preview">
-      <label class="check icon-desc"><input type="checkbox">Label 1</label>
+      <label class="check icon-desc"><input type="checkbox">Label 1 (with state)</label>
       <div class="bord pad">Target content</div>
       <br>
-      <label class="icon-desc" for="check-1">Label 2</label>
+      <label class="icon-desc" for="check-1">Label 2 (free placement of targer)</label> <span>...</span>
       <input id="check-1" type="checkbox" class="check">
       <div class="bord pad">Target content</div>
     </div>
@@ -1083,7 +1083,7 @@
     
     <h3>Dynamic Class Toggling (<code>[data-nodes]</code>)</h3>
     <p>Toggle CSS classes on target elements based on input state.</p>
-    <div class="demo-preview">
+    <div class="demo-preview no-resize">
       <label>
         <input type="checkbox" data-parent=".demo-preview" data-nodes="div" value="success bord">
         Highlight Target
@@ -1098,6 +1098,16 @@
       </div>
     </div>
 
+    <h3>Toggle element</h3>
+    <p>Use <code>.toggle</code> on hash link. Add <code>.act</code> on link for initially opened state. Add <code>.mem</code> on target element for state persistance. Optionally add <code>.target</code> on target element for no-JavaScript fallback.</p>
+    <div class="demo-preview no-resize">
+      <a href="#target-3" class="toggle">Toggle</a>
+      <div id="target-3" class="target mem bord pad">
+        Target content<br>
+        <a href="#close" class="hide-js">Close</a>
+      </div>
+    </div>
+    
     <h3>Toggle sub-list (<code>#open</code>)</h3>
     <p class="options bord pad small">  
       Style options:
@@ -1122,7 +1132,7 @@
         </li>
       </ul>
     </div>
-
+    
     <h3>Dialogs</h3>
     <div class="demo-preview">
       <button class="dialog" title="Alert text">Alert</button>
@@ -1133,7 +1143,7 @@
     </div>
 
     <h3>State Persistence (<code>.mem</code>)</h3>
-    <p>Type something below, then refresh the page. The input and checkbox states are saved to the localStorage!</p>
+    <p>Type something below, then refresh the page. Input values and details state are saved to the localStorage.</p>
     <div class="demo-preview">
       <input id="mem-text" type="text" class="mem" placeholder="This text is saved on reload...">
       <br>
