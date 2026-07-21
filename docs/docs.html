@@ -55,7 +55,8 @@
         }
         pre.demo-code { max-height: 20vh; margin-top:-1px; background: var(--hilite); padding: 1rem; overflow-x: auto; border: thin solid var(--line); border-radius:0;  }
         .demo-code code { font-family: var(--mono); font-size: 0.9em; }
-        pre:has(code) + a.copy {display:block;margin-top:-2.5em;margin-right:.2em;float:right;}
+        /*pre:has(code) {overflow:auto scroll;}*/
+        pre:has(code) + a.copy {display:block;margin-top:-2.2rem;margin-right:1rem;float:right;}
     </style>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
@@ -110,7 +111,7 @@
         document.querySelectorAll('pre:has(code)').forEach(n => {
           seq++
           const a = document.createElement('a')
-          a.classList.add('icon-copy', 'copy', 'note')
+          a.classList.add('icon-copy', 'copy', 'note', 'small')
           const id = n.id || 'code' + seq
           if (!n.id) n.id = id
           a.href = '#' + id
