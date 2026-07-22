@@ -37,7 +37,7 @@ function svgIcon (w, p) {
 function cssMaskIcon (w, p, n, s, a) {
   const names = [n, ...s]
   const sel = names.map(v => '.icon-' + v).join(', ')
-    + (a && a.length ? a.map(v => `, .icon-${v}.check:has(:checked), [open]>.icon-${v}, .icon-${v}[href^="#"]:has(+:target), .icon-${v}.act`).join('') : '')
+    + (a && a.length ? a.map(v => `, .icon-${v}.check:has(:checked), [open]>.icon-${v}, .icon-${v}[href^="#"]:has(+:target), .icon-${v}.act, button:has(+:popover-open) .icon-${v}`).join('') : '')
     //.icon-menu.check:has(:checked), [open]>.icon-menu, .icon-menu[href^="#"]:has(+:target), .icon-menu.act
   return `${sel} {--i:url("data:image/svg+xml;utf8,${encodeSvg(svgIcon(w, p))}");}`
 }

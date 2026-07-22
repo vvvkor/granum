@@ -22,7 +22,8 @@ button:not(:disabled), .check {cursor:pointer;}
 
 /* custom input */
 
-.input {display:inline-flex;min-width:max-content;padding-block:0;align-items:center;gap:calc(.5 * var(--gap));}
+.input {display:inline-flex;min-width:max-content;align-items:center;gap:calc(.5 * var(--gap));}
+.input:not(button) {padding-block:0;}
 .input input {flex:1;margin:0;padding-inline:0;border:none;outline:none !important;}
 .input button {padding:0 calc(.3 * var(--gap));min-width:0;color:var(--ff, var(--front));background-color:transparent;}
   .input button.bg {background-color:var(--bb, transparent);}

@@ -39,6 +39,7 @@
 - .input
 - .switch
 - .dropzone
+- button.input + [popover].sel [type="radio"]
 
 ## Validation
 
@@ -123,6 +124,7 @@
 - a.dialog[title][href][target="_blank"][data-prompt][data-def][data-param]
 - button.dialog[title][data-href][data-blank][data-prompt][data-def][data-param]
 - :is(input, select, textarea, details)[id].mem, form.mem [id]
+- button.input + [popover].sel [type="radio"]
 - .tabs a[#ID] + div > [id]
 - table.l#.c#.r#
 - a.copy[#source]

@@ -107,7 +107,7 @@ div.pop:not(:hover, :focus-within, [open]) > *+:last-child, ul.row li:not(:hover
   {display:none;}
 div.pop>*+:last-child, ul.row ul, [data-hint]:after {position:absolute;--pos:0 auto auto 100%;inset:var(--pos);/*transform:var(--mov);*/z-index:50;}
 div.pop>*+:last-child, ul.row ul {min-width:var(--list-width);}
-ul.row ul {padding:calc(1 * var(--gap)) 0;}
+ul.row ul, [popover].sel {padding:calc(1 * var(--gap)) 0;}
   div.pop>*+:last-child:not(:has(div.pop)), ul.row ul:not(:has(ul)) {max-height:var(--pop-height);overflow:auto;}
   div.pop>*+:last-child {--pos:100% auto auto 0;}
   div.pop.l>*+:last-child {--pos:100% 0 auto auto;}

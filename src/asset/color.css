@@ -38,7 +38,7 @@ body, dialog, [popover] {color:var(--front);background-color:var(--back);}
 .shade {box-shadow:var(--shade);}
 .hilite, thead, tfoot, pre, code, blockquote, [readonly]:not(.input [readonly]) {background-color:var(--hilite);}
   pre code {background:none;}
-:is(a, button, summary, label, .check).hover:hover, ul.row.hover li:is(:hover, :has(:hover))>a/*:has(>a)*/, .pop:hover>a.hover, table.hover  tr:hover>*/*, .tabs.hover>:is(a,label):hover*/ {box-shadow:inset 0 0 0 300vh var(--hilite);}
+:is(a, button, summary, label, .check).hover:hover, ul.row.hover li:is(:hover, :has(:hover))>:is(a, label)/*:has(>a)*/, .pop:hover>a.hover, table.hover  tr:hover>*/*, .tabs.hover>:is(a,label):hover*/ {box-shadow:inset 0 0 0 300vh var(--hilite);}
 
 a:where([href]), :where(ul.row) a, .pop > a, .link {color:var(--link);text-decoration:var(--decor, underline);}
 a:where([href]:not([href^="#"]):visited) {color:var(--visited);}
@@ -50,7 +50,7 @@ button.link:focus-visible {outline:.2em solid var(--outline-focus-visible);}
 :where(a, .link).nodec, .nodec :where(a, .link) {--decor:none;}
 .link {cursor:pointer;}
 
-button:where(:not(.link))   {--ff:var(--link);--fff:var(--link);}
+button:where(:not(.link/*, .sel*/))   {--ff:var(--link);--fff:var(--link);}
 .tag     {--ff:var(--front-note);}
 :where(button, .tag).bord {--ff:var(--fff, var(--front));--bb:var(--back);}
 .neutral {--ff:var(--front);--bb:var(--back);}
@@ -85,10 +85,10 @@ body a.invert {color:var(--link-invert);}
 .input, input, select, textarea, button, [contenteditable], :where(a, summary):focus-visible {outline:.2em solid transparent;outline-offset:0;}
 :where(.input, input, select, textarea, button, [contenteditable]):is(:focus, :focus-visible, :hover) {outline-color:var(--outline-hover);}
 :where(input, select, textarea, button, [contenteditable]):focus {outline-color:var(--outline-focus);}
-:where(a, summary, input, select, textarea, button, [contenteditable], label):focus-visible, :where(.input):focus-within {outline-color:var(--outline-focus-visible);}
-.validate:valid, .input.validate:not(:has(:invalid)) {outline-color:var(--outline-valid);}
-:invalid, .input:has(:invalid) {border-color:var(--front-danger);}
-:invalid:focus, .input:has(:invalid):focus-within {outline-color:var(--outline-invalid);}
+:where(a, summary, input, select, textarea, button, [contenteditable], label):focus-visible, :where(.input):focus-within/*, .input:has(+[popover]:focus-within)*/ {outline-color:var(--outline-focus-visible);}
+.validate:valid, .input.validate:not(:has(:invalid, +[popover] :invalid)) {outline-color:var(--outline-valid);}
+:invalid, .input:has(:invalid, +[popover] :invalid) {border-color:var(--front-danger);}
+:invalid:focus, .input:has(:invalid, +[popover] :invalid):focus-within, .input:has(+[popover]:focus-within :invalid) {outline-color:var(--outline-invalid);}
 
 /* progress */
 progress {accent-color:var(--ff, var(--input-accent, var(--link)));}
@@ -114,7 +114,7 @@ progress::-moz-progress-bar {background-color:var(--ff, var(--link));}
 /* smart dark mode */
 
 html {background-color:var(--back);}
-html, img, video, iframe, .invert, dialog {filter:var(--mode);}
+html, img, video, iframe, .invert, dialog, [popover] {filter:var(--mode);}
 html {--mode:none;}
 html.invert, html:has(#invert:checked) {--mode:invert(.95) hue-rotate(180deg);--back:#ddd;--line:#bbb; /*!!!*/ --shade:0 0 .5em 0 #fff;--hilite:#fff4;/*#eee8;*/}
 @media (prefers-color-scheme: dark) {

@@ -12,4 +12,25 @@
   --front: #333;
   --back: #fcfcfc;
   --link: #04a;
+  
+  /* viewport size */
+  /*
+   --is-l: max(0, sign(100vw - 1199px));
+   --is-s: max(0, sign(640px - 100vw));
+   --is-m: max(0, calc(1 - var(--is-l) - var(--is-s)));
+  */
 }
+
+/*
+h1:before {
+  counter-reset: sz-l var(--is-l) sz-m var(--is-m) sz-s var(--is-s); 
+  content: " = " counter(sz-l) " / " counter(sz-m) " / " counter(sz-s) " = "; 
+}
+*/
+/* Implicit Style Container - has bugs in Chrome on 2026-07-22 */
+/*
+@container style(--is-s = 1) {
+  h1 {color:red;} 
+  h1:after {content:" S";}
+}
+*/

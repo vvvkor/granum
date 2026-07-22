@@ -53,6 +53,22 @@ const dlg = e => {
   if (n && n.matches('dialog:not([popover])')) n.showModal()
 }
 
+// popover select
+const ps = (n, e) => {
+  if (n.type != 'radio' || !n.checked) return
+  const d = n.closest('.sel')
+  if (d) {
+    // summary
+    /*
+    d.querySelector('summary').textContent = n.closest('label')?.textContent // || n.value
+    d.open = false
+    */
+    // popover
+    document.querySelectorAll('button[popovertarget="' + d.id + '"] > span:first-child').forEach(b => b.textContent = n.closest('label')?.textContent) // || n.value
+    if (e?.clientX) d.hidePopover()
+  }
+}
+
 const ns = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
 
 document.addEventListener('DOMContentLoaded', e => {
@@ -94,6 +110,9 @@ document.addEventListener('DOMContentLoaded', e => {
   document.querySelectorAll('[href="#open"], .toggle').forEach(n => tgl(n))
   document.querySelectorAll('.tabs').forEach(t => tab(t.querySelector('a[href^="#"]')))
   
+  // init popover select
+  document.querySelectorAll('.sel [type="radio"]').forEach(n => ps(n))
+
   // remove title on [data-hint]
   document.querySelectorAll('[data-hint]').forEach(n => n.removeAttribute('title'))
 
@@ -199,6 +218,9 @@ document.addEventListener('click', async e => {
     }
     
   }
+  
+  // popover select
+  ps(n, e)
 })
 
 document.addEventListener('input', e => {
@@ -229,6 +251,9 @@ document.addEventListener('input', e => {
   // map area to contenteditable
   const c = n.dataset.editor
   if (c) document.querySelector(c).innerHTML = n.value
+  
+  // popover select
+  //ps(n)
 })
 
 document.addEventListener('toggle', ({target: n}) => {

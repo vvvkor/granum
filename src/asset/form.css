@@ -22,6 +22,6 @@
 /* validation tips */
 
 .form .tip {display:block;/*line-height:1.2;*/margin-top:calc(.3 * var(--gap));}
-:is(:valid, .input:not(:has(:invalid))) + .tip > .danger, :is(:invalid, .input:has(:invalid)) + .tip > .success {display:none;}
-.form.lazy :is([name]:not(:user-valid, :user-invalid), .input:not(:has(:user-valid, :user-invalid))) + .tip > :is(.danger, .success) {display:none;}
+:is(:valid, :is(.input, .sel):not(:has(:invalid))) + .tip > .danger, :is(:invalid, :is(.input, .sel):has(:invalid)) + .tip > .success {display:none;}
+.form.lazy :is([name]:not(:user-valid, :user-invalid), :is(.input, .sel):not(:has(:user-valid, :user-invalid))) + .tip > :is(.danger, .success) {display:none;}
  

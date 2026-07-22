@@ -27,6 +27,7 @@ abbr {border-bottom:thin dotted;text-decoration:none;}
   sup.tag:empty {min-width:0;padding:.5em;}
 
 .wide {width:100%;}
+.wide-xs {max-width:20rem;}
 .wide-s {max-width:32rem;}
 .wide-m {max-width:50rem;}
 .wide-l {max-width:80rem;}

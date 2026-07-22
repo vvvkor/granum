@@ -1,6 +1,6 @@
 {
   "name": "granum",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "main": "dist/granum.min.css",
   "description": "CSS micro framework",
   "scripts": {

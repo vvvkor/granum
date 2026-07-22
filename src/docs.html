@@ -177,6 +177,7 @@
     <a href="#top" title="Top" class="icon-up note shift"></a>
     <a href="#back" title="Back" class="icon-left note"></a>
     <label for="invert" class="icon-sun link" title="Toggle dark mode"></label>
+    <a href="#refresh" title="Refresh" class="icon-refresh note" onclick="localStorage.clear();location.reload();return false;"></a>
     
     <button command="show-modal" commandfor="customize" class="link icon-config" title="Customize"></button>
     <a href="https://github.com/vvvkor/granum" class="-neutral an-im-swing" title="GitHub">
@@ -519,6 +520,7 @@
       <label><input type="checkbox" data-nodes="#space-container > *" value="center"><code>.center</code></label>
       <br>
       Maximum width:
+      <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide-xs"><code>.wide-xs</code></label>
       <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide-s"><code>.wide-s</code></label>
       <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide-m"><code>.wide-m</code></label>
       <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide-l"><code>.wide-l</code></label>
@@ -683,6 +685,44 @@
       <br>
       <label><input type="radio" name="radio-1" value="2"> Radio</label>
     </div>
+    
+    <h3>Custom Select</h3>
+    <p><small class="tag info">Enhanced with JavaScript</small></p>
+    <p>Customized dropdown <code>select</code>-like input using <code>[popover]</code> and radio buttons.</p>
+    <p>JavaScript copies value to button's first <code>span</code> text and closes popover after selection.</p>
+    <p class="options bord pad small">
+      Style options:
+      <label><input type="radio" name="popsel-1" data-nodes="#popsel-centainer label" value="" checked><i>none</i></label>
+      <label><input type="radio" name="popsel-1" data-nodes="#popsel-centainer label" value="check"><code>.check</code></label>
+      <label><input type="radio" name="popsel-1" data-nodes="#popsel-centainer label" value="check icon-text"><code>.check.icon-text</code></label>
+      <label><input type="radio" name="popsel-1" data-nodes="#popsel-centainer label" value="check icon-text info"><code>.check.icon-text.info</code></label>
+    </p>
+    <div class="demo-preview no-resize" id="popsel-centainer">
+      <form class="form lazy">
+        <button type="button" popovertarget="popsel-1" class="input"><span class="col-1">Select...</span> <a class="icon-desc note small"></a></button>
+        <div id="popsel-1" popover class="sel">
+          <ul class="row vert hover">
+            <li><label class="-check"><input type="radio" class="mem" id="sel-2" name="sel-2" value="" required>None</label></li>
+            <li><label class="-check"><input type="radio" class="mem" id="sel-2" name="sel-2" value="a" required>Alpha</label></li>
+            <li><label class="-check"><input type="radio" class="mem" id="sel-2" name="sel-2" value="b" required>Beta</label></li>
+            <li><hr></li>
+            <li><label class="-check"><input type="checkbox" class="mem" name="box-b" value="g">Gamma</label></li>
+          </ul>
+        </div>
+        <div class="tip"><span class="danger">Required</span></div>
+      </form>
+    </div>
+      <!--details class="pop sel">
+        <summary class="icon-desc bord rad pad">Select</summary>
+        <div class="bord wide">
+          <ul class="row vert hover">
+            <li><label class="-check"><input type="radio" class="mem" id="sel-1" name="sel-1" value="a" checked>Alpha</label></li>
+            <li><label class="-check"><input type="radio" class="mem" id="sel-1" name="sel-1" value="b">Beta</label></li>
+            <li><label class="-check"><input type="checkbox" name="box-a" value="g">Gamma</label></li>
+          </ul>
+        </div>
+      </details-->
+    
     
     <h3>Customized Inputs</h3>
     <p>
@@ -1042,8 +1082,8 @@
     <h3>Tooltips (old style)</h3>
     <p><small class="tag warning">Deprecated</small></p>
     <div class="demo-preview">
-      <span data-hint="This is a tooltip" class="pad bord" tabindex="0">Hover over me</span>
-      <span data-hint="Another hint!" class="pad bord info" tabindex="0">Or me</span>
+      <span data-hint="This is a default tooltip" class="pad bord" tabindex="0">Hover over me</span>
+      <span data-hint="This tooltip is centered" class="pad bord info c" tabindex="0">Or me</span>
     </div>
 
 </div>
