@@ -64,7 +64,7 @@ const ps = (n, e) => {
     d.open = false
     */
     // popover
-    document.querySelectorAll('button[popovertarget="' + d.id + '"] > span:first-child').forEach(b => b.textContent = n.closest('label')?.textContent) // || n.value
+    document.querySelectorAll('button[popovertarget="' + d.id + '"] > span:first-child').forEach(b => b.textContent = b.title = n.dataset.caption || n.closest('label')?.textContent) // || n.value
     if (e?.clientX) d.hidePopover()
   }
 }
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', e => {
   document.querySelectorAll('.tabs').forEach(t => tab(t.querySelector('a[href^="#"]')))
   
   // init popover select
-  document.querySelectorAll('.sel [type="radio"]').forEach(n => ps(n))
+  document.querySelectorAll('.sel [type=radio]').forEach(n => ps(n))
 
   // remove title on [data-hint]
   document.querySelectorAll('[data-hint]').forEach(n => n.removeAttribute('title'))
@@ -228,7 +228,7 @@ document.addEventListener('input', e => {
   
   // store inputs
   if (n.id && (n.classList.contains('mem') || n.form?.classList.contains('mem'))) {
-    if (n.type == 'radio') (n.closest('form') || document).querySelectorAll(`[type="radio"][name="${n.name}"][id]`).forEach(m => localStorage.removeItem('val-' + m.id))
+    if (n.type == 'radio') (n.closest('form') || document).querySelectorAll(`[type=radio][name="${n.name}"][id]`).forEach(m => localStorage.removeItem('val-' + m.id))
     localStorage.setItem('val-' + n.id, (['checkbox', 'radio'].includes(n.type) && !n.checked) ? '' : n.value)
   }
   
@@ -256,9 +256,12 @@ document.addEventListener('input', e => {
   //ps(n)
 })
 
-document.addEventListener('toggle', ({target: n}) => {
+document.addEventListener('toggle', e => {
+  const n = e.target
   // store details
   if (n.matches('details') && n.id && n.classList.contains('mem')) localStorage.setItem('val-' + n.id, n.open ? 1 : '')
+  // popover focus
+  if (n.matches('[popover]') && e.newState == 'open') (n.querySelector('[type=radio]:checked') || n.querySelector('[name]'))?.focus()
 }, true)
 
 // open dialog by hash
@@ -287,6 +290,12 @@ document.addEventListener('blur', e => {
   if (p && p._win) p._win.classList.add('hide')
 })
 */
+
+document.addEventListener('focusout', e => {
+  const p = e.target.closest('[popover]')
+  if (p && e.relatedTarget && !p.contains(e.relatedTarget)) p.hidePopover()
+})
+
 
 // popup positioning // legacy
 document.addEventListener('mouseover', e => {

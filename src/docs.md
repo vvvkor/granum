@@ -39,7 +39,7 @@
 - .input
 - .switch
 - .dropzone
-- button.input + [popover].sel [type="radio"]
+- button.input + [popover].sel(.resp) [type="radio"]([data-caption])
 
 ## Validation
 
@@ -90,7 +90,7 @@
 - #x1:checked .x1
 
 - button[command="show-modal"][commandfor="ID"] ... dialog[id][closedby="any"].full.drawer.shift
-- button[popovertarget="ID"] ... dialog[id][popover]
+- button[popovertarget="ID"] ... dialog[id][popover](.resp)
 - button[popovertarget="ID"] ... dialog[id][popover="hint"]
 
 ## Transtitions
@@ -124,7 +124,7 @@
 - a.dialog[title][href][target="_blank"][data-prompt][data-def][data-param]
 - button.dialog[title][data-href][data-blank][data-prompt][data-def][data-param]
 - :is(input, select, textarea, details)[id].mem, form.mem [id]
-- button.input + [popover].sel [type="radio"]
+- button.input + [popover].sel(.resp) [type="radio"]([data-caption])
 - .tabs a[#ID] + div > [id]
 - table.l#.c#.r#
 - a.copy[#source]

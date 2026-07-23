@@ -1,4 +1,4 @@
-/*! Granum v2.2.3 - icons */
+/*! Granum v2.2.4 - icons */
 /*! icon-mask.css */
 .icon,[class*=icon-]:before{--icon-size:calc(1em * var(--icon-scale, 1.25));display:inline-block;width:var(--icon-size);height:var(--icon-size);vertical-align:calc((1em - var(--icon-size))/ 2 - .14em);animation:var(--anim,none)}.icon{fill:currentColor}[class*=icon-]:before{content:'';background:currentColor;mask-image:var(--i);mask-repeat:no-repeat}[class*=icon-].empty>*{display:none}:where([class*=icon-]:not(:empty,.empty,:has(>sup))):before{margin-right:var(--icon-mar,.3em)}:where([class*=icon-]:empty:first-child):is(a,i,span,small)+*{margin-left:var(--icon-mar,.3em)}
 /*! icon-shapes.css */

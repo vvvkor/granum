@@ -80,7 +80,7 @@
 ul.row ul {--pos:0 auto auto 100%;}
 ul.row:where(:not(.vert))>li>ul {--pos:100% auto auto 0;}
 ul.row:where(:not(.vert)) ul.l {--pos:100% 0 auto auto;}
-ul.row.vert {width:var(--list-width);}
+ul:where(.row.vert) {width:var(--list-width);}
 
 @media (width < 50rem) {
   .row.resp {--flow:column nowrap;--push:0;}

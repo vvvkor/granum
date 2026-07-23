@@ -15,7 +15,7 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0px 100em var(--back-input) ins
 
 .input, input:where(:not([type="checkbox"], [type="radio"], [type="color"], [type="range"], [type="file"])), select, textarea, [contenteditable]/*, label:has([type="file"])*/ {border:thin solid var(--line-input);border-radius:calc(.5 * var(--radius));padding:calc(.5 * var(--gap));color:var(--front-input);background-color:var(--back-input);/*line-height:1.5;min-height:1.5em;*/}
 :where(button) {border-radius:var(--radius);min-width:6em;}
-button:not(:disabled), .check {cursor:pointer;}
+button:not(:disabled), .check, .sel label {cursor:pointer;}
   /*button*/:disabled {opacity:.5;cursor:not-allowed;}
   .inact, form:has(:invalid) .detect {interactivity:inert;opacity:.5;pointer-events:none;/*filter:grayscale(1);*/}
 /*input[type="submit"] {background-color:var(--line);}*/
@@ -24,6 +24,7 @@ button:not(:disabled), .check {cursor:pointer;}
 
 .input {display:inline-flex;min-width:max-content;align-items:center;gap:calc(.5 * var(--gap));}
 .input:not(button) {padding-block:0;}
+button.input {min-width:var(--list-width);/*width:var(--list-width);*/text-align:left;}
 .input input {flex:1;margin:0;padding-inline:0;border:none;outline:none !important;}
 .input button {padding:0 calc(.3 * var(--gap));min-width:0;color:var(--ff, var(--front));background-color:transparent;}
   .input button.bg {background-color:var(--bb, transparent);}

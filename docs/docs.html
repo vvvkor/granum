@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" class="-invert">
-<!-- TODO: menu, structure, features -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Granum v2.2.3 - Documentation</title>
+    <title>Granum v2.2.4 - Documentation</title>
     <meta name="theme-color" content="#fff">
     <meta name="theme-color" media="(prefers-color-scheme:dark)" content="#04a">
     <link rel="icon" type="image/svg" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20220%20220'%3E%3Cpath%20fill='%23666'%20d='M35%2067l75%20-44%2075%2044%200%2089-75%2044-75-44zm75%208a35%2035%200%201%200%20.01%200z'/%3E%3C/svg%3E">
@@ -93,6 +92,15 @@
           }
         }
       
+        const addNav = (h2, subs) => {
+          if (h2 && subs?.length > 1) {
+            const nav = document.createElement('nav')
+            nav.classList.add('small', 'row', 'gap', 'wrap', 'nodec' /*, 'pad', 'hilite'*/)
+            nav.innerHTML = subs.map(s => '<a href="#' + s.id + '">' + s.dataset.caption + '</a>').join(' ')
+            h2.after(nav)
+          }
+        }
+        
         // prepare code preview
         document.querySelectorAll('.demo-preview').forEach(n => {
           // code
@@ -115,19 +123,37 @@
           const id = n.id || 'code' + seq
           if (!n.id) n.id = id
           a.href = '#' + id
-          a.title = 'Copy'
+          a.title = 'Copy HTML'
           n.after(a)
+          /*
+          const d = document.createElement('div')
+          d.classList.add('small', 'pad', 'bord', 'hilite')
+          d.textContent = 'HTML'
+          d.append(a)
+          n.after(d)
+          */
         })
         
         // header anchors
-        document.querySelectorAll('h2, h3').forEach(n => {
+        let h2 = null
+        let subs = []
+        document.querySelectorAll('main :is(h2, h3)').forEach(n => {
+          n.dataset.caption = n.textContent.replace(/\(.*$/, '')
           if (!n.id) n.id = n.textContent.replace(/\W+/g, '-').replace(/-+/, '-').replace(/-+$/, '').toLowerCase()
           const a = document.createElement('a')
           a.href = '#' + n.id
           a.textContent = ' #'
           a.classList.add('note', 'nodec')
           n.append(a)
+          // add submenu
+          if (n.matches('h2')) {
+            addNav(h2, subs)
+            h2 = n
+            subs = []
+          }
+          else subs.push(n)
         })
+        addNav(h2, subs)
         
         // observe code changes
         const config = { 
@@ -152,7 +178,7 @@
 
   <nav class="stick nodec small shade  row gap wrap pad">
     <!--ul class="row -resp-s -gap hover click">
-      <li><b class="pad">Granum v2.2.3</b></li>
+      <li><b class="pad">Granum v2.2.4</b></li>
       <li><a href="#start">Start</a></li>
       <li><a href="#layout1">Layout</a>
         <ul>
@@ -162,8 +188,8 @@
         </ul>
       </li>
     </ul-->
-    <
-    <b>Granum v2.2.3</b>
+    
+    <b>Granum v2.2.4</b>
     <a href="#start">Start</a>
     <a href="#layout">Layout</a>
     <a href="#typo">Typography</a>
@@ -188,7 +214,7 @@
   <main class="wide-m center pad">
     
     <div class="hero" id="top">
-      <h1>Granum v2.2.3</h1>
+      <h1>Granum v2.2.4</h1>
       <p class="note">Developer Documentation</p>
     </div>
     
@@ -690,24 +716,38 @@
     <p><small class="tag info">Enhanced with JavaScript</small></p>
     <p>
       Customized dropdown <code>select</code>-like input using <code>[popover]</code> and radio buttons.<br>
-      Optionally use <code>dialog[popover]</code> for options autofocus.<br>
+      <!-- Optionally use <code>dialog[popover]</code> for options autofocus.<br-->
       JavaScript copies value to button's first <code>span</code> text and closes popover after selection.
     </p>
     <p class="options bord pad small">
-      Style options:
-      <label><input type="radio" name="popsel-1" data-nodes="#popsel-centainer label" value="" checked><i>none</i></label>
-      <label><input type="radio" name="popsel-1" data-nodes="#popsel-centainer label" value="check"><code>.check</code></label>
-      <label><input type="radio" name="popsel-1" data-nodes="#popsel-centainer label" value="check icon-text"><code>.check.icon-text</code></label>
-      <label><input type="radio" name="popsel-1" data-nodes="#popsel-centainer label" value="check icon-text info"><code>.check.icon-text.info</code></label>
+      Button options:
+      <label><input type="checkbox" name="popsel-b" data-nodes="#popsel-container button" value="input" checked><code>.input</code></label>
+      <label><input type="checkbox" name="popsel-b" data-nodes="#popsel-container button" value="wide"><code>.wide</code></label>
+      <br>
+      Popover options:
+      <label><input type="checkbox" name="popsel-p" data-nodes="#popsel-container [popover]" value="resp"><code>.resp</code></label>
+      <label><input type="checkbox" name="popsel-p" data-nodes="#popsel-container [popover]" value="wide"><code>.wide</code></label>
+      <br>
+      List options:
+      <label><input type="checkbox" name="popsel-0" data-nodes="#popsel-container ul" value="hover"><code>.hover</code></label>
+      <br>
+      Label options:
+      <label><input type="radio" name="popsel-1" data-nodes="#popsel-container label" value="" checked><i>none</i></label>
+      <label><input type="radio" name="popsel-1" data-nodes="#popsel-container label" value="check"><code>.check</code></label>
+      <label><input type="radio" name="popsel-1" data-nodes="#popsel-container label" value="check icon-text"><code>.check.icon-text</code></label>
+      <label><input type="radio" name="popsel-1" data-nodes="#popsel-container label" value="check icon-text info"><code>.check.icon-text.info</code></label>
+      <br>
+      Radio options:
+      <label><input type="checkbox" name="popsel-2" data-nodes="#popsel-container input" value="hide"><code>.hide</code></label>
     </p>
-    <div class="demo-preview no-resize" id="popsel-centainer">
+    <div class="demo-preview no-resize" id="popsel-container">
       <form class="form lazy">
-        <button type="button" popovertarget="popsel-1" class="input"><span class="col-1">Select...</span> <a class="icon-desc note small"></a></button>
+        <button type="button" popovertarget="popsel-1" class="input wide"><span class="col-1">Select...</span> <a class="icon-desc note small"></a></button>
         <div id="popsel-1" popover class="sel">
           <ul class="row vert hover">
-            <li><label class="-check"><input type="radio" class="mem" id="sel-2" name="sel-2" value="" required>None</label></li>
+            <li><label class="-check"><input type="radio" class="mem" id="sel-2" name="sel-2" value="" required data-caption="-">None</label></li>
             <li><label class="-check"><input type="radio" class="mem" id="sel-2" name="sel-2" value="a" required>Alpha</label></li>
-            <li><label class="-check"><input type="radio" class="mem" id="sel-2" name="sel-2" value="b" required>Beta</label></li>
+            <li><label class="-check"><input type="radio" class="mem" id="sel-2" name="sel-2" value="b" required>Beta Beta Beta Beta Beta Beta Beta </label></li>
             <li><hr></li>
             <li><label class="-check"><input type="checkbox" class="mem" name="box-b" value="g">Gamma</label></li>
           </ul>
@@ -887,7 +927,7 @@
     <div class="demo-preview">
       <button popovertarget="popup-1">Show popup</button>
       <button popovertarget="popup-1" class="link">Show popup</button>
-      <div id="popup-1" popover class="pad">Popup content<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</div>
+      <div id="popup-1" popover class="pad">Popup content<p><input name><input type="checkbox" checked><p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</div>
     </div>
     
     <h3>Tooltips</h3>
