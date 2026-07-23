@@ -6,10 +6,10 @@ Ultra compact set of styles and behaviours for basic web pages.
 ~15 KB minified and gzipped.  
 With icons, components and some JavaScript.
 
-Core CSS is only ~7 KB gzipped.
+Core CSS is only ~7 KB gzipped.  
 Without icons and JavaScript.
 
-[Demo](https://vvvkor.github.io/granum/) · [Docs](https://github.com/vvvkor/granum/blob/main/docs/docs.md)
+[Docs](https://vvvkor.github.io/granum/)
 
 ## Usage
 

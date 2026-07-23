@@ -137,12 +137,12 @@ fs.copyFileSync(distMinCss + '.core.min.css', docs + 'granum.core.min.css')
 fs.copyFileSync(distMinCss + '.icons.min.css', docs + 'granum.icons.min.css')
 fs.copyFileSync(distMinJs + '.min.js', docs + 'granum.min.js')
 fs.copyFileSync(dir + 'index.html', docs + 'index.html')
-fs.copyFileSync(dir + 'docs.html', docs + 'docs.html')
+//fs.copyFileSync(dir + 'docs.html', docs + 'docs.html')
 fs.copyFileSync(dir + 'docs.md', docs + 'docs.md')
 const replace_options = {
   files: [
     docs + 'index.html',
-    docs + 'docs.html',
+    //docs + 'docs.html',
   ],
   from: [
     /asset\/granum\./g,
