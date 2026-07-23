@@ -45,30 +45,41 @@ or
 ## Features
 
 - lightweight
-- simple class names
 - modern
 - responsive
 - mobile friendly
 - semantic
 - valid
 - cross-browser
-- JavaScript is optional
 - neutral style
+- dark mode
+- customizable using css variables
 - no floats
 - no hacks
+- JavaScript is optional for enhancements
 
 ## Components
 
-- custom checkbox, radio, switch
-- interactive components: modal, drawer, gallery, popup, tooltips, dropdown, tabs, slider
-- responsive components (dropdown, form, flex, grid)
+- interactive components: modal, drawer, dropdown, popup, tooltips, tabs, gallery, slider
+- responsive layouts: flex, grid, columns, dropdown, form
 - scrollable table with fixed headers and column
-- controlled with css custom properties (`var`s)
-- dark mode
-- custom input with prefix and suffix
-- form validation
-- status colors, spacing, tags, badges
+- tags, badges, progress
 - `mask-image` SVG icons (100+)
+
+## Forms
+
+- validation
+- custom switch
+- custom select
+- custom input wrapper
+- dropzone
+
+## Utility classes
+
+- semantic colors
+- spacing
+- typography
+- conditional visibility
 
 ## JavaScript hooks
 
@@ -76,12 +87,14 @@ or
 - filter table
 - sort table
 - align table columns
-- store details state
-- store inputs
-- get inputs from URL
+- persistent details state
+- persistent input values
+- populate inputs from URL
 - check group of checkboxes
 - alert, confirm, prompt
-- escape
+- password Visibility
+- copy to clipboard
+- escape key
 - _customize CSS `var`s_
 
 ## Browser suppport
