@@ -1,0 +1,6 @@
+body {padding:0 var(--gap);}
+main {max-width:50em;margin-inline:auto;}
+:modal, [popover]:not([popover=hint]) {padding:var(--gap);}
+[hidden]:target {display:revert;}
+form table td {vertical-align:revert;}
+table[border="1"]>*>tr>* {border:var(--bord);}

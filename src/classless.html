@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Granum v0.0.0 - Classless - Documentation</title>
+    <meta name="theme-color" content="#fff">
+    <meta name="theme-color" media="(prefers-color-scheme:dark)" content="#04a">
+    <link rel="icon" type="image/svg" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20220%20220'%3E%3Cpath%20fill='%23666'%20d='M35%2067l75%20-44%2075%2044%200%2089-75%2044-75-44zm75%208a35%2035%200%201%200%20.01%200z'/%3E%3C/svg%3E">
+    
+    <!-- Granum Framework from CDN - - >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/granum@2/dist/granum.core.min.css">
+    -->
+    <!-- Granum Framework Local -->
+    <link rel="stylesheet" href="asset/granum.classless.css">
+    <script defer src="asset/customize.js"></script>
+    
+    <style>
+        body {background:oklch(from var(--hilite, #ccc3) l c h / calc(alpha / 2.5));}
+        h2 { border-bottom: medium solid var(--line); }
+        
+        /* Live Preview Block Styling */
+
+        .options {
+          background: #fff;
+          border-left: medium solid var(--front-info);
+        }
+        .demo-preview {
+          background: var(--back, #fff6);
+          border: thin solid var(--line, #ccc);
+          padding: var(--gap);
+          margin-top: var(--gap);
+          position: relative;
+          min-height: 3rem;
+        }
+        .demo-preview:not(.no-resize){
+          resize: both;
+          overflow: auto;
+        }
+        .demo-preview::before {
+          content: "▶ Preview";
+          display: block;
+          font-size: 0.75em;
+          font-weight: bold;
+          color: var(--front-note, #888);
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          padding-bottom: 0.4em;
+          border-bottom: thin solid var(--line);
+          margin-bottom: 0.8em;
+        }
+        pre.demo-code { max-height: 20vh; margin-top:-1px; background: var(--hilite); padding: 1rem; overflow-x: auto; border: thin solid var(--line); border-radius:0;  }
+        .demo-code code { font-family: var(--mono); font-size: 0.9em; }
+    </style>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        
+        // update code preview
+        const showCode = (n, code=null) => {
+          if (!code) code = n.nextElementSibling.firstElementChild
+          let s = n.innerHTML.replace(/^[\r\n]+|[\r\n\s]+$/g, '').replace(/\s+class=""/g, '')
+          const offset = s.match(/^ */) || ''
+          if (offset) {
+            const re = new RegExp('(^|[\\n\\r])' + offset, 'g')
+            s = s.replace(re, '$1')
+          }
+          code.textContent = s // '' + offset + s.replace(/(^|[\n\r]) {6}/g, '$1')
+            //.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        }
+        
+        const unstyle = e => {
+          const d = e.target.matches('.demo-preview') ? e.target : null
+          if (d && e.offsetX > d.clientWidth - 16 && e.offsetY > d.clientHeight - 16) {
+            d.style = ''
+          }
+        }
+      
+        const addNav = (h2, subs) => {
+          if (h2 && subs?.length > 1) {
+            const nav = document.createElement('nav')
+            nav.classList.add('small', 'row', 'gap', 'wrap', 'nodec' /*, 'pad', 'hilite'*/)
+            nav.innerHTML = subs.map(s => '<a href="#' + s.id + '">' + s.dataset.caption + '</a>').join(' ')
+            h2.after(nav)
+          }
+        }
+        
+        // prepare code preview
+        document.querySelectorAll('.demo-preview').forEach(n => {
+          // code
+          const pre = document.createElement('pre')
+          const code = document.createElement('code')
+          showCode(n, code)
+          pre.classList.add('demo-code')
+          pre.append(code)
+          n.after(pre)
+          // reset resized
+          n.addEventListener('dblclick', unstyle)
+        })
+        
+        // header anchors
+        let h2 = null
+        let subs = []
+        document.querySelectorAll('main :is(h2, h3)').forEach(n => {
+          n.dataset.caption = n.textContent.replace(/\(.*$/, '')
+          if (!n.id) n.id = n.textContent.replace(/\W+/g, '-').replace(/-+/, '-').replace(/-+$/, '').toLowerCase()
+          const a = document.createElement('a')
+          a.href = '#' + n.id
+          a.textContent = ' #'
+          a.classList.add('note', 'nodec')
+          n.append(a)
+          // add submenu
+          if (n.matches('h2')) {
+            addNav(h2, subs)
+            h2 = n
+            subs = []
+          }
+          else subs.push(n)
+        })
+        addNav(h2, subs)
+        
+      })
+    </script>
+</head>
+<body>
+
+  <nav align="center">
+  <p>
+    
+    <b>Granum v0.0.0</b> &middot;
+    <a href="#start">Start</a> &middot;
+    <a href="#typo">Typography</a> &middot;
+    <a href="#table">Table</a> &middot;
+    <a href="#form">Form</a> &middot;
+    <a href="#comp">Components</a>
+    &nbsp;
+    <a href="#top" title="Top">&uarr;</a>
+    <a href="#back" title="Back" onclick="location.go(-1);return false;">&larr;</a>
+    <label for="invert" title="Toggle dark mode">&#9790;</label>
+    <a href="#refresh" title="Clear localStorage and reload" onclick="localStorage.clear();location.reload();return false;"></a>
+    
+    <button command="show-modal" commandfor="customize" title="Customize">Customize</button>
+    <a href="https://github.com/vvvkor/granum" title="GitHub">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="-1 -1 18 18" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+    </a>
+  </p>
+  </nav>
+    
+  <main>
+    
+    <div id="top">
+      <h1>Granum v0.0.0</h1>
+      <p>Developer Documentation</p>
+    </div>
+    
+
+    <h2 id="start">Getting Started</h2>
+    <p>Include the CSS in your HTML.</p>
+    <pre><code>&lt;link rel="stylesheet" href="granum.core.min.css"&gt;</code></pre>
+    <p>To make a page mobile-friendly and responsive, include the viewport meta tag into the <code>head</code>.</p>
+    <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code></pre>
+
+    <h2 id="typo">Typography, Colors & Theming</h2>
+
+    <h3>Basic Elements</h3>
+    <div class="demo-preview">
+      <p>
+        Text
+        <a href="?#">Link</a>
+        <a>Unlink</a>
+        <code>Code</code>
+        <kbd>Kbd</kbd>
+        <q>Quote</q>
+        <small>Small</small>
+        <mark>Mark</mark>
+        <abbr title="Abbreviation">Abbr</abbr>
+        x<sub>sub</sub>
+        x<sup>super</sup>
+      </p>
+      <hr>
+      <blockquote>Block quote</blockquote>
+      <pre>Preformatted text
+<code>Code: <var>window</var> = <kbd onclick="this.textContent = window.innerWidth + ' x ' + window.innerHeight">click</kbd></code></pre>
+    </div>
+    
+    <h3>Links and Buttons</h3>
+    <div class="demo-preview">
+      <span>Text</span>
+      <a href="#link">Link</a>
+      <button>Button</button>
+      <label>Label</label>
+    </div>
+
+    <h3>Images</h3>
+    <div class="demo-preview">
+      <figure>
+        <img alt="" src="https://placehold.co/400x200/b33/fff.png?text=***" width="100">
+        <figcaption>Figure caption</figcaption>
+      </figure>
+    </div>
+
+    <h3>Dark Mode</h3>
+    <div class="demo-preview">
+      <label><input type="checkbox" id="invert"> Toggle dark mode</label><br>
+    </div>
+
+    <h3>List</h3>
+    <div class="demo-preview">
+      <ul id="list-1">
+        <li><a href="#list-1">Alpha</a></li>
+        <li><a href="#list-1">Beta</a></li>
+        <li><a href="#list-1">Gamma</a></li>
+        <li><a href="#list-1"><span>Delta<br><small>line</small></span></a></li>
+      </ul>
+    </div>
+
+    <h3 id="table">Table</h3>
+    <div class="demo-preview">
+        <table border="1">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Date</th>
+              <th>String</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Alice</td><td>0</td><td>01.07.2000</td><td>Cafe</td></tr>
+            <tr><td>Dan</td><td>150.50 km</td><td>2024-12-01</td><td>café</td></tr>
+            <tr><td>bob</td><td>150.15 km</td><td>02.02.2000</td><td>café</td></tr>
+            <tr><td>Charlie</td><td>-22</td><td>7/1/2025</td><td>coffee</td></tr>
+            <tr><td>No<br>name</td><td></td><td>-</td><td></td></tr>
+          </tbody>
+        </table>
+    </div>
+
+    <h2 id="form">Forms & Inputs</h2>
+    
+    <h3>Inline Form</h3>
+    <div class="demo-preview">
+      <form id="form-1" action="#form">
+        <input type="text" id="name-1" name="name">
+        <label><input type="checkbox"> Checkbox</label>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+    
+    <h3>Stacked Form</h3>
+    <div class="demo-preview">
+      <form id="form-1" action="#form">
+        <p>
+          <label for="name-1">Name</label><br>
+          <input type="text" id="name-1" name="name">
+        </p>
+        <p>
+          <label for="email-1">Email</label><br>
+          <input type="email" id="email-1" name="email">
+        </p>
+        <p>
+          <label><input type="checkbox"> Checkbox</label>
+        </p>
+        <p>
+          <label><input type="radio" name="radio-1" value="1"> Radio 1</label>
+          <br>
+          <label><input type="radio" name="radio-1" value="2"> Radio 2</label>
+        </p>
+        <p>
+          <button type="submit">Submit</button>
+        </p>
+      </form>
+    </div>
+
+    <h3>Aligned Form</h3>
+    <div class="demo-preview">
+      <form id="form-1" action="#form">
+        <table>
+          <tr>
+            <td><label for="name-1">Name</label></td>
+            <td><input type="text" id="name-1" name="name"></td>
+          </tr>
+          <tr>
+            <td><label for="email-1">Email</label></td>
+            <td><input type="email" id="email-1" name="email"></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><label><input type="checkbox"> Checkbox</label></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <label><input type="radio" name="radio-1" value="1"> Radio 1</label>
+              <br>
+              <label><input type="radio" name="radio-1" value="2"> Radio 2</label>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><button type="submit">Submit</button></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+
+    <h3>Custom Select</h3>
+    <div class="demo-preview">
+      <form>
+        <button type="button" popovertarget="popsel-1">Select...</button>
+        <div id="popsel-1" popover>
+          <div><label><input type="radio" name="sel-2" value="" required> None</label></div>
+          <div><label><input type="radio" name="sel-2" value="a" required> Alpha</label></div>
+          <div><label><input type="radio" name="sel-2" value="b" required> Beta</label></div>
+          <hr>
+          <div><label><input type="checkbox" name="box-b" value="g"> Gamma</label></div>
+        </div>
+      </form>
+    </div>
+
+    <h2 id="comp">Interactive Components</h2>
+    
+    <h3>Modals & Drawers</h3>
+    <div class="demo-preview">
+      <button command="show-modal" commandfor="dialog-1">Open dialog</button>
+      <dialog id="dialog-1" closedby="any">
+        <p>Dialog content</p>
+        <input name autofocus ><br><input type="checkbox" checked><p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>
+        <button command="close" commandfor="dialog-1">Close</button>
+      </dialog>
+    </div>
+
+    <h3>Popups</h3>
+    <div class="demo-preview">
+      <button popovertarget="popup-1">Show popup</button>
+      <div id="popup-1" popover>
+        <p>Popup content</p>
+        <input name autofocus><br><input type="checkbox" checked><p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p
+      </div>
+    </div>
+    
+    <h3>Tooltips</h3>
+    <div class="demo-preview">
+      <button popovertarget="tip-1">Click me</button>
+      <div id="tip-1" popover="hint">This is a tooltip</div>
+    </div>
+    
+
+    <h3>Toggle content with URL hash</h3>
+    <div class="demo-preview">
+      <a href="#target-1">Show target</a>
+      <div id="target-1" hidden>
+        Target content 1<br>
+        <a href="#close">Close</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <a href="#top">Top</a>
+  </footer>
+
+<!-- customize -->
+      <dialog id="customize" closedby="any">
+        <div>
+          <label for="invert">Toggle dark mode</label>
+          <button command="close" commandfor="customize">Close</button>
+        </div>
+        <h3>Customize style</h3>
+        <form>
+          <div>
+            <button>Reset</button>
+            <input type="checkbox" checked>
+            <input type="checkbox" checked>
+            <progress value=".75" style="max-width:3em;">p</progress>
+          </div>
+          <hr>
+          <div>
+            <div>
+              <div>
+                <label for="var-gap">Gap</label>
+                <input id="var-gap" type="number" name="gap" min="0" max="2" step=".1" value="1" data-unit="em">
+                <br>
+                <!--label for="var-fs">Font size</label>
+                <input id="var-fs" type="number" name="root-font-size" min=".8" max="2" step=".1" value="1">
+                <br-->
+                <label for="var-radius">Radius</label>
+                <input id="var-radius" type="number" name="radius" min="0" max="2" step=".1" value="1" data-unit="em">
+                <br>
+                <label for="var-back">Background</label>
+                <input id="var-back" type="color" name="back">
+                <br>
+                <!-- todo: work with opacity
+                <label for="var-hilite">Hilite</label>
+                <input id="var-hilite" type="color" name="hilite">
+                -->
+              </div>
+            </div>
+            <div>
+              <div>
+                <label for="var-front">Text</label>
+                <input id="var-front" type="color" name="front">
+                <br>
+                <label for="var-link">Link and Button</label>
+                <input id="var-link" type="color" name="link">
+                <br>
+                <label for="var-hilite">Active</label>
+                <input id="var-hilite" type="color" name="active">
+                <br>
+                <label for="var-line">Line</label>
+                <input id="var-line" type="color" name="line">
+                <br>
+                <label for="var-linei">Input border</label>
+                <input id="var-linei" type="color" name="line-input">
+                <br>
+                <label for="var-sw">Switch accent</label>
+                <input id="var-sw" type="color" name="input-accent">
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div>
+            <label for="vars">Custom style</label>
+            <textarea id="vars" readonly></textarea>
+          </div>
+        </form>
+      </dialog><!-- /#customize -->
+
+<!-- accesskeys -->
+  
+    <a href="#top" accesskey="1">Top</a>
+    <a href="#cancel" accesskey="x">Cancel</a>
+
+</body>
+</html>

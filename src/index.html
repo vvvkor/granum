@@ -87,7 +87,6 @@
         const unstyle = e => {
           const d = e.target.matches('.demo-preview') ? e.target : null
           if (d && e.offsetX > d.clientWidth - 16 && e.offsetY > d.clientHeight - 16) {
-            console.log(e.offsetX, d.clientWidth)
             d.style = ''
           }
         }
@@ -203,7 +202,7 @@
     <a href="#top" title="Top" class="icon-up note shift"></a>
     <a href="#back" title="Back" class="icon-left note"></a>
     <label for="invert" class="icon-sun link" title="Toggle dark mode"></label>
-    <a href="#refresh" title="Refresh" class="icon-refresh note" onclick="localStorage.clear();location.reload();return false;"></a>
+    <a href="#refresh" title="Clear localStorage and reload" class="icon-refresh note" onclick="localStorage.clear();location.reload();return false;"></a>
     
     <button command="show-modal" commandfor="customize" class="link icon-config" title="Customize"></button>
     <a href="https://github.com/vvvkor/granum" class="-neutral an-im-swing" title="GitHub">
@@ -742,9 +741,12 @@
       Radio options:
       <label><input type="checkbox" name="popsel-2" data-nodes="#popsel-container input" value="hide"><code>.hide</code></label>
     </p>
-    <div class="demo-preview no-resize" id="popsel-container">
+    <div class="demo-preview" id="popsel-container">
       <form class="form lazy">
-        <button type="button" popovertarget="popsel-1" class="input wide"><span class="col-1">Select...</span> <a class="icon-desc note small"></a></button>
+        <button type="button" popovertarget="popsel-1" class="input wide">
+          <span class="col-1">Select...</span>
+          <a class="icon-desc note small"></a>
+        </button>
         <div id="popsel-1" popover class="sel">
           <ul class="row vert hover">
             <li><label class="-check"><input type="radio" class="mem" id="sel-2" name="sel-2" value="" required data-caption="-">None</label></li>
@@ -966,7 +968,7 @@
       <div class="bord pad">Target content</div>
     </div>
 
-    <h3>Toggle content with URL hash</h3>
+    <h3>Toggle content with <code>:target</code></h3>
     <p><small class="tag info">Enhanced with JavaScript</small></p>
     <div class="demo-preview">
       <a href="#target-1">Show target</a>
@@ -982,7 +984,7 @@
       </div>
     </div>
 
-    <h3>Slider with URL hash</h3>
+    <h3>Slider with <code>:target</code></h3>
     <div class="demo-preview">
       <div class="slider nodec">
         <div id="slide1" class="pad hilite row mid stretch">
@@ -1058,7 +1060,7 @@
 <summary>Legacy Modals, Popups and Tooltips</summary>
 <div class="shade mar pads rad stack">
 
-    <h3>Modals & Drawers (old style)</h3>
+    <h3>Modals & Drawers with <code>:target</code></h3>
     <p><small class="tag warning">Deprecated</small></p>
     <p>Triggered via URL hash fragments. Pure CSS, no JavaScript required!</p>
     <div class="demo-preview">
@@ -1067,16 +1069,16 @@
         <a href="#demo-drawer-1">Open Drawer</a>
 
         <div id="demo-modal-1" class="modal pad stack trans">
-            <h3>Modal Title</h3>
-            <p>This is a pure CSS modal triggered by the URL hash.</p>
-            <a href="#close">Close Modal</a>
+          <h4>Modal Title</h4>
+          <p>This is a pure CSS modal triggered by the URL hash.</p>
+          <a href="#close">Close Modal</a>
         </div>
         <a href="#close" class="backdrop"></a>
 
         <aside id="demo-drawer-1" class="drawer pad stack trans">
-            <h3>Drawer Content</h3>
-            <p>This is a slide-out drawer.</p>
-            <a href="#close">Close Drawer</a>
+          <h4>Drawer Content</h4>
+          <p>This is a slide-out drawer.</p>
+          <a href="#close">Close Drawer</a>
         </aside>
         <a href="#close" class="backdrop"></a>
 
@@ -1092,7 +1094,7 @@
 
     </div>
 
-    <h3>Popups disclosure</h3>
+    <h3>Popup disclosure</h3>
     <p>Using native <code>&lt;details&gt;</code> elements.</p>
     <div class="demo-preview no-resize">
       Before
@@ -1124,7 +1126,7 @@
       After.
     </div>
 
-    <h3>Tooltips (old style)</h3>
+    <h3>Tooltips with <code>[data-hint]</code></h3>
     <p><small class="tag warning">Deprecated</small></p>
     <div class="demo-preview">
       <span data-hint="This is a default tooltip" class="pad bord" tabindex="0">Hover over me</span>
