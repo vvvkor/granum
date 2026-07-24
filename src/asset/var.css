@@ -9,8 +9,8 @@
   --bord: thin solid var(--line);
   --shade: 0 .1rem .8rem 0 #0003;
   
-  --front: #333;
-  --back: #fcfcfc;
+  --front: #432;
+  --back: #fcf9f6;
   --link: #04a;
   
   /* viewport size */

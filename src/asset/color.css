@@ -10,15 +10,15 @@
   --link-invert: color-mix(in oklch, var(--link) 35%, var(--back));/*#aef;*//*#8cf;*//*#fe3;*/
 
   /* status */
-  --light-front: 52%;
-  --light-back: 93%;
+  --light-front: 50%;
+  --light-back: 92%;
   --chroma-front: 42%;
   --chroma-back: 12%;
   --note: 90; /* front/back: 90/90 */
   --info: 210; /* 224/220 */
   --success: 143; /* 143/145 */
   --warning: 80; /* 70/84 */
-  --danger: 25; /* 25/19 */
+  --danger: 22; /* 25/19 */
   
   /*
   --front-note: #888;
@@ -32,12 +32,12 @@
   --back-warning: #fd9;
   --back-danger: #fbb;
   */
-    --front-note:    color-mix(in oklch, var(--front) 60%, var(--back));
+    --front-note:    color-mix(in oklch, color-mix(in oklch, var(--front) 60%, var(--back)) 85%, #fff);
     --front-info:    oklch(var(--light-front) var(--chroma-front) var(--info));
     --front-success: oklch(var(--light-front) var(--chroma-front) var(--success));
     --front-warning: oklch(var(--light-front) var(--chroma-front) var(--warning));
     --front-danger:  oklch(var(--light-front) var(--chroma-front) var(--danger));
-    --back-note:    color-mix(in oklch, var(--front) var(--chroma-back), var(--back)); /* --chroma-back is misused; needed 10% for light, 20% for dark mode */
+    --back-note:    color-mix(in oklch, color-mix(in oklch, var(--front) 15%, var(--back)) 80%, #fff); /* --chroma-back is misused; needed 10% for light, 20% for dark mode */
     --back-info:    oklch(var(--light-back) var(--chroma-back) var(--info));
     --back-success: oklch(var(--light-back) var(--chroma-back) var(--success));
     --back-warning: oklch(var(--light-back) var(--chroma-back) var(--warning));
