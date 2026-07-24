@@ -1,0 +1,10 @@
+/* smart dark mode */
+
+html {background-color:var(--back);}
+html, img, video, iframe, .invert, dialog, [popover] {filter:var(--mode);}
+html {--mode:none;}
+html.invert, html:has(#invert:checked) {--mode:invert(.95) hue-rotate(180deg);--back:#ddd;--line:#bbb; /* keep shadow */ --shade:0 0 .5em 0 #fff;--hilite:#fff4;/*#eee8;*/}
+@media (prefers-color-scheme: dark) {
+  html:not(.invert):not(:has(#invert:checked)) {--mode:invert(.95) hue-rotate(180deg);--back:#ddd;--line:#bbb; /* keep shadow */ --shade:0 0 .5em 0 #fff;--hilite:#fff4;/*#eee8;*/}
+  html.invert, html:has(#invert:checked) {--mode:none;}
+}

@@ -15,21 +15,21 @@
     <!-- Granum Framework Local -->
     <link rel="stylesheet" href="asset/granum.css">
     <script defer src="asset/granum.js"></script>
-    <script defer src="asset/customize.js"></script>
+    <!--script defer src="asset/customize.js"></script-->
     <script defer src="asset/icon-paths.js"></script>
     
     <style>
-        body {background:oklch(from var(--hilite, #ccc3) l c h / calc(alpha / 2.5));}
+        /*body {background:oklch(from var(--hilite, #ccc3) l c h / calc(alpha / 2.5));}*/
         h2 { border-bottom: medium solid var(--line); }
         
         /* Live Preview Block Styling */
 
         .options {
-          background: #fff;
+          background: var(--back-input, #fff);
           border-left: medium solid var(--front-info);
         }
         .demo-preview {
-          background: var(--back, #fff6);
+          background: var(--back-input, #fff6);
           border: thin solid var(--line, #ccc);
           padding: var(--gap);
           margin-top: var(--gap);
@@ -52,7 +52,7 @@
           border-bottom: thin solid var(--line);
           margin-bottom: 0.8em;
         }
-        pre.demo-code { max-height: 20vh; margin-top:-1px; background: var(--hilite); padding: 1rem; overflow-x: auto; border: thin solid var(--line); border-radius:0;  }
+        pre.demo-code { max-height: 20vh; margin-top:-1px; /*background: var(--hilite);*/ padding: 1rem; overflow-x: auto; border: thin solid var(--line); border-radius:0;  }
         .demo-code code { font-family: var(--mono); font-size: 0.9em; }
         /*pre:has(code) {overflow:auto scroll;}*/
         pre:has(code) + a.copy {display:block;margin-top:-2.2rem;margin-right:1rem;float:right;}
@@ -202,7 +202,10 @@
     <a href="#top" title="Top" class="icon-up note shift"></a>
     <a href="#back" title="Back" class="icon-left note"></a>
     <label for="invert" class="icon-sun link" title="Toggle dark mode"></label>
-    <!--input type="checkbox" id="dark" checked-->
+    <!--
+    <input type="checkbox" id="dark" checked>
+    <b class="invert pad rad">Invert <a href="#">Link</a></b>
+    -->
     <a href="#refresh" title="Clear localStorage and reload" class="icon-refresh note" onclick="localStorage.clear();location.reload();return false;"></a>
     
     <button command="show-modal" commandfor="customize" class="link icon-config" title="Customize"></button>
@@ -480,13 +483,13 @@
         <button>Button <sup class="tag danger c -bord"></sup></button>
       </p>
       <p>
-        <progress value=".4">40%</progress> Default<br>
-        <progress value=".5" class="neutral">50%</progress> Neutral<br>
-        <progress value=".6" class="note">60%</progress> Note<br>
-        <progress value=".7" class="info">70%</progress> Info<br>
-        <progress value=".8" class="success">80%</progress> Success<br>
-        <progress value=".9" class="warning">90%</progress> Warning<br>
-        <progress value="1" class="danger">100%</progress> Danger
+        <progress value=".3">30%</progress> Default<br>
+        <progress value=".4" class="neutral">40%</progress> Neutral<br>
+        <progress value=".5" class="note">50%</progress> Note<br>
+        <progress value=".6" class="info">60%</progress> Info<br>
+        <progress value=".7" class="success">70%</progress> Success<br>
+        <progress value=".8" class="warning">80%</progress> Warning<br>
+        <progress value=".9" class="danger">90%</progress> Danger
       </p>
     </div>
 

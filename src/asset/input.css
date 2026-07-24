@@ -1,7 +1,7 @@
 :root {
-  --front-input: var(--front, #000);
   --back-input: #fff;
-  --line-input: #999;
+  --front-input: var(--front, #000);
+  --line-input: color-mix(in oklch, var(--line, #999) 70%, var(--front));
 }
 
 /* browser-specific fixes */
