@@ -12,15 +12,14 @@
   /* status */
   --front-note: #888;
   --front-info: #08a;
-  --front-success: /*#181;*/#181;
-  --front-warning: /*#c60;*//*#d70;*/#b70;
-  --front-danger: /*#c00;*/#c33;
+  --front-success: #181;/*#181;*/
+  --front-warning: #b70;/*#c60;*//*#d70;*/
+  --front-danger: #c33;/*#c00;*/
   --back-note: #eee;
   --back-info: #bef;
   --back-success: #beb;
   --back-warning: #fd9;
   --back-danger: #fbb;
-  /* todo: transparent bg? */
 
   /* inputs */
   --outline-hover: #ddd8;
@@ -116,8 +115,8 @@ progress::-moz-progress-bar {background-color:var(--ff, var(--link));}
 html {background-color:var(--back);}
 html, img, video, iframe, .invert, dialog, [popover] {filter:var(--mode);}
 html {--mode:none;}
-html.invert, html:has(#invert:checked) {--mode:invert(.95) hue-rotate(180deg);--back:#ddd;--line:#bbb; /*!!!*/ --shade:0 0 .5em 0 #fff;--hilite:#fff4;/*#eee8;*/}
+html.invert, html:has(#invert:checked) {--mode:invert(.95) hue-rotate(180deg);--back:#ddd;--line:#bbb; /* keep shadow */ --shade:0 0 .5em 0 #fff;--hilite:#fff4;/*#eee8;*/}
 @media (prefers-color-scheme: dark) {
-  html:not(.invert):not(:has(#invert:checked)) {--mode:invert(.95) hue-rotate(180deg);--back:#ddd;--line:#bbb; /*!!!*/ --shade:0 0 .5em 0 #fff;--hilite:#fff4;/*#eee8;*/}
+  html:not(.invert):not(:has(#invert:checked)) {--mode:invert(.95) hue-rotate(180deg);--back:#ddd;--line:#bbb; /* keep shadow */ --shade:0 0 .5em 0 #fff;--hilite:#fff4;/*#eee8;*/}
   html.invert, html:has(#invert:checked) {--mode:none;}
 }

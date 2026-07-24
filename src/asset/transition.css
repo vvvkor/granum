@@ -35,10 +35,10 @@ dialog.drawer{transition:left var(--dur), right var(--dur), display var(--dur) a
 */
 
 /* required for complex mode */
-/* clean-css ignore:start * /
+/* c---lean-css ignore:start * /
 @starting-style {
   :is(.modal:target, dialog:is([open], :popover-open)):not(.full, .drawer), dialog:is([open], :popover-open)::backdrop {opacity:0;}
   dialog:not(.shift).drawer[class][class]{left:calc(0em - var(--wdr));}
   dialog.shift.drawer[class][class]{right:calc(0em - var(--wdr));}
 }
-/* clean-css ignore:end */
+/* c---lean-css ignore:end */

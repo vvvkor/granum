@@ -1,4 +1,4 @@
-.fix-head, .fix-col {border-collapse:separate;}/*!*/
+.fix-head, .fix-col {border-collapse:separate;}
   .bord:where(.fix-head, .fix-col) tr>*+* {border-left:none;}
   .bord:where(.fix-head, .fix-col) tr+tr>* {border-top:none;}
   .line:where(.fix-head) tfoot tr>* {border-top:var(--bord);}

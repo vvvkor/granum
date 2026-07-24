@@ -4,7 +4,7 @@
   --list-width: 12rem;
   --radius: calc(.3 * var(--gap));
   
-  --hilite: /*#00000009;*/#ccc3;
+  --hilite: #ccc3;/*#00000009;*/
   --line: #ccc;
   --bord: thin solid var(--line);
   --shade: 0 .1rem .8rem 0 #0003;
