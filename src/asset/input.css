@@ -24,8 +24,9 @@ button:not(:disabled), .check, .sel label {cursor:pointer;}
 
 .input {display:inline-flex;min-width:max-content;align-items:center;gap:calc(.5 * var(--gap));}
 .input:not(button) {padding-block:0;}
-  button.input {min-width:var(--list-width);/*width:var(--list-width);*/text-align:left;}
-  button:not(.wide).input>span:first-child {max-width:var(--list-width);overflow:hidden;text-overflow:ellipsis;}
+  button.input {min-width:var(--list-width);text-align:left;}
+  button.input:not(.wide) {width:var(--list-width);}
+  button.input > span:first-child {overflow:hidden;text-overflow:ellipsis;}
 .input input {flex:1;margin:0;padding-inline:0;border:none;outline:none !important;}
 .input button {padding:0 calc(.3 * var(--gap));min-width:0;color:var(--ff, var(--front));background-color:transparent;}
   .input button.bg {background-color:var(--bb, transparent);}
