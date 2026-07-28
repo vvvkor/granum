@@ -6,33 +6,45 @@ oklch(from var(--link) calc(l - 0.2) calc(c + 0.2) calc(h - 160));
 */
 
 :root:has(#dark:checked) {
-  --front: #eee;
+  /* sizes; todo: --input-radius? */
+  /* --gap: .5em; */
+  /* --radius: 1em; /* calc(--gap); */
+  
+  --front: #f9f9f9;
   --back: #222;
-  --hilite: #6666; /* todo: calc(front) */
-  --line: #444; /* todo: calc(front) */
-  --shade: 0 .1rem .8rem 0 #0006; /* todo: calc(front+alpha) */
-  --backdrop: #111d; /* todo: calc(back+alpha) */
+  --back-input: #111; /* todo: calc() when if() is supported */
+  --shade: 0 .1rem .8rem 0 #000e; /* todo: calc(front+alpha); calc() when if() is supported */
+  --backdrop: #111d; /* todo: calc(back+alpha); calc() when if() is supported */
+  /*--lnk: 200; /* hue */
+  /*--link: #fe9; /* color; calc(--lnk) */
+  /*--accent: green; /* color; inherits --link */
+  /* calc() */
+  /*--hilite: #6666; */
+  /*--line: #444; */
+
+  /* input: calculated; todo: calc() back-input */
   /* 
   --front-input: var(--front, #000);
   --line-input: #666;
+  --back-input: #111;
   */
-  --back-input: #111; /* todo: calc(?) */
-  /* link state */
-  --link: #9cf; /* todo: calc(hue-link) */
-  --visited: #c7d; /* todo: calc(hue-visited) */
-  /*--hover: #bdf;*/
-  --active: #fe9; /* todo: calc(hue-active) */
+  /* link state: calculated */
+  /*
+  --link: #9cf;
+  --visited: #c7d;
+  --hover: #bdf;
+  --active: #fe9;
   /* invert: calculated */
   /*
   --front-invert: var(--back);
   --back-invert: var(--front);
   */
   /*--link-invert: #04a;*/ /* todo: calc(link, coeff?) */
-  /* status: swap back and front*/
-  --light-front: 93%;
-  --light-back: 45%;
-  --chroma-front: 14%;
-  --chroma-back: 35%;
+  /* status: constants for dark theme; todo: calc() when if() is supported */
+  --light-front: 93%; /* 55% */
+  --light-back: 45%; /* 93% */
+  --chroma-front: 20%; /* 42% */
+  --chroma-back: 35%; /* 12% */
   /* input outline: keep */
   /*
   --outline-hover: #ddd8;

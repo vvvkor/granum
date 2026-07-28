@@ -4,13 +4,13 @@
   --list-width: 12rem;
   --radius: calc(.3 * var(--gap));
   
-  --hilite: #ccc3;/*#00000009;*/
-  --line: #ccc;
+  --hilite: oklch(from color-mix(var(--back), #999) l c h / 20%);/*#ccc3;*/
+  --line: color-mix(var(--front) 20%, var(--back));/*#ccc*/
   --bord: thin solid var(--line);
   --shade: 0 .1rem .8rem 0 #0003;
   
-  --front: #432;
-  --back: #fcf9f6;
+  --front: #222;
+  --back: #f9f9f9;
   --link: #04a;
   
   /* viewport size */
