@@ -1,6 +1,3 @@
-:root {
-  --dur: 0s;
-}
 .trans-off {--dur:0s;}
 .trans-fast {--dur:.1s;}
 .trans {--dur:.22s;}

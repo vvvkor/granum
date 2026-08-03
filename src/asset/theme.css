@@ -1,0 +1,96 @@
+:root {
+    
+  /* size */
+  --gap: 1em;
+  --list-width: 12rem;
+  --radius: calc(.3 * var(--gap));
+  
+  /* basics */
+  --front: light-dark(#222, #eee);
+  --back: light-dark(#f9f9f9, #222);
+  --link: light-dark(#04a, #9cf);
+  --accent: var(--link);
+  
+  --hilite: light-dark(#ccc3, #6666);
+  --line: light-dark(#ccc, #444);
+  --bord: thin solid var(--line);
+  --shadow: light-dark(#0003, #0009);
+  --shade: 0 .1rem .8rem 0 var(--shadow);
+
+  /* typo */
+  --root-font-size: 1;
+  --font-coeff: 1.25; /* headings multiplier */
+  --serif: "PT Serif", Georgia, serif;
+  --sans: "PT Sans", Roboto, "Segoe UI", sans-serif;
+  --mono: "PT Mono", monospace;
+
+  /* input */
+  --back-input: light-dark(#fff, #111);
+  --front-input: var(--front);
+  --line-input: light-dark(#999, #666); /*color-mix(in oklch, var(--line, #999) 70%, var(--front));*/
+  --input-accent: var(--accent);
+
+  /* input outline */
+  --outline-hover: #ddd8;
+  --outline-focus: #ccc8;
+  --outline-focus-visible: #9cfa;
+  --outline-valid: #3c36;
+  --outline-invalid: #f666;  
+  
+  /* color */
+    /* link state */
+    --visited: light-dark(#808, #c7d);
+    --hover: light-dark(#036, #bdf); /*color-mix(in oklch, var(--link), var(--front));*/
+    --active: light-dark(#f00, #fe9);
+    /* invert: todo */
+    --front-invert: var(--back);
+    --back-invert: var(--front);
+    --link-invert: light-dark(#9cf, #04a);
+    /* status */
+    --front-note: light-dark(#888, #eee);
+    --front-info: light-dark(#08a, #bef);
+    --front-success: light-dark(#181, #beb);
+    --front-warning: light-dark(#b70, #fd9);
+    --front-danger: light-dark(#c33, #fbb);
+    --back-note: light-dark(#eee, #888);
+    --back-info: light-dark(#bef, #08a);
+    --back-success: light-dark(#beb, #181);
+    --back-warning: light-dark(#fd9, #b70);
+    --back-danger: light-dark(#fbb, #c33);
+
+  /* icon */
+  /*--icon-scale: 1.25;*/
+
+  /* toggle */
+  --backdrop: light-dark(#6665, #111d);/*#6669;/*#0006;/*#0002;*/
+  --drawer-width: 20rem;
+  --pop-height: min(20rem, 80vh);
+  /* transition */
+  --dur: 0s;
+
+  
+  /* viewport size */
+  /*
+   --is-l: max(0, sign(100vw - 1199px));
+   --is-s: max(0, sign(640px - 100vw));
+   --is-m: max(0, calc(1 - var(--is-l) - var(--is-s)));
+  */
+}
+
+@media (50rem <= width) {
+	:root {--root-font-size: 1.2;}
+}
+
+/*
+h1:before {
+  counter-reset: sz-l var(--is-l) sz-m var(--is-m) sz-s var(--is-s); 
+  content: " = " counter(sz-l) " / " counter(sz-m) " / " counter(sz-s) " = "; 
+}
+*/
+/* Implicit Style Container - has bugs in Chrome on 2026-07-22 */
+/*
+@container style(--is-s = 1) {
+  h1 {color:red;} 
+  h1:after {content:" S";}
+}
+*/

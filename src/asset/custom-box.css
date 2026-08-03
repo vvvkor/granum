@@ -1,6 +1,3 @@
-:root {
-  --input-accent: #06f; /*var(--link, #06f);*/
-}
 :is([type="checkbox"], [type="radio"]) {width:1.2em;height:1.2em;vertical-align:-15%;margin:0 .2em;}
 
 /* radio, checkbox */

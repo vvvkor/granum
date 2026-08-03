@@ -1,59 +1,6 @@
-:root {
-  /* link state */
-  --visited: #808;
-  --hover: color-mix(in oklch, var(--link), var(--front));/*#036;*/
-  --active: #f00;
-  
-  /* invert */
-  --front-invert: var(--back);/*#fff;*/
-  --back-invert: var(--front);/*#666;*/
-  --link-invert: color-mix(in oklch, var(--link) 35%, var(--back));/*#aef;*//*#8cf;*//*#fe3;*/
-
-  /* status */
-  --light-front: 52%;
-  --light-back: 93%;
-  --chroma-front: 42%;
-  --chroma-back: 12%;
-  --note: 90; /* front/back: 90/90 */
-  --info: 210; /* 224/220 */
-  --success: 143; /* 143/145 */
-  --warning: 80; /* 70/84 */
-  --danger: 25; /* 25/19 */
-  
-  /*
-  --front-note: #888;
-  --front-info: #08a;
-  --front-success: #181;
-  --front-warning: #b70;
-  --front-danger: #c33;
-  --back-note: #eee;
-  --back-info: #bef;
-  --back-success: #beb;
-  --back-warning: #fd9;
-  --back-danger: #fbb;
-  */
-    --front-note:    color-mix(in oklch, var(--front) 60%, var(--back));
-    --front-info:    oklch(var(--light-front) var(--chroma-front) var(--info));
-    --front-success: oklch(var(--light-front) var(--chroma-front) var(--success));
-    --front-warning: oklch(var(--light-front) var(--chroma-front) var(--warning));
-    --front-danger:  oklch(var(--light-front) var(--chroma-front) var(--danger));
-    --back-note:    color-mix(in oklch, var(--front) var(--chroma-back), var(--back)); /* --chroma-back is misused; needed 10% for light, 20% for dark mode */
-    --back-info:    oklch(var(--light-back) var(--chroma-back) var(--info));
-    --back-success: oklch(var(--light-back) var(--chroma-back) var(--success));
-    --back-warning: oklch(var(--light-back) var(--chroma-back) var(--warning));
-    --back-danger:  oklch(var(--light-back) var(--chroma-back) var(--danger));
-
-  /* input outline */
-  --outline-hover: #ddd8;
-  --outline-focus: #ccc8;
-  --outline-focus-visible: #9cfa;
-  --outline-valid: #3c36;
-  --outline-invalid: #f666;
-}
-
 a:has(img), ul.row li {-webkit-tap-highlight-color:transparent;}
 
-body, dialog, [popover] {color:var(--front);background-color:var(--back);}
+html, dialog, [popover] {color:var(--front);background-color:var(--back);}
 .diagonals {background:repeating-linear-gradient(135deg, #9990, #9990 1em, #9991 1em, #9991 2em);}
 
 .shade {box-shadow:var(--shade);}
@@ -92,8 +39,8 @@ button:where(:not(.link/*, .sel*/))   {--ff:var(--link);--fff:var(--link);}
 /*button.bord:not(.bg) {background-color:var(--back);}*/
 
 /* invert */
-body .invert {color:var(--front-invert);}
 body .invert {
+  color:var(--front-invert);
   background-color:var(--ff, var(--back-invert));
   --link: var(--link-invert);
   --visited: var(--link);

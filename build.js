@@ -12,7 +12,7 @@ const head = "\x1b[36m%s\x1b[0m"
 const replace = require('replace-in-file')
 const {name, version} = require('./package.json')
 // const csso = require('csso')
-var CleanCSS = require('clean-css')
+const CleanCSS = require('clean-css')
 const UglifyJS = require("uglify-js")
 const fs = require('fs') 
 const iconPaths = require(dir + 'asset/icon-paths.js')
@@ -82,8 +82,8 @@ console.log(head, 'Clear...')
 
 
 const bundles = [
-  ['bundle', distMinCss + '.min.css', ['var', 'reset', 'typo', 'space', 'display', 'table', 'table-fixed', 'color', /*'icon-path',*/ 'icon-mask', 'icon-shapes', 'icon-animate', 'form', 'input', /*'custom-box',*/ 'switch', 'dropzone', 'layout', 'toggle', 'transition', 'slider', 'print', ]],
-  ['core', distMinCss + '.core.min.css', ['var', 'reset', 'typo', 'space', 'display', 'table', 'table-fixed', 'color', 'form', 'input', 'switch', 'dropzone', 'layout', 'toggle', 'transition', 'slider', 'print', ]],
+  ['bundle', distMinCss + '.min.css', ['reset', 'typo', 'space', 'display', 'table', 'table-fixed', 'color', /*'icon-path',*/ 'icon-mask', 'icon-shapes', 'icon-animate', 'form', 'input', /*'custom-box',*/ 'switch', 'dropzone', 'layout', 'toggle', 'transition', 'slider', 'print', 'theme', ]],
+  ['core', distMinCss + '.core.min.css', ['reset', 'typo', 'space', 'display', 'table', 'table-fixed', 'color', 'form', 'input', 'switch', 'dropzone', 'layout', 'toggle', 'transition', 'slider', 'print', 'theme', ]],
   ['icons', distMinCss + '.icons.min.css', ['icon-mask', 'icon-shapes', 'icon-animate', ]],
 ]
 const minified = {} // cache
@@ -109,7 +109,7 @@ console.log(head, 'Prepare JS bundle ' + distMinJs + '.min.js...')
 .forEach(n => {
   console.log('Minify ' + n + '.js...')
   const js = fs.readFileSync(dir + 'asset/' + n + '.js', 'utf8')
-  var res = UglifyJS.minify(js, {
+  const res = UglifyJS.minify(js, {
     compress: {
       // arrows: false,
       // comparisons: false,

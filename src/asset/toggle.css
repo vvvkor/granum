@@ -14,12 +14,6 @@
 ~ popover=hint
 */
 
-:root {
-  --backdrop: #6665;/*#6669;/*#0006;/*#0002;*/
-  --drawer-width: 20rem;
-  --pop-height: min(20rem, 80vh);
-}
-
 html {scroll-padding-top:4rem;}
 
 /*.check {}*/
