@@ -1,4 +1,5 @@
 :root {
+  color-scheme: light dark;
     
   /* size */
   --gap: 1em;
@@ -8,9 +9,10 @@
   /* basics */
   --front: light-dark(#222, #eee);
   --back: light-dark(#f9f9f9, #222);
-  --link: light-dark(#04a, #9cf);
-  --accent: var(--link);
+  --accent: light-dark(#04a, #9cf);
+  --link: var(--accent);
   
+  /* lines */
   --hilite: light-dark(#ccc3, #6666);
   --line: light-dark(#ccc, #444);
   --bord: thin solid var(--line);
@@ -40,21 +42,22 @@
   /* color */
     /* link state */
     --visited: light-dark(#808, #c7d);
-    --hover: light-dark(#036, #bdf); /*color-mix(in oklch, var(--link), var(--front));*/
+    /*--hover: light-dark(#036, #bdf);*/
+    --hover: color-mix(in oklch, var(--link) 67%, var(--front));
     --active: light-dark(#f00, #fe9);
-    /* invert: todo */
+    /* invert */
     --front-invert: var(--back);
     --back-invert: var(--front);
     --link-invert: light-dark(#9cf, #04a);
     /* status */
     --front-note: light-dark(#888, #eee);
     --front-info: light-dark(#08a, #bef);
-    --front-success: light-dark(#181, #beb);
+    --front-success: light-dark(#383, #beb);
     --front-warning: light-dark(#b70, #fd9);
     --front-danger: light-dark(#c33, #fbb);
     --back-note: light-dark(#eee, #888);
     --back-info: light-dark(#bef, #08a);
-    --back-success: light-dark(#beb, #181);
+    --back-success: light-dark(#beb, #383);
     --back-warning: light-dark(#fd9, #b70);
     --back-danger: light-dark(#fbb, #c33);
 
@@ -62,7 +65,7 @@
   /*--icon-scale: 1.25;*/
 
   /* toggle */
-  --backdrop: light-dark(#6665, #111d);/*#6669;/*#0006;/*#0002;*/
+  --backdrop: light-dark(#6665, #000d);/*#6669;/*#0006;/*#0002;*/
   --drawer-width: 20rem;
   --pop-height: min(20rem, 80vh);
   /* transition */
@@ -94,3 +97,41 @@ h1:before {
   h1:after {content:" S";}
 }
 */
+
+
+html.invert, html:has(#invert:checked) {
+  color-scheme: light dark;
+  /* basics */
+  --front: light-dark(#eee, #222);
+  --back: light-dark(#222, #f9f9f9);
+  --accent: light-dark(#9cf, #04a);
+  /*--link: var(--accent);*/
+  /* lines */
+  --hilite: light-dark(#6666, #ccc3);
+  --line: light-dark(#444, #ccc);
+  --shadow: light-dark(#0009, #0003);
+  /* input */
+  --back-input: light-dark(#111, #fff);
+  /*--front-input: var(--front);*/
+  --line-input: light-dark(#666, #999);
+  /* color */
+  /* link state */
+  --visited: light-dark(#c7d, #808);
+  /*--hover: light-dark(#bdf, #036);*/
+  --active: light-dark(#fe9, #f00);
+  /* invert */
+  --link-invert: light-dark(#04a, #9cf);
+  /* status */
+  --back-note: light-dark(#888, #eee);
+  --back-info: light-dark(#08a, #bef);
+  --back-success: light-dark(#383, #beb);
+  --back-warning: light-dark(#b70, #fd9);
+  --back-danger: light-dark(#c33, #fbb);
+  --front-note: light-dark(#eee, #888);
+  --front-info: light-dark(#bef, #08a);
+  --front-success: light-dark(#beb, #383);
+  --front-warning: light-dark(#fd9, #b70);
+  --front-danger: light-dark(#fbb, #c33);
+  /* toggle */
+  --backdrop: light-dark(#000d, #6665);
+}

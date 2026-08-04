@@ -18,7 +18,7 @@ button.link:focus-visible {outline:.2em solid var(--outline-focus-visible);}
 :where(a, .link).nodec, .nodec :where(a, .link) {--decor:none;}
 .link {cursor:pointer;}
 
-button:where(:not(.link/*, .sel*/))   {--ff:var(--link);--fff:var(--link);}
+button:where(:not(.link/*, .sel*/))   {--ff:var(--accent);--fff:var(--accent);}
 .tag     {--ff:var(--front-note);}
 :where(button, .tag).bord {--ff:var(--fff, var(--front));--bb:var(--back);}
 .neutral {--ff:var(--front);--bb:var(--back);}
@@ -59,8 +59,8 @@ body a.invert {color:var(--link-invert);}
 :invalid:focus, .input:has(:invalid, +[popover] :invalid):focus-within, .input:has(+[popover]:focus-within :invalid) {outline-color:var(--outline-invalid);}
 
 /* progress */
-progress {accent-color:var(--ff, var(--input-accent, var(--link)));}
-/*progress {accent-color:color-mix(in oklch, var(--ff, var(--input-accent, var(--link))) 70%, var(--back));}*/
+progress {accent-color:var(--ff, var(--accent));}
+/*progress {accent-color:color-mix(in oklch, var(--ff, var(--input-accent, var(--accent))) 70%, var(--back));}*/
 
 /* progress - custom * /
 progress {
@@ -76,5 +76,5 @@ progress {
   vertical-align:middle;
 }
 progress::-webkit-progress-bar {background-color:var(--line, #eee);border-radius:.3em;}
-progress::-webkit-progress-value {background-color:var(--ff, var(--link));border-radius:.3em;}
-progress::-moz-progress-bar {background-color:var(--ff, var(--link));}
+progress::-webkit-progress-value {background-color:var(--ff, var(--accent));border-radius:.3em;}
+progress::-moz-progress-bar {background-color:var(--ff, var(--accent));}

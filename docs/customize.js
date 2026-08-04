@@ -27,7 +27,7 @@ const init = () => {console.log('init')
   
   // root-font-size[.8..2], gap[0..2], radius[0..1], line, hilite, front, back, link, input-on, line-input
   const d = document.documentElement
-  const g = getComputedStyle(d)
+  const g = window.getComputedStyle(d)
   const s = d.style
   
   //console.log(g.getPropertyValue('--front'))
@@ -35,6 +35,7 @@ const init = () => {console.log('init')
   document.querySelectorAll('.var').forEach(m => {
     const s = localStorage.getItem('val-' + m.id)
     let v = (m.name in def) ? def[m.name] : g.getPropertyValue('--' + m.name)
+    if (typeof v == 'string') v = v.replace(/\s*light-dark\(([^,\s]*).*/, '$1')
     if (m.dataset.unit) v = parseFloat(v)
     else if (v.match(/^#\w{3}$/)) v = '#' + v.at(1) + v.at(1) + v.at(2) + v.at(2) + v.at(3) + v.at(3) // color
     if (!(m.name in def)) def[m.name] = v
@@ -58,7 +59,7 @@ document.addEventListener('input', e => {
     setStyle(m)
     updateOutput()
   }
-  if(e.target.id == 'invert') init() // detect dark mode
+  if(['invert', 'invert-js'].includes(e.target.id)) init() // detect dark mode
 })
 
 document.addEventListener('click', e => {
