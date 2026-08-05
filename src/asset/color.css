@@ -6,7 +6,7 @@ html, dialog, [popover] {color:var(--front);background-color:var(--back);}
 .shade {box-shadow:var(--shade);}
 .hilite, thead, tfoot, pre, code, blockquote, [readonly]:not(.input [readonly]) {background-color:var(--hilite);}
   pre code {background:none;}
-:is(a, button, summary, label, .check).hover:hover, ul.row.hover li:is(:hover, :has(:hover))>:is(a, label)/*:has(>a)*/, .pop:hover>a.hover, table.hover  tr:hover>*/*, .tabs.hover>:is(a,label):hover*/ {box-shadow:inset 0 0 0 300vh var(--hilite);}
+:is(a, button, summary, label, .check).hover:hover:not(.inact), ul.row.hover li:is(:hover, :has(:hover))>:is(a, label):not(.inact)/*:has(>a)*/, .pop:hover>a.hover, table.hover  tr:hover>*/*, .tabs.hover>:is(a,label):hover*/ {box-shadow:inset 0 0 0 300vh var(--hilite);}
 
 a:where([href]), :where(ul.row) a, .pop > a, .link {color:var(--link);text-decoration:var(--decor, underline);}
 a:where([href]:not([href^="#"]):visited) {color:var(--visited);}
