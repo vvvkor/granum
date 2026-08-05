@@ -87,7 +87,7 @@ or
 ## JavaScript hooks
 
 - toggle CSS `class`
-- filter table
+- filter table and list
 - sort table
 - align table columns
 - persistent details state
