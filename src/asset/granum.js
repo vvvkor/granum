@@ -233,15 +233,16 @@ document.addEventListener('input', e => {
   }
   
   // check all boxes
-  if (n.dataset.check) act(n, 'check', m => m.checked = n.checked && !m.closest('[hidden]'))
+  if (n.dataset.check) act(n, 'check', m => m.checked = n.checked && !m.closest('[hidden], .hide'))
   
   // toggle classes
   if (n.dataset.nodes) cls(n, e)
 
   // filter table
-  if (n.dataset.filter) act(n, 'filter', t => t.querySelectorAll('tbody tr').forEach(m => {
-    const s = ns([...m.cells].map(c => c.textContent).join(' '))
-    m.hidden = !ns(n.value).trim().split(/\s+/).every(q => s.includes(q))
+  if (n.dataset.filter) act(n, 'filter', t => t.querySelectorAll('tbody tr, li').forEach(m => {
+    const s = ns(m.cells ? [...m.cells].map(c => c.textContent).join(' ') : m.textContent)
+    //m.hidden = !ns(n.value).trim().split(/\s+/).every(q => s.includes(q))
+    m.classList[ns(n.value).trim().split(/\s+/).every(q => s.includes(q)) ? 'remove' : 'add']('hide')
   }))
   
   // map contenteditable to textarea

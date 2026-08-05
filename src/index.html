@@ -194,7 +194,7 @@
     <a href="#typo">Typography</a>
     <a href="#table">Table</a>
     <a href="#form">Form</a>
-    <a href="#comp">Components</a>
+    <a href="#inter">Interactivity</a>
     <a href="#util">Util</a>
     <a href="#js">JS</a>
     <a href="#icon">Icons</a>
@@ -562,10 +562,13 @@
     </div>
 
     <h3>Dark Mode</h3>
-    <p>Invert the entire page.</p>
+    <p>Invert the entire page or just specific element. Enable dark mode in your browser or OS. Or check the following checkboxes.</p>
     <div class="demo-preview">
       <label><input type="checkbox" id="invert">Toggle dark mode (pure CSS using <code>html:has(#invert:checked)</code>)</label><br>
       <label><input type="checkbox" id="invert-js" data-nodes="html" value="invert">Toggle dark mode (JS sets <code>html.invert</code>)</label>
+      <div class="invert mar pad rad">
+        Text <a href="#">Link</a>
+      </div>
     </div>
 
     <h3>Spacing</h3>
@@ -621,7 +624,7 @@
 
     <h2 id="table">4. Data Tables</h2>
     
-    <h3>Sorting & Filtering</h3>
+    <h3>Style, Sorting & Filtering</h3>
     <p><small class="tag info">Requires JavaScript</small></p>
     <p>Click the headers to sort, or type in the search box to filter.</p>
     <p class="options bord pad small">
@@ -637,7 +640,7 @@
       <label><input type="checkbox" data-nodes="#table-1" value="fix-col"><code>.fix-col</code></label>
     </p>
     <div class="demo-preview no-resize">
-      <input type="search" data-filter="#table-1" placeholder="Search table..." class="mar show-js">
+      <input type="search" data-filter="#table-1" placeholder="Filter table..." class="mar show-js">
       <div class="resize scroll">
         <table id="table-1" class="sort r2">
           <thead>
@@ -783,7 +786,8 @@
           <a class="icon-desc note small"></a>
         </button>
         <div id="popsel-1" popover class="sel">
-          <ul class="row vert hover">
+          <div class="show-js pad"><input type="search" data-filter="#popsel-list" placeholder="Filter list..."></div>
+          <ul id="popsel-list" class="row vert hover">
             <li><label class="-check"><input type="radio" class="mem" id="sel-2" name="sel-2" value="" required data-caption="-">None</label></li>
             <li><label class="-check"><input type="radio" class="mem" id="sel-2" name="sel-2" value="a" required>Alpha</label></li>
             <li><label class="-check"><input type="radio" class="mem" id="sel-2" name="sel-2" value="b" required>Beta Beta Beta Beta Beta Beta Beta End</label></li>
@@ -821,7 +825,7 @@
     </div>
 
 
-    <h2 id="comp">6. Interactive Components</h2>
+    <h2 id="inter">6. Interactive Components</h2>
     
     <h3>Dropdown navigation</h3>
     <p class="options bord pad small">  
@@ -998,13 +1002,14 @@
       <label class="check icon-desc"><input type="checkbox">Label 1 (with state)</label>
       <div class="bord pad">Target content</div>
       <br>
-      <label class="icon-desc" for="check-1">Label 2 (free placement of targer)</label> <span>...</span>
+      <label class="icon-desc" for="check-1">Label 2 (free placement of target)</label> <span>...</span>
       <input id="check-1" type="checkbox" class="check">
       <div class="bord pad">Target content</div>
     </div>
 
     <h3>Toggle content with <code>:target</code></h3>
     <p><small class="tag info">Enhanced with JavaScript</small></p>
+    <p>Use <code>.target</code> on target element. Add <code>.act</code> on link for initially opened state. Add <code>.mem</code> on target element for state persistance. Add <code>.toggle</code> on hash link for JS enhancements (toggle off and avoid page jump).</p>
     <div class="demo-preview">
       <a href="#target-1">Show target</a>
       <div id="target-1" class="target bord pad">
@@ -1013,7 +1018,7 @@
       </div>
       <hr>
       <a href="#target-2" class="toggle">Show target (enhanced)</a>
-      <div id="target-2" class="target mem bord pad">
+      <div id="target-2" class="target -mem bord pad">
         Target content 2<br>
         <a href="#close" class="hide-js">Close</a>
       </div>
@@ -1232,16 +1237,6 @@
       </div>
     </div>
 
-    <h3>Toggle element</h3>
-    <p>Use <code>.toggle</code> on hash link. Add <code>.act</code> on link for initially opened state. Add <code>.mem</code> on target element for state persistance. Optionally add <code>.target</code> on target element for no-JavaScript fallback.</p>
-    <div class="demo-preview no-resize">
-      <a href="#target-3" class="toggle">Toggle</a>
-      <div id="target-3" class="target mem bord pad">
-        Target content<br>
-        <a href="#close" class="hide-js">Close</a>
-      </div>
-    </div>
-    
     <h3>Toggle sub-list (<code>#open</code>)</h3>
     <p class="options bord pad small">  
       Style options:
@@ -1250,20 +1245,32 @@
     </p>
     <div class="demo-preview no-resize">
       <ul id="list-2" class="fit">
-        <li><span><a href="#open" class="icon-desc act"></a> Color (toggle icon and text)</span>
+        <li><span><a href="#open" class="icon-desc act"></a> Color</span>
           <ul>
             <li><a>Red</a></li>
             <li><a>Green</a></li>
             <li><a>Blue</a></li>
           </ul>
         </li>
-        <li><a href="#open" class="icon-desc">Font (only toggle link)</a>
+        <li><a href="#open" class="icon-desc">Font</a>
           <ul>
             <li><a>Serif</a></li>
             <li><a>Sans</a></li>
             <li><a>Mono</a></li>
           </ul>
         </li>
+      </ul>
+    </div>
+    
+    <h3>Filter list</h3>
+    <div class="demo-preview no-resize">
+      <div class="show-js mar"><input type="search" data-filter="#list-3" placeholder="Filter list..."></div>
+      <ul id="list-3">
+        <li>1 One</li>
+        <li>2 Two</li>
+        <li>3 Three</li>
+        <li>4 Four</li>
+        <li>5 Five</li>
       </ul>
     </div>
     

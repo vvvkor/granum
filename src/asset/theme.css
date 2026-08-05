@@ -3,7 +3,7 @@
     
   /* size */
   --gap: 1em;
-  --list-width: 12rem;
+  --list-width: 15rem;
   --radius: calc(.3 * var(--gap));
   
   /* basics */
@@ -104,8 +104,8 @@ html.invert, html:has(#invert:checked) {
   /* basics */
   --front: light-dark(#eee, #222);
   --back: light-dark(#222, #f9f9f9);
-  --accent: light-dark(#9cf, #04a);
-  /*--link: var(--accent);*/
+  --accent: light-dark(#8bf, #04a);
+  --link: light-dark(#bdf, #04a);
   /* lines */
   --hilite: light-dark(#6666, #ccc3);
   --line: light-dark(#444, #ccc);
@@ -120,18 +120,18 @@ html.invert, html:has(#invert:checked) {
   /*--hover: light-dark(#bdf, #036);*/
   --active: light-dark(#fe9, #f00);
   /* invert */
-  --link-invert: light-dark(#04a, #9cf);
+  --link-invert: light-dark(#04a, #bdf);
   /* status */
-  --back-note: light-dark(#888, #eee);
-  --back-info: light-dark(#08a, #bef);
-  --back-success: light-dark(#383, #beb);
-  --back-warning: light-dark(#b70, #fd9);
-  --back-danger: light-dark(#c33, #fbb);
-  --front-note: light-dark(#eee, #888);
-  --front-info: light-dark(#bef, #08a);
-  --front-success: light-dark(#beb, #383);
-  --front-warning: light-dark(#fd9, #b70);
-  --front-danger: light-dark(#fbb, #c33);
+  --back-note: light-dark(#666, #bbb);
+  --back-info: light-dark(#057, #bef);
+  --back-success: light-dark(#262, #beb);
+  --back-warning: light-dark(#950, #fd9);
+  --back-danger: light-dark(#911, #fbb);
+  --front-note: light-dark(#bbb, #666);
+  --front-info: light-dark(#bef, #057);
+  --front-success: light-dark(#beb, #262);
+  --front-warning: light-dark(#fd9, #950);
+  --front-danger: light-dark(#fbb, #911);
   /* toggle */
   --backdrop: light-dark(#000d, #6665);
 }
