@@ -191,7 +191,8 @@
     <b>Granum v2.3.1</b>
     <a href="#start">Start</a>
     <a href="#layout">Layout</a>
-    <a href="#typo">Typography</a>
+    <a href="#typo">Content</a>
+    <a href="#color">Color</a>
     <a href="#table">Table</a>
     <a href="#form">Form</a>
     <a href="#inter">Interactivity</a>
@@ -424,7 +425,7 @@
       </div>
     </div>
 
-    <h2 id="typo">3. Typography, Colors & Theming</h2>
+    <h2 id="typo">3. Typography & Content</h2>
 
     <h3>Basic Elements</h3>
     <div class="demo-preview">
@@ -463,6 +464,34 @@
       <p class="nobr">No auto wrap. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tristique purus nec erat suscipit, eget rhoncus ipsum porta.</p>
     </div>
     
+    <h3>Spacing</h3>
+    <p></p>
+    <p class="options bord pad small">
+      <label><input type="checkbox" data-nodes="#space-container > *" value="fit"><code>.fit</code></label>
+      <label><input type="checkbox" data-nodes="#space-container > *" value="bord"><code>.bord</code></label>
+      <label><input type="checkbox" data-nodes="#space-container > *" value="rad"><code>.rad</code></label>
+      <label><input type="checkbox" data-nodes="#space-container > *" value="shade"><code>.shade</code></label>
+      <label><input type="checkbox" data-nodes="#space-container > *" value="pad"><code>.pad</code></label>
+      <label><input type="checkbox" data-nodes="#space-container > *" value="pads"><code>.pads</code></label>
+      <label><input type="checkbox" data-nodes="#space-container > *" value="mar"><code>.mar</code></label>
+      <label><input type="checkbox" data-nodes="#space-container > *" value="mars"><code>.mars</code></label>
+      <label><input type="checkbox" data-nodes="#space-container > *" value="center"><code>.center</code></label>
+      <br>
+      Maximum width:
+      <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide-xs"><code>.wide-xs</code></label>
+      <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide-s"><code>.wide-s</code></label>
+      <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide-m"><code>.wide-m</code></label>
+      <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide-l"><code>.wide-l</code></label>
+      <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide"><code>.wide</code></label>
+    </p>
+    <div id="space-container" class="demo-preview">
+      <div>Div</div>
+      <div>Div</div>
+      <div>Div</div>
+      <p>Paragraph</p>
+      <p>Paragraph</p>
+    </div>
+
     <h3>Links and Buttons</h3>
     <p class="options bord pad small">
       <label><input type="checkbox" data-nodes="#links-container > *" value="act"><code>.act</code></label>
@@ -526,6 +555,62 @@
       </p>
     </div>
 
+    <h3>List</h3>
+    <p class="options bord pad small">
+      Style options:<br>
+      <label><input type="checkbox" data-nodes="#list-1" value="row"><code>.row</code></label>
+      <label><input type="checkbox" data-nodes="#list-1" value="fit"><code>.fit</code></label>
+      <label><input type="checkbox" data-nodes="#list-1" value="resp"><code>.resp</code></label>
+      <label><input type="checkbox" data-nodes="#list-1" value="vert"><code>.vert</code></label>
+      <label><input type="checkbox" data-nodes="#list-1" value="gap"><code>.gap</code></label>
+      <label><input type="checkbox" data-nodes="#list-1" value="scroll"><code>.scroll</code></label>
+      <label><input type="checkbox" data-nodes="#list-1" value="hover"><code>.hover</code></label>
+      <label><input type="checkbox" data-nodes="#list-1" value="mid"><code>.mid</code></label>
+      <label><input type="checkbox" data-nodes="#list-1" value="line"><code>.line</code></label>
+      <label><input type="checkbox" data-nodes="#list-1" value="bread"><code>.bread</code></label>
+      <!--label><input type="checkbox" data-nodes="#list-1" value="wrap"><code>.wrap</code></label-->
+    </p>
+    <div class="demo-preview">
+      Before
+      <ul id="list-1">
+        <li><a href="#list-1">Alpha</a></li>
+        <li><a href="#list-1">Beta</a></li>
+        <li><a href="#list-1">Gamma</a></li>
+        <li><a href="#list-1"><span>Delta<br><small>line</small></span></a></li>
+      </ul>
+      After
+    </div>
+
+    <h3>Pagination</h3>
+    <div class="demo-preview">
+      <ul class="row bord rad hover line small">
+        <li><a href="#prev" class="inact">Previous</a></li>
+        <li><a href="#1" class="bg note">1</a></li>
+        <li><a href="#2">2</a></li>
+        <li><a href="#3">3</a></li>
+        <li><a href="#next">Next</a></li>
+      </ul>
+    </div>
+    
+    <h3>Breadcrumbs</h3>
+    <div class="demo-preview">
+      <ul class="row bread small">
+        <li><a href="#home" class="icon-home small ic note">Home</a></li>
+        <li><a href="#articles">Articles</a></li>
+        <li><span>About</span></li>
+      </ul>
+    </div>
+    
+    <h3>Card</h3>
+    <div class="demo-preview">
+      <div class="bord rad">
+        <header class="pad hilite">Header</header>
+        <div class="pad">Contents<br>of<br>card</div>
+        <footer class="pad hilite">Footer</footer>
+      </div>
+    </div>
+    
+    <h2 id="color">4. Colors & Theming</h2>
     
     <h3>Semantic Colors</h3>
     <p>Apply contextual colors to text, backgrounds, or borders using utility classes.</p>
@@ -573,87 +658,7 @@
       </div>
     </div>
 
-    <h3>Spacing</h3>
-    <p></p>
-    <p class="options bord pad small">
-      <label><input type="checkbox" data-nodes="#space-container > *" value="fit"><code>.fit</code></label>
-      <label><input type="checkbox" data-nodes="#space-container > *" value="bord"><code>.bord</code></label>
-      <label><input type="checkbox" data-nodes="#space-container > *" value="rad"><code>.rad</code></label>
-      <label><input type="checkbox" data-nodes="#space-container > *" value="shade"><code>.shade</code></label>
-      <label><input type="checkbox" data-nodes="#space-container > *" value="pad"><code>.pad</code></label>
-      <label><input type="checkbox" data-nodes="#space-container > *" value="pads"><code>.pads</code></label>
-      <label><input type="checkbox" data-nodes="#space-container > *" value="mar"><code>.mar</code></label>
-      <label><input type="checkbox" data-nodes="#space-container > *" value="mars"><code>.mars</code></label>
-      <label><input type="checkbox" data-nodes="#space-container > *" value="center"><code>.center</code></label>
-      <br>
-      Maximum width:
-      <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide-xs"><code>.wide-xs</code></label>
-      <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide-s"><code>.wide-s</code></label>
-      <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide-m"><code>.wide-m</code></label>
-      <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide-l"><code>.wide-l</code></label>
-      <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide"><code>.wide</code></label>
-    </p>
-    <div id="space-container" class="demo-preview">
-      <div>Div</div>
-      <div>Div</div>
-      <div>Div</div>
-      <p>Paragraph</p>
-      <p>Paragraph</p>
-    </div>
-
-    <h3>List</h3>
-    <p class="options bord pad small">
-      Style options:<br>
-      <label><input type="radio" name="list-mode" data-nodes="#list-1" value="" checked><i>default</i></label><br>
-      <label><input type="radio" name="list-mode" data-nodes="#list-1" value="fit"><code>.fit</code></label><br>
-      <label><input type="radio" name="list-mode" data-nodes="#list-1" value="row"><code>.row</code></label>
-      <label><input type="checkbox" data-nodes="#list-1" value="resp"><code>.resp</code></label>
-      <label><input type="checkbox" data-nodes="#list-1" value="vert"><code>.vert</code></label>
-      <label><input type="checkbox" data-nodes="#list-1" value="gap"><code>.gap</code></label>
-      <label><input type="checkbox" data-nodes="#list-1" value="scroll"><code>.scroll</code></label>
-      <label><input type="checkbox" data-nodes="#list-1" value="hover"><code>.hover</code></label>
-      <label><input type="checkbox" data-nodes="#list-1" value="mid"><code>.mid</code></label>
-      <!--label><input type="checkbox" data-nodes="#list-1" value="wrap"><code>.wrap</code></label-->
-    </p>
-    <div class="demo-preview">
-      <ul id="list-1">
-        <li><a href="#list-1">Alpha</a></li>
-        <li><a href="#list-1">Beta</a></li>
-        <li><a href="#list-1">Gamma</a></li>
-        <li><a href="#list-1"><span>Delta<br><small>line</small></span></a></li>
-      </ul>
-    </div>
-
-    <h3>Pagination</h3>
-    <div class="demo-preview">
-      <ul class="row bord rad hover line">
-        <li><a href="#prev" class="inact">Previous</a></li>
-        <li><a href="#1" class="bg note">1</a></li>
-        <li><a href="#2">2</a></li>
-        <li><a href="#3">3</a></li>
-        <li><a href="#next">Next</a></li>
-      </ul>
-    </div>
-    
-    <h3>Breadcrumbs</h3>
-    <div class="demo-preview">
-      <ul class="row small bread">
-        <li><a href="#home" class="icon-home small ic note">Home</a></li>
-        <li><a href="#articles">Articles</a></li>
-        <li><span>About</span></li>
-      </ul>
-    </div>
-    
-    <h3>Card</h3>
-    <div class="demo-preview">
-      <div class="bord rad">
-        <header class="pad hilite">Header</header>
-        <div class="pad">Contents<br>of<br>card</div>
-        <footer class="pad hilite">Footer</footer>
-      </div>
-    </div>
-    
-    <h2 id="table">4. Data Tables</h2>
+    <h2 id="table">5. Data Tables</h2>
     
     <h3>Style, Sorting & Filtering</h3>
     <p><small class="tag info">Requires JavaScript</small></p>
@@ -693,7 +698,7 @@
       </div>
     </div>
 
-    <h2 id="form">5. Forms & Inputs</h2>
+    <h2 id="form">6. Forms & Inputs</h2>
     
     <h3>Grid Forms</h3>
     <p>Use <code>.form.resp</code> for aligned, responsive form layouts.</p>
@@ -856,7 +861,7 @@
     </div>
 
 
-    <h2 id="inter">6. Interactive Components</h2>
+    <h2 id="inter">7. Interactive Components</h2>
     
     <h3>Dropdown navigation</h3>
     <p class="options bord pad small">  
@@ -1209,7 +1214,7 @@
 </div>
 </details>
 
-    <h2 id="util">7. Utilities</h2>
+    <h2 id="util">8. Utilities</h2>
     
     <h3>Visibility</h3>
     <p class="options bord pad small">  
@@ -1250,7 +1255,7 @@
       <div class="show-js success">JavaScript enabled</div>
     </div>
 
-    <h2 id="js">8. JavaScript Enhancements</h2>
+    <h2 id="js">9. JavaScript Enhancements</h2>
     <p><small class="tag info">Requires JavaScript</small></p>
     
     <h3>Dynamic Class Toggling (<code>[data-nodes]</code>)</h3>
@@ -1373,7 +1378,7 @@
       <a href="#back">Back</a>
     </div>
     
-    <h2 id="icon">9. Icons</h2>
+    <h2 id="icon">10. Icons</h2>
 
     <h3>Compact icons using <code>mask-image</code></h3>
     <div id="divIcons"></div>
