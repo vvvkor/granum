@@ -16,6 +16,9 @@
 */
 .row {--flow:row nowrap;--push:auto;display:flex;flex-flow:var(--flow);}
 .row.wrap, ul.row:where(:not(.scroll)) {--flow:row wrap;}
+.row.line {display:inline-flex;}
+.row:is(.fit, .bread)>li>* {padding:0;}
+.row.bread>li+li:before {content:"/";color:var(--front-note);padding-inline:calc(var(--gap) * .5);}
   ul:where(.row), ul.row ul, ul.row li {list-style:none;margin:0;padding:0;}
   ul.row li>:not(ul, form) {padding:calc(.5 * var(--gap)) var(--gap);text-decoration:none;width:100%;}
   ul.row li>hr {padding:0;margin:calc(.5 * var(--gap)) 0;}
