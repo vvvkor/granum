@@ -193,7 +193,6 @@
     <a href="#layout">Layout</a>
     <a href="#typo">Content</a>
     <a href="#color">Color</a>
-    <a href="#table">Table</a>
     <a href="#form">Form</a>
     <a href="#inter">Interactivity</a>
     <a href="#util">Util</a>
@@ -214,7 +213,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="-1 -1 18 18" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
     </a>
   </nav>
-    
+
   <main class="wide-m center pad">
     <!--
       <span class="neutral">Default</span>
@@ -498,10 +497,12 @@
       <label><input type="checkbox" data-nodes="#links-container > *" value="inact"><code>.inact</code></label>
       <label><input type="checkbox" data-nodes="#links-container > *" value="nodec"><code>.nodec</code></label>
       <label><input type="checkbox" data-nodes="#links-container > *" value="link"><code>.link</code></label>
+      <label><input type="checkbox" data-nodes="#links-container > *" value="neutral"><code>.neutral</code></label>
       <label><input type="checkbox" data-nodes="#links-container > *" value="success"><code>.success</code></label>
       <label><input type="checkbox" data-nodes="#links-container > *" value="icon-link"><code>.icon-link</code></label>
       <label><input type="checkbox" data-nodes="#links-container > *" value="ic"><code>.ic</code></label>
       <label><input type="checkbox" data-nodes="#links-container > *" value="bord"><code>.bord</code></label>
+      <label><input type="checkbox" data-nodes="#links-container > *" value="hover"><code>.hover</code></label>
     </p>
     <div class="demo-preview" id="links-container">
       <span>Text</span>
@@ -553,6 +554,48 @@
         <progress value=".8" class="warning">80%</progress> Warning<br>
         <progress value=".9" class="danger">90%</progress> Danger
       </p>
+    </div>
+
+    <h3>Table</h3>
+    <p class="options bord pad small">
+      Style options:
+      <label><input type="checkbox" data-nodes="#table-1" value="bord" checked><code>.bord</code></label>
+      <label><input type="checkbox" data-nodes="#table-1" value="line"><code>.line</code></label>
+      <label><input type="checkbox" data-nodes="#table-1" value="hover"><code>.hover</code></label>
+      <label><input type="checkbox" data-nodes="#table-1" value="wide"><code>.wide</code></label>
+      <label><input type="checkbox" data-nodes="#table-1" value="mid"><code>.mid</code></label>
+      <label><input type="checkbox" data-nodes="#table-1" value="fit"><code>.fit</code></label>
+      <label><input type="checkbox" data-nodes="#table-1" value="c"><code>.c</code></label>
+      <label><input type="checkbox" data-nodes="#table-1" value="fix-head"><code>.fix-head</code></label>
+      <label><input type="checkbox" data-nodes="#table-1" value="fix-col"><code>.fix-col</code></label>
+    </p>
+    <div class="demo-preview no-resize">
+      <div class="resize scroll">
+        <table id="table-1" class="sort r2">
+          <thead>
+            <tr>
+              <th class="sort">Name</th>
+              <th class="sort">Number</th>
+              <th class="sort">Date</th>
+              <th class="sort">String</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Alice</td><td>0</td><td>01.07.2000</td><td>Coffee</td></tr>
+            <tr><td>Ben</td><td>100</td><td>02.02.2000</td><td>Water</td></tr>
+            <tr class="info"><td>Charlie</td><td class="warning bg">-22</td><td>01.07.2025</td><td>Juice</td></tr>
+            <tr><td>Dan</td><td>15</td><td>01.12.2024</td><td>Tea</td></tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th class="sort">Total</th>
+              <th class="sort">93</th>
+              <th class="sort"></th>
+              <th class="sort"></th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
     </div>
 
     <h3>List</h3>
@@ -658,47 +701,7 @@
       </div>
     </div>
 
-    <h2 id="table">5. Data Tables</h2>
-    
-    <h3>Style, Sorting & Filtering</h3>
-    <p><small class="tag info">Requires JavaScript</small></p>
-    <p>Click the headers to sort, or type in the search box to filter.</p>
-    <p class="options bord pad small">
-      Style options:
-      <label><input type="checkbox" data-nodes="#table-1" value="bord" checked><code>.bord</code></label>
-      <label><input type="checkbox" data-nodes="#table-1" value="line"><code>.line</code></label>
-      <label><input type="checkbox" data-nodes="#table-1" value="hover"><code>.hover</code></label>
-      <label><input type="checkbox" data-nodes="#table-1" value="wide"><code>.wide</code></label>
-      <label><input type="checkbox" data-nodes="#table-1" value="mid"><code>.mid</code></label>
-      <label><input type="checkbox" data-nodes="#table-1" value="fit"><code>.fit</code></label>
-      <label><input type="checkbox" data-nodes="#table-1" value="c"><code>.c</code></label>
-      <label><input type="checkbox" data-nodes="#table-1" value="fix-head"><code>.fix-head</code></label>
-      <label><input type="checkbox" data-nodes="#table-1" value="fix-col"><code>.fix-col</code></label>
-    </p>
-    <div class="demo-preview no-resize">
-      <input type="search" data-filter="#table-1" placeholder="Filter table..." class="mar show-js">
-      <div class="resize scroll">
-        <table id="table-1" class="sort r2">
-          <thead>
-            <tr>
-              <th class="sort">Name</th>
-              <th class="sort">Age</th>
-              <th class="sort">Date</th>
-              <th class="sort">String</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Alice</td><td>0</td><td>01.07.2000</td><td>Cafe</td></tr>
-            <tr><td>Dan</td><td>150.50 km</td><td>2024-12-01</td><td>café</td></tr>
-            <tr><td>bob</td><td>150.15 km</td><td>02.02.2000</td><td>café</td></tr>
-            <tr><td>Charlie</td><td>-22</td><td>7/1/2025</td><td>coffee</td></tr>
-            <tr><td>No<br>name</td><td></td><td>-</td><td></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <h2 id="form">6. Forms & Inputs</h2>
+    <h2 id="form">5. Forms & Inputs</h2>
     
     <h3>Grid Forms</h3>
     <p>Use <code>.form.resp</code> for aligned, responsive form layouts.</p>
@@ -861,7 +864,7 @@
     </div>
 
 
-    <h2 id="inter">7. Interactive Components</h2>
+    <h2 id="inter">6. Interactive Components</h2>
     
     <h3>Dropdown navigation</h3>
     <p class="options bord pad small">  
@@ -1214,7 +1217,7 @@
 </div>
 </details>
 
-    <h2 id="util">8. Utilities</h2>
+    <h2 id="util">7. Utilities</h2>
     
     <h3>Visibility</h3>
     <p class="options bord pad small">  
@@ -1255,7 +1258,7 @@
       <div class="show-js success">JavaScript enabled</div>
     </div>
 
-    <h2 id="js">9. JavaScript Enhancements</h2>
+    <h2 id="js">8. JavaScript Enhancements</h2>
     <p><small class="tag info">Requires JavaScript</small></p>
     
     <h3>Dynamic Class Toggling (<code>[data-nodes]</code>)</h3>
@@ -1300,7 +1303,7 @@
       </ul>
     </div>
     
-    <h3>Filter list</h3>
+    <h3>List filtering</h3>
     <div class="demo-preview no-resize">
       <div class="show-js mar"><input type="search" data-filter="#list-3" placeholder="Filter list..."></div>
       <ul id="list-3">
@@ -1310,6 +1313,31 @@
         <li>4 Four</li>
         <li>5 Five</li>
       </ul>
+    </div>
+
+    <h3>Table Sorting & Filtering</h3>
+    <p>Click the headers to sort, or type in the search box to filter.</p>
+    <div class="demo-preview no-resize">
+      <input type="search" data-filter="#table-2" placeholder="Filter table..." class="mar show-js">
+      <div class="resize scroll">
+        <table id="table-2" class="bord hover sort r2">
+          <thead>
+            <tr>
+              <th class="sort">Name</th>
+              <th class="sort">Number</th>
+              <th class="sort">Date</th>
+              <th class="sort">String</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Alice</td><td>0</td><td>01.07.2000</td><td>Cafe</td></tr>
+            <tr><td>Dan</td><td>150.50 km</td><td>2024-12-01</td><td>café</td></tr>
+            <tr><td>ben</td><td>150.15 km</td><td>02.02.2000</td><td>café</td></tr>
+            <tr><td>Charlie</td><td>-22</td><td>7/1/2025</td><td>coffee</td></tr>
+            <tr><td>No<br>name</td><td></td><td>-</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     
     <h3>Dialogs</h3>
@@ -1378,7 +1406,7 @@
       <a href="#back">Back</a>
     </div>
     
-    <h2 id="icon">10. Icons</h2>
+    <h2 id="icon">9. Icons</h2>
 
     <h3>Compact icons using <code>mask-image</code></h3>
     <div id="divIcons"></div>
