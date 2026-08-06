@@ -18,7 +18,8 @@ button.link:focus-visible {outline:.2em solid var(--outline-focus-visible);}
 :where(a, .link).nodec, .nodec :where(a, .link) {--decor:none;}
 .link {cursor:pointer;}
 
-button:where(:not(.link/*, .sel*/))   {--ff:var(--accent);--fff:var(--accent);}
+button:where(:not(.link/*, .sel*/)) {--ff:var(--accent);--fff:var(--accent);}
+  ::file-selector-button {--ff:var(--front-note);}
 .tag     {--ff:var(--front-note);}
 :where(button, .tag).bord {--ff:var(--fff, var(--front));--bb:var(--back);}
 .neutral {--ff:var(--front);--bb:var(--back);}
@@ -35,7 +36,7 @@ button:where(:not(.link/*, .sel*/))   {--ff:var(--accent);--fff:var(--accent);}
 .text, .ic:before, :where(.neutral, .note, .info, .success, .warning, .danger, button:not(.link), .tag):not(.bg, .ic) {color:var(--ff, var(--front));}
 .bg {background-color:var(--bb, var(--back));}
 .bord {border:thin solid var(--ff, var(--line));}
-:where(button, .tag):not(.bord, .link, .nodec) {color:var(--front-invert);background-color:var(--ff, var(--front-note));}
+:where(button, .tag):not(.bord, .link, .nodec), ::file-selector-button {color:var(--front-invert);background-color:var(--ff, var(--front-note));}
 /*button.bord:not(.bg) {background-color:var(--back);}*/
 
 /* invert */
@@ -48,6 +49,8 @@ body .invert {
   --active: var(--link);
 }
 body a.invert {color:var(--link-invert);}
+
+:is([type="checkbox"], [type="radio"], [type="range"]) {accent-color:var(--input-accent);}
 
 /* outline */
 .input, input, select, textarea, button, [contenteditable], :where(a, summary):focus-visible {outline:.2em solid transparent;outline-offset:0;}

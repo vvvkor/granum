@@ -862,6 +862,41 @@
       </span>
       <input type="file" class="dropzone wide">
     </div>
+    
+    <h3>Input Types</h3>
+    <p>
+      Style options:
+      <label><input type="checkbox" data-nodes="#inputs-container" value="row" checked><code>.row</code></label>
+      <label><input type="checkbox" data-nodes="#inputs-container" value="gap" checked><code>.gap</code></label>
+      <label><input type="checkbox" data-nodes="#inputs-container" value="mid" checked><code>.mid</code></label>
+      <label><input type="checkbox" data-nodes="#inputs-container" value="vert"><code>.vert</code></label>
+    </p>
+    <div class="demo-preview">
+      <div class="wrap" id="inputs-container">
+        <input type="text" placeholder="Text...">
+        <input type="search" placeholder="Search...">
+        <input type="number" placeholder="Number...">
+        <input type="email" placeholder="Email...">
+        <input type="tel" placeholder="Tel...">
+        <input type="password" placeholder="Password...">
+        <input type="date">
+        <input type="time">
+        <input type="datetime-local">
+        <input type="range">
+        <input type="color">
+        <input type="checkbox">
+        <input type="radio" name="r1" value="1"><input type="radio" name="r1" value="2">
+        <select><option>Select...</option><option>1</option><option>2</option></select>
+        <input type="file">
+        <button type="button">Button</button>
+        <button type="button" class="bord">Button</button>
+        <textarea placeholder="Textarea..."></textarea>
+        <div contenteditable>Contenteditable</div>
+        <div class="input"><input type="text" placeholder="Custom input..."></div>
+        <button type="button" class="input" popovertarget="cs1"><span>Custom select...</span><a class="icon-desc small note"></a></button>
+      </div>
+      <div popover id="cs1" class="sel"><ul class="row vert hover"><li><label><input type="radio" name="r2" value="1"> One</label></li><li><label><input type="radio" name="r2" value="2"> Two</label></li></ul></div>
+    </div>
 
 
     <h2 id="inter">6. Interactive Components</h2>

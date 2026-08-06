@@ -9,13 +9,13 @@ pre {overflow:auto;max-height:80vh;}
 code, kbd {padding:calc(.1 * var(--gap)) calc(.2 * var(--gap));}
 pre code {padding:0;border:none;border-radius:0;}
 .mar, ul, ol, dl, blockquote, pre, hr, p, figure {margin:var(--gap) 0;}
-.pad, button, fieldset, blockquote, pre {padding:calc(.5 * var(--gap)) var(--gap);border:thin solid transparent;}
+.pad, button, fieldset, blockquote, pre, ::file-selector-button {padding:calc(.5 * var(--gap)) var(--gap);border:thin solid transparent;}
 /*[class] button {border-width:2px;font-weight:bold;}*/
 /*legend {margin-left:var(--gap);}*/
 legend {padding:0 calc(.25 * var(--gap));}
 /*.bord,*/ kbd, fieldset, hr {border:var(--bord);}
 hr {border-width:thin 0 0 0;}
-.rad, .tag, code, kbd, pre, button, button.fit, [type="submit"] {border-radius:var(--radius);}
+.rad, .tag, code, kbd, pre, button, button.fit, [type="submit"], ::file-selector-button {border-radius:var(--radius);}
 abbr {border-bottom:thin dotted;text-decoration:none;}
 /*sub, sup {line-height:0em;}*/
 .tag {padding:0 .5em;display:inline-block;line-height:1.5;}
