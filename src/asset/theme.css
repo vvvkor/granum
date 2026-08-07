@@ -46,6 +46,7 @@
     /*--hover: light-dark(#036, #bdf);*/
     --hover: color-mix(in oklch, var(--link) 67%, var(--front));
     --active: light-dark(#f00, #fe9);
+    --mark: #fe6;
     /* invert */
     --front-invert: var(--back);
     --back-invert: var(--front);
@@ -120,6 +121,7 @@ html.invert, html:has(#invert:checked) {
   --visited: light-dark(#c7d, #808);
   /*--hover: light-dark(#bdf, #036);*/
   --active: light-dark(#fe9, #f00);
+  --mark: #dc3;
   /* invert */
   --link-invert: light-dark(#04a, #bdf);
   /* status */

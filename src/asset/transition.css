@@ -4,8 +4,11 @@
 .trans-slow {--dur:.5s;}
 @keyframes delay-appear { 0% {opacity:0;} 30% {opacity:0;} 100% {opacity:1;} }
 @keyframes appear { 0% {opacity:0;} 100% {opacity:1;} }
+@keyframes up { 0% {bottom:-1em;} 100% {bottom:0;} }
+/*
 @keyframes slide-left { 0% {left:calc(0em - var(--wdr));} 100% {left:0;} }
 @keyframes slide-right { 0% {right:calc(0em - var(--wdr));} 100% {right:0;} }
+*/
 
 .tip > * {animation:delay-appear calc(var(--dur));}
 
@@ -14,7 +17,8 @@ details {interpolate-size:allow-keywords;height:1.5em;transition:height .3s ease
 details[open] {height:auto;overflow:clip;}
 */
 
-ul.row ul, [popover=hint] {animation:appear var(--dur);}
+ul.row ul, [popover] {animation:appear var(--dur);}
+[popover=hint] {animation:up var(--dur);}
 
 .drawer/*:not(dialog)*/ {transition:left var(--dur), right var(--dur);}
 

@@ -412,10 +412,12 @@
         <kbd>Kbd</kbd>
         <q>Quote</q>
         <small>Small</small>
-        <mark>Mark</mark>
         <abbr title="Abbreviation">Abbr</abbr>
         x<sub>sub</sub>
         x<sup>super</sup>
+        <ins>Ins</ins>
+        <del>Del</del>
+        <mark>Mark</mark>
       </p>
       <hr>
       <blockquote>Block quote</blockquote>
@@ -685,7 +687,8 @@
     <h3>Dark Mode</h3>
     <p>Invert the entire page or just specific element. Enable dark mode in your browser or OS. Or check the following checkboxes.</p>
     <div class="demo-preview">
-      <label><input type="checkbox" id="invert">Toggle dark mode (pure CSS using <code>html:has(#invert:checked)</code>)</label><br>
+      <label class="check icon-sun"><input type="checkbox" id="invert">Toggle dark mode (pure CSS using <code>html:has(#invert:checked)</code>)</label><wbr>
+      <br>
       <label><input type="checkbox" id="invert-js" data-nodes="html" value="invert">Toggle dark mode (JS sets <code>html.invert</code>)</label>
       <div class="invert mar pad rad">
         Text <a href="#">Link</a>
@@ -1032,7 +1035,13 @@
 </details>
 
     <h3>Popups</h3>
-    <!--p><small class="tag success">Modern</small></p-->
+    <p class="options bord pad small">  
+      Transition:
+      <label><input type="radio" data-nodes="#popup-1" name="trans-3" value=""><i>none</i> (<code>.trans-off</code>)</label>
+      <label><input type="radio" data-nodes="#popup-1" name="trans-3" value="trans-slow"><code>.trans-slow</code></label>
+      <label><input type="radio" data-nodes="#popup-1" name="trans-3" value="trans" checked><code>.trans</code></label>
+      <label><input type="radio" data-nodes="#popup-1" name="trans-3" value="trans-fast"><code>.trans-fast</code></label>
+    </p>
     <p>Use <code>[popover]</code>.</p>
     <div class="demo-preview">
       <button popovertarget="popup-1">Show popup</button>
@@ -1041,11 +1050,11 @@
     </div>
     
     <h3>Tooltips</h3>
-    <!--p><small class="tag success">Modern</small></p-->
-    <div class="demo-preview">
+    <div class="demo-preview" id="tooltip-container">
       <button popovertarget="tip-1">Click me</button>
-      <button popovertarget="tip-1" class="link nodec">Click me</button>
+      <button popovertarget="tip-2" class="link nodec">Click me</button>
       <div id="tip-1" popover="hint" class="small">This is a tooltip</div>
+      <div id="tip-2" popover="hint" class="small invert rad trans">This is an inverted animated tooltip</div>
     </div>
     
     <h3>Tabs</h3>
