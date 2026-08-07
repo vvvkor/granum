@@ -1,5 +1,5 @@
 .show {display:revert !important;}
-.hide, body.js .hide-js, body:not(.js) .show-js {display:none !important;}
+[hidden], .hide, body.js .hide-js, body:not(.js) .show-js {display:none !important;}
 
 /* wide screen */
 @media (50rem <= width) {

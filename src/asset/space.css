@@ -15,7 +15,7 @@ pre code {padding:0;border:none;border-radius:0;}
 legend {padding:0 calc(.25 * var(--gap));}
 /*.bord,*/ kbd, fieldset, hr {border:var(--bord);}
 hr {border-width:thin 0 0 0;}
-.rad, .tag, code, kbd, pre, button, button.fit, [type="submit"], ::file-selector-button {border-radius:var(--radius);}
+.rad, .tag, code, kbd, pre, button, button.fit, [type=submit], ::file-selector-button {border-radius:var(--radius);}
 abbr {border-bottom:thin dotted;text-decoration:none;}
 /*sub, sup {line-height:0em;}*/
 .tag {padding:0 .5em;display:inline-block;line-height:1.5;}

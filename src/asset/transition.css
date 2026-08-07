@@ -14,7 +14,7 @@ details {interpolate-size:allow-keywords;height:1.5em;transition:height .3s ease
 details[open] {height:auto;overflow:clip;}
 */
 
-ul.row ul {animation:appear var(--dur);}
+ul.row ul, [popover=hint] {animation:appear var(--dur);}
 
 .drawer/*:not(dialog)*/ {transition:left var(--dur), right var(--dur);}
 

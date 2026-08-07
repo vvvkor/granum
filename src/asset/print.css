@@ -2,6 +2,6 @@
   body {font:12pt/1.3 serif;background:none;}
   h1, h2, h3, h4, h5, h6 {page-break-after:avoid;}
   pre, blockquote {border-left:thin solid #ccc;}
-  button, [type="submit"], body :is(.invert, .invert a) {border:thin solid #ccc;color:#000 !important;background:#fff !important;}
+  button, [type=submit], body :is(.invert, .invert a) {border:thin solid #ccc;color:#000 !important;background:#fff !important;}
   input, select, textarea {border-width:0 0 thin 0;}
 }

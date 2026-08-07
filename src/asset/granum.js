@@ -241,8 +241,8 @@ document.addEventListener('input', e => {
   // filter table
   if (n.dataset.filter) act(n, 'filter', t => t.querySelectorAll('tbody tr, li').forEach(m => {
     const s = ns(m.cells ? [...m.cells].map(c => c.textContent).join(' ') : m.textContent)
-    //m.hidden = !ns(n.value).trim().split(/\s+/).every(q => s.includes(q))
-    m.classList[ns(n.value).trim().split(/\s+/).every(q => s.includes(q)) ? 'remove' : 'add']('hide')
+    m.hidden = !ns(n.value).trim().split(/\s+/).every(q => s.includes(q))
+    //m.classList[ns(n.value).trim().split(/\s+/).every(q => s.includes(q)) ? 'remove' : 'add']('hide')
   }))
   
   // map contenteditable to textarea

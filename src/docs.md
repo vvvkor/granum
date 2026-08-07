@@ -2,7 +2,7 @@
 
 ## Typography
 
-- .sans .serif .mono .l .r .c .mid .small .regular
+- .sans .serif .mono .l .r .c .mid .small .regular .bold
 - img.c.fit
 - table.wide.mid.fit.line.bord.c(.c#.r#).fix-head.fix-col
 - ul.fit

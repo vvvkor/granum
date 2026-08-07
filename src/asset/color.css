@@ -19,7 +19,7 @@ button.link:focus-visible {outline:.2em solid var(--outline-focus-visible);}
 .link {cursor:pointer;}
 
 button:where(:not(.link/*, .sel*/)) {--ff:var(--accent);--fff:var(--accent);}
-  ::file-selector-button {--ff:var(--front-note);}
+  [type=file] {--ff:var(--front-note);}
 .tag     {--ff:var(--front-note);}
 :where(button, .tag).bord {--ff:var(--fff, var(--front));--bb:var(--back);}
 .neutral {--ff:var(--front);--bb:var(--back);}
@@ -50,7 +50,7 @@ body .invert {
 }
 body a.invert {color:var(--link-invert);}
 
-:is([type="checkbox"], [type="radio"], [type="range"]) {accent-color:var(--input-accent);}
+:is([type=checkbox], [type=radio], [type=range]) {accent-color:var(--input-accent);}
 
 /* outline */
 .input, input, select, textarea, button, [contenteditable], :where(a, summary):focus-visible {outline:.2em solid transparent;outline-offset:0;}
@@ -59,6 +59,8 @@ body a.invert {color:var(--link-invert);}
 :where(a, summary, input, select, textarea, button, [contenteditable], label):focus-visible, :where(.input):focus-within/*, .input:has(+[popover]:focus-within)*/ {outline-color:var(--outline-focus-visible);}
 .validate:valid, .input.validate:not(:has(:invalid, +[popover] :invalid)) {outline-color:var(--outline-valid);}
 :invalid, .input:has(:invalid, +[popover] :invalid) {border-color:var(--front-danger);}
+  [type=file] {color:var(--front);}
+  [type=file]:invalid {color:var(--front-danger);}
 :invalid:focus, .input:has(:invalid, +[popover] :invalid):focus-within, .input:has(+[popover]:focus-within :invalid) {outline-color:var(--outline-invalid);}
 
 /* progress */

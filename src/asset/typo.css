@@ -42,6 +42,6 @@ details > :is(details, ul, ol, dl) {/*margin-left:var(--gap);*/margin:0 0 0 var(
 details > :is(ul, ol, dl) {padding-left:var(--gap);}
 /*li, dt, dd {margin:calc(.25 * var(--gap)) 0;}*/
 li ul, li ol {margin:calc(.5 * var(--gap)) 0;}
-dt {font-weight:bold;}
+dt, .bold {font-weight:bold;}
 :is(ul, ol).fit, :is(ul, ol).fit :is(ul, ol) {list-style:none;}
 

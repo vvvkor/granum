@@ -2,7 +2,7 @@
 .form > br {display:none;}
 .form > br + * {margin-top:calc(.5 * var(--gap));}
 .form.just > :where(.span, .shift, :not(br) + *) {justify-self:stretch;}
-.form.just > :where(.span, .shift, :not(br) + *) > :where(.input, input:not([type="checkbox"], [type="radio"], [type="color"], [type="range"], [type="file"]), select, textarea, [contenteditable], button) {width:100%;box-sizing:border-box;}
+.form.just > :where(.span, .shift, :not(br) + *) > :where(.input, input:not([type=checkbox], [type=radio], [type=color], [type=range], [type=file]), select, textarea, [contenteditable], button) {width:100%;box-sizing:border-box;}
 
 
 /*@media (50rem <= width) {*/

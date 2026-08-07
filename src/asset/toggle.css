@@ -106,7 +106,7 @@ ul.row ul, [popover].sel {padding:calc(1 * var(--gap)) 0;}
   div.pop>*+:last-child {--pos:100% auto auto 0;}
   div.pop.l>*+:last-child {--pos:100% 0 auto auto;}
 [data-hint]:is(:hover, :focus, :active):after {content:attr(data-hint);}
-  [data-hint]:after, [popover="hint"] {white-space:nowrap;padding:calc(.2 * var(--gap)) calc(.5 * var(--gap));--pos:auto auto 100% 0;}
+  [data-hint]:after, [popover=hint] {white-space:nowrap;padding:calc(.2 * var(--gap)) calc(.5 * var(--gap));--pos:auto auto 100% 0;}
   [data-hint].l:after {--pos:auto 0 100% auto;}
   [data-hint].c:after {--pos:auto auto 100% 50%;translate:-50% 0;}
   [data-hint] {cursor:help;}
@@ -134,7 +134,7 @@ ul.row ul, [popover].sel {padding:calc(1 * var(--gap)) 0;}
 }
 [popover].wide {--list-width:fit-content;width:fit-content;}
 
-[popover="hint"] {
+[popover=hint] {
   position-area:top span-all;
   position-try-fallbacks:top span-right, top span-left, bottom span-all, bottom span-right, bottom span-left;
 }

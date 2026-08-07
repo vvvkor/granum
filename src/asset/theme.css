@@ -25,6 +25,7 @@
   --serif: "PT Serif", Georgia, serif;
   --sans: "PT Sans", Roboto, "Segoe UI", sans-serif;
   --mono: "PT Mono", monospace;
+  /*--divider: "/";*/ /* breadcrumbs divider */
 
   /* input */
   --back-input: light-dark(#fff, #111);

@@ -19,43 +19,13 @@
     <script defer src="asset/icon-paths.js"></script>
     
     <style>
-        /*body {background:oklch(from var(--hilite, #ccc3) l c h / calc(alpha / 2.5));}*/
         h2 { border-bottom: medium solid var(--line); }
-        
-        /* Live Preview Block Styling */
-
-        .options {
-          background: var(--back-input, #fff);
-          border-left: medium solid var(--front-info);
-        }
-        .demo-preview {
-          background: var(--back-input, #fff6);
-          border: thin solid var(--line, #ccc);
-          padding: var(--gap);
-          margin-top: var(--gap);
-          position: relative;
-          min-height: 3rem;
-        }
-        .demo-preview:not(.no-resize){
-          resize: both;
-          overflow: auto;
-        }
-        .demo-preview::before {
-          content: "▶ Preview";
-          display: block;
-          font-size: 0.75em;
-          font-weight: bold;
-          color: var(--front-note, #888);
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-          padding-bottom: 0.4em;
-          border-bottom: thin solid var(--line);
-          margin-bottom: 0.8em;
-        }
-        pre.demo-code { max-height: 20vh; margin-top:-1px; /*background: var(--hilite);*/ padding: 1rem; overflow-x: auto; border: thin solid var(--line); border-radius:0;  }
-        .demo-code code { font-family: var(--mono); font-size: 0.9em; }
-        /*pre:has(code) {overflow:auto scroll;}*/
-        pre:has(code) + a.copy {display:block;margin-top:-2.2rem;margin-right:1rem;float:right;}
+        .options { background: var(--back-input, #fff); border-left: medium solid var(--front-info); }
+        .demo-container { background: var(--back-input, #fff6); }
+        .demo-preview { position: relative; /*min-height: 3rem;*/ }
+        .demo-preview:not(.no-resize){ resize: both; overflow: auto; }
+        .demo-container > pre { max-height: 20vh; }
+        .demo-container > pre:has(code) + a.copy {display:block;margin-top:-1.5rem !important;margin-right:1rem;float:right;}
     </style>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
@@ -103,15 +73,21 @@
         // prepare code preview
         document.querySelectorAll('.demo-preview').forEach(n => {
           // code
+          const cont = document.createElement('div')
           const pre = document.createElement('pre')
           const code = document.createElement('code')
           showCode(n, code)
-          pre.classList.add('demo-code')
+          cont.classList.add('demo-container')
+          n.classList.add('pads')
           pre.append(code)
-          n.after(pre)
+          //n.after(pre)
+          n.after(cont)
+          cont.append(n, pre)
           // reset resized
           n.addEventListener('dblclick', unstyle)
         })
+        document.querySelectorAll('.demo-container').forEach(n => n.classList.add('rad', 'shade', 'stack', 'line'))
+        document.querySelectorAll('.demo-container > pre').forEach(n => n.classList.add('bg', 'note'))
         
         // add copy link
         let seq = 0
@@ -255,14 +231,14 @@
 
     <h2 id="start">1. Getting Started</h2>
     <p>Include the CSS and JS files in your HTML. The JS file is optional but recommended for progressive enhancements.</p>
-    <pre><code>&lt;link rel="stylesheet" href="granum.min.css"&gt;
-&lt;script src="granum.min.js" defer&gt;&lt;/script&gt; &lt;!-- optional --&gt;</code></pre>
+    <div class="demo-container"><pre><code>&lt;link rel="stylesheet" href="granum.min.css"&gt;
+&lt;script src="granum.min.js" defer&gt;&lt;/script&gt; &lt;!-- optional --&gt;</code></pre></div>
     <p>It is possible to include core styles and icons separately or skip icons completely.</p>
-    <pre><code>&lt;link rel="stylesheet" href="granum.core.min.css"&gt;
+    <div class="demo-container"><pre><code>&lt;link rel="stylesheet" href="granum.core.min.css"&gt;
 &lt;link rel="stylesheet" href="granum.icons.min.css"&gt; &lt;!-- optional --&gt;
-&lt;script src="granum.min.js" defer&gt;&lt;/script&gt; &lt;!-- optional --&gt;</code></pre>
+&lt;script src="granum.min.js" defer&gt;&lt;/script&gt; &lt;!-- optional --&gt;</code></pre></div>
     <p>To make a page mobile-friendly and responsive, include the viewport meta tag into the <code>head</code>.</p>
-    <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code></pre>
+    <div class="demo-container"><pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code></pre></div>
 
     <h2 id="layout">2. Layout & Grid</h2>
     
@@ -454,7 +430,8 @@
         <span class="serif">Serif</span>
         <span class="mono">Monospace</span>
         <span class="small">Small</span>
-        <span class="regular">Regular</span>
+        <span class="regular">Regular-size</span>
+        <span class="bold">Bold</span>
         <span class="mid">Middle</span>
       </p>
       <div class="l">Align left</div>
@@ -626,18 +603,32 @@
 
     <h3>Pagination</h3>
     <div class="demo-preview">
-      <ul class="row bord rad hover line small">
+      <ul class="row gap">
         <li><a href="#prev" class="inact">Previous</a></li>
-        <li><a href="#1" class="bg note">1</a></li>
+        <li><a href="#1" class="neutral bold">1</a></li>
         <li><a href="#2">2</a></li>
         <li><a href="#3">3</a></li>
         <li><a href="#next">Next</a></li>
+      </ul>
+      <hr>
+      <ul class="row bord rad hover line small">
+        <li><a href="#prev" class="icon-prev inact" title="Previous"></a></li>
+        <li><a href="#1" class="bg note">1</a></li>
+        <li><a href="#2">2</a></li>
+        <li><a href="#3">3</a></li>
+        <li><a href="#next" class="icon-next" title="Next"></a></li>
       </ul>
     </div>
     
     <h3>Breadcrumbs</h3>
     <div class="demo-preview">
-      <ul class="row bread small">
+      <ul class="row bread">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#articles">Articles</a></li>
+        <li><span>About</span></li>
+      </ul>
+      <hr>
+      <ul class="row bread small" style="--divider:'\203A';">
         <li><a href="#home" class="icon-home small ic note">Home</a></li>
         <li><a href="#articles">Articles</a></li>
         <li><span>About</span></li>
@@ -865,14 +856,13 @@
     
     <h3>Input Types</h3>
     <p>
-      Style options:
-      <label><input type="checkbox" data-nodes="#inputs-container" value="row" checked><code>.row</code></label>
-      <label><input type="checkbox" data-nodes="#inputs-container" value="gap" checked><code>.gap</code></label>
-      <label><input type="checkbox" data-nodes="#inputs-container" value="mid" checked><code>.mid</code></label>
-      <label><input type="checkbox" data-nodes="#inputs-container" value="vert"><code>.vert</code></label>
+      Container options:
+      <label><input type="radio" name="input-types" data-nodes="#inputs-container" value=""><i>inline</i></label>
+      <label><input type="radio" name="input-types" data-nodes="#inputs-container" value="row gap mid wrap" checked><code>.row.gap.mid.wrap</code></label>
+      <label><input type="radio" name="input-types" data-nodes="#inputs-container" value="row gap vert"><code>.row.gap.vert</code></label>
     </p>
     <div class="demo-preview">
-      <div class="wrap" id="inputs-container">
+      <div class="row gap mid wrap" id="inputs-container">
         <input type="text" placeholder="Text...">
         <input type="search" placeholder="Search...">
         <input type="number" placeholder="Number...">
@@ -885,13 +875,14 @@
         <input type="range">
         <input type="color">
         <input type="checkbox">
+        <input type="checkbox" class="switch">
         <input type="radio" name="r1" value="1"><input type="radio" name="r1" value="2">
         <select><option>Select...</option><option>1</option><option>2</option></select>
         <input type="file">
         <button type="button">Button</button>
         <button type="button" class="bord">Button</button>
         <textarea placeholder="Textarea..."></textarea>
-        <div contenteditable>Contenteditable</div>
+        <div contenteditable>Contenteditable...</div>
         <div class="input"><input type="text" placeholder="Custom input..."></div>
         <button type="button" class="input" popovertarget="cs1"><span>Custom select...</span><a class="icon-desc small note"></a></button>
       </div>
@@ -1244,7 +1235,7 @@
 
     <h3>Tooltips with <code>[data-hint]</code></h3>
     <p><small class="tag warning">Deprecated</small></p>
-    <div class="demo-preview">
+    <div class="demo-preview no-resize">
       <span data-hint="This is a default tooltip" class="pad bord" tabindex="0">Hover over me</span>
       <span data-hint="This tooltip is centered" class="pad bord info c" tabindex="0">Or me</span>
     </div>
@@ -1271,19 +1262,19 @@
     <div class="demo-preview container">
       <b>Viewport:</b>
       <span class="hide-l note">Not large</span>
+      <span class="hide show-l danger bold">Large</span>
       <span class="hide-m info">Not medium</span>
+      <span class="hide show-m warning bold">Medium</span>
       <span class="hide-s neutral">Not small</span>
-      <span class="hide show-l danger">Large</span>
-      <span class="hide show-m warning">Medium</span>
-      <span class="hide show-s success">Small</span>
+      <span class="hide show-s success bold">Small</span>
       <hr>
       <b>Container:</b>
       <span class="hide-cl note">Not large</span>
+      <span class="hide show-cl danger bold">Large</span>
       <span class="hide-cm info">Not medium</span>
+      <span class="hide show-cm warning bold">Medium</span>
       <span class="hide-cs neutral">Not small</span>
-      <span class="hide show-cl danger">Large</span>
-      <span class="hide show-cm warning">Medium</span>
-      <span class="hide show-cs success">Small</span>
+      <span class="hide show-cs success bold">Small</span>
     </div>
 
     <h3>JavaScript detection</h3>
