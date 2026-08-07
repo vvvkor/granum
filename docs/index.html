@@ -91,7 +91,7 @@
         
         // add copy link
         let seq = 0
-        document.querySelectorAll('pre:has(code)').forEach(n => {
+        document.querySelectorAll('.demo-container > pre:has(code)').forEach(n => {
           seq++
           const a = document.createElement('a')
           a.classList.add('icon-copy', 'copy', 'note', 'small')
@@ -408,16 +408,21 @@
         Text
         <a href="?#">Link</a>
         <a>Unlink</a>
+        <b>Bold</b> <strong>Strong</strong>
+        <i>Italic</i> <em>Emphasis</em>
+        <ins>Ins</ins>
+        <del>Del</del>
+        <mark>Mark</mark>
+        <br>
         <code>Code</code>
         <kbd>Kbd</kbd>
         <q>Quote</q>
+        <cite>Cite</cite>
+        <dfn>Definition</dfn>
         <small>Small</small>
         <abbr title="Abbreviation">Abbr</abbr>
         x<sub>sub</sub>
         x<sup>super</sup>
-        <ins>Ins</ins>
-        <del>Del</del>
-        <mark>Mark</mark>
       </p>
       <hr>
       <blockquote>Block quote</blockquote>
