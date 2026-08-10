@@ -238,8 +238,9 @@ document.addEventListener('input', e => {
   // toggle classes
   if (n.dataset.nodes) cls(n, e)
 
-  // filter table
-  if (n.dataset.filter) act(n, 'filter', t => t.querySelectorAll('tbody tr, li').forEach(m => {
+  // filter table or list
+  if (n.dataset.filter) act(n, 'filter', t => t.querySelectorAll(':is(tbody tr, li):not(.keep)').forEach(m => {
+    if (m.contains(n)) return
     const s = ns(m.cells ? [...m.cells].map(c => c.textContent).join(' ') : m.textContent)
     m.hidden = !ns(n.value).trim().split(/\s+/).every(q => s.includes(q))
     //m.classList[ns(n.value).trim().split(/\s+/).every(q => s.includes(q)) ? 'remove' : 'add']('hide')

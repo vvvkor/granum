@@ -113,7 +113,7 @@
 - table.sort
 - [data-check]="SELECTOR"
 - :is([type="checkbox"], [type="radio"], select)[data-nodes="SELECTOR"][data-parent="SELECTOR"][data-reverse]
-- [type="search"][data-filter="SELECTOR"][data-parent="SELECTOR"] :is(table, ul)
+- [type="search"][data-filter="SELECTOR"][data-parent="SELECTOR"] :is(tr, li):not(.keep)
 - [contenteditable][data-area]
 - [textarea][data-editor]
 - a[#prev] a[#next] :target[data-prev="#ID"][data-next="#ID"]

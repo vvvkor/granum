@@ -186,7 +186,7 @@
     
     <button command="show-modal" commandfor="customize" class="link icon-config" title="Customize"></button>
     <a href="https://github.com/vvvkor/granum" class="-neutral an-im-swing" title="GitHub">
-      <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="-1 -1 18 18" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="-1 -1 18 18" width="32" height="32" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
     </a>
   </nav>
 
@@ -504,7 +504,7 @@
     </p>
     <div class="demo-preview" id="images-container">
       <figure>
-        <img class="center" alt="" src="https://placehold.co/400x200/b33/fff.png?text=***" width="100">
+        <img class="center" alt="" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4IDgiPjxwYXRoIGQ9Ik0wIDBsOCAwIDAgOCAtOCAweiIgZmlsbD0iI2MwMCIvPjxjaXJjbGUgY3g9IjQiIGN5PSI0IiByPSIzIiBmaWxsPSIjZjk5Ii8+PC9zdmc+" width="100">
         <figcaption class="c">Figure caption</figcaption>
       </figure>
     </div>
@@ -643,8 +643,13 @@
     </div>
     
     <h3>Card</h3>
-    <div class="demo-preview">
-      <div class="bord rad">
+    <p class="options bord pad small">
+      <label><input type="checkbox" data-nodes="#card-container > *" value="bord" checked><code>.bord</code></label>
+      <label><input type="checkbox" data-nodes="#card-container > *" value="rad" checked><code>.rad</code></label>
+      <label><input type="checkbox" data-nodes="#card-container > *" value="shade"><code>.shade</code></label>
+    </p>
+    <div class="demo-preview" id="card-container">
+      <div class="shade rad">
         <header class="pad hilite">Header</header>
         <div class="pad">Contents<br>of<br>card</div>
         <footer class="pad hilite">Footer</footer>
@@ -794,7 +799,7 @@
     <p>
       Customized dropdown <code>select</code>-like input using <code>[popover]</code> and radio buttons.<br>
       <!-- Optionally use <code>dialog[popover]</code> for options autofocus.<br-->
-      JavaScript copies value to button's first <code>span</code> text and closes popover after selection.
+      JavaScript sets focus after opening, copies value to button's first <code>span</code> text and closes popover after selection, enables filtering.
     </p>
     <p class="options bord pad small">
       Button options:
@@ -824,11 +829,12 @@
           <a class="icon-desc note small"></a>
         </button>
         <div id="popsel-1" popover class="sel">
-          <div class="show-js pad"><input type="search" data-filter="#popsel-list" placeholder="Filter list..."></div>
           <ul id="popsel-list" class="row vert hover">
-            <li><label class="-check"><input type="radio" class="mem" id="sel-2" name="sel-2" value="" required data-caption="-">None</label></li>
-            <li><label class="-check"><input type="radio" class="mem" id="sel-2" name="sel-2" value="a" required>Alpha</label></li>
-            <li><label class="-check"><input type="radio" class="mem" id="sel-2" name="sel-2" value="b" required>Beta Beta Beta Beta Beta Beta Beta End</label></li>
+            <li><input type="search" data-filter="#popsel-list" placeholder="Filter list..."></li>
+            <li class="keep"><hr></li>
+            <li><label><input type="radio" class="mem" id="sel-2" name="sel-2" value="" required data-caption="-">None</label></li>
+            <li><label><input type="radio" class="mem" id="sel-2" name="sel-2" value="a" required>Alpha</label></li>
+            <li><label><input type="radio" class="mem" id="sel-2" name="sel-2" value="b" required>Beta Beta Beta Beta Beta Beta Beta End</label></li>
             <li><hr></li>
             <li><label class="-check"><input type="checkbox" class="mem" name="box-b" value="g">Gamma</label></li>
           </ul>
@@ -1124,7 +1130,7 @@
           Three
         </div>
         <div id="slide4" class="pad warning invert">
-          <img class="wide" alt="" src="https://placehold.co/400x200/b33/fff.png?text=***">
+          <img class="wide" alt="" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4IDgiPjxwYXRoIGQ9Ik0wIDBsOCAwIDAgOCAtOCAweiIgZmlsbD0iI2MwMCIvPjxjaXJjbGUgY3g9IjQiIGN5PSI0IiByPSIzIiBmaWxsPSIjZjk5Ii8+PC9zdmc+">
           <div>Four</div>
         </div>
       </div>
@@ -1146,18 +1152,18 @@
           <a href="#im1"    class="pad note icon-first"></a>
           <a href="#cancel" class="pad note icon-close"></a>
         </div>
-        <a id="im1" href="#im2"><img loading="lazy" alt="Red"   src="https://placehold.co/400x200/b33/fff.png?text=***"></a>
-        <a id="im2" href="#im3"><img loading="lazy" alt="Green" src="https://placehold.co/300x200/393/fff.png?text=///"></a>
-        <a id="im3" href="#im4"><img loading="lazy" alt="Blue"  src="https://placehold.co/200x200/039/fff.png?text=~~~"></a>
-        <a id="im4" href="#im1"><img loading="lazy" alt="Grey"  src="https://placehold.co/220x300/777/fff.png?text=---"></a>
+        <a id="im1" href="#im2"><img loading="lazy" alt="Red"   src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4IDgiPjxwYXRoIGQ9Ik0wIDBsOCAwIDAgOCAtOCAweiIgZmlsbD0iI2MwMCIvPjxjaXJjbGUgY3g9IjQiIGN5PSI0IiByPSIzIiBmaWxsPSIjZjk5Ii8+PC9zdmc+"></a>
+        <a id="im2" href="#im3"><img loading="lazy" alt="Green" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4IDgiPjxwYXRoIGQ9Ik0wIDBsOCAwIDAgOCAtOCAweiIgZmlsbD0iIzA5MCIvPjxwYXRoIGQ9Ik0xIDFsNiAwIDAgNi02IDB6IiBmaWxsPSIjOWY5Ii8+PC9zdmc+"></a>
+        <a id="im3" href="#im4"><img loading="lazy" alt="Blue"  src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4IDgiPjxwYXRoIGQ9Ik0wIDBsOCAwIDAgOCAtOCAweiIgZmlsbD0iIzA2ZiIvPjxwYXRoIGQ9Ik00IDEuNWwzIDUtNiAweiIgZmlsbD0iIzljZiIvPjwvc3ZnPg=="></a>
+        <a id="im4" href="#im1"><img loading="lazy" alt="Grey"  src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4IDgiPjxwYXRoIGQ9Ik0wIDBsOCAwIDAgOCAtOCAweiIgZmlsbD0iI2NjYyIvPjxwYXRoIGQ9Ik04IDB2OGgtOHoiIGZpbGw9IiM2NjYiLz48L3N2Zz4="></a>
       </div>
 
       <a href="#i1">Gallery (pure CSS, no container)</a><br>
       
-      <a id="i1" href="#i2" class="modal full"><img class="target" loading="lazy" alt="Red"   src="https://placehold.co/400x200/b33/fff.png?text=***"></a>
-      <a id="i2" href="#i3" class="modal full"><img class="target" loading="lazy" alt="Green" src="https://placehold.co/300x200/393/fff.png?text=///"></a>
-      <a id="i3" href="#i4" class="modal full"><img class="target" loading="lazy" alt="Blue"  src="https://placehold.co/200x200/039/fff.png?text=~~~"></a>
-      <a id="i4" href="#i1" class="modal full"><img class="target" loading="lazy" alt="Grey"  src="https://placehold.co/220x300/777/fff.png?text=---"></a>
+      <a id="i1" href="#i2" class="modal full"><img class="target" loading="lazy" alt="Red"   src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4IDgiPjxwYXRoIGQ9Ik0wIDBsOCAwIDAgOCAtOCAweiIgZmlsbD0iI2MwMCIvPjxjaXJjbGUgY3g9IjQiIGN5PSI0IiByPSIzIiBmaWxsPSIjZjk5Ii8+PC9zdmc+"></a>
+      <a id="i2" href="#i3" class="modal full"><img class="target" loading="lazy" alt="Green" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4IDgiPjxwYXRoIGQ9Ik0wIDBsOCAwIDAgOCAtOCAweiIgZmlsbD0iIzA5MCIvPjxwYXRoIGQ9Ik0xIDFsNiAwIDAgNi02IDB6IiBmaWxsPSIjOWY5Ii8+PC9zdmc+"></a>
+      <a id="i3" href="#i4" class="modal full"><img class="target" loading="lazy" alt="Blue"  src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4IDgiPjxwYXRoIGQ9Ik0wIDBsOCAwIDAgOCAtOCAweiIgZmlsbD0iIzA2ZiIvPjxwYXRoIGQ9Ik00IDEuNWwzIDUtNiAweiIgZmlsbD0iIzljZiIvPjwvc3ZnPg=="></a>
+      <a id="i4" href="#i1" class="modal full"><img class="target" loading="lazy" alt="Grey"  src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4IDgiPjxwYXRoIGQ9Ik0wIDBsOCAwIDAgOCAtOCAweiIgZmlsbD0iI2NjYyIvPjxwYXRoIGQ9Ik04IDB2OGgtOHoiIGZpbGw9IiM2NjYiLz48L3N2Zz4="></a>
             
       <a href="#img1">Gallery (with JS enhancements: previous, next, Escape key)</a>
       
@@ -1168,10 +1174,10 @@
           <a href="#next"   class="pad hover note icon-next  show-js"></a>
           <a href="#cancel" class="pad hover note icon-close"></a>
         </div>
-        <a id="img1" href="#img2"><img data-prev="#img4" data-next="#img2" class="target note bg" loading="lazy" alt="Red"   src="https://placehold.co/400x200/b33/fff.png?text=***"></a>
-        <a id="img2" href="#img3"><img data-prev="#img1" data-next="#img3" class="target note bg" loading="lazy" alt="Green" src="https://placehold.co/300x200/393/fff.png?text=///"></a>
-        <a id="img3" href="#img4"><img data-prev="#img2" data-next="#img4" class="target note bg" loading="lazy" alt="Blue"  src="https://placehold.co/200x200/039/fff.png?text=~~~"></a>
-        <a id="img4" href="#img1"><img data-prev="#img3" data-next="#img1" class="target note bg" loading="lazy" alt="Grey"  src="https://placehold.co/220x300/777/fff.png?text=---"></a>
+        <a id="img1" href="#img2" data-prev="#img4" data-next="#img2"><img class="target note bg" loading="lazy" alt="Red"   src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4IDgiPjxwYXRoIGQ9Ik0wIDBsOCAwIDAgOCAtOCAweiIgZmlsbD0iI2MwMCIvPjxjaXJjbGUgY3g9IjQiIGN5PSI0IiByPSIzIiBmaWxsPSIjZjk5Ii8+PC9zdmc+"></a>
+        <a id="img2" href="#img3" data-prev="#img1" data-next="#img3"><img class="target note bg" loading="lazy" alt="Green" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4IDgiPjxwYXRoIGQ9Ik0wIDBsOCAwIDAgOCAtOCAweiIgZmlsbD0iIzA5MCIvPjxwYXRoIGQ9Ik0xIDFsNiAwIDAgNi02IDB6IiBmaWxsPSIjOWY5Ii8+PC9zdmc+"></a>
+        <a id="img3" href="#img4" data-prev="#img2" data-next="#img4"><img class="target note bg" loading="lazy" alt="Blue"  src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4IDgiPjxwYXRoIGQ9Ik0wIDBsOCAwIDAgOCAtOCAweiIgZmlsbD0iIzA2ZiIvPjxwYXRoIGQ9Ik00IDEuNWwzIDUtNiAweiIgZmlsbD0iIzljZiIvPjwvc3ZnPg=="></a>
+        <a id="img4" href="#img1" data-prev="#img3" data-next="#img1"><img class="target note bg" loading="lazy" alt="Grey"  src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4IDgiPjxwYXRoIGQ9Ik0wIDBsOCAwIDAgOCAtOCAweiIgZmlsbD0iI2NjYyIvPjxwYXRoIGQ9Ik04IDB2OGgtOHoiIGZpbGw9IiM2NjYiLz48L3N2Zz4="></a>
       </div>
       
     </div>
@@ -1344,6 +1350,7 @@
     </div>
     
     <h3>List filtering</h3>
+    <p>Add <code>.keep</code> to a list item to exclude it from filtering.</p>
     <div class="demo-preview no-resize">
       <div class="show-js mar"><input type="search" data-filter="#list-3" placeholder="Filter list..."></div>
       <ul id="list-3">
@@ -1351,12 +1358,13 @@
         <li>2 Two</li>
         <li>3 Three</li>
         <li>4 Four</li>
-        <li>5 Five</li>
+        <li class="keep">5 Five: keep</li>
       </ul>
     </div>
 
     <h3>Table Sorting & Filtering</h3>
     <p>Click the headers to sort, or type in the search box to filter.</p>
+    <p>Add <code>.keep</code> to a row to exclude it from filtering.</p>
     <div class="demo-preview no-resize">
       <input type="search" data-filter="#table-2" placeholder="Filter table..." class="mar show-js">
       <div class="resize scroll">
@@ -1463,13 +1471,13 @@
       <label><input type="radio" name="anim" data-nodes="#anim-container > svg" value="anim-swing"><code>.anim-swing</code></label>
     </p>
     <div class="demo-preview" id="anim-container">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="-1 -1 18 18" width="32" height="32" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
       <a class="icon-refresh anim-spin success"></a>
       <a class="icon-warning anim-blink warning"></a>
       <a class="icon-heart anim-pulse danger"></a>
       <a class="icon-bookmark anim-flip note"></a>
       <a class="icon-anchor anim-turn info"></a>
       <a class="icon-bell anim-swing neutral"></a>
-      <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="-1 -1 18 18" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
     </div>
 
     <h3>Icons toggle</h3>

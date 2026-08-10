@@ -20,7 +20,9 @@
 .row:is(.fit, .bread)>li>* {padding:0;}
 .row.bread>li+li:before {content:var(--divider, "/");color:var(--front-note);padding-inline:calc(var(--gap) * .5);}
   ul:where(.row), ul.row ul, ul.row li {list-style:none;margin:0;padding:0;}
-  ul.row li>:not(ul, form) {padding:calc(.5 * var(--gap)) var(--gap);text-decoration:none;width:100%;}
+  ul.row li>:not(ul, form) {width:100%;text-decoration:none;}
+    ul.row li>:not(ul, form, input, select) {padding:calc(.5 * var(--gap)) var(--gap);}
+    ul.row li>:where(input, select) {margin:calc(.5 * var(--gap)) var(--gap);}
   ul.row li>hr {padding:0;margin:calc(.5 * var(--gap)) 0;}
   ul.row.gap {row-gap:0;}
   ul.row.gap>li>:not(ul, form) {padding-inline:0;}
