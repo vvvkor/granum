@@ -25,7 +25,7 @@
         .demo-preview { position: relative; /*min-height: 3rem;*/ }
         .demo-preview:not(.no-resize){ resize: both; overflow: auto; }
         .demo-container > pre { max-height: 20vh; }
-        .demo-container > pre:has(code) + a.copy {display:block;margin-top:-1.5rem !important;margin-right:1rem;float:right;}
+        .demo-container > pre:has(code) + a.copy {display:block;margin-top:-2.2rem !important;margin-right:1rem;float:right;background:var(--back-note);position:relative;}
     </style>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
@@ -88,6 +88,7 @@
         })
         document.querySelectorAll('.demo-container').forEach(n => n.classList.add('rad', 'shade', 'stack', 'line'))
         document.querySelectorAll('.demo-container > pre').forEach(n => n.classList.add('bg', 'note'))
+        document.querySelectorAll('.options').forEach(n => n.classList.add('bord', 'pad', 'small'))
         
         // add copy link
         let seq = 0
@@ -497,10 +498,12 @@
 
     <h3>Images</h3>
     <p class="options bord pad small">
+      <label><input type="checkbox" data-nodes="#images-container img" value="rad"><code>.rad</code></label>
       <label><input type="checkbox" data-nodes="#images-container img" value="c"><code>.c</code></label>
       <label><input type="checkbox" data-nodes="#images-container img" value="center" checked><code>.center</code></label>
       <label><input type="checkbox" data-nodes="#images-container img" value="wide"><code>.wide</code></label>
       <label><input type="checkbox" data-nodes="#images-container img" value="fit"><code>.fit</code></label>
+      <label><input type="checkbox" data-nodes="#images-container img" value="inact"><code>.inact</code></label>
     </p>
     <div class="demo-preview" id="images-container">
       <figure>
