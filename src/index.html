@@ -1477,6 +1477,39 @@
       </table>
     </div>
 
+    <h3>Drag Items</h3>
+    <p>
+      Use <code>.drag-container, table, ul</code> as container,
+      <code>.drag-item</code> for items,
+      and <code>a[href="#drag"]</code> for handler.
+    </p>
+    <div class="demo-preview">
+      <div class="drag-container">
+        <div class="drag-item"><a href="#drag" class="icon-more note small"></a> One</div>
+        <div class="drag-item"><a href="#drag" class="icon-more note small"></a> Two</div>
+        <div class="drag-item"><a href="#drag" class="icon-more note small"></a> Three</div>
+      </div>
+      <ul>
+        <li class="drag-item"><a href="#drag" class="icon-more note small"></a> One</li>
+        <li class="drag-item"><a href="#drag" class="icon-more note small"></a> Two</li>
+        <li class="drag-item"><a href="#drag" class="icon-more note small"></a> Three</li>
+      </ul>
+      <table class="bord mid">
+        <tr class="drag-item">
+          <td><a href="#drag" class="icon-more note small"></a></td>
+          <td>One</td>
+        </tr>
+        <tr class="drag-item">
+          <td><a href="#drag" class="icon-more note small"></a></td>
+          <td>Two</td>
+        </tr>
+        <tr class="drag-item">
+          <td><a href="#drag" class="icon-more note small"></a></td>
+          <td>Three</td>
+        </tr>
+      </table>
+    </div>
+    
     <h3>Copy input value</h3>
     <div class="demo-preview">
       <input id="src-1" type="text" value="Value to copy"> <a href="#src-1" class="copy icon-copy">Copy</a><br>

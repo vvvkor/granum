@@ -117,6 +117,7 @@
 - [contenteditable][data-area]
 - [textarea][data-editor]
 - a[#item-(copy|del|up|down)]([data-item].keep)
+- :is(.drag-container, table, ul) .drag-item(.dragging) a[href="#drag"]
 - a[#prev] a[#next] :target[data-prev="#ID"][data-next="#ID"]
 - #open
 - #back

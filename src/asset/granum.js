@@ -282,6 +282,31 @@ document.addEventListener('toggle', e => {
   if (n.matches('[popover]') && e.newState == 'open') (n.querySelector('[type=radio]:checked') || n.querySelector('[name]'))?.focus()
 }, true)
 
+// drag
+let di = null, dp = null
+document.addEventListener('pointerdown', e => { 
+  di = e.target.closest('a[href="#drag"]')?.closest('.drag-item')
+  if (!di) return
+  e.preventDefault()
+  e.target.releasePointerCapture(e.pointerId) // avoid implicit pointer capture
+  dp = di.closest('.drag-container') || di.closest('table, ul')
+  di.classList.add('dragging')
+})
+document.addEventListener('pointerover', e => {
+  const n = e.target.closest('.drag-item')
+  if (di && n && n != di && dp.contains(n) && !di.contains(n)) {
+    const l = [...dp.querySelectorAll('.drag-item')]
+    n[l.indexOf(n) < l.indexOf(di) ? 'before' : 'after'](di)
+  }
+})
+document.addEventListener('pointerup', e => { 
+  if (!di) return
+  e.preventDefault()
+  di.classList.remove('dragging')
+  //di.dispatchEvent(new CustomEvent('granum-drag', {bubbles: true, cancelable: true, detail: {container: dp, item: di, items: dp.querySelectorAll('.drag-item')}}))
+  di = dp = null
+})
+
 // open dialog by hash
 window.addEventListener('hashchange', dlg)
 window.addEventListener('close', e => (e.target.id == location.hash.slice(1)) ? location.hash = '#close' : null, true)

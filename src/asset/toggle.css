@@ -26,6 +26,10 @@ html {scroll-padding-top:4rem;}
 /* check */
 .check:where(input:not(:checked), :has(input:not(:checked))) + :not(:target):not(:has(:target)), .check input, input.check {display:none;}
 
+/* drag */
+[href="#drag"] {cursor:move;}
+.dragging {background:var(--back-warning);}
+
 /* target */
 /*.target {scroll-margin-top:3em;}*/
 
