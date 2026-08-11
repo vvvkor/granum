@@ -217,6 +217,22 @@ document.addEventListener('click', async e => {
       }
     }
     
+    // magage items
+    else if (a.hash.slice(0, 6) == '#item-') {
+      const m = a.closest(a.dataset.item || 'div, li, tr')
+      const h = a.hash.slice(6)
+      if (m) {
+        e.preventDefault()
+        const ps = m.previousElementSibling
+        const ns = m.nextElementSibling
+        const pn = m.parentNode
+        if (h == 'del') (m.parentNode.children.length > 1 || !a.classList.contains('keep')) ? m.remove() : null
+        else if (h == 'up') ps ? ps.before(m) : pn.append(m)
+        else if (h == 'down') ns ? ns.after(m) : pn.prepend(m)
+        else if (h == 'copy') m.after(m.cloneNode(true))
+      }
+    }
+    
   }
   
   // popover select

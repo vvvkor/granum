@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Granum v2.3.2 - Documentation</title>
+    <title>Granum v2.3.3 - Documentation</title>
     <meta name="theme-color" content="#fff">
     <meta name="theme-color" media="(prefers-color-scheme:dark)" content="#04a">
     <link rel="icon" type="image/svg" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20220%20220'%3E%3Cpath%20fill='%23666'%20d='M35%2067l75%20-44%2075%2044%200%2089-75%2044-75-44zm75%208a35%2035%200%201%200%20.01%200z'/%3E%3C/svg%3E">
@@ -163,7 +163,7 @@
 
   <nav class="stick nodec small shade  row gap wrap pad">
     <!--ul class="row -resp-s -gap hover click">
-      <li><b class="pad">Granum v2.3.2</b></li>
+      <li><b class="pad">Granum v2.3.3</b></li>
       <li><a href="#start">Start</a></li>
       <li><a href="#layout1">Layout</a>
         <ul>
@@ -174,7 +174,7 @@
       </li>
     </ul-->
     
-    <b>Granum v2.3.2</b>
+    <b>Granum v2.3.3</b>
     <a href="#start">Start</a>
     <a href="#layout">Layout</a>
     <a href="#typo">Content</a>
@@ -234,7 +234,7 @@
     -->
 
     <div class="hero" id="top">
-      <h1>Granum v2.3.2</h1>
+      <h1>Granum v2.3.3</h1>
       <p class="note">Developer Documentation</p>
     </div>
     
@@ -1443,6 +1443,38 @@
         <input type="checkbox" name="box-2">
         <input type="checkbox" name="box-3">
       </fieldset>
+    </div>
+
+    <h3>Manage Items</h3>
+    <p>
+      Operates on closest <code>div, ul, tr</code> parent by default.
+      To override, define selector in <code>[data-item]</code>.
+      To keep at least one item, add <code>.keep</code> to the <code>#item-del</code> link.
+    </p>
+    <div class="demo-preview">
+      <ul class="fit">
+        <li>
+          <small>
+            <a href="#item-del" class="icon-delete danger"></a>
+            <a href="#item-up" class="icon-asc note"></a>
+            <a href="#item-down" class="icon-desc note"></a>
+            <a href="#item-copy" class="icon-add success" data-item="li"></a>
+          </small>
+          <input type="text" class="fit bord rad">
+        </li>
+      </ul>
+      <hr>
+      <table class="bord mid">
+        <tr>
+          <td class="small">
+            <a href="#item-del" class="icon-delete danger keep"></a>
+            <a href="#item-up" class="icon-asc note"></a>
+            <a href="#item-down" class="icon-desc note"></a>
+            <a href="#item-copy" class="icon-add success"></a>
+          </td>
+          <td><input type="text" class="fit bord rad"></td>
+        </tr>
+      </table>
     </div>
 
     <h3>Copy input value</h3>

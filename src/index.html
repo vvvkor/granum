@@ -1445,6 +1445,38 @@
       </fieldset>
     </div>
 
+    <h3>Manage Items</h3>
+    <p>
+      Operates on closest <code>div, ul, tr</code> parent by default.
+      To override, define selector in <code>[data-item]</code>.
+      To keep at least one item, add <code>.keep</code> to the <code>#item-del</code> link.
+    </p>
+    <div class="demo-preview">
+      <ul class="fit">
+        <li>
+          <small>
+            <a href="#item-del" class="icon-delete danger"></a>
+            <a href="#item-up" class="icon-asc note"></a>
+            <a href="#item-down" class="icon-desc note"></a>
+            <a href="#item-copy" class="icon-add success" data-item="li"></a>
+          </small>
+          <input type="text" class="fit bord rad">
+        </li>
+      </ul>
+      <hr>
+      <table class="bord mid">
+        <tr>
+          <td class="small">
+            <a href="#item-del" class="icon-delete danger keep"></a>
+            <a href="#item-up" class="icon-asc note"></a>
+            <a href="#item-down" class="icon-desc note"></a>
+            <a href="#item-copy" class="icon-add success"></a>
+          </td>
+          <td><input type="text" class="fit bord rad"></td>
+        </tr>
+      </table>
+    </div>
+
     <h3>Copy input value</h3>
     <div class="demo-preview">
       <input id="src-1" type="text" value="Value to copy"> <a href="#src-1" class="copy icon-copy">Copy</a><br>
