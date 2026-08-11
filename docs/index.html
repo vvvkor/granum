@@ -25,7 +25,7 @@
         .demo-preview { position: relative; /*min-height: 3rem;*/ }
         .demo-preview:not(.no-resize){ resize: both; overflow: auto; }
         .demo-container > pre { max-height: 20vh; }
-        .demo-container > pre:has(code) + a.copy {display:block;margin-top:-2.2rem !important;margin-right:1rem;float:right;background:var(--back-note);position:relative;}
+        /*.demo-container > pre:has(code) + a.copy {display:block;margin-top:-2.2rem !important;margin-right:1rem;float:right;background:var(--back-note);position:relative;}*/
     </style>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
@@ -43,7 +43,9 @@
 
         // update code preview
         const showCode = (n, code=null) => {
-          if (!code) code = n.nextElementSibling.firstElementChild
+          //if (!code) code = n.nextElementSibling.firstElementChild
+          if (!code) code = n.parentNode.querySelector('pre')?.firstElementChild
+          if (!code) return
           let s = n.innerHTML.replace(/^[\r\n]+|[\r\n\s]+$/g, '').replace(/\s+class=""/g, '')
           const offset = s.match(/^ */) || ''
           if (offset) {
@@ -100,7 +102,14 @@
           if (!n.id) n.id = id
           a.href = '#' + id
           a.title = 'Copy HTML'
-          n.after(a)
+          //n.after(a)
+          const d = document.createElement('div')
+          const h = document.createElement('div')
+          h.innerText = 'HTML'
+          d.classList.add('small', 'row', 'gap', 'pad', 'note', 'bg', 'text'/*, 'mono'*/)
+          h.classList.add('col-1')
+          d.append(h, a)
+          n.before(d)
           /*
           const d = document.createElement('div')
           d.classList.add('small', 'pad', 'bord', 'hilite')
@@ -1315,7 +1324,7 @@
     <p>Toggle CSS classes on target elements based on input state.</p>
     <div class="demo-preview no-resize">
       <label>
-        <input type="checkbox" data-parent=".demo-preview" data-nodes="div" value="success bord">
+        <input type="checkbox" data-parent=".demo-preview" data-nodes="div" value="success bord" checked>
         Highlight Target
       </label>
       <label>
