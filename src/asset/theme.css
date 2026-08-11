@@ -18,6 +18,7 @@
   --bord: thin solid var(--line);
   --shadow: light-dark(#0003, #0009);
   --shade: 0 .1rem .8rem 0 var(--shadow);
+  --drag: #aaa3;/*#fc33;*/
 
   /* typo */
   --root-font-size: 1;

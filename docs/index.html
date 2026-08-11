@@ -1482,6 +1482,7 @@
       Use <code>.drag-container, table, ul</code> as container,
       <code>.drag-item</code> for items,
       and <code>a[href="#drag"]</code> for handler.
+      For correct work on touch devices, <code>.drag-container</code> is strictly required.
     </p>
     <div class="demo-preview">
       <div class="drag-container">
@@ -1489,21 +1490,21 @@
         <div class="drag-item"><a href="#drag" class="icon-more note small"></a> Two</div>
         <div class="drag-item"><a href="#drag" class="icon-more note small"></a> Three</div>
       </div>
-      <ul>
+      <ul class="drag-container">
         <li class="drag-item"><a href="#drag" class="icon-more note small"></a> One</li>
         <li class="drag-item"><a href="#drag" class="icon-more note small"></a> Two</li>
         <li class="drag-item"><a href="#drag" class="icon-more note small"></a> Three</li>
       </ul>
-      <table class="bord mid">
-        <tr class="drag-item">
+      <table class="drag-container bord mid">
+        <tr class="drag-item bg success">
           <td><a href="#drag" class="icon-more note small"></a></td>
           <td>One</td>
         </tr>
-        <tr class="drag-item">
+        <tr class="drag-item bg warning">
           <td><a href="#drag" class="icon-more note small"></a></td>
           <td>Two</td>
         </tr>
-        <tr class="drag-item">
+        <tr class="drag-item bg danger">
           <td><a href="#drag" class="icon-more note small"></a></td>
           <td>Three</td>
         </tr>

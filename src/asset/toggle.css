@@ -27,8 +27,9 @@ html {scroll-padding-top:4rem;}
 .check:where(input:not(:checked), :has(input:not(:checked))) + :not(:target):not(:has(:target)), .check input, input.check {display:none;}
 
 /* drag */
+.drag-container {touch-action:none;}
 [href="#drag"] {cursor:move;}
-.dragging {background:var(--back-warning);}
+.dragging {/*background:var(--drag);*/box-shadow:inset 0 0 0 300vh var(--drag);}
 
 /* target */
 /*.target {scroll-margin-top:3em;}*/
