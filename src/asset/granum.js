@@ -1,5 +1,7 @@
 (() => {
   
+const evt = (n, t, detail) => n.dispatchEvent(new CustomEvent('granum-' + t, {bubbles: true, cancelable: true, detail}))
+  
 const act = (n, k, f) => (n.dataset.parent ? n.closest(n.dataset.parent) : document)?.querySelectorAll(n.dataset[k] || n.hash).forEach(m => f(m))
 
 const cls = (n, e) => {
@@ -142,13 +144,14 @@ document.addEventListener('click', async e => {
           m[1].match(/[\/\.-].*[\/\.-]/) ? NaN : parseFloat(m[1])
         ])
       const r = h.classList.contains(c) && !h.classList.contains(d) ? -1 : 1
-      console.log(r, x)
+      //console.log(r, x)
       x.sort((a, b) => r * (a[2] - b[2] || a[1].localeCompare(b[1], undefined, {numeric: true})))
       x.forEach(m => b.append(m[0]))
       ;[...h.parentNode.children].forEach(m => {
         m.classList.toggle(c, m == h)
         m.classList.toggle(d, m == h && r < 0)
       })
+      evt(h, 'sort', {order: r})
     }
   }
 
@@ -217,19 +220,25 @@ document.addEventListener('click', async e => {
       }
     }
     
-    // magage items
+    // manage items
     else if (a.hash.slice(0, 6) == '#item-') {
-      const m = a.closest(a.dataset.item || 'div, li, tr')
+      const m = a.dataset.src ? document.querySelector(a.dataset.src) : a.closest(a.dataset.item || 'div, li, tr')
       const h = a.hash.slice(6)
       if (m) {
+        let copy = null
         e.preventDefault()
         const ps = m.previousElementSibling
         const ns = m.nextElementSibling
-        const pn = m.parentNode
-        if (h == 'del') (m.parentNode.children.length > 1 || !a.classList.contains('keep')) ? m.remove() : null
-        else if (h == 'up') ps ? ps.before(m) : pn.append(m)
-        else if (h == 'down') ns ? ns.after(m) : pn.prepend(m)
-        else if (h == 'copy') m.after(m.cloneNode(true))
+        const p = m.parentNode
+        if (h == 'del') (p.children.length > 1 || !a.classList.contains('keep')) ? m.remove() : null
+        else if (h == 'up') ps ? ps.before(m) : p.append(m)
+        else if (h == 'down') ns ? ns.after(m) : p.prepend(m)
+        else if (h == 'copy') {
+          copy = m.cloneNode(true)
+          m.after(copy)
+          m.hidden = false
+        }
+        evt(p, 'manage', {action: h, item: m, copy})
       }
     }
     
@@ -255,12 +264,17 @@ document.addEventListener('input', e => {
   if (n.dataset.nodes) cls(n, e)
 
   // filter table or list
-  if (n.dataset.filter) act(n, 'filter', t => t.querySelectorAll(':is(tbody tr, li):not(.keep)').forEach(m => {
-    if (m.contains(n)) return
-    const s = ns(m.cells ? [...m.cells].map(c => c.textContent).join(' ') : m.textContent)
-    m.hidden = !ns(n.value).trim().split(/\s+/).every(q => s.includes(q))
-    //m.classList[ns(n.value).trim().split(/\s+/).every(q => s.includes(q)) ? 'remove' : 'add']('hide')
-  }))
+  if (n.dataset.filter) act(n, 'filter', t => {
+    let found = 0
+    t.querySelectorAll(':is(tbody tr, li):not(.keep)').forEach(m => {
+      if (m.contains(n)) return
+      const s = ns(m.cells ? [...m.cells].map(c => c.textContent).join(' ') : m.textContent)
+      m.hidden = !ns(n.value).trim().split(/\s+/).every(q => s.includes(q))
+      if (!m.hidden) found++
+      //m.classList[ns(n.value).trim().split(/\s+/).every(q => s.includes(q)) ? 'remove' : 'add']('hide')
+    })
+    evt(t, 'filter', {query: n.value, found})
+  })
   
   // map contenteditable to textarea
   const a = n.dataset.area
@@ -303,7 +317,7 @@ document.addEventListener('pointerup', e => {
   if (!di) return
   e.preventDefault()
   di.classList.remove('dragging')
-  //di.dispatchEvent(new CustomEvent('granum-drag', {bubbles: true, cancelable: true, detail: {container: dp, item: di, items: dp.querySelectorAll('.drag-item')}}))
+  evt(dp, 'drag', {item: di})
   di = dp = null
 })
 

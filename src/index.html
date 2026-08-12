@@ -28,6 +28,11 @@
         /*.demo-container > pre:has(code) + a.copy {display:block;margin-top:-2.2rem !important;margin-right:1rem;float:right;background:var(--back-note);position:relative;}*/
     </style>
     <script>
+      document.addEventListener('granum-manage', e => console.log('event', e.type, e.target, e.detail))
+      document.addEventListener('granum-drag', e => console.log('event', e.type, e.target, e.detail))
+      document.addEventListener('granum-filter', e => console.log('event', e.type, e.target, e.detail))
+      document.addEventListener('granum-sort', e => console.log('event', e.type, e.target, e.detail))
+      
       document.addEventListener('DOMContentLoaded', () => {
         
         // demo icons
@@ -182,8 +187,9 @@
     <a href="#form">Form</a>
     <a href="#inter">Interactivity</a>
     <a href="#util">Util</a>
-    <a href="#js">JS</a>
     <a href="#icon">Icons</a>
+    <a href="#js">JS</a>
+    <a href="#events">Events</a>
     
     <a href="#top" title="Top" class="icon-up note shift"></a>
     <a href="#back" title="Back" class="icon-left note"></a>
@@ -1317,7 +1323,57 @@
       <div class="show-js success">JavaScript enabled</div>
     </div>
 
-    <h2 id="js">8. JavaScript Functionality</h2>
+    <h2 id="icon">8. Icons</h2>
+
+    <h3>Compact icons using <code>mask-image</code></h3>
+    <div id="divIcons"></div>
+
+    <h3>Icons animation</h3>
+    <p class="options bord pad small">
+      Animation type: 
+      <label><input type="radio" name="anim" data-nodes="#anim-container > svg" value="" checked><i>none</i></label>
+      <label><input type="radio" name="anim" data-nodes="#anim-container > svg" value="anim-spin"><code>.anim-spin</code></label>
+      <label><input type="radio" name="anim" data-nodes="#anim-container > svg" value="anim-blink"><code>.anim-blink</code></label>
+      <label><input type="radio" name="anim" data-nodes="#anim-container > svg" value="anim-pulse"><code>.anim-pulse</code></label>
+      <label><input type="radio" name="anim" data-nodes="#anim-container > svg" value="anim-flip"><code>.anim-flip</code></label>
+      <label><input type="radio" name="anim" data-nodes="#anim-container > svg" value="anim-turn"><code>.anim-turn</code></label>
+      <label><input type="radio" name="anim" data-nodes="#anim-container > svg" value="anim-swing"><code>.anim-swing</code></label>
+    </p>
+    <div class="demo-preview" id="anim-container">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="-1 -1 18 18" width="32" height="32" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+      <a class="icon-refresh anim-spin success"></a>
+      <a class="icon-warning anim-blink warning"></a>
+      <a class="icon-heart anim-pulse danger"></a>
+      <a class="icon-bookmark anim-flip note"></a>
+      <a class="icon-anchor anim-turn info"></a>
+      <a class="icon-bell anim-swing neutral"></a>
+    </div>
+
+    <h3>Icons toggle</h3>
+    <p>Some icons switch in active mode (<code>.act, :has(+:target), .check:has(:checked), [open]>summary</code>). Click icons to toggle.</p>
+    <div class="demo-preview" id="anim-container">
+      <p>
+      <label class="check icon-copy"><input type="checkbox"></label> <wbr>
+      <label class="check icon-menu"><input type="checkbox"></label> <wbr>
+      <label class="check icon-minus"><input type="checkbox"></label> <wbr>
+      <label class="check icon-folder"><input type="checkbox"></label> <wbr>
+      <label class="check icon-hide"><input type="checkbox"></label> <wbr>
+      <label class="check icon-expand"><input type="checkbox"></label> <wbr>
+      <label class="check icon-desc"><input type="checkbox"></label> <wbr>
+      <label class="check icon-next"><input type="checkbox"></label> <wbr>
+      <label class="check icon-sun"><input type="checkbox"></label> <wbr>
+      <label class="check icon-check"><input type="checkbox"></label> <wbr>
+      <label class="check icon-play"><input type="checkbox"></label> <wbr>
+      <label class="check icon-rec"><input type="checkbox"></label> <wbr>
+      </p>
+      <hr>
+      <a href="#act-1" class="icon-menu"></a> <span id="act-1" class="target">Content <a href="#close" class="icon-close">Close</a></span><br>
+      <a href="#act-2" class="icon-menu"></a> <span id="act-2">Content <a href="#back" class="icon-left"></a></span><br>
+      <label class="check icon-menu"><input type="checkbox"> Label</label> <span>Content</span>
+      <details><summary class="icon-menu">Summary</summary>Details</details>
+    </div>
+    
+    <h2 id="js">9. JavaScript Functionality</h2>
     <p><small class="tag info">Requires JavaScript</small></p>
     
     <h3>Dynamic Class Toggling (<code>[data-nodes]</code>)</h3>
@@ -1364,6 +1420,7 @@
     
     <h3>List filtering</h3>
     <p>Add <code>.keep</code> to a list item to exclude it from filtering.</p>
+    <p>Triggers <a href="#granum-filter">granum-filter</a> event.</p>
     <div class="demo-preview no-resize">
       <div class="show-js mar"><input type="search" data-filter="#list-3" placeholder="Filter list..."></div>
       <ul id="list-3">
@@ -1378,6 +1435,7 @@
     <h3>Table Sorting & Filtering</h3>
     <p>Click the headers to sort, or type in the search box to filter.</p>
     <p>Add <code>.keep</code> to a row to exclude it from filtering.</p>
+    <p>Triggers <a href="#granum-filter">granum-filter</a> and <a href="#granum-sort">granum-sort</a> events.</p>
     <div class="demo-preview no-resize">
       <input type="search" data-filter="#table-2" placeholder="Filter table..." class="mar show-js">
       <div class="resize scroll">
@@ -1448,9 +1506,10 @@
     <h3>Manage Items</h3>
     <p>
       Operates on closest <code>div, ul, tr</code> parent by default.
-      To override, define selector in <code>[data-item]</code>.
+      To override, define selector in <code>[data-item]</code> (for closest parent) or in <code>[data-src]</code> (global selector).
       To keep at least one item, add <code>.keep</code> to the <code>#item-del</code> link.
     </p>
+    <p>Triggers <a href="#granum-manage">granum-manage</a> event.</p>
     <div class="demo-preview">
       <ul class="fit">
         <li>
@@ -1462,7 +1521,17 @@
           </small>
           <input type="text" class="fit bord rad">
         </li>
+        <li hidden id="sample-1">
+          <small>
+            <a href="#item-del" class="icon-delete danger"></a>
+            <a href="#item-up" class="icon-asc note"></a>
+            <a href="#item-down" class="icon-desc note"></a>
+            <a href="#item-copy" class="icon-add success" data-item="li"></a>
+          </small>
+          <input type="text" value="sample" class="fit bord rad bg info">
+        </li>
       </ul>
+      <a href="#item-copy" class="ic icon-add success nodec" data-src="#sample-1">Add item as a copy of hidden <code>&lt;li&gt;</code>.</a>
       <hr>
       <table class="bord mid">
         <tr>
@@ -1484,6 +1553,7 @@
       and <code>a[href="#drag"]</code> for handler.
       For correct work on touch devices, <code>.drag-container</code> is strictly required.
     </p>
+    <p>Triggers <a href="#granum-drag">granum-drag</a> event.</p>
     <div class="demo-preview">
       <div class="drag-container">
         <div class="drag-item"><a href="#drag" class="icon-more note small"></a> One</div>
@@ -1533,62 +1603,45 @@
       <a href="#back">Back</a>
     </div>
     
-    <h2 id="icon">9. Icons</h2>
-
-    <h3>Compact icons using <code>mask-image</code></h3>
-    <div id="divIcons"></div>
-
-    <h3>Icons animation</h3>
-    <p class="options bord pad small">
-      Animation type: 
-      <label><input type="radio" name="anim" data-nodes="#anim-container > svg" value="" checked><i>none</i></label>
-      <label><input type="radio" name="anim" data-nodes="#anim-container > svg" value="anim-spin"><code>.anim-spin</code></label>
-      <label><input type="radio" name="anim" data-nodes="#anim-container > svg" value="anim-blink"><code>.anim-blink</code></label>
-      <label><input type="radio" name="anim" data-nodes="#anim-container > svg" value="anim-pulse"><code>.anim-pulse</code></label>
-      <label><input type="radio" name="anim" data-nodes="#anim-container > svg" value="anim-flip"><code>.anim-flip</code></label>
-      <label><input type="radio" name="anim" data-nodes="#anim-container > svg" value="anim-turn"><code>.anim-turn</code></label>
-      <label><input type="radio" name="anim" data-nodes="#anim-container > svg" value="anim-swing"><code>.anim-swing</code></label>
-    </p>
-    <div class="demo-preview" id="anim-container">
-      <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="-1 -1 18 18" width="32" height="32" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
-      <a class="icon-refresh anim-spin success"></a>
-      <a class="icon-warning anim-blink warning"></a>
-      <a class="icon-heart anim-pulse danger"></a>
-      <a class="icon-bookmark anim-flip note"></a>
-      <a class="icon-anchor anim-turn info"></a>
-      <a class="icon-bell anim-swing neutral"></a>
-    </div>
-
-    <h3>Icons toggle</h3>
-    <p>Some icons switch in active mode (<code>.act, :has(+:target), .check:has(:checked), [open]>summary</code>). Click icons to toggle.</p>
-    <div class="demo-preview" id="anim-container">
-      <p>
-      <label class="check icon-copy"><input type="checkbox"></label> <wbr>
-      <label class="check icon-menu"><input type="checkbox"></label> <wbr>
-      <label class="check icon-minus"><input type="checkbox"></label> <wbr>
-      <label class="check icon-folder"><input type="checkbox"></label> <wbr>
-      <label class="check icon-hide"><input type="checkbox"></label> <wbr>
-      <label class="check icon-expand"><input type="checkbox"></label> <wbr>
-      <label class="check icon-desc"><input type="checkbox"></label> <wbr>
-      <label class="check icon-next"><input type="checkbox"></label> <wbr>
-      <label class="check icon-sun"><input type="checkbox"></label> <wbr>
-      <label class="check icon-check"><input type="checkbox"></label> <wbr>
-      <label class="check icon-play"><input type="checkbox"></label> <wbr>
-      <label class="check icon-rec"><input type="checkbox"></label> <wbr>
-      </p>
-      <hr>
-      <a href="#act-1" class="icon-menu"></a> <span id="act-1" class="target">Content <a href="#close" class="icon-close">Close</a></span><br>
-      <a href="#act-2" class="icon-menu"></a> <span id="act-2">Content <a href="#back" class="icon-left"></a></span><br>
-      <label class="check icon-menu"><input type="checkbox"> Label</label> <span>Content</span>
-      <details><summary class="icon-menu">Summary</summary>Details</details>
-    </div>
+    <h2 id="events">10. Events</h2>
     
+    <h3 id="granum-filter">Filtering: <code>granum-filter</code></h3>
+    <p>Occurs after filtering a <a href="#list-filtering">list</a> or <a href="#table-sorting-filtering">table</a>.</p>
+    <dl>
+      <dt>target</dt><dd>Items container (list or table)</dd>
+      <dt>detail.query</dt><dd>Filter string</dd>
+      <dt>detail.found</dt><dd>Matching items count</dd>
+    </dl>
+    
+    <h3 id="granum-sort">Sorting: <code>granum-sort</code></h3>
+    <p>Occurs after sorting a <a href="#table-sorting-filtering">table</a>.</p>
+    <dl>
+      <dt>target</dt><dd>Sorted column header</dd>
+      <dt>detail.order</dt><dd><code>1</code> for ascending, <code>-1</code> for descending</dd>
+    </dl>
+
+    <h3 id="granum-drag">Dragging: <code>granum-drag</code></h3>
+    <p>Occurs after applying a <a href="#drag-items">drag sort</a>.</p>
+    <dl>
+      <dt>target</dt><dd>Items container</dd>
+      <dt>detail.item</dt><dd>Dragged item</dd>
+    </dl>
+
+    <h3 id="granum-manage">Managing: <code>granum-manage</code></h3>
+    <p>Occurs after <a href="#manage-items">managing items</a>.</p>
+    <dl>
+      <dt>target</dt><dd>Items container</dd>
+      <dt>detail.action</dt><dd>Action (<code>del</code> for delete, <code>up</code> for move up, <code>down</code> for move down, <code>copy</code> for create a copy)</dd>
+      <dt>detail.item</dt><dd>Managed item (for <code>copy</code> action contains source item)</dd>
+      <dt>detail.copy</dt><dd>Created item (only for <code>copy</code> action)</dd>
+    </dl>
+
   </main>
 
   <footer class="pad mar c">
     <a href="#top" class="icon-up note nodec">Top</a>
   </footer>
-
+  
 <!-- customize -->
       <dialog id="customize" closedby="any" class="drawer shift trans pad">
         <div class="row mid gap">

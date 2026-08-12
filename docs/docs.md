@@ -116,7 +116,7 @@
 - [type="search"][data-filter="SELECTOR"][data-parent="SELECTOR"] :is(tr, li):not(.keep)
 - [contenteditable][data-area]
 - [textarea][data-editor]
-- a[#item-(copy|del|up|down)]([data-item].keep)
+- a[#item-(copy|del|up|down)]([data-item].keep)([data-src])
 - :is(.drag-container, table, ul) .drag-item(.dragging) a[href="#drag"]
 - a[#prev] a[#next] :target[data-prev="#ID"][data-next="#ID"]
 - #open
@@ -131,3 +131,9 @@
 - table.l#.c#.r#
 - a.copy[#source]
 - a.pass[#target]
+
+## Events
+- granum-drag: @container {item}
+- granum-manage: @container {action: del|up|down|copy, item, copy?}
+- granum-filter: @container: {query, found}
+- granum-sort: @th {order: 1|-1}
