@@ -84,7 +84,7 @@ or
 - typography
 - conditional visibility
 
-## JavaScript hooks
+## JavaScript functionality
 
 - toggle CSS `class`
 - filter table and list
