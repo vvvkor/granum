@@ -6,7 +6,7 @@ Ultra compact set of styles and behaviours for basic web pages.
 ~15 KB minified and gzipped.  
 With icons, components and some JavaScript.
 
-Core CSS is only ~7 KB gzipped.  
+Core CSS is only ~8 KB gzipped.  
 Without icons and JavaScript.
 
 [Docs](https://vvvkor.github.io/granum/)
@@ -90,6 +90,8 @@ or
 - filter table and list
 - sort table
 - align table columns
+- drag sort
+- manage items (add, delete, reorder)
 - persistent details state
 - persistent input values
 - populate inputs from URL
