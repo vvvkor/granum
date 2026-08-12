@@ -21,7 +21,8 @@ const setStyle = n => {
   document.documentElement.style.setProperty('--' + n.name, n.value + (n.dataset.unit || ''))
 }
 
-const init = () => {console.log('init')
+const init = () => {
+  // console.log('init customization')
   document.documentElement.style = ''
   def = {...defaults}
   
