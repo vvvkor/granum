@@ -3,7 +3,7 @@
 CSS micro framework.  
 Ultra compact set of styles and behaviours for basic web pages.
 
-~15 KB minified and gzipped.  
+~16 KB minified and gzipped.  
 With icons, components and some JavaScript.
 
 Core CSS is only ~8 KB gzipped.  
@@ -56,7 +56,7 @@ or
 - cross-browser
 - neutral style
 - dark mode
-- customizable using css variables
+- customizable theme using CSS variables
 - no floats
 - no hacks
 - JavaScript is optional for enhancements
@@ -65,7 +65,7 @@ or
 
 - interactive components: modal, drawer, dropdown, popup, tooltips, tabs, gallery, slider
 - responsive layouts: flex, grid, columns, dropdown, form
-- scrollable table with fixed headers and column
+- scrollable table with fixed headers and first column
 - tags, badges, progress
 - `mask-image` SVG icons (100+)
 
@@ -97,12 +97,12 @@ or
 - populate inputs from URL
 - check group of checkboxes
 - alert, confirm, prompt
-- password Visibility
+- password visibility
 - copy to clipboard
 - escape key
 - _customize CSS `var`s_
 
-## Browser suppport
+## Browser support
 
 Modern browsers.
 
