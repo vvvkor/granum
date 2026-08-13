@@ -94,7 +94,7 @@
           n.addEventListener('dblclick', unstyle)
         })
         document.querySelectorAll('.demo-container').forEach(n => n.classList.add('rad', 'shade', 'stack', 'line'))
-        document.querySelectorAll('.demo-container > pre').forEach(n => n.classList.add('bg', 'note', 'scrollbar'))
+        document.querySelectorAll('.demo-container > pre').forEach(n => n.classList.add('bg', 'note'/*, 'scrollbar'*/))
         document.querySelectorAll('.options').forEach(n => n.classList.add('bord', 'pad', 'small', 'stripe', 'info'))
         
         // add copy link
@@ -472,12 +472,14 @@
       <label><input type="checkbox" data-nodes="#space-container > *" value="fit"><code>.fit</code></label>
       <label><input type="checkbox" data-nodes="#space-container > *" value="bord"><code>.bord</code></label>
       <label><input type="checkbox" data-nodes="#space-container > *" value="rad"><code>.rad</code></label>
+      <label><input type="checkbox" data-nodes="#space-container > *" value="stripe"><code>.stripe</code></label>
       <label><input type="checkbox" data-nodes="#space-container > *" value="shade"><code>.shade</code></label>
       <label><input type="checkbox" data-nodes="#space-container > *" value="pad"><code>.pad</code></label>
       <label><input type="checkbox" data-nodes="#space-container > *" value="pads"><code>.pads</code></label>
       <label><input type="checkbox" data-nodes="#space-container > *" value="mar"><code>.mar</code></label>
       <label><input type="checkbox" data-nodes="#space-container > *" value="mars"><code>.mars</code></label>
       <label><input type="checkbox" data-nodes="#space-container > *" value="center"><code>.center</code></label>
+      <!--label><input type="checkbox" data-nodes="#space-container > *" value="info"><code>.info</code></label-->
       <br>
       Maximum width:
       <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide-xs"><code>.wide-xs</code></label>
@@ -943,6 +945,7 @@
       <label><input type="checkbox" data-nodes="#menu-1" value="fit"><code>.fit</code></label>
       <label><input type="checkbox" data-nodes="#menu-1" value="line"><code>.line</code></label>
       <label><input type="checkbox" data-nodes="#menu-1" value="scroll"><code>.scroll</code></label>
+      <label><input type="checkbox" data-nodes="#menu-1" value="scrollbar"><code>.scrollbar</code></label>
       <br>
       Transition:
       <label><input type="radio" data-nodes="#menu-1" name="trans-1" value=""><i>none</i> (<code>.trans-off</code>)</label>

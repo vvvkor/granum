@@ -40,10 +40,10 @@ abbr {border-bottom:thin dotted;text-decoration:none;}
 .bord {border:var(--border);}
 
 /* custom thin scrollbar */
+/*
 @media (width >= 50rem) {
-  /*
   .scrollbar::-webkit-scrollbar{width:.5em;height:.5em;background:var(--back);}
   .scrollbar::-webkit-scrollbar-thumb{background:var(--line-input);}
-  */
-  .scrollbar {scrollbar-width:thin;scrollbar-color:var(--line-input) var(--back);/*#ccc #eee;*/}
 }
+*/
+.scrollbar {scrollbar-width:thin;scrollbar-color:var(--line-input) var(--back);/*#ccc #eee;*/}
