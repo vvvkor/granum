@@ -6,9 +6,8 @@ body {line-height:1.5;}
 h1 {--fsz:calc(var(--font-coeff) * var(--font-coeff) * var(--font-coeff));}
 h2 {--fsz:calc(var(--font-coeff) * var(--font-coeff));}
 h3 {--fsz:var(--font-coeff);}
-h4 {--fsz:1;}
+h4, .regular {--fsz:1;}
 h5, small, .small {--fsz:calc(1 / var(--font-coeff));}
-.regular {--fsz:1;}
 h6 {--fsz:calc(1 / var(--font-coeff) / var(--font-coeff));}
 h1, h2, h3, h4, h5, h6{margin:calc(2 * var(--gap)) 0 var(--gap) 0;}
 h1, h2 {line-height:1.3;}
@@ -42,6 +41,7 @@ details > :is(details, ul, ol, dl) {/*margin-left:var(--gap);*/margin:0 0 0 var(
 details > :is(ul, ol, dl) {padding-left:var(--gap);}
 /*li, dt, dd {margin:calc(.25 * var(--gap)) 0;}*/
 li ul, li ol {margin:calc(.5 * var(--gap)) 0;}
+.regular {font-weight:normal;}
 dt, .bold {font-weight:bold;}
 :is(ul, ol).fit, :is(ul, ol).fit :is(ul, ol) {list-style:none;}
 
