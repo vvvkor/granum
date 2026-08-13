@@ -39,9 +39,11 @@ abbr {border-bottom:thin dotted;text-decoration:none;}
 .pads {padding:var(--gap);}
 .bord {border:var(--border);}
 
-/* custom scrollbar */
-@media (50rem <= width) {
-  .scrollbar::-webkit-scrollbar{width:.5em;height:.5em;background:#eee;}
-  .scrollbar::-webkit-scrollbar-thumb{background:#ccc;}
-  .scrollbar{scrollbar-width:thin;scrollbar-color:#ccc #eee;}
+/* custom thin scrollbar */
+@media (width >= 50rem) {
+  /*
+  .scrollbar::-webkit-scrollbar{width:.5em;height:.5em;background:var(--back);}
+  .scrollbar::-webkit-scrollbar-thumb{background:var(--line-input);}
+  */
+  .scrollbar {scrollbar-width:thin;scrollbar-color:var(--line-input) var(--back);/*#ccc #eee;*/}
 }

@@ -14,7 +14,7 @@
 ~ popover=hint
 */
 
-html {scroll-padding-top:4rem;}
+html {scroll-padding-top:var(--top);}
 
 /*.check {}*/
 /*.tree {}*/

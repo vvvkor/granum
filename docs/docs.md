@@ -10,7 +10,7 @@
 
 ## Space
 
-- .fit .mar .mars .pad .pads .bord .rad .full .resize .scroll .scrollbar
+- .fit .mar .mars .pad .pads .bord .stripe .rad .full .resize .scroll .scrollbar
 - .wide .wide-s/m/l .center
 - .tag.c, sup.tag.c
 - progress

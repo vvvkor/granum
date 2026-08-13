@@ -5,6 +5,7 @@
   --gap: 1em;
   --list-width: 15rem;
   --radius: calc(.3 * var(--gap));
+  --top: 5rem;
   
   /* basics */
   --front: light-dark(#222, #eee);
@@ -83,8 +84,11 @@
   */
 }
 
-@media (50rem <= width) {
-	:root {--root-font-size: 1.2;}
+@media (width >= 50rem) {
+	:root {
+    --root-font-size: 1.2;
+    --top: 3rem;
+  }
 }
 
 /*

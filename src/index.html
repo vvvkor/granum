@@ -19,8 +19,8 @@
     <script defer src="asset/icon-paths.js"></script>
     
     <style>
-        h2 { border-bottom: medium solid var(--line); }
-        .options { background: var(--back-input, #fff); border-left: medium solid var(--front-info); }
+        h2 { border-bottom: 2px solid var(--line); }
+        .options { background: var(--back-input, #fff); /*border-left: medium solid var(--front-info);*/ }
         .demo-container { background: var(--back-input, #fff6); }
         .demo-preview { position: relative; /*min-height: 3rem;*/ }
         .demo-preview:not(.no-resize){ resize: both; overflow: auto; }
@@ -94,8 +94,8 @@
           n.addEventListener('dblclick', unstyle)
         })
         document.querySelectorAll('.demo-container').forEach(n => n.classList.add('rad', 'shade', 'stack', 'line'))
-        document.querySelectorAll('.demo-container > pre').forEach(n => n.classList.add('bg', 'note'))
-        document.querySelectorAll('.options').forEach(n => n.classList.add('bord', 'pad', 'small'))
+        document.querySelectorAll('.demo-container > pre').forEach(n => n.classList.add('bg', 'note', 'scrollbar'))
+        document.querySelectorAll('.options').forEach(n => n.classList.add('bord', 'pad', 'small', 'stripe', 'info'))
         
         // add copy link
         let seq = 0
@@ -179,8 +179,8 @@
       </li>
     </ul-->
     
-    <b>Granum v0.0.0</b>
-    <a href="#start">Start</a>
+    <a href="#start" class="neutral"><b>Granum v0.0.0</b></a>
+    <a href="#start" hidden>Start</a>
     <a href="#layout">Layout</a>
     <a href="#typo">Content</a>
     <a href="#color">Color</a>
@@ -241,7 +241,10 @@
 
     <div class="hero" id="top">
       <h1>Granum v0.0.0</h1>
-      <p class="note">Developer Documentation</p>
+      <p>
+        Developer Documentation
+        <a href="#viewport" class="icon-none note nodec" onclick="this.textContent = window.innerWidth + ' x ' + window.innerHeight"></a>
+      </p>
     </div>
     
 
@@ -443,7 +446,7 @@
       <hr>
       <blockquote>Block quote</blockquote>
       <pre>Preformatted text
-<code>Code: <var>window</var> = <kbd class="text-y" onclick="this.textContent = window.innerWidth + ' x ' + window.innerHeight">click</kbd></code></pre>
+<code>Code: <var class="info">var</var> = <kbd class="success">value</kbd></code></pre>
     </div>
     
     <h3>Text</h3>
@@ -679,9 +682,10 @@
     <h3>Semantic Colors</h3>
     <p>Apply contextual colors to text, backgrounds, or borders using utility classes.</p>
     <p class="options bord pad small">
-      <label><input type="checkbox" data-nodes="#colors-container > *" value="bord"><code>.bord</code></label>
-      <label><input type="checkbox" data-nodes="#colors-container > *" value="bg"><code>.bg</code></label>
       <label><input type="checkbox" data-nodes="#colors-container > *" value="text"><code>.text</code></label>
+      <label><input type="checkbox" data-nodes="#colors-container > *" value="bg"><code>.bg</code></label>
+      <label><input type="checkbox" data-nodes="#colors-container > *" value="bord"><code>.bord</code></label>
+      <label><input type="checkbox" data-nodes="#colors-container > *" value="stripe"><code>.stripe</code></label>
       <label><input type="checkbox" data-nodes="#colors-container > *" value="shade"><code>.shade</code></label>
       <label><input type="checkbox" data-nodes="#colors-container > *" value="hilite"><code>.hilite</code></label>
       <label><input type="checkbox" data-nodes="#colors-container > *" value="rad"><code>.rad</code></label>
@@ -896,6 +900,8 @@
     <div class="demo-preview">
       <div class="row gap mid wrap" id="inputs-container">
         <input type="text" placeholder="Text...">
+        <input type="text" placeholder="Readonly" readonly>
+        <input type="text" placeholder="Disabled" disabled>
         <input type="search" placeholder="Search...">
         <input type="number" placeholder="Number...">
         <input type="email" placeholder="Email...">
@@ -1420,7 +1426,7 @@
     
     <h3>List filtering</h3>
     <p>Add <code>.keep</code> to a list item to exclude it from filtering.</p>
-    <p>Triggers <a href="#granum-filter">granum-filter</a> event.</p>
+    <p>Emits <a href="#granum-filter">granum-filter</a> event.</p>
     <div class="demo-preview no-resize">
       <div class="show-js mar"><input type="search" data-filter="#list-3" placeholder="Filter list..."></div>
       <ul id="list-3">
@@ -1435,7 +1441,7 @@
     <h3>Table Sorting & Filtering</h3>
     <p>Click the headers to sort, or type in the search box to filter.</p>
     <p>Add <code>.keep</code> to a row to exclude it from filtering.</p>
-    <p>Triggers <a href="#granum-filter">granum-filter</a> and <a href="#granum-sort">granum-sort</a> events.</p>
+    <p>Emits <a href="#granum-filter">granum-filter</a> and <a href="#granum-sort">granum-sort</a> events.</p>
     <div class="demo-preview no-resize">
       <input type="search" data-filter="#table-2" placeholder="Filter table..." class="mar show-js">
       <div class="resize scroll">
@@ -1509,7 +1515,7 @@
       To override, define selector in <code>[data-item]</code> (for closest parent) or in <code>[data-src]</code> (global selector).
       To keep at least one item, add <code>.keep</code> to the <code>#item-del</code> link.
     </p>
-    <p>Triggers <a href="#granum-manage">granum-manage</a> event.</p>
+    <p>Emits <a href="#granum-manage">granum-manage</a> event.</p>
     <div class="demo-preview">
       <ul class="fit">
         <li>
@@ -1553,7 +1559,7 @@
       and <code>a[href="#drag"]</code> for handler.
       For correct work on touch devices, <code>.drag-container</code> is strictly required.
     </p>
-    <p>Triggers <a href="#granum-drag">granum-drag</a> event.</p>
+    <p>Emits <a href="#granum-drag">granum-drag</a> event.</p>
     <div class="demo-preview">
       <div class="drag-container">
         <div class="drag-item"><a href="#drag" class="icon-more note small"></a> One</div>
@@ -1605,31 +1611,37 @@
     
     <h2 id="events">10. Events</h2>
     
-    <h3 id="granum-filter">Filtering: <code>granum-filter</code></h3>
-    <p>Occurs after filtering a <a href="#list-filtering">list</a> or <a href="#table-sorting-filtering">table</a>.</p>
+    <p>All <code>granum-*</code> custom events bubble and are cancelable.</p>
+    
+    <h3 id="granum-filter">Filter</h3>
+    <p>Occurs after <a href="#list-filtering">filtering a list</a> or <a href="#table-sorting-filtering">table</a>.</p>
     <dl>
+      <dt>type</dt><dd><code>granum-filter</code></dd>
       <dt>target</dt><dd>Items container (list or table)</dd>
       <dt>detail.query</dt><dd>Filter string</dd>
       <dt>detail.found</dt><dd>Matching items count</dd>
     </dl>
     
-    <h3 id="granum-sort">Sorting: <code>granum-sort</code></h3>
+    <h3 id="granum-sort">Sort</h3>
     <p>Occurs after sorting a <a href="#table-sorting-filtering">table</a>.</p>
     <dl>
+      <dt>type</dt><dd><code>granum-sort</code></dd>
       <dt>target</dt><dd>Sorted column header</dd>
       <dt>detail.order</dt><dd><code>1</code> for ascending, <code>-1</code> for descending</dd>
     </dl>
 
-    <h3 id="granum-drag">Dragging: <code>granum-drag</code></h3>
+    <h3 id="granum-drag">Drag</h3>
     <p>Occurs after applying a <a href="#drag-items">drag sort</a>.</p>
     <dl>
+      <dt>type</dt><dd><code>granum-drag</code></dd>
       <dt>target</dt><dd>Items container</dd>
       <dt>detail.item</dt><dd>Dragged item</dd>
     </dl>
 
-    <h3 id="granum-manage">Managing: <code>granum-manage</code></h3>
+    <h3 id="granum-manage">Manage</h3>
     <p>Occurs after <a href="#manage-items">managing items</a>.</p>
     <dl>
+      <dt>type</dt><dd><code>granum-manage</code></dd>
       <dt>target</dt><dd>Items container</dd>
       <dt>detail.action</dt><dd>Action (<code>del</code> for delete, <code>up</code> for move up, <code>down</code> for move down, <code>copy</code> for create a copy)</dd>
       <dt>detail.item</dt><dd>Managed item (for <code>copy</code> action contains source item)</dd>
