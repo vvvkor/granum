@@ -179,8 +179,8 @@
       </li>
     </ul-->
     
-    <a href="#start" class="neutral"><b>Granum v0.0.0</b></a>
-    <a href="#start" hidden>Start</a>
+    <a href="#top" class="neutral"><b>Granum <span class="hide-s">v0.0.0</span></b></a>
+    <a href="#start" class="hide-s">Start</a>
     <a href="#layout">Layout</a>
     <a href="#typo">Content</a>
     <a href="#color">Color</a>
@@ -192,13 +192,13 @@
     <a href="#events">Events</a>
     
     <a href="#top" title="Top" class="icon-up note shift"></a>
-    <a href="#back" title="Back" class="icon-left note"></a>
-    <label for="invert" class="icon-sun link" title="Toggle dark mode"></label>
+    <a href="#back" title="Back" class="icon-left note hide-s"></a>
     <!--
     <input type="checkbox" id="dark" checked>
     <b class="invert pad rad">Invert <a href="#">Link</a></b>
     -->
     <a href="#refresh" title="Clear localStorage and reload" class="icon-refresh note" onclick="localStorage.clear();location.reload();return false;"></a>
+    <label for="invert" class="icon-sun link" title="Toggle dark mode"></label>
     
     <button command="show-modal" commandfor="customize" class="link icon-config" title="Customize"></button>
     <a href="https://github.com/vvvkor/granum" class="-neutral an-im-swing" title="GitHub">
@@ -256,7 +256,7 @@
     <div class="demo-container"><pre><code>&lt;link rel="stylesheet" href="granum.core.min.css"&gt;
 &lt;link rel="stylesheet" href="granum.icons.min.css"&gt; &lt;!-- optional --&gt;
 &lt;script src="granum.min.js" defer&gt;&lt;/script&gt; &lt;!-- optional --&gt;</code></pre></div>
-    <p>To make a page mobile-friendly and responsive, include the viewport meta tag into the <code>head</code>.</p>
+    <p>To make a page mobile-friendly and responsive, include the viewport meta tag into the <code>&lt;head&gt;</code>.</p>
     <div class="demo-container"><pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code></pre></div>
 
     <h2 id="layout">2. Layout & Grid</h2>
@@ -821,7 +821,7 @@
     <h3>Custom Select</h3>
     <p><small class="tag info">Enhanced with JavaScript</small></p>
     <p>
-      Customized dropdown <code>select</code>-like input using <code>[popover]</code> and radio buttons.<br>
+      Customized dropdown <code>&lt;select&gt;</code>-like input using <code>[popover]</code> and radio buttons.<br>
       <!-- Optionally use <code>dialog[popover]</code> for options autofocus.<br-->
       JavaScript sets focus after opening, copies value to button's first <code>span</code> text and closes popover after selection, enables filtering.
     </p>
