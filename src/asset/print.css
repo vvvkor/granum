@@ -1,4 +1,5 @@
 @media print{
+  :root { --shadow:#0002;--line:#eee;--hilite:#f9f9f9;--back-note:#f6f6f6;background:none; }
   body {font:12pt/1.3 serif;background:none;}
   h1, h2, h3, h4, h5, h6 {page-break-after:avoid;}
   pre, blockquote {border-left:thin solid #ccc;}
