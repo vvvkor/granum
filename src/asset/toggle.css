@@ -146,7 +146,7 @@ ul.row ul, [popover].sel {padding:calc(1 * var(--gap)) 0;}
 
 @media (width < 32rem) {
   /* fullscreen popover */
-  [popover].resp {inset:0;position-area:none;margin:0;width:auto;max-height:100dvh;height:100dvh;border:thin solid var(--line);}
+  [popover].resp {inset:0;position-area:none;margin:0;width:auto;max-height:100dvh;height:100dvh;border:var(--bord);}
   .sel.resp ul {width:revert;}
 }
   

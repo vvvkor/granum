@@ -37,7 +37,7 @@ abbr {border-bottom:thin dotted;text-decoration:none;}
 .center {margin-inline:auto;}
 .mars {margin:var(--gap);}
 .pads {padding:var(--gap);}
-.bord {border:var(--border);}
+/*.bord {border:var(--border);}*/
 
 /* custom thin scrollbar */
 /*

@@ -1,6 +1,6 @@
 a:has(img), ul.row li {-webkit-tap-highlight-color:transparent;}
 
-html, dialog, [popover] {color:var(--front);background-color:var(--back);}
+html, dialog, [popover], .invert {color:var(--front);background-color:var(--back);}
 .diagonals {background:repeating-linear-gradient(135deg, #9990, #9990 1em, #9991 1em, #9991 2em);}
 
 .shade {box-shadow:var(--shade);}
@@ -40,10 +40,11 @@ button:where(:not(.link/*, .sel*/)) {--ff:var(--accent);--fff:var(--accent);}
 .bord {border:thin solid var(--ff, var(--line));}
   .bord:where(.stripe) {border-color:var(--line);}
 .stripe {border-left:3px solid var(--ff, var(--line));}
-:where(button, .tag):not(.bord, .link, .nodec), ::file-selector-button {color:var(--front-invert);background-color:var(--ff, var(--front-note));}
+:where(button, .tag):not(.bord, .link, .nodec), ::file-selector-button {color:var(--back);/*var(--front-invert);*/background-color:var(--ff, var(--front-note));}
 /*button.bord:not(.bg) {background-color:var(--back);}*/
 
 /* invert */
+/*
 body .invert {
   color:var(--front-invert);
   background-color:var(--ff, var(--back-invert));
@@ -53,8 +54,7 @@ body .invert {
   --active: var(--link);
 }
 body a.invert {color:var(--link-invert);}
-
-:is([type=checkbox], [type=radio], [type=range]) {accent-color:var(--input-accent);}
+*/
 
 /* outline */
 .input, input, select, textarea, button, [contenteditable], :where(a, summary):focus-visible {outline:.2em solid transparent;outline-offset:0;}
@@ -67,7 +67,8 @@ body a.invert {color:var(--link-invert);}
   [type=file]:invalid {color:var(--front-danger);}
 :invalid:focus, .input:has(:invalid, +[popover] :invalid):focus-within, .input:has(+[popover]:focus-within :invalid) {outline-color:var(--outline-invalid);}
 
-/* progress */
+/* accent */
+:is([type=checkbox], [type=radio], [type=range]) {accent-color:var(--input-accent);}
 progress {accent-color:var(--ff, var(--accent));}
 /*progress {accent-color:color-mix(in oklch, var(--ff, var(--input-accent, var(--accent))) 70%, var(--back));}*/
 
