@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Granum v2.3.5 - Documentation</title>
+    <title>Granum v2.4.0 - Documentation</title>
     <meta name="theme-color" content="#fff">
     <meta name="theme-color" media="(prefers-color-scheme:dark)" content="#04a">
     <link rel="icon" type="image/svg" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20220%20220'%3E%3Cpath%20fill='%23666'%20d='M35%2067l75%20-44%2075%2044%200%2089-75%2044-75-44zm75%208a35%2035%200%201%200%20.01%200z'/%3E%3C/svg%3E">
@@ -24,7 +24,7 @@
         .demo-container { background: var(--back-input, #fff6); }
         .demo-preview { position: relative; /*min-height: 3rem;*/ }
         .demo-preview:not(.no-resize){ resize: both; overflow: auto; }
-        .demo-container > pre { max-height: 20vh; }
+        .demo-container > pre { max-height: 20vh; border-top-left-radius: 0; border-top-right-radius: 0; }
         /*.demo-container > pre:has(code) + a.copy {display:block;margin-top:-2.2rem !important;margin-right:1rem;float:right;background:var(--back-note);position:relative;}*/
     </style>
     <script>
@@ -72,7 +72,7 @@
           if (h2 && subs?.length > 1) {
             const nav = document.createElement('nav')
             nav.classList.add('small', 'row', 'gap', 'wrap', 'nodec' /*, 'pad', 'hilite'*/)
-            nav.innerHTML = subs.map(s => '<a href="#' + s.id + '">' + s.dataset.caption + '</a>').join(' ')
+            nav.innerHTML = /* '<b>Content</b>' + */ subs.map(s => '<a href="#' + s.id + '">' + s.dataset.caption + '</a>').join(' ')
             h2.after(nav)
           }
         }
@@ -167,14 +167,14 @@
 <body>
 
   <nav class="stick nodec small shade  row gap wrap pad">
-    <a href="#top" class="neutral"><b>Granum <span class="note regular small">v2.3.5</span></b></a>
+    <a href="#top" class="neutral"><b>Granum <span class="note regular small">v2.4.0</span></b></a>
     <a href="#start" class="hide-s">Start</a>
     <a href="#layout">Layout</a>
     <a href="#typo">Content</a>
-    <a href="#color">Color</a>
-    <a href="#form">Form</a>
+    <a href="#color">Colors</a>
+    <a href="#form">Forms</a>
     <a href="#inter">Interactivity</a>
-    <a href="#util">Util</a>
+    <a href="#util">Utils</a>
     <a href="#icon">Icons</a>
     <a href="#js">JS</a>
     <a href="#events">Events</a>
@@ -228,7 +228,7 @@
     -->
 
     <div class="hero" id="top">
-      <h1>Granum v2.3.5</h1>
+      <h1>Granum v2.4.0</h1>
       <p class="note">
         Developer Documentation
       </p>
@@ -680,7 +680,7 @@
       <label><input type="checkbox" data-nodes="#colors-container > *" value="rad"><code>.rad</code></label>
       <label><input type="checkbox" data-nodes="#colors-container > a" value="hover"><code>.hover</code></label>
       <label><input type="checkbox" data-nodes="#colors-container > *" value="act"><code>.act</code></label>
-      <label><input type="checkbox" data-nodes="#colors-container > *" value="invert"><code>.invert</code></label>
+      <!--label><input type="checkbox" data-nodes="#colors-container > *" value="invert"><code>.invert</code></label-->
       <label><input type="checkbox" data-nodes="#colors-container > *" value="tag"><code>.tag</code></label>
       <label><input type="checkbox" data-nodes="#colors-container > *" value="c"><code>.c</code></label>
     </p>
@@ -707,12 +707,19 @@
 
     <h3>Dark Mode</h3>
     <p>Invert the entire page or just specific element. Enable dark mode in your browser or OS. Or check the following checkboxes.</p>
+    <p class="options bord pad small">
+      <label><input type="checkbox" data-nodes="#inv" value="invert"> <code>.invert</code> example <code>&lt;div&gt;</code></label><br>
+      <label><input type="checkbox" data-nodes="html" value="invert" id="invert-js" > <code>.invert</code> entire page (JS sets <code>html.invert</code>)</label>
+    </p>
+    <!--label class="check icon-sun"><input type="checkbox" id="invert">Invert page (pure CSS using <code>html:has(#invert:checked)</code>)</label><wbr-->
     <div class="demo-preview">
-      <label class="check icon-sun"><input type="checkbox" id="invert">Toggle dark mode (pure CSS using <code>html:has(#invert:checked)</code>)</label><wbr>
+      <label><input type="checkbox" id="invert">Invert page (pure CSS using <code>html:has(#invert:checked)</code>)</label>
       <br>
-      <label><input type="checkbox" id="invert-js" data-nodes="html" value="invert">Toggle dark mode (JS sets <code>html.invert</code>)</label>
-      <div class="invert mar pad rad">
-        Text <a href="#">Link</a>
+      <div class="mar pad rad row gap mid wrap" id="inv">
+        Example <span class="info">Info</span> <a href="#">Link</a>
+        <input type="checkbox" class="switch" checked> <input type="text" value="Input" size="5"> <button>Button</button>
+        <b class="bord pad">Bord</b> <b class="shade pad">Shade</b>
+        <table class="bord"><tr><td>Table<td class="bg info">Info</table>
       </div>
     </div>
 

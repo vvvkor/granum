@@ -59,14 +59,14 @@
     /* status */
     --front-note: light-dark(#888, #bbb);
     --front-info: light-dark(#08a, #bef);
-    --front-success: light-dark(#383, #beb);
-    --front-warning: light-dark(#b70, #fd9);
-    --front-danger: light-dark(#c33, #faa);
+    --front-success: light-dark(#282, #beb);
+    --front-warning: light-dark(#c70, #fd9);
+    --front-danger: light-dark(#c11, #eaa);
     --back-note: light-dark(#eee, #666);
     --back-info: light-dark(#bef, #057);
     --back-success: light-dark(#beb, #262);
     --back-warning: light-dark(#fd9, #950);
-    --back-danger: light-dark(#fcc, #911);
+    --back-danger: light-dark(#fcc, #922);
 
   /* icon */
   /*--icon-scale: 1.25;*/
@@ -149,9 +149,9 @@ h1:before {
   --back-danger: light-dark(#911, #fcc);
   --front-note: light-dark(#bbb, #888);
   --front-info: light-dark(#bef, #08a);
-  --front-success: light-dark(#beb, #383);
-  --front-warning: light-dark(#fd9, #b70);
-  --front-danger: light-dark(#faa, #c33);
+  --front-success: light-dark(#beb, #282);
+  --front-warning: light-dark(#fd9, #c70);
+  --front-danger: light-dark(#eaa, #c22);
   /* toggle */
   --backdrop: light-dark(#000d, #6665);
 }

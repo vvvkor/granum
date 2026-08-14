@@ -33,10 +33,11 @@ const init = () => {
   
   //console.log(g.getPropertyValue('--front'))
   //s.setProperty('--front', '#c00')
+  const dark = window.matchMedia('(prefers-color-scheme: dark)').matches
   document.querySelectorAll('.var').forEach(m => {
     const s = localStorage.getItem('val-' + m.id)
     let v = (m.name in def) ? def[m.name] : g.getPropertyValue('--' + m.name)
-    if (typeof v == 'string') v = v.replace(/\s*light-dark\(([^,\s]*).*/, '$1')
+    if (typeof v == 'string') v = dark ? v.replace(/\s*light-dark\(.*?,\s*([^\)\s]*).*/, '$1') : v.replace(/\s*light-dark\(([^,\s]*).*/, '$1')
     if (m.dataset.unit) v = parseFloat(v)
     else if (v.match(/^#\w{3}$/)) v = '#' + v.at(1) + v.at(1) + v.at(2) + v.at(2) + v.at(3) + v.at(3) // color
     if (!(m.name in def)) def[m.name] = v

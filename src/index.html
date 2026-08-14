@@ -680,7 +680,7 @@
       <label><input type="checkbox" data-nodes="#colors-container > *" value="rad"><code>.rad</code></label>
       <label><input type="checkbox" data-nodes="#colors-container > a" value="hover"><code>.hover</code></label>
       <label><input type="checkbox" data-nodes="#colors-container > *" value="act"><code>.act</code></label>
-      <label><input type="checkbox" data-nodes="#colors-container > *" value="invert"><code>.invert</code></label>
+      <!--label><input type="checkbox" data-nodes="#colors-container > *" value="invert"><code>.invert</code></label-->
       <label><input type="checkbox" data-nodes="#colors-container > *" value="tag"><code>.tag</code></label>
       <label><input type="checkbox" data-nodes="#colors-container > *" value="c"><code>.c</code></label>
     </p>
@@ -711,8 +711,9 @@
       <label><input type="checkbox" data-nodes="#inv" value="invert"> <code>.invert</code> example <code>&lt;div&gt;</code></label><br>
       <label><input type="checkbox" data-nodes="html" value="invert" id="invert-js" > <code>.invert</code> entire page (JS sets <code>html.invert</code>)</label>
     </p>
+    <!--label class="check icon-sun"><input type="checkbox" id="invert">Invert page (pure CSS using <code>html:has(#invert:checked)</code>)</label><wbr-->
     <div class="demo-preview">
-      <label class="check icon-sun"><input type="checkbox" id="invert">Toggle dark mode (pure CSS using <code>html:has(#invert:checked)</code>)</label><wbr>
+      <label><input type="checkbox" id="invert">Invert page (pure CSS using <code>html:has(#invert:checked)</code>)</label>
       <br>
       <div class="mar pad rad row gap mid wrap" id="inv">
         Example <span class="info">Info</span> <a href="#">Link</a>
