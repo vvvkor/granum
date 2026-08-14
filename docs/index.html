@@ -25,6 +25,9 @@
         .demo-preview { position: relative; /*min-height: 3rem;*/ }
         .demo-preview:not(.no-resize){ resize: both; overflow: auto; }
         .demo-container > pre { max-height: 20vh; border-top-left-radius: 0; border-top-right-radius: 0; }
+        @media print {
+          .demo-container > pre { max-height: none; }
+        }
         /*.demo-container > pre:has(code) + a.copy {display:block;margin-top:-2.2rem !important;margin-right:1rem;float:right;background:var(--back-note);position:relative;}*/
     </style>
     <script>
@@ -71,7 +74,7 @@
         const addNav = (h2, subs) => {
           if (h2 && subs?.length > 1) {
             const nav = document.createElement('nav')
-            nav.classList.add('small', 'row', 'gap', 'wrap', 'nodec' /*, 'pad', 'hilite'*/)
+            nav.classList.add('small', 'row', 'gap', 'wrap', 'nodec', 'hide-print' /*, 'pad', 'hilite'*/)
             nav.innerHTML = /* '<b>Content</b>' + */ subs.map(s => '<a href="#' + s.id + '">' + s.dataset.caption + '</a>').join(' ')
             h2.after(nav)
           }
@@ -111,7 +114,7 @@
           const d = document.createElement('div')
           const h = document.createElement('div')
           h.innerText = 'HTML'
-          d.classList.add('small', 'row', 'gap', 'pad', 'note', 'bg', 'text'/*, 'mono'*/)
+          d.classList.add('small', 'row', 'gap', 'pad', 'note', 'bg', 'text', 'hide-print')
           h.classList.add('col-1', 'sans')
           d.append(h, a)
           n.before(d)
@@ -166,7 +169,7 @@
 </head>
 <body>
 
-  <nav class="stick nodec small shade  row gap wrap pad">
+  <nav class="stick nodec small shade  row gap wrap pad hide-print">
     <a href="#top" class="neutral"><b>Granum <span class="note regular small">v2.4.0</span></b></a>
     <a href="#start" class="hide-s">Start</a>
     <a href="#layout">Layout</a>
@@ -1324,6 +1327,12 @@
     <div class="demo-preview">
       <div class="hide-js danger">JavaScript disabled</div>
       <div class="show-js success">JavaScript enabled</div>
+    </div>
+
+    <h3>Printable</h3>
+    <p>Hide elements when printing.</p>
+    <div class="demo-preview">
+      <div class="hide-print">This will not be printed</div>
     </div>
 
     <h2 id="icon">8. Icons</h2>

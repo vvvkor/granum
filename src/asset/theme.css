@@ -119,6 +119,8 @@ h1:before {
 }
 */
 
+@media not print {
+  
 .invert, html:has(#invert:checked) {
   /* basics */
   --front: light-dark(#eee, #222);
@@ -154,4 +156,6 @@ h1:before {
   --front-danger: light-dark(#eaa, #c22);
   /* toggle */
   --backdrop: light-dark(#000d, #6665);
+}
+
 }

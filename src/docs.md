@@ -25,10 +25,11 @@
 
 ## Display
 
-- .show.hide
-- .show-s/m/l, .hide-s/m/l (@media)
-- .show-cs/cm/cl, .hide-cs/cm/cl (@container)
+- .show .hide
+- .show-s/m/l .hide-s/m/l (@media)
+- .show-cs/cm/cl .hide-cs/cm/cl (@container)
 - .hide-js, .show-js
+- .hide-print
 
 ## Form
 
