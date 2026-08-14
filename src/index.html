@@ -708,7 +708,7 @@
     <h3>Dark Mode</h3>
     <p>Invert the entire page or just specific element. Enable dark mode in your browser or OS. Or check the following checkboxes.</p>
     <p class="options bord pad small">
-      <label><input type="checkbox" data-nodes="#inv" value="invert"> <code>.invert</code> example <code>&lt;div&gt;</code></label><br>
+      <label><input type="checkbox" data-nodes="#inv" value="invert" checked> <code>.invert</code> example <code>&lt;div&gt;</code></label><br>
       <label><input type="checkbox" data-nodes="html" value="invert" id="invert-js" > <code>.invert</code> entire page (JS sets <code>html.invert</code>)</label>
     </p>
     <!--label class="check icon-sun"><input type="checkbox" id="invert">Invert page (pure CSS using <code>html:has(#invert:checked)</code>)</label><wbr-->
@@ -716,10 +716,10 @@
       <label><input type="checkbox" id="invert">Invert page (pure CSS using <code>html:has(#invert:checked)</code>)</label>
       <br>
       <div class="mar pad rad row gap mid wrap" id="inv">
-        Example <span class="info">Info</span> <a href="#">Link</a>
+        Example <span class="info">Info</span> <a href="#" class="hover">Link</a>
         <input type="checkbox" class="switch" checked> <input type="text" value="Input" size="5"> <button>Button</button>
         <b class="bord pad">Bord</b> <b class="shade pad">Shade</b>
-        <table class="bord"><tr><td>Table<td class="bg info">Info</table>
+        <table class="bord hover"><tr><td>Table<td class="bg info">Info</table>
       </div>
     </div>
 
