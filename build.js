@@ -82,8 +82,8 @@ console.log(head, 'Clear...')
 
 
 const bundles = [
-  ['bundle', distMinCss + '.min.css', ['reset', 'typo', 'space', 'display', 'table', 'table-fixed', 'color', /*'icon-path',*/ 'icon-mask', 'icon-shapes', 'icon-animate', 'form', 'input', /*'custom-box',*/ 'switch', 'dropzone', 'layout', 'toggle', 'transition', 'slider', 'print', 'theme', ]],
-  ['core', distMinCss + '.core.min.css', ['reset', 'typo', 'space', 'display', 'table', 'table-fixed', 'color', 'form', 'input', 'switch', 'dropzone', 'layout', 'toggle', 'transition', 'slider', 'print', 'theme', ]],
+  ['bundle', distMinCss + '.min.css', ['reset', 'typo', 'space', 'display', 'table', 'table-fixed', 'color', /*'icon-path',*/ 'icon-mask', 'icon-shapes', 'icon-animate', 'form', 'input', /*'custom-box',*/ 'switch', 'dropzone', 'layout', 'toggle', 'transition', 'slider', 'theme', 'print', ]],
+  ['core', distMinCss + '.core.min.css', ['reset', 'typo', 'space', 'display', 'table', 'table-fixed', 'color', 'form', 'input', 'switch', 'dropzone', 'layout', 'toggle', 'transition', 'slider', 'theme', 'print', ]],
   ['icons', distMinCss + '.icons.min.css', ['icon-mask', 'icon-shapes', 'icon-animate', ]],
 ]
 const minified = {} // cache
