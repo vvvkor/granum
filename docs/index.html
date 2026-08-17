@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Granum v2.4.0 - Documentation</title>
+    <title>Granum v2.4.1 - Documentation</title>
     <meta name="theme-color" content="#fff">
     <meta name="theme-color" media="(prefers-color-scheme:dark)" content="#04a">
     <link rel="icon" type="image/svg" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20220%20220'%3E%3Cpath%20fill='%23666'%20d='M35%2067l75%20-44%2075%2044%200%2089-75%2044-75-44zm75%208a35%2035%200%201%200%20.01%200z'/%3E%3C/svg%3E">
@@ -170,7 +170,7 @@
 <body>
 
   <nav class="stick nodec small shade  row gap wrap pad hide-print">
-    <a href="#top" class="neutral"><b>Granum <span class="note regular small">v2.4.0</span></b></a>
+    <a href="#top" class="neutral"><b>Granum <span class="note regular small">v2.4.1</span></b></a>
     <a href="#start" class="hide-s">Start</a>
     <a href="#layout">Layout</a>
     <a href="#typo">Content</a>
@@ -231,7 +231,7 @@
     -->
 
     <div class="hero" id="top">
-      <h1>Granum v2.4.0</h1>
+      <h1>Granum v2.4.1</h1>
       <p class="note">
         Developer Documentation
       </p>
@@ -814,6 +814,25 @@
       <label><input type="radio" name="radio-1" value="2"> Radio</label>
     </div>
     
+    <h3>Floating Labels</h3>
+    <p>
+      For floating labels, put input (or textarea) and label inside <code>.input</code> and add single space placeholder.
+    </p>
+    <div class="demo-preview">
+      <p>
+        <span class="input">
+          <input type="text" id="float-1" placeholder=" " required>
+          <label for="float-1">Input label</label>
+        </span>
+      </p>
+      <p>
+        <span class="input wide">
+          <textarea id="float-2" placeholder=" "></textarea>
+          <label for="float-2">Textarea label</label>
+        </span>
+      </p>
+    </div>
+    
     <h3>Custom Select</h3>
     <p><small class="tag info">Enhanced with JavaScript</small></p>
     <p>
@@ -1107,7 +1126,7 @@
       </div>
     </div>
 
-    <h3 data-caption="Toggle checked">Toggle content with <code>:checked</code></h3>
+    <h3 data-caption="Toggle Checked">Toggle content with <code>:checked</code></h3>
     <p>Use <code>.check</code> on the label or checkbox to toggle the following element.</p>
     <div class="demo-preview">
       <label class="check icon-desc"><input type="checkbox">Label 1 (with state)</label>
@@ -1118,7 +1137,7 @@
       <div class="bord pad">Target content</div>
     </div>
 
-    <h3 data-caption="Toggle target">Toggle content with <code>:target</code></h3>
+    <h3 data-caption="Toggle Target">Toggle content with <code>:target</code></h3>
     <p><small class="tag info">Enhanced with JavaScript</small></p>
     <p>Use <code>.target</code> on target element. Add <code>.act</code> on link for initially opened state. Add <code>.mem</code> on target element for state persistance. Add <code>.toggle</code> on hash link for JS enhancements (toggle off and avoid page jump).</p>
     <div class="demo-preview">
@@ -1301,7 +1320,7 @@
       </div>
     </div>
     
-    <h3>Responsive Display Toggles</h3>
+    <h3>Responsive Visibility</h3>
     <p>Show/hide elements based on viewport or <code>.container</code> width. Resize your browser window or container to see them appear/disappear.</p>
     <div class="demo-preview container">
       <b>Viewport:</b>
@@ -1321,7 +1340,7 @@
       <span class="hide show-cs success bold">Small</span>
     </div>
 
-    <h3>JavaScript detection</h3>
+    <h3>JavaScript Detection</h3>
     <p>Show/hide elements based on JavaScript availability.</p>
     <div class="demo-preview">
       <div class="hide-js danger">JavaScript disabled</div>
@@ -1387,7 +1406,7 @@
     <h2 id="js">9. JavaScript Functionality</h2>
     <p><small class="tag info">Requires JavaScript</small></p>
     
-    <h3 data-caption="Class toggle">Dynamic Class Toggling (<code>[data-nodes]</code>)</h3>
+    <h3 data-caption="Class Toggle">Dynamic Class Toggling (<code>[data-nodes]</code>)</h3>
     <p>Toggle CSS classes on target elements based on input state.</p>
     <div class="demo-preview no-resize">
       <label>
@@ -1404,7 +1423,7 @@
       </div>
     </div>
 
-    <h3 data-caption="List toggle">Toggle sub-list (<code>#open</code>)</h3>
+    <h3 data-caption="List Toggle">Toggle sub-list (<code>#open</code>)</h3>
     <p class="options bord pad small">  
       Style options:
       <label><input type="checkbox" data-nodes="#list-2" value="fit" checked><code>.fit</code></label>
@@ -1429,7 +1448,7 @@
       </ul>
     </div>
     
-    <h3 data-caption="List filter">List filtering</h3>
+    <h3 data-caption="List Filter">List filtering</h3>
     <p>Add <code>.keep</code> to a list item to exclude it from filtering.</p>
     <p>Emits <a href="#granum-filter">granum-filter</a> event.</p>
     <div class="demo-preview no-resize">
@@ -1443,7 +1462,7 @@
       </ul>
     </div>
 
-    <h3 data-caption="Table sort & filter">Table Sorting & Filtering</h3>
+    <h3 data-caption="Table Sort & Filter">Table Sorting & Filtering</h3>
     <p>Click the headers to sort, or type in the search box to filter.</p>
     <p>Add <code>.keep</code> to a row to exclude it from filtering.</p>
     <p>Emits <a href="#granum-filter">granum-filter</a> and <a href="#granum-sort">granum-sort</a> events.</p>
@@ -1491,7 +1510,7 @@
       </details>
     </div>
 
-    <h3 id="populate-inputs" data-caption="Populate inputs">Populate inputs from URL (<code>[data-get]</code>)</h3>
+    <h3 id="populate-inputs" data-caption="Populate Inputs">Populate inputs from URL (<code>[data-get]</code>)</h3>
     <div class="demo-preview">
       <p>
         Click to <a href="?cap=Test&box=1#populate-inputs">populate</a>
@@ -1504,7 +1523,7 @@
       </form>
     </div>
     
-    <h3>Check multiple boxes</h3>
+    <h3>Check Multiple Checkboxes</h3>
     <div class="demo-preview">
       <label><input type="checkbox" data-check="#set-1 input" name="all"> Toggle the following boxes</label>
       <fieldset id="set-1" class="mar">
@@ -1598,18 +1617,18 @@
       <span id="src-2">Text to copy</span> <a href="#src-2" class="copy icon-copy">Copy</a>
     </div>
 
-    <h3>Show password</h3>
+    <h3>Show Password</h3>
     <div class="demo-preview">
       <input id="pass-1" type="password" value="PWD"> <a href="#pass-1" class="pass icon-hide">Show</a>
     </div>
 
-    <h3 data-caption="Sync textarea">Synchronize textarea and contenteditable</h3>
+    <h3 data-caption="Sync Textarea">Synchronize Textarea and Contenteditable</h3>
     <div class="demo-preview">
       <textarea id="area-1" data-editor="#edit-1" class="wide"></textarea>
       <div id="edit-1" contenteditable data-area="#area-1"></div>
     </div>
 
-    <h3>Go back</h3>
+    <h3>Go Back</h3>
     <div class="demo-preview">
       <a href="#back">Back</a>
     </div>

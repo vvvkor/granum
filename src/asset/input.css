@@ -16,15 +16,23 @@ button:not(:disabled), .check, .sel label {cursor:pointer;}
 
 /* custom input */
 
-.input {display:inline-flex;min-width:max-content;align-items:center;gap:calc(.5 * var(--gap));}
+.input {display:inline-flex;min-width:max-content;align-items:center;gap:calc(.5 * var(--gap));position:relative;}
 .input:not(button) {padding-block:0;}
   button.input {min-width:var(--list-width);text-align:left;}
   /*:is(button.input, [contenteditable]):not(.wide) {width:var(--list-width);}*/ /* optional */
   button.input > span:first-child {flex:1;overflow:hidden;text-overflow:ellipsis;}
-.input input {flex:1;margin:0;padding-inline:0;border:none;outline:none !important;}
+.input :is(input, textarea) {flex:1;margin:0;padding-inline:0;border:none;outline:none !important;}
 .input button {padding:0 calc(.3 * var(--gap));min-width:0;color:var(--ff, var(--front));background-color:transparent;}
   .input button.bg {background-color:var(--bb, transparent);}
 /*.input > :not(input) {padding:calc(.5 * var(--gap));}*/
+
+/* floating label */
+.input:has(label) :is(input, textarea) {padding-top:calc(1.4 * var(--gap));}
+  .input:has(label):has(textarea) {padding-right:0;}
+  .input:has(label) textarea {padding-right:.5em;}
+.input label {pointer-events:none;color:var(--front-note);position:absolute;top:0;left:calc(.5 * var(--gap));transform:translateY(.7em);transition:transform .1s ease;transform-origin:0 0;background:var(--back-input);padding-top:.2em;}
+.input :is(input, textarea):is(:focus, :not(:placeholder-shown)) + label {transform:scale(.8) translateY(0);}
+
 
 /* fix inconsistent height of select and dates */
 
