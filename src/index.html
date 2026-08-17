@@ -131,7 +131,7 @@
         let h2 = null
         let subs = []
         document.querySelectorAll('main :is(h2, h3)').forEach(n => {
-          n.dataset.caption = n.textContent.replace(/\(.*$/, '')
+          if (!n.dataset.caption) n.dataset.caption = n.textContent.replace(/\(.*$/, '')
           if (!n.id) n.id = n.textContent.replace(/\W+/g, '-').replace(/-+/, '-').replace(/-+$/, '').toLowerCase()
           const a = document.createElement('a')
           a.href = '#' + n.id
@@ -251,7 +251,7 @@
 
     <h2 id="layout">2. Layout & Grid</h2>
     
-    <h3>Flexbox Rows</h3>
+    <h3 data-caption="Row">Flexbox Rows</h3>
     <p>Use <code>.row</code> for horizontal layouts. Add <code>.wrap</code> to allow wrapping, and <code>.gap</code> for spacing.</p>
     <!--details><summary class="icon-config small"></summary-->
     <p class="options bord pad small">
@@ -306,7 +306,7 @@
       </div>
     </div>
 
-    <h3>Auto-Filling Grid</h3>
+    <h3 data-caption="Grid">Auto-Filling Grid</h3>
     <p>Use <code>.grid-*</code> to create responsive grids that automatically fill available space based on minimum cell widths.</p>
     <p class="options bord pad small">
       Column width:
@@ -409,9 +409,39 @@
       </div>
     </div>
 
+    <h3>Spacing</h3>
+    <p></p>
+    <p class="options bord pad small">
+      <label><input type="checkbox" data-nodes="#space-container > *" value="fit"><code>.fit</code></label>
+      <label><input type="checkbox" data-nodes="#space-container > *" value="bord"><code>.bord</code></label>
+      <label><input type="checkbox" data-nodes="#space-container > *" value="rad"><code>.rad</code></label>
+      <label><input type="checkbox" data-nodes="#space-container > *" value="stripe"><code>.stripe</code></label>
+      <label><input type="checkbox" data-nodes="#space-container > *" value="shade"><code>.shade</code></label>
+      <label><input type="checkbox" data-nodes="#space-container > *" value="pad"><code>.pad</code></label>
+      <label><input type="checkbox" data-nodes="#space-container > *" value="pads"><code>.pads</code></label>
+      <label><input type="checkbox" data-nodes="#space-container > *" value="mar"><code>.mar</code></label>
+      <label><input type="checkbox" data-nodes="#space-container > *" value="mars"><code>.mars</code></label>
+      <label><input type="checkbox" data-nodes="#space-container > *" value="center"><code>.center</code></label>
+      <!--label><input type="checkbox" data-nodes="#space-container > *" value="info"><code>.info</code></label-->
+      <br>
+      Maximum width:
+      <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide-xs"><code>.wide-xs</code></label>
+      <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide-s"><code>.wide-s</code></label>
+      <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide-m"><code>.wide-m</code></label>
+      <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide-l"><code>.wide-l</code></label>
+      <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide"><code>.wide</code></label>
+    </p>
+    <div id="space-container" class="demo-preview">
+      <div>Div</div>
+      <div>Div</div>
+      <div>Div</div>
+      <p>Paragraph</p>
+      <p>Paragraph</p>
+    </div>
+
     <h2 id="typo">3. Typography & Content</h2>
 
-    <h3>Basic Elements</h3>
+    <h3 data-caption="Basics">Basic Elements</h3>
     <div class="demo-preview">
       <p>
         Text
@@ -456,36 +486,6 @@
       <p class="nobr">No auto wrap. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tristique purus nec erat suscipit, eget rhoncus ipsum porta.</p>
     </div>
     
-    <h3>Spacing</h3>
-    <p></p>
-    <p class="options bord pad small">
-      <label><input type="checkbox" data-nodes="#space-container > *" value="fit"><code>.fit</code></label>
-      <label><input type="checkbox" data-nodes="#space-container > *" value="bord"><code>.bord</code></label>
-      <label><input type="checkbox" data-nodes="#space-container > *" value="rad"><code>.rad</code></label>
-      <label><input type="checkbox" data-nodes="#space-container > *" value="stripe"><code>.stripe</code></label>
-      <label><input type="checkbox" data-nodes="#space-container > *" value="shade"><code>.shade</code></label>
-      <label><input type="checkbox" data-nodes="#space-container > *" value="pad"><code>.pad</code></label>
-      <label><input type="checkbox" data-nodes="#space-container > *" value="pads"><code>.pads</code></label>
-      <label><input type="checkbox" data-nodes="#space-container > *" value="mar"><code>.mar</code></label>
-      <label><input type="checkbox" data-nodes="#space-container > *" value="mars"><code>.mars</code></label>
-      <label><input type="checkbox" data-nodes="#space-container > *" value="center"><code>.center</code></label>
-      <!--label><input type="checkbox" data-nodes="#space-container > *" value="info"><code>.info</code></label-->
-      <br>
-      Maximum width:
-      <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide-xs"><code>.wide-xs</code></label>
-      <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide-s"><code>.wide-s</code></label>
-      <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide-m"><code>.wide-m</code></label>
-      <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide-l"><code>.wide-l</code></label>
-      <label><input type="radio" name="wide-1"  data-nodes="#space-container > *" value="wide"><code>.wide</code></label>
-    </p>
-    <div id="space-container" class="demo-preview">
-      <div>Div</div>
-      <div>Div</div>
-      <div>Div</div>
-      <p>Paragraph</p>
-      <p>Paragraph</p>
-    </div>
-
     <h3>Links and Buttons</h3>
     <p class="options bord pad small">
       <label><input type="checkbox" data-nodes="#links-container > *" value="act"><code>.act</code></label>
@@ -522,7 +522,7 @@
       </figure>
     </div>
 
-    <h3>Tags, badges, progress</h3>
+    <h3 data-caption="Tags">Tags, badges, progress</h3>
     <div class="demo-preview">
       <span class="tag">Tag</span>
       <span class="tag bord">Border</span>
@@ -768,7 +768,7 @@
       </div>
     </div>
 
-    <h3>Form validation</h3>
+    <h3 data-caption="Validation">Form validation</h3>
     <p>
       Inside <code>.form</code>, use <code>.tip > .success, .tip > .danger</code> after input for tips.<br>
       Use <code>.form.lazy</code> to show tips only after user interaction.<br>
@@ -928,7 +928,7 @@
 
     <h2 id="inter">6. Interactive Components</h2>
     
-    <h3>Dropdown navigation</h3>
+    <h3 data-caption="Dropdown">Dropdown navigation</h3>
     <p class="options bord pad small">  
       Style options:
       <label><input type="checkbox" data-nodes="#menu-1" value="hilite" checked><code>.hilite</code></label>
@@ -1107,7 +1107,7 @@
       </div>
     </div>
 
-    <h3>Toggle content with <code>:checked</code></h3>
+    <h3 data-caption="Toggle checked">Toggle content with <code>:checked</code></h3>
     <p>Use <code>.check</code> on the label or checkbox to toggle the following element.</p>
     <div class="demo-preview">
       <label class="check icon-desc"><input type="checkbox">Label 1 (with state)</label>
@@ -1118,7 +1118,7 @@
       <div class="bord pad">Target content</div>
     </div>
 
-    <h3>Toggle content with <code>:target</code></h3>
+    <h3 data-caption="Toggle target">Toggle content with <code>:target</code></h3>
     <p><small class="tag info">Enhanced with JavaScript</small></p>
     <p>Use <code>.target</code> on target element. Add <code>.act</code> on link for initially opened state. Add <code>.mem</code> on target element for state persistance. Add <code>.toggle</code> on hash link for JS enhancements (toggle off and avoid page jump).</p>
     <div class="demo-preview">
@@ -1135,7 +1135,7 @@
       </div>
     </div>
 
-    <h3>Slider with <code>:target</code></h3>
+    <h3 data-caption="Slider">Slider with <code>:target</code></h3>
     <div class="demo-preview">
       <div class="slider nodec">
         <div id="slide1" class="pad hilite row mid stretch">
@@ -1211,7 +1211,7 @@
 <summary>Legacy Modals, Popups and Tooltips</summary>
 <div class="shade mar pads rad stack">
 
-    <h3>Modals & Drawers with <code>:target</code></h3>
+    <h3 data-caption="Modal target*">Modals & Drawers with <code>:target</code></h3>
     <p><small class="tag warning">Deprecated</small></p>
     <p>Triggered via URL hash fragments. Pure CSS, no JavaScript required!</p>
     <div class="demo-preview">
@@ -1245,7 +1245,7 @@
 
     </div>
 
-    <h3>Popup disclosure</h3>
+    <h3 data-caption="Popup details*">Popup details</h3>
     <p>Using native <code>&lt;details&gt;</code> elements.</p>
     <div class="demo-preview no-resize">
       Before
@@ -1259,7 +1259,7 @@
       After
     </div>
 
-    <h3>Popups on hover</h3>
+    <h3 data-caption="Popup hover*">Popups on hover</h3>
     <p><small class="tag info">Enhanced with JavaScript</small></p>
     <p>Using a <code>:hover</code> state. Add <code>.pos</code> for automatic positioning with JS.</p>
     <p class="options bord pad small">  
@@ -1277,7 +1277,7 @@
       After.
     </div>
 
-    <h3>Tooltips with <code>[data-hint]</code></h3>
+    <h3 data-caption="Hint*">Tooltips with <code>[data-hint]</code></h3>
     <p><small class="tag warning">Deprecated</small></p>
     <div class="demo-preview no-resize">
       <span data-hint="This is a default tooltip" class="pad bord" tabindex="0">Hover over me</span>
@@ -1336,10 +1336,10 @@
 
     <h2 id="icon">8. Icons</h2>
 
-    <h3>Compact icons using <code>mask-image</code></h3>
+    <h3 data-caption="Icons">Compact icons using <code>mask-image</code></h3>
     <div id="divIcons"></div>
 
-    <h3>Icons animation</h3>
+    <h3 data-caption="Animation">Icons animation</h3>
     <p class="options bord pad small">
       Animation type: 
       <label><input type="radio" name="anim" data-nodes="#anim-container > svg" value="" checked><i>none</i></label>
@@ -1360,7 +1360,7 @@
       <a class="icon-bell anim-swing neutral"></a>
     </div>
 
-    <h3>Icons toggle</h3>
+    <h3 data-caption="Toggle">Icons toggle</h3>
     <p>Some icons switch in active mode (<code>.act, :has(+:target), .check:has(:checked), [open]>summary</code>). Click icons to toggle.</p>
     <div class="demo-preview" id="anim-container">
       <p>
@@ -1387,7 +1387,7 @@
     <h2 id="js">9. JavaScript Functionality</h2>
     <p><small class="tag info">Requires JavaScript</small></p>
     
-    <h3>Dynamic Class Toggling (<code>[data-nodes]</code>)</h3>
+    <h3 data-caption="Class toggle">Dynamic Class Toggling (<code>[data-nodes]</code>)</h3>
     <p>Toggle CSS classes on target elements based on input state.</p>
     <div class="demo-preview no-resize">
       <label>
@@ -1404,7 +1404,7 @@
       </div>
     </div>
 
-    <h3>Toggle sub-list (<code>#open</code>)</h3>
+    <h3 data-caption="List toggle">Toggle sub-list (<code>#open</code>)</h3>
     <p class="options bord pad small">  
       Style options:
       <label><input type="checkbox" data-nodes="#list-2" value="fit" checked><code>.fit</code></label>
@@ -1429,7 +1429,7 @@
       </ul>
     </div>
     
-    <h3>List filtering</h3>
+    <h3 data-caption="List filter">List filtering</h3>
     <p>Add <code>.keep</code> to a list item to exclude it from filtering.</p>
     <p>Emits <a href="#granum-filter">granum-filter</a> event.</p>
     <div class="demo-preview no-resize">
@@ -1443,7 +1443,7 @@
       </ul>
     </div>
 
-    <h3>Table Sorting & Filtering</h3>
+    <h3 data-caption="Table sort & filter">Table Sorting & Filtering</h3>
     <p>Click the headers to sort, or type in the search box to filter.</p>
     <p>Add <code>.keep</code> to a row to exclude it from filtering.</p>
     <p>Emits <a href="#granum-filter">granum-filter</a> and <a href="#granum-sort">granum-sort</a> events.</p>
@@ -1491,7 +1491,7 @@
       </details>
     </div>
 
-    <h3 id="populate-inputs">Populate inputs from URL (<code>[data-get]</code>)</h3>
+    <h3 id="populate-inputs" data-caption="Populate inputs">Populate inputs from URL (<code>[data-get]</code>)</h3>
     <div class="demo-preview">
       <p>
         Click to <a href="?cap=Test&box=1#populate-inputs">populate</a>
@@ -1592,7 +1592,7 @@
       </table>
     </div>
     
-    <h3>Copy input value</h3>
+    <h3 data-caption="Copy">Copy input value</h3>
     <div class="demo-preview">
       <input id="src-1" type="text" value="Value to copy"> <a href="#src-1" class="copy icon-copy">Copy</a><br>
       <span id="src-2">Text to copy</span> <a href="#src-2" class="copy icon-copy">Copy</a>
@@ -1603,7 +1603,7 @@
       <input id="pass-1" type="password" value="PWD"> <a href="#pass-1" class="pass icon-hide">Show</a>
     </div>
 
-    <h3>Synchronize textarea and contenteditable</h3>
+    <h3 data-caption="Sync textarea">Synchronize textarea and contenteditable</h3>
     <div class="demo-preview">
       <textarea id="area-1" data-editor="#edit-1" class="wide"></textarea>
       <div id="edit-1" contenteditable data-area="#area-1"></div>
@@ -1618,7 +1618,7 @@
     
     <p>All <code>granum-*</code> custom events bubble and are cancelable.</p>
     
-    <h3 id="granum-filter">Filter</h3>
+    <h3 id="granum-filter" data-caption="Filter">Filter list or table</h3>
     <p>Occurs after <a href="#list-filtering">filtering a list</a> or <a href="#table-sorting-filtering">table</a>.</p>
     <dl>
       <dt>type</dt><dd><code>granum-filter</code></dd>
@@ -1627,7 +1627,7 @@
       <dt>detail.found</dt><dd>Matching items count</dd>
     </dl>
     
-    <h3 id="granum-sort">Sort</h3>
+    <h3 id="granum-sort" data-caption="Sort">Sort table</h3>
     <p>Occurs after sorting a <a href="#table-sorting-filtering">table</a>.</p>
     <dl>
       <dt>type</dt><dd><code>granum-sort</code></dd>
@@ -1635,7 +1635,7 @@
       <dt>detail.order</dt><dd><code>1</code> for ascending, <code>-1</code> for descending</dd>
     </dl>
 
-    <h3 id="granum-drag">Drag</h3>
+    <h3 id="granum-drag" data-caption="Drag">Drag item</h3>
     <p>Occurs after applying a <a href="#drag-items">drag sort</a>.</p>
     <dl>
       <dt>type</dt><dd><code>granum-drag</code></dd>
@@ -1643,7 +1643,7 @@
       <dt>detail.item</dt><dd>Dragged item</dd>
     </dl>
 
-    <h3 id="granum-manage">Manage</h3>
+    <h3 id="granum-manage" data-caption="Manage">Manage items</h3>
     <p>Occurs after <a href="#manage-items">managing items</a>.</p>
     <dl>
       <dt>type</dt><dd><code>granum-manage</code></dd>

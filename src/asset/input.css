@@ -7,7 +7,7 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0px 100em var(--back-input) ins
 
 /* inputs */
 
-.input, input:where(:not([type=checkbox], [type=radio], [type=color], [type=range], [type=file])), select, textarea, [contenteditable]/*, label:has([type=file])*/ {border:thin solid var(--line-input);border-radius:calc(.5 * var(--radius));padding:calc(.5 * var(--gap));color:var(--front-input);background-color:var(--back-input);/*line-height:1.5;min-height:1.5em;*/}
+.input, input:where(:not([type=checkbox], [type=radio], [type=color], [type=range], [type=file])), select, textarea, [contenteditable]/*, label:has([type=file])*/ {border:thin solid var(--line-input);border-radius:var(--rad-input, .15em);padding:var(--pad-input, .5em);color:var(--front-input);background-color:var(--back-input);/*line-height:1.5;min-height:1.5em;*/}
 :where(button) {border-radius:var(--radius);min-width:6em;}
 button:not(:disabled), .check, .sel label {cursor:pointer;}
   /*button*/:disabled {opacity:.5;cursor:not-allowed;}

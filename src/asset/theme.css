@@ -29,6 +29,8 @@
   /* input */
   --line-input: light-dark(#999, #666); /*color-mix(in oklch, var(--line, #999) 70%, var(--front));*/
   --back-input: light-dark(#fff, #111);
+  --pad-input: calc(.5 * var(--gap));
+  --rad-input: calc(.5 * var(--radius));
 
   /* input outline */
   --outline-hover: #ddd8;
