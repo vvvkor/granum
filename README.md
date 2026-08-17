@@ -67,12 +67,14 @@ or
 - responsive layouts: flex, grid, columns, dropdown, form
 - scrollable table with fixed headers and first column
 - tags, badges, progress
+- card, pagination, breadcrumbs
 - `mask-image` SVG icons (100+)
 
 ## Forms
 
 - validation
 - custom switch
+- floating labels
 - custom select
 - custom input wrapper
 - dropzone
