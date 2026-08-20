@@ -73,10 +73,18 @@
       
         const addNav = (h2, subs) => {
           if (h2 && subs?.length > 1) {
+            const sec = h2.nextElementSibling.matches('section') ? h2.nextElementSibling : null
             const nav = document.createElement('nav')
             nav.classList.add('small', 'row', 'gap', 'wrap', 'nodec', 'hide-print' /*, 'pad', 'hilite'*/)
-            nav.innerHTML = /* '<b>Content</b>' + */ subs.map(s => '<a href="#' + s.id + '">' + s.dataset.caption + '</a>').join(' ')
-            h2.after(nav)
+            const stick = false
+            nav.innerHTML = /* '<b>Content</b>' + */ (stick ? '<b>' + h2.dataset.caption + '</b>' : '') + subs.map(s => '<a href="#' + s.id + '">' + s.dataset.caption + '</a>').join(' ')
+            if (stick) {
+              nav.classList.add('stick', 'bg', 'neutral', 'shade', 'pad')
+              nav.style.top = 'calc(var(--top) - .5em)'
+            }
+            if (sec) sec.prepend(nav)
+            else h2.after(nav)
+            if (!sec) console.log(h2)
           }
         }
         
@@ -131,7 +139,7 @@
         let h2 = null
         let subs = []
         document.querySelectorAll('main :is(h2, h3)').forEach(n => {
-          if (!n.dataset.caption) n.dataset.caption = n.textContent.replace(/\(.*$/, '')
+          if (!n.dataset.caption) n.dataset.caption = n.textContent.replace(/\(.*$/, '').replace(/^\s*\d+\.\s*/, '')
           if (!n.id) n.id = n.textContent.replace(/\W+/g, '-').replace(/-+/, '-').replace(/-+$/, '').toLowerCase()
           const a = document.createElement('a')
           a.href = '#' + n.id
@@ -237,8 +245,9 @@
       </p>
     </div>
     
-
     <h2 id="start">1. Getting Started</h2>
+    
+    <section>
     <p>Include the CSS and JS files in your HTML. The JS file is optional but recommended for progressive enhancements.</p>
     <div class="demo-container"><pre><code>&lt;link rel="stylesheet" href="granum.min.css"&gt;
 &lt;script src="granum.min.js" defer&gt;&lt;/script&gt; &lt;!-- optional --&gt;</code></pre></div>
@@ -248,20 +257,22 @@
 &lt;script src="granum.min.js" defer&gt;&lt;/script&gt; &lt;!-- optional --&gt;</code></pre></div>
     <p>To make a page mobile-friendly and responsive, include the viewport meta tag into the <code>&lt;head&gt;</code>.</p>
     <div class="demo-container"><pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code></pre></div>
+    </section>
 
     <h2 id="layout">2. Layout & Grid</h2>
     
+    <section>
     <h3 data-caption="Row">Flexbox Rows</h3>
     <p>Use <code>.row</code> for horizontal layouts. Add <code>.wrap</code> to allow wrapping, and <code>.gap</code> for spacing.</p>
     <!--details><summary class="icon-config small"></summary-->
     <p class="options bord pad small">
       <!--
-      Container options: 
+      Container modifiers: 
       <label><input type="checkbox" data-nodes="#row-1-container" value="container resize"><code>.container.resize</code></label>
       <label><input type="checkbox" data-nodes="#row-1-container" value="container resize scroll"><code>.container.resize.scroll</code></label>
       <br>
       -->
-      Row options:
+      Row modifiers:
       <!-- stick.resize (.resp@container@media) -->
       <label><input type="checkbox" data-nodes="#row-1" value="gap" checked><code>.gap</code></label>
       <label><input type="checkbox" data-nodes="#row-1" value="mid"><code>.mid</code></label>
@@ -438,9 +449,11 @@
       <p>Paragraph</p>
       <p>Paragraph</p>
     </div>
+    </section>
 
     <h2 id="typo">3. Typography & Content</h2>
 
+    <section>
     <h3 data-caption="Basics">Basic Elements</h3>
     <div class="demo-preview">
       <p>
@@ -470,7 +483,7 @@
     </div>
     
     <h3>Text</h3>
-    <div class="demo-preview" id="links-container">
+    <div class="demo-preview">
       <p>
         <span class="sans">Sans serif</span>
         <span class="serif">Serif</span>
@@ -555,7 +568,7 @@
 
     <h3>Table</h3>
     <p class="options bord pad small">
-      Style options:
+      Modifiers:
       <label><input type="checkbox" data-nodes="#table-1" value="bord" checked><code>.bord</code></label>
       <label><input type="checkbox" data-nodes="#table-1" value="line"><code>.line</code></label>
       <label><input type="checkbox" data-nodes="#table-1" value="hover"><code>.hover</code></label>
@@ -597,9 +610,9 @@
 
     <h3>List</h3>
     <p class="options bord pad small">
-      Style options:<br>
-      <label><input type="checkbox" data-nodes="#list-1" value="row"><code>.row</code></label>
+      Modifiers:
       <label><input type="checkbox" data-nodes="#list-1" value="fit"><code>.fit</code></label>
+      <label><input type="checkbox" data-nodes="#list-1" value="row"><code>.row</code></label>
       <label><input type="checkbox" data-nodes="#list-1" value="resp"><code>.resp</code></label>
       <label><input type="checkbox" data-nodes="#list-1" value="vert"><code>.vert</code></label>
       <label><input type="checkbox" data-nodes="#list-1" value="gap"><code>.gap</code></label>
@@ -668,9 +681,11 @@
         <footer class="pad hilite">Footer</footer>
       </div>
     </div>
+    </section>
     
     <h2 id="color">4. Colors & Theming</h2>
     
+    <section>
     <h3>Semantic Colors</h3>
     <p>Apply contextual colors to text, backgrounds, or borders using utility classes.</p>
     <p class="options bord pad small">
@@ -724,13 +739,15 @@
         <table class="bord hover"><tr><td>Table<td class="bg info">Info</table>
       </div>
     </div>
+    </section>
 
     <h2 id="form">5. Forms & Inputs</h2>
     
+    <section>
     <h3>Grid Forms</h3>
     <p>Use <code>.form.resp</code> for aligned, responsive form layouts.</p>
     <p class="options bord pad small">
-      Form options:
+      Form modifiers:
       <label><input type="checkbox" data-nodes="body" value="container"><code>body.container</code></label>
       <label><input type="checkbox" data-nodes="#form-1-container" value="container" checked><code>div.container</code></label>
       <label><input type="checkbox" data-nodes="#form-1" value="form" checked><code>.form</code></label>
@@ -841,39 +858,39 @@
       JavaScript sets focus after opening, copies value to button's first <code>span</code> text and closes popover after selection, enables filtering.
     </p>
     <p class="options bord pad small">
-      Button options:
+      Button modifiers:
       <label><input type="checkbox" name="popsel-b" data-nodes="#popsel-container button" value="input" checked><code>.input</code></label>
       <label><input type="checkbox" name="popsel-b" data-nodes="#popsel-container button" value="wide"><code>.wide</code></label>
       <br>
-      Popover options:
+      Popover modifiers:
       <label><input type="checkbox" name="popsel-p" data-nodes="#popsel-container [popover]" value="resp"><code>.resp</code></label>
       <label><input type="checkbox" name="popsel-p" data-nodes="#popsel-container [popover]" value="wide"><code>.wide</code></label>
       <br>
-      List options:
+      List modifiers:
       <label><input type="checkbox" name="popsel-0" data-nodes="#popsel-container ul" value="hover"><code>.hover</code></label>
       <br>
-      Label options:
+      Label modifiers:
       <label><input type="radio" name="popsel-1" data-nodes="#popsel-container label" value="" checked><i>none</i></label>
       <label><input type="radio" name="popsel-1" data-nodes="#popsel-container label" value="check"><code>.check</code></label>
       <label><input type="radio" name="popsel-1" data-nodes="#popsel-container label" value="check icon-text"><code>.check.icon-text</code></label>
       <label><input type="radio" name="popsel-1" data-nodes="#popsel-container label" value="check icon-text info"><code>.check.icon-text.info</code></label>
       <br>
-      Radio options:
+      Radio modifiers:
       <label><input type="checkbox" name="popsel-2" data-nodes="#popsel-container input" value="hide"><code>.hide</code></label>
     </p>
     <div class="demo-preview" id="popsel-container">
       <form class="form lazy">
         <button type="button" popovertarget="popsel-1" class="input wide">
           <span>Select...</span>
-          <a class="icon-desc note small"></a>
+          <span class="icon-desc note small"></span>
         </button>
         <div id="popsel-1" popover class="sel">
           <ul id="popsel-list" class="row vert hover">
             <li><input type="search" data-filter="#popsel-list" placeholder="Filter list..."></li>
             <li class="keep"><hr></li>
-            <li><label><input type="radio" class="mem" id="sel-2" name="sel-2" value="" required data-caption="-">None</label></li>
-            <li><label><input type="radio" class="mem" id="sel-2" name="sel-2" value="a" required>Alpha</label></li>
-            <li><label><input type="radio" class="mem" id="sel-2" name="sel-2" value="b" required>Beta Beta Beta Beta Beta Beta Beta End</label></li>
+            <li><label><input type="radio" class="mem" name="sel-2" value="" required data-caption="-">None</label></li>
+            <li><label><input type="radio" class="mem" name="sel-2" value="a" required>Alpha</label></li>
+            <li><label><input type="radio" class="mem" name="sel-2" value="b" required>Beta Beta Beta Beta Beta Beta Beta End</label></li>
             <li><hr></li>
             <li><label class="-check"><input type="checkbox" class="mem" name="box-b" value="g">Gamma</label></li>
           </ul>
@@ -900,16 +917,16 @@
     </p>
     <div class="demo-preview">
       <span class="input wide mar">
-        <div class="icon-mail"></div>
+        <span class="icon-mail"></span>
         <input type="email" id="email-3" name="email" placeholder="Enter email">
-        <div class="tip"><span class="danger icon-ban">INCORRECT</span><span class="success icon-check">OK</span></div>
+        <span class="tip"><span class="danger icon-ban">INCORRECT</span><span class="success icon-check">OK</span></span>
       </span>
       <input type="file" class="dropzone wide">
     </div>
     
     <h3>Input Types</h3>
-    <p>
-      Container options:
+    <p class="options bord pad small">
+      Container modifiers:
       <label><input type="radio" name="input-types" data-nodes="#inputs-container" value=""><i>inline</i></label>
       <label><input type="radio" name="input-types" data-nodes="#inputs-container" value="row gap mid wrap" checked><code>.row.gap.mid.wrap</code></label>
       <label><input type="radio" name="input-types" data-nodes="#inputs-container" value="row gap vert"><code>.row.gap.vert</code></label>
@@ -939,17 +956,18 @@
         <textarea placeholder="Textarea..."></textarea>
         <div contenteditable>Contenteditable...</div>
         <div class="input"><input type="text" placeholder="Custom input..."></div>
-        <button type="button" class="input" popovertarget="cs1"><span>Custom select...</span><a class="icon-desc small note"></a></button>
+        <button type="button" class="input" popovertarget="cs1"><span>Custom select...</span><span class="icon-desc small note"></span></button>
       </div>
       <div popover id="cs1" class="sel"><ul class="row vert hover"><li><label><input type="radio" name="r2" value="1"> One</label></li><li><label><input type="radio" name="r2" value="2"> Two</label></li></ul></div>
     </div>
-
+    </section>
 
     <h2 id="inter">6. Interactive Components</h2>
     
+    <section>
     <h3 data-caption="Dropdown">Dropdown navigation</h3>
     <p class="options bord pad small">  
-      Style options:
+      Modifiers:
       <label><input type="checkbox" data-nodes="#menu-1" value="hilite" checked><code>.hilite</code></label>
       <label><input type="checkbox" data-nodes="#menu-1" value="mid" checked><code>.mid</code></label>
       <label><input type="checkbox" data-nodes="#menu-1" value="resp" checked><code>.resp</code></label>
@@ -1282,7 +1300,7 @@
     <p><small class="tag info">Enhanced with JavaScript</small></p>
     <p>Using a <code>:hover</code> state. Add <code>.pos</code> for automatic positioning with JS.</p>
     <p class="options bord pad small">  
-      Style options:
+      Modifiers:
       <label><input type="checkbox" data-nodes="#pop-1, #pop-2" value="pos"><code>.pos</code> (a popup window will be moved to the <code>body</code> on hover)</label>
     </p>
     <div class="demo-preview no-resize">
@@ -1305,9 +1323,11 @@
 
 </div>
 </details>
+    </section>
 
     <h2 id="util">7. Utilities</h2>
     
+    <section>
     <h3>Visibility</h3>
     <p class="options bord pad small">  
       <label><input type="checkbox" data-nodes="#hide-1" value="hide" checked><code>.hide</code></label>
@@ -1352,15 +1372,43 @@
     <div class="demo-preview">
       <div class="hide-print">This will not be printed</div>
     </div>
+    </section>
 
     <h2 id="icon">8. Icons</h2>
 
-    <h3 data-caption="Icons">Compact icons using <code>mask-image</code></h3>
+    <section>
+    <h3 data-caption="Iconset">Compact icons using <code>mask-image</code></h3>
+    <p class="options bord pad small">
+      Modifiers:
+      <label><input type="checkbox" name="sml" data-nodes="#divIcons a" value="inact"><code>.inact</code></label>
+      <label><input type="checkbox" name="sml" data-nodes="#divIcons a" value="hover"><code>.hover</code></label>
+      <label><input type="checkbox" name="sml" data-nodes="#divIcons a" value="small"><code>.small</code></label>
+      <!--label><input type="checkbox" name="sml" data-nodes="#divIcons a" value="tag"><code>.tag</code></label-->
+      </br>
+      Color:
+      <label><input type="radio" name="clr" data-nodes="#divIcons a" value="" checked><i>none</i></label>
+      <label><input type="radio" name="clr" data-nodes="#divIcons a" value="link"><code>.link</code></label>
+      <label><input type="radio" name="clr" data-nodes="#divIcons a" value="neutral"><code>.neutral</code></label>
+      <label><input type="radio" name="clr" data-nodes="#divIcons a" value="note"><code>.note</code></label>
+      <label><input type="radio" name="clr" data-nodes="#divIcons a" value="success"><code>.success</code></label>
+      <label><input type="radio" name="clr" data-nodes="#divIcons a" value="info"><code>.info</code></label>
+      <label><input type="radio" name="clr" data-nodes="#divIcons a" value="warning"><code>.warning</code></label>
+      <label><input type="radio" name="clr" data-nodes="#divIcons a" value="danger"><code>.danger</code></label>
+      <br>
+      Animation:
+      <label><input type="radio" name="anima" data-nodes="#divIcons a" value="" checked><i>none</i></label>
+      <label><input type="radio" name="anima" data-nodes="#divIcons a" value="anim-spin"><code>.anim-spin</code></label>
+      <label><input type="radio" name="anima" data-nodes="#divIcons a" value="anim-blink"><code>.anim-blink</code></label>
+      <label><input type="radio" name="anima" data-nodes="#divIcons a" value="anim-pulse"><code>.anim-pulse</code></label>
+      <label><input type="radio" name="anima" data-nodes="#divIcons a" value="anim-flip"><code>.anim-flip</code></label>
+      <label><input type="radio" name="anima" data-nodes="#divIcons a" value="anim-turn"><code>.anim-turn</code></label>
+      <label><input type="radio" name="anima" data-nodes="#divIcons a" value="anim-swing"><code>.anim-swing</code></label>
+    </p>
     <div id="divIcons"></div>
 
     <h3 data-caption="Animation">Icons animation</h3>
     <p class="options bord pad small">
-      Animation type: 
+      Animation: 
       <label><input type="radio" name="anim" data-nodes="#anim-container > svg" value="" checked><i>none</i></label>
       <label><input type="radio" name="anim" data-nodes="#anim-container > svg" value="anim-spin"><code>.anim-spin</code></label>
       <label><input type="radio" name="anim" data-nodes="#anim-container > svg" value="anim-blink"><code>.anim-blink</code></label>
@@ -1381,7 +1429,7 @@
 
     <h3 data-caption="Toggle">Icons toggle</h3>
     <p>Some icons switch in active mode (<code>.act, :has(+:target), .check:has(:checked), [open]>summary</code>). Click icons to toggle.</p>
-    <div class="demo-preview" id="anim-container">
+    <div class="demo-preview">
       <p>
       <label class="check icon-copy"><input type="checkbox"></label> <wbr>
       <label class="check icon-menu"><input type="checkbox"></label> <wbr>
@@ -1402,8 +1450,11 @@
       <label class="check icon-menu"><input type="checkbox"> Label</label> <span>Content</span>
       <details><summary class="icon-menu">Summary</summary>Details</details>
     </div>
+    </section>
     
     <h2 id="js">9. JavaScript Functionality</h2>
+    
+    <section>
     <p><small class="tag info">Requires JavaScript</small></p>
     
     <h3 data-caption="Class Toggle">Dynamic Class Toggling (<code>[data-nodes]</code>)</h3>
@@ -1425,7 +1476,7 @@
 
     <h3 data-caption="List Toggle">Toggle sub-list (<code>#open</code>)</h3>
     <p class="options bord pad small">  
-      Style options:
+      Modifiers:
       <label><input type="checkbox" data-nodes="#list-2" value="fit" checked><code>.fit</code></label>
       <!--label><input type="checkbox" data-nodes="#list-2" value="row mid hover"><code>.row.mid.hover</code></label-->
     </p>
@@ -1632,9 +1683,11 @@
     <div class="demo-preview">
       <a href="#back">Back</a>
     </div>
+    </section>
     
     <h2 id="events">10. Events</h2>
     
+    <section>
     <p>All <code>granum-*</code> custom events bubble and are cancelable.</p>
     
     <h3 id="granum-filter" data-caption="Filter">Filter list or table</h3>
@@ -1671,6 +1724,7 @@
       <dt>detail.item</dt><dd>Managed item (for <code>copy</code> action contains source item)</dd>
       <dt>detail.copy</dt><dd>Created item (only for <code>copy</code> action)</dd>
     </dl>
+    </section>
 
   </main>
 
