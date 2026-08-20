@@ -76,7 +76,7 @@
             const sec = h2.nextElementSibling.matches('section') ? h2.nextElementSibling : null
             const nav = document.createElement('nav')
             nav.classList.add('small', 'row', 'gap', 'wrap', 'nodec', 'hide-print' /*, 'pad', 'hilite'*/)
-            const stick = true
+            const stick = false
             nav.innerHTML = /* '<b>Content</b>' + */ (stick ? '<b>' + h2.dataset.caption + '</b>' : '') + subs.map(s => '<a href="#' + s.id + '">' + s.dataset.caption + '</a>').join(' ')
             if (stick) {
               nav.classList.add('stick', 'bg', 'neutral', 'shade', 'pad', 'rad')
