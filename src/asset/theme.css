@@ -48,7 +48,7 @@
   --front-note: light-dark(#888, #bbb);
   --front-info: light-dark(#08a, #bef);
   --front-success: light-dark(#282, #beb);
-  --front-warning: light-dark(#c70, #fd9);
+  --front-warning: light-dark(#b70, #fd9);
   --front-danger: light-dark(#c11, #eaa);
   --back-note: light-dark(#eee, #666);
   --back-info: light-dark(#bef, #057);
@@ -105,7 +105,7 @@
   --front-note: light-dark(#bbb, #888);
   --front-info: light-dark(#bef, #08a);
   --front-success: light-dark(#beb, #282);
-  --front-warning: light-dark(#fd9, #c70);
+  --front-warning: light-dark(#fd9, #b70);
   --front-danger: light-dark(#eaa, #c22);
   --back-note: light-dark(#666, #eee);
   --back-info: light-dark(#057, #bef);

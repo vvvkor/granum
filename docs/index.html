@@ -76,11 +76,11 @@
             const sec = h2.nextElementSibling.matches('section') ? h2.nextElementSibling : null
             const nav = document.createElement('nav')
             nav.classList.add('small', 'row', 'gap', 'wrap', 'nodec', 'hide-print' /*, 'pad', 'hilite'*/)
-            const stick = false
+            const stick = true
             nav.innerHTML = /* '<b>Content</b>' + */ (stick ? '<b>' + h2.dataset.caption + '</b>' : '') + subs.map(s => '<a href="#' + s.id + '">' + s.dataset.caption + '</a>').join(' ')
             if (stick) {
-              nav.classList.add('stick', 'bg', 'neutral', 'shade', 'pad')
-              nav.style.top = 'calc(var(--top) - .5em)'
+              nav.classList.add('stick', 'bg', 'neutral', 'shade', 'pad', 'rad')
+              nav.style.top = 'calc(var(--top) - .8em)'
             }
             if (sec) sec.prepend(nav)
             else h2.after(nav)
@@ -245,9 +245,9 @@
       </p>
     </div>
     
-    <h2 id="start">1. Getting Started</h2>
-    
     <section>
+    <h2 id="start">Getting Started</h2>
+    
     <p>Include the CSS and JS files in your HTML. The JS file is optional but recommended for progressive enhancements.</p>
     <div class="demo-container"><pre><code>&lt;link rel="stylesheet" href="granum.min.css"&gt;
 &lt;script src="granum.min.js" defer&gt;&lt;/script&gt; &lt;!-- optional --&gt;</code></pre></div>
@@ -259,9 +259,9 @@
     <div class="demo-container"><pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code></pre></div>
     </section>
 
-    <h2 id="layout">2. Layout & Grid</h2>
-    
     <section>
+    <h2 id="layout">Layout & Grid</h2>
+    
     <h3 data-caption="Row">Flexbox Rows</h3>
     <p>Use <code>.row</code> for horizontal layouts. Add <code>.wrap</code> to allow wrapping, and <code>.gap</code> for spacing.</p>
     <!--details><summary class="icon-config small"></summary-->
@@ -388,7 +388,7 @@
     <div class="demo-preview no-resize" id="stick-1-container">
       <div class="scroll resize bord" style="height:15em;">
         <header class="stick shade pad">Header</header>
-        <article class="pad">Article<p>p<p>p<p>p<p>p<p>p<p>p</article>
+        <article class="pad"><h4 class="fit mar">Article</h4><p>p<p>p<p>p<p>p<p>p<p>p</article>
         <footer class="stick shade pad">Footer</footer>
       </div>
     </div>
@@ -451,9 +451,9 @@
     </div>
     </section>
 
-    <h2 id="typo">3. Typography & Content</h2>
-
     <section>
+    <h2 id="typo">Typography & Content</h2>
+
     <h3 data-caption="Basics">Basic Elements</h3>
     <div class="demo-preview">
       <p>
@@ -683,9 +683,9 @@
     </div>
     </section>
     
-    <h2 id="color">4. Colors & Theming</h2>
-    
     <section>
+    <h2 id="color">Colors & Theming</h2>
+    
     <h3>Semantic Colors</h3>
     <p>Apply contextual colors to text, backgrounds, or borders using utility classes.</p>
     <p class="options bord pad small">
@@ -741,9 +741,9 @@
     </div>
     </section>
 
-    <h2 id="form">5. Forms & Inputs</h2>
-    
     <section>
+    <h2 id="form">Forms & Inputs</h2>
+    
     <h3>Grid Forms</h3>
     <p>Use <code>.form.resp</code> for aligned, responsive form layouts.</p>
     <p class="options bord pad small">
@@ -962,9 +962,9 @@
     </div>
     </section>
 
-    <h2 id="inter">6. Interactive Components</h2>
-    
     <section>
+    <h2 id="inter">Interactive Components</h2>
+    
     <h3 data-caption="Dropdown">Dropdown navigation</h3>
     <p class="options bord pad small">  
       Modifiers:
@@ -1118,7 +1118,7 @@
     <div class="demo-preview">
       <button popovertarget="popup-1">Show popup</button>
       <button popovertarget="popup-1" class="link">Show popup</button>
-      <div id="popup-1" popover class="pad">Popup content<p><input name><input type="checkbox" checked><p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</div>
+      <div id="popup-1" popover class="pad">Popup content<p><input name="pop-in" type="text"><input type="checkbox" checked><p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p<p>p</div>
     </div>
     
     <h3>Tooltips</h3>
@@ -1139,8 +1139,8 @@
         <li><a href="#demo-tab-2">Tab 2</a></li>
       </ul>
       <div class="bord">
-        <section id="demo-tab-1" class="pad">This is the content for Tab 1.</section>
-        <section id="demo-tab-2" class="pad">This is the content for Tab 2.</section>
+        <div id="demo-tab-1" class="pad">This is the content for Tab 1.</div>
+        <div id="demo-tab-2" class="pad">This is the content for Tab 2.<br>Second line.</div>
       </div>
     </div>
 
@@ -1325,9 +1325,9 @@
 </details>
     </section>
 
-    <h2 id="util">7. Utilities</h2>
-    
     <section>
+    <h2 id="util">Utilities</h2>
+    
     <h3>Visibility</h3>
     <p class="options bord pad small">  
       <label><input type="checkbox" data-nodes="#hide-1" value="hide" checked><code>.hide</code></label>
@@ -1374,17 +1374,17 @@
     </div>
     </section>
 
-    <h2 id="icon">8. Icons</h2>
-
     <section>
-    <h3 data-caption="Iconset">Compact icons using <code>mask-image</code></h3>
+    <h2 id="icon">Icons</h2>
+
+    <h3 data-caption="Iconset">Iconset using <code>mask-image</code></h3>
     <p class="options bord pad small">
       Modifiers:
       <label><input type="checkbox" name="sml" data-nodes="#divIcons a" value="inact"><code>.inact</code></label>
       <label><input type="checkbox" name="sml" data-nodes="#divIcons a" value="hover"><code>.hover</code></label>
       <label><input type="checkbox" name="sml" data-nodes="#divIcons a" value="small"><code>.small</code></label>
       <!--label><input type="checkbox" name="sml" data-nodes="#divIcons a" value="tag"><code>.tag</code></label-->
-      </br>
+      <br>
       Color:
       <label><input type="radio" name="clr" data-nodes="#divIcons a" value="" checked><i>none</i></label>
       <label><input type="radio" name="clr" data-nodes="#divIcons a" value="link"><code>.link</code></label>
@@ -1452,9 +1452,9 @@
     </div>
     </section>
     
-    <h2 id="js">9. JavaScript Functionality</h2>
-    
     <section>
+    <h2 id="js">JavaScript Functionality</h2>
+    
     <p><small class="tag info">Requires JavaScript</small></p>
     
     <h3 data-caption="Class Toggle">Dynamic Class Toggling (<code>[data-nodes]</code>)</h3>
@@ -1685,9 +1685,9 @@
     </div>
     </section>
     
-    <h2 id="events">10. Events</h2>
-    
     <section>
+    <h2 id="events">Events</h2>
+    
     <p>All <code>granum-*</code> custom events bubble and are cancelable.</p>
     
     <h3 id="granum-filter" data-caption="Filter">Filter list or table</h3>
