@@ -950,14 +950,18 @@
         <input type="checkbox" class="switch">
         <input type="radio" name="r1" value="1"><input type="radio" name="r1" value="2">
         <select><option>Select...</option><option>1</option><option>2</option></select>
-        <input type="file" required class="info">
-        <input type="file" required class="dropzone">
+        <input type="file">
         <button type="button">Button</button>
         <button type="button" class="bord">Button</button>
         <textarea placeholder="Textarea..."></textarea>
         <div contenteditable>Contenteditable...</div>
         <div class="input"><input type="text" placeholder="Custom input..."></div>
         <button type="button" class="input" popovertarget="cs1"><span>Custom select...</span><span class="icon-desc small note"></span></button>
+        <div class="input">
+          <input type="text" id="flt-1" placeholder=" ">
+          <label for="flt-1">Floating label</label>
+        </div>
+        <input type="file" required class="dropzone">
       </div>
       <div popover id="cs1" class="sel"><ul class="row vert hover"><li><label><input type="radio" name="r2" value="1"> One</label></li><li><label><input type="radio" name="r2" value="2"> Two</label></li></ul></div>
     </div>
