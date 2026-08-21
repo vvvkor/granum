@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Granum v2.4.1 - Documentation</title>
+    <title>Granum v2.4.2 - Documentation</title>
     <meta name="theme-color" content="#fff">
     <meta name="theme-color" media="(prefers-color-scheme:dark)" content="#04a">
     <link rel="icon" type="image/svg" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20220%20220'%3E%3Cpath%20fill='%23666'%20d='M35%2067l75%20-44%2075%2044%200%2089-75%2044-75-44zm75%208a35%2035%200%201%200%20.01%200z'/%3E%3C/svg%3E">
@@ -84,7 +84,7 @@
             }
             if (sec) sec.prepend(nav)
             else h2.after(nav)
-            if (!sec) console.log(h2)
+            //if (!sec) console.log(h2)
           }
         }
         
@@ -178,7 +178,7 @@
 <body>
 
   <nav class="stick nodec small shade  row gap wrap pad hide-print">
-    <a href="#top" class="neutral"><b>Granum <span class="note regular small">v2.4.1</span></b></a>
+    <a href="#top" class="neutral"><b>Granum <span class="note regular small">v2.4.2</span></b></a>
     <a href="#start" class="hide-s">Start</a>
     <a href="#layout">Layout</a>
     <a href="#typo">Content</a>
@@ -239,7 +239,7 @@
     -->
 
     <div class="hero" id="top">
-      <h1>Granum v2.4.1</h1>
+      <h1>Granum v2.4.2</h1>
       <p class="note">
         Developer Documentation
       </p>
@@ -878,8 +878,9 @@
       Radio modifiers:
       <label><input type="checkbox" name="popsel-2" data-nodes="#popsel-container input" value="hide"><code>.hide</code></label>
     </p>
+      <!--form class="form lazy">
+      </form-->
     <div class="demo-preview" id="popsel-container">
-      <form class="form lazy">
         <button type="button" popovertarget="popsel-1" class="input wide">
           <span>Select...</span>
           <span class="icon-desc note small"></span>
@@ -896,7 +897,6 @@
           </ul>
         </div>
         <div class="tip"><span class="danger">Required</span></div>
-      </form>
     </div>
       <!--details class="pop sel">
         <summary class="icon-desc bord rad pad">Select</summary>
@@ -950,7 +950,8 @@
         <input type="checkbox" class="switch">
         <input type="radio" name="r1" value="1"><input type="radio" name="r1" value="2">
         <select><option>Select...</option><option>1</option><option>2</option></select>
-        <input type="file">
+        <input type="file" required class="info">
+        <input type="file" required class="dropzone">
         <button type="button">Button</button>
         <button type="button" class="bord">Button</button>
         <textarea placeholder="Textarea..."></textarea>
@@ -1157,7 +1158,7 @@
 
     <h3 data-caption="Toggle Target">Toggle content with <code>:target</code></h3>
     <p><small class="tag info">Enhanced with JavaScript</small></p>
-    <p>Use <code>.target</code> on target element. Add <code>.act</code> on link for initially opened state. Add <code>.mem</code> on target element for state persistance. Add <code>.toggle</code> on hash link for JS enhancements (toggle off and avoid page jump).</p>
+    <p>Use <code>.target</code> on target element. Add <code>.act</code> on link for initially opened state. Add <code>.mem</code> on target element for state persistance. Add <code>.toggle</code> on hash link for JS enhancements (toggle off, avoid page jump, optionally restore state with <code>.mem</code>).</p>
     <div class="demo-preview">
       <a href="#target-1">Show target</a>
       <div id="target-1" class="target bord pad">
@@ -1165,8 +1166,8 @@
         <a href="#close">Close</a>
       </div>
       <hr>
-      <a href="#target-2" class="toggle">Show target (enhanced)</a>
-      <div id="target-2" class="target -mem bord pad">
+      <a href="#target-2" class="toggle act">Show target (enhanced)</a>
+      <div id="target-2" class="target mem bord pad">
         Target content 2<br>
         <a href="#close" class="hide-js">Close</a>
       </div>

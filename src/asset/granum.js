@@ -1,6 +1,8 @@
 (() => {
+
+const pfx = 'granum-' // prefix for events and localStorage
   
-const evt = (n, t, detail) => n.dispatchEvent(new CustomEvent('granum-' + t, {bubbles: true, cancelable: true, detail}))
+const evt = (n, t, detail) => n.dispatchEvent(new CustomEvent(pfx + t, {bubbles: true, cancelable: true, detail}))
   
 const act = (n, k, f) => (n.dataset.parent ? n.closest(n.dataset.parent) : document)?.querySelectorAll(n.dataset[k] || n.hash).forEach(m => f(m))
 
@@ -30,7 +32,7 @@ const tgl = (n, e, v) => {
       n.classList.toggle('act', v)
     }
     d.classList[n.classList.contains('act') ? 'remove' : 'add']('hide', 'target')
-    if (e && v == null && d.matches('.mem[id]')) localStorage.setItem('val-' + d.id, d.classList.contains('hide') ? '' : 1)
+    if (e && v == null && d.matches('.mem[id]')) localStorage.setItem(pfx + d.id, d.classList.contains('hide') ? '' : 1)
   }
 }
 
@@ -78,7 +80,7 @@ document.addEventListener('DOMContentLoaded', e => {
   
   // restore inputs/details/.toggle
   document.querySelectorAll('.mem[id], form.mem [id]').forEach(n => {
-    const v = localStorage.getItem('val-' + n.id)
+    const v = localStorage.getItem(pfx + n.id)
     if (v == null) return
     if (n.matches('details')) n.open = !!v
     else if (['checkbox', 'radio'].includes(n.type)) n.checked = (v == n.value)
@@ -221,7 +223,7 @@ document.addEventListener('click', async e => {
     }
     
     // manage items
-    else if (a.hash.slice(0, 6) == '#item-') {
+    else if (a.hash?.slice(0, 6) == '#item-') {
       const m = a.dataset.src ? document.querySelector(a.dataset.src) : a.closest(a.dataset.item || 'div, li, tr')
       const h = a.hash.slice(6)
       if (m) {
@@ -253,8 +255,8 @@ document.addEventListener('input', e => {
   
   // store inputs
   if (n.id && (n.classList.contains('mem') || n.form?.classList.contains('mem'))) {
-    if (n.type == 'radio') (n.closest('form') || document).querySelectorAll(`[type=radio][name="${n.name}"][id]`).forEach(m => localStorage.removeItem('val-' + m.id))
-    localStorage.setItem('val-' + n.id, (['checkbox', 'radio'].includes(n.type) && !n.checked) ? '' : n.value)
+    if (n.type == 'radio') (n.closest('form') || document).querySelectorAll(`[type=radio][name="${n.name}"][id]`).forEach(m => localStorage.removeItem(pfx + m.id))
+    localStorage.setItem(pfx + n.id, (['checkbox', 'radio'].includes(n.type) && !n.checked) ? '' : n.value)
   }
   
   // check all boxes
@@ -291,7 +293,7 @@ document.addEventListener('input', e => {
 document.addEventListener('toggle', e => {
   const n = e.target
   // store details
-  if (n.matches('details') && n.id && n.classList.contains('mem')) localStorage.setItem('val-' + n.id, n.open ? 1 : '')
+  if (n.matches('details') && n.id && n.classList.contains('mem')) localStorage.setItem(pfx + n.id, n.open ? 1 : '')
   // popover focus
   if (n.matches('[popover]') && e.newState == 'open') (n.querySelector('[type=radio]:checked') || n.querySelector('[name]'))?.focus()
 }, true)
@@ -327,12 +329,20 @@ window.addEventListener('close', e => (e.target.id == location.hash.slice(1)) ? 
 
 /* old-style modals and popups */
 
-// escape key // legacy
+// escape key
 document.addEventListener('keydown', e => {
-  // close modals and popups (no need for modern dialog/popover, works natively)
+  // close modals and popups (no need for modern dialog/popover, works natively) // legacy
   if (e.key == 'Escape' && location.hash) {
     location.hash = '#escape'
     document.querySelectorAll('details.pop').forEach(n => n.removeAttribute('open'))
+  }
+  // close custom popover select on Enter
+  if (e.key == 'Enter') {
+    const p = document.activeElement?.closest('[type=radio], [type=checkbox]')?.closest('[popover].sel:popover-open')
+    if (p) {
+      p.hidePopover()
+      e.preventDefault()
+    }
   }
 })
 

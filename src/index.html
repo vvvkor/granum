@@ -84,7 +84,7 @@
             }
             if (sec) sec.prepend(nav)
             else h2.after(nav)
-            if (!sec) console.log(h2)
+            //if (!sec) console.log(h2)
           }
         }
         
@@ -878,8 +878,9 @@
       Radio modifiers:
       <label><input type="checkbox" name="popsel-2" data-nodes="#popsel-container input" value="hide"><code>.hide</code></label>
     </p>
+      <!--form class="form lazy">
+      </form-->
     <div class="demo-preview" id="popsel-container">
-      <form class="form lazy">
         <button type="button" popovertarget="popsel-1" class="input wide">
           <span>Select...</span>
           <span class="icon-desc note small"></span>
@@ -896,7 +897,6 @@
           </ul>
         </div>
         <div class="tip"><span class="danger">Required</span></div>
-      </form>
     </div>
       <!--details class="pop sel">
         <summary class="icon-desc bord rad pad">Select</summary>
@@ -950,7 +950,8 @@
         <input type="checkbox" class="switch">
         <input type="radio" name="r1" value="1"><input type="radio" name="r1" value="2">
         <select><option>Select...</option><option>1</option><option>2</option></select>
-        <input type="file">
+        <input type="file" required class="info">
+        <input type="file" required class="dropzone">
         <button type="button">Button</button>
         <button type="button" class="bord">Button</button>
         <textarea placeholder="Textarea..."></textarea>
@@ -1157,7 +1158,7 @@
 
     <h3 data-caption="Toggle Target">Toggle content with <code>:target</code></h3>
     <p><small class="tag info">Enhanced with JavaScript</small></p>
-    <p>Use <code>.target</code> on target element. Add <code>.act</code> on link for initially opened state. Add <code>.mem</code> on target element for state persistance. Add <code>.toggle</code> on hash link for JS enhancements (toggle off and avoid page jump).</p>
+    <p>Use <code>.target</code> on target element. Add <code>.act</code> on link for initially opened state. Add <code>.mem</code> on target element for state persistance. Add <code>.toggle</code> on hash link for JS enhancements (toggle off, avoid page jump, optionally restore state with <code>.mem</code>).</p>
     <div class="demo-preview">
       <a href="#target-1">Show target</a>
       <div id="target-1" class="target bord pad">
@@ -1165,8 +1166,8 @@
         <a href="#close">Close</a>
       </div>
       <hr>
-      <a href="#target-2" class="toggle">Show target (enhanced)</a>
-      <div id="target-2" class="target -mem bord pad">
+      <a href="#target-2" class="toggle act">Show target (enhanced)</a>
+      <div id="target-2" class="target mem bord pad">
         Target content 2<br>
         <a href="#close" class="hide-js">Close</a>
       </div>

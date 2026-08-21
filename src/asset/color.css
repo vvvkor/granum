@@ -35,7 +35,7 @@ button:where(:not(.link/*, .sel*/)) {--ff:var(--accent);--fff:var(--accent);}
 :where(.bg) {--bb:initial;}
 :where(.text, .bord, .stripe) {--ff:initial;}
 :where(button, .tag).bord {background-color:transparent;/*var(--back);*/}
-.text, .ic:before, :where(.neutral, .note, .info, .success, .warning, .danger, button:not(.link), .tag):not(.bg, .ic, .bord, .stripe) {color:var(--ff, var(--front));}
+.text, .ic:before, :where(.neutral, .note, .info, .success, .warning, .danger):not(.bg, .bord, .stripe, .ic), :where(button, .tag):not(.bg, .stripe, .ic, .link) {color:var(--ff, var(--front));}
 .bg {background-color:var(--bb, var(--back));}
 .bord {border:thin solid var(--ff, var(--line));}
   .bord:where(.stripe) {border-color:var(--line);}
