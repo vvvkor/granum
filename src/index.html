@@ -858,6 +858,7 @@
       JavaScript sets focus after opening, copies value to button's first <code>span</code> text and closes popover after selection, enables filtering.
     </p>
     <p class="options bord pad small">
+      <b>Modifiers for complex select:</b><br>
       Button modifiers:
       <label><input type="checkbox" name="popsel-b" data-nodes="#popsel-container button" value="input" checked><code>.input</code></label>
       <label><input type="checkbox" name="popsel-b" data-nodes="#popsel-container button" value="wide"><code>.wide</code></label>
@@ -878,25 +879,41 @@
       Radio modifiers:
       <label><input type="checkbox" name="popsel-2" data-nodes="#popsel-container input" value="hide"><code>.hide</code></label>
     </p>
-      <!--form class="form lazy">
-      </form-->
-    <div class="demo-preview" id="popsel-container">
-        <button type="button" popovertarget="popsel-1" class="input wide">
-          <span>Select...</span>
+      <!--
+      -->
+    <div class="demo-preview">
+      <div class="mar">
+        <button type="button" popovertarget="popsel-0" class="input">
+          <span>Select (simple)...</span>
+          <span class="icon-desc note small"></span>
+        </button>
+        <div id="popsel-0" popover class="sel pad">
+          <label><input type="radio" name="sel-0" value="">None</label><br>
+          <label><input type="radio" name="sel-0" value="a">Alpha</label><br>
+          <label><input type="radio" name="sel-0" value="b">Beta</label><br>
+          <label><input type="radio" name="sel-0" value="Я">Яяя</label><br>
+          <label><input type="radio" name="sel-0" value="1">1</label><br>
+          <label><input type="radio" name="sel-0" value="12">12</label>
+        </div>
+      </div>
+      <form class="form lazy" id="popsel-container">
+        <button type="button" popovertarget="popsel-1" class="input">
+          <span>Select (complex)...</span>
           <span class="icon-desc note small"></span>
         </button>
         <div id="popsel-1" popover class="sel">
           <ul id="popsel-list" class="row vert hover">
-            <li><input type="search" data-filter="#popsel-list" placeholder="Filter list..."></li>
+            <li><input form="" type="search" data-filter="#popsel-list" placeholder="Filter list..."></li>
             <li class="keep"><hr></li>
             <li><label><input type="radio" class="mem" name="sel-2" value="" required data-caption="-">None</label></li>
-            <li><label><input type="radio" class="mem" name="sel-2" value="a" required>Alpha</label></li>
+            <li><label><input type="radio" class="mem" name="sel-2" value="a" required data-caption="ALPHA">Alpha</label></li>
             <li><label><input type="radio" class="mem" name="sel-2" value="b" required>Beta Beta Beta Beta Beta Beta Beta End</label></li>
             <li><hr></li>
             <li><label class="-check"><input type="checkbox" class="mem" name="box-b" value="g">Gamma</label></li>
           </ul>
         </div>
         <div class="tip"><span class="danger">Required</span></div>
+      </form>
     </div>
       <!--details class="pop sel">
         <summary class="icon-desc bord rad pad">Select</summary>
@@ -949,7 +966,7 @@
         <input type="checkbox">
         <input type="checkbox" class="switch">
         <input type="radio" name="r1" value="1"><input type="radio" name="r1" value="2">
-        <select><option>Select...</option><option>1</option><option>2</option></select>
+        <select><option>Select...</option><option>1</option><option>12</option></select>
         <input type="file">
         <button type="button">Button</button>
         <button type="button" class="bord">Button</button>
@@ -1462,19 +1479,22 @@
     
     <p><small class="tag info">Requires JavaScript</small></p>
     
-    <h3 data-caption="Class Toggle">Dynamic Class Toggling (<code>[data-nodes]</code>)</h3>
+    <h3 data-caption="Class Toggle">Class Toggling (<code>[data-nodes]</code>)</h3>
     <p>Toggle CSS classes on target elements based on input state.</p>
     <div class="demo-preview no-resize">
       <label>
-        <input type="checkbox" data-parent=".demo-preview" data-nodes="div" value="success bord" checked>
-        Highlight Target
+        <input type="checkbox" data-parent=".demo-preview" data-nodes="div" value="success bg" data-value="warning bg" checked data-reverse>
+        Highlight Target (reverse action)
       </label>
-      <label>
-        <input type="checkbox" data-parent=".demo-preview" data-nodes="div" value="shade" data-reverse checked>
-        No shadow (reverse action)
-      </label>
+      <label><input type="radio" name="tgl-cls-1" data-parent=".demo-preview" data-nodes="div" value="bord" checked> Bord</label>
+      <label><input type="radio" name="tgl-cls-1" data-parent=".demo-preview" data-nodes="div" value="shade" data-value="shade info"> Shade</label>
+      <select data-parent=".demo-preview" data-nodes="div">
+        <option></option>
+        <option>pad</option>
+        <option data-value="rad danger">rad</option>
+      </select>
       <a href="#demo-target-box" data-value="serif" class="act">Serif</a>
-      <div id="demo-target-box" class="pad mar">
+      <div id="demo-target-box" class="mar">
         This div will get 'success', 'bord', 'shade', 'serif' classes when checked
       </div>
     </div>

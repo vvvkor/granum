@@ -6,13 +6,15 @@ const evt = (n, t, detail) => n.dispatchEvent(new CustomEvent(pfx + t, {bubbles:
   
 const act = (n, k, f) => (n.dataset.parent ? n.closest(n.dataset.parent) : document)?.querySelectorAll(n.dataset[k] || n.hash).forEach(m => f(m))
 
+const val = n => n.querySelector('option:checked[data-value]')?.dataset.value || (n.dataset.value ?? n.value)
+
 const cls = (n, e) => {
-  if (n.type == 'checkbox') act(n, 'nodes', m => m.classList[n.checked != ('reverse' in n.dataset) ? 'add' : 'remove'](...n.value.split(/\s+/)))
+  if (n.type == 'checkbox') act(n, 'nodes', m => m.classList[n.checked != ('reverse' in n.dataset) ? 'add' : 'remove'](...val(n).split(/\s+/)))
   else if (n.options || (n.type == 'radio' && n.checked)) { // toggle
     const list = [...(n.options ? n.options : (n.closest('form') || document).querySelectorAll('[name=' + n.name + ']'))]
-      .map(x => x.value).join(' ').trim().split(/\s+/)
+      .map(x => val(x)).join(' ').trim().split(/\s+/)
     act(n, 'nodes', m => m.classList.remove(...list))
-    if (n.value) act(n, 'nodes', m => m.classList.add(...n.value.split(/\s+/)))
+    if (val(n)) act(n, 'nodes', m => m.classList.add(...val(n).split(/\s+/)))
   }
   //else if ((n.type == 'radio' && n.checked) || n.options) act(n, 'nodes', m => m.className = n.value) // just set
   else if (n.dataset.value) {
@@ -336,12 +338,18 @@ document.addEventListener('keydown', e => {
     location.hash = '#escape'
     document.querySelectorAll('details.pop').forEach(n => n.removeAttribute('open'))
   }
-  // close custom popover select on Enter
-  if (e.key == 'Enter') {
-    const p = document.activeElement?.closest('[type=radio], [type=checkbox]')?.closest('[popover].sel:popover-open')
-    if (p) {
+  // custom popover select
+  const p = document.activeElement?.closest('[type=radio], [type=checkbox]')?.closest('.sel:popover-open')
+  if (p) {
+    if (e.key == 'Enter') { // close
       p.hidePopover()
       e.preventDefault()
+    }
+    if (e.key.match(/[\wа-я]/ui)) { // find on type chars
+      clearTimeout(p._to)
+      p._to = setTimeout(() => p.dataset.find = '', 1000)
+      p.dataset.find = ns((p.dataset.find || '') + e.key)
+      ;[...p.querySelectorAll('label:has([type=radio])')].find(n => ns(n.textContent.trim()).indexOf(p.dataset.find) === 0)?.click()
     }
   }
 })
