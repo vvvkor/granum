@@ -747,9 +747,11 @@
     <h3>Grid Forms</h3>
     <p>Use <code>.form.resp</code> for aligned, responsive form layouts.</p>
     <p class="options bord pad small">
+      Container:
+      <label><input type="checkbox" data-nodes="body" value="container"><code>body</code></label>
+      <label><input type="checkbox" data-nodes="#form-1-container" value="container" checked><code>div</code></label>
+      <br>
       Form modifiers:
-      <label><input type="checkbox" data-nodes="body" value="container"><code>body.container</code></label>
-      <label><input type="checkbox" data-nodes="#form-1-container" value="container" checked><code>div.container</code></label>
       <label><input type="checkbox" data-nodes="#form-1" value="form" checked><code>.form</code></label>
       <label><input type="checkbox" data-nodes="#form-1" value="resp" checked><code>.resp</code></label>
       <label><input type="checkbox" data-nodes="#form-1" value="just"><code>.just</code></label>
@@ -860,8 +862,8 @@
     <p class="options bord pad small">
       <b>Modifiers for complex select:</b><br>
       Button modifiers:
-      <label><input type="checkbox" name="popsel-b" data-nodes="#popsel-container button" value="input" checked><code>.input</code></label>
-      <label><input type="checkbox" name="popsel-b" data-nodes="#popsel-container button" value="wide"><code>.wide</code></label>
+      <label><input type="checkbox" name="popsel-b" data-nodes="#popsel-container > button" value="input" checked><code>.input</code></label>
+      <label><input type="checkbox" name="popsel-b" data-nodes="#popsel-container > button" value="wide"><code>.wide</code></label>
       <br>
       Popover modifiers:
       <label><input type="checkbox" name="popsel-p" data-nodes="#popsel-container [popover]" value="resp"><code>.resp</code></label>
@@ -880,6 +882,7 @@
       <label><input type="checkbox" name="popsel-2" data-nodes="#popsel-container input" value="hide"><code>.hide</code></label>
     </p>
       <!--
+      popovertargetaction="hide"
       -->
     <div class="demo-preview">
       <div class="mar">
@@ -902,6 +905,9 @@
           <span class="icon-desc note small"></span>
         </button>
         <div id="popsel-1" popover class="sel">
+          <div class="r hide show-s">
+            <button type="button" popovertarget="popsel-1" class="link pad icon-close note"></button>
+          </div>
           <ul id="popsel-list" class="row vert hover">
             <li><input form="" type="search" data-filter="#popsel-list" placeholder="Filter list..."></li>
             <li class="keep"><hr></li>
@@ -989,10 +995,15 @@
     
     <h3 data-caption="Dropdown">Dropdown navigation</h3>
     <p class="options bord pad small">  
+      Container:
+      <!--label><input type="checkbox" data-nodes="body" value="container"><code>body</code></label-->
+      <label><input type="checkbox" data-nodes="#nav-1-container" value="container" checked><code>div</code></label>
+      <br>
       Modifiers:
       <label><input type="checkbox" data-nodes="#menu-1" value="hilite" checked><code>.hilite</code></label>
       <label><input type="checkbox" data-nodes="#menu-1" value="mid" checked><code>.mid</code></label>
-      <label><input type="checkbox" data-nodes="#menu-1" value="resp" checked><code>.resp</code></label>
+      <label><input type="checkbox" data-nodes="#menu-1" value="resp"><code>.resp</code></label>
+      <label><input type="checkbox" data-nodes="#menu-1" value="resp-s" checked><code>.resp-s</code></label>
       <label><input type="checkbox" data-nodes="#menu-1" value="vert"><code>.vert</code></label>
       <label><input type="checkbox" data-nodes="#menu-1" value="hover" checked><code>.hover</code></label>
       <label><input type="checkbox" data-nodes="#menu-1" value="click"><code>.click</code></label>
@@ -1008,7 +1019,7 @@
       <label><input type="radio" data-nodes="#menu-1" name="trans-1" value="trans" checked><code>.trans</code></label>
       <label><input type="radio" data-nodes="#menu-1" name="trans-1" value="trans-fast"><code>.trans-fast</code></label>
     </p>
-    <div class="demo-preview no-resize">
+    <div class="demo-preview -no-resize" id="nav-1-container">
       <ul id="menu-1" class="row  hilite mid hover resp trans">
         <li><a tabindex="0"><span>Style<br><small class="note">CSS</small></span></a>
           <ul>
