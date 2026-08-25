@@ -5,8 +5,8 @@
 .form.just > :where(.span, .shift, :not(br) + *) > :where(.input, input:not([type=checkbox], [type=radio], [type=color], [type=range], [type=file]), select, textarea, [contenteditable], button) {width:100%;box-sizing:border-box;}
 
 
-/*@media (50rem <= width) {*/
-@container block (32rem <= width) {
+/*@media (width >= 50em) {*/
+@container block (width >= 32em) { /* rem/em */
   .form.resp {gap:calc(.8 * var(--gap)) var(--gap);grid-template-columns:minmax(min-content, 1fr) 2fr;}
   .form.resp > * {margin-top:0;}
   .form.resp > br + * {grid-column-start:1;}

@@ -2,31 +2,31 @@
 [hidden], .hide, body.js .hide-js, body:not(.js) .show-js {display:none !important;}
 
 /* wide screen */
-@media (50rem <= width) {
+@media (width >= 50em) {
   .show-l {display:revert !important;}
   .hide-l {display:none !important;}
 }
-@container block (50rem <= width) {
+@container block (width >= 50em) {
   .show-cl {display:revert !important;}
   .hide-cl {display:none !important;}
 }
 
 /* medium screen */
-@media (32rem <= width < 50rem) {
+@media (32em <= width < 50em) {
   .show-m {display:revert !important;}
   .hide-m {display:none !important;}
 }
-@container block (32rem <= width < 50rem) {
+@container block (32rem <= width < 50em) {
   .show-cm {display:revert !important;}
   .hide-cm {display:none !important;}
 }
 
 /* narrow screen */
-@media (width < 32rem) {
+@media (width < 32em) {
   .show-s {display:revert !important;}
   .hide-s {display:none !important;}
 }
-@container block (width < 32rem) {
+@container block (width < 32em) {
   .show-cs {display:revert !important;}
   .hide-cs {display:none !important;}
 }

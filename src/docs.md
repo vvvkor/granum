@@ -57,7 +57,7 @@
 
 ### Row
 
-- .row.wrap.line.resp.resp-s.vert.gap.mid.stretch > .col-0/1/2/3.push.shift.stick.resize (.resp@container@media)
+- .row.wrap.line.resp.resp-m.vert.gap.mid.stretch > .col-0/1/2/3.push.shift.stick.resize (.resp@container@media)
 - ul.row.gap.line.fit.bread.click ul.l
 
 ### Stack

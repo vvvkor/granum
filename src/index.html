@@ -266,14 +266,10 @@
     <p>Use <code>.row</code> for horizontal layouts. Add <code>.wrap</code> to allow wrapping, and <code>.gap</code> for spacing.</p>
     <!--details><summary class="icon-config small"></summary-->
     <p class="options bord pad small">
-      <!--
-      Container modifiers: 
-      <label><input type="checkbox" data-nodes="#row-1-container" value="container resize"><code>.container.resize</code></label>
-      <label><input type="checkbox" data-nodes="#row-1-container" value="container resize scroll"><code>.container.resize.scroll</code></label>
+      Wrapper:
+      <label><input type="checkbox" data-nodes="#row-1-container" value="container"><code>.container</code></label>
       <br>
-      -->
       Row modifiers:
-      <!-- stick.resize (.resp@container@media) -->
       <label><input type="checkbox" data-nodes="#row-1" value="gap" checked><code>.gap</code></label>
       <label><input type="checkbox" data-nodes="#row-1" value="mid"><code>.mid</code></label>
       <label><input type="checkbox" data-nodes="#row-1" value="stretch"><code>.stretch</code></label>
@@ -281,7 +277,7 @@
       <label><input type="checkbox" data-nodes="#row-1" value="line"><code>.line</code></label>
       <label><input type="checkbox" data-nodes="#row-1" value="bord"><code>.bord</code></label>
       <label><input type="checkbox" data-nodes="#row-1" value="resp"><code>.resp</code></label>
-      <label><input type="checkbox" data-nodes="#row-1" value="resp-s"><code>.resp-s</code></label>
+      <label><input type="checkbox" data-nodes="#row-1" value="resp-m"><code>.resp-m</code></label>
       <label><input type="checkbox" data-nodes="#row-1" value="vert"><code>.vert</code></label>
       <label><input type="checkbox" data-nodes="#row-1" value="full"><code>.full</code></label>
       <label><input type="checkbox" data-nodes="#row-1" value="resize"><code>.resize</code></label>
@@ -310,7 +306,7 @@
     <!--/details-->
       <!--div id="row-1-container">
       </div-->
-    <div class="demo-preview -container">
+    <div class="demo-preview -container" id="row-1-container">
       <div class="row gap" id="row-1">
         <div class="bg note pad col-1" id="column-1">Column 1</div>
         <div class="bg note pad col-2 scroll" id="column-2">Column 2<br>Text<br>Text<br>Text<br>Text</div>
@@ -361,11 +357,11 @@
     <h3>Stack</h3>
     <p>Use <code>.stack</code> to avoid outer margins. Use <code>.stack.line</code> to add borders between items.</p>
     <p class="options bord pad small">
-      Container style:
+      Wrapper modifiers:
       <label><input type="checkbox" data-nodes="#stack-1-container" value="bord" checked><code>.bord</code></label>
       <label><input type="checkbox" data-nodes="#stack-1-container" value="pad"><code>.pad</code></label>
       <br>
-      Stack style:
+      Stack modifiers:
       <label><input type="radio" name="stack-mode" data-nodes="#stack-1" value=""><i>none</i></label>
       <label><input type="radio" name="stack-mode" data-nodes="#stack-1" value="stack" checked><code>.stack</code></label>
       <label><input type="radio" name="stack-mode" data-nodes="#stack-1" value="stack line"><code>.stack.line</code></label>
@@ -394,17 +390,21 @@
     </div>
     
     <h3>Splitter</h3>
-    <p>Use <code>.resize</code> on child nodes of the same <code>.row</code> container.</p>
+    <p>Use <code>.resize</code> on child nodes of the same <code>.row</code>.</p>
     <p class="options bord pad small">
-      Container styles:
+      Wrapper:
+      <label><input type="checkbox" data-nodes="#row-container" value="container"><code>.container</code></label>
+      <br>
+      Row modifiers:
       <label><input type="checkbox" data-nodes="#splitter-1" value="resp" checked><code>.resp</code></label>
+      <label><input type="checkbox" data-nodes="#splitter-1" value="resp-m"><code>.resp-m</code></label>
       <label><input type="checkbox" data-nodes="#splitter-1" value="vert"><code>.vert</code></label>
       <label><input type="checkbox" data-nodes="#splitter-1" value="full"><code>.full</code></label>
       <!--br>
       Item styles:
       <label><input type="checkbox" data-nodes="#splitter-1 > *" value="scroll"><code>.scroll</code></label-->
     </p>
-    <div class="demo-preview">
+    <div class="demo-preview" id="row-container">
       <div id="splitter-1" class="row gap resp">
         <div class="resize bg warning pad" style="width:12em;">Left column
           <div class="scroll">
@@ -747,9 +747,9 @@
     <h3>Grid Forms</h3>
     <p>Use <code>.form.resp</code> for aligned, responsive form layouts.</p>
     <p class="options bord pad small">
-      Container:
-      <label><input type="checkbox" data-nodes="body" value="container"><code>body</code></label>
-      <label><input type="checkbox" data-nodes="#form-1-container" value="container" checked><code>div</code></label>
+      Wrapper:
+      <label><input type="checkbox" data-nodes="body" value="container"><code>&lt;body&gt;</code></label>
+      <label><input type="checkbox" data-nodes="#form-1-container" value="container" checked><code>container</code></label>
       <br>
       Form modifiers:
       <label><input type="checkbox" data-nodes="#form-1" value="form" checked><code>.form</code></label>
@@ -949,7 +949,7 @@
     
     <h3>Input Types</h3>
     <p class="options bord pad small">
-      Container modifiers:
+      Wrapper modifiers:
       <label><input type="radio" name="input-types" data-nodes="#inputs-container" value=""><i>inline</i></label>
       <label><input type="radio" name="input-types" data-nodes="#inputs-container" value="row gap mid wrap" checked><code>.row.gap.mid.wrap</code></label>
       <label><input type="radio" name="input-types" data-nodes="#inputs-container" value="row gap vert"><code>.row.gap.vert</code></label>
@@ -995,11 +995,14 @@
     
     <h3 data-caption="Dropdown">Dropdown navigation</h3>
     <p class="options bord pad small">  
+      Wrapper:
+      <label><input type="checkbox" data-nodes="#nav-1-container" value="container resize"><code>.container.resize</code></label>
+      <br>
       Modifiers:
       <label><input type="checkbox" data-nodes="#menu-1" value="hilite" checked><code>.hilite</code></label>
       <label><input type="checkbox" data-nodes="#menu-1" value="mid" checked><code>.mid</code></label>
-      <label><input type="checkbox" data-nodes="#menu-1" value="resp"><code>.resp</code></label>
-      <label><input type="checkbox" data-nodes="#menu-1" value="resp-s" checked><code>.resp-s</code></label>
+      <label><input type="checkbox" data-nodes="#menu-1" value="resp" checked><code>.resp</code></label>
+      <label><input type="checkbox" data-nodes="#menu-1" value="resp-m"><code>.resp-m</code></label>
       <label><input type="checkbox" data-nodes="#menu-1" value="vert"><code>.vert</code></label>
       <label><input type="checkbox" data-nodes="#menu-1" value="hover" checked><code>.hover</code></label>
       <label><input type="checkbox" data-nodes="#menu-1" value="click"><code>.click</code></label>
@@ -1380,7 +1383,7 @@
       <span class="hide-s neutral">Not small</span>
       <span class="hide show-s success bold">Small</span>
       <hr>
-      <b>Container:</b>
+      <b>Wrapper:</b>
       <span class="hide-cl note">Not large</span>
       <span class="hide show-cl danger bold">Large</span>
       <span class="hide-cm info">Not medium</span>

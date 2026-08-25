@@ -1,6 +1,6 @@
 /* typography */
 input, select, textarea, button, table, ::file-selector-button {font:inherit;}
-:root {font-size:calc(100% * var(--root-font-size, 1));/*fallback*/ font-size:clamp(100%, 2vw, 120%);}
+:root {font-size:calc(100% * var(--root-font-size, 1));/*fallback*/ font-size:clamp(1rem, .75rem + .5vw, 1.2rem);}
 h1, h2, h3, h4, h5, h6, small, .small, .regular {font-size:calc(1rem * var(--fsz, 1));}
 body {line-height:1.5;}
 h1 {--fsz:calc(var(--hx) * var(--hx) * var(--hx));}

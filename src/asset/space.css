@@ -41,7 +41,7 @@ abbr {border-bottom:thin dotted;text-decoration:none;}
 
 /* custom thin scrollbar */
 /*
-@media (width >= 50rem) {
+@media (width >= 50em) {
   .scrollbar::-webkit-scrollbar{width:.5em;height:.5em;background:var(--back);}
   .scrollbar::-webkit-scrollbar-thumb{background:var(--line-input);}
 }

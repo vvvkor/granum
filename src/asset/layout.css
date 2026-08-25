@@ -87,30 +87,33 @@ ul.row:where(:not(.vert))>li>ul {--pos:100% auto auto 0;}
 ul.row:where(:not(.vert)) ul.l {--pos:100% 0 auto auto;}
 ul:where(.row.vert) {width:var(--list-width);}
 
-@media (width < 50rem) {
+@media (width < 50em) {
+  .row.resp-m {--flow:column nowrap;--push:0;}
+  .row.resp-m .stick {align-self:stretch;}
+  .row.resp-m > .resize {resize:vertical;}
+  ul.row.resp-m {width:var(--list-width);}
+  ul.row.resp-m ul {--pos:0 auto auto 100%;}
+}
+@container block (width < 50em) {
+  .row.resp-m {--flow:column nowrap;--push:0;}
+  .row.resp-m .stick {align-self:stretch;}
+  .row.resp-m > .resize {resize:vertical;}
+  ul.row.resp-m {width:var(--list-width);}
+  ul.row.resp-m ul {--pos:0 auto auto 100%;}
+}
+
+@media (width < 32em) {
   .row.resp {--flow:column nowrap;--push:0;}
   .row.resp .stick {align-self:stretch;}
   .row.resp > .resize {resize:vertical;}
   ul.row.resp {width:var(--list-width);}
-  ul.row.resp ul {--pos:0 auto auto 100%;}
+  ul.row:is(.vert, .resp, .resp-m) ul {--pos:20% auto auto calc(var(--list-width) * .5);}
 }
-@container block (width < 50rem) {
+@container block (width < 32em) {
   .row.resp {--flow:column nowrap;--push:0;}
   .row.resp .stick {align-self:stretch;}
+  .row.resp > .resize {resize:vertical;}
   ul.row.resp {width:var(--list-width);}
-  ul.row.resp ul {--pos:0 auto auto 100%;}
-}
-
-@media (width < 32rem) {
-  .row.resp-s {--flow:column nowrap;--push:0;}
-  .row.resp-s .stick {align-self:stretch;}
-  ul.row.resp-s {width:var(--list-width);}
-  ul.row:is(.vert, .resp, .resp-s) ul {--pos:20% auto auto calc(var(--list-width) * .5);}
-}
-@container block (width < 32rem) {
-  .row.resp-s {--flow:column nowrap;--push:0;}
-  .row.resp-s .stick {align-self:stretch;}
-  ul.row.resp-s {width:var(--list-width);}
-  ul.row:is(.vert, .resp, .resp-s) ul {--pos:20% auto auto calc(var(--list-width) * .5);}
+  ul.row:is(.vert, .resp, .resp-m) ul {--pos:20% auto auto calc(var(--list-width) * .5);}
 }
 /**/

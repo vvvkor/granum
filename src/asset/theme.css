@@ -74,9 +74,14 @@
 }
 
 /* optional fine-tuning */
-@media (width >= 50rem) {
+@media (width < 32em) {
 	:root {
-    --root-font-size: 1.2;
+    --hx: 1.15;
+  }
+}
+@media (width >= 50em) {
+	:root {
+    --root-font-size: 1.2; /* fallback; overridden with clamp() */
     --top: 3rem;
   }
 }

@@ -96,7 +96,7 @@ html:has(#x9:not(:checked)) .x9
 /* dialog */
 :where(dialog, [popover]) {border:none;padding:0;}
 /*
-@media (width < 32rem) {
+@media (width < 32em) {
   dialog:not([popover]) {inset:0;width:auto;height:auto;max-width:none;max-height:none;}
 }
 */
@@ -144,7 +144,7 @@ ul.row ul, :where([popover].sel) {padding:calc(1 * var(--gap)) 0;}
   position-try-fallbacks:top span-right, top span-left, bottom span-all, bottom span-right, bottom span-left;
 }
 
-@media (width < 32rem) {
+@media (width < 32em) {
   /* fullscreen popover */
   [popover].resp {inset:0;position-area:none;margin:0;width:auto;max-height:100dvh;height:100dvh;border:var(--bord);}
   .sel.resp ul {width:revert;}
